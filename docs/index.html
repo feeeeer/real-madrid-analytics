@@ -6,6 +6,10 @@
 <title>Real Madrid Analytics</title>
 <meta name="description" content="Análisis de datos del Real Madrid: post-partido de cada jornada, rendimiento frente a lo esperado e histórico de resultados. Se actualiza solo tras cada partido.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<script>
+  // aplica el tema guardado antes de pintar, para que no parpadee
+  try { const t = localStorage.getItem('rm-tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) { /* sin almacenamiento: tema del sistema */ }
+</script>
 <style>
 :root {
   --font-anthropic-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -23,8 +27,9 @@
   --serie-rm: #3d5af1; --serie-rival: #e8870e; --serie-clave: #12a37f;
   color-scheme: light dark;
 }
+/* tema: el del sistema, salvo que se elija otro con el botón (data-theme en <html>) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #0f1115; --color-panel: #171a20; --color-fg: #e8eaee; --color-fg-muted: #9aa1ad;
     --color-border-line: #2a2f38; --color-ok: #4cc27a;
     --cds-chart-axis: #4a515c; --cds-chart-grid: #232831; --cds-chart-muted: #59606c; --cds-chart-reference: #8a919c;
@@ -33,17 +38,31 @@
     --serie-rm: #7b93ff; --serie-rival: #f5a443; --serie-clave: #3ccf9f;
   }
 }
+:root[data-theme="dark"] {
+  --color-bg: #0f1115; --color-panel: #171a20; --color-fg: #e8eaee; --color-fg-muted: #9aa1ad;
+  --color-border-line: #2a2f38; --color-ok: #4cc27a;
+  --cds-chart-axis: #4a515c; --cds-chart-grid: #232831; --cds-chart-muted: #59606c; --cds-chart-reference: #8a919c;
+  --cds-chart-status-critical: #f06464;
+  --cds-surface-popover: #1f232b; --cds-border: #353b45; --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.5); --cds-text-secondary: #9aa1ad;
+  --serie-rm: #7b93ff; --serie-rival: #f5a443; --serie-clave: #3ccf9f;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); }
 #dash-root { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
 .rm-score b { margin: 0 2px; }
-#tabla-hist td:nth-child(n+2):nth-child(-n+5), #tabla-hist th:nth-child(n+2):nth-child(-n+5) { text-align: left; }
+#tabla-hist td:nth-child(2), #tabla-hist th:nth-child(2), #tabla-hist td.vis, #tabla-hist td.estadio, #tabla-hist th.estadio { text-align: left; }
+#tabla-hist th.partido, #tabla-hist td.sep { text-align: center; }
+#tabla-hist td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.estadio { white-space: normal; color: var(--color-fg-muted); min-width: 8rem; }
 .con-esc { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
 #historico #rivales, #historico #partidos-hist { grid-column: 1 / -1; }
-.esc { width: 18px; height: 18px; object-fit: contain; flex: none; }
+/* escudo sobre una placa clara: los escudos oscuros (Eibar, Juventus...) se ven igual en modo claro y oscuro */
+.esc { width: 22px; height: 22px; object-fit: contain; flex: none; background: #fff; border-radius: 5px; padding: 2px; box-shadow: 0 0 0 1px var(--color-border-line); }
+.esc-vacio { background: none; box-shadow: none; }
 .esc-vacio { display: inline-block; }
-.rm-score .esc { width: 32px; height: 32px; }
+.rm-score .esc { width: 38px; height: 38px; padding: 3px; }
 #al-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; min-width: 0; }
 .rm-lineup h3 { margin-top: 0; display: flex; }
@@ -54,6 +73,9 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .campito { width: 100%; height: auto; position: sticky; top: 8px; }
 @media (max-width: 480px) { .al-cuerpo { grid-template-columns: 1fr; } .campito { max-width: 200px; margin: 0 auto; position: static; } }
 
+.cabecera { position: relative; padding-right: 3rem; }
+.tema { position: absolute; top: 0; right: 0; font: inherit; font-size: 1.1rem; line-height: 1; padding: 0.4rem 0.5rem; cursor: pointer;
+  background: var(--color-panel); color: var(--color-fg); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
 .rm { font-family: var(--font-anthropic-sans); color: var(--color-fg); }
 .rm h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; }
 .rm h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
@@ -120,7 +142,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 <body>
 <div id="dash-root">
 <div class="rm">
-  <header>
+  <header class="cabecera">
+    <button type="button" id="tema" class="tema" aria-label="Cambiar entre modo claro y oscuro"></button>
     <h1>Real Madrid · Análisis para el Míster</h1>
     <p class="rm-lead" id="takeaway">Post-partido de cada jornada de la temporada: qué funcionó, qué no y a quién hay que decírselo.</p>
     <p class="rm-sub" id="estado"></p>
@@ -306,7 +329,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
         <input class="rm-search" id="q-partido" type="search" placeholder="Rival, temporada, fecha o estadio…" aria-label="Buscar partido">
         <div class="rm-tablewrap">
           <table id="tabla-hist">
-            <thead><tr><th>Fecha</th><th>Competición</th><th>Local</th><th>Visitante</th><th>Estadio</th><th>Resultado</th></tr></thead>
+            <thead><tr><th>Fecha</th><th>Competición</th><th colspan="3" class="partido">Partido</th><th class="estadio">Estadio</th><th>Resultado</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>

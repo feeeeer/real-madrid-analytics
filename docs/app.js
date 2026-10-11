@@ -12,7 +12,6 @@ const el = (tag, attrs = {}, text) => {
 const markEl = (tag, src, field, where, text) => el(tag, { 'data-source': src, 'data-field': field, 'data-where': where }, text);
 const ok = (...ids) => ids.every((id) => dash.data(id).status === 'ok');
 const rows = (id) => (dash.data(id).status === 'ok' ? dash.data(id).data : []);
-const css = (v) => getComputedStyle(document.getElementById('dash-root')).getPropertyValue(v).trim();
 const C_RM = () => dash.colors[0];
 const C_RIV = () => dash.colors[1];
 const C_KEY = () => dash.colors[2];
@@ -166,8 +165,7 @@ function drawPitch(box, { capa, passes, shots, color, tipos }) {
   const vb = half ? [58, -2, 64, 84] : [-2, -2, 124, 84];
   const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', vb.join(' '))
     .attr('role', 'img').attr('aria-label', half ? 'Mapa de tiros' : 'Mapa de pases');
-  const line = css('--cds-chart-axis') || 'currentColor';
-  const g = svg.append('g').attr('fill', 'none').attr('stroke', line).attr('stroke-width', 0.3).attr('opacity', 0.8);
+  const g = svg.append('g').attr('fill', 'none').style('stroke', 'var(--cds-chart-axis)').attr('stroke-width', 0.3).attr('opacity', 0.8);
   g.append('rect').attr('x', 0).attr('y', 0).attr('width', 120).attr('height', 80);
   g.append('line').attr('x1', 60).attr('x2', 60).attr('y1', 0).attr('y2', 80);
   g.append('circle').attr('cx', 60).attr('cy', 40).attr('r', 10);
@@ -302,7 +300,27 @@ function escudo(nombre) {
   img.addEventListener('error', () => img.replaceWith(el('span', { class: 'esc esc-vacio', 'aria-hidden': 'true' })));
   return img;
 }
-const conEscudo = (nombre, tag = 'span') => { const s = el(tag, { class: 'con-esc' }); s.append(escudo(nombre), nombre); return s; };
+// detras: el escudo a la derecha del nombre (equipo local en "LOCAL – VISITANTE")
+const conEscudo = (nombre, tag = 'span', detras = false) => {
+  const s = el(tag, { class: 'con-esc' });
+  if (detras) s.append(nombre, escudo(nombre)); else s.append(escudo(nombre), nombre);
+  return s;
+};
+
+// Modo claro / oscuro: por defecto el del sistema; el botón fija uno y se recuerda en este navegador
+(() => {
+  const b = $('#tema');
+  const actual = () => document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const pintar = () => { const osc = actual() === 'dark'; b.textContent = osc ? '☀️' : '🌙'; b.title = osc ? 'Modo claro' : 'Modo oscuro'; };
+  b.addEventListener('click', () => {
+    const t = actual() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+    try { localStorage.setItem('rm-tema', t); } catch (e) { /* sin almacenamiento: solo esta visita */ }
+    pintar();
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', pintar);
+  pintar();
+})();
 
 const POS_ES = { Goalkeeper: 'Portero', Sweeper: 'Líbero', 'Centre-Back': 'Central', 'Left-Back': 'Lateral izquierdo', 'Right-Back': 'Lateral derecho',
   Defender: 'Defensa', 'Defensive Midfield': 'Mediocentro defensivo', 'Central Midfield': 'Mediocentro', 'Left Midfield': 'Interior izquierdo',
@@ -696,10 +714,10 @@ function renderHistorico() {
   tb.replaceChildren(...ps.slice(0, MAX).map((r) => {
     const tr = el('tr', { 'data-key': r.partido_id || '' });
     if (r.partido_id && r.partido_id === partidoHist) tr.className = 'sel';
-    const local = el('td', { class: 'equipo' }), visitante = el('td', { class: 'equipo' });
-    local.append(conEscudo(r.local));
+    const local = el('td', { class: 'loc' }), visitante = el('td', { class: 'vis' });
+    local.append(conEscudo(r.local, 'span', true));
     visitante.append(conEscudo(r.visitante));
-    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), local, visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
+    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), local, el('td', { class: 'sep' }, '–'), visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${conAl.has(r.partido_id) ? ' 👥' : ''}`));
     tr.lastChild.style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     return tr;
