@@ -1,0 +1,4 @@
+soccerdata==1.9.1
+pandas>=2.2
+numpy>=1.26
+certifi

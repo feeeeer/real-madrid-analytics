@@ -1,0 +1,248 @@
+tiro_id,match_id,equipo,jugador,x,y,xg,resultado,subtipo,patron_juego,minuto
+us689126,1993911,Espanyol,Cala,110.0,37.9,0.487,Goal,Open Play,Regular Play,29
+us689134,1993911,Espanyol,Cala,104.6,48.1,0.07,Off T,Open Play,Regular Play,48
+us689123,1993911,Espanyol,Clemens Riedel,92.8,52.9,0.02,Saved,Open Play,Regular Play,25
+us689122,1993911,Espanyol,Edu Expósito,88.7,40.8,0.021,Blocked,Open Play,Regular Play,25
+us689124,1993911,Espanyol,Edu Expósito,89.8,46.6,0.017,Off T,Open Play,Regular Play,25
+us689133,1993911,Espanyol,Edu Expósito,100.7,22.1,0.028,Saved,Open Play,Regular Play,46
+us689125,1993911,Espanyol,Roberto Fernández,105.8,43.3,0.088,Off T,Open Play,Regular Play,25
+us689132,1993911,Espanyol,Roberto Fernández,114.5,37.9,0.564,Off T,Open Play,Regular Play,46
+us689147,1993911,Real Madrid,Carlos Espí,114.2,42.7,0.55,Goal,Open Play,Regular Play,89
+us689138,1993911,Real Madrid,Dean Huijsen,109.8,38.5,0.059,Blocked,Open Play,From Free Kick,57
+us689121,1993911,Real Madrid,Denzel Dumfries,116.6,53.0,0.072,Saved,Open Play,Regular Play,19
+us689128,1993911,Real Madrid,Denzel Dumfries,103.4,47.0,0.078,Off T,Open Play,Regular Play,32
+us689135,1993911,Real Madrid,Denzel Dumfries,99.2,50.4,0.051,Blocked,Open Play,Regular Play,52
+us689143,1993911,Real Madrid,Denzel Dumfries,109.9,56.9,0.041,Blocked,Open Play,Regular Play,72
+us689144,1993911,Real Madrid,Federico Valverde,97.0,38.7,0.05,Post,Open Play,Regular Play,77
+us689139,1993911,Real Madrid,Ibrahima Konaté,106.8,37.9,0.021,Saved,Open Play,From Corner,58
+us689119,1993911,Real Madrid,Jude Bellingham,108.0,39.4,0.103,Goal,Open Play,From Free Kick,8
+us689136,1993911,Real Madrid,Jude Bellingham,110.9,36.6,0.107,Saved,Open Play,From Corner,52
+us689120,1993911,Real Madrid,Kylian Mbappe-Lottin,94.6,22.7,0.029,Saved,Open Play,Regular Play,14
+us689127,1993911,Real Madrid,Kylian Mbappe-Lottin,111.7,24.6,0.16,Saved,Open Play,Regular Play,32
+us689129,1993911,Real Madrid,Kylian Mbappe-Lottin,104.9,55.4,0.063,Saved,Open Play,Regular Play,37
+us689130,1993911,Real Madrid,Kylian Mbappe-Lottin,112.0,43.6,0.097,Off T,Open Play,Regular Play,41
+us689131,1993911,Real Madrid,Kylian Mbappe-Lottin,90.1,37.2,0.035,Blocked,Open Play,From Corner,43
+us689137,1993911,Real Madrid,Kylian Mbappe-Lottin,117.4,40.6,0.734,Off T,Open Play,From Corner,52
+us689140,1993911,Real Madrid,Kylian Mbappe-Lottin,96.2,15.9,0.048,Off T,Open Play,From Free Kick,59
+us689141,1993911,Real Madrid,Kylian Mbappe-Lottin,100.8,32.6,0.087,Blocked,Open Play,Regular Play,69
+us689145,1993911,Real Madrid,Kylian Mbappe-Lottin,102.4,33.1,0.113,Blocked,Open Play,From Counter,77
+us689146,1993911,Real Madrid,Kylian Mbappe-Lottin,98.4,38.6,0.079,Off T,Open Play,Regular Play,81
+us689142,1993911,Real Madrid,Vinícius Júnior,113.2,25.7,0.063,Off T,Open Play,Regular Play,69
+us689874,1993904,Real Madrid,Arda Güler,102.7,24.5,0.034,Blocked,Open Play,Regular Play,46
+us689876,1993904,Real Madrid,Arda Güler,93.6,57.2,0.024,Saved,Open Play,From Corner,48
+us689866,1993904,Real Madrid,Dean Huijsen,77.2,29.4,0.009,Off T,Open Play,Regular Play,37
+us689875,1993904,Real Madrid,Dean Huijsen,107.3,36.7,0.019,Off T,Open Play,From Corner,46
+us689871,1993904,Real Madrid,Denzel Dumfries,93.6,41.8,0.034,Blocked,Open Play,Regular Play,45
+us689882,1993904,Real Madrid,Federico Valverde,88.1,32.7,0.023,Blocked,Open Play,From Corner,71
+us689888,1993904,Real Madrid,Federico Valverde,112.3,54.0,0.09,Saved,Open Play,Regular Play,82
+us689879,1993904,Real Madrid,Jude Bellingham,104.2,36.8,0.107,Blocked,Open Play,Regular Play,66
+us689860,1993904,Real Madrid,Kylian Mbappe-Lottin,114.6,27.0,0.086,Saved,Open Play,From Counter,6
+us689865,1993904,Real Madrid,Kylian Mbappe-Lottin,105.4,22.6,0.038,Saved,Open Play,Regular Play,37
+us689867,1993904,Real Madrid,Kylian Mbappe-Lottin,107.6,36.1,0.113,Goal,Open Play,Regular Play,39
+us689868,1993904,Real Madrid,Kylian Mbappe-Lottin,91.4,32.2,0.067,Saved,Open Play,Regular Play,43
+us689872,1993904,Real Madrid,Kylian Mbappe-Lottin,108.0,34.1,0.384,Saved,Open Play,Regular Play,46
+us689877,1993904,Real Madrid,Kylian Mbappe-Lottin,106.0,52.2,0.054,Blocked,Open Play,Regular Play,50
+us689878,1993904,Real Madrid,Kylian Mbappe-Lottin,110.8,33.5,0.479,Goal,Open Play,Regular Play,59
+us689887,1993904,Real Madrid,Kylian Mbappe-Lottin,114.2,30.8,0.493,Goal,Open Play,Regular Play,79
+us689859,1993904,Real Madrid,Vinícius Júnior,98.0,42.2,0.058,Off T,Open Play,Regular Play,2
+us689863,1993904,Real Madrid,Vinícius Júnior,108.0,24.3,0.202,Saved,Open Play,Regular Play,20
+us689873,1993904,Real Madrid,Vinícius Júnior,103.0,24.0,0.039,Blocked,Open Play,Regular Play,46
+us689880,1993904,Real Madrid,Vinícius Júnior,117.6,38.9,0.953,Goal,Open Play,Regular Play,67
+us689884,1993904,Real Sociedad,Beñat Turrientes,92.2,28.3,0.027,Saved,Open Play,From Corner,74
+us689885,1993904,Real Sociedad,Gonçalo Guedes,109.0,24.5,0.047,Blocked,Open Play,Regular Play,76
+us689869,1993904,Real Sociedad,Job Ochieng,105.0,28.6,0.049,Blocked,Open Play,Regular Play,43
+us689861,1993904,Real Sociedad,Jon Aramburu,86.4,56.9,0.009,Off T,Open Play,Regular Play,6
+us689870,1993904,Real Sociedad,Luka Sucic,105.0,47.8,0.071,Goal,Open Play,Regular Play,43
+us689886,1993904,Real Sociedad,Luka Sucic,91.0,48.6,0.012,Off T,Open Play,From Corner,77
+us689862,1993904,Real Sociedad,Mikel Oyarzabal,109.1,31.2,0.1,Saved,Open Play,Regular Play,10
+us689883,1993904,Real Sociedad,Orri Óskarsson,108.1,30.5,0.085,Blocked,Open Play,Regular Play,74
+us689864,1993904,Real Sociedad,Sergio Gómez,111.4,22.3,0.042,Off T,Open Play,Regular Play,34
+us689881,1993904,Real Sociedad,Sergio Gómez,102.6,19.7,0.025,Off T,Open Play,Regular Play,69
+us691257,1993924,Malaga,Chupe,104.8,45.1,0.088,Off T,Open Play,Regular Play,44
+us691268,1993924,Malaga,Chupe,91.6,37.6,0.044,Blocked,Open Play,Regular Play,79
+us691271,1993924,Malaga,Chupe,96.8,39.3,0.06,Off T,Open Play,Regular Play,87
+us691242,1993924,Malaga,David Larrubia,101.9,54.1,0.06,Blocked,Open Play,Regular Play,0
+us691266,1993924,Malaga,David Larrubia,92.8,41.8,0.038,Saved,Open Play,From Corner,71
+us691269,1993924,Malaga,David Larrubia,107.9,57.1,0.046,Blocked,Open Play,From Free Kick,82
+us691273,1993924,Malaga,David Larrubia,100.8,46.6,0.067,Blocked,Open Play,Regular Play,91
+us691267,1993924,Malaga,Haitam Abaida,98.0,23.8,0.061,Blocked,Open Play,From Counter,75
+us691270,1993924,Malaga,Haitam Abaida,98.3,39.5,0.171,Blocked,Open Play,From Free Kick,84
+us691247,1993924,Malaga,Joaquín Muñoz,103.1,18.8,0.02,Off T,Open Play,Regular Play,15
+us691264,1993924,Malaga,Juan Cruz,88.6,24.7,0.013,Off T,Open Play,Regular Play,63
+us691246,1993924,Malaga,Rafa Rodríguez,70.0,57.6,0.008,Off T,Open Play,Regular Play,13
+us691255,1993924,Malaga,Rafa Rodríguez,108.5,46.8,0.071,Post,Open Play,From Corner,41
+us691258,1993924,Malaga,Rafa Rodríguez,88.0,54.6,0.013,Off T,Open Play,Regular Play,46
+us691245,1993924,Real Madrid,Antonio Rüdiger,108.8,40.6,0.034,Blocked,Open Play,From Corner,10
+us691272,1993924,Real Madrid,Arda Güler,114.8,38.2,0.817,Goal,Open Play,From Counter,90
+us691275,1993924,Real Madrid,Arda Güler,116.3,55.9,0.04,Blocked,Open Play,From Corner,93
+us691256,1993924,Real Madrid,Brahim Diaz,112.1,56.9,0.14,Blocked,Open Play,Regular Play,42
+us691248,1993924,Real Madrid,Jude Bellingham,113.4,54.6,0.088,Goal,Open Play,Regular Play,18
+us691250,1993924,Real Madrid,Jude Bellingham,107.4,39.2,0.421,Blocked,Open Play,Regular Play,25
+us691260,1993924,Real Madrid,Jude Bellingham,110.8,23.6,0.077,Post,Open Play,Regular Play,54
+us691262,1993924,Real Madrid,Jude Bellingham,105.6,38.6,0.052,Off T,Open Play,From Corner,58
+us691265,1993924,Real Madrid,Jude Bellingham,97.9,36.5,0.079,Off T,Open Play,Regular Play,69
+us691244,1993924,Real Madrid,Kylian Mbappe-Lottin,104.5,43.4,0.079,Blocked,Open Play,Regular Play,3
+us691249,1993924,Real Madrid,Kylian Mbappe-Lottin,108.5,51.2,0.098,Saved,Open Play,Regular Play,25
+us691252,1993924,Real Madrid,Kylian Mbappe-Lottin,107.4,42.6,0.398,Goal,Open Play,Regular Play,29
+us691259,1993924,Real Madrid,Kylian Mbappe-Lottin,91.3,55.9,0.053,Blocked,Open Play,Regular Play,49
+us691263,1993924,Real Madrid,Kylian Mbappe-Lottin,118.3,37.3,0.769,Saved,Open Play,From Corner,58
+us691274,1993924,Real Madrid,Kylian Mbappe-Lottin,95.3,28.1,0.089,Saved,Open Play,Regular Play,92
+us691243,1993924,Real Madrid,Trent Alexander-Arnold,97.1,58.8,0.017,Off T,Open Play,Regular Play,0
+us691261,1993924,Real Madrid,Trent Alexander-Arnold,105.8,51.4,0.104,Saved,Open Play,Regular Play,56
+us691253,1993924,Real Madrid,Vinícius Júnior,102.6,20.0,0.044,Blocked,Open Play,Regular Play,35
+us691254,1993924,Real Madrid,Vinícius Júnior,96.1,28.2,0.048,Blocked,Open Play,Regular Play,37
+us691944,1993928,Real Betis,Antony,87.4,31.5,0.016,Saved,Open Play,Regular Play,7
+us691951,1993928,Real Betis,Antony,96.2,59.4,0.015,Blocked,Open Play,Regular Play,17
+us691954,1993928,Real Betis,Antony,109.4,56.6,0.038,Blocked,Open Play,From Corner,26
+us691964,1993928,Real Betis,Antony,92.3,51.0,0.024,Off T,Open Play,Regular Play,51
+us691961,1993928,Real Betis,Isco,95.6,24.8,0.025,Blocked,Open Play,Regular Play,49
+us691952,1993928,Real Betis,Juan Camilo Hernández,105.6,52.9,0.058,Off T,Open Play,Regular Play,20
+us691972,1993928,Real Betis,Marc Bartra,51.6,39.3,0.011,Saved,Open Play,From Counter,97
+us691966,1993928,Real Betis,Nelson Deossa,107.0,41.8,0.019,Saved,Open Play,From Corner,80
+us691969,1993928,Real Betis,Nelson Deossa,86.6,48.2,0.021,Saved,Open Play,Regular Play,91
+us691967,1993928,Real Betis,Troy Parrott,115.7,41.9,0.671,Goal,Open Play,From Corner,80
+us691947,1993928,Real Madrid,Arda Güler,88.1,38.0,0.01,Off T,Open Play,From Corner,10
+us691956,1993928,Real Madrid,Arda Güler,92.0,49.7,0.021,Off T,Open Play,Regular Play,41
+us691971,1993928,Real Madrid,Carlos Espí,110.9,36.2,0.103,Saved,Open Play,From Corner,95
+us691946,1993928,Real Madrid,Dean Huijsen,107.6,38.1,0.246,Saved,Open Play,From Corner,10
+us691962,1993928,Real Madrid,Dean Huijsen,111.1,38.8,0.054,Post,Open Play,From Corner,50
+us691949,1993928,Real Madrid,Federico Valverde,87.7,48.0,0.02,Blocked,Open Play,From Corner,12
+us691943,1993928,Real Madrid,Jude Bellingham,106.7,33.0,0.047,Off T,Open Play,From Free Kick,4
+us691959,1993928,Real Madrid,Jude Bellingham,107.8,24.1,0.051,Off T,Open Play,Regular Play,43
+us691960,1993928,Real Madrid,Jude Bellingham,108.6,40.4,0.084,Saved,Open Play,From Corner,45
+us691953,1993928,Real Madrid,Kylian Mbappe-Lottin,102.2,38.8,0.086,Blocked,Open Play,Regular Play,23
+us691957,1993928,Real Madrid,Kylian Mbappe-Lottin,104.4,41.7,0.499,Blocked,Open Play,Regular Play,42
+us691958,1993928,Real Madrid,Kylian Mbappe-Lottin,111.2,33.5,0.539,Blocked,Open Play,From Counter,42
+us691963,1993928,Real Madrid,Kylian Mbappe-Lottin,88.2,25.3,0.013,Off T,Open Play,Regular Play,46
+us691965,1993928,Real Madrid,Kylian Mbappe-Lottin,106.2,33.0,0.143,Saved,Open Play,Regular Play,67
+us691968,1993928,Real Madrid,Kylian Mbappe-Lottin,109.3,58.6,0.041,Post,Open Play,From Corner,84
+us691970,1993928,Real Madrid,Kylian Mbappe-Lottin,106.2,40.0,0.743,Saved,Open Play,,93
+us691945,1993928,Real Madrid,Vinícius Júnior,109.9,44.1,0.094,Off T,Open Play,Regular Play,7
+us691948,1993928,Real Madrid,Vinícius Júnior,115.1,22.6,0.043,Blocked,Open Play,Regular Play,11
+us691950,1993928,Real Madrid,Vinícius Júnior,118.1,30.0,0.294,Post,Open Play,Regular Play,14
+us691955,1993928,Real Madrid,Vinícius Júnior,111.5,44.6,0.519,Saved,Open Play,Regular Play,32
+us694317,1994162,Rayo Vallecano,Alemão,110.9,40.2,0.084,Off T,Open Play,Regular Play,84
+us694321,1994162,Rayo Vallecano,Alemão,93.5,51.5,0.141,Blocked,Open Play,Regular Play,90
+us694323,1994162,Rayo Vallecano,Alemão,102.6,35.5,0.069,Blocked,Open Play,Regular Play,93
+us694306,1994162,Rayo Vallecano,Florian Lejeune,78.8,40.9,0.008,Off T,Open Play,Regular Play,54
+us694310,1994162,Rayo Vallecano,Florian Lejeune,108.8,49.8,0.049,Off T,Open Play,Regular Play,64
+us694283,1994162,Rayo Vallecano,Giorgi Tsitaishvili,104.2,47.1,0.087,Saved,Open Play,Regular Play,8
+us694308,1994162,Rayo Vallecano,Giorgi Tsitaishvili,91.7,55.1,0.017,Saved,Open Play,Regular Play,62
+us694309,1994162,Rayo Vallecano,Giorgi Tsitaishvili,115.6,44.6,0.453,Off T,Open Play,Regular Play,62
+us694282,1994162,Rayo Vallecano,Pedro Díaz,68.3,61.8,0.017,Saved,Open Play,Regular Play,4
+us694298,1994162,Rayo Vallecano,Pedro Díaz,90.2,44.5,0.02,Blocked,Open Play,Regular Play,42
+us694300,1994162,Rayo Vallecano,Pedro Díaz,85.9,48.2,0.013,Saved,Open Play,Regular Play,46
+us694301,1994162,Rayo Vallecano,Pedro Díaz,88.4,54.5,0.014,Post,Open Play,Regular Play,46
+us694305,1994162,Rayo Vallecano,Pedro Díaz,100.0,42.5,0.08,Blocked,Open Play,Regular Play,53
+us694289,1994162,Rayo Vallecano,Sergio Camello,90.4,34.1,0.022,Saved,Open Play,Regular Play,25
+us694291,1994162,Rayo Vallecano,Sergio Camello,100.4,29.5,0.018,Saved,Open Play,Regular Play,29
+us694304,1994162,Rayo Vallecano,Sergio Camello,106.2,51.0,0.066,Goal,Open Play,Regular Play,50
+us694302,1994162,Rayo Vallecano,Unai López,89.6,35.7,0.011,Off T,Open Play,Regular Play,46
+us694290,1994162,Rayo Vallecano,Álvaro García,97.6,23.7,0.024,Blocked,Open Play,From Corner,26
+us694312,1994162,Real Madrid,Antonio Rüdiger,106.4,41.4,0.052,Saved,Open Play,From Corner,77
+us694313,1994162,Real Madrid,Arda Güler,90.5,37.0,0.029,Saved,Open Play,Regular Play,80
+us694318,1994162,Real Madrid,Aurelien Tchouameni,83.6,39.8,0.018,Blocked,Open Play,Regular Play,86
+us694295,1994162,Real Madrid,Bernardo Silva,108.2,36.4,0.14,Blocked,Open Play,Regular Play,38
+us694311,1994162,Real Madrid,Denzel Dumfries,109.3,40.8,0.351,Saved,Open Play,From Free Kick,76
+us694285,1994162,Real Madrid,Federico Valverde,95.8,34.6,0.042,Off T,Open Play,From Corner,10
+us694294,1994162,Real Madrid,Federico Valverde,90.1,39.8,0.036,Off T,Open Play,Regular Play,36
+us694297,1994162,Real Madrid,Ibrahima Konaté,109.7,39.4,0.045,Off T,Open Play,From Corner,39
+us694314,1994162,Real Madrid,Ibrahima Konaté,111.7,40.4,0.143,Off T,Open Play,Regular Play,81
+us694293,1994162,Real Madrid,Jude Bellingham,101.9,37.9,0.115,Goal,Open Play,Regular Play,34
+us694296,1994162,Real Madrid,Jude Bellingham,97.0,46.2,0.066,Blocked,Open Play,Regular Play,39
+us694315,1994162,Real Madrid,Jude Bellingham,102.7,37.3,0.083,Blocked,Open Play,Regular Play,81
+us694320,1994162,Real Madrid,Jude Bellingham,118.1,25.0,0.093,Saved,Open Play,Regular Play,87
+us694286,1994162,Real Madrid,Kylian Mbappe-Lottin,106.2,40.0,0.743,Goal,Open Play,,13
+us694299,1994162,Real Madrid,Kylian Mbappe-Lottin,97.6,39.0,0.078,Post,Open Play,Regular Play,44
+us694303,1994162,Real Madrid,Kylian Mbappe-Lottin,92.2,47.8,0.041,Off T,Open Play,Regular Play,47
+us694316,1994162,Real Madrid,Kylian Mbappe-Lottin,114.5,29.0,0.168,Saved,Open Play,From Corner,82
+us694322,1994162,Real Madrid,Kylian Mbappe-Lottin,104.3,53.0,0.106,Goal,Open Play,From Counter,90
+us694284,1994162,Real Madrid,Vinícius Júnior,101.8,28.9,0.052,Blocked,Open Play,Regular Play,9
+us694288,1994162,Real Madrid,Vinícius Júnior,102.0,21.6,0.049,Saved,Open Play,Regular Play,24
+us694307,1994162,Real Madrid,Vinícius Júnior,100.4,23.5,0.052,Off T,Open Play,Regular Play,58
+us694319,1994162,Real Madrid,Vinícius Júnior,107.8,26.2,0.083,Saved,Open Play,Regular Play,87
+us694292,1994162,Real Madrid,Yan Diomande,98.3,47.6,0.081,Off T,Open Play,Regular Play,30
+us694287,1994162,Real Madrid,Álvaro Fernández,109.0,34.6,0.467,Goal,Open Play,Regular Play,16
+us695103,1994179,Elche,Abiel Osorio,103.1,36.6,0.095,Off T,Open Play,Regular Play,16
+us695110,1994179,Elche,Abiel Osorio,109.6,31.5,0.104,Off T,Open Play,Regular Play,42
+us695114,1994179,Elche,Abiel Osorio,111.5,37.1,0.085,Blocked,Open Play,Regular Play,48
+us695122,1994179,Elche,Abiel Osorio,113.8,42.6,0.505,Goal,Open Play,Regular Play,70
+us695125,1994179,Elche,Fernando Niño,107.9,52.6,0.069,Goal,Open Play,Regular Play,82
+us695100,1994179,Elche,German Valera,88.9,48.8,0.018,Blocked,Open Play,Regular Play,3
+us695115,1994179,Elche,Martim Neto,97.4,39.6,0.064,Off T,Open Play,Regular Play,53
+us695117,1994179,Elche,Martim Neto,112.3,56.6,0.044,Off T,Open Play,Regular Play,58
+us695101,1994179,Elche,Tete Morente,103.7,50.9,0.039,Off T,Open Play,Regular Play,7
+us695112,1994179,Elche,Tete Morente,95.9,13.8,0.012,Saved,Open Play,Regular Play,46
+us695120,1994179,Elche,Tete Morente,91.2,28.5,0.017,Off T,Open Play,Regular Play,62
+us695105,1994179,Real Madrid,Arda Güler,88.2,50.6,0.053,Post,Open Play,From Free Kick,24
+us695109,1994179,Real Madrid,Arda Güler,114.6,38.8,0.856,Off T,Open Play,From Counter,37
+us695119,1994179,Real Madrid,Arda Güler,92.8,18.8,0.021,Off T,Open Play,From Corner,61
+us695129,1994179,Real Madrid,Carlos Espí,104.3,42.9,0.107,Off T,Open Play,Regular Play,89
+us695130,1994179,Real Madrid,Carlos Espí,113.8,42.4,0.623,Goal,Open Play,Regular Play,90
+us695102,1994179,Real Madrid,Dean Huijsen,111.5,39.6,0.124,Saved,Open Play,From Corner,10
+us695128,1994179,Real Madrid,Endrick,107.4,35.5,0.121,Blocked,Open Play,Regular Play,89
+us695116,1994179,Real Madrid,Ibrahima Konaté,107.6,37.3,0.091,Off T,Open Play,From Free Kick,57
+us695127,1994179,Real Madrid,Jude Bellingham,88.1,41.7,0.016,Blocked,Open Play,Regular Play,85
+us695107,1994179,Real Madrid,Kylian Mbappe-Lottin,108.6,39.2,0.36,Goal,Open Play,Regular Play,32
+us695113,1994179,Real Madrid,Kylian Mbappe-Lottin,110.9,31.3,0.054,Off T,Open Play,Regular Play,45
+us695118,1994179,Real Madrid,Kylian Mbappe-Lottin,95.2,27.7,0.032,Blocked,Open Play,Regular Play,60
+us695126,1994179,Real Madrid,Kylian Mbappe-Lottin,107.9,23.3,0.038,Blocked,Open Play,Regular Play,84
+us695124,1994179,Real Madrid,Trent Alexander-Arnold,96.0,20.2,0.061,Off T,Open Play,From Free Kick,78
+us695099,1994179,Real Madrid,Vinícius Júnior,109.4,29.1,0.36,Off T,Open Play,Regular Play,1
+us695104,1994179,Real Madrid,Vinícius Júnior,101.0,39.0,0.069,Off T,Open Play,Regular Play,20
+us695108,1994179,Real Madrid,Vinícius Júnior,107.5,27.5,0.116,Saved,Open Play,From Counter,37
+us695111,1994179,Real Madrid,Vinícius Júnior,112.8,23.4,0.089,Off T,Open Play,Regular Play,44
+us695121,1994179,Real Madrid,Vinícius Júnior,101.9,30.6,0.275,Off T,Open Play,From Counter,64
+us695123,1994179,Real Madrid,Yan Diomande,104.2,31.0,0.096,Blocked,Open Play,Regular Play,75
+us696609,1994150,Atletico,Cristian Romero,110.0,40.0,0.052,Saved,Open Play,From Corner,65
+us696599,1994150,Atletico,David Hancko,98.5,29.8,0.044,Blocked,Open Play,Regular Play,31
+us696611,1994150,Atletico,David Hancko,114.5,54.3,0.025,Blocked,Open Play,From Corner,65
+us696614,1994150,Atletico,David Hancko,109.4,25.9,0.08,Blocked,Open Play,Regular Play,83
+us696615,1994150,Atletico,David Hancko,116.9,32.4,0.068,Blocked,Open Play,From Corner,83
+us696596,1994150,Atletico,Giuliano Simeone,103.8,59.1,0.031,Off T,Open Play,Regular Play,21
+us696607,1994150,Atletico,Johnny Cardoso,109.4,36.3,0.053,Off T,Open Play,Regular Play,64
+us696594,1994150,Atletico,Jonathan Christian David,116.4,31.9,0.08,Off T,Open Play,Regular Play,14
+us696606,1994150,Atletico,Jonathan Christian David,110.4,40.5,0.422,Goal,Open Play,Regular Play,58
+us696610,1994150,Atletico,Julián Álvarez,108.1,32.9,0.377,Blocked,Open Play,From Corner,65
+us696612,1994150,Atletico,Julián Álvarez,105.5,27.0,0.094,Saved,Open Play,Regular Play,76
+us696617,1994150,Atletico,Julián Álvarez,103.8,42.0,0.099,Off T,Open Play,Regular Play,89
+us696618,1994150,Atletico,Koke,99.1,41.4,0.116,Saved,Open Play,Regular Play,91
+us696600,1994150,Atletico,Lee Kang-In,95.4,63.6,0.02,Blocked,Open Play,Regular Play,32
+us696605,1994150,Atletico,Lee Kang-In,87.6,50.4,0.019,Saved,Open Play,Regular Play,55
+us696603,1994150,Atletico,Álex Baena,97.8,23.5,0.023,Saved,Open Play,Regular Play,46
+us696604,1994150,Atletico,Álex Grimaldo,106.2,40.0,0.743,Goal,Open Play,,52
+us696608,1994150,Atletico,Álex Grimaldo,103.1,32.9,0.074,Blocked,Open Play,Regular Play,64
+us696616,1994150,Real Madrid,Antonio Rüdiger,109.7,41.6,0.059,Goal,Open Play,From Free Kick,88
+us696601,1994150,Real Madrid,Arda Güler,82.9,48.2,0.011,Saved,Open Play,From Free Kick,39
+us696593,1994150,Real Madrid,Aurelien Tchouameni,106.4,37.7,0.05,Off T,Open Play,From Corner,6
+us696595,1994150,Real Madrid,Aurelien Tchouameni,88.0,29.6,0.015,Off T,Open Play,Regular Play,20
+us696602,1994150,Real Madrid,Kylian Mbappe-Lottin,91.7,14.6,0.017,Blocked,Open Play,Regular Play,39
+us696597,1994150,Real Madrid,Vinícius Júnior,104.6,24.3,0.048,Off T,Open Play,Regular Play,22
+us696598,1994150,Real Madrid,Vinícius Júnior,90.6,22.6,0.015,Off T,Open Play,Regular Play,25
+us696613,1994150,Real Madrid,Yan Diomande,95.3,40.2,0.206,Saved,Open Play,Regular Play,76
+us697855,1994174,Real Madrid,Arda Güler,109.1,51.6,0.089,Off T,Open Play,Regular Play,42
+us697856,1994174,Real Madrid,Aurelien Tchouameni,91.0,33.0,0.022,Blocked,Open Play,Regular Play,50
+us697854,1994174,Real Madrid,Ibrahima Konaté,110.6,29.9,0.014,Off T,Open Play,From Corner,39
+us697852,1994174,Real Madrid,Jude Bellingham,103.3,25.0,0.04,Blocked,Open Play,Regular Play,27
+us697865,1994174,Real Madrid,Jude Bellingham,83.0,54.1,0.02,Blocked,Open Play,Regular Play,67
+us697849,1994174,Real Madrid,Kylian Mbappe-Lottin,107.9,35.1,0.448,Post,Open Play,Regular Play,6
+us697850,1994174,Real Madrid,Kylian Mbappe-Lottin,106.6,31.0,0.157,Saved,Open Play,Regular Play,20
+us697870,1994174,Real Madrid,Kylian Mbappe-Lottin,105.6,50.9,0.279,Saved,Open Play,Regular Play,77
+us697859,1994174,Real Madrid,Vinícius Júnior,114.1,17.9,0.024,Saved,Open Play,From Corner,59
+us697857,1994174,Real Madrid,Yan Diomande,107.0,55.5,0.079,Off T,Open Play,From Counter,52
+us697864,1994174,Real Madrid,Yan Diomande,104.5,49.9,0.254,Goal,Open Play,Regular Play,62
+us697851,1994174,Villarreal,Alberto Moleiro,97.8,25.7,0.032,Off T,Open Play,Regular Play,23
+us697858,1994174,Villarreal,Alberto Moleiro,101.6,47.9,0.074,Off T,Open Play,Regular Play,57
+us697872,1994174,Villarreal,Ayoze Pérez,113.6,30.8,0.042,Off T,Open Play,From Corner,79
+us697867,1994174,Villarreal,Carlos Romero,103.8,30.9,0.076,Saved,Open Play,Regular Play,75
+us697871,1994174,Villarreal,Georges Mikautadze,91.0,26.7,0.02,Blocked,Open Play,Regular Play,78
+us697873,1994174,Villarreal,Georges Mikautadze,104.5,44.0,0.081,Saved,Open Play,Regular Play,87
+us697866,1994174,Villarreal,Gerard Moreno,90.2,55.0,0.019,Blocked,Open Play,Regular Play,68
+us697860,1994174,Villarreal,Ilias Akhomach,102.7,59.4,0.045,Blocked,Open Play,Regular Play,59
+us697868,1994174,Villarreal,Nathan Saliba,86.0,28.1,0.022,Blocked,Open Play,From Corner,76
+us697848,1994174,Villarreal,Pape Alassane Gueye,86.9,47.0,0.012,Off T,Open Play,Regular Play,3
+us697861,1994174,Villarreal,Pape Alassane Gueye,85.8,35.0,0.017,Saved,Open Play,Regular Play,59
+us697862,1994174,Villarreal,Pape Alassane Gueye,87.2,54.2,0.015,Saved,Open Play,Regular Play,60
+us697869,1994174,Villarreal,Pape Alassane Gueye,104.0,31.5,0.05,Off T,Open Play,From Corner,76
+us697853,1994174,Villarreal,Renato Veiga,110.9,28.3,0.012,Off T,Open Play,From Corner,37
+us697863,1994174,Villarreal,Renato Veiga,77.8,33.8,0.01,Off T,Open Play,Regular Play,60

@@ -1,0 +1,18 @@
+jugador,puesto,minutos,goles,xg,g_menos_xg,asistencias,xa,a_menos_xa,xg90,xa90,xgchain90,pct_rol,acierto_pase,prog90,recup90,duelos_pct,perdidas90,veredicto,motivo
+Federico Valverde,Centrocampista,667,0,0.26,-0.26,2,0.97,1.03,0.04,0.13,0.66,66,90.1,7.0,4.2,80.0,1.02,En línea,Sin desviaciones claras
+Ibrahima Konaté,Defensa,630,0,0.31,-0.31,0,0.19,-0.19,0.04,0.03,0.64,38,93.3,9.4,4.2,70.4,1.43,En línea,Sin desviaciones claras
+Dean Huijsen,Defensa,504,0,0.51,-0.51,0,0.19,-0.19,0.09,0.03,0.83,69,96.6,11.1,4.0,76.0,0.15,En línea,Sin desviaciones claras
+Yan Diomande,Centrocampista,354,1,0.72,0.28,1,0.75,0.25,0.18,0.19,0.88,70,77.5,1.8,3.8,56.2,1.12,En línea,Sin desviaciones claras
+Antonio Rüdiger,Defensa,304,1,0.15,0.85,0,0.14,-0.14,0.04,0.04,0.39,40,93.7,10.9,2.1,77.8,1.07,En línea,Sin desviaciones claras
+Aurélien Tchouaméni,Centrocampista,269,0,0.11,-0.11,0,0.25,-0.25,0.04,0.08,0.47,59,94.1,4.7,5.6,71.4,0.63,En línea,Sin desviaciones claras
+Trent Alexander-Arnold,Defensa,258,0,0.18,-0.18,1,0.87,0.13,0.06,0.3,0.78,64,80.8,12.2,6.9,75.0,0.94,En línea,Sin desviaciones claras
+Eduardo Camavinga,Centrocampista,248,0,0.0,0.0,0,0.0,0.0,0.0,0.0,1.22,68,93.2,6.1,6.4,80.0,1.22,En línea,Sin desviaciones claras
+Brahim Díaz,Centrocampista,98,0,0.14,-0.14,0,0.2,-0.2,0.13,0.19,0.99,74,97.9,2.4,4.8,50.0,0.0,En línea,Sin desviaciones claras
+Kylian Mbappé,Delantero,720,7,9.23,-2.23,2,1.81,0.19,1.15,0.23,1.18,88,84.1,3.5,1.5,57.1,0.11,Por debajo,remata por debajo de su xG (7 goles con 9.2 xG); aunque percentil 88 de su puesto en la Liga
+Vinícius Júnior,Centrocampista,592,1,3.59,-2.59,3,2.49,0.51,0.55,0.38,1.09,66,72.3,1.7,2.8,50.0,0.28,Por debajo,remata por debajo de su xG (1 goles con 3.6 xG)
+Marc Cucurella,Defensa,470,0,0.0,0.0,0,0.17,-0.17,0.0,0.03,0.63,63,86.4,7.2,5.1,78.6,1.71,Por debajo,"1.7 pérdidas peligrosas por 90 min, de las más altas de la plantilla"
+Arda Güler,Centrocampista,436,1,2.01,-1.01,2,3.96,-1.96,0.41,0.82,1.38,65,85.2,11.4,4.8,66.7,0.4,Por debajo,remata por debajo de su xG (1 goles con 2.0 xG); sus pases generan más de lo que acaban en asistencia (2 con 4.0 xA)
+Denzel Dumfries,Defensa,428,0,0.63,-0.63,0,0.21,-0.21,0.13,0.04,0.57,56,86.4,2.5,2.3,75.0,1.56,Por debajo,"1.6 pérdidas peligrosas por 90 min, de las más altas de la plantilla"
+Bernardo Silva,Centrocampista,279,0,0.14,-0.14,1,0.23,0.77,0.05,0.07,0.56,64,90.2,7.0,5.0,52.9,3.2,Por debajo,"3.2 pérdidas peligrosas por 90 min, de las más altas de la plantilla"
+Álvaro Carreras,Defensa,252,1,0.47,0.53,0,0.82,-0.82,0.17,0.29,0.74,64,88.8,8.0,4.3,72.7,1.99,Por debajo,"2.0 pérdidas peligrosas por 90 min, de las más altas de la plantilla"
+Jude Bellingham,Centrocampista,627,3,1.65,1.35,2,2.81,-0.81,0.24,0.4,0.91,70,87.4,6.2,5.0,57.1,0.67,Por encima,remata por encima de su xG (3 goles con 1.6 xG)

@@ -1,0 +1,43 @@
+# Histórico de resultados (todas las competiciones). Corre en los servidores de GitHub: sus fuentes no bloquean.
+name: Actualizar histórico
+on:
+  schedule:
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Reconstruir la base completa (engsoccerdata + Transfermarkt)"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+jobs:
+  historico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q pandas numpy certifi
+      - name: Construir histórico
+        run: python pipeline/historico.py ${{ inputs.base && '--base' || '' }} 2>&1 | tee registro.log; exit ${PIPESTATUS[0]}
+        shell: bash
+      - name: Publicar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/historico docs/data/historico.csv docs/data/historico_alineaciones.csv
+          git diff --cached --quiet && exit 0
+          git commit -qm "Histórico actualizado"
+          git pull -q --rebase origin main
+          git push -q origin main
+      - name: Guardar el registro si algo falló
+        if: failure()
+        run: |
+          cp registro.log /tmp/historico.log
+          git checkout -q --orphan registros-tmp && git rm -rq --cached . && cp /tmp/historico.log . && git add historico.log
+          git commit -qm "Registro de la última ejecución con fallos" && git push -qf origin registros-tmp:registros

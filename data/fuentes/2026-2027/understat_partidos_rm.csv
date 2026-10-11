@@ -1,0 +1,9 @@
+index,league,season,game,league_id,season_id,game_id,date,home_team_id,away_team_id,home_team,away_team,away_team_code,home_team_code,home_goals,away_goals,home_xg,away_xg,is_result,has_data,url
+9,ESP-La Liga,2627,2026-08-22 Espanyol-Real Madrid,4,2026,30780,2026-08-22 19:30:00,141,150,Espanyol,Real Madrid,RMA,ESP,1,2,1.01908,2.56122,True,True,https://understat.com/match/30780
+17,ESP-La Liga,2627,2026-08-26 Real Madrid-Real Sociedad,4,2026,30787,2026-08-26 19:00:00,150,140,Real Madrid,Real Sociedad,SOC,RMA,4,1,3.30519,0.462997,True,True,https://understat.com/match/30787
+27,ESP-La Liga,2627,2026-08-30 Real Madrid-Malaga,4,2026,30795,2026-08-30 15:00:00,150,137,Real Madrid,Malaga,MAL,RMA,4,0,3.40784,0.760169,True,True,https://understat.com/match/30795
+31,ESP-La Liga,2627,2026-09-04 Real Betis-Real Madrid,4,2026,30801,2026-09-04 19:00:00,153,150,Real Betis,Real Madrid,RMA,BET,1,0,0.885249,3.38283,True,True,https://understat.com/match/30801
+45,ESP-La Liga,2627,2026-09-12 Real Madrid-Rayo Vallecano,4,2026,30816,2026-09-12 19:00:00,150,145,Real Madrid,Rayo Vallecano,RVL,RMA,4,1,3.12156,1.19257,True,True,https://understat.com/match/30816
+52,ESP-La Liga,2627,2026-09-15 Elche-Real Madrid,4,2026,30825,2026-09-15 19:30:00,207,150,Elche,Real Madrid,RMA,ELC,2,3,1.05222,3.46121,True,True,https://understat.com/match/30825
+64,ESP-La Liga,2627,2026-09-20 Atletico Madrid-Real Madrid,4,2026,30831,2026-09-20 14:15:00,143,150,Atletico Madrid,Real Madrid,RMA,ATL,2,1,2.40619,0.420774,True,True,https://understat.com/match/30831
+73,ESP-La Liga,2627,2026-10-10 Real Madrid-Villarreal,4,2026,30848,2026-10-10 19:00:00,150,154,Real Madrid,Villarreal,VIL,RMA,1,0,1.42593,0.526468,True,True,https://understat.com/match/30848

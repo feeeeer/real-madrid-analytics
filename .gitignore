@@ -1,0 +1,4 @@
+__pycache__/
+.venv/
+registro.log
+.DS_Store

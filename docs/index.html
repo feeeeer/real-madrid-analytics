@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Madrid Analytics</title>
+<meta name="description" content="Análisis de datos del Real Madrid: post-partido de cada jornada, rendimiento frente a lo esperado e histórico de resultados. Se actualiza solo tras cada partido.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<style>
+:root {
+  --font-anthropic-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-anthropic-serif: Georgia, "Times New Roman", serif;
+  --color-bg: #f5f6f8; --color-panel: #ffffff; --color-fg: #15181e; --color-fg-muted: #5d6471;
+  --color-border-line: #e1e4e9; --color-ok: #1d8348;
+  --cds-font-size-caption: 0.8125rem; --cds-font-size-body: 0.9375rem; --cds-font-size-heading: 1.0625rem; --cds-font-size-title: 1.75rem;
+  --cds-font-weight-medium: 600;
+  --cds-gap-xs: 0.25rem; --cds-gap-sm: 0.5rem; --cds-gap-md: 1rem; --cds-gap-lg: 1.5rem;
+  --cds-pad-xs: 0.25rem; --cds-pad-sm: 0.5rem; --cds-pad-md: 0.75rem; --cds-pad-lg: 1.25rem;
+  --cds-radius: 10px; --cds-dur-slow: 0.3s;
+  --cds-chart-axis: #c4c9d1; --cds-chart-grid: #eceef2; --cds-chart-muted: #b4bac4; --cds-chart-reference: #8a919c;
+  --cds-chart-status-critical: #d13b3b;
+  --cds-surface-popover: #ffffff; --cds-border: #d6dae0; --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.12); --cds-text-secondary: #5d6471;
+  --serie-rm: #3d5af1; --serie-rival: #e8870e; --serie-clave: #12a37f;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1115; --color-panel: #171a20; --color-fg: #e8eaee; --color-fg-muted: #9aa1ad;
+    --color-border-line: #2a2f38; --color-ok: #4cc27a;
+    --cds-chart-axis: #4a515c; --cds-chart-grid: #232831; --cds-chart-muted: #59606c; --cds-chart-reference: #8a919c;
+    --cds-chart-status-critical: #f06464;
+    --cds-surface-popover: #1f232b; --cds-border: #353b45; --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.5); --cds-text-secondary: #9aa1ad;
+    --serie-rm: #7b93ff; --serie-rival: #f5a443; --serie-clave: #3ccf9f;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); }
+#dash-root { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+.rm-score b { margin: 0 2px; }
+#tabla-hist td:nth-child(3) { white-space: normal; text-align: left; }
+#tabla-hist td:nth-child(2) { text-align: left; }
+.rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; }
+.rm-lineup h3 { margin-top: 0; }
+
+.rm { font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+.rm h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; }
+.rm h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+.rm h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-md) 0 var(--cds-gap-xs); }
+.rm p { margin: 0; }
+.rm-sub { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.rm-lead { color: var(--color-fg-muted); margin-top: var(--cds-gap-xs); max-width: 60rem; }
+.rm-tabs { display: flex; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); margin: var(--cds-gap-md) 0; overflow-x: auto; }
+.rm-tab { background: none; border: 0; border-bottom: 2px solid transparent; padding: var(--cds-pad-sm) var(--cds-pad-md); font: inherit; color: var(--color-fg-muted); cursor: pointer; white-space: nowrap; }
+.rm-tab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: currentColor; }
+.rm-page[hidden] { display: none; }
+.rm-controls { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; margin-bottom: var(--cds-gap-md); }
+.rm-controls label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: flex; gap: var(--cds-gap-xs); align-items: center; }
+.rm select { font: inherit; font-size: var(--cds-font-size-body); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 100%; }
+.rm-seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; }
+.rm-seg button { font: inherit; font-size: var(--cds-font-size-caption); background: var(--color-bg); color: var(--color-fg-muted); border: 0; padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
+.rm-seg button + button { border-left: 1px solid var(--color-border-line); }
+.rm-seg button[aria-pressed="true"] { background: var(--color-panel); color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+.rm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
+.rm-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; margin-bottom: var(--cds-gap-md); }
+.rm-grid > .rm-card { margin-bottom: 0; }
+.rm-score { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--cds-gap-sm); font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); }
+.rm-score b { font-weight: 400; font-variant-numeric: tabular-nums; }
+.rm-cmp { display: grid; grid-template-columns: 3.5rem 1fr minmax(7rem, auto) 1fr 3.5rem; gap: var(--cds-gap-xs) var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.rm-cmp .v { text-align: right; } .rm-cmp .v.r { text-align: left; }
+.rm-cmp .lab { text-align: center; color: var(--color-fg-muted); }
+.rm-cmp .bar { height: 0.5rem; border-radius: 4px; }
+.rm-cmp .bl { justify-self: end; } .rm-cmp .br { justify-self: start; }
+.rm-cmp .head { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+.rm-rep h3 { display: flex; gap: var(--cds-gap-xs); align-items: center; }
+.rm-rep .item { border-left: 3px solid var(--color-border-line); padding-left: var(--cds-pad-sm); margin-bottom: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); line-height: 1.5; }
+.rm-rep .item.bad { border-left-color: var(--cds-chart-status-critical); }
+.rm-rep .item.good { border-left-color: var(--color-ok); }
+.rm-rep .item p + p { margin-top: 2px; }
+.rm-rep .k { color: var(--color-fg-muted); }
+.rm .rm-rep b, .rm .rm-cmp b { font-weight: var(--cds-font-weight-medium); }
+.rm-verdict { background: var(--color-bg); border-radius: var(--cds-radius); padding: var(--cds-pad-sm) var(--cds-pad-md); font-size: var(--cds-font-size-body); }
+.rm-chart { position: relative; min-height: 14rem; }
+.rm-pitch { position: relative; min-height: 12rem; }
+.rm-pitch svg, .rm-chart svg { display: block; }
+.rm-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-xs); }
+.rm-legend i { display: inline-block; width: 0.75rem; height: 0.25rem; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+.rm-legend i.dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; }
+.rm-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); z-index: 3; max-width: 16rem; }
+.rm-tip .t { color: var(--cds-text-secondary); }
+.rm-tablewrap { max-height: 28rem; overflow: auto; }
+.rm table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.rm th, .rm td { padding: var(--cds-pad-xs) var(--cds-pad-sm); text-align: right; white-space: nowrap; border-bottom: 1px solid var(--color-border-line); }
+.rm th:first-child, .rm td:first-child { text-align: left; position: sticky; left: 0; background: var(--color-panel); }
+.rm th { position: sticky; top: 0; background: var(--color-panel); z-index: 1; }
+.rm th:first-child { z-index: 2; }
+.rm th button { font: inherit; color: var(--color-fg-muted); background: none; border: 0; padding: 0; cursor: pointer; }
+.rm tbody tr { cursor: pointer; }
+.rm tbody tr:hover td { color: var(--color-fg); background: var(--color-bg); }
+.rm tbody tr.sel td { background: var(--color-bg); font-weight: var(--cds-font-weight-medium); }
+.rm-search { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); margin-bottom: var(--cds-gap-sm); width: min(100%, 16rem); }
+.rm-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
+.rm-kpi .n { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; }
+.rm-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); line-height: 1.5; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+[data-dash-source-state=empty] { color: transparent; }
+</style>
+</head>
+<body>
+<div id="dash-root">
+<div class="rm">
+  <header>
+    <h1>Real Madrid · Análisis para el Míster</h1>
+    <p class="rm-lead" id="takeaway">Post-partido de cada jornada de la temporada: qué funcionó, qué no y a quién hay que decírselo.</p>
+    <p class="rm-sub" id="estado"></p>
+  </header>
+
+  <nav class="rm-tabs" role="tablist" aria-label="Secciones">
+    <button class="rm-tab" role="tab" data-tab="partido" aria-selected="true">Post-partido</button>
+    <button class="rm-tab" role="tab" data-tab="rendimiento" aria-selected="false">Rendimiento vs esperado</button>
+    <button class="rm-tab" role="tab" data-tab="temporada" aria-selected="false">Temporada</button>
+    <button class="rm-tab" role="tab" data-tab="historico" aria-selected="false">Histórico</button>
+  </nav>
+
+  <!-- POST-PARTIDO -->
+  <section class="rm-page" id="partido">
+    <div class="rm-controls">
+      <label>Partido <select id="sel-partido" data-source="partidos" aria-label="Partido"></select></label>
+    </div>
+
+    <div class="rm-card" id="marcador" data-source="partidos">
+      <p class="rm-sub" id="m-meta">—</p>
+      <div class="rm-score" id="m-score">—</div>
+      <p class="rm-sub" id="m-coach"></p>
+    </div>
+
+    <div class="rm-grid">
+      <div class="rm-card" id="comparativa">
+        <h2>Real Madrid vs rival</h2>
+        <p class="rm-sub">Las métricas que le importan al míster. Barra más llena = mejor dato del duelo.</p>
+        <div class="rm-cmp" id="cmp" data-source="metricas_equipo"></div>
+        <p class="rm-note"><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p>
+      </div>
+
+      <div class="rm-card rm-rep" id="informe">
+        <h2>📊 Informe táctico para el míster</h2>
+        <p class="rm-sub">Cada dato del Madrid frente a su media en lo que va de temporada.</p>
+        <div id="rep" data-source="informe metricas_jugador metricas_equipo"></div>
+      </div>
+    </div>
+
+    <div class="rm-card" id="mapa-partido">
+      <h2>Mapa del partido</h2>
+      <p class="rm-sub">Cada equipo ataca de izquierda a derecha. Pases: flecha del origen al destino. Tiros: tamaño = xG, relleno = gol.</p>
+      <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
+        <span class="rm-seg" id="p-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
+        <span class="rm-seg" id="p-equipo"><button data-v="rm">Real Madrid</button><button data-v="rival">Rival</button></span>
+        <label>Jugador <select id="p-jugador" data-source="metricas_jugador" aria-label="Jugador"></select></label>
+        <span class="rm-seg" id="p-tipos" aria-label="Tipos de pase"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+      </div>
+      <div class="rm-pitch" id="pitch-partido" data-source="pases tiros"></div>
+      <div class="rm-legend" id="legend-partido"></div>
+    </div>
+
+    <div class="rm-grid">
+      <div class="rm-card" id="xg-timeline">
+        <h2>xG acumulado</h2>
+        <p class="rm-sub">Cómo se fue construyendo el partido, tiro a tiro. Los puntos son goles.</p>
+        <div class="rm-chart" id="xgline" data-source="tiros"></div>
+      </div>
+      <div class="rm-card" id="jugadores-partido">
+        <h2>Jugadores</h2>
+        <p class="rm-sub">Pulsa un jugador para verlo en el mapa.</p>
+        <div class="rm-tablewrap">
+          <table id="tabla-partido" data-source="metricas_jugador" data-row-key="clave">
+            <thead><tr>
+              <th data-field="jugador">Jugador</th><th data-field="minutos">Min</th><th data-field="goles">G</th><th data-field="xg">xG</th>
+              <th data-field="xa">xA</th><th data-field="pases_clave">P. clave</th><th data-field="acierto_pase">% pase</th>
+              <th data-field="pases_progresivos">Progr.</th><th data-field="regates">Regates</th><th data-field="recuperaciones">Recup.</th>
+              <th data-field="duelos_ganados">Duelos G</th><th data-field="duelos_perdidos">Duelos P</th>
+              <th data-field="perdidas_peligrosas">Pérd. pelig.</th><th data-field="presiones">Presiones</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RENDIMIENTO VS ESPERADO -->
+  <section class="rm-page" id="rendimiento" hidden>
+    <p class="rm-lead">Liga 2026/27. Cada jugador del Madrid frente a lo que deberían haber dado sus ocasiones (xG, xA de Understat) y frente a los jugadores de su puesto en toda la Liga (percentil de rol, mínimo 270 min). Muestra pequeña: pocas jornadas, conclusiones provisionales.</p>
+    <div class="rm-grid" style="margin-top: var(--cds-gap-md)">
+      <div class="rm-card" id="ren-goles-xg">
+        <h2>Goles frente a xG</h2>
+        <p class="rm-sub">Por debajo de la diagonal: marca menos de lo que valen sus ocasiones. Rojo = por debajo de lo esperado, verde = por encima.</p>
+        <div class="rm-chart" id="ren-scatter" data-source="rendimiento"></div>
+      </div>
+      <div class="rm-card rm-rep" id="ren-informe">
+        <h2>🚨 Por debajo de lo esperado</h2>
+        <p class="rm-sub">Criterios: goles − xG ≤ −1, asistencias − xA ≤ −1, percentil de rol &lt; 35 o pérdidas peligrosas en el cuartil más alto de la plantilla.</p>
+        <div id="ren-alertas" data-source="rendimiento"></div>
+      </div>
+    </div>
+    <div class="rm-card" id="ren-tabla">
+      <h2>Toda la plantilla</h2>
+      <p class="rm-sub">Pulsa una cabecera para ordenar. Pase, progresivos, recuperaciones, duelos y pérdidas salen de los eventos Opta (WhoScored); por 90 minutos.</p>
+      <div class="rm-tablewrap">
+        <table id="tabla-rendimiento" data-source="rendimiento" data-row-key="jugador">
+          <thead><tr>
+            <th data-field="jugador">Jugador</th><th data-field="puesto">Puesto</th><th data-field="minutos">Min</th>
+            <th data-field="goles">G</th><th data-field="xg">xG</th><th data-field="g_menos_xg">G − xG</th>
+            <th data-field="asistencias">A</th><th data-field="xa">xA</th><th data-field="a_menos_xa">A − xA</th>
+            <th data-field="pct_rol">Pctl. rol</th><th data-field="acierto_pase">% pase</th><th data-field="prog90">Progr./90</th>
+            <th data-field="recup90">Recup./90</th><th data-field="duelos_pct">% duelos</th><th data-field="perdidas90">Pérd. pelig./90</th>
+            <th data-field="veredicto">Veredicto</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMPORADA -->
+  <section class="rm-page" id="temporada" hidden>
+    <div class="rm-controls">
+      <label>Temporada <select id="sel-temporada" data-source="partidos" aria-label="Temporada"></select></label>
+    </div>
+    <div class="rm-card" id="xg-jornadas">
+      <h2>xG a favor y en contra, partido a partido</h2>
+      <p class="rm-sub">Cuando la línea roja supera a la azul, el rival generó más que nosotros. Puntos: verde victoria, gris empate, rojo derrota.</p>
+      <div class="rm-chart" id="xgseason" data-source="metricas_equipo partidos"></div>
+    </div>
+    <div class="rm-card" id="mapa-temporada">
+      <h2>Mapa de la temporada por jugador</h2>
+      <p class="rm-sub">Todos sus pases o tiros del periodo seleccionado.</p>
+      <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
+        <span class="rm-seg" id="t-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
+        <label>Jugador <select id="t-jugador" data-source="jugadores_temporada" aria-label="Jugador de la temporada"></select></label>
+        <span class="rm-seg" id="t-tipos"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+      </div>
+      <div class="rm-pitch" id="pitch-temporada" data-source="pases tiros"></div>
+      <div class="rm-legend" id="legend-temporada"></div>
+    </div>
+    <div class="rm-card" id="plantilla">
+      <h2>La plantilla en números</h2>
+      <p class="rm-sub">Real Madrid en la competición y temporada elegidas. Pulsa un jugador para ver su mapa; pulsa una cabecera para ordenar.</p>
+      <div class="rm-tablewrap">
+        <table id="tabla-temporada" data-source="jugadores_temporada" data-row-key="clave">
+          <thead><tr>
+            <th data-field="jugador">Jugador</th><th data-field="pj">PJ</th><th data-field="minutos">Min</th><th data-field="goles">G</th>
+            <th data-field="xg">xG</th><th data-field="asistencias">A</th><th data-field="xa">xA</th>
+            <th data-field="pases_progresivos">Progr.</th><th data-field="recuperaciones">Recup.</th>
+            <th data-field="duelos_pct">% duelos</th><th data-field="perdidas_peligrosas">Pérd. pelig.</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTÓRICO -->
+  <section class="rm-page" id="historico" hidden>
+    <div class="rm-controls">
+      <label>Competición <select id="sel-comp" aria-label="Competición"></select></label>
+    </div>
+    <div class="rm-kpis">
+      <div class="rm-card rm-kpi"><p class="rm-sub">Partidos</p><p class="n" id="k-pj">—</p></div>
+      <div class="rm-card rm-kpi"><p class="rm-sub">Victorias</p><p class="n" id="k-v">—</p></div>
+      <div class="rm-card rm-kpi"><p class="rm-sub">% victorias</p><p class="n" id="k-pct">—</p></div>
+      <div class="rm-card rm-kpi"><p class="rm-sub">Goles a favor</p><p class="n" id="k-gf">—</p></div>
+      <div class="rm-card rm-kpi"><p class="rm-sub">Goles en contra</p><p class="n" id="k-gc">—</p></div>
+    </div>
+    <div class="rm-card" id="evolucion">
+      <h2>% de victorias por temporada</h2>
+      <p class="rm-sub" id="hist-rango">Pasa el ratón para ver el balance.</p>
+      <div class="rm-chart" id="histline"></div>
+    </div>
+    <div class="rm-grid">
+      <div class="rm-card" id="rivales">
+        <h2>Cara a cara contra cada rival</h2>
+        <input class="rm-search" id="q-rival" type="search" placeholder="Buscar rival…" aria-label="Buscar rival">
+        <div class="rm-tablewrap">
+          <table id="tabla-rivales">
+            <thead><tr>
+              <th data-field="rival">Rival</th><th data-field="pj">PJ</th><th data-field="v">V</th><th data-field="e">E</th><th data-field="d">D</th>
+              <th data-field="gf">GF</th><th data-field="gc">GC</th><th data-field="pct_v">% V</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="rm-card" id="partidos-hist">
+        <h2>Todos los partidos</h2>
+        <input class="rm-search" id="q-partido" type="search" placeholder="Rival, temporada o fecha…" aria-label="Buscar partido">
+        <div class="rm-tablewrap">
+          <table id="tabla-hist">
+            <thead><tr><th>Fecha</th><th>Competición</th><th>Partido</th><th>Resultado</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="rm-note" id="hist-nota"></p>
+      </div>
+    </div>
+    <div class="rm-card" id="alineacion" hidden>
+      <h2 id="al-titulo"></h2>
+      <div class="rm-grid" id="al-equipos"></div>
+    </div>
+    <p class="rm-note">Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2016), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada) y, para el análisis de cada partido, WhoScored y Understat.</p>
+  </section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="dash.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
