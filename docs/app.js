@@ -159,7 +159,10 @@ function tooltip(box) {
 }
 
 // ---------- Campo ----------
-function drawPitch(box, { capa, passes, shots, color, tipos }) {
+// resultado de Understat -> botón del filtro de tiros (el poste cuenta como fuera)
+const TIPO_TIRO = { Goal: 'gol', Saved: 'parado', 'Saved to Post': 'parado', 'Saved Off Target': 'parado', 'Off T': 'fuera', Post: 'fuera', Blocked: 'bloqueado' };
+
+function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
   box.querySelector('svg')?.remove();
   const half = capa === 'tiros';
   const vb = [-2, -2, 124, 84];
@@ -206,7 +209,7 @@ function drawPitch(box, { capa, passes, shots, color, tipos }) {
       });
     legend.push(['completo', 'Completado', color], ['fallado', 'Fallado', C_BAD], ['clave', 'Pase clave', C_KEY()]);
   } else {
-    const ss = [...shots].sort((a, b) => b.xg - a.xg);
+    const ss = shots.filter((d) => tiposTiro.includes(TIPO_TIRO[d.resultado])).sort((a, b) => b.xg - a.xg);
     svg.append('g').selectAll('circle').data(ss).join('circle')
       .attr('cx', (d) => d.x).attr('cy', (d) => d.y).attr('r', (d) => 0.7 + Math.sqrt(d.xg) * 4.5)
       .style('fill', (d) => (d.resultado === 'Goal' ? color : 'transparent')).style('stroke', color)
@@ -248,6 +251,13 @@ const segEquipo = segmented('#p-equipo', (v) => dash.setParams({ equipo: v, juga
 const segTipos = segmented('#p-tipos', toggleTipo);
 const segCapaT = segmented('#t-capa', (v) => dash.setParams({ capa_t: v }));
 const segTiposT = segmented('#t-tipos', toggleTipo);
+const toggleTiro = (v) => {
+  const t = new Set(P().tiros_tipo || []);
+  t.has(v) ? t.delete(v) : t.add(v);
+  dash.setParams({ tiros_tipo: [...t] });
+};
+const segTiros = segmented('#p-tiros', toggleTiro);
+const segTirosT = segmented('#t-tiros', toggleTiro);
 
 $('#sel-partido').addEventListener('change', (e) => dash.setParams({ partido: Number(e.target.value), jugador: null }));
 $('#p-jugador').addEventListener('change', (e) => dash.setParams({ jugador: e.target.value || null }));
@@ -486,6 +496,8 @@ function renderPartido() {
   segEquipo((v) => v === (P().equipo || 'rm'));
   segTipos((v) => (P().tipos || []).includes(v));
   $('#p-tipos').hidden = (P().capa || 'pases') !== 'pases';
+  segTiros((v) => (P().tiros_tipo || []).includes(v));
+  $('#p-tiros').hidden = !$('#p-tipos').hidden;
   $('#p-equipo').querySelector('[data-v=rival]').textContent = b ? b.equipo : 'Rival';
   const js = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === equipoSel && N(r.minutos) > 0)
     .sort((x, y) => N(y.minutos) - N(x.minutos));
@@ -496,7 +508,7 @@ function renderPartido() {
   const filt = (r) => Number(r.match_id) === mid && r.equipo === equipoSel && (!P().jugador || r.jugador === P().jugador);
   if (ok('pases', 'tiros')) {
     const legend = drawPitch($('#pitch-partido'), {
-      capa: P().capa || 'pases', color, tipos: P().tipos || [],
+      capa: P().capa || 'pases', color, tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
       passes: rows('pases').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), fin_x: N(r.fin_x), fin_y: N(r.fin_y) })),
       shots: rows('tiros').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), xg: N(r.xg) })),
     });
@@ -631,10 +643,12 @@ function renderTemporada() {
   segCapaT((v) => v === (P().capa_t || 'pases'));
   segTiposT((v) => (P().tipos || []).includes(v));
   $('#t-tipos').hidden = (P().capa_t || 'pases') !== 'pases';
+  segTirosT((v) => (P().tiros_tipo || []).includes(v));
+  $('#t-tiros').hidden = !$('#t-tipos').hidden;
   if (ok('pases', 'tiros') && jugador) {
     const filt = (r) => ids.has(r.match_id) && r.equipo === RM && r.jugador === jugador;
     const legend = drawPitch($('#pitch-temporada'), {
-      capa: P().capa_t || 'pases', color: C_RM(), tipos: P().tipos || [],
+      capa: P().capa_t || 'pases', color: C_RM(), tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
       passes: rows('pases').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), fin_x: N(r.fin_x), fin_y: N(r.fin_y) })),
       shots: rows('tiros').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), xg: N(r.xg) })),
     });

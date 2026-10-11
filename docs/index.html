@@ -92,6 +92,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm select { font: inherit; font-size: var(--cds-font-size-body); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 100%; }
 .rm-seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; }
 .rm-seg button { font: inherit; font-size: var(--cds-font-size-caption); background: var(--color-bg); color: var(--color-fg-muted); border: 0; padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
+.rm-seg[hidden] { display: none; }
 .rm-seg button + button { border-left: 1px solid var(--color-border-line); }
 .rm-seg button[aria-pressed="true"] { background: var(--color-panel); color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
 .rm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
@@ -191,6 +192,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
         <span class="rm-seg" id="p-equipo"><button data-v="rm">Real Madrid</button><button data-v="rival">Rival</button></span>
         <label>Jugador <select id="p-jugador" data-source="metricas_jugador" aria-label="Jugador"></select></label>
         <span class="rm-seg" id="p-tipos" aria-label="Tipos de pase"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+        <span class="rm-seg" id="p-tiros" aria-label="Tipos de tiro" hidden><button data-v="gol">Gol</button><button data-v="parado">Parado</button><button data-v="fuera">Fuera</button><button data-v="bloqueado">Bloqueado</button></span>
       </div>
       <div class="rm-pitch" id="pitch-partido" data-source="pases tiros"></div>
       <div class="rm-legend" id="legend-partido"></div>
@@ -271,7 +273,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
         <span class="rm-seg" id="t-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
         <label>Jugador <select id="t-jugador" data-source="jugadores_temporada" aria-label="Jugador de la temporada"></select></label>
-        <span class="rm-seg" id="t-tipos"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+        <span class="rm-seg" id="t-tipos" aria-label="Tipos de pase"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+        <span class="rm-seg" id="t-tiros" aria-label="Tipos de tiro" hidden><button data-v="gol">Gol</button><button data-v="parado">Parado</button><button data-v="fuera">Fuera</button><button data-v="bloqueado">Bloqueado</button></span>
       </div>
       <div class="rm-pitch" id="pitch-temporada" data-source="pases tiros"></div>
       <div class="rm-legend" id="legend-temporada"></div>

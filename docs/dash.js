@@ -5,7 +5,7 @@ window.dash = (() => {
   const store = {}; // id -> {status, data, message}
   const calcs = {}; // id -> {inputs, fn}
   const subs = [];
-  const DEFECTO = { capa: 'pases', capa_t: 'pases', equipo: 'rm', tipos: ['completo', 'fallado', 'clave'] };
+  const DEFECTO = { capa: 'pases', capa_t: 'pases', equipo: 'rm', tipos: ['completo', 'fallado', 'clave'], tiros_tipo: ['gol', 'parado', 'fuera', 'bloqueado'] };
   let params = { ...DEFECTO };
   try { params = { ...DEFECTO, ...JSON.parse(sessionStorage.getItem('rm-params') || '{}') }; } catch (e) { /* sin almacenamiento: parámetros por defecto */ }
 
