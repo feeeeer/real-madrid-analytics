@@ -1,252 +1,252 @@
-match_id,equipo,jugador,dorsal,linea,titular,px,py
-1993904,Real Madrid,Thibaut Courtois,1,GK,1,0.483,0.104
-1993904,Real Madrid,Denzel Dumfries,24,DF,1,0.865,0.621
-1993904,Real Madrid,Álvaro Carreras,18,DF,1,0.116,0.515
-1993904,Real Madrid,Bernardo Silva,20,MF,1,0.458,0.494
-1993904,Real Madrid,Ibrahima Konaté,16,DF,1,0.688,0.363
-1993904,Real Madrid,Dean Huijsen,4,DF,1,0.349,0.348
-1993904,Real Madrid,Arda Güler,15,MF,1,0.67,0.647
-1993904,Real Madrid,Federico Valverde,8,MF,1,0.498,0.568
-1993904,Real Madrid,Kylian Mbappé,10,FW,1,0.433,0.728
-1993904,Real Madrid,Jude Bellingham,5,MF,1,0.329,0.57
-1993904,Real Madrid,Vinícius Júnior,7,MF,1,0.194,0.727
-1993904,Real Madrid,Eduardo Camavinga,6,,0,,
-1993904,Real Madrid,Marc Cucurella,17,,0,,
-1993904,Real Madrid,Carlos Espí,19,,0,,
-1993904,Real Madrid,Brahim Díaz,21,,0,,
-1993904,Real Madrid,Yan Diomande,25,,0,,
-1993904,Real Sociedad,Álex Remiro,1,GK,1,0.51,0.117
-1993904,Real Sociedad,Jon Aramburu,2,DF,1,0.908,0.545
-1993904,Real Sociedad,Sergio Gómez,17,DF,1,0.107,0.506
-1993904,Real Sociedad,Beñat Turrientes,8,MF,1,0.482,0.478
-1993904,Real Sociedad,Luken Beitia,34,DF,1,0.682,0.3
-1993904,Real Sociedad,Jon Martín,31,DF,1,0.312,0.275
-1993904,Real Sociedad,Takefusa Kubo,14,MF,1,0.736,0.671
-1993904,Real Sociedad,Yangel Herrera,21,MF,1,0.522,0.483
-1993904,Real Sociedad,Mikel Oyarzabal,10,FW,1,0.49,0.536
-1993904,Real Sociedad,Luka Sucic,24,MF,1,0.548,0.568
-1993904,Real Sociedad,Job Ochieng,12,MF,1,0.203,0.594
-1993904,Real Sociedad,Igor Zubeldia,5,,0,,
-1993904,Real Sociedad,Ander Barrenetxea,7,,0,,
-1993904,Real Sociedad,Orri Óskarsson,9,,0,,
-1993904,Real Sociedad,Gonçalo Guedes,11,,0,,
-1993904,Real Sociedad,Carlos Soler,18,,0,,
-1993911,Espanyol,Marko Dmitrovic,13,GK,1,0.525,0.069
-1993911,Espanyol,Omar El Hilali,23,DF,1,0.896,0.508
-1993911,Espanyol,Roger Hinojo,21,DF,1,0.23,0.422
-1993911,Espanyol,Urko González de Zárate,4,MF,1,0.604,0.52
-1993911,Espanyol,Clemens Riedel,5,DF,1,0.702,0.327
-1993911,Espanyol,Unai Núñez,14,DF,1,0.413,0.297
-1993911,Espanyol,Cala,22,MF,1,0.644,0.594
-1993911,Espanyol,Edu Expósito,8,MF,1,0.423,0.484
-1993911,Espanyol,Javi Hernández,28,FW,1,0.39,0.562
-1993911,Espanyol,Roberto Fernández,9,FW,1,0.476,0.539
-1993911,Espanyol,Tyrhys Dolan,24,MF,1,0.201,0.574
-1993911,Espanyol,Pol Lozano,10,,0,,
-1993911,Espanyol,Pere Milla,11,,0,,
-1993911,Espanyol,Vanja Drkusic,16,,0,,
-1993911,Espanyol,Jofre Carreras,17,,0,,
-1993911,Espanyol,Rafel Bauzà,26,,0,,
-1993911,Real Madrid,Thibaut Courtois,1,GK,1,0.467,0.153
-1993911,Real Madrid,Denzel Dumfries,24,DF,1,0.864,0.521
-1993911,Real Madrid,Álvaro Carreras,18,DF,1,0.136,0.5
-1993911,Real Madrid,Federico Valverde,8,MF,1,0.422,0.473
-1993911,Real Madrid,Ibrahima Konaté,16,DF,1,0.634,0.361
-1993911,Real Madrid,Dean Huijsen,4,DF,1,0.336,0.385
-1993911,Real Madrid,Arda Güler,15,MF,1,0.684,0.604
-1993911,Real Madrid,Bernardo Silva,20,MF,1,0.559,0.512
-1993911,Real Madrid,Kylian Mbappé,10,FW,1,0.432,0.718
-1993911,Real Madrid,Jude Bellingham,5,MF,1,0.381,0.6
-1993911,Real Madrid,Vinícius Júnior,7,MF,1,0.248,0.677
-1993911,Real Madrid,Eduardo Camavinga,6,,0,,
-1993911,Real Madrid,Trent Alexander-Arnold,12,,0,,
-1993911,Real Madrid,Marc Cucurella,17,,0,,
-1993911,Real Madrid,Carlos Espí,19,,0,,
-1993911,Real Madrid,Yan Diomande,25,,0,,
-1993924,Real Madrid,Thibaut Courtois,1,GK,1,0.508,0.099
-1993924,Real Madrid,Trent Alexander-Arnold,12,DF,1,0.798,0.512
-1993924,Real Madrid,Marc Cucurella,17,DF,1,0.122,0.512
-1993924,Real Madrid,Eduardo Camavinga,6,MF,1,0.526,0.464
-1993924,Real Madrid,Antonio Rüdiger,22,DF,1,0.701,0.298
-1993924,Real Madrid,Dean Huijsen,4,DF,1,0.301,0.344
-1993924,Real Madrid,Brahim Díaz,21,MF,1,0.725,0.602
-1993924,Real Madrid,Federico Valverde,8,MF,1,0.507,0.533
-1993924,Real Madrid,Kylian Mbappé,10,FW,1,0.431,0.751
-1993924,Real Madrid,Jude Bellingham,5,MF,1,0.476,0.624
-1993924,Real Madrid,Vinícius Júnior,7,MF,1,0.218,0.731
-1993924,Real Madrid,Arda Güler,15,,0,,
-1993924,Real Madrid,Bernardo Silva,20,,0,,
-1993924,Real Madrid,Yan Diomande,25,,0,,
-1993924,Malaga,Alfonso Herrero,1,GK,1,0.517,0.075
-1993924,Malaga,Carlos Puga,3,DF,1,0.885,0.428
-1993924,Malaga,Rafita,31,DF,1,0.445,0.451
-1993924,Malaga,Rafa Rodríguez,14,MF,1,0.619,0.534
-1993924,Malaga,Ángel Recio,15,DF,1,0.676,0.311
-1993924,Malaga,Einar Galilea,4,DF,1,0.3,0.287
-1993924,Malaga,David Larrubia,10,MF,1,0.796,0.63
-1993924,Malaga,Izan Merino,23,MF,1,0.501,0.417
-1993924,Malaga,Carlos Dotor,8,FW,1,0.376,0.502
-1993924,Malaga,Chupe,9,FW,1,0.499,0.623
-1993924,Malaga,Joaquín Muñoz,11,MF,1,0.247,0.524
-1993924,Malaga,Ramón Enríquez,6,,0,,
-1993924,Malaga,Haitam Abaida,7,,0,,
-1993924,Malaga,José Salinas,12,,0,,
-1993924,Malaga,Pablo Martínez,18,,0,,
-1993924,Malaga,Juan Cruz,19,,0,,
-1993928,Real Betis,Álvaro Valles,1,GK,1,0.493,0.095
-1993928,Real Betis,Héctor Bellerín,2,DF,1,0.859,0.45
-1993928,Real Betis,Fran García,11,DF,1,0.137,0.496
-1993928,Real Betis,Marc Roca,21,MF,1,0.373,0.405
-1993928,Real Betis,Diego Llorente,3,DF,1,0.672,0.272
-1993928,Real Betis,Natan,4,DF,1,0.293,0.289
-1993928,Real Betis,Antony,7,MF,1,0.855,0.565
-1993928,Real Betis,Facundo Bernal,6,MF,1,0.577,0.43
-1993928,Real Betis,Cucho Hernández,9,FW,1,0.613,0.585
-1993928,Real Betis,Isco,22,MF,1,0.409,0.596
-1993928,Real Betis,Pablo Fornals,8,MF,1,0.307,0.553
-1993928,Real Betis,Marc Bartra,5,,0,,
-1993928,Real Betis,Álvaro Fidalgo,15,,0,,
-1993928,Real Betis,Rodrigo Riquelme,17,,0,,
-1993928,Real Betis,Nelson Deossa,18,,0,,
-1993928,Real Betis,Troy Parrott,19,,0,,
-1993928,Real Madrid,Thibaut Courtois,1,GK,1,0.501,0.138
-1993928,Real Madrid,Denzel Dumfries,24,DF,1,0.895,0.6
-1993928,Real Madrid,Marc Cucurella,17,DF,1,0.161,0.537
-1993928,Real Madrid,Eduardo Camavinga,6,MF,1,0.483,0.443
-1993928,Real Madrid,Ibrahima Konaté,16,DF,1,0.655,0.364
-1993928,Real Madrid,Dean Huijsen,4,DF,1,0.324,0.426
-1993928,Real Madrid,Arda Güler,15,MF,1,0.608,0.646
-1993928,Real Madrid,Federico Valverde,8,MF,1,0.575,0.486
-1993928,Real Madrid,Kylian Mbappé,10,FW,1,0.396,0.717
-1993928,Real Madrid,Jude Bellingham,5,MF,1,0.339,0.599
-1993928,Real Madrid,Vinícius Júnior,7,MF,1,0.167,0.756
-1993928,Real Madrid,Trent Alexander-Arnold,12,,0,,
-1993928,Real Madrid,Álvaro Carreras,18,,0,,
-1993928,Real Madrid,Carlos Espí,19,,0,,
-1993928,Real Madrid,Bernardo Silva,20,,0,,
-1993928,Real Madrid,Yan Diomande,25,,0,,
-1994150,Atletico,Jan Oblak,13,GK,1,0.493,0.108
-1994150,Atletico,Marc Pubill,18,DF,1,0.839,0.522
-1994150,Atletico,Alejandro Grimaldo,22,DF,1,0.217,0.536
-1994150,Atletico,Marcos Llorente,14,MF,1,0.785,0.507
-1994150,Atletico,Cristian Romero,21,DF,1,0.579,0.369
-1994150,Atletico,Dávid Hancko,17,DF,1,0.307,0.386
-1994150,Atletico,Giuliano Simeone,20,MF,1,0.827,0.636
-1994150,Atletico,Johnny Cardoso,5,MF,1,0.472,0.506
-1994150,Atletico,Jonathan David,15,FW,1,0.46,0.667
-1994150,Atletico,Lee Kang-In,7,FW,1,0.768,0.639
-1994150,Atletico,Álex Baena,10,MF,1,0.445,0.642
-1994150,Atletico,Robin Le Normand,24,,0,,
-1994150,Atletico,Koke,6,,0,,
-1994150,Atletico,Morten Hjulmand,23,,0,,
-1994150,Atletico,Ademola Lookman,11,,0,,
-1994150,Atletico,Julián Alvarez,19,,0,,
-1994150,Real Madrid,Thibaut Courtois,1,GK,1,0.527,0.107
-1994150,Real Madrid,Denzel Dumfries,24,DF,1,0.802,0.461
-1994150,Real Madrid,Marc Cucurella,17,DF,1,0.143,0.445
-1994150,Real Madrid,Aurélien Tchouaméni,14,MF,1,0.392,0.516
-1994150,Real Madrid,Ibrahima Konaté,16,DF,1,0.712,0.304
-1994150,Real Madrid,Dean Huijsen,4,DF,1,0.312,0.31
-1994150,Real Madrid,Arda Güler,15,MF,1,0.619,0.596
-1994150,Real Madrid,Federico Valverde,8,MF,1,0.491,0.456
-1994150,Real Madrid,Kylian Mbappé,10,FW,1,0.31,0.668
-1994150,Real Madrid,Jude Bellingham,5,MF,1,0.401,0.531
-1994150,Real Madrid,Vinícius Júnior,7,MF,1,0.179,0.598
-1994150,Real Madrid,Eduardo Camavinga,6,,0,,
-1994150,Real Madrid,Bernardo Silva,20,,0,,
-1994150,Real Madrid,Antonio Rüdiger,22,,0,,
-1994150,Real Madrid,Yan Diomande,25,,0,,
-1994162,Real Madrid,Thibaut Courtois,1,GK,1,0.473,0.085
-1994162,Real Madrid,Denzel Dumfries,24,DF,1,0.855,0.452
-1994162,Real Madrid,Álvaro Carreras,18,DF,1,0.167,0.453
-1994162,Real Madrid,Bernardo Silva,20,MF,1,0.457,0.454
-1994162,Real Madrid,Ibrahima Konaté,16,DF,1,0.675,0.365
-1994162,Real Madrid,Antonio Rüdiger,22,DF,1,0.327,0.293
-1994162,Real Madrid,Yan Diomande,25,MF,1,0.74,0.573
-1994162,Real Madrid,Federico Valverde,8,MF,1,0.381,0.525
-1994162,Real Madrid,Kylian Mbappé,10,FW,1,0.425,0.709
-1994162,Real Madrid,Jude Bellingham,5,MF,1,0.379,0.572
-1994162,Real Madrid,Vinícius Júnior,7,MF,1,0.211,0.687
-1994162,Real Madrid,Eduardo Camavinga,6,,0,,
-1994162,Real Madrid,Aurélien Tchouaméni,14,,0,,
-1994162,Real Madrid,Arda Güler,15,,0,,
-1994162,Real Madrid,Marc Cucurella,17,,0,,
-1994162,Rayo Vallecano,Emil Audero,25,GK,1,0.525,0.089
-1994162,Rayo Vallecano,Andrei Ratiu,2,DF,1,0.842,0.593
-1994162,Rayo Vallecano,Adrià Pedrosa,17,DF,1,0.128,0.497
-1994162,Rayo Vallecano,Unai López,8,MF,1,0.383,0.517
-1994162,Rayo Vallecano,Florian Lejeune,24,DF,1,0.673,0.333
-1994162,Rayo Vallecano,Pathé Ciss,6,DF,1,0.439,0.36
-1994162,Rayo Vallecano,Giorgi Tsitaishvili,14,MF,1,0.789,0.721
-1994162,Rayo Vallecano,Gnangoro,36,MF,1,0.569,0.494
-1994162,Rayo Vallecano,Sergio Camello,10,FW,1,0.367,0.584
-1994162,Rayo Vallecano,Pedro Díaz,4,MF,1,0.653,0.627
-1994162,Rayo Vallecano,Álvaro García,18,MF,1,0.216,0.725
-1994162,Rayo Vallecano,Alemão,9,,0,,
-1994162,Rayo Vallecano,Mujaid Sadick,15,,0,,
-1994162,Rayo Vallecano,Iván Balliu,20,,0,,
-1994162,Rayo Vallecano,Óscar Valentín,23,,0,,
-1994162,Rayo Vallecano,Rayane Belaid,37,,0,,
-1994174,Real Madrid,Thibaut Courtois,1,GK,1,0.453,0.12
-1994174,Real Madrid,Trent Alexander-Arnold,12,DF,1,0.713,0.566
-1994174,Real Madrid,Álvaro Carreras,18,DF,1,0.239,0.499
-1994174,Real Madrid,Aurélien Tchouaméni,14,MF,1,0.404,0.449
-1994174,Real Madrid,Ibrahima Konaté,16,DF,1,0.653,0.369
-1994174,Real Madrid,Antonio Rüdiger,22,DF,1,0.301,0.276
-1994174,Real Madrid,Arda Güler,15,MF,1,0.528,0.571
-1994174,Real Madrid,Federico Valverde,8,MF,1,0.659,0.55
-1994174,Real Madrid,Kylian Mbappé,10,FW,1,0.353,0.724
-1994174,Real Madrid,Jude Bellingham,5,MF,1,0.367,0.629
-1994174,Real Madrid,Yan Diomande,25,MF,1,0.264,0.643
-1994174,Real Madrid,Eduardo Camavinga,6,,0,,
-1994174,Real Madrid,Vinícius Júnior,7,,0,,
-1994174,Real Madrid,Marc Cucurella,17,,0,,
-1994174,Real Madrid,Denzel Dumfries,24,,0,,
-1994174,Villarreal,Péter Gulácsi,25,GK,1,0.557,0.076
-1994174,Villarreal,Alex Freeman,3,DF,1,0.836,0.394
-1994174,Villarreal,Sergi Cardona,23,DF,1,0.166,0.46
-1994174,Villarreal,Juan Foyth,8,MF,1,0.526,0.433
-1994174,Villarreal,Pau Navarro,6,DF,1,0.676,0.327
-1994174,Villarreal,Renato Veiga,12,DF,1,0.332,0.357
-1994174,Villarreal,Santi Comesaña,14,MF,1,0.595,0.536
-1994174,Villarreal,Pape Gueye,18,MF,1,0.466,0.501
-1994174,Villarreal,Ayoze Pérez,22,FW,1,0.608,0.622
-1994174,Villarreal,Ilias Akhomach,11,FW,1,0.804,0.635
-1994174,Villarreal,Alberto Moleiro,10,FW,1,0.447,0.689
-1994174,Villarreal,Gerard Moreno,7,,0,,
-1994174,Villarreal,Georges Mikautadze,9,,0,,
-1994174,Villarreal,Carlos Romero,20,,0,,
-1994174,Villarreal,Nathan Saliba,24,,0,,
-1994174,Villarreal,Nizar,27,,0,,
-1994179,Elche,Matías Dituro,1,GK,1,0.504,0.095
-1994179,Elche,Buba Sangaré,2,DF,1,0.811,0.478
-1994179,Elche,Roy Revivo,3,DF,1,0.138,0.494
-1994179,Elche,Martim Neto,16,MF,1,0.657,0.576
-1994179,Elche,Federico Redondo,5,DF,1,0.702,0.344
-1994179,Elche,Víctor Chust,23,DF,1,0.3,0.326
-1994179,Elche,Germán Valera,11,MF,1,0.796,0.592
-1994179,Elche,Gonzalo Villar,12,MF,1,0.342,0.503
-1994179,Elche,Abiel Osorio,24,FW,1,0.537,0.561
-1994179,Elche,Marc Aguado,8,MF,1,0.432,0.375
-1994179,Elche,Tete Morente,20,MF,1,0.219,0.695
-1994179,Elche,Fer Niño,14,,0,,
-1994179,Elche,Josan,17,,0,,
-1994179,Elche,Thomas Lemar,18,,0,,
-1994179,Elche,Lucas Cepeda,21,,0,,
-1994179,Elche,Rubén Sánchez,22,,0,,
-1994179,Real Madrid,Thibaut Courtois,1,GK,1,0.506,0.083
-1994179,Real Madrid,Trent Alexander-Arnold,12,DF,1,0.821,0.434
-1994179,Real Madrid,Marc Cucurella,17,DF,1,0.176,0.494
-1994179,Real Madrid,Aurélien Tchouaméni,14,MF,1,0.47,0.444
-1994179,Real Madrid,Ibrahima Konaté,16,DF,1,0.674,0.338
-1994179,Real Madrid,Dean Huijsen,4,DF,1,0.364,0.375
-1994179,Real Madrid,Yan Diomande,25,MF,1,0.599,0.639
-1994179,Real Madrid,Federico Valverde,8,MF,1,0.42,0.491
-1994179,Real Madrid,Kylian Mbappé,10,FW,1,0.358,0.721
-1994179,Real Madrid,Arda Güler,15,MF,1,0.441,0.578
-1994179,Real Madrid,Vinícius Júnior,7,MF,1,0.244,0.734
-1994179,Real Madrid,Jude Bellingham,5,,0,,
-1994179,Real Madrid,Endrick,9,,0,,
-1994179,Real Madrid,Carlos Espí,19,,0,,
-1994179,Real Madrid,Brahim Díaz,21,,0,,
-1994179,Real Madrid,Denzel Dumfries,24,,0,,
+match_id,equipo,jugador,dorsal,titular,posicion
+1993904,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1993904,Real Madrid,Denzel Dumfries,24,1,Right-Back
+1993904,Real Madrid,Álvaro Carreras,18,1,Left-Back
+1993904,Real Madrid,Bernardo Silva,20,1,Defensive Midfield
+1993904,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1993904,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1993904,Real Madrid,Arda Güler,15,1,Right Winger
+1993904,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1993904,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1993904,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1993904,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1993904,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1993904,Real Madrid,Marc Cucurella,17,0,Left-Back
+1993904,Real Madrid,Carlos Espí,19,0,
+1993904,Real Madrid,Brahim Díaz,21,0,Right Winger
+1993904,Real Madrid,Yan Diomande,25,0,Right Winger
+1993904,Real Sociedad,Álex Remiro,1,1,Goalkeeper
+1993904,Real Sociedad,Jon Aramburu,2,1,Right-Back
+1993904,Real Sociedad,Sergio Gómez,17,1,Left-Back
+1993904,Real Sociedad,Beñat Turrientes,8,1,Defensive Midfield
+1993904,Real Sociedad,Luken Beitia,34,1,Centre-Back
+1993904,Real Sociedad,Jon Martín,31,1,Centre-Back
+1993904,Real Sociedad,Takefusa Kubo,14,1,Right Winger
+1993904,Real Sociedad,Yangel Herrera,21,1,Defensive Midfield
+1993904,Real Sociedad,Mikel Oyarzabal,10,1,Centre-Forward
+1993904,Real Sociedad,Luka Sucic,24,1,Attacking Midfield
+1993904,Real Sociedad,Job Ochieng,12,1,Left Winger
+1993904,Real Sociedad,Igor Zubeldia,5,0,
+1993904,Real Sociedad,Ander Barrenetxea,7,0,
+1993904,Real Sociedad,Orri Óskarsson,9,0,
+1993904,Real Sociedad,Gonçalo Guedes,11,0,
+1993904,Real Sociedad,Carlos Soler,18,0,
+1993911,Espanyol,Marko Dmitrovic,13,1,Goalkeeper
+1993911,Espanyol,Omar El Hilali,23,1,Right-Back
+1993911,Espanyol,Roger Hinojo,21,1,Left-Back
+1993911,Espanyol,Urko González de Zárate,4,1,Central Midfield
+1993911,Espanyol,Clemens Riedel,5,1,Centre-Back
+1993911,Espanyol,Unai Núñez,14,1,Centre-Back
+1993911,Espanyol,Cala,22,1,Right Midfield
+1993911,Espanyol,Edu Expósito,8,1,Central Midfield
+1993911,Espanyol,Javi Hernández,28,1,Centre-Forward
+1993911,Espanyol,Roberto Fernández,9,1,Centre-Forward
+1993911,Espanyol,Tyrhys Dolan,24,1,Left Midfield
+1993911,Espanyol,Pol Lozano,10,0,
+1993911,Espanyol,Pere Milla,11,0,
+1993911,Espanyol,Vanja Drkusic,16,0,
+1993911,Espanyol,Jofre Carreras,17,0,
+1993911,Espanyol,Rafel Bauzà,26,0,
+1993911,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1993911,Real Madrid,Denzel Dumfries,24,1,Right-Back
+1993911,Real Madrid,Álvaro Carreras,18,1,Left-Back
+1993911,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1993911,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1993911,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1993911,Real Madrid,Arda Güler,15,1,Right Winger
+1993911,Real Madrid,Bernardo Silva,20,1,Defensive Midfield
+1993911,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1993911,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1993911,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1993911,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1993911,Real Madrid,Trent Alexander-Arnold,12,0,Right-Back
+1993911,Real Madrid,Marc Cucurella,17,0,Left-Back
+1993911,Real Madrid,Carlos Espí,19,0,
+1993911,Real Madrid,Yan Diomande,25,0,Right Winger
+1993924,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1993924,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back
+1993924,Real Madrid,Marc Cucurella,17,1,Left-Back
+1993924,Real Madrid,Eduardo Camavinga,6,1,Defensive Midfield
+1993924,Real Madrid,Antonio Rüdiger,22,1,Centre-Back
+1993924,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1993924,Real Madrid,Brahim Díaz,21,1,Right Winger
+1993924,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1993924,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1993924,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1993924,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1993924,Real Madrid,Arda Güler,15,0,Right Winger
+1993924,Real Madrid,Bernardo Silva,20,0,Defensive Midfield
+1993924,Real Madrid,Yan Diomande,25,0,Right Winger
+1993924,Malaga,Alfonso Herrero,1,1,Goalkeeper
+1993924,Malaga,Carlos Puga,3,1,Right-Back
+1993924,Malaga,Rafita,31,1,Left-Back
+1993924,Malaga,Rafa Rodríguez,14,1,Central Midfield
+1993924,Malaga,Ángel Recio,15,1,Centre-Back
+1993924,Malaga,Einar Galilea,4,1,Centre-Back
+1993924,Malaga,David Larrubia,10,1,Right Midfield
+1993924,Malaga,Izan Merino,23,1,Central Midfield
+1993924,Malaga,Carlos Dotor,8,1,Centre-Forward
+1993924,Malaga,Chupe,9,1,Centre-Forward
+1993924,Malaga,Joaquín Muñoz,11,1,Left Midfield
+1993924,Malaga,Ramón Enríquez,6,0,
+1993924,Malaga,Haitam Abaida,7,0,
+1993924,Malaga,José Salinas,12,0,
+1993924,Malaga,Pablo Martínez,18,0,
+1993924,Malaga,Juan Cruz,19,0,
+1993928,Real Betis,Álvaro Valles,1,1,Goalkeeper
+1993928,Real Betis,Héctor Bellerín,2,1,Right-Back
+1993928,Real Betis,Fran García,11,1,Left-Back
+1993928,Real Betis,Marc Roca,21,1,Defensive Midfield
+1993928,Real Betis,Diego Llorente,3,1,Centre-Back
+1993928,Real Betis,Natan,4,1,Centre-Back
+1993928,Real Betis,Antony,7,1,Right Winger
+1993928,Real Betis,Facundo Bernal,6,1,Defensive Midfield
+1993928,Real Betis,Cucho Hernández,9,1,Centre-Forward
+1993928,Real Betis,Isco,22,1,Attacking Midfield
+1993928,Real Betis,Pablo Fornals,8,1,Left Winger
+1993928,Real Betis,Marc Bartra,5,0,
+1993928,Real Betis,Álvaro Fidalgo,15,0,
+1993928,Real Betis,Rodrigo Riquelme,17,0,
+1993928,Real Betis,Nelson Deossa,18,0,
+1993928,Real Betis,Troy Parrott,19,0,
+1993928,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1993928,Real Madrid,Denzel Dumfries,24,1,Right-Back
+1993928,Real Madrid,Marc Cucurella,17,1,Left-Back
+1993928,Real Madrid,Eduardo Camavinga,6,1,Defensive Midfield
+1993928,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1993928,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1993928,Real Madrid,Arda Güler,15,1,Right Winger
+1993928,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1993928,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1993928,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1993928,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1993928,Real Madrid,Trent Alexander-Arnold,12,0,Right-Back
+1993928,Real Madrid,Álvaro Carreras,18,0,Left-Back
+1993928,Real Madrid,Carlos Espí,19,0,
+1993928,Real Madrid,Bernardo Silva,20,0,Defensive Midfield
+1993928,Real Madrid,Yan Diomande,25,0,Right Winger
+1994150,Atletico,Jan Oblak,13,1,Goalkeeper
+1994150,Atletico,Marc Pubill,18,1,Right-Back
+1994150,Atletico,Alejandro Grimaldo,22,1,Left-Back
+1994150,Atletico,Marcos Llorente,14,1,Central Midfield
+1994150,Atletico,Cristian Romero,21,1,Centre-Back
+1994150,Atletico,Dávid Hancko,17,1,Centre-Back
+1994150,Atletico,Giuliano Simeone,20,1,Right Midfield
+1994150,Atletico,Johnny Cardoso,5,1,Central Midfield
+1994150,Atletico,Jonathan David,15,1,Centre-Forward
+1994150,Atletico,Lee Kang-In,7,1,Centre-Forward
+1994150,Atletico,Álex Baena,10,1,Left Midfield
+1994150,Atletico,Robin Le Normand,24,0,
+1994150,Atletico,Koke,6,0,
+1994150,Atletico,Morten Hjulmand,23,0,
+1994150,Atletico,Ademola Lookman,11,0,
+1994150,Atletico,Julián Alvarez,19,0,
+1994150,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1994150,Real Madrid,Denzel Dumfries,24,1,Right-Back
+1994150,Real Madrid,Marc Cucurella,17,1,Left-Back
+1994150,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield
+1994150,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1994150,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1994150,Real Madrid,Arda Güler,15,1,Right Winger
+1994150,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1994150,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1994150,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1994150,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1994150,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1994150,Real Madrid,Bernardo Silva,20,0,Defensive Midfield
+1994150,Real Madrid,Antonio Rüdiger,22,0,Centre-Back
+1994150,Real Madrid,Yan Diomande,25,0,Right Winger
+1994162,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1994162,Real Madrid,Denzel Dumfries,24,1,Right-Back
+1994162,Real Madrid,Álvaro Carreras,18,1,Left-Back
+1994162,Real Madrid,Bernardo Silva,20,1,Defensive Midfield
+1994162,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1994162,Real Madrid,Antonio Rüdiger,22,1,Centre-Back
+1994162,Real Madrid,Yan Diomande,25,1,Right Winger
+1994162,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1994162,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1994162,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1994162,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1994162,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1994162,Real Madrid,Aurélien Tchouaméni,14,0,Defensive Midfield
+1994162,Real Madrid,Arda Güler,15,0,Right Winger
+1994162,Real Madrid,Marc Cucurella,17,0,Left-Back
+1994162,Rayo Vallecano,Emil Audero,25,1,Goalkeeper
+1994162,Rayo Vallecano,Andrei Ratiu,2,1,Right-Back
+1994162,Rayo Vallecano,Adrià Pedrosa,17,1,Left-Back
+1994162,Rayo Vallecano,Unai López,8,1,Defensive Midfield
+1994162,Rayo Vallecano,Florian Lejeune,24,1,Centre-Back
+1994162,Rayo Vallecano,Pathé Ciss,6,1,Centre-Back
+1994162,Rayo Vallecano,Giorgi Tsitaishvili,14,1,Right Winger
+1994162,Rayo Vallecano,Gnangoro,36,1,Defensive Midfield
+1994162,Rayo Vallecano,Sergio Camello,10,1,Centre-Forward
+1994162,Rayo Vallecano,Pedro Díaz,4,1,Attacking Midfield
+1994162,Rayo Vallecano,Álvaro García,18,1,Left Winger
+1994162,Rayo Vallecano,Alemão,9,0,
+1994162,Rayo Vallecano,Mujaid Sadick,15,0,
+1994162,Rayo Vallecano,Iván Balliu,20,0,
+1994162,Rayo Vallecano,Óscar Valentín,23,0,
+1994162,Rayo Vallecano,Rayane Belaid,37,0,
+1994174,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1994174,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back
+1994174,Real Madrid,Álvaro Carreras,18,1,Left-Back
+1994174,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield
+1994174,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1994174,Real Madrid,Antonio Rüdiger,22,1,Centre-Back
+1994174,Real Madrid,Arda Güler,15,1,Right Winger
+1994174,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1994174,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1994174,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1994174,Real Madrid,Yan Diomande,25,1,Left Winger
+1994174,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1994174,Real Madrid,Vinícius Júnior,7,0,Left Winger
+1994174,Real Madrid,Marc Cucurella,17,0,Left-Back
+1994174,Real Madrid,Denzel Dumfries,24,0,Right-Back
+1994174,Villarreal,Péter Gulácsi,25,1,Goalkeeper
+1994174,Villarreal,Alex Freeman,3,1,Right-Back
+1994174,Villarreal,Sergi Cardona,23,1,Left-Back
+1994174,Villarreal,Juan Foyth,8,1,Central Midfield
+1994174,Villarreal,Pau Navarro,6,1,Centre-Back
+1994174,Villarreal,Renato Veiga,12,1,Centre-Back
+1994174,Villarreal,Santi Comesaña,14,1,Central Midfield
+1994174,Villarreal,Pape Gueye,18,1,Central Midfield
+1994174,Villarreal,Ayoze Pérez,22,1,Centre-Forward
+1994174,Villarreal,Ilias Akhomach,11,1,Centre-Forward
+1994174,Villarreal,Alberto Moleiro,10,1,Centre-Forward
+1994174,Villarreal,Gerard Moreno,7,0,
+1994174,Villarreal,Georges Mikautadze,9,0,
+1994174,Villarreal,Carlos Romero,20,0,
+1994174,Villarreal,Nathan Saliba,24,0,
+1994174,Villarreal,Nizar,27,0,
+1994179,Elche,Matías Dituro,1,1,Goalkeeper
+1994179,Elche,Buba Sangaré,2,1,Right-Back
+1994179,Elche,Roy Revivo,3,1,Left-Back
+1994179,Elche,Martim Neto,16,1,Central Midfield
+1994179,Elche,Federico Redondo,5,1,Centre-Back
+1994179,Elche,Víctor Chust,23,1,Centre-Back
+1994179,Elche,Germán Valera,11,1,Right Midfield
+1994179,Elche,Gonzalo Villar,12,1,Central Midfield
+1994179,Elche,Abiel Osorio,24,1,Centre-Forward
+1994179,Elche,Marc Aguado,8,1,Central Midfield
+1994179,Elche,Tete Morente,20,1,Left Midfield
+1994179,Elche,Fer Niño,14,0,
+1994179,Elche,Josan,17,0,
+1994179,Elche,Thomas Lemar,18,0,
+1994179,Elche,Lucas Cepeda,21,0,
+1994179,Elche,Rubén Sánchez,22,0,
+1994179,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1994179,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back
+1994179,Real Madrid,Marc Cucurella,17,1,Left-Back
+1994179,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield
+1994179,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1994179,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1994179,Real Madrid,Yan Diomande,25,1,Right Winger
+1994179,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+1994179,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1994179,Real Madrid,Arda Güler,15,1,Attacking Midfield
+1994179,Real Madrid,Vinícius Júnior,7,1,Left Winger
+1994179,Real Madrid,Jude Bellingham,5,0,Attacking Midfield
+1994179,Real Madrid,Endrick,9,0,
+1994179,Real Madrid,Carlos Espí,19,0,
+1994179,Real Madrid,Brahim Díaz,21,0,Right Winger
+1994179,Real Madrid,Denzel Dumfries,24,0,Right-Back

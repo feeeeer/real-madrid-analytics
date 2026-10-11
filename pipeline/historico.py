@@ -10,7 +10,7 @@ Fuentes:
   - ESPN (API pública de su web): temporada actual, todas las competiciones
   - Alineaciones de la temporada actual: las de los eventos de WhoScored (docs/data/metricas_jugador.csv)
 """
-import gzip, io, json, os, re, sys, unicodedata, urllib.request
+import gzip, hashlib, io, json, os, re, sys, unicodedata, urllib.request
 from datetime import date
 from pathlib import Path
 
@@ -210,9 +210,9 @@ def main():
         # el rival con el nombre del histórico
         aw["equipo"] = np.where(aw["equipo"] == RM, RM, aw["fecha"].map(liga["rival"]))
         aw = aw[aw["partido_id"].str.startswith("espn")]
-        al = pd.concat([al, pd.DataFrame({"partido_id": aw["partido_id"], "equipo": aw["equipo"], "jugador": aw["jugador"],
-                                          "posicion": aw["linea"].fillna(""), "titular": aw["titular"], "dorsal": aw["dorsal"],
-                                          "px": aw["px"], "py": aw["py"]})], ignore_index=True)
+        al = pd.concat([al, colocar(pd.DataFrame({"partido_id": aw["partido_id"], "equipo": aw["equipo"], "jugador": aw["jugador"],
+                                                  "posicion": aw["posicion"].fillna(""), "titular": aw["titular"],
+                                                  "dorsal": aw["dorsal"]}))], ignore_index=True)
 
     # escudos: el de Transfermarkt por id de club; si no hay, el logo de ESPN
     escudos = {}
@@ -243,7 +243,20 @@ def main():
     h.to_csv(WEB / "historico.csv", index=False)
     al["dorsal"] = pd.to_numeric(al["dorsal"], errors="coerce").astype("Int64")
     al[["partido_id", "equipo", "jugador", "posicion", "titular", "dorsal", "px", "py"]].to_csv(WEB / "historico_alineaciones.csv", index=False)
-    pd.DataFrame(sorted(escudos.items()), columns=["equipo", "url"]).to_csv(WEB / "escudos.csv", index=False)
+    # cada escudo se descarga una vez y se sirve desde la propia web (sin depender de que el origen permita enlazarlo)
+    carpeta = WEB.parent / "escudos"
+    carpeta.mkdir(exist_ok=True)
+    locales = {}
+    for url in set(escudos.values()):
+        f = carpeta / (hashlib.md5(url.encode()).hexdigest()[:12] + ".png")
+        try:
+            if not f.exists():
+                f.write_bytes(get(url))
+            locales[url] = f"escudos/{f.name}"
+        except Exception as e:
+            print(f"Escudo no descargado ({e}): {url}")
+    pd.DataFrame(sorted((n, locales.get(u, u)) for n, u in escudos.items()), columns=["equipo", "url"]).to_csv(WEB / "escudos.csv", index=False)
+    print(f"Escudos guardados en la web: {len(locales)} de {len(set(escudos.values()))}")
     print(f"Escudos: {len(escudos)} equipos; con estadio: {(h['estadio'] != '').sum()} de {len(h)} partidos")
     print(h.groupby("competicion").agg(partidos=("fecha", "size"), desde=("fecha", "min"), hasta=("fecha", "max")))
     print(f"{len(h)} partidos; alineaciones de {al['partido_id'].nunique()} partidos; temporada actual (ESPN): {len(actual)}")

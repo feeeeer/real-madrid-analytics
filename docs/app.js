@@ -696,9 +696,10 @@ function renderHistorico() {
   tb.replaceChildren(...ps.slice(0, MAX).map((r) => {
     const tr = el('tr', { 'data-key': r.partido_id || '' });
     if (r.partido_id && r.partido_id === partidoHist) tr.className = 'sel';
-    const partido = el('td', { class: 'partido' });
-    partido.append(conEscudo(r.local), el('span', { class: 'sep' }, '–'), conEscudo(r.visitante));
-    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), partido, el('td', { class: 'estadio' }, r.estadio || '—'),
+    const local = el('td', { class: 'equipo' }), visitante = el('td', { class: 'equipo' });
+    local.append(conEscudo(r.local));
+    visitante.append(conEscudo(r.visitante));
+    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), local, visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${conAl.has(r.partido_id) ? ' 👥' : ''}`));
     tr.lastChild.style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     return tr;
@@ -732,14 +733,7 @@ function renderHistorico() {
         }
       }
       cuerpo.append(lista);
-      if (tit.some((j) => j.px !== '')) {
-        const caja = el('div');
-        // Opta (esta temporada) da la línea del jugador y su posición media real; Transfermarkt, su puesto en la alineación
-        const media = tit.some((j) => ['GK', 'DF', 'MF', 'FW'].includes(j.posicion));
-        caja.append(campito(tit, equipo === RM ? C_RM() : C_RIV()),
-          el('p', { class: 'campito-nota' }, media ? 'Posición media de cada titular durante el partido' : 'Puesto de cada titular en la alineación'));
-        cuerpo.append(caja);
-      }
+      if (tit.some((j) => j.px !== '')) cuerpo.append(campito(tit, equipo === RM ? C_RM() : C_RIV()));
       c.append(cuerpo);
       return c;
     }));

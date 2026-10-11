@@ -173,10 +173,8 @@ for (mid, team), u in us_pm.groupby(["match_id", "equipo"]):
 jug["asistencias"] = jug["asistencias"].astype(int)
 jug.insert(0, "clave", jug["match_id"].astype(str) + "|" + jug["jugador_id"].astype(str))
 
-# ---------- Alineaciones: dorsal y línea del FormationSet de WhoScored, posición media de sus toques ----------
+# ---------- Alineaciones: dorsal y titularidad del FormationSet de WhoScored ----------
 LINEA = {"1": "GK", "2": "DF", "3": "MF", "4": "FW"}
-toques = ws[(ws["is_touch"].astype(str) == "True") & (ws["x"] > 0)]
-media = toques.groupby(["match_id", "player_id"])[["X", "Y"]].mean()
 al_rows = []
 for r in ws[ws["type"] == "FormationSet"].drop_duplicates(["match_id", "team"]).itertuples():
     q = {d["type"]["displayName"]: d.get("value", "") for d in ast.literal_eval(r.qualifiers)}
@@ -187,13 +185,25 @@ for r in ws[ws["type"] == "FormationSet"].drop_duplicates(["match_id", "team"]).
         if j.empty:
             continue  # suplente que no jugó: WhoScored no da su nombre
         titular = linea.strip() in LINEA
-        m = media.loc[(r.match_id, float(pid))] if titular and (r.match_id, float(pid)) in media.index else None
         al_rows.append(dict(match_id=r.match_id, equipo=r.team, jugador=j["jugador"].iloc[0], dorsal=int(dorsal),
-                            linea=LINEA.get(linea.strip(), ""), titular=int(titular),
-                            # campo vertical: px de 0 (banda izquierda) a 1 (derecha); py de 0 (propia portería) a 1
-                            px=round(m["Y"] / 80, 3) if m is not None else np.nan,
-                            py=round(m["X"] / 120, 3) if m is not None else np.nan))
+                            titular=int(titular)))
 alineaciones = pd.DataFrame(al_rows)
+# posición titular de cada jugador en el partido (Understat: GK, DC, DL, AML, FW...), con las etiquetas de Transfermarkt
+US_POS = {"GK": "Goalkeeper", "DC": "Centre-Back", "DL": "Left-Back", "DR": "Right-Back", "DMC": "Defensive Midfield",
+          "DML": "Defensive Midfield", "DMR": "Defensive Midfield", "MC": "Central Midfield", "ML": "Left Midfield",
+          "MR": "Right Midfield", "AMC": "Attacking Midfield", "AML": "Left Winger", "AMR": "Right Winger",
+          "FW": "Centre-Forward", "FWL": "Centre-Forward", "FWR": "Centre-Forward"}
+# a quien sale desde el banquillo ("Sub") se le pone su posición más habitual como titular esta temporada
+habitual = us_pm[us_pm["position"] != "Sub"].groupby("player")["position"].agg(lambda v: v.value_counts().index[0])
+alineaciones["posicion"] = ""
+for (mid, team), u in us_pm.groupby(["match_id", "equipo"]):
+    sel = (alineaciones["match_id"] == mid) & (alineaciones["equipo"] == team)
+    m = match_names(u["player"].tolist(), alineaciones.loc[sel, "jugador"].tolist())
+    for r in u.itertuples():
+        pos = r.position if r.position != "Sub" else habitual.get(r.player, "")
+        if r.player in m:
+            alineaciones.loc[sel & (alineaciones["jugador"] == m[r.player]), "posicion"] = US_POS.get(pos, "")
+assert (alineaciones.loc[alineaciones["titular"] == 1, "posicion"] != "").mean() > 0.95, "titulares sin posición"
 assert (alineaciones.groupby(["match_id", "equipo"])["titular"].sum() == 11).all(), "alineación sin 11 titulares"
 
 # ---------- Pases para los mapas ----------
