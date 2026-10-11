@@ -92,6 +92,10 @@ tiros = pd.DataFrame({
     "minuto": us_shots["minute"],
 })
 tiros = tiros[tiros["resultado"] != "Own Goal"]  # el gol en propia meta no es un tiro de quien lo marca
+# el tirador con el nombre de WhoScored ("Kylian Mbappe-Lottin" -> "Kylian Mbappé"), el mismo que en pases y alineaciones
+for (mid, eq), idx in tiros.groupby(["match_id", "equipo"]).groups.items():
+    m = match_names(tiros.loc[idx, "jugador"].unique(), ws.loc[(ws["match_id"] == mid) & (ws["team"] == eq), "player"].dropna().unique())
+    tiros.loc[idx, "jugador"] = tiros.loc[idx, "jugador"].map(lambda n: m.get(n, n))
 
 # ---------- Métricas por equipo ----------
 def danger_loss(e):

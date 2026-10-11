@@ -162,7 +162,7 @@ function tooltip(box) {
 function drawPitch(box, { capa, passes, shots, color, tipos }) {
   box.querySelector('svg')?.remove();
   const half = capa === 'tiros';
-  const vb = half ? [58, -2, 64, 84] : [-2, -2, 124, 84];
+  const vb = [-2, -2, 124, 84];
   const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', vb.join(' '))
     .attr('role', 'img').attr('aria-label', half ? 'Mapa de tiros' : 'Mapa de pases');
   const g = svg.append('g').attr('fill', 'none').style('stroke', 'var(--cds-chart-axis)').attr('stroke-width', 0.3).attr('opacity', 0.8);
@@ -173,7 +173,7 @@ function drawPitch(box, { capa, passes, shots, color, tipos }) {
     g.append('rect').attr('x', dir > 0 ? x0 : x0 - 18).attr('y', 18).attr('width', 18).attr('height', 44);
     g.append('rect').attr('x', dir > 0 ? x0 : x0 - 6).attr('y', 30).attr('width', 6).attr('height', 20);
     g.append('rect').attr('x', dir > 0 ? x0 - 2 : x0).attr('y', 36).attr('width', 2).attr('height', 8);
-    g.append('circle').attr('cx', x0 + dir * 12).attr('cy', 40).attr('r', 0.4).attr('fill', line);
+    g.append('circle').attr('cx', x0 + dir * 12).attr('cy', 40).attr('r', 0.4).style('fill', 'var(--cds-chart-axis)');
     g.append('path').attr('d', d3.arc()({ innerRadius: 10, outerRadius: 10, startAngle: dir > 0 ? 0.65 : Math.PI + 0.65, endAngle: dir > 0 ? Math.PI - 0.65 : 2 * Math.PI - 0.65 }))
       .attr('transform', `translate(${x0 + dir * 12},40)`);
   }
