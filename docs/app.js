@@ -292,6 +292,49 @@ function showTab(id, link = true) {
 tabs.forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
 
 // ---------- Render ----------
+// ---------- Escudos ----------
+let escudosMap = null;
+function escudo(nombre) {
+  if (!escudosMap && dash.data('escudos').status === 'ok') escudosMap = new Map(rows('escudos').map((r) => [r.equipo, r.url]));
+  const url = escudosMap && escudosMap.get(nombre);
+  if (!url) return el('span', { class: 'esc esc-vacio', 'aria-hidden': 'true' });
+  const img = el('img', { class: 'esc', src: url, alt: '', loading: 'lazy', referrerpolicy: 'no-referrer' });
+  img.addEventListener('error', () => img.replaceWith(el('span', { class: 'esc esc-vacio', 'aria-hidden': 'true' })));
+  return img;
+}
+const conEscudo = (nombre, tag = 'span') => { const s = el(tag, { class: 'con-esc' }); s.append(escudo(nombre), nombre); return s; };
+
+const POS_ES = { Goalkeeper: 'Portero', Sweeper: 'Líbero', 'Centre-Back': 'Central', 'Left-Back': 'Lateral izquierdo', 'Right-Back': 'Lateral derecho',
+  Defender: 'Defensa', 'Defensive Midfield': 'Mediocentro defensivo', 'Central Midfield': 'Mediocentro', 'Left Midfield': 'Interior izquierdo',
+  'Right Midfield': 'Interior derecho', Midfield: 'Centrocampista', 'Attacking Midfield': 'Mediapunta', 'Left Winger': 'Extremo izquierdo',
+  'Right Winger': 'Extremo derecho', 'Second Striker': 'Segundo delantero', 'Centre-Forward': 'Delantero centro', Attack: 'Delantero',
+  GK: 'Portero', DF: 'Defensa', MF: 'Centrocampista', FW: 'Delantero' };
+
+// Campo vertical con los titulares en su posición (px: 0 izquierda-1 derecha; py: 0 propia portería-1 rival)
+function campito(titulares, color) {
+  const W = 68, H = 105;
+  const svg = d3.create('svg').attr('viewBox', `-2 -2 ${W + 4} ${H + 4}`).attr('class', 'campito').attr('role', 'img')
+    .attr('aria-label', 'Titulares en el campo');
+  const g = svg.append('g').attr('fill', 'none').style('stroke', 'var(--cds-chart-axis)').attr('stroke-width', 0.4);
+  g.append('rect').attr('width', W).attr('height', H);
+  g.append('line').attr('x1', 0).attr('x2', W).attr('y1', H / 2).attr('y2', H / 2);
+  g.append('circle').attr('cx', W / 2).attr('cy', H / 2).attr('r', 9.15);
+  for (const y0 of [0, H]) {
+    const d = y0 ? -1 : 1;
+    g.append('rect').attr('x', W / 2 - 20.15).attr('y', y0 ? H - 16.5 : 0).attr('width', 40.3).attr('height', 16.5);
+    g.append('rect').attr('x', W / 2 - 9.15).attr('y', y0 ? H - 5.5 : 0).attr('width', 18.3).attr('height', 5.5);
+    g.append('circle').attr('cx', W / 2).attr('cy', y0 + d * 11).attr('r', 0.5).style('fill', 'var(--cds-chart-axis)');
+  }
+  const pts = titulares.filter((j) => j.px !== '' && j.py !== '');
+  const n = svg.append('g').selectAll('g').data(pts).join('g')
+    .attr('transform', (j) => `translate(${N(j.px) * W},${(1 - N(j.py)) * H})`);
+  n.append('circle').attr('r', 3.6).style('fill', color).style('stroke', 'var(--color-panel)').attr('stroke-width', 0.6);
+  n.append('text').attr('text-anchor', 'middle').attr('dy', '1.15').style('fill', '#fff').style('font-size', '3.4px')
+    .style('font-weight', '700').text((j) => j.dorsal);
+  n.append('title').text((j) => `${j.dorsal} · ${j.jugador}`);
+  return svg.node();
+}
+
 function fillTable(table, data, cols, keyOf, selKey) {
   const tb = table.querySelector('tbody');
   tb.replaceChildren(...data.map((r) => {
@@ -319,7 +362,7 @@ function renderPartido() {
   const w = `match_id=${mid}`;
   if (p) {
     $('#m-meta').textContent = `${p.competicion} · ${p.temporada}${p.jornada ? ' · Jornada ' + p.jornada : ''} · ${p.fecha}${p.estadio ? ' · ' + p.estadio : ''}`;
-    $('#m-score').replaceChildren(markEl('span', 'partidos', 'local', w, p.local), markEl('b', 'partidos', 'goles_local', w, p.goles_local),
+    $('#m-score').replaceChildren(escudo(p.local), markEl('span', 'partidos', 'local', w, p.local), markEl('b', 'partidos', 'goles_local', w, p.goles_local),
       el('span', {}, '–'), markEl('b', 'partidos', 'goles_visitante', w, p.goles_visitante), markEl('span', 'partidos', 'visitante', w, p.visitante));
     $('#m-coach').replaceChildren('Entrenador del Madrid: ', markEl('span', 'partidos', 'entrenador_rm', w, p.entrenador_rm));
   }
@@ -641,18 +684,21 @@ function renderHistorico() {
   rv.sort((a, b) => (sortR.k === 'rival' ? a.rival.localeCompare(b.rival) : a[sortR.k] - b[sortR.k]) * (sortR.asc ? 1 : -1));
   document.querySelectorAll('#tabla-rivales th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === sortR.k ? (sortR.asc ? 'ascending' : 'descending') : 'none'));
   fillTable($('#tabla-rivales'), rv, ['rival', 'pj', 'v', 'e', 'd', 'gf', 'gc', 'pct_v'], (r) => r.rival);
+  $('#tabla-rivales tbody').querySelectorAll('tr').forEach((tr, i) => tr.firstChild.replaceChildren(conEscudo(rv[i].rival)));
 
   // Todos los partidos (los más recientes primero)
   const qp = $('#q-partido').value.trim().toLowerCase();
   const MAX = 400;
-  const ps = hs.filter((r) => !qp || `${r.fecha} ${r.temporada} ${r.local} ${r.visitante} ${r.competicion}`.toLowerCase().includes(qp))
+  const ps = hs.filter((r) => !qp || `${r.fecha} ${r.temporada} ${r.local} ${r.visitante} ${r.competicion} ${r.estadio}`.toLowerCase().includes(qp))
     .sort((a, b) => b.fecha.localeCompare(a.fecha));
   const conAl = new Set(rows('historico_alineaciones').map((r) => r.partido_id));
   const tb = $('#tabla-hist tbody');
   tb.replaceChildren(...ps.slice(0, MAX).map((r) => {
     const tr = el('tr', { 'data-key': r.partido_id || '' });
     if (r.partido_id && r.partido_id === partidoHist) tr.className = 'sel';
-    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), el('td', {}, `${r.local} – ${r.visitante}`),
+    const partido = el('td', { class: 'partido' });
+    partido.append(conEscudo(r.local), el('span', { class: 'sep' }, '–'), conEscudo(r.visitante));
+    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), partido, el('td', { class: 'estadio' }, r.estadio || '—'),
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${conAl.has(r.partido_id) ? ' 👥' : ''}`));
     tr.lastChild.style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     return tr;
@@ -664,15 +710,37 @@ function renderHistorico() {
   const p = todos.find((r) => r.partido_id === partidoHist);
   $('#alineacion').hidden = !al.length;
   if (al.length && p) {
-    $('#al-titulo').textContent = `${p.fecha} · ${p.competicion} · ${p.local} ${p.goles_local}–${p.goles_visitante} ${p.visitante}`;
-    $('#al-equipos').replaceChildren(...d3.groups(al, (r) => r.equipo).map(([equipo, js]) => {
+    $('#al-titulo').replaceChildren(`${p.fecha} · ${p.competicion} · `, conEscudo(p.local), ` ${p.goles_local}–${p.goles_visitante} `,
+      conEscudo(p.visitante), p.estadio ? ` · ${p.estadio}` : '');
+    const porDorsal = (a, b) => (a.dorsal === '' ? 999 : N(a.dorsal)) - (b.dorsal === '' ? 999 : N(b.dorsal));
+    // primero el local, luego el visitante
+    const equipos = d3.groups(al, (r) => r.equipo).sort(([a], [b]) => (b === p.local) - (a === p.local));
+    $('#al-equipos').replaceChildren(...equipos.map(([equipo, js]) => {
       const c = el('div', { class: 'rm-lineup' });
-      c.append(el('h3', {}, equipo));
-      for (const [titulo, lista] of [['Titulares', js.filter((j) => j.titular === '1')], ['Suplentes', js.filter((j) => j.titular !== '1')]]) {
-        if (!lista.length) continue;
-        c.append(el('p', { class: 'rm-sub' }, titulo));
-        for (const j of lista) c.append(el('div', {}, `${j.dorsal ? j.dorsal + ' · ' : ''}${j.jugador}${j.posicion ? ' (' + j.posicion + ')' : ''}`));
+      c.append(conEscudo(equipo, 'h3'));
+      const cuerpo = el('div', { class: 'al-cuerpo' });
+      const lista = el('div', { class: 'al-lista' });
+      const tit = js.filter((j) => j.titular === '1').sort(porDorsal);
+      for (const [titulo, grupo] of [['Titulares', tit], ['Suplentes', js.filter((j) => j.titular !== '1').sort(porDorsal)]]) {
+        if (!grupo.length) continue;
+        lista.append(el('p', { class: 'rm-sub' }, titulo));
+        for (const j of grupo) {
+          const fila = el('div', { class: 'al-fila' });
+          fila.append(el('span', { class: 'al-dorsal' }, j.dorsal || ''), el('span', {}, j.jugador),
+            j.posicion ? el('span', { class: 'al-pos' }, POS_ES[j.posicion] || j.posicion) : '');
+          lista.append(fila);
+        }
       }
+      cuerpo.append(lista);
+      if (tit.some((j) => j.px !== '')) {
+        const caja = el('div');
+        // Opta (esta temporada) da la línea del jugador y su posición media real; Transfermarkt, su puesto en la alineación
+        const media = tit.some((j) => ['GK', 'DF', 'MF', 'FW'].includes(j.posicion));
+        caja.append(campito(tit, equipo === RM ? C_RM() : C_RIV()),
+          el('p', { class: 'campito-nota' }, media ? 'Posición media de cada titular durante el partido' : 'Puesto de cada titular en la alineación'));
+        cuerpo.append(caja);
+      }
+      c.append(cuerpo);
       return c;
     }));
   }

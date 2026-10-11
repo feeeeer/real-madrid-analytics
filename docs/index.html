@@ -37,10 +37,26 @@
 body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); }
 #dash-root { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
 .rm-score b { margin: 0 2px; }
-#tabla-hist td:nth-child(3) { white-space: normal; text-align: left; }
-#tabla-hist td:nth-child(2) { text-align: left; }
-.rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; }
-.rm-lineup h3 { margin-top: 0; }
+#tabla-hist td:nth-child(2), #tabla-hist td:nth-child(3), #tabla-hist td:nth-child(4) { text-align: left; }
+#tabla-hist td.partido { white-space: normal; }
+#tabla-hist td.estadio { white-space: normal; color: var(--color-fg-muted); min-width: 8rem; }
+#tabla-hist th:nth-child(2), #tabla-hist th:nth-child(3), #tabla-hist th:nth-child(4) { text-align: left; }
+.con-esc { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
+#historico #rivales, #historico #partidos-hist { grid-column: 1 / -1; }
+.campito-nota { font-size: 0.6875rem; color: var(--color-fg-muted); text-align: center; margin-top: 4px; line-height: 1.3; }
+.esc { width: 18px; height: 18px; object-fit: contain; flex: none; }
+.esc-vacio { display: inline-block; }
+.partido .sep { margin: 0 6px; color: var(--color-fg-muted); }
+.rm-score .esc { width: 32px; height: 32px; }
+#al-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; min-width: 0; }
+.rm-lineup h3 { margin-top: 0; display: flex; }
+.al-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(120px, 170px); gap: var(--cds-gap-md); align-items: start; }
+.al-fila { display: flex; gap: 8px; }
+.al-dorsal { width: 1.6rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--color-fg-muted); flex: none; }
+.al-pos { color: var(--color-fg-muted); }
+.campito { width: 100%; height: auto; position: sticky; top: 8px; }
+@media (max-width: 480px) { .al-cuerpo { grid-template-columns: 1fr; } .campito { max-width: 200px; margin: 0 auto; position: static; } }
 
 .rm { font-family: var(--font-anthropic-sans); color: var(--color-fg); }
 .rm h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; }
@@ -291,10 +307,10 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       </div>
       <div class="rm-card" id="partidos-hist">
         <h2>Todos los partidos</h2>
-        <input class="rm-search" id="q-partido" type="search" placeholder="Rival, temporada o fecha…" aria-label="Buscar partido">
+        <input class="rm-search" id="q-partido" type="search" placeholder="Rival, temporada, fecha o estadio…" aria-label="Buscar partido">
         <div class="rm-tablewrap">
           <table id="tabla-hist">
-            <thead><tr><th>Fecha</th><th>Competición</th><th>Partido</th><th>Resultado</th></tr></thead>
+            <thead><tr><th>Fecha</th><th>Competición</th><th>Partido</th><th>Estadio</th><th>Resultado</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>

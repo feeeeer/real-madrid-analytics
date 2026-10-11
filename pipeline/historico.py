@@ -26,7 +26,40 @@ CORTE_TM = "2012-07-01"  # desde aquí manda Transfermarkt (todas las competicio
 TM = "https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/"
 TM_COMP = {"ES1": "LaLiga", "CL": "Champions League", "CDR": "Copa del Rey", "SUC": "Supercopa de España",
            "USC": "Supercopa de Europa", "KLUB": "Mundial de Clubes"}
-COLS = ["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante", "partido_id", "fuente"]
+COLS = ["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante", "partido_id", "fuente",
+        "estadio", "neutral", "id_local", "id_visitante", "logo_local", "logo_visitante"]
+ESCUDO_TM = "https://tmssl.akamaized.net/images/wappen/head/{}.png"
+# posición de Transfermarkt -> punto de un campo vertical (px: 0 banda izquierda, 1 derecha; py: 0 propia portería, 1 rival)
+POS = {"Goalkeeper": (0.5, 0.06), "Sweeper": (0.5, 0.15), "Centre-Back": (0.5, 0.22), "Left-Back": (0.12, 0.28),
+       "Right-Back": (0.88, 0.28), "Defender": (0.5, 0.25), "Defensive Midfield": (0.5, 0.40), "Central Midfield": (0.5, 0.53),
+       "Left Midfield": (0.12, 0.55), "Right Midfield": (0.88, 0.55), "Midfield": (0.5, 0.53), "Attacking Midfield": (0.5, 0.67),
+       "Left Winger": (0.15, 0.79), "Right Winger": (0.85, 0.79), "Second Striker": (0.5, 0.80), "Centre-Forward": (0.5, 0.89),
+       "Attack": (0.5, 0.85)}
+
+
+def colocar(al):
+    """px/py de los titulares según su posición; si varios comparten posición, se reparten a lo ancho."""
+    al = al.copy()
+    al["px"], al["py"] = np.nan, np.nan
+    tit = al[(al["titular"] == 1) & al["posicion"].isin(POS)]
+    for _, grupo in tit.groupby(["partido_id", "equipo", "posicion"]):
+        x0, y0 = POS[grupo["posicion"].iloc[0]]
+        n = len(grupo)
+        for i, idx in enumerate(grupo.sort_values("dorsal").index):
+            al.loc[idx, "px"] = round(min(max(x0 + (i - (n - 1) / 2) * 0.22, 0.06), 0.94), 3)
+            al.loc[idx, "py"] = y0
+    return al
+
+
+def estadio_madrid(fecha):
+    """Campo del Madrid en casa antes de 2012 (las fuentes antiguas no traen estadio)."""
+    if fecha < "1946-07-01":
+        return "Campo de Chamartín"
+    if fecha < "1947-12-14":
+        return "Estadio Metropolitano"  # mientras se construía el nuevo Chamartín
+    if fecha < "1955-01-04":
+        return "Nuevo Estadio Chamartín"
+    return "Santiago Bernabéu"
 
 
 def get(url):
@@ -65,21 +98,24 @@ def construir_base():
     es = pd.read_csv(io.BytesIO(get(gh + "spain.csv")))
     es = es[((es["home"] == RM) | (es["visitor"] == RM)) & (es["Date"] < CORTE_TM)]
     liga = pd.DataFrame({"fecha": es["Date"], "competicion": "LaLiga", "local": es["home"], "visitante": es["visitor"],
-                         "goles_local": es["hgoal"], "goles_visitante": es["vgoal"], "partido_id": "", "fuente": "engsoccerdata"})
+                         "goles_local": es["hgoal"], "goles_visitante": es["vgoal"], "partido_id": "", "fuente": "engsoccerdata",
+                         "neutral": False})
     ch = pd.read_csv(io.BytesIO(get(gh + "champs.csv")))
     ch = ch[((ch["home"] == RM) | (ch["visitor"] == RM)) & (ch["Date"] < CORTE_TM)]
     # en las eliminatorias con prórroga, el resultado final del partido incluye la prórroga
     gl = np.where(ch["aethgoal"].notna(), ch["aethgoal"], ch["hgoal"])
     gv = np.where(ch["aetvgoal"].notna(), ch["aetvgoal"], ch["vgoal"])
     europa = pd.DataFrame({"fecha": ch["Date"], "competicion": "Copa de Europa / Champions", "local": ch["home"], "visitante": ch["visitor"],
-                           "goles_local": gl, "goles_visitante": gv, "partido_id": "", "fuente": "engsoccerdata"})
+                           "goles_local": gl, "goles_visitante": gv, "partido_id": "", "fuente": "engsoccerdata",
+                           "neutral": ch["round"].astype(str).str.lower().eq("final").values})
 
     g = pd.read_csv(io.BytesIO(gzip.decompress(get(TM + "games.csv.gz"))))
     g = g[((g["home_club_id"] == TM_RM) | (g["away_club_id"] == TM_RM)) & g["competition_id"].isin(TM_COMP) & (g["date"] >= CORTE_TM)]
     g = g[g["home_club_goals"].notna()]
     tm = pd.DataFrame({"fecha": g["date"], "competicion": g["competition_id"].map(TM_COMP).replace({"Champions League": "Copa de Europa / Champions"}),
                        "local": g["home_club_name"], "visitante": g["away_club_name"], "goles_local": g["home_club_goals"],
-                       "goles_visitante": g["away_club_goals"], "partido_id": "tm" + g["game_id"].astype(str), "fuente": "transfermarkt"})
+                       "goles_visitante": g["away_club_goals"], "partido_id": "tm" + g["game_id"].astype(str), "fuente": "transfermarkt",
+                       "estadio": g["stadium"], "neutral": False, "id_local": g["home_club_id"], "id_visitante": g["away_club_id"]})
     # el Madrid se llama igual en todas las fuentes
     for c, cid in (("local", "home_club_id"), ("visitante", "away_club_id")):
         tm.loc[g[cid].values == TM_RM, c] = RM
@@ -89,7 +125,8 @@ def construir_base():
     club = {**dict(zip(g["home_club_id"], tm["local"])), **dict(zip(g["away_club_id"], tm["visitante"]))}
     al = pd.DataFrame({"partido_id": "tm" + lin["game_id"].astype(str), "equipo": lin["club_id"].map(club).fillna(""),
                        "jugador": lin["player_name"], "posicion": lin["position"], "titular": (lin["type"] == "starting_lineup").astype(int),
-                       "dorsal": lin["number"]})
+                       "dorsal": pd.to_numeric(lin["number"], errors="coerce")})
+    al = colocar(al)
     base = pd.concat([liga, europa, tm], ignore_index=True)
     base.to_csv(BASE / "base.csv", index=False)
     al.to_csv(BASE / "base_alineaciones.csv", index=False)
@@ -112,9 +149,12 @@ def espn_actual():
             continue  # amistosos y partidos sin jugar fuera
         eq = {t["homeAway"]: t for t in c["competitors"]}
         score = lambda t: int(float(t["score"]["value"] if isinstance(t["score"], dict) else t["score"]))
+        logo = lambda t: t["team"].get("logo") or (t["team"].get("logos") or [{}])[0].get("href", "")
         filas.append({"fecha": e["date"][:10], "competicion": comp, "local": eq["home"]["team"]["displayName"],
                       "visitante": eq["away"]["team"]["displayName"], "goles_local": score(eq["home"]),
-                      "goles_visitante": score(eq["away"]), "partido_id": "espn" + str(e["id"]), "fuente": "ESPN"})
+                      "goles_visitante": score(eq["away"]), "partido_id": "espn" + str(e["id"]), "fuente": "ESPN",
+                      "estadio": (c.get("venue") or {}).get("fullName", ""), "neutral": bool(c.get("neutralSite")),
+                      "logo_local": logo(eq["home"]), "logo_visitante": logo(eq["away"])})
     return pd.DataFrame(filas, columns=[c for c in COLS if c != "temporada"])
 
 
@@ -155,14 +195,42 @@ def main():
     h["goles_local"], h["goles_visitante"] = h["goles_local"].astype(int), h["goles_visitante"].astype(int)
     h["resultado"] = np.select([h["goles_rm"] > h["goles_rival"], h["goles_rm"] == h["goles_rival"]], ["V", "E"], "D")
 
-    # alineaciones de esta temporada: las de los eventos de WhoScored (partidos de Liga ya analizados)
-    if (WEB / "metricas_jugador.csv").exists() and (WEB / "partidos.csv").exists():
-        pj, mj = pd.read_csv(WEB / "partidos.csv"), pd.read_csv(WEB / "metricas_jugador.csv")
-        id_por_fecha = dict(zip(h.loc[h["competicion"] == "LaLiga", "fecha"], h.loc[h["competicion"] == "LaLiga", "partido_id"]))
-        mj["partido_id"] = mj["match_id"].map(dict(zip(pj["match_id"], pj["fecha"]))).map(id_por_fecha)
-        mj = mj[mj["partido_id"].notna() & mj["partido_id"].str.startswith("espn")]
-        al = pd.concat([al, pd.DataFrame({"partido_id": mj["partido_id"], "equipo": mj["equipo"], "jugador": mj["jugador"],
-                                          "posicion": "", "titular": mj["titular"], "dorsal": ""})], ignore_index=True)
+    # estadio: el de la fuente; antes de 2012 solo se sabe el del Madrid en casa (deducido por fecha)
+    h["estadio"] = h["estadio"].fillna("")
+    deducir = (h["estadio"] == "") & (h["local"] == RM) & ~h["neutral"].fillna(False).astype(bool) & (h["fecha"] < CORTE_TM)
+    h.loc[deducir, "estadio"] = h.loc[deducir, "fecha"].map(estadio_madrid)
+
+    # alineaciones de esta temporada: las de los eventos de WhoScored (dorsal y posición media de cada titular)
+    if (WEB / "alineaciones.csv").exists() and (WEB / "partidos.csv").exists():
+        pj, aw = pd.read_csv(WEB / "partidos.csv"), pd.read_csv(WEB / "alineaciones.csv")
+        liga = h[h["competicion"] == "LaLiga"].set_index("fecha")
+        aw["fecha"] = aw["match_id"].map(dict(zip(pj["match_id"], pj["fecha"])))
+        aw = aw[aw["fecha"].isin(liga.index)]
+        aw["partido_id"] = aw["fecha"].map(liga["partido_id"])
+        # el rival con el nombre del histórico
+        aw["equipo"] = np.where(aw["equipo"] == RM, RM, aw["fecha"].map(liga["rival"]))
+        aw = aw[aw["partido_id"].str.startswith("espn")]
+        al = pd.concat([al, pd.DataFrame({"partido_id": aw["partido_id"], "equipo": aw["equipo"], "jugador": aw["jugador"],
+                                          "posicion": aw["linea"].fillna(""), "titular": aw["titular"], "dorsal": aw["dorsal"],
+                                          "px": aw["px"], "py": aw["py"]})], ignore_index=True)
+
+    # escudos: el de Transfermarkt por id de club; si no hay, el logo de ESPN
+    escudos = {}
+    for lado in ("local", "visitante"):
+        for n, i, lg in zip(h[lado], h[f"id_{lado}"], h[f"logo_{lado}"]):
+            if pd.notna(i) and i != "":
+                escudos[n] = ESCUDO_TM.format(int(float(i)))
+            elif isinstance(lg, str) and lg and n not in escudos:
+                escudos[n] = lg
+    # los nombres de WhoScored (post-partido) también, emparejados con los del histórico
+    if (WEB / "partidos.csv").exists():
+        pj = pd.read_csv(WEB / "partidos.csv")
+        ws_nombres = set(pj["local"]) | set(pj["visitante"])
+        # el Madrid nunca es candidato: "Real Betis" no puede heredar su escudo por compartir "Real"
+        for a, b in unificar(ws_nombres - {RM}, [n for n in escudos if n != RM]).items():
+            # solo si todas sus palabras están en el otro nombre: "Atletico" -> "Atletico Madrid", nunca "Real Sociedad" -> "Real Betis"
+            if b in escudos and set(words(a)) <= set(words(b)):
+                escudos.setdefault(a, escudos[b])
 
     # autocomprobaciones
     assert h["partido_id"].replace("", np.nan).dropna().is_unique
@@ -170,10 +238,13 @@ def main():
     assert not h.duplicated(["fecha", "competicion"]).any(), h[h.duplicated(["fecha", "competicion"], keep=False)]
 
     h = h.sort_values("fecha")[["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante",
-                                "rival", "condicion", "goles_rm", "goles_rival", "resultado", "partido_id", "fuente"]]
+                                "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente"]]
     WEB.mkdir(parents=True, exist_ok=True)
     h.to_csv(WEB / "historico.csv", index=False)
-    al.to_csv(WEB / "historico_alineaciones.csv", index=False)
+    al["dorsal"] = pd.to_numeric(al["dorsal"], errors="coerce").astype("Int64")
+    al[["partido_id", "equipo", "jugador", "posicion", "titular", "dorsal", "px", "py"]].to_csv(WEB / "historico_alineaciones.csv", index=False)
+    pd.DataFrame(sorted(escudos.items()), columns=["equipo", "url"]).to_csv(WEB / "escudos.csv", index=False)
+    print(f"Escudos: {len(escudos)} equipos; con estadio: {(h['estadio'] != '').sum()} de {len(h)} partidos")
     print(h.groupby("competicion").agg(partidos=("fecha", "size"), desde=("fecha", "min"), hasta=("fecha", "max")))
     print(f"{len(h)} partidos; alineaciones de {al['partido_id'].nunique()} partidos; temporada actual (ESPN): {len(actual)}")
     print("Rivales distintos:", h["rival"].nunique())
