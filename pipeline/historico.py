@@ -10,7 +10,7 @@ Fuentes:
   - ESPN (API pública de su web): temporada actual, todas las competiciones
   - Alineaciones de la temporada actual: las de los eventos de WhoScored (docs/data/metricas_jugador.csv)
 """
-import gzip, hashlib, io, json, os, re, sys, unicodedata, urllib.parse, urllib.request
+import gzip, hashlib, io, json, os, re, sys, unicodedata, urllib.request
 from datetime import date
 from pathlib import Path
 
@@ -67,25 +67,6 @@ def estadio_madrid(fecha):
 
 def get(url):
     return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=300).read()
-
-
-def escudo_wikidata(nombre):
-    """Escudo de un club sin id de Transfermarkt en nuestras fuentes: su ficha de Wikidata (id de Transfermarkt o logo de Commons)."""
-    api = "https://www.wikidata.org/w/api.php?format=json&"
-    q = urllib.parse.urlencode({"action": "wbsearchentities", "search": nombre, "language": "es", "uselang": "es", "type": "item", "limit": 7})
-    for r in json.loads(get_wiki(api + q)).get("search", []):
-        d = r.get("description", "").lower()
-        # solo clubes de fútbol masculinos de primer equipo
-        if not re.search(r"f[uú]tbol|football|soccer", d) or re.search(r"femen|women|feminin|juvenil|reserv|youth|filial", d):
-            continue
-        claims = json.loads(get_wiki(api + f"action=wbgetentities&props=claims&ids={r['id']}"))["entities"][r["id"]]["claims"]
-        valor = lambda p: claims[p][0]["mainsnak"].get("datavalue", {}).get("value") if p in claims else None
-        if str(valor("P7223") or "").isdigit():  # P7223: id de equipo en Transfermarkt
-            return ESCUDO_TM.format(valor("P7223"))
-        if valor("P154"):
-            return "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(valor("P154").replace(" ", "_")) + "?width=96"
-        return ""
-    return ""
 
 
 def get_wiki(url):
@@ -272,17 +253,8 @@ def main():
             # solo si todas sus palabras están en el otro nombre: "Atletico" -> "Atletico Madrid", nunca "Real Sociedad" -> "Real Betis"
             if b in escudos and set(words(a)) <= set(words(b)):
                 escudos.setdefault(a, escudos[b])
-    # el resto (clubes antiguos, sin id de Transfermarkt): Wikidata, guardado en caché para preguntar una sola vez por club
-    cache_f = BASE / "escudos_wikidata.csv"
-    cache = dict(pd.read_csv(cache_f, keep_default_na=False).values) if cache_f.exists() else {}
-    for n in sorted((set(h["local"]) | set(h["visitante"])) - set(escudos) - set(cache)):
-        try:
-            cache[n] = escudo_wikidata(n)
-        except Exception as e:
-            print(f"Wikidata sin respuesta ({e}); se reintenta en la próxima ejecución")
-            break
-    pd.DataFrame(sorted(cache.items()), columns=["equipo", "url"]).to_csv(cache_f, index=False)
-    escudos.update({n: u for n, u in cache.items() if u and n not in escudos})
+    # clubes antiguos sin id de Transfermarkt en nuestras fuentes: tabla a mano (ids de Transfermarkt sacados de Wikidata, o el escudo de Wikipedia)
+    escudos.update(dict(pd.read_csv(BASE / "escudos_manual.csv").values))
     print("Sin escudo:", sorted((set(h["local"]) | set(h["visitante"])) - set(escudos)))
 
     # autocomprobaciones
@@ -305,7 +277,7 @@ def main():
         f = carpeta / (hashlib.md5(url.encode()).hexdigest()[:12] + ".png")
         try:
             if not f.exists():
-                f.write_bytes(get(url))
+                f.write_bytes(get_wiki(url) if "wikimedia.org" in url else get(url))
             locales[url] = f"escudos/{f.name}"
         except Exception as e:
             print(f"Escudo no descargado ({e}): {url}")
