@@ -765,7 +765,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1960-04-17,1959/60,LaLiga,UD Las Palmas,Real Madrid,0,1,UD Las Palmas,Visitante,1,0,V,,,engsoccerdata
 1960-04-21,1959/60,Copa de Europa / Champions,Real Madrid,FC Barcelona,3,1,FC Barcelona,Local,3,1,V,Santiago Bernabéu,,engsoccerdata
 1960-04-27,1959/60,Copa de Europa / Champions,FC Barcelona,Real Madrid,1,3,FC Barcelona,Visitante,3,1,V,,,engsoccerdata
-1960-05-18,1959/60,Copa de Europa / Champions,Real Madrid,Frankfurter SG Eintracht,7,3,Frankfurter SG Eintracht,Local,7,3,V,,,engsoccerdata
+1960-05-18,1959/60,Copa de Europa / Champions,Real Madrid,Eintracht Frankfurt,7,3,Eintracht Frankfurt,Local,7,3,V,,,engsoccerdata
 1960-09-11,1960/61,LaLiga,Atletico Madrid,Real Madrid,1,0,Atletico Madrid,Visitante,0,1,D,,,engsoccerdata
 1960-09-18,1960/61,LaLiga,Real Madrid,Real Sociedad,3,1,Real Sociedad,Local,3,1,V,Santiago Bernabéu,,engsoccerdata
 1960-09-25,1960/61,LaLiga,Elche CF,Real Madrid,3,4,Elche CF,Visitante,4,3,V,,,engsoccerdata
@@ -908,7 +908,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1964-04-19,1963/64,LaLiga,Levante UD,Real Madrid,0,1,Levante UD,Visitante,1,0,V,,,engsoccerdata
 1964-04-26,1963/64,LaLiga,Real Madrid,Real Oviedo,1,0,Real Oviedo,Local,1,0,V,Santiago Bernabéu,,engsoccerdata
 1964-04-29,1963/64,Copa de Europa / Champions,Real Madrid,FC Zurich,6,0,FC Zurich,Local,6,0,V,Santiago Bernabéu,,engsoccerdata
-1964-05-27,1963/64,Copa de Europa / Champions,Internazionale,Real Madrid,3,1,Internazionale,Visitante,1,3,D,,,engsoccerdata
+1964-05-27,1963/64,Copa de Europa / Champions,Inter Milan,Real Madrid,3,1,Inter Milan,Visitante,1,3,D,,,engsoccerdata
 1964-09-13,1964/65,LaLiga,Espanyol Barcelona,Real Madrid,1,2,Espanyol Barcelona,Visitante,2,1,V,,,engsoccerdata
 1964-09-19,1964/65,LaLiga,Real Madrid,UD Las Palmas,6,0,UD Las Palmas,Local,6,0,V,Santiago Bernabéu,,engsoccerdata
 1964-09-23,1964/65,Copa de Europa / Champions,B 1909 Odense,Real Madrid,2,5,B 1909 Odense,Visitante,5,2,V,,,engsoccerdata
@@ -981,8 +981,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1966-03-20,1965/66,LaLiga,UD Las Palmas,Real Madrid,1,2,UD Las Palmas,Visitante,2,1,V,,,engsoccerdata
 1966-03-27,1965/66,LaLiga,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,,,engsoccerdata
 1966-04-03,1965/66,LaLiga,Real Madrid,RCD Mallorca,5,1,RCD Mallorca,Local,5,1,V,Santiago Bernabéu,,engsoccerdata
-1966-04-13,1965/66,Copa de Europa / Champions,Real Madrid,Internazionale,1,0,Internazionale,Local,1,0,V,Santiago Bernabéu,,engsoccerdata
-1966-04-20,1965/66,Copa de Europa / Champions,Internazionale,Real Madrid,1,1,Internazionale,Visitante,1,1,E,,,engsoccerdata
+1966-04-13,1965/66,Copa de Europa / Champions,Real Madrid,Inter Milan,1,0,Inter Milan,Local,1,0,V,Santiago Bernabéu,,engsoccerdata
+1966-04-20,1965/66,Copa de Europa / Champions,Inter Milan,Real Madrid,1,1,Inter Milan,Visitante,1,1,E,,,engsoccerdata
 1966-05-11,1965/66,Copa de Europa / Champions,Real Madrid,Partizan Belgrade,2,1,Partizan Belgrade,Local,2,1,V,,,engsoccerdata
 1966-09-11,1966/67,LaLiga,Real Madrid,Elche CF,4,1,Elche CF,Local,4,1,V,Santiago Bernabéu,,engsoccerdata
 1966-09-18,1966/67,LaLiga,Pontevedra CF,Real Madrid,0,1,Pontevedra CF,Visitante,1,0,V,,,engsoccerdata
@@ -1006,10 +1006,10 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1967-01-22,1966/67,LaLiga,Espanyol Barcelona,Real Madrid,2,3,Espanyol Barcelona,Visitante,3,2,V,,,engsoccerdata
 1967-02-05,1966/67,LaLiga,Real Madrid,Granada CF,2,0,Granada CF,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 1967-02-12,1966/67,LaLiga,Real Zaragoza,Real Madrid,2,1,Real Zaragoza,Visitante,1,2,D,,,engsoccerdata
-1967-02-15,1966/67,Copa de Europa / Champions,Internazionale,Real Madrid,1,0,Internazionale,Visitante,0,1,D,,,engsoccerdata
+1967-02-15,1966/67,Copa de Europa / Champions,Inter Milan,Real Madrid,1,0,Inter Milan,Visitante,0,1,D,,,engsoccerdata
 1967-02-19,1966/67,LaLiga,Real Madrid,Sevilla FC,3,0,Sevilla FC,Local,3,0,V,Santiago Bernabéu,,engsoccerdata
 1967-02-25,1966/67,LaLiga,Real Madrid,UD Las Palmas,1,1,UD Las Palmas,Local,1,1,E,Santiago Bernabéu,,engsoccerdata
-1967-03-01,1966/67,Copa de Europa / Champions,Real Madrid,Internazionale,0,2,Internazionale,Local,0,2,D,Santiago Bernabéu,,engsoccerdata
+1967-03-01,1966/67,Copa de Europa / Champions,Real Madrid,Inter Milan,0,2,Inter Milan,Local,0,2,D,Santiago Bernabéu,,engsoccerdata
 1967-03-05,1966/67,LaLiga,Hercules CF,Real Madrid,0,2,Hercules CF,Visitante,2,0,V,,,engsoccerdata
 1967-03-12,1966/67,LaLiga,Real Madrid,Athletic Bilbao,4,0,Athletic Bilbao,Local,4,0,V,Santiago Bernabéu,,engsoccerdata
 1967-03-19,1966/67,LaLiga,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,,,engsoccerdata
@@ -1020,9 +1020,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1967-04-23,1966/67,LaLiga,Real Madrid,CE Sabadell,5,0,CE Sabadell,Local,5,0,V,Santiago Bernabéu,,engsoccerdata
 1967-09-10,1967/68,LaLiga,Sevilla FC,Real Madrid,0,2,Sevilla FC,Visitante,2,0,V,,,engsoccerdata
 1967-09-16,1967/68,LaLiga,Real Madrid,Real Sociedad,9,1,Real Sociedad,Local,9,1,V,Santiago Bernabéu,,engsoccerdata
-1967-09-20,1967/68,Copa de Europa / Champions,AFC Ajax,Real Madrid,1,1,AFC Ajax,Visitante,1,1,E,,,engsoccerdata
+1967-09-20,1967/68,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,1,1,Ajax Amsterdam,Visitante,1,1,E,,,engsoccerdata
 1967-09-24,1967/68,LaLiga,Real Zaragoza,Real Madrid,0,0,Real Zaragoza,Visitante,0,0,E,,,engsoccerdata
-1967-10-04,1967/68,Copa de Europa / Champions,Real Madrid,AFC Ajax,2,1,AFC Ajax,Local,2,1,V,Santiago Bernabéu,,engsoccerdata
+1967-10-04,1967/68,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,2,1,Ajax Amsterdam,Local,2,1,V,Santiago Bernabéu,,engsoccerdata
 1967-10-07,1967/68,LaLiga,Real Madrid,Espanyol Barcelona,2,2,Espanyol Barcelona,Local,2,2,E,Santiago Bernabéu,,engsoccerdata
 1967-10-15,1967/68,LaLiga,Athletic Bilbao,Real Madrid,1,2,Athletic Bilbao,Visitante,2,1,V,,,engsoccerdata
 1967-10-29,1967/68,LaLiga,Real Madrid,Atletico Madrid,0,0,Atletico Madrid,Local,0,0,E,Santiago Bernabéu,,engsoccerdata
@@ -1222,10 +1222,10 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1973-03-25,1972/73,LaLiga,Real Madrid,Valencia CF,2,1,Valencia CF,Local,2,1,V,Santiago Bernabéu,,engsoccerdata
 1973-04-01,1972/73,LaLiga,Real Oviedo,Real Madrid,1,2,Real Oviedo,Visitante,2,1,V,,,engsoccerdata
 1973-04-07,1972/73,LaLiga,Real Madrid,Real Betis,1,1,Real Betis,Local,1,1,E,Santiago Bernabéu,,engsoccerdata
-1973-04-11,1972/73,Copa de Europa / Champions,AFC Ajax,Real Madrid,2,1,AFC Ajax,Visitante,1,2,D,,,engsoccerdata
+1973-04-11,1972/73,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,2,1,Ajax Amsterdam,Visitante,1,2,D,,,engsoccerdata
 1973-04-15,1972/73,LaLiga,Burgos CF,Real Madrid,2,3,Burgos CF,Visitante,3,2,V,,,engsoccerdata
 1973-04-21,1972/73,LaLiga,Espanyol Barcelona,Real Madrid,1,0,Espanyol Barcelona,Visitante,0,1,D,,,engsoccerdata
-1973-04-25,1972/73,Copa de Europa / Champions,Real Madrid,AFC Ajax,0,1,AFC Ajax,Local,0,1,D,Santiago Bernabéu,,engsoccerdata
+1973-04-25,1972/73,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,0,1,Ajax Amsterdam,Local,0,1,D,Santiago Bernabéu,,engsoccerdata
 1973-05-06,1972/73,LaLiga,Real Sociedad,Real Madrid,1,1,Real Sociedad,Visitante,1,1,E,,,engsoccerdata
 1973-05-09,1972/73,LaLiga,Real Madrid,Athletic Bilbao,3,3,Athletic Bilbao,Local,3,3,E,Santiago Bernabéu,,engsoccerdata
 1973-05-13,1972/73,LaLiga,Real Madrid,Málaga,2,0,Málaga,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
@@ -1529,10 +1529,10 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1981-03-22,1980/81,LaLiga,Hercules CF,Real Madrid,1,2,Hercules CF,Visitante,2,1,V,,,engsoccerdata
 1981-03-29,1980/81,LaLiga,Real Madrid,FC Barcelona,3,0,FC Barcelona,Local,3,0,V,Santiago Bernabéu,,engsoccerdata
 1981-04-04,1980/81,LaLiga,UD Salamanca,Real Madrid,1,3,UD Salamanca,Visitante,3,1,V,,,engsoccerdata
-1981-04-08,1980/81,Copa de Europa / Champions,Real Madrid,Internazionale,2,0,Internazionale,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
+1981-04-08,1980/81,Copa de Europa / Champions,Real Madrid,Inter Milan,2,0,Inter Milan,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 1981-04-12,1980/81,LaLiga,Real Madrid,Real Zaragoza,2,0,Real Zaragoza,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 1981-04-19,1980/81,LaLiga,Real Madrid,Atletico Madrid,2,0,Atletico Madrid,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
-1981-04-22,1980/81,Copa de Europa / Champions,Internazionale,Real Madrid,1,0,Internazionale,Visitante,0,1,D,,,engsoccerdata
+1981-04-22,1980/81,Copa de Europa / Champions,Inter Milan,Real Madrid,1,0,Inter Milan,Visitante,0,1,D,,,engsoccerdata
 1981-04-26,1980/81,LaLiga,Real Valladolid,Real Madrid,1,3,Real Valladolid,Visitante,3,1,V,,,engsoccerdata
 1981-05-27,1980/81,Copa de Europa / Champions,Liverpool,Real Madrid,1,0,Liverpool,Visitante,0,1,D,,,engsoccerdata
 1981-09-20,1981/82,LaLiga,Real Sociedad,Real Madrid,3,1,Real Sociedad,Visitante,1,3,D,,,engsoccerdata
@@ -2089,7 +2089,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1995-06-18,1994/95,LaLiga,Real Madrid,Real Betis,0,2,Real Betis,Local,0,2,D,Santiago Bernabéu,,engsoccerdata
 1995-09-03,1995/96,LaLiga,Rayo Vallecano,Real Madrid,1,5,Rayo Vallecano,Visitante,5,1,V,,,engsoccerdata
 1995-09-09,1995/96,LaLiga,Real Madrid,Athletic Bilbao,1,2,Athletic Bilbao,Local,1,2,D,Santiago Bernabéu,,engsoccerdata
-1995-09-13,1995/96,Copa de Europa / Champions,AFC Ajax,Real Madrid,1,0,AFC Ajax,Visitante,0,1,D,,,engsoccerdata
+1995-09-13,1995/96,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,1,0,Ajax Amsterdam,Visitante,0,1,D,,,engsoccerdata
 1995-09-17,1995/96,LaLiga,Real Madrid,Real Oviedo,2,3,Real Oviedo,Local,2,3,D,Santiago Bernabéu,,engsoccerdata
 1995-09-23,1995/96,LaLiga,Real Betis,Real Madrid,0,0,Real Betis,Visitante,0,0,E,,,engsoccerdata
 1995-09-27,1995/96,Copa de Europa / Champions,Real Madrid,Grasshoppers Zurich,2,0,Grasshoppers Zurich,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
@@ -2104,7 +2104,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1995-11-04,1995/96,LaLiga,Real Madrid,Real Sociedad,3,2,Real Sociedad,Local,3,2,V,Santiago Bernabéu,,engsoccerdata
 1995-11-12,1995/96,LaLiga,Racing Santander,Real Madrid,2,0,Racing Santander,Visitante,0,2,D,,,engsoccerdata
 1995-11-18,1995/96,LaLiga,Real Madrid,Atletico Madrid,1,0,Atletico Madrid,Local,1,0,V,Santiago Bernabéu,,engsoccerdata
-1995-11-22,1995/96,Copa de Europa / Champions,Real Madrid,AFC Ajax,0,2,AFC Ajax,Local,0,2,D,Santiago Bernabéu,,engsoccerdata
+1995-11-22,1995/96,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,0,2,Ajax Amsterdam,Local,0,2,D,Santiago Bernabéu,,engsoccerdata
 1995-11-26,1995/96,LaLiga,Sporting Gijon,Real Madrid,0,0,Sporting Gijon,Visitante,0,0,E,,,engsoccerdata
 1995-12-02,1995/96,LaLiga,Real Madrid,Sevilla FC,4,1,Sevilla FC,Local,4,1,V,Santiago Bernabéu,,engsoccerdata
 1995-12-06,1995/96,Copa de Europa / Champions,Grasshoppers Zurich,Real Madrid,0,2,Grasshoppers Zurich,Visitante,2,0,V,,,engsoccerdata
@@ -2230,7 +2230,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1998-05-20,1997/98,Copa de Europa / Champions,Real Madrid,Juventus,1,0,Juventus,Local,1,0,V,,,engsoccerdata
 1998-08-31,1998/99,LaLiga,Real Madrid,Villarreal CF,4,1,Villarreal CF,Local,4,1,V,Santiago Bernabéu,,engsoccerdata
 1998-09-12,1998/99,LaLiga,Real Valladolid,Real Madrid,0,1,Real Valladolid,Visitante,1,0,V,,,engsoccerdata
-1998-09-16,1998/99,Copa de Europa / Champions,Real Madrid,Internazionale,2,0,Internazionale,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
+1998-09-16,1998/99,Copa de Europa / Champions,Real Madrid,Inter Milan,2,0,Inter Milan,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 1998-09-19,1998/99,LaLiga,Real Madrid,FC Barcelona,2,2,FC Barcelona,Local,2,2,E,Santiago Bernabéu,,engsoccerdata
 1998-09-26,1998/99,LaLiga,Athletic Bilbao,Real Madrid,2,3,Athletic Bilbao,Visitante,3,2,V,,,engsoccerdata
 1998-09-30,1998/99,Copa de Europa / Champions,Spartak Moskva,Real Madrid,2,1,Spartak Moskva,Visitante,1,2,D,,,engsoccerdata
@@ -2243,7 +2243,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1998-11-08,1998/99,LaLiga,CD Alaves,Real Madrid,1,1,CD Alaves,Visitante,1,1,E,,,engsoccerdata
 1998-11-14,1998/99,LaLiga,Real Madrid,Celta Vigo,1,2,Celta Vigo,Local,1,2,D,Santiago Bernabéu,,engsoccerdata
 1998-11-21,1998/99,LaLiga,Valencia CF,Real Madrid,3,1,Valencia CF,Visitante,1,3,D,,,engsoccerdata
-1998-11-25,1998/99,Copa de Europa / Champions,Internazionale,Real Madrid,3,1,Internazionale,Visitante,1,3,D,,,engsoccerdata
+1998-11-25,1998/99,Copa de Europa / Champions,Inter Milan,Real Madrid,3,1,Inter Milan,Visitante,1,3,D,,,engsoccerdata
 1998-12-05,1998/99,LaLiga,Espanyol Barcelona,Real Madrid,0,0,Espanyol Barcelona,Visitante,0,0,E,,,engsoccerdata
 1998-12-09,1998/99,Copa de Europa / Champions,Real Madrid,Spartak Moskva,2,1,Spartak Moskva,Local,2,1,V,Santiago Bernabéu,,engsoccerdata
 1998-12-13,1998/99,LaLiga,Real Madrid,Real Sociedad,3,2,Real Sociedad,Local,3,2,V,Santiago Bernabéu,,engsoccerdata
@@ -2820,7 +2820,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2010-05-16,2009/10,LaLiga,Málaga,Real Madrid,1,1,Málaga,Visitante,1,1,E,,,engsoccerdata
 2010-08-29,2010/11,LaLiga,RCD Mallorca,Real Madrid,0,0,RCD Mallorca,Visitante,0,0,E,,,engsoccerdata
 2010-09-11,2010/11,LaLiga,Real Madrid,CA Osasuna,1,0,CA Osasuna,Local,1,0,V,Santiago Bernabéu,,engsoccerdata
-2010-09-15,2010/11,Copa de Europa / Champions,Real Madrid,AFC Ajax,2,0,AFC Ajax,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
+2010-09-15,2010/11,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,2,0,Ajax Amsterdam,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 2010-09-18,2010/11,LaLiga,Real Sociedad,Real Madrid,1,2,Real Sociedad,Visitante,2,1,V,,,engsoccerdata
 2010-09-21,2010/11,LaLiga,Real Madrid,Espanyol Barcelona,3,0,Espanyol Barcelona,Local,3,0,V,Santiago Bernabéu,,engsoccerdata
 2010-09-25,2010/11,LaLiga,Levante UD,Real Madrid,0,0,Levante UD,Visitante,0,0,E,,,engsoccerdata
@@ -2834,7 +2834,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2010-11-07,2010/11,LaLiga,Real Madrid,Atletico Madrid,2,0,Atletico Madrid,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 2010-11-14,2010/11,LaLiga,Sporting Gijon,Real Madrid,0,1,Sporting Gijon,Visitante,1,0,V,,,engsoccerdata
 2010-11-20,2010/11,LaLiga,Real Madrid,Athletic Bilbao,5,1,Athletic Bilbao,Local,5,1,V,Santiago Bernabéu,,engsoccerdata
-2010-11-23,2010/11,Copa de Europa / Champions,AFC Ajax,Real Madrid,0,4,AFC Ajax,Visitante,4,0,V,,,engsoccerdata
+2010-11-23,2010/11,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,0,4,Ajax Amsterdam,Visitante,4,0,V,,,engsoccerdata
 2010-11-29,2010/11,LaLiga,FC Barcelona,Real Madrid,5,0,FC Barcelona,Visitante,0,5,D,,,engsoccerdata
 2010-12-04,2010/11,LaLiga,Real Madrid,Valencia CF,2,0,Valencia CF,Local,2,0,V,Santiago Bernabéu,,engsoccerdata
 2010-12-08,2010/11,Copa de Europa / Champions,Real Madrid,AJ Auxerre,4,0,AJ Auxerre,Local,4,0,V,Santiago Bernabéu,,engsoccerdata
@@ -2874,7 +2874,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2011-09-18,2011/12,LaLiga,Levante UD,Real Madrid,1,0,Levante UD,Visitante,0,1,D,,,engsoccerdata
 2011-09-21,2011/12,LaLiga,Racing Santander,Real Madrid,0,0,Racing Santander,Visitante,0,0,E,,,engsoccerdata
 2011-09-24,2011/12,LaLiga,Real Madrid,Rayo Vallecano,6,2,Rayo Vallecano,Local,6,2,V,Santiago Bernabéu,,engsoccerdata
-2011-09-27,2011/12,Copa de Europa / Champions,Real Madrid,AFC Ajax,3,0,AFC Ajax,Local,3,0,V,Santiago Bernabéu,,engsoccerdata
+2011-09-27,2011/12,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,3,0,Ajax Amsterdam,Local,3,0,V,Santiago Bernabéu,,engsoccerdata
 2011-10-02,2011/12,LaLiga,Espanyol Barcelona,Real Madrid,0,4,Espanyol Barcelona,Visitante,4,0,V,,,engsoccerdata
 2011-10-15,2011/12,LaLiga,Real Madrid,Real Betis,4,1,Real Betis,Local,4,1,V,Santiago Bernabéu,,engsoccerdata
 2011-10-18,2011/12,Copa de Europa / Champions,Real Madrid,Olympique Lyon,4,0,Olympique Lyon,Local,4,0,V,Santiago Bernabéu,,engsoccerdata
@@ -2887,7 +2887,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2011-11-22,2011/12,Copa de Europa / Champions,Real Madrid,Dinamo Zagreb,6,2,Dinamo Zagreb,Local,6,2,V,Santiago Bernabéu,,engsoccerdata
 2011-11-26,2011/12,LaLiga,Real Madrid,Atletico Madrid,4,1,Atletico Madrid,Local,4,1,V,Santiago Bernabéu,,engsoccerdata
 2011-12-03,2011/12,LaLiga,Sporting Gijon,Real Madrid,0,3,Sporting Gijon,Visitante,3,0,V,,,engsoccerdata
-2011-12-07,2011/12,Copa de Europa / Champions,AFC Ajax,Real Madrid,0,3,AFC Ajax,Visitante,3,0,V,,,engsoccerdata
+2011-12-07,2011/12,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,0,3,Ajax Amsterdam,Visitante,3,0,V,,,engsoccerdata
 2011-12-10,2011/12,LaLiga,Real Madrid,FC Barcelona,1,3,FC Barcelona,Local,1,3,D,Santiago Bernabéu,,engsoccerdata
 2011-12-17,2011/12,LaLiga,Sevilla FC,Real Madrid,2,6,Sevilla FC,Visitante,6,2,V,,,engsoccerdata
 2012-01-07,2011/12,LaLiga,Real Madrid,Granada CF,5,1,Granada CF,Local,5,1,V,Santiago Bernabéu,,engsoccerdata
@@ -2905,9 +2905,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2012-03-18,2011/12,LaLiga,Real Madrid,Málaga,1,1,Málaga,Local,1,1,E,Santiago Bernabéu,,engsoccerdata
 2012-03-21,2011/12,LaLiga,Villarreal CF,Real Madrid,1,1,Villarreal CF,Visitante,1,1,E,,,engsoccerdata
 2012-03-24,2011/12,LaLiga,Real Madrid,Real Sociedad,5,1,Real Sociedad,Local,5,1,V,Santiago Bernabéu,,engsoccerdata
-2012-03-27,2011/12,Copa de Europa / Champions,APOEL Nikosia,Real Madrid,0,3,APOEL Nikosia,Visitante,3,0,V,,,engsoccerdata
+2012-03-27,2011/12,Copa de Europa / Champions,APOEL Nicosia,Real Madrid,0,3,APOEL Nicosia,Visitante,3,0,V,,,engsoccerdata
 2012-03-31,2011/12,LaLiga,CA Osasuna,Real Madrid,1,5,CA Osasuna,Visitante,5,1,V,,,engsoccerdata
-2012-04-04,2011/12,Copa de Europa / Champions,Real Madrid,APOEL Nikosia,5,2,APOEL Nikosia,Local,5,2,V,Santiago Bernabéu,,engsoccerdata
+2012-04-04,2011/12,Copa de Europa / Champions,Real Madrid,APOEL Nicosia,5,2,APOEL Nicosia,Local,5,2,V,Santiago Bernabéu,,engsoccerdata
 2012-04-08,2011/12,LaLiga,Real Madrid,Valencia CF,0,0,Valencia CF,Local,0,0,E,Santiago Bernabéu,,engsoccerdata
 2012-04-11,2011/12,LaLiga,Atletico Madrid,Real Madrid,1,4,Atletico Madrid,Visitante,4,1,V,,,engsoccerdata
 2012-04-14,2011/12,LaLiga,Real Madrid,Sporting Gijon,3,1,Sporting Gijon,Local,3,1,V,Santiago Bernabéu,,engsoccerdata
@@ -2924,10 +2924,10 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2012-08-29,2012/13,Supercopa de España,Real Madrid,FC Barcelona,2,1,FC Barcelona,Local,2,1,V,Santiago Bernabéu,tm2244389,transfermarkt
 2012-09-02,2012/13,LaLiga,Real Madrid,Granada CF,3,0,Granada CF,Local,3,0,V,Santiago Bernabéu,tm2242882,transfermarkt
 2012-09-15,2012/13,LaLiga,Sevilla FC,Real Madrid,1,0,Sevilla FC,Visitante,0,1,D,Ramón Sánchez-Pizjuán,tm2242922,transfermarkt
-2012-09-18,2012/13,Copa de Europa / Champions,Real Madrid,Manchester United,3,2,Manchester United,Local,3,2,V,Santiago Bernabéu,tm2262153,transfermarkt
+2012-09-18,2012/13,Copa de Europa / Champions,Real Madrid,Manchester City,3,2,Manchester City,Local,3,2,V,Santiago Bernabéu,tm2262153,transfermarkt
 2012-09-24,2012/13,LaLiga,Rayo Vallecano,Real Madrid,0,2,Rayo Vallecano,Visitante,2,0,V,Campo de Fútbol de Vallecas,tm2242897,transfermarkt
 2012-09-30,2012/13,LaLiga,Real Madrid,Deportivo La Coruna,5,1,Deportivo La Coruna,Local,5,1,V,Santiago Bernabéu,tm2242843,transfermarkt
-2012-10-03,2012/13,Copa de Europa / Champions,AFC Ajax,Real Madrid,1,4,AFC Ajax,Visitante,4,1,V,Johan Cruijff ArenA,tm2262177,transfermarkt
+2012-10-03,2012/13,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,1,4,Ajax Amsterdam,Visitante,4,1,V,Johan Cruijff ArenA,tm2262177,transfermarkt
 2012-10-07,2012/13,LaLiga,FC Barcelona,Real Madrid,2,2,FC Barcelona,Visitante,2,2,E,Spotify Camp Nou,tm2242853,transfermarkt
 2012-10-20,2012/13,LaLiga,Real Madrid,Celta Vigo,2,0,Celta Vigo,Local,2,0,V,Santiago Bernabéu,tm2242854,transfermarkt
 2012-10-24,2012/13,Copa de Europa / Champions,Borussia Dortmund,Real Madrid,2,1,Borussia Dortmund,Visitante,1,2,D,SIGNAL IDUNA PARK,tm2262193,transfermarkt
@@ -2937,11 +2937,11 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2012-11-06,2012/13,Copa de Europa / Champions,Real Madrid,Borussia Dortmund,2,2,Borussia Dortmund,Local,2,2,E,Santiago Bernabéu,tm2262202,transfermarkt
 2012-11-11,2012/13,LaLiga,Levante UD,Real Madrid,1,2,Levante UD,Visitante,2,1,V,Ciutat de València,tm2242915,transfermarkt
 2012-11-17,2012/13,LaLiga,Real Madrid,Athletic Bilbao,5,1,Athletic Bilbao,Local,5,1,V,Santiago Bernabéu,tm2243004,transfermarkt
-2012-11-21,2012/13,Copa de Europa / Champions,Manchester United,Real Madrid,1,1,Manchester United,Visitante,1,1,E,Etihad Stadium,tm2262225,transfermarkt
+2012-11-21,2012/13,Copa de Europa / Champions,Manchester City,Real Madrid,1,1,Manchester City,Visitante,1,1,E,Etihad Stadium,tm2262225,transfermarkt
 2012-11-24,2012/13,LaLiga,Real Betis,Real Madrid,1,0,Real Betis,Visitante,0,1,D,Estadio de La Cartuja,tm2242995,transfermarkt
 2012-11-27,2012/13,Copa del Rey,Real Madrid,CD Alcoyano,3,0,CD Alcoyano,Local,3,0,V,Santiago Bernabéu,tm2269547,transfermarkt
 2012-12-01,2012/13,LaLiga,Real Madrid,Atletico Madrid,2,0,Atletico Madrid,Local,2,0,V,Santiago Bernabéu,tm2243042,transfermarkt
-2012-12-04,2012/13,Copa de Europa / Champions,Real Madrid,AFC Ajax,4,1,AFC Ajax,Local,4,1,V,Santiago Bernabéu,tm2262234,transfermarkt
+2012-12-04,2012/13,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,4,1,Ajax Amsterdam,Local,4,1,V,Santiago Bernabéu,tm2262234,transfermarkt
 2012-12-08,2012/13,LaLiga,Real Valladolid,Real Madrid,2,3,Real Valladolid,Visitante,3,2,V,Nuevo José Zorrilla,tm2243029,transfermarkt
 2012-12-12,2012/13,Copa del Rey,Celta Vigo,Real Madrid,2,1,Celta Vigo,Visitante,1,2,D,Abanca Balaídos,tm2282714,transfermarkt
 2012-12-16,2012/13,LaLiga,Real Madrid,Espanyol Barcelona,2,2,Espanyol Barcelona,Local,2,2,E,Santiago Bernabéu,tm2243056,transfermarkt
@@ -3054,19 +3054,19 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2014-10-18,2014/15,LaLiga,Levante UD,Real Madrid,0,5,Levante UD,Visitante,5,0,V,Ciutat de València,tm2475257,transfermarkt
 2014-10-22,2014/15,Copa de Europa / Champions,Liverpool,Real Madrid,0,3,Liverpool,Visitante,3,0,V,Anfield,tm2495320,transfermarkt
 2014-10-25,2014/15,LaLiga,Real Madrid,FC Barcelona,3,1,FC Barcelona,Local,3,1,V,Santiago Bernabéu,tm2475267,transfermarkt
-2014-10-29,2014/15,Copa del Rey,UE Lleida,Real Madrid,1,4,UE Lleida,Visitante,4,1,V,Cornellà-El Prat,tm2505177,transfermarkt
+2014-10-29,2014/15,Copa del Rey,UE Cornellà,Real Madrid,1,4,UE Cornellà,Visitante,4,1,V,Cornellà-El Prat,tm2505177,transfermarkt
 2014-11-01,2014/15,LaLiga,Granada CF,Real Madrid,0,4,Granada CF,Visitante,4,0,V,Nuevo Los Cármenes,tm2475278,transfermarkt
 2014-11-04,2014/15,Copa de Europa / Champions,Real Madrid,Liverpool,1,0,Liverpool,Local,1,0,V,Santiago Bernabéu,tm2495329,transfermarkt
 2014-11-08,2014/15,LaLiga,Real Madrid,Rayo Vallecano,5,1,Rayo Vallecano,Local,5,1,V,Santiago Bernabéu,tm2475288,transfermarkt
 2014-11-22,2014/15,LaLiga,SD Eibar,Real Madrid,0,4,SD Eibar,Visitante,4,0,V,Ipurua,tm2475299,transfermarkt
 2014-11-26,2014/15,Copa de Europa / Champions,FC Basel 1893,Real Madrid,0,1,FC Basel 1893,Visitante,1,0,V,St. Jakob-Park,tm2495353,transfermarkt
 2014-11-29,2014/15,LaLiga,Málaga,Real Madrid,1,2,Málaga,Visitante,2,1,V,La Rosaleda,tm2475309,transfermarkt
-2014-12-02,2014/15,Copa del Rey,Real Madrid,UE Lleida,5,0,UE Lleida,Local,5,0,V,Santiago Bernabéu,tm2505204,transfermarkt
+2014-12-02,2014/15,Copa del Rey,Real Madrid,UE Cornellà,5,0,UE Cornellà,Local,5,0,V,Santiago Bernabéu,tm2505204,transfermarkt
 2014-12-06,2014/15,LaLiga,Real Madrid,Celta Vigo,3,0,Celta Vigo,Local,3,0,V,Santiago Bernabéu,tm2475319,transfermarkt
 2014-12-09,2014/15,Copa de Europa / Champions,Real Madrid,Ludogorets Razgrad,4,0,Ludogorets Razgrad,Local,4,0,V,Santiago Bernabéu,tm2495361,transfermarkt
 2014-12-12,2014/15,LaLiga,UD Almeria,Real Madrid,1,4,UD Almeria,Visitante,4,1,V,Power Horse Stadium,tm2475328,transfermarkt
 2014-12-16,2014/15,Mundial de Clubes,CD Cruz Azul,Real Madrid,0,4,CD Cruz Azul,Visitante,4,0,V,Stade de Marrakech,tm2517431,transfermarkt
-2014-12-20,2014/15,Mundial de Clubes,Real Madrid,Atletico Madrid,2,0,Atletico Madrid,Local,2,0,V,Stade de Marrakech,tm2518507,transfermarkt
+2014-12-20,2014/15,Mundial de Clubes,Real Madrid,San Lorenzo,2,0,San Lorenzo,Local,2,0,V,Stade de Marrakech,tm2518507,transfermarkt
 2015-01-04,2014/15,LaLiga,Valencia CF,Real Madrid,2,1,Valencia CF,Visitante,1,2,D,Mestalla,tm2475347,transfermarkt
 2015-01-07,2014/15,Copa del Rey,Atletico Madrid,Real Madrid,2,0,Atletico Madrid,Visitante,0,2,D,Vicente Calderón,tm2518524,transfermarkt
 2015-01-10,2014/15,LaLiga,Real Madrid,Espanyol Barcelona,3,0,Espanyol Barcelona,Local,3,0,V,Santiago Bernabéu,tm2475357,transfermarkt
@@ -3105,7 +3105,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2015-09-19,2015/16,LaLiga,Real Madrid,Granada CF,1,0,Granada CF,Local,1,0,V,Santiago Bernabéu,tm2594507,transfermarkt
 2015-09-23,2015/16,LaLiga,Athletic Bilbao,Real Madrid,1,2,Athletic Bilbao,Visitante,2,1,V,San Mamés,tm2594516,transfermarkt
 2015-09-26,2015/16,LaLiga,Real Madrid,Málaga,0,0,Málaga,Local,0,0,E,Santiago Bernabéu,tm2594526,transfermarkt
-2015-09-30,2015/16,Copa de Europa / Champions,Malmö Fotbollförening,Real Madrid,0,2,Malmö Fotbollförening,Visitante,2,0,V,Eleda Stadion,tm2618566,transfermarkt
+2015-09-30,2015/16,Copa de Europa / Champions,Malmö FF,Real Madrid,0,2,Malmö FF,Visitante,2,0,V,Eleda Stadion,tm2618566,transfermarkt
 2015-10-04,2015/16,LaLiga,Atletico Madrid,Real Madrid,1,1,Atletico Madrid,Visitante,1,1,E,Vicente Calderón,tm2594535,transfermarkt
 2015-10-17,2015/16,LaLiga,Real Madrid,Levante UD,3,0,Levante UD,Local,3,0,V,Santiago Bernabéu,tm2594545,transfermarkt
 2015-10-21,2015/16,Copa de Europa / Champions,Paris Saint-Germain,Real Madrid,0,0,Paris Saint-Germain,Visitante,0,0,E,Parc des Princes,tm2618587,transfermarkt
@@ -3118,7 +3118,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2015-11-29,2015/16,LaLiga,SD Eibar,Real Madrid,0,2,SD Eibar,Visitante,2,0,V,Ipurua,tm2594592,transfermarkt
 2015-12-02,2015/16,Copa del Rey,Cadiz CF,Real Madrid,1,3,Cadiz CF,Visitante,3,1,V,Nuevo Mirandilla,tm2633810,transfermarkt
 2015-12-05,2015/16,LaLiga,Real Madrid,Getafe CF,4,1,Getafe CF,Local,4,1,V,Santiago Bernabéu,tm2594602,transfermarkt
-2015-12-08,2015/16,Copa de Europa / Champions,Real Madrid,Malmö Fotbollförening,8,0,Malmö Fotbollförening,Local,8,0,V,Santiago Bernabéu,tm2618627,transfermarkt
+2015-12-08,2015/16,Copa de Europa / Champions,Real Madrid,Malmö FF,8,0,Malmö FF,Local,8,0,V,Santiago Bernabéu,tm2618627,transfermarkt
 2015-12-13,2015/16,LaLiga,Villarreal CF,Real Madrid,1,0,Villarreal CF,Visitante,0,1,D,La Cerámica,tm2594611,transfermarkt
 2015-12-20,2015/16,LaLiga,Real Madrid,Rayo Vallecano,10,2,Rayo Vallecano,Local,10,2,V,Santiago Bernabéu,tm2594621,transfermarkt
 2015-12-30,2015/16,LaLiga,Real Madrid,Real Sociedad,3,1,Real Sociedad,Local,3,1,V,Santiago Bernabéu,tm2594631,transfermarkt
@@ -3144,9 +3144,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2016-04-16,2015/16,LaLiga,Getafe CF,Real Madrid,1,5,Getafe CF,Visitante,5,1,V,Coliseum,tm2594792,transfermarkt
 2016-04-20,2015/16,LaLiga,Real Madrid,Villarreal CF,3,0,Villarreal CF,Local,3,0,V,Santiago Bernabéu,tm2594801,transfermarkt
 2016-04-23,2015/16,LaLiga,Rayo Vallecano,Real Madrid,2,3,Rayo Vallecano,Visitante,3,2,V,Estadio de Vallecas,tm2594811,transfermarkt
-2016-04-26,2015/16,Copa de Europa / Champions,Manchester United,Real Madrid,0,0,Manchester United,Visitante,0,0,E,Etihad Stadium,tm2682239,transfermarkt
+2016-04-26,2015/16,Copa de Europa / Champions,Manchester City,Real Madrid,0,0,Manchester City,Visitante,0,0,E,Etihad Stadium,tm2682239,transfermarkt
 2016-04-30,2015/16,LaLiga,Real Sociedad,Real Madrid,0,1,Real Sociedad,Visitante,1,0,V,Anoeta,tm2594821,transfermarkt
-2016-05-04,2015/16,Copa de Europa / Champions,Real Madrid,Manchester United,1,0,Manchester United,Local,1,0,V,Santiago Bernabéu,tm2682241,transfermarkt
+2016-05-04,2015/16,Copa de Europa / Champions,Real Madrid,Manchester City,1,0,Manchester City,Local,1,0,V,Santiago Bernabéu,tm2682241,transfermarkt
 2016-05-08,2015/16,LaLiga,Real Madrid,Valencia CF,3,2,Valencia CF,Local,3,2,V,Santiago Bernabéu,tm2594832,transfermarkt
 2016-05-14,2015/16,LaLiga,Deportivo La Coruna,Real Madrid,0,2,Deportivo La Coruna,Visitante,2,0,V,Abanca Riazor,tm2594842,transfermarkt
 2016-05-28,2015/16,Copa de Europa / Champions,Real Madrid,Atletico Madrid,6,4,Atletico Madrid,Local,6,4,V,Giuseppe Meazza,tm2690027,transfermarkt
@@ -3237,7 +3237,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2017-12-06,2017/18,Copa de Europa / Champions,Real Madrid,Borussia Dortmund,3,2,Borussia Dortmund,Local,3,2,V,Santiago Bernabéu,tm2917451,transfermarkt
 2017-12-09,2017/18,LaLiga,Real Madrid,Sevilla FC,5,0,Sevilla FC,Local,5,0,V,Santiago Bernabéu,tm2899693,transfermarkt
 2017-12-13,2017/18,Mundial de Clubes,Al-Jazira Club,Real Madrid,1,2,Al-Jazira Club,Visitante,2,1,V,Zayed Sports City Stadium,tm2981467,transfermarkt
-2017-12-16,2017/18,Mundial de Clubes,Real Madrid,FC Porto,1,0,FC Porto,Local,1,0,V,Zayed Sports City Stadium,tm2982738,transfermarkt
+2017-12-16,2017/18,Mundial de Clubes,Real Madrid,Grêmio,1,0,Grêmio,Local,1,0,V,Zayed Sports City Stadium,tm2982738,transfermarkt
 2017-12-23,2017/18,LaLiga,Real Madrid,FC Barcelona,0,3,FC Barcelona,Local,0,3,D,Santiago Bernabéu,tm2899698,transfermarkt
 2018-01-04,2017/18,Copa del Rey,CD Numancia,Real Madrid,0,3,CD Numancia,Visitante,3,0,V,Los Pajaritos,tm2978832,transfermarkt
 2018-01-07,2017/18,LaLiga,Celta Vigo,Real Madrid,2,2,Celta Vigo,Visitante,2,2,E,Abanca Balaídos,tm2899726,transfermarkt
@@ -3311,12 +3311,12 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2019-02-03,2018/19,LaLiga,Real Madrid,CD Alaves,3,0,CD Alaves,Local,3,0,V,Santiago Bernabéu,tm3080786,transfermarkt
 2019-02-06,2018/19,Copa del Rey,FC Barcelona,Real Madrid,1,1,FC Barcelona,Visitante,1,1,E,Spotify Camp Nou,tm3153158,transfermarkt
 2019-02-09,2018/19,LaLiga,Atletico Madrid,Real Madrid,1,3,Atletico Madrid,Visitante,3,1,V,Civitas Metropolitano,tm3080792,transfermarkt
-2019-02-13,2018/19,Copa de Europa / Champions,AFC Ajax,Real Madrid,1,2,AFC Ajax,Visitante,2,1,V,Johan Cruijff ArenA,tm3135802,transfermarkt
+2019-02-13,2018/19,Copa de Europa / Champions,Ajax Amsterdam,Real Madrid,1,2,Ajax Amsterdam,Visitante,2,1,V,Johan Cruijff ArenA,tm3135802,transfermarkt
 2019-02-17,2018/19,LaLiga,Real Madrid,Girona FC,1,2,Girona FC,Local,1,2,D,Santiago Bernabéu,tm3080809,transfermarkt
 2019-02-24,2018/19,LaLiga,Levante UD,Real Madrid,1,2,Levante UD,Visitante,2,1,V,Ciutat de València,tm3080819,transfermarkt
 2019-02-27,2018/19,Copa del Rey,Real Madrid,FC Barcelona,0,3,FC Barcelona,Local,0,3,D,Santiago Bernabéu,tm3153160,transfermarkt
 2019-03-02,2018/19,LaLiga,Real Madrid,FC Barcelona,0,1,FC Barcelona,Local,0,1,D,Santiago Bernabéu,tm3080826,transfermarkt
-2019-03-05,2018/19,Copa de Europa / Champions,Real Madrid,AFC Ajax,1,4,AFC Ajax,Local,1,4,D,Santiago Bernabéu,tm3135812,transfermarkt
+2019-03-05,2018/19,Copa de Europa / Champions,Real Madrid,Ajax Amsterdam,1,4,Ajax Amsterdam,Local,1,4,D,Santiago Bernabéu,tm3135812,transfermarkt
 2019-03-10,2018/19,LaLiga,Real Valladolid,Real Madrid,1,4,Real Valladolid,Visitante,4,1,V,Estadio José Zorrilla,tm3080840,transfermarkt
 2019-03-16,2018/19,LaLiga,Real Madrid,Celta Vigo,2,0,Celta Vigo,Local,2,0,V,Santiago Bernabéu,tm3080847,transfermarkt
 2019-03-31,2018/19,LaLiga,Real Madrid,SD Huesca,3,2,SD Huesca,Local,3,2,V,Santiago Bernabéu,tm3080860,transfermarkt
@@ -3365,7 +3365,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2020-02-09,2019/20,LaLiga,CA Osasuna,Real Madrid,1,4,CA Osasuna,Visitante,4,1,V,El Sadar,tm3209809,transfermarkt
 2020-02-16,2019/20,LaLiga,Real Madrid,Celta Vigo,2,2,Celta Vigo,Local,2,2,E,Santiago Bernabéu,tm3209964,transfermarkt
 2020-02-22,2019/20,LaLiga,Levante UD,Real Madrid,1,0,Levante UD,Visitante,0,1,D,Ciutat de València,tm3209974,transfermarkt
-2020-02-26,2019/20,Copa de Europa / Champions,Real Madrid,Manchester United,1,2,Manchester United,Local,1,2,D,Santiago Bernabéu,tm3291928,transfermarkt
+2020-02-26,2019/20,Copa de Europa / Champions,Real Madrid,Manchester City,1,2,Manchester City,Local,1,2,D,Santiago Bernabéu,tm3291928,transfermarkt
 2020-03-01,2019/20,LaLiga,Real Madrid,FC Barcelona,2,0,FC Barcelona,Local,2,0,V,Santiago Bernabéu,tm3209984,transfermarkt
 2020-03-08,2019/20,LaLiga,Real Betis,Real Madrid,2,1,Real Betis,Visitante,1,2,D,Benito Villamarín,tm3210000,transfermarkt
 2020-06-14,2019/20,LaLiga,Real Madrid,SD Eibar,3,1,SD Eibar,Local,3,1,V,Alfredo Di Stéfano,tm3210022,transfermarkt
@@ -3379,7 +3379,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2020-07-13,2020/21,LaLiga,Granada CF,Real Madrid,1,2,Granada CF,Visitante,2,1,V,Nuevo Los Cármenes,tm3210126,transfermarkt
 2020-07-16,2020/21,LaLiga,Real Madrid,Villarreal CF,2,1,Villarreal CF,Local,2,1,V,Alfredo Di Stéfano,tm3210140,transfermarkt
 2020-07-19,2020/21,LaLiga,CD Leganés,Real Madrid,2,2,CD Leganés,Visitante,2,2,E,Butarque,tm3208629,transfermarkt
-2020-08-07,2020/21,Copa de Europa / Champions,Manchester United,Real Madrid,2,1,Manchester United,Visitante,1,2,D,Etihad Stadium,tm3291936,transfermarkt
+2020-08-07,2020/21,Copa de Europa / Champions,Manchester City,Real Madrid,2,1,Manchester City,Visitante,1,2,D,Etihad Stadium,tm3291936,transfermarkt
 2020-09-20,2020/21,LaLiga,Real Sociedad,Real Madrid,0,0,Real Sociedad,Visitante,0,0,E,Reale Arena,tm3431921,transfermarkt
 2020-09-26,2020/21,LaLiga,Real Betis,Real Madrid,2,3,Real Betis,Visitante,3,2,V,Benito Villamarín,tm3431927,transfermarkt
 2020-09-30,2020/21,LaLiga,Real Madrid,Real Valladolid,1,0,Real Valladolid,Local,1,0,V,Alfredo Di Stéfano,tm3431940,transfermarkt
@@ -3389,10 +3389,10 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2020-10-24,2020/21,LaLiga,FC Barcelona,Real Madrid,1,3,FC Barcelona,Visitante,3,1,V,Spotify Camp Nou,tm3450971,transfermarkt
 2020-10-27,2020/21,Copa de Europa / Champions,Borussia Monchengladbach,Real Madrid,2,2,Borussia Monchengladbach,Visitante,2,2,E,Stadion im Borussia-Park,tm3461736,transfermarkt
 2020-10-31,2020/21,LaLiga,Real Madrid,SD Huesca,4,1,SD Huesca,Local,4,1,V,Estadio Alfredo Di Stéfano,tm3450987,transfermarkt
-2020-11-03,2020/21,Copa de Europa / Champions,Real Madrid,AC Milan,3,2,AC Milan,Local,3,2,V,Estadio Alfredo Di Stéfano,tm3461752,transfermarkt
+2020-11-03,2020/21,Copa de Europa / Champions,Real Madrid,Inter Milan,3,2,Inter Milan,Local,3,2,V,Estadio Alfredo Di Stéfano,tm3461752,transfermarkt
 2020-11-08,2020/21,LaLiga,Valencia CF,Real Madrid,4,1,Valencia CF,Visitante,1,4,D,Mestalla,tm3450999,transfermarkt
 2020-11-21,2020/21,LaLiga,Villarreal CF,Real Madrid,1,1,Villarreal CF,Visitante,1,1,E,La Cerámica,tm3451009,transfermarkt
-2020-11-25,2020/21,Copa de Europa / Champions,AC Milan,Real Madrid,0,2,AC Milan,Visitante,2,0,V,Giuseppe Meazza,tm3461768,transfermarkt
+2020-11-25,2020/21,Copa de Europa / Champions,Inter Milan,Real Madrid,0,2,Inter Milan,Visitante,2,0,V,Giuseppe Meazza,tm3461768,transfermarkt
 2020-11-28,2020/21,LaLiga,Real Madrid,CD Alaves,1,2,CD Alaves,Local,1,2,D,Estadio Alfredo Di Stéfano,tm3451016,transfermarkt
 2020-12-01,2020/21,Copa de Europa / Champions,FC Shakhtar Donetsk,Real Madrid,2,0,FC Shakhtar Donetsk,Visitante,0,2,D,NSK Olimpiyskyi,tm3461804,transfermarkt
 2020-12-05,2020/21,LaLiga,Sevilla FC,Real Madrid,0,1,Sevilla FC,Visitante,1,0,V,Ramón Sánchez-Pizjuán,tm3451028,transfermarkt
@@ -3436,7 +3436,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2021-08-22,2021/22,LaLiga,Levante UD,Real Madrid,3,3,Levante UD,Visitante,3,3,E,Ciutat de València,tm3605055,transfermarkt
 2021-08-28,2021/22,LaLiga,Real Betis,Real Madrid,0,1,Real Betis,Visitante,1,0,V,Benito Villamarín,tm3605060,transfermarkt
 2021-09-12,2021/22,LaLiga,Real Madrid,Celta Vigo,5,2,Celta Vigo,Local,5,2,V,Santiago Bernabéu,tm3605201,transfermarkt
-2021-09-15,2021/22,Copa de Europa / Champions,AC Milan,Real Madrid,0,1,AC Milan,Visitante,1,0,V,Giuseppe Meazza,tm3651044,transfermarkt
+2021-09-15,2021/22,Copa de Europa / Champions,Inter Milan,Real Madrid,0,1,Inter Milan,Visitante,1,0,V,Giuseppe Meazza,tm3651044,transfermarkt
 2021-09-19,2021/22,LaLiga,Valencia CF,Real Madrid,1,2,Valencia CF,Visitante,2,1,V,Mestalla,tm3605211,transfermarkt
 2021-09-22,2021/22,LaLiga,Real Madrid,RCD Mallorca,6,1,RCD Mallorca,Local,6,1,V,Santiago Bernabéu,tm3605221,transfermarkt
 2021-09-25,2021/22,LaLiga,Real Madrid,Villarreal CF,0,0,Villarreal CF,Local,0,0,E,Santiago Bernabéu,tm3605281,transfermarkt
@@ -3453,7 +3453,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2021-11-28,2021/22,LaLiga,Real Madrid,Sevilla FC,2,1,Sevilla FC,Local,2,1,V,Santiago Bernabéu,tm3607568,transfermarkt
 2021-12-01,2021/22,LaLiga,Real Madrid,Athletic Bilbao,1,0,Athletic Bilbao,Local,1,0,V,Santiago Bernabéu,tm3605310,transfermarkt
 2021-12-04,2021/22,LaLiga,Real Sociedad,Real Madrid,0,2,Real Sociedad,Visitante,2,0,V,Reale Arena,tm3607577,transfermarkt
-2021-12-07,2021/22,Copa de Europa / Champions,Real Madrid,AC Milan,2,0,AC Milan,Local,2,0,V,Santiago Bernabéu,tm3651131,transfermarkt
+2021-12-07,2021/22,Copa de Europa / Champions,Real Madrid,Inter Milan,2,0,Inter Milan,Local,2,0,V,Santiago Bernabéu,tm3651131,transfermarkt
 2021-12-12,2021/22,LaLiga,Real Madrid,Atletico Madrid,2,0,Atletico Madrid,Local,2,0,V,Santiago Bernabéu,tm3607596,transfermarkt
 2021-12-19,2021/22,LaLiga,Real Madrid,Cadiz CF,0,0,Cadiz CF,Local,0,0,E,Santiago Bernabéu,tm3607605,transfermarkt
 2021-12-22,2021/22,LaLiga,Athletic Bilbao,Real Madrid,1,2,Athletic Bilbao,Visitante,2,1,V,San Mamés,tm3610270,transfermarkt
@@ -3480,15 +3480,15 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2022-04-12,2021/22,Copa de Europa / Champions,Real Madrid,Chelsea FC,2,3,Chelsea FC,Local,2,3,D,Santiago Bernabéu,tm3773448,transfermarkt
 2022-04-17,2021/22,LaLiga,Sevilla FC,Real Madrid,2,3,Sevilla FC,Visitante,3,2,V,Ramón Sánchez-Pizjuán,tm3611456,transfermarkt
 2022-04-20,2021/22,LaLiga,CA Osasuna,Real Madrid,1,3,CA Osasuna,Visitante,3,1,V,El Sadar,tm3611466,transfermarkt
-2022-04-26,2021/22,Copa de Europa / Champions,Manchester United,Real Madrid,4,3,Manchester United,Visitante,3,4,D,Etihad Stadium,tm3796966,transfermarkt
+2022-04-26,2021/22,Copa de Europa / Champions,Manchester City,Real Madrid,4,3,Manchester City,Visitante,3,4,D,Etihad Stadium,tm3796966,transfermarkt
 2022-04-30,2021/22,LaLiga,Real Madrid,Espanyol Barcelona,4,0,Espanyol Barcelona,Local,4,0,V,Santiago Bernabéu,tm3611474,transfermarkt
-2022-05-04,2021/22,Copa de Europa / Champions,Real Madrid,Manchester United,3,1,Manchester United,Local,3,1,V,Santiago Bernabéu,tm3796968,transfermarkt
+2022-05-04,2021/22,Copa de Europa / Champions,Real Madrid,Manchester City,3,1,Manchester City,Local,3,1,V,Santiago Bernabéu,tm3796968,transfermarkt
 2022-05-08,2021/22,LaLiga,Atletico Madrid,Real Madrid,1,0,Atletico Madrid,Visitante,0,1,D,Riyadh Air Metropolitano,tm3611480,transfermarkt
 2022-05-12,2021/22,LaLiga,Real Madrid,Levante UD,6,0,Levante UD,Local,6,0,V,Santiago Bernabéu,tm3611493,transfermarkt
 2022-05-15,2021/22,LaLiga,Cadiz CF,Real Madrid,1,1,Cadiz CF,Visitante,1,1,E,Nuevo Mirandilla,tm3611505,transfermarkt
 2022-05-20,2021/22,LaLiga,Real Madrid,Real Betis,0,0,Real Betis,Local,0,0,E,Santiago Bernabéu,tm3611513,transfermarkt
 2022-05-28,2021/22,Copa de Europa / Champions,Liverpool,Real Madrid,0,1,Liverpool,Visitante,1,0,V,Stade de France,tm3812391,transfermarkt
-2022-08-10,2022/23,Supercopa de Europa,Real Madrid,Frankfurter SG Eintracht,2,0,Frankfurter SG Eintracht,Local,2,0,V,Olympiastadion Helsinki,tm3825466,transfermarkt
+2022-08-10,2022/23,Supercopa de Europa,Real Madrid,Eintracht Frankfurt,2,0,Eintracht Frankfurt,Local,2,0,V,Olympiastadion Helsinki,tm3825466,transfermarkt
 2022-08-14,2022/23,LaLiga,UD Almeria,Real Madrid,1,2,UD Almeria,Visitante,2,1,V,Power Horse Stadium,tm3844094,transfermarkt
 2022-08-20,2022/23,LaLiga,Celta Vigo,Real Madrid,1,4,Celta Vigo,Visitante,4,1,V,Abanca Balaídos,tm3844595,transfermarkt
 2022-08-28,2022/23,LaLiga,Espanyol Barcelona,Real Madrid,1,3,Espanyol Barcelona,Visitante,3,1,V,RCDE Stadium,tm3885849,transfermarkt
@@ -3510,7 +3510,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2022-11-07,2022/23,LaLiga,Rayo Vallecano,Real Madrid,3,2,Rayo Vallecano,Visitante,2,3,D,Estadio de Vallecas,tm3886412,transfermarkt
 2022-11-10,2022/23,LaLiga,Real Madrid,Cadiz CF,2,1,Cadiz CF,Local,2,1,V,Santiago Bernabéu,tm3886454,transfermarkt
 2022-12-30,2022/23,LaLiga,Real Valladolid,Real Madrid,0,2,Real Valladolid,Visitante,2,0,V,José Zorrilla,tm3886470,transfermarkt
-2023-01-03,2022/23,Copa del Rey,CP Merida,Real Madrid,0,1,CP Merida,Visitante,1,0,V,Príncipe Felipe,tm3989533,transfermarkt
+2023-01-03,2022/23,Copa del Rey,CP Cacereño,Real Madrid,0,1,CP Cacereño,Visitante,1,0,V,Príncipe Felipe,tm3989533,transfermarkt
 2023-01-07,2022/23,LaLiga,Villarreal CF,Real Madrid,2,1,Villarreal CF,Visitante,1,2,D,La Cerámica,tm3886489,transfermarkt
 2023-01-11,2022/23,Supercopa de España,Real Madrid,Valencia CF,5,4,Valencia CF,Local,5,4,V,King Fahd International Stadium,tm3998376,transfermarkt
 2023-01-15,2022/23,Supercopa de España,Real Madrid,FC Barcelona,1,3,FC Barcelona,Local,1,3,D,King Fahd International Stadium,tm4001330,transfermarkt
@@ -3521,7 +3521,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2023-02-02,2022/23,LaLiga,Real Madrid,Valencia CF,2,0,Valencia CF,Local,2,0,V,Santiago Bernabéu,tm3886492,transfermarkt
 2023-02-05,2022/23,LaLiga,RCD Mallorca,Real Madrid,1,0,RCD Mallorca,Visitante,0,1,D,Mallorca Son Moix,tm3886525,transfermarkt
 2023-02-08,2022/23,Mundial de Clubes,Al Ahly FC,Real Madrid,1,4,Al Ahly FC,Visitante,4,1,V,Complexe Sportif Moulay Abdallah,tm4020740,transfermarkt
-2023-02-11,2022/23,Mundial de Clubes,Real Madrid,Al-Hilal Saudi Football Club,5,3,Al-Hilal Saudi Football Club,Local,5,3,V,Complexe Sportif Moulay Abdallah,tm4022149,transfermarkt
+2023-02-11,2022/23,Mundial de Clubes,Real Madrid,Al-Hilal,5,3,Al-Hilal,Local,5,3,V,Complexe Sportif Moulay Abdallah,tm4022149,transfermarkt
 2023-02-15,2022/23,LaLiga,Real Madrid,Elche CF,4,0,Elche CF,Local,4,0,V,Santiago Bernabéu,tm3886537,transfermarkt
 2023-02-18,2022/23,LaLiga,CA Osasuna,Real Madrid,0,2,CA Osasuna,Visitante,2,0,V,El Sadar,tm3886554,transfermarkt
 2023-02-21,2022/23,Copa de Europa / Champions,Liverpool,Real Madrid,2,5,Liverpool,Visitante,5,2,V,Anfield,tm3956694,transfermarkt
@@ -3542,9 +3542,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2023-04-29,2022/23,LaLiga,Real Madrid,UD Almeria,4,2,UD Almeria,Local,4,2,V,Santiago Bernabéu,tm3886658,transfermarkt
 2023-05-02,2022/23,LaLiga,Real Sociedad,Real Madrid,2,0,Real Sociedad,Visitante,0,2,D,Reale Arena,tm3886669,transfermarkt
 2023-05-06,2022/23,Copa del Rey,Real Madrid,CA Osasuna,2,1,CA Osasuna,Local,2,1,V,La Cartuja,tm4070772,transfermarkt
-2023-05-09,2022/23,Copa de Europa / Champions,Real Madrid,Manchester United,1,1,Manchester United,Local,1,1,E,Santiago Bernabéu,tm4060794,transfermarkt
+2023-05-09,2022/23,Copa de Europa / Champions,Real Madrid,Manchester City,1,1,Manchester City,Local,1,1,E,Santiago Bernabéu,tm4060794,transfermarkt
 2023-05-13,2022/23,LaLiga,Real Madrid,Getafe CF,1,0,Getafe CF,Local,1,0,V,Santiago Bernabéu,tm3886675,transfermarkt
-2023-05-17,2022/23,Copa de Europa / Champions,Manchester United,Real Madrid,4,0,Manchester United,Visitante,0,4,D,Etihad Stadium,tm4060797,transfermarkt
+2023-05-17,2022/23,Copa de Europa / Champions,Manchester City,Real Madrid,4,0,Manchester City,Visitante,0,4,D,Etihad Stadium,tm4060797,transfermarkt
 2023-05-21,2022/23,LaLiga,Valencia CF,Real Madrid,1,0,Valencia CF,Visitante,0,1,D,Mestalla,tm3886689,transfermarkt
 2023-05-24,2022/23,LaLiga,Real Madrid,Rayo Vallecano,2,1,Rayo Vallecano,Local,2,1,V,Santiago Bernabéu,tm3886698,transfermarkt
 2023-05-27,2022/23,LaLiga,Sevilla FC,Real Madrid,1,2,Sevilla FC,Visitante,2,1,V,Ramón Sánchez-Pizjuán,tm3886709,transfermarkt
@@ -3591,9 +3591,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2024-03-10,2023/24,LaLiga,Real Madrid,Celta Vigo,4,0,Celta Vigo,Local,4,0,V,Santiago Bernabéu,tm4113003,transfermarkt
 2024-03-16,2023/24,LaLiga,CA Osasuna,Real Madrid,2,4,CA Osasuna,Visitante,4,2,V,El Sadar,tm4112987,transfermarkt
 2024-03-31,2023/24,LaLiga,Real Madrid,Athletic Bilbao,2,0,Athletic Bilbao,Local,2,0,V,Santiago Bernabéu,tm4112981,transfermarkt
-2024-04-09,2023/24,Copa de Europa / Champions,Real Madrid,Manchester United,3,3,Manchester United,Local,3,3,E,Santiago Bernabéu,tm4312023,transfermarkt
+2024-04-09,2023/24,Copa de Europa / Champions,Real Madrid,Manchester City,3,3,Manchester City,Local,3,3,E,Santiago Bernabéu,tm4312023,transfermarkt
 2024-04-13,2023/24,LaLiga,RCD Mallorca,Real Madrid,0,1,RCD Mallorca,Visitante,1,0,V,Mallorca Son Moix,tm4113018,transfermarkt
-2024-04-17,2023/24,Copa de Europa / Champions,Manchester United,Real Madrid,4,5,Manchester United,Visitante,5,4,V,Etihad Stadium,tm4312027,transfermarkt
+2024-04-17,2023/24,Copa de Europa / Champions,Manchester City,Real Madrid,4,5,Manchester City,Visitante,5,4,V,Etihad Stadium,tm4312027,transfermarkt
 2024-04-21,2023/24,LaLiga,Real Madrid,FC Barcelona,3,2,FC Barcelona,Local,3,2,V,Santiago Bernabéu,tm4112930,transfermarkt
 2024-04-26,2023/24,LaLiga,Real Sociedad,Real Madrid,0,1,Real Sociedad,Visitante,1,0,V,Reale Arena,tm4112944,transfermarkt
 2024-04-30,2023/24,Copa de Europa / Champions,Bayern Munich,Real Madrid,2,2,Bayern Munich,Visitante,2,2,E,Allianz Arena,tm4331178,transfermarkt
@@ -3635,15 +3635,15 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2025-01-12,2024/25,Supercopa de España,Real Madrid,FC Barcelona,2,5,FC Barcelona,Local,2,5,D,King Abdullah Sports City,tm4530083,transfermarkt
 2025-01-16,2024/25,Copa del Rey,Real Madrid,Celta Vigo,5,2,Celta Vigo,Local,5,2,V,Santiago Bernabéu,tm4527517,transfermarkt
 2025-01-19,2024/25,LaLiga,Real Madrid,UD Las Palmas,4,1,UD Las Palmas,Local,4,1,V,Santiago Bernabéu,tm4407732,transfermarkt
-2025-01-22,2024/25,Copa de Europa / Champions,Real Madrid,Fußballclub Red Bull Salzburg,5,1,Fußballclub Red Bull Salzburg,Local,5,1,V,Santiago Bernabéu,tm4445034,transfermarkt
+2025-01-22,2024/25,Copa de Europa / Champions,Real Madrid,Red Bull Salzburg,5,1,Red Bull Salzburg,Local,5,1,V,Santiago Bernabéu,tm4445034,transfermarkt
 2025-01-25,2024/25,LaLiga,Real Valladolid,Real Madrid,0,3,Real Valladolid,Visitante,3,0,V,José Zorrilla,tm4407752,transfermarkt
-2025-01-29,2024/25,Copa de Europa / Champions,Stade Reims,Real Madrid,0,3,Stade Reims,Visitante,3,0,V,Stade de Roudourou,tm4445144,transfermarkt
+2025-01-29,2024/25,Copa de Europa / Champions,Stade Brestois 29,Real Madrid,0,3,Stade Brestois 29,Visitante,3,0,V,Stade de Roudourou,tm4445144,transfermarkt
 2025-02-01,2024/25,LaLiga,Espanyol Barcelona,Real Madrid,1,0,Espanyol Barcelona,Visitante,0,1,D,RCDE Stadium,tm4407780,transfermarkt
 2025-02-05,2024/25,Copa del Rey,CD Leganés,Real Madrid,2,3,CD Leganés,Visitante,3,2,V,Ontime Butarque,tm4540705,transfermarkt
 2025-02-08,2024/25,LaLiga,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Santiago Bernabéu,tm4407769,transfermarkt
-2025-02-11,2024/25,Copa de Europa / Champions,Manchester United,Real Madrid,2,3,Manchester United,Visitante,3,2,V,Etihad Stadium,tm4547617,transfermarkt
+2025-02-11,2024/25,Copa de Europa / Champions,Manchester City,Real Madrid,2,3,Manchester City,Visitante,3,2,V,Etihad Stadium,tm4547617,transfermarkt
 2025-02-15,2024/25,LaLiga,CA Osasuna,Real Madrid,1,1,CA Osasuna,Visitante,1,1,E,El Sadar,tm4407757,transfermarkt
-2025-02-19,2024/25,Copa de Europa / Champions,Real Madrid,Manchester United,3,1,Manchester United,Local,3,1,V,Santiago Bernabéu,tm4547623,transfermarkt
+2025-02-19,2024/25,Copa de Europa / Champions,Real Madrid,Manchester City,3,1,Manchester City,Local,3,1,V,Santiago Bernabéu,tm4547623,transfermarkt
 2025-02-23,2024/25,LaLiga,Real Madrid,Girona FC,2,0,Girona FC,Local,2,0,V,Santiago Bernabéu,tm4407541,transfermarkt
 2025-02-26,2024/25,Copa del Rey,Real Sociedad,Real Madrid,0,1,Real Sociedad,Visitante,1,0,V,Reale Arena,tm4557607,transfermarkt
 2025-03-01,2024/25,LaLiga,Real Betis,Real Madrid,2,1,Real Betis,Visitante,1,2,D,Benito Villamarín,tm4407735,transfermarkt
@@ -3665,9 +3665,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2025-05-14,2024/25,LaLiga,Real Madrid,RCD Mallorca,2,1,RCD Mallorca,Local,2,1,V,Santiago Bernabéu,tm4407581,transfermarkt
 2025-05-18,2024/25,LaLiga,Sevilla FC,Real Madrid,0,2,Sevilla FC,Visitante,2,0,V,Ramón Sánchez-Pizjuán,tm4407590,transfermarkt
 2025-05-24,2024/25,LaLiga,Real Madrid,Real Sociedad,2,0,Real Sociedad,Local,2,0,V,Santiago Bernabéu,tm4407566,transfermarkt
-2025-06-18,2024/25,Mundial de Clubes,Real Madrid,Al-Hilal Saudi Football Club,1,1,Al-Hilal Saudi Football Club,Local,1,1,E,Hard Rock Stadium,tm4504592,transfermarkt
+2025-06-18,2024/25,Mundial de Clubes,Real Madrid,Al-Hilal,1,1,Al-Hilal,Local,1,1,E,Hard Rock Stadium,tm4504592,transfermarkt
 2025-06-22,2024/25,Mundial de Clubes,Real Madrid,CF Pachuca,3,1,CF Pachuca,Local,3,1,V,Bank of America Stadium,tm4506844,transfermarkt
-2025-06-27,2024/25,Mundial de Clubes,Fußballclub Red Bull Salzburg,Real Madrid,0,3,Fußballclub Red Bull Salzburg,Visitante,3,0,V,Lincoln Financial Field,tm4506859,transfermarkt
+2025-06-27,2024/25,Mundial de Clubes,Red Bull Salzburg,Real Madrid,0,3,Red Bull Salzburg,Visitante,3,0,V,Lincoln Financial Field,tm4506859,transfermarkt
 2025-07-01,2025/26,Mundial de Clubes,Real Madrid,Juventus,1,0,Juventus,Local,1,0,V,Hard Rock Stadium,tm4506866,transfermarkt
 2025-07-05,2025/26,Mundial de Clubes,Real Madrid,Borussia Dortmund,3,2,Borussia Dortmund,Local,3,2,V,MetLife Stadium,tm4506871,transfermarkt
 2025-07-09,2025/26,Mundial de Clubes,Paris Saint-Germain,Real Madrid,4,0,Paris Saint-Germain,Visitante,0,4,D,MetLife Stadium,tm4506873,transfermarkt
@@ -3688,13 +3688,13 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2025-11-04,2025/26,Copa de Europa / Champions,Liverpool,Real Madrid,1,0,Liverpool,Visitante,0,1,D,Anfield,tm4714990,transfermarkt
 2025-11-09,2025/26,LaLiga,Rayo Vallecano,Real Madrid,0,0,Rayo Vallecano,Visitante,0,0,E,Estadio de Vallecas,tm4645549,transfermarkt
 2025-11-23,2025/26,LaLiga,Elche CF,Real Madrid,2,2,Elche CF,Visitante,2,2,E,Manuel Martínez Valero,tm4645496,transfermarkt
-2025-11-26,2025/26,Copa de Europa / Champions,Olympiakos Syndesmos Filathlon Peiraios,Real Madrid,3,4,Olympiakos Syndesmos Filathlon Peiraios,Visitante,4,3,V,Stadio Georgios Karaiskakis,tm4715049,transfermarkt
+2025-11-26,2025/26,Copa de Europa / Champions,Olympiacos,Real Madrid,3,4,Olympiacos,Visitante,4,3,V,Stadio Georgios Karaiskakis,tm4715049,transfermarkt
 2025-11-30,2025/26,LaLiga,Girona FC,Real Madrid,1,1,Girona FC,Visitante,1,1,E,Montilivi,tm4645760,transfermarkt
 2025-12-03,2025/26,LaLiga,Athletic Bilbao,Real Madrid,0,3,Athletic Bilbao,Visitante,3,0,V,San Mamés,tm4645837,transfermarkt
 2025-12-07,2025/26,LaLiga,Real Madrid,Celta Vigo,0,2,Celta Vigo,Local,0,2,D,Santiago Bernabéu,tm4645773,transfermarkt
-2025-12-10,2025/26,Copa de Europa / Champions,Real Madrid,Manchester United,1,2,Manchester United,Local,1,2,D,Santiago Bernabéu,tm4715065,transfermarkt
+2025-12-10,2025/26,Copa de Europa / Champions,Real Madrid,Manchester City,1,2,Manchester City,Local,1,2,D,Santiago Bernabéu,tm4715065,transfermarkt
 2025-12-14,2025/26,LaLiga,CD Alaves,Real Madrid,1,2,CD Alaves,Visitante,2,1,V,Mendizorroza,tm4645787,transfermarkt
-2025-12-17,2025/26,Copa del Rey,Deportivo La Coruna,Real Madrid,2,3,Deportivo La Coruna,Visitante,3,2,V,El Prado,tm4784347,transfermarkt
+2025-12-17,2025/26,Copa del Rey,CF Talavera de la Reina,Real Madrid,2,3,CF Talavera de la Reina,Visitante,3,2,V,El Prado,tm4784347,transfermarkt
 2025-12-20,2025/26,LaLiga,Real Madrid,Sevilla FC,2,0,Sevilla FC,Local,2,0,V,Santiago Bernabéu,tm4645840,transfermarkt
 2026-01-04,2025/26,LaLiga,Real Madrid,Real Betis,5,1,Real Betis,Local,5,1,V,Santiago Bernabéu,tm4645853,transfermarkt
 2026-01-08,2025/26,Supercopa de España,Atletico Madrid,Real Madrid,1,2,Atletico Madrid,Visitante,2,1,V,King Abdullah Sports City,tm4790451,transfermarkt
@@ -3712,9 +3712,9 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2026-02-25,2025/26,Copa de Europa / Champions,Real Madrid,SL Benfica,2,1,SL Benfica,Local,2,1,V,Santiago Bernabéu,tm4814105,transfermarkt
 2026-03-02,2025/26,LaLiga,Real Madrid,Getafe CF,0,1,Getafe CF,Local,0,1,D,Santiago Bernabéu,tm4645822,transfermarkt
 2026-03-06,2025/26,LaLiga,Celta Vigo,Real Madrid,1,2,Celta Vigo,Visitante,2,1,V,Abanca Balaídos,tm4645954,transfermarkt
-2026-03-11,2025/26,Copa de Europa / Champions,Real Madrid,Manchester United,3,0,Manchester United,Local,3,0,V,Santiago Bernabéu,tm4814356,transfermarkt
+2026-03-11,2025/26,Copa de Europa / Champions,Real Madrid,Manchester City,3,0,Manchester City,Local,3,0,V,Santiago Bernabéu,tm4814356,transfermarkt
 2026-03-14,2025/26,LaLiga,Real Madrid,Elche CF,4,1,Elche CF,Local,4,1,V,Santiago Bernabéu,tm4645919,transfermarkt
-2026-03-17,2025/26,Copa de Europa / Champions,Manchester United,Real Madrid,1,2,Manchester United,Visitante,2,1,V,Etihad Stadium,tm4814364,transfermarkt
+2026-03-17,2025/26,Copa de Europa / Champions,Manchester City,Real Madrid,1,2,Manchester City,Visitante,2,1,V,Etihad Stadium,tm4814364,transfermarkt
 2026-03-22,2025/26,LaLiga,Real Madrid,Atletico Madrid,3,2,Atletico Madrid,Local,3,2,V,Santiago Bernabéu,tm4645909,transfermarkt
 2026-04-04,2025/26,LaLiga,RCD Mallorca,Real Madrid,2,1,RCD Mallorca,Visitante,1,2,D,Mallorca Son Moix,tm4645906,transfermarkt
 2026-04-07,2025/26,Copa de Europa / Champions,Real Madrid,Bayern Munich,1,2,Bayern Munich,Local,1,2,D,Santiago Bernabéu,tm4814371,transfermarkt
@@ -3731,7 +3731,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2026-08-26,2026/27,LaLiga,Real Madrid,Real Sociedad,4,1,Real Sociedad,Local,4,1,V,Santiago Bernabéu,espn401882919,ESPN
 2026-08-30,2026/27,LaLiga,Real Madrid,Málaga,4,0,Málaga,Local,4,0,V,Santiago Bernabéu,espn401882899,ESPN
 2026-09-04,2026/27,LaLiga,Real Betis,Real Madrid,1,0,Real Betis,Visitante,0,1,D,Estadio La Cartuja,espn401882894,ESPN
-2026-09-08,2026/27,Copa de Europa / Champions,Real Madrid,Internazionale,2,1,Internazionale,Local,2,1,V,Santiago Bernabéu,espn401915451,ESPN
+2026-09-08,2026/27,Copa de Europa / Champions,Real Madrid,Inter Milan,2,1,Inter Milan,Local,2,1,V,Santiago Bernabéu,espn401915451,ESPN
 2026-09-12,2026/27,LaLiga,Real Madrid,Rayo Vallecano,4,1,Rayo Vallecano,Local,4,1,V,Santiago Bernabéu,espn401882880,ESPN
 2026-09-15,2026/27,LaLiga,Elche CF,Real Madrid,2,3,Elche CF,Visitante,3,2,V,Estadio Martínez Valero,espn401882872,ESPN
 2026-09-20,2026/27,LaLiga,Atletico Madrid,Real Madrid,2,1,Atletico Madrid,Visitante,1,2,D,Riyadh Air Metropolitano,espn401882865,ESPN
