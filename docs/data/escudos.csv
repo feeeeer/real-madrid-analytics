@@ -1,8 +1,11 @@
 equipo,url
+1. FC Kaiserslautern,escudos/fcfa52e7710b.png
+1. FC Köln,escudos/1334eaef7f41.png
 1.FC Union Berlin,escudos/8d9d0426917f.png
 AC Milan,escudos/a7c1bbf91252.png
 AC Sparta Praha,escudos/b8262f1202ef.png
 ACF Fiorentina,escudos/1884eff7f1c0.png
+AD Alcorcón,escudos/5a93d56b5b0c.png
 AD Almeria,escudos/357c65c635b9.png
 AEK Athens,escudos/ed76d634bf6c.png
 AEL Limassol,escudos/a9d8f1a11915.png
@@ -10,12 +13,16 @@ AJ Auxerre,escudos/528d81e03e14.png
 APOEL Nicosia,escudos/e8eaadb9bd66.png
 AS Monaco,escudos/f9fc7b0de877.png
 AS Roma,escudos/a2c1bb4fa07a.png
+Aberdeen,escudos/9bd4f26e86a6.png
 Ajax Amsterdam,escudos/f7ddc1b8a29d.png
 Al Ahly FC,escudos/ca7c934b3577.png
 Al-Ain FC,escudos/33bf02fef6a3.png
 Al-Hilal,escudos/a93767c1101f.png
 Al-Jazira Club,escudos/56e31b867f0d.png
+Al-Nassr,escudos/acecb402ac06.png
 Albacete,escudos/61713ff4d350.png
+Algeciras CF,escudos/a819c91662db.png
+Alicante CF,escudos/aada09c9018e.png
 Arandina CF,escudos/d3484c4c0680.png
 Arenas de Getxo,escudos/95f0ac91a374.png
 Arges Pitesti,escudos/04cfa7b3458e.png
@@ -31,6 +38,7 @@ BSC Young Boys,escudos/a112506be035.png
 Bayer Leverkusen,escudos/c31c5fe42e2f.png
 Bayern Munich,escudos/77c17394ffc8.png
 Besiktas,escudos/0c2ed2cd14bc.png
+Boca Juniors,escudos/a9087509310b.png
 Borussia Dortmund,escudos/07b6870fcfe6.png
 Borussia Monchengladbach,escudos/f99f996846d7.png
 Budapest Honved SE,escudos/e44973662e93.png
@@ -39,6 +47,7 @@ Burgos CF,escudos/bf73b9efd6a9.png
 CA Osasuna,escudos/989cc8aeb04c.png
 CD Alaves,escudos/ac627f696a96.png
 CD Alcoyano,escudos/466488548281.png
+CD Badajoz,escudos/3f2f2c9f7ba8.png
 CD Castellon,escudos/06f109ba200d.png
 CD Condal,escudos/194dba6941a9.png
 CD Cruz Azul,escudos/f6d61b50d258.png
@@ -47,6 +56,8 @@ CD Leonesa,escudos/50f9454e8077.png
 CD Logrones,escudos/c9060a5a2746.png
 CD Numancia,escudos/a34c14fb6b43.png
 CD Tenerife,escudos/583ece2307b8.png
+CD Toledo,escudos/27ffdf84ee47.png
+CD Valdepeñas,escudos/889d12b5f962.png
 CE Europa,escudos/0aeb813f5411.png
 CE Sabadell,escudos/df9517482a6e.png
 CF América,escudos/cd991a2027c8.png
@@ -56,19 +67,25 @@ CF Pachuca,escudos/4e6d86059112.png
 CF Talavera de la Reina,escudos/d5fe385ce883.png
 CP Cacereño,escudos/3e7798661fb1.png
 CP Merida,escudos/714481e86405.png
+CR Vasco da Gama,escudos/b716706103dc.png
 CSKA Moskva,escudos/f63438c629bb.png
 Cadiz CF,escudos/b3fa045ef36d.png
+Calvo Sotelo,escudos/0b154063e934.png
 Celta Vigo,escudos/65d07c3bd134.png
 Celtic,escudos/8c8a286208c5.png
 Chelsea FC,escudos/99f543a2482a.png
 Club Brugge,escudos/ce788477cf3b.png
+Club Necaxa,escudos/44351077c82a.png
+Club Olimpia,escudos/9c817007ce64.png
 Cordoba CF,escudos/ca2f328a2274.png
+Corinthians,escudos/54b94f911499.png
 Crvena Zvezda,escudos/d135a8c038e5.png
 Deportiva Minera,escudos/459cc0095578.png
 Deportivo La Coruna,escudos/d97169dc5f0c.png
 Derby County,escudos/691ab89b0e41.png
 Dinamo Bucuresti,escudos/0a718ae60621.png
 Dinamo Kiev,escudos/6bc14da4178d.png
+Dinamo Moscow,escudos/a440bd9178ac.png
 Dinamo Zagreb,escudos/c88663b4a787.png
 Dukla Praha,escudos/450ef9d27bdf.png
 Eintracht Frankfurt,escudos/77c84a1ab3dd.png
@@ -78,28 +95,39 @@ Espanyol,escudos/334022b13d94.png
 Espanyol Barcelona,escudos/334022b13d94.png
 FC Barcelona,escudos/b5705ff10a6d.png
 FC Basel 1893,escudos/9a3fb25667c5.png
+FC Carl Zeiss Jena,escudos/231a1121bddb.png
+FC Chornomorets Odessa,escudos/93fd5fdbe3f3.png
 FC Copenhagen,escudos/943fae4e1e23.png
+FC Lugano,escudos/3eb921241f32.png
+FC Politehnica Timișoara,escudos/a3538b3f8b27.png
 FC Porto,escudos/408ef44c3629.png
 FC Schalke 04,escudos/f046f0a20353.png
 FC Shakhtar Donetsk,escudos/94439cc15940.png
 FC Sheriff Tiraspol,escudos/62f54e242706.png
 FC Tirol,escudos/f12515d8d4a5.png
+FC Utrecht,escudos/6e7565c04860.png
 FC Viktoria Plzen,escudos/9979cd94c59d.png
+FC Wacker Innsbruck,escudos/74409f88aa14.png
 FC Zurich,escudos/4f74c7557fbb.png
+FK Austria Wien,escudos/0220f376b24c.png
+Fehérvár FC,escudos/691bbd91fe7c.png
 Ferencvaros,escudos/9f1d4da198e1.png
 Feyenoord,escudos/0cd38adfc6cb.png
 Galatasaray,escudos/1ea34e40067d.png
 Getafe CF,escudos/3e9263a7db53.png
 Gimnastic,escudos/3e7d656020dc.png
+Gimnastica de Torrelavega,escudos/b1698d0778f6.png
 Girona FC,escudos/81253ccdcb53.png
 Gornik Zabrze,escudos/7d6dcbc85498.png
 Granada CF,escudos/6fb9311c248c.png
 Grasshoppers Zurich,escudos/beae2fb056e5.png
 Grêmio,escudos/7c8bd01c0056.png
+HNK Rijeka,escudos/3b09fd707daa.png
 Hamburger SV,escudos/52848ac0d3c3.png
 Hercules CF,escudos/d10846f8b2f4.png
 Hvidovre IF,escudos/206f881519ba.png
 Inter Milan,escudos/f510a6f35ddf.png
+Ipswich Town,escudos/b29be62f451f.png
 Jeunesse Esch,escudos/d5fae37a337c.png
 Juventus,escudos/abf4876cc886.png
 KRC Genk,escudos/300b7513afda.png
@@ -122,6 +150,7 @@ Manchester United,escudos/6ef139470683.png
 Molde FK,escudos/5656bdcd8cf5.png
 Moss FK,escudos/67f2ed3ce66d.png
 Málaga,escudos/00cd249bafc1.png
+Neuchâtel Xamax,escudos/d571993b5aa2.png
 OGC Nice,escudos/1798a47b5da7.png
 Odense BK,escudos/7a2b5551df65.png
 Olympiacos,escudos/db1099147efa.png
@@ -129,16 +158,20 @@ Olympique Lyon,escudos/9d7ff63ee0d5.png
 Olympique Marseille,escudos/6c73954fdbdb.png
 Olímpic Xàtiva,escudos/88c9af4f5b85.png
 Omonia Nicosia,escudos/066153cc3fd2.png
+Os Belenenses,escudos/6366eca3fb07.png
 PSV Eindhoven,escudos/e4ce4c228229.png
 Panathinaikos,escudos/9927a750f742.png
 Paris Saint-Germain,escudos/98f0bb7fd8f9.png
 Partizan Belgrade,escudos/d3743dd49768.png
+Peñarol,escudos/5c2180951807.png
 Pontevedra CF,escudos/98fb1f452334.png
 Progres Niedercorn,escudos/8468c7ab0173.png
 RB Leipzig,escudos/e71c3057a247.png
 RCD Mallorca,escudos/4f240d825aa1.png
 RSC Anderlecht,escudos/d00321ad0997.png
+Racing Ferrol,escudos/793ed1ed947c.png
 Racing Santander,escudos/a2ec42eaa822.png
+Raja Casablanca,escudos/dc9dba86d0bb.png
 Rangers,escudos/557d52eeec98.png
 Rapid Wien,escudos/701b26ec7e71.png
 Rayo Vallecano,escudos/efd85e7c4243.png
@@ -146,6 +179,7 @@ Real Betis,escudos/942f4672af12.png
 Real Burgos,escudos/e64e347dbc76.png
 Real Jaen,escudos/53557b3ed657.png
 Real Madrid,escudos/a693f8ffa8a1.png
+Real Madrid Castilla,escudos/3a5b1513a092.png
 Real Murcia,escudos/6acbda46cfdb.png
 Real Oviedo,escudos/9d1203c5ce4b.png
 Real Sociedad,escudos/bedd78a8f8eb.png
@@ -157,13 +191,19 @@ Red Bull Salzburg,escudos/e7d390afc918.png
 Rosenborg BK,escudos/66868ec8325b.png
 Royal Antwerp FC,escudos/c334d85088a2.png
 SC Braga,escudos/82910c5a096e.png
+SD Ceuta,escudos/88ccae78eb5e.png
 SD Compostela,escudos/97be6bfefeea.png
 SD Eibar,escudos/baf60e0ab72c.png
 SD Huesca,escudos/f0aa9dc0a817.png
+SD Indautxu,escudos/d2265b4b20e3.png
+SD Ponferradina,escudos/ce34492d353b.png
+SK Sigma Olomouc,escudos/cc011fb25e49.png
 SL Benfica,escudos/35bd68ff1cdd.png
 SSC Napoli,escudos/3474fc98ca4d.png
+San Andrés,escudos/6e0ccb41ace5.png
 San Lorenzo,escudos/77a2cdfc0c95.png
 Servette Geneve,escudos/4aea0fb08edd.png
+Sestao SC,escudos/cbd62a2f10ed.png
 Sevilla FC,escudos/3e44b97fe37b.png
 Sparta Praha,escudos/b8262f1202ef.png
 Spartak Moskva,escudos/1648659f2e3d.png
@@ -177,11 +217,17 @@ Standard Liege,escudos/48e8f08f0a4d.png
 Steaua Bucuresti,escudos/68ea71787503.png
 Sturm Graz,escudos/2068bf2d0cba.png
 TSV 1860 Munchen,escudos/dc60ad1b9790.png
+Terrassa FC,escudos/fd1ebc4de47b.png
+Torino,escudos/c1707a86b5eb.png
+Torpedo Moscow,escudos/59f0a318709b.png
 Tottenham Hotspur,escudos/28802021ddc6.png
 UD Almeria,escudos/98ef99bd8d3c.png
+UD Lanzarote,escudos/a4616487e1da.png
 UD Las Palmas,escudos/fd88d9bccd37.png
 UD Melilla,escudos/89e8a2c24155.png
+UD Pájara Playas de Jandía,escudos/e342406a9756.png
 UD Salamanca,escudos/580f4f40961f.png
+UD San Sebastián de los Reyes,escudos/d3cfc8cf1843.png
 UE Cornellà,escudos/e30d34033b44.png
 UE Lleida,escudos/e965be982bc7.png
 Unionistas CF,escudos/090769873faa.png
@@ -190,8 +236,12 @@ VfB Stuttgart,escudos/2c33e46f807c.png
 VfL Wolfsburg,escudos/4f8d50b42437.png
 Villarreal,escudos/0740c240669e.png
 Villarreal CF,escudos/0740c240669e.png
+Vitesse Arnhem,escudos/100db444282f.png
 Werder Bremen,escudos/045221c53496.png
 Wiener Sport-Club,escudos/c24c1931f9dc.png
 Wisla Krakow,escudos/0808d53ed78a.png
 Xerez CD,escudos/f0be8d6e5f38.png
 Zenit St. Petersburg,escudos/6679a8e42c03.png
+Écija Balompié,escudos/e7614f96334b.png
+Újpest FC,escudos/81b8f9315dea.png
+ŠK Slovan Bratislava,escudos/66b6489bd30d.png
