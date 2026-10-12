@@ -29188,50 +29188,28 @@ tm4814375,Real Madrid,Franco Mastantuono,Right Winger,0,30,,
 tm4814375,Bayern Munich,Leonard Prescott,Goalkeeper,0,37,,
 tm4814375,Real Madrid,Javi Navarro,Goalkeeper,0,29,,
 tm4814375,Real Madrid,Thiago Pitarch,Central Midfield,0,45,,
-wkd554d6b004,Real Madrid,Manuel Alcalde,Goalkeeper,1,,0.5,0.06
-wkd554d6b004,Real Madrid,José Berraondo,Defender,1,,0.3,0.23
-wkd554d6b004,Real Madrid,Joaquín Yarza,Defender,1,,0.7,0.23
-wkd554d6b004,Real Madrid,José Quirante,Midfield,1,,0.233,0.54
-wkd554d6b004,Real Madrid,Enrique Normand,Midfield,1,,0.5,0.54
-wkd554d6b004,Real Madrid,Manuel Yarza,Midfield,1,,0.767,0.54
-wkd554d6b004,Real Madrid,Armando Giralt,Attack,1,,0.18,0.86
-wkd554d6b004,Real Madrid,Federico Revuelto,Attack,1,,0.34,0.86
-wkd554d6b004,Real Madrid,José Giralt,Attack,1,,0.5,0.86
-wkd554d6b004,Real Madrid,Manuel Prast,Attack,1,,0.66,0.86
-wkd554d6b004,Real Madrid,Pedro Parages,Attack,1,,0.82,0.86
-wkd554d6b004,Club Bizcaya,Fernando Asuero,Goalkeeper,1,,0.5,0.06
-wkd554d6b004,Club Bizcaya,Alfonso Sena,Defender,1,,0.3,0.23
-wkd554d6b004,Club Bizcaya,Juan Arzuaga,Defender,1,,0.7,0.23
-wkd554d6b004,Club Bizcaya,José Irízar,Midfield,1,,0.233,0.54
-wkd554d6b004,Club Bizcaya,Hermenegildo García,Midfield,1,,0.5,0.54
-wkd554d6b004,Club Bizcaya,Ramón de Cárdenas,Midfield,1,,0.767,0.54
-wkd554d6b004,Club Bizcaya,Tomás Murga,Attack,1,,0.18,0.86
-wkd554d6b004,Club Bizcaya,Benigno Larrea,Attack,1,,0.34,0.86
-wkd554d6b004,Club Bizcaya,Miguel Sena,Attack,1,,0.5,0.86
-wkd554d6b004,Club Bizcaya,Charles Simmons,Attack,1,,0.66,0.86
-wkd554d6b004,Club Bizcaya,Eustaquio Celada,Attack,1,,0.82,0.86
-wka3dcd0b190,Real Madrid,Ricardo Zamora,Goalkeeper,1,1,0.5,0.06
-wka3dcd0b190,Real Madrid,Ciriaco Errasti,Defender,1,2,0.3,0.23
-wka3dcd0b190,Real Madrid,Jacinto Quincoces,Defender,1,3,0.7,0.23
-wka3dcd0b190,Real Madrid,Pedro Regueiro,Midfield,1,4,0.233,0.54
-wka3dcd0b190,Real Madrid,Antonio Bonet,Midfield,1,5,0.5,0.54
-wka3dcd0b190,Real Madrid,José Ramón Sauto,Midfield,1,6,0.767,0.54
-wka3dcd0b190,Real Madrid,Eugenio,Attack,1,7,0.18,0.86
-wka3dcd0b190,Real Madrid,Luis Regueiro,Attack,1,8,0.34,0.86
-wka3dcd0b190,Real Madrid,Ildefonso Sañudo,Attack,1,9,0.5,0.86
-wka3dcd0b190,Real Madrid,Simón Lecue,Attack,1,10,0.66,0.86
-wka3dcd0b190,Real Madrid,Emilín,Attack,1,11,0.82,0.86
-wka3dcd0b190,FC Barcelona,José Iborra,Goalkeeper,1,1,0.5,0.06
-wka3dcd0b190,FC Barcelona,Pedro Areso,Defender,1,2,0.3,0.23
-wka3dcd0b190,FC Barcelona,José Bayo,Defender,1,3,0.7,0.23
-wka3dcd0b190,FC Barcelona,José Argemí,Midfield,1,4,0.233,0.54
-wka3dcd0b190,FC Barcelona,Antonio Franco,Midfield,1,5,0.5,0.54
-wka3dcd0b190,FC Barcelona,Domènec Balmanya,Midfield,1,6,0.767,0.54
-wka3dcd0b190,FC Barcelona,Martí Ventolrà,Attack,1,7,0.18,0.86
-wka3dcd0b190,FC Barcelona,Josep Raich,Attack,1,8,0.34,0.86
-wka3dcd0b190,FC Barcelona,Josep Escolà,Attack,1,9,0.5,0.86
-wka3dcd0b190,FC Barcelona,Enrique Fernández,Attack,1,10,0.66,0.86
-wka3dcd0b190,FC Barcelona,Julio Munlloch,Attack,1,11,0.82,0.86
+wk65d3544873,Real Madrid,Ricardo Zamora,Goalkeeper,1,1,0.5,0.06
+wk65d3544873,Real Madrid,Ciriaco Errasti,Defender,1,2,0.3,0.23
+wk65d3544873,Real Madrid,Jacinto Quincoces,Defender,1,3,0.7,0.23
+wk65d3544873,Real Madrid,Pedro Regueiro,Midfield,1,4,0.233,0.54
+wk65d3544873,Real Madrid,Antonio Bonet,Midfield,1,5,0.5,0.54
+wk65d3544873,Real Madrid,José Ramón Sauto,Midfield,1,6,0.767,0.54
+wk65d3544873,Real Madrid,Eugenio,Attack,1,7,0.18,0.86
+wk65d3544873,Real Madrid,Luis Regueiro,Attack,1,8,0.34,0.86
+wk65d3544873,Real Madrid,Ildefonso Sañudo,Attack,1,9,0.5,0.86
+wk65d3544873,Real Madrid,Simón Lecue,Attack,1,10,0.66,0.86
+wk65d3544873,Real Madrid,Emilín,Attack,1,11,0.82,0.86
+wk65d3544873,FC Barcelona,José Iborra,Goalkeeper,1,1,0.5,0.06
+wk65d3544873,FC Barcelona,Pedro Areso,Defender,1,2,0.3,0.23
+wk65d3544873,FC Barcelona,José Bayo,Defender,1,3,0.7,0.23
+wk65d3544873,FC Barcelona,José Argemí,Midfield,1,4,0.233,0.54
+wk65d3544873,FC Barcelona,Antonio Franco,Midfield,1,5,0.5,0.54
+wk65d3544873,FC Barcelona,Domènec Balmanya,Midfield,1,6,0.767,0.54
+wk65d3544873,FC Barcelona,Martí Ventolrà,Attack,1,7,0.18,0.86
+wk65d3544873,FC Barcelona,Josep Raich,Attack,1,8,0.34,0.86
+wk65d3544873,FC Barcelona,Josep Escolà,Attack,1,9,0.5,0.86
+wk65d3544873,FC Barcelona,Enrique Fernández,Attack,1,10,0.66,0.86
+wk65d3544873,FC Barcelona,Julio Munlloch,Attack,1,11,0.82,0.86
 wkce378dd154,Real Madrid,José Bañón,Goalkeeper,1,1,0.5,0.06
 wkce378dd154,Real Madrid,Clemente,Defender,1,2,0.3,0.23
 wkce378dd154,Real Madrid,José Corona,Defender,1,3,0.7,0.23
@@ -29265,17 +29243,17 @@ wk93d835fea1,Real Madrid,Sabino Barinaga,Attack,1,8,0.34,0.86
 wk93d835fea1,Real Madrid,Pruden,Attack,1,9,0.5,0.86
 wk93d835fea1,Real Madrid,Luis Molowny,Attack,1,10,0.66,0.86
 wk93d835fea1,Real Madrid,Pablo Vidal,Attack,1,11,0.82,0.86
-wk93d835fea1,RCD Español,José Trías,Goalkeeper,1,1,0.5,0.06
-wk93d835fea1,RCD Español,José Casas,Defender,1,2,0.3,0.23
-wk93d835fea1,RCD Español,José Mariscal,Defender,1,3,0.7,0.23
-wk93d835fea1,RCD Español,Ramón Celma,Midfield,1,4,0.233,0.54
-wk93d835fea1,RCD Español,Antonio Fàbregas,Midfield,1,5,0.5,0.54
-wk93d835fea1,RCD Español,Félix Llimós,Midfield,1,6,0.767,0.54
-wk93d835fea1,RCD Español,Rosendo Hernández,Attack,1,7,0.18,0.86
-wk93d835fea1,RCD Español,Gabriel Jorge,Attack,1,8,0.34,0.86
-wk93d835fea1,RCD Español,Ángel Calvo,Attack,1,9,0.5,0.86
-wk93d835fea1,RCD Español,Vicente Hernández,Attack,1,10,0.66,0.86
-wk93d835fea1,RCD Español,Ernesto Galobart,Attack,1,11,0.82,0.86
+wk93d835fea1,Espanyol Barcelona,José Trías,Goalkeeper,1,1,0.5,0.06
+wk93d835fea1,Espanyol Barcelona,José Casas,Defender,1,2,0.3,0.23
+wk93d835fea1,Espanyol Barcelona,José Mariscal,Defender,1,3,0.7,0.23
+wk93d835fea1,Espanyol Barcelona,Ramón Celma,Midfield,1,4,0.233,0.54
+wk93d835fea1,Espanyol Barcelona,Antonio Fàbregas,Midfield,1,5,0.5,0.54
+wk93d835fea1,Espanyol Barcelona,Félix Llimós,Midfield,1,6,0.767,0.54
+wk93d835fea1,Espanyol Barcelona,Rosendo Hernández,Attack,1,7,0.18,0.86
+wk93d835fea1,Espanyol Barcelona,Gabriel Jorge,Attack,1,8,0.34,0.86
+wk93d835fea1,Espanyol Barcelona,Ángel Calvo,Attack,1,9,0.5,0.86
+wk93d835fea1,Espanyol Barcelona,Vicente Hernández,Attack,1,10,0.66,0.86
+wk93d835fea1,Espanyol Barcelona,Ernesto Galobart,Attack,1,11,0.82,0.86
 wk650812a805,Real Madrid,Andrés Junquera,Goalkeeper,1,1,0.5,0.06
 wk650812a805,Real Madrid,José Luis,Defender,1,2,0.2,0.23
 wk650812a805,Real Madrid,Gregorio Benito,Defender,1,3,0.4,0.23
@@ -29776,61 +29754,61 @@ wkd2c7d1f15a,FC Barcelona,Michael Laudrup,Attack,1,8,0.233,0.86
 wkd2c7d1f15a,FC Barcelona,Txiki Begiristain,Attack,1,11,0.767,0.86
 wkd2c7d1f15a,FC Barcelona,Luis López Rekarte,Defender,0,15,,
 wkd2c7d1f15a,FC Barcelona,Lluís Carreras,Attack,0,16,,
-wk76e841a023,FC Barcelona,Ruud Hesp,Goalkeeper,1,13,0.5,0.06
-wk76e841a023,FC Barcelona,Michael Reiziger,Right-Back,1,22,0.767,0.23
-wk76e841a023,FC Barcelona,Miguel Ángel Nadal,Centre-Back,1,20,0.5,0.23
-wk76e841a023,FC Barcelona,Sergi,Left-Back,1,12,0.233,0.23
-wk76e841a023,FC Barcelona,Pep Guardiola,Defensive Midfield,1,4,0.5,0.39
-wk76e841a023,FC Barcelona,Luis Enrique,Right Midfield,1,21,0.7,0.54
-wk76e841a023,FC Barcelona,Guillermo Amor,Left Midfield,1,18,0.3,0.54
-wk76e841a023,FC Barcelona,Giovanni,Attacking Midfield,1,10,0.5,0.69
-wk76e841a023,FC Barcelona,Rivaldo,Right Winger,1,11,0.767,0.86
-wk76e841a023,FC Barcelona,Sonny Anderson,Centre-Forward,1,9,0.5,0.86
-wk76e841a023,FC Barcelona,Emmanuel Amunike,Left Winger,1,14,0.233,0.86
-wk76e841a023,FC Barcelona,Albert Ferrer,Defender,0,2,,
-wk76e841a023,FC Barcelona,Dragan Ćirić,Midfield,0,16,,
-wk76e841a023,FC Barcelona,Christophe Dugarry,Attack,0,15,,
-wk76e841a023,Real Madrid,Santiago Cañizares,Goalkeeper,1,1,0.5,0.06
-wk76e841a023,Real Madrid,Chendo,Right-Back,1,2,0.8,0.23
-wk76e841a023,Real Madrid,Aitor Karanka,Centre-Back,1,24,0.6,0.23
-wk76e841a023,Real Madrid,Manolo Sanchís,Centre-Back,1,5,0.4,0.23
-wk76e841a023,Real Madrid,Roberto Carlos,Left-Back,1,3,0.2,0.23
-wk76e841a023,Real Madrid,Jaime,Defensive Midfield,1,16,0.5,0.39
-wk76e841a023,Real Madrid,Clarence Seedorf,Right Midfield,1,10,0.7,0.54
-wk76e841a023,Real Madrid,José Amavisca,Left Midfield,1,11,0.3,0.54
-wk76e841a023,Real Madrid,Raúl,Attacking Midfield,1,7,0.5,0.69
-wk76e841a023,Real Madrid,Predrag Mijatović,Centre-Forward,1,8,0.3,0.86
-wk76e841a023,Real Madrid,Davor Šuker,Centre-Forward,1,9,0.7,0.86
-wk76e841a023,Real Madrid,Guti,Midfield,0,14,,
-wk76e841a023,Real Madrid,Zé Roberto,Midfield,0,21,,
-wk76e841a023,Real Madrid,Dani,Attack,0,23,,
-wk82d2237538,Real Madrid,Santiago Cañizares,Goalkeeper,1,1,0.5,0.06
-wk82d2237538,Real Madrid,Christian Panucci,Right-Back,1,17,0.8,0.23
-wk82d2237538,Real Madrid,Aitor Karanka,Centre-Back,1,24,0.6,0.23
-wk82d2237538,Real Madrid,Fernando Hierro,Centre-Back,1,4,0.4,0.23
-wk82d2237538,Real Madrid,Roberto Carlos,Left-Back,1,3,0.2,0.23
-wk82d2237538,Real Madrid,Guti,Defensive Midfield,1,14,0.5,0.39
-wk82d2237538,Real Madrid,Clarence Seedorf,Right Midfield,1,10,0.7,0.54
-wk82d2237538,Real Madrid,Zé Roberto,Left Midfield,1,21,0.3,0.54
-wk82d2237538,Real Madrid,Raúl,Attacking Midfield,1,7,0.5,0.69
-wk82d2237538,Real Madrid,Predrag Mijatović,Centre-Forward,1,8,0.3,0.86
-wk82d2237538,Real Madrid,Davor Šuker,Centre-Forward,1,9,0.7,0.86
-wk82d2237538,Real Madrid,Jaime,Midfield,0,16,,
-wk82d2237538,Real Madrid,Víctor,Midfield,0,18,,
-wk82d2237538,Real Madrid,Manolo Sanchís,Defender,0,5,,
-wk82d2237538,FC Barcelona,Ruud Hesp,Goalkeeper,1,13,0.5,0.06
-wk82d2237538,FC Barcelona,Albert Ferrer,Right-Back,1,2,0.8,0.23
-wk82d2237538,FC Barcelona,Michael Reiziger,Centre-Back,1,22,0.6,0.23
-wk82d2237538,FC Barcelona,Abelardo,Centre-Back,1,3,0.4,0.23
-wk82d2237538,FC Barcelona,Sergi,Left-Back,1,12,0.2,0.23
-wk82d2237538,FC Barcelona,Pep Guardiola,Defensive Midfield,1,4,0.3,0.39
-wk82d2237538,FC Barcelona,Guillermo Amor,Defensive Midfield,1,18,0.7,0.39
-wk82d2237538,FC Barcelona,Giovanni,Attacking Midfield,1,10,0.5,0.69
-wk82d2237538,FC Barcelona,Luís Figo,Right Winger,1,7,0.767,0.86
-wk82d2237538,FC Barcelona,Sonny Anderson,Centre-Forward,1,9,0.5,0.86
-wk82d2237538,FC Barcelona,Rivaldo,Left Winger,1,11,0.233,0.86
-wk82d2237538,FC Barcelona,Dragan Ćirić,Midfield,0,16,,
-wk82d2237538,FC Barcelona,Christophe Dugarry,Attack,0,15,,
+wked2808a71f,FC Barcelona,Ruud Hesp,Goalkeeper,1,13,0.5,0.06
+wked2808a71f,FC Barcelona,Michael Reiziger,Right-Back,1,22,0.767,0.23
+wked2808a71f,FC Barcelona,Miguel Ángel Nadal,Centre-Back,1,20,0.5,0.23
+wked2808a71f,FC Barcelona,Sergi,Left-Back,1,12,0.233,0.23
+wked2808a71f,FC Barcelona,Pep Guardiola,Defensive Midfield,1,4,0.5,0.39
+wked2808a71f,FC Barcelona,Luis Enrique,Right Midfield,1,21,0.7,0.54
+wked2808a71f,FC Barcelona,Guillermo Amor,Left Midfield,1,18,0.3,0.54
+wked2808a71f,FC Barcelona,Giovanni,Attacking Midfield,1,10,0.5,0.69
+wked2808a71f,FC Barcelona,Rivaldo,Right Winger,1,11,0.767,0.86
+wked2808a71f,FC Barcelona,Sonny Anderson,Centre-Forward,1,9,0.5,0.86
+wked2808a71f,FC Barcelona,Emmanuel Amunike,Left Winger,1,14,0.233,0.86
+wked2808a71f,FC Barcelona,Albert Ferrer,Defender,0,2,,
+wked2808a71f,FC Barcelona,Dragan Ćirić,Midfield,0,16,,
+wked2808a71f,FC Barcelona,Christophe Dugarry,Attack,0,15,,
+wked2808a71f,Real Madrid,Santiago Cañizares,Goalkeeper,1,1,0.5,0.06
+wked2808a71f,Real Madrid,Chendo,Right-Back,1,2,0.8,0.23
+wked2808a71f,Real Madrid,Aitor Karanka,Centre-Back,1,24,0.6,0.23
+wked2808a71f,Real Madrid,Manolo Sanchís,Centre-Back,1,5,0.4,0.23
+wked2808a71f,Real Madrid,Roberto Carlos,Left-Back,1,3,0.2,0.23
+wked2808a71f,Real Madrid,Jaime,Defensive Midfield,1,16,0.5,0.39
+wked2808a71f,Real Madrid,Clarence Seedorf,Right Midfield,1,10,0.7,0.54
+wked2808a71f,Real Madrid,José Amavisca,Left Midfield,1,11,0.3,0.54
+wked2808a71f,Real Madrid,Raúl,Attacking Midfield,1,7,0.5,0.69
+wked2808a71f,Real Madrid,Predrag Mijatović,Centre-Forward,1,8,0.3,0.86
+wked2808a71f,Real Madrid,Davor Šuker,Centre-Forward,1,9,0.7,0.86
+wked2808a71f,Real Madrid,Guti,Midfield,0,14,,
+wked2808a71f,Real Madrid,Zé Roberto,Midfield,0,21,,
+wked2808a71f,Real Madrid,Dani,Attack,0,23,,
+wkc926dc2c46,Real Madrid,Santiago Cañizares,Goalkeeper,1,1,0.5,0.06
+wkc926dc2c46,Real Madrid,Christian Panucci,Right-Back,1,17,0.8,0.23
+wkc926dc2c46,Real Madrid,Aitor Karanka,Centre-Back,1,24,0.6,0.23
+wkc926dc2c46,Real Madrid,Fernando Hierro,Centre-Back,1,4,0.4,0.23
+wkc926dc2c46,Real Madrid,Roberto Carlos,Left-Back,1,3,0.2,0.23
+wkc926dc2c46,Real Madrid,Guti,Defensive Midfield,1,14,0.5,0.39
+wkc926dc2c46,Real Madrid,Clarence Seedorf,Right Midfield,1,10,0.7,0.54
+wkc926dc2c46,Real Madrid,Zé Roberto,Left Midfield,1,21,0.3,0.54
+wkc926dc2c46,Real Madrid,Raúl,Attacking Midfield,1,7,0.5,0.69
+wkc926dc2c46,Real Madrid,Predrag Mijatović,Centre-Forward,1,8,0.3,0.86
+wkc926dc2c46,Real Madrid,Davor Šuker,Centre-Forward,1,9,0.7,0.86
+wkc926dc2c46,Real Madrid,Jaime,Midfield,0,16,,
+wkc926dc2c46,Real Madrid,Víctor,Midfield,0,18,,
+wkc926dc2c46,Real Madrid,Manolo Sanchís,Defender,0,5,,
+wkc926dc2c46,FC Barcelona,Ruud Hesp,Goalkeeper,1,13,0.5,0.06
+wkc926dc2c46,FC Barcelona,Albert Ferrer,Right-Back,1,2,0.8,0.23
+wkc926dc2c46,FC Barcelona,Michael Reiziger,Centre-Back,1,22,0.6,0.23
+wkc926dc2c46,FC Barcelona,Abelardo,Centre-Back,1,3,0.4,0.23
+wkc926dc2c46,FC Barcelona,Sergi,Left-Back,1,12,0.2,0.23
+wkc926dc2c46,FC Barcelona,Pep Guardiola,Defensive Midfield,1,4,0.3,0.39
+wkc926dc2c46,FC Barcelona,Guillermo Amor,Defensive Midfield,1,18,0.7,0.39
+wkc926dc2c46,FC Barcelona,Giovanni,Attacking Midfield,1,10,0.5,0.69
+wkc926dc2c46,FC Barcelona,Luís Figo,Right Winger,1,7,0.767,0.86
+wkc926dc2c46,FC Barcelona,Sonny Anderson,Centre-Forward,1,9,0.5,0.86
+wkc926dc2c46,FC Barcelona,Rivaldo,Left Winger,1,11,0.233,0.86
+wkc926dc2c46,FC Barcelona,Dragan Ćirić,Midfield,0,16,,
+wkc926dc2c46,FC Barcelona,Christophe Dugarry,Attack,0,15,,
 wk8c1566ea9d,Real Zaragoza,César Láinez,Goalkeeper,1,13,0.5,0.06
 wk8c1566ea9d,Real Zaragoza,Pablo Díaz,Right-Back,1,16,0.8,0.23
 wk8c1566ea9d,Real Zaragoza,Xavi Aguado,Centre-Back,1,6,0.4,0.23
