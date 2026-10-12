@@ -129,7 +129,7 @@ POS_WIKI = {"GK": "Goalkeeper", "SW": "Sweeper", "CB": "Centre-Back", "CH": "Cen
             "AM": "Attacking Midfield", "IR": "Second Striker", "IL": "Second Striker", "SS": "Second Striker", "OR": "Right Winger",
             "OL": "Left Winger", "RW": "Right Winger", "LW": "Left Winger", "RF": "Right Winger", "LF": "Left Winger",
             "CF": "Centre-Forward", "ST": "Centre-Forward", "FW": "Attack", "W": "Attack"}
-ES_RM = r"^(?!.*Castilla)(Real Madrid|Madrid FC|Madrid CF|Madrid C\.F\.|Madrid Club de Fútbol)"
+ES_RM = r"^(?!.*(Castilla|Aficionados| B$))(Real Madrid|Madrid FC|Madrid CF|Madrid C\.F\.|Madrid Club de Fútbol)"  # sin filiales
 MESES = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september",
                                      "october", "november", "december"], 1)}
 
@@ -147,7 +147,7 @@ def ronda_es(ronda, seccion, comp):
     if comp == "LaLiga":
         return f"Jornada {ronda}" if ronda.isdigit() else ""
     base = ""
-    for texto in (seccion.split(" > ")[-1], ronda):
+    for texto in (*reversed(seccion.split(" > ")), ronda):
         for patron, es in RONDAS:
             m = re.search(patron, texto, re.I)
             if m:
@@ -155,7 +155,7 @@ def ronda_es(ronda, seccion, comp):
                 break
         if base:
             break
-    vuelta = re.search(r"first leg|1st leg|second leg|2nd leg|replay|tie[- ]?breaker|play-?off", ronda, re.I)
+    vuelta = re.search(r"first leg|1st leg|second leg|2nd leg|replay|tie[- ]?breaker|play-?off", f"{ronda} {seccion.split(' > ')[-1]}", re.I)
     leg = {"f": "ida", "1": "ida", "s": "vuelta", "2": "vuelta"}.get(vuelta[0][0].lower(), "desempate") if vuelta else ""
     if base and leg and base != "Play-off":
         return f"{base} ({leg})"
@@ -233,7 +233,22 @@ def wikipedia(h, al):
     pone ronda, goleadores, penaltis y estadio a los que sí están y las alineaciones de las finales.
     Devuelve h, al, la clasificación de cada Liga y el palmarés."""
     d = json.loads(WIKI.read_text())
-    w = pd.DataFrame(d["partidos"], columns=d["partidos_cols"]).drop_duplicates(["fecha", "competicion", "local_wiki", "visitante_wiki"])
+    w = pd.DataFrame(d["partidos"], columns=d["partidos_cols"])
+    # Copa del Rey de las páginas de cada edición en en.wikipedia (copa_en.json): cajas de partido y tablas de ida y vuelta
+    if (WIKI.parent / "copa_en.json").exists():
+        c = pd.DataFrame(json.loads((WIKI.parent / "copa_en.json").read_text())["copa_en"])
+        vuelta = c["pata"] == "2"  # la vuelta se juega en casa del segundo equipo y su marcador va con el local primero
+        w = pd.concat([w, pd.DataFrame({
+            "fecha": c["fecha"], "competicion": c["comp"], "ronda": c["ronda"],
+            "local": np.where(vuelta, c["t2"], c["t1"]), "local_wiki": np.where(vuelta, c["t2w"], c["t1w"]),
+            "visitante": np.where(vuelta, c["t1"], c["t2"]), "visitante_wiki": np.where(vuelta, c["t1w"], c["t2w"]),
+            "goles_local": c["g1"], "goles_visitante": c["g2"], "penaltis": "", "estadio": c["estadio"], "ciudad": "",
+            "goleadores_local": c["goles1"], "goleadores_visitante": c["goles2"],
+            "seccion": c["seccion"] + np.where(c["pata"] == "1", " > First leg", np.where(vuelta, " > Second leg", ""))})], ignore_index=True)
+        w = w[w["local_wiki"].str.match(ES_RM) | w["visitante_wiki"].str.match(ES_RM) | w["local"].str.match(ES_RM) | w["visitante"].str.match(ES_RM)]
+    w = w.drop_duplicates(["fecha", "competicion", "local_wiki", "visitante_wiki"])
+    # el mismo partido en la página de la temporada y en la de la edición (nombres distintos): se queda el primero
+    w = w[~w.duplicated(["fecha", "competicion", "goles_local", "goles_visitante"])]
     w[["goles_local", "goles_visitante"]] = w[["goles_local", "goles_visitante"]].astype(int)
     w["rm_local"] = w["local_wiki"].str.match(ES_RM) | w["local"].str.match(ES_RM)
     assert (w["rm_local"] | w["visitante_wiki"].str.match(ES_RM) | w["visitante"].str.match(ES_RM)).all(), "partido de Wikipedia sin el Madrid"
@@ -523,10 +538,44 @@ def main():
     h["goles_local"], h["goles_visitante"] = h["goles_local"].astype(int), h["goles_visitante"].astype(int)
     h["resultado"] = np.select([h["goles_rm"] > h["goles_rival"], h["goles_rm"] == h["goles_rival"]], ["V", "E"], "D")
 
+    # el mismo partido traído dos veces de Wikipedia (página de temporada y de edición, con un día de diferencia):
+    # mismo rival, campo y marcador en ±3 días -> se queda el de la fuente más fiable (engsoccer/Transfermarkt antes que Wikipedia)
+    h["_orden"] = np.select([h["fuente"] != "wikipedia", h["partido_id"].str.startswith("wk")], [0, 1], 2)
+    h = h.sort_values(["_orden", "fecha"]).reset_index(drop=True)
+    hf, quitar = pd.to_datetime(h["fecha"]), {}
+    for _, g in h.groupby(["competicion", "rival", "condicion", "goles_rm", "goles_rival"]):
+        if len(g) < 2:
+            continue
+        for i in g.index:
+            if i in quitar:
+                continue
+            for j in g.index[g.index > i]:
+                if j not in quitar and abs(hf[i] - hf[j]) <= pd.Timedelta(days=3) and h.loc[j, "fuente"] == "wikipedia":
+                    quitar[j] = i
+    # sus alineaciones pasan al partido que se queda (si no tenía)
+    ids = h["partido_id"]
+    con_al = set(al["partido_id"])
+    for j, i in quitar.items():
+        if ids[j] in con_al and ids[i] not in con_al:
+            al.loc[al["partido_id"] == ids[j], "partido_id"] = ids[i]
+    al = al[~al["partido_id"].isin({ids[j] for j in quitar} - {ids[i] for i in quitar.values()})]
+    print(f"Duplicados de Wikipedia quitados: {len(quitar)}")
+    h = h.drop(index=list(quitar)).drop(columns="_orden")
+
     # estadio: el de la fuente; antes de 2012 solo se sabe el del Madrid en casa (deducido por fecha)
     h["estadio"] = h["estadio"].fillna("")
     deducir = (h["estadio"] == "") & (h["local"] == RM) & ~h["neutral"].fillna(False).astype(bool) & (h["fecha"] < CORTE_TM)
     h.loc[deducir, "estadio"] = h.loc[deducir, "fecha"].map(estadio_madrid)
+    # fuera de casa sin estadio: el campo del rival en su visita más cercana en el tiempo (máx. 3 años), salvo finales y partidos neutrales
+    fuera = (h["condicion"] == "Visitante") & ~h["ronda"].str.startswith("Final") & ~h["neutral"].fillna(False).astype(bool)
+    conocidos = h[fuera & (h["estadio"] != "")]
+    hf = pd.to_datetime(h["fecha"])
+    for i in h.index[fuera & (h["estadio"] == "")]:
+        c = conocidos[conocidos["rival"] == h.loc[i, "rival"]]
+        if len(c):
+            dif = (pd.to_datetime(c["fecha"]) - hf[i]).abs()
+            if dif.min() <= pd.Timedelta(days=3 * 365):
+                h.loc[i, "estadio"] = c.loc[dif.idxmin(), "estadio"]
 
     # alineaciones de esta temporada: las de los eventos de WhoScored (dorsal y posición media de cada titular)
     if (WEB / "alineaciones.csv").exists() and (WEB / "partidos.csv").exists():

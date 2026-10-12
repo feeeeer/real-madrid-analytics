@@ -82,7 +82,13 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .tit-anios button[aria-pressed="true"] { background: var(--serie-rm); border-color: var(--serie-rm); color: #fff; }
 .tit-anios button:disabled { cursor: default; opacity: .7; }
 .rm tbody tr.rm-fila td { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
-.tit-h { margin: var(--cds-gap-md) 0 var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .04em; }
+/* un recuadro por grupo (nacionales, internacionales...) con su cabecera */
+.tit-intro { margin-bottom: var(--cds-gap-sm); }
+.rm-card.tit-grupo { padding-top: 0; overflow: hidden; }
+.tit-grupo > header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-md); margin: 0 calc(-1 * var(--cds-pad-lg)) var(--cds-gap-xs);
+  padding: var(--cds-pad-md) var(--cds-pad-lg); border-bottom: 2px solid var(--serie-rm); background: color-mix(in srgb, var(--serie-rm) 8%, transparent); border-radius: var(--cds-radius) var(--cds-radius) 0 0; }
+.tit-grupo > header h2 { margin: 0; font-size: 1.15rem; }
+.tit-grupo > header .n { font-family: var(--font-anthropic-serif); font-size: 1.4rem; color: var(--serie-rm); white-space: nowrap; }
 @media (max-width: 480px) { .tit-comp { grid-template-columns: 1fr; } }
 .ficha-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .rm tbody tr.ficha-fila { cursor: default; }
@@ -373,11 +379,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
   <!-- TÍTULOS -->
   <section class="rm-page" id="titulos" hidden>
     <div class="rm-kpis" id="tit-kpis"></div>
-    <div class="rm-card">
-      <h2>Palmarés oficial</h2>
-      <p class="rm-sub">Pulsa un año para ver cómo se ganó: la clasificación de esa Liga o los partidos hasta levantar la copa. En gris, las finales y Ligas en las que fue subcampeón.</p>
-      <div id="tit-lista"></div>
-    </div>
+    <p class="rm-sub tit-intro">Pulsa un año para ver cómo se ganó: la clasificación de esa Liga o los partidos hasta levantar la copa. En gris y con borde discontinuo, las finales y Ligas en las que fue subcampeón.</p>
+    <div id="tit-lista"></div>
     <div class="rm-card" id="tit-detalle" hidden>
       <h2 id="tit-titulo"></h2>
       <p class="rm-sub" id="tit-resumen"></p>

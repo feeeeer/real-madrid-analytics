@@ -813,7 +813,13 @@ function renderTitulos() {
   for (const grupo of ['Nacional', 'Internacional', 'Regional', 'Otros']) {
     const gs = d3.groups(ts.filter((t) => t.grupo === grupo), (t) => t.competicion);
     if (!gs.length) continue;
-    lista.push(el('p', { class: 'tit-h' }, { Nacional: 'Nacionales', Internacional: 'Internacionales', Regional: 'Regionales', Otros: 'Otros torneos (no oficiales)' }[grupo]));
+    const caja = el('section', { class: 'rm-card tit-grupo' });
+    const cab = el('header');
+    const ng = ts.filter((t) => t.grupo === grupo && t.tipo === 'Campeón').length;
+    cab.append(el('h2', {}, { Nacional: 'Títulos nacionales', Internacional: 'Títulos internacionales', Regional: 'Títulos regionales', Otros: 'Otros torneos (no oficiales)' }[grupo]),
+      el('span', { class: 'n' }, `${ng} ${ng === 1 ? 'título' : 'títulos'}`));
+    caja.append(cab);
+    lista.push(caja);
     for (const [comp, xs] of gs) {
       const fila = el('div', { class: 'tit-comp' });
       const cab = el('div');
@@ -828,7 +834,7 @@ function renderTitulos() {
         anios.append(b);
       }
       fila.append(cab, anios);
-      lista.push(fila);
+      caja.append(fila);
     }
   }
   $('#tit-lista').replaceChildren(...lista);
