@@ -66,7 +66,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .esc-vacio { background: none; box-shadow: none; }
 .esc-vacio { display: inline-block; }
 .rm-score .esc { width: 38px; height: 38px; padding: 3px; }
-#al-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+
 .rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; min-width: 0; }
 .rm-lineup h3 { margin-top: 0; display: flex; }
 .al-cuerpo { display: grid; grid-template-columns: minmax(0, max-content) 230px; justify-content: start; gap: var(--cds-gap-lg); align-items: start; }
@@ -84,6 +84,13 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm tbody tr.rm-fila td { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
 .tit-h { margin: var(--cds-gap-md) 0 var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .04em; }
 @media (max-width: 480px) { .tit-comp { grid-template-columns: 1fr; } }
+.ficha-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.rm tbody tr.ficha-fila { cursor: default; }
+.rm tbody tr.ficha-fila td, .rm tbody tr.ficha-fila:hover td { background: var(--color-panel); white-space: normal; text-align: left; position: static; padding: var(--cds-pad-md); font-weight: normal; }
+.ficha-celda .rm-lineup { font-size: var(--cds-font-size-caption); }
+/* la ficha no se esconde en el scroll de la tabla: sin altura máxima y pegada al borde izquierdo en el móvil */
+#tit-tabla { max-height: none; }
+.ficha-celda > .ficha { position: sticky; left: var(--cds-pad-md); max-width: calc(100vw - 4rem); }
 .ficha-goles { font-size: var(--cds-font-size-caption); line-height: 1.6; margin: var(--cds-gap-xs) 0 var(--cds-gap-sm); }
 .al-dorsal { width: 1.6rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--color-fg-muted); flex: none; }
 .al-pos { color: var(--color-fg-muted); }
@@ -358,9 +365,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       </div>
     </div>
     <div class="rm-card" id="alineacion" hidden>
-      <h2 id="al-titulo"></h2>
-      <div id="al-goles"></div>
-      <div class="rm-grid" id="al-equipos"></div>
+
     </div>
     <p class="rm-note">Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2012), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada), Wikipedia (Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; rondas, goleadores, penaltis y alineaciones de las finales) y, para el análisis de cada partido, WhoScored y Understat. La Copa anterior a 2012 está incompleta, sobre todo antes de 1940: Wikipedia no tiene todos sus partidos.</p>
   </section>

@@ -113,7 +113,9 @@ ALIAS = {"AFC Ajax": "Ajax Amsterdam", "APOEL Nikosia": "APOEL Nicosia", "Associ
          # nombres de Wikipedia
          "RCD Español": "Espanyol Barcelona", "Club Atlético de Bilbao": "Athletic Bilbao", "F.C. Internazionale Milano": "Inter Milan",
          "Real Gijón": "Sporting Gijon", "Sport Club Corinthians Paulista": "Corinthians", "Aberdeen F.C.": "Aberdeen",
-         "Torino F.C.": "Torino", "Málaga CF": "Málaga"}
+         "Torino F.C.": "Torino", "Málaga CF": "Málaga", "Real Madrid Castilla Club de Fútbol": "Real Madrid Castilla",
+         "Real Madrid Castilla": "Real Madrid Castilla", "Agrupación Deportiva Almería": "AD Almeria", "Club Deportivo Badajoz": "CD Badajoz",
+         "Bizcaya (football team)": "Club Bizcaya", "Athletic Madrid": "Atletico Madrid"}
 
 
 # ---------- Wikipedia (data/historico/wikipedia/wikipedia_rm.json, extraído a mano de las páginas de temporada del Madrid,
@@ -132,6 +134,34 @@ MESES = {m: i for i, m in enumerate(["january", "february", "march", "april", "m
                                      "october", "november", "december"], 1)}
 
 
+RONDAS = [(r"third[- ]place", "Tercer puesto"), (r"semi", "Semifinales"), (r"quarter", "Cuartos de final"), (r"round of 16|eightfinal", "Octavos de final"),
+          (r"round of 32", "Dieciseisavos de final"), (r"round of 64", "Treintaidosavos de final"), (r"knockout phase play", "Play-off"),
+          (r"preliminary|qualif", "Ronda previa"), (r"second group", "Segunda fase de grupos"), (r"group ([a-h])\b", "Grupo {}"),
+          (r"group", "Fase de grupos"), (r"league phase", "Fase liga"), (r"first round", "Primera ronda"), (r"second round", "Segunda ronda"),
+          (r"third round", "Tercera ronda"), (r"fourth round", "Cuarta ronda"), (r"fifth round", "Quinta ronda"), (r"sixth round", "Sexta ronda"),
+          (r"knockout", "Eliminatorias"), (r"\bfinal", "Final")]
+
+
+def ronda_es(ronda, seccion, comp):
+    """Ronda en castellano: la del encabezado de la página ("Quarter-finals") o la de la caja ("Final"), más ida/vuelta/desempate."""
+    if comp == "LaLiga":
+        return f"Jornada {ronda}" if ronda.isdigit() else ""
+    base = ""
+    for texto in (seccion.split(" > ")[-1], ronda):
+        for patron, es in RONDAS:
+            m = re.search(patron, texto, re.I)
+            if m:
+                base = es.format(m[1].upper()) if "{}" in es else es
+                break
+        if base:
+            break
+    vuelta = re.search(r"first leg|1st leg|second leg|2nd leg|replay|tie[- ]?breaker|play-?off", ronda, re.I)
+    leg = {"f": "ida", "1": "ida", "s": "vuelta", "2": "vuelta"}.get(vuelta[0][0].lower(), "desempate") if vuelta else ""
+    if base and leg and base != "Play-off":
+        return f"{base} ({leg})"
+    return base or (leg.capitalize() if leg else "")
+
+
 def fecha_wiki(s):
     """Fecha de una caja de partido de Wikipedia: {{Start date|1962|5|2}}, '2 May 1962' o 'May 2, 1962'."""
     m = re.search(r"\{\{\s*(?:start date|dts)[^|]*\|(\d{4})\|(\d{1,2})\|(\d{1,2})", s, re.I)
@@ -143,6 +173,59 @@ def fecha_wiki(s):
         return ""
     d, mes, y = (m[1], m[2], m[3]) if m[1].isdigit() else (m[2], m[1], m[3])
     return f"{y}-{MESES[mes.lower()]:02d}-{int(d):02d}" if mes.lower() in MESES else ""
+
+
+def wikipedia_es(h, filas, rival_de, goleadores):
+    """Partidos de las páginas de cada edición de Copa y Supercopa en es.wikipedia: completan los que ya hay
+    (estadio, goleadores, ronda) y añaden los que faltan. Las fechas de las tablas de ida y vuelta salen del texto de cada ronda,
+    así que se empareja con margen (60 días, mismo marcador y mismo campo)."""
+    e = pd.DataFrame(filas)
+    if e.empty:
+        return h
+    e = e[(e["fecha"] != "") & (e["local"] != "") & (e["visita"] != "")].drop_duplicates(["comp", "fecha", "local_t", "visita_t"])
+    for c in ("local_t", "visita_t"):  # "Club Deportivo Badajoz (1905-2012)", "Palencia Club de Fútbol" -> nombre corto
+        e[c] = e[c].str.replace(r"\s*\(.*\)$", "", regex=True).str.replace(r" Club de Fútbol$", "", regex=True).str.strip()
+    e["rm_local"] = e["local"].str.contains(r"Madrid F\.? ?C|Real Madrid|Madrid C\. ?F|Madrid Club", regex=True) & ~e["local"].str.contains("Castilla|Atl")
+    e["g_rm"] = np.where(e["rm_local"], e["gl"], e["gv"]).astype(int)
+    e["g_riv"] = np.where(e["rm_local"], e["gv"], e["gl"]).astype(int)
+    e["rival_t"] = np.where(e["rm_local"], e["visita_t"], e["local_t"])
+    e["ronda_es"] = [f"{s} ({r.lower()})" if s and r in ("Ida", "Vuelta") else (r or s) for s, r in zip(e["seccion"], e["ronda"])]
+    for c in ("goles_l", "goles_v"):
+        # "Laca 3,2T,2T": los "2T" (segundo tiempo, sin minuto) fuera
+        e[c] = [goleadores(re.sub(r",?\b\d+T\b", "", re.sub(r"^\*\s*|\s\*\s*", " ", g)).strip(), f) for g, f in zip(e[c], e["fecha"])]
+    rm_l = h["local"].str.contains("Real Madrid") & ~h["local"].str.contains("Castilla")
+    h_rm = np.where(rm_l, h["goles_local"], h["goles_visitante"]).astype(int)
+    h_riv = np.where(rm_l, h["goles_visitante"], h["goles_local"]).astype(int)
+    hf, usados, nuevos, n_ok = pd.to_datetime(h["fecha"]), set(), [], 0
+    for r in e.itertuples():
+        dif = (hf - pd.Timestamp(r.fecha)).abs()
+        cand = h.index[(h["competicion"] == r.comp) & (dif <= pd.Timedelta(days=60)) & (h_rm == r.g_rm) & (h_riv == r.g_riv) & (rm_l == r.rm_local)]
+        # y el mismo rival (alguna palabra en común: "Valencia C. F." / "Valencia CF"), para no confundir dos eliminatorias
+        rw = set(words(rival_de.get(r.rival_t, r.rival_t))) | set(words(r.rival_t))
+        cand = [i for i in cand if i not in usados and rw & set(words(h.loc[i, "visitante"] if rm_l[i] else h.loc[i, "local"]))]
+        if cand:
+            i = min(cand, key=lambda i: dif[i])
+            usados.add(i)
+            n_ok += 1
+            for col, val in (("estadio", r.estadio), ("ronda", r.ronda_es)):
+                if val and (pd.isna(h.loc[i, col]) or h.loc[i, col] == ""):
+                    h.loc[i, col] = val
+            if r.goles_l or r.goles_v:
+                if h.loc[i, "goleadores_local"] == "" and h.loc[i, "goleadores_visitante"] == "":
+                    h.loc[i, ["goleadores_local", "goleadores_visitante"]] = r.goles_l, r.goles_v
+            rival_de.setdefault(r.rival_t, h.loc[i, "visitante"] if rm_l[i] else h.loc[i, "local"])
+        elif not ((h["competicion"] == r.comp) & (dif <= pd.Timedelta(days=4)) & (rm_l == r.rm_local)).any():
+            nuevos.append(r)  # sin otro partido del Madrid en ese campo esos días (si lo hay, es el mismo con otro marcador o fecha)
+    n = pd.DataFrame([{"fecha": r.fecha, "competicion": r.comp, "goles_local": int(r.gl), "goles_visitante": int(r.gv),
+                       "local": RM if r.rm_local else rival_de.get(r.local_t, r.local_t),
+                       "visitante": rival_de.get(r.visita_t, r.visita_t) if r.rm_local else RM,
+                       "partido_id": "we" + hashlib.md5(f"{r.fecha}{r.comp}{r.local_t}{r.visita_t}".encode()).hexdigest()[:10],
+                       "fuente": "wikipedia", "neutral": False, "estadio": r.estadio, "ronda": r.ronda_es, "penaltis": "",
+                       "goleadores_local": r.goles_l, "goleadores_visitante": r.goles_v} for r in nuevos])
+    if len(n):
+        n = n[(n["local"] != "") & (n["visitante"] != "")]
+    print(f"Wikipedia (es): {n_ok} partidos completados, {len(n)} añadidos ({n.groupby('competicion').size().to_dict() if len(n) else {}})")
+    return pd.concat([h, n], ignore_index=True) if len(n) else h
 
 
 def wikipedia(h, al):
@@ -165,11 +248,14 @@ def wikipedia(h, al):
                     .str.replace(r"^(Estadio )?Santiago Bernab[eé]u( Stadium)?$", "Santiago Bernabéu", regex=True).str.strip(" ,"))
     for c in ("ronda", "goleadores_local", "goleadores_visitante"):
         w[c] = w[c].str.replace(r"\[\[[^\]|]*\|?([^\]]*)\]\]?|\*", r"\1", regex=True).str.strip(" ;")
+    w["ronda"] = [ronda_es(r, sec, c) for r, sec, c in zip(w["ronda"], w["seccion"], w["competicion"])]
 
     def goleadores(s, fecha):
         # "Ramos , 90+3; Khedira; Bale 110" -> "Ramos 90+3; Bale 110": desde 1990 las páginas meten tarjetas y tandas de penaltis
         # en la misma lista, así que solo cuenta quien tiene minuto
         out = []
+        s = re.sub(r"\s*\[\[Penalty kick[^,;\]]*\]?\]?", " (pen.)", s)  # restos de enlaces: "76 [[Penalty kick (association football),90"
+        s = re.sub(r"\[\[[^\]|]*\|([^\]]*)\]\]|\[\[|\]\]", r"\1", s)
         for g in s.split(";"):
             g = re.sub(r"\s+,\s*", " ", g).strip()
             if g and (fecha < "1990" or re.search(r"\d", g)):
@@ -202,7 +288,7 @@ def wikipedia(h, al):
             if pd.isna(h.loc[i, "estadio"]) or h.loc[i, "estadio"] == "":
                 h.loc[i, "estadio"] = r.estadio
             rival_de.setdefault(r.rival_wiki, h.loc[i, "visitante"] if rm_l[i] else h.loc[i, "local"])
-        elif r.competicion != "Copa de Europa / Champions":  # la Copa de Europa ya está entera en engsoccerdata y Transfermarkt
+        elif r.competicion not in ("Copa de Europa / Champions", "LaLiga"):  # Liga y Copa de Europa ya están enteras
             nuevos.append(r)
     n = pd.DataFrame([{"fecha": r.fecha, "competicion": r.competicion, "goles_local": r.goles_local, "goles_visitante": r.goles_visitante,
                        "local": RM if r.rm_local else r.local_wiki, "visitante": r.visitante_wiki if r.rm_local else RM,
@@ -212,8 +298,10 @@ def wikipedia(h, al):
     # el rival con el nombre que ya tiene en el histórico (aprendido de los partidos emparejados)
     for c in ("local", "visitante"):
         n[c] = n[c].map(lambda x: rival_de.get(x, x))
+    n = n[(n["local"] != "") & (n["visitante"] != "")]  # cajas sin nombre de rival
     print(f"Wikipedia: {len(usados)} partidos completados, {len(n)} añadidos ({n.groupby('competicion').size().to_dict()})")
     h = pd.concat([h, n], ignore_index=True)
+    h = wikipedia_es(h, d.get("es_partidos", []), rival_de, goleadores)
 
     # finales que no están en las páginas de temporada (Supercopa de 1997...): se añaden con su página de final
     limpio = lambda x: re.sub(r"\{\{[^}]*\}\}|\[\[[^\]|]*\||[\[\]']", "", x.replace("&ndash;", "–")).strip()
@@ -293,32 +381,34 @@ def titulos(palmares, h):
     t["grupo"] = np.select([t["competicion"].isin(NACIONAL), t["competicion"].isin(REGIONAL), t["competicion"].isin(OTROS)],
                            ["Nacional", "Regional", "Otros"], "Internacional")
 
-    def temp(r):
-        if r.comp_hist == "LaLiga":  # "Primera División de España 1931-32"
-            m = re.search(r"(\d{4})-(\d{2})", r.pagina)
-            return f"{m[1]}/{m[2]}" if m else ""
-        partidos = h[h["competicion"] == r.comp_hist]
-        if r.comp_hist == "" or partidos.empty:
-            return ""
-        m = re.match(r"(\d{4})(?:-(\d{2}))?$", r.etiqueta)
-        y = int(m[1][:2] + m[2]) if m and m[2] else int(r.etiqueta[:4])
-        # la temporada cuyo último partido de esa competición cae en el año del título; si no, la más cercana
-        ultimo = partidos.groupby("temporada")["fecha"].max().str[:4].astype(int)
-        exacta = ultimo[ultimo == y]
-        if len(exacta):
-            return exacta.index[0]
-        # sin partido ese año (Copa Eva Duarte de 1947, jugada en 1948): la temporada vecina si no es ya la de otro título
-        cerca = ultimo[((ultimo - y).abs() <= 1) & ~ultimo.index.isin(usadas.get(r.comp_hist, set()))]
-        return cerca.index[0] if len(cerca) else ""
-    usadas = {}
-    for r in t.itertuples():
-        if r.comp_hist and r.comp_hist != "LaLiga":
-            m = re.match(r"(\d{4})(?:-(\d{2}))?$", r.etiqueta)
-            y = int(m[1][:2] + m[2]) if m and m[2] else int(r.etiqueta[:4])
-            ult = h[h["competicion"] == r.comp_hist].groupby("temporada")["fecha"].max().str[:4].astype(int)
-            usadas.setdefault(r.comp_hist, set()).update(ult[ult == y].index)
-    t["temporada"] = [temp(r) for r in t.itertuples()]
-    return t[["grupo", "competicion", "comp_hist", "tipo", "etiqueta", "temporada"]]
+    def anio(etiqueta):  # "1962" -> 1962, "1957-58" -> 1958
+        m = re.match(r"(\d{4})(?:-(\d{2}))?$", etiqueta)
+        return int(m[1][:2] + m[2]) if m and m[2] else int(etiqueta[:4])
+
+    # cada copa: su final (el partido de esa competición marcado como final en el año del título; si no, el último de ese año)
+    # y la edición, los partidos de esa competición en los 11 meses anteriores a la final
+    finales, usadas = {}, {}
+    # primero los años exactos; después, los que no tienen partido ese año, con el año vecino
+    # (la Copa Eva Duarte de 1947 se jugó en 1948) si no es el de otro título de la misma competición
+    for pasada in ((0,), (1, -1)):
+        for r in t.itertuples():
+            if not r.comp_hist or r.comp_hist == "LaLiga" or r.Index in finales:
+                continue
+            y, p = anio(r.etiqueta), h[h["competicion"] == r.comp_hist]
+            for yy in (y + d for d in pasada):
+                x = p[p["fecha"].str[:4] == str(yy)]
+                fin = x[x["ronda"].str.startswith("Final")]
+                fecha = (fin if len(fin) else x)["fecha"].max() if len(x) else None
+                if fecha and fecha not in usadas.get(r.comp_hist, set()):
+                    finales[r.Index] = fecha
+                    usadas.setdefault(r.comp_hist, set()).add(fecha)
+                    break
+    t["hasta"] = [finales.get(i, "") for i in t.index]
+    t["desde"] = [(pd.Timestamp(f) - pd.Timedelta(days=330)).strftime("%Y-%m-%d") if f else "" for f in t["hasta"]]
+    liga = t["comp_hist"] == "LaLiga"
+    t["temporada"] = np.where(liga, t["pagina"].str.extract(r"(\d{4})-(\d{2})").apply(lambda m: f"{m[0]}/{m[1]}" if pd.notna(m[0]) else "", axis=1),
+                              t["hasta"].map(lambda f: temporada(f) if f else ""))
+    return t[["grupo", "competicion", "comp_hist", "tipo", "etiqueta", "temporada", "desde", "hasta"]]
 
 
 def construir_base():
@@ -481,13 +571,25 @@ def main():
     dup = h.duplicated(["fecha", "competicion"], keep=False)
     assert (h.loc[dup, "fuente"] == "wikipedia").all(), h[dup]
 
+    finales = ["Supercopa de Europa", "Copa Intercontinental", "Copa Intercontinental de la FIFA", "Copa Eva Duarte", "Copa Iberoamericana"]
+    solo_final = h["competicion"].isin(finales) | ((h["competicion"] == "Supercopa de España") & (h["fecha"] < "2019-07-01"))
+    for _, g in h[solo_final].sort_values("fecha").groupby(["competicion", "temporada"]):
+        patas = ["Final"] if len(g) == 1 else ["Final (ida)", "Final (vuelta)", "Final (desempate)"][:len(g)]
+        for i, pata in zip(g.index, patas):
+            if h.loc[i, "ronda"] in ("", "Ida", "Vuelta", "Desempate", "Final"):
+                h.loc[i, "ronda"] = pata
     h = h.sort_values("fecha")[["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante",
                                 "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente",
                                 "ronda", "penaltis", "goleadores_local", "goleadores_visitante"]]
     WEB.mkdir(parents=True, exist_ok=True)
+    tit = titulos(palmares, h)
+    # la final de cada título o subcampeonato, aunque la fuente no diga la ronda
+    claves = set(zip(tit["comp_hist"], tit["hasta"]))
+    fin = (h["ronda"] == "") & np.array([(c, f) in claves for c, f in zip(h["competicion"], h["fecha"])])
+    h.loc[fin, "ronda"] = "Final"
     h.to_csv(WEB / "historico.csv", index=False)
     ligas.to_csv(WEB / "ligas.csv", index=False)
-    titulos(palmares, h).to_csv(WEB / "titulos.csv", index=False)
+    tit.to_csv(WEB / "titulos.csv", index=False)
     al["dorsal"] = pd.to_numeric(al["dorsal"], errors="coerce").astype("Int64")
     al[["partido_id", "equipo", "jugador", "posicion", "titular", "dorsal", "px", "py"]].to_csv(WEB / "historico_alineaciones.csv", index=False)
     # cada escudo se descarga una vez y se sirve desde la propia web (sin depender de que el origen permita enlazarlo)

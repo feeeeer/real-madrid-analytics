@@ -738,54 +738,64 @@ function renderHistorico() {
   }));
   $('#hist-nota').textContent = `${ps.length} partidos${ps.length > MAX ? `; se muestran los ${MAX} más recientes, usa el buscador para el resto` : ''}. Pulsa un partido para ver su ficha (ronda, goleadores y, si hay 👥, alineaciones).`;
 
-  // Alineaciones del partido elegido
-  const al = rows('historico_alineaciones').filter((r) => r.partido_id === partidoHist);
+  // Ficha del partido elegido
   const p = todos.find((r) => r.partido_id === partidoHist);
   $('#alineacion').hidden = !p;
-  if (p) {
-    $('#al-titulo').replaceChildren(`${p.fecha} · ${p.competicion}${p.ronda ? ` (${p.ronda})` : ''} · `, conEscudo(p.local),
-      ` ${p.goles_local}–${p.goles_visitante}${p.penaltis ? ` (${p.penaltis.replace('-', '–')} pen.)` : ''} `,
-      conEscudo(p.visitante), p.estadio ? ` · ${p.estadio}` : '');
-    // goleadores de cada equipo (Wikipedia; no siempre están)
-    const gol = el('div', { class: 'ficha-goles' });
-    for (const [eq, g] of [[p.local, p.goleadores_local], [p.visitante, p.goleadores_visitante]]) {
-      if (g) gol.append(el('p', {}, `⚽ ${eq}: ${g.split('; ').map((x) => x.replace(/ ([\d+,]+)/, " $1'").replace(/,(\d)/g, "', $1")).join(' · ')}`));
-    }
-    if (!gol.childNodes.length) gol.append(el('p', { class: 'rm-sub' }, al.length ? 'Sin goleadores en las fuentes.' : 'Sin goleadores ni alineaciones en las fuentes para este partido.'));
-    $('#al-goles').replaceChildren(gol);
-    const porDorsal = (a, b) => (a.dorsal === '' ? 999 : N(a.dorsal)) - (b.dorsal === '' ? 999 : N(b.dorsal));
-    // primero el local, luego el visitante
-    const equipos = d3.groups(al, (r) => r.equipo).sort(([a], [b]) => (b === p.local) - (a === p.local));
-    $('#al-equipos').replaceChildren(...equipos.map(([equipo, js]) => {
-      const c = el('div', { class: 'rm-lineup' });
-      c.append(conEscudo(equipo, 'h3'));
-      const cuerpo = el('div', { class: 'al-cuerpo' });
-      const lista = el('div', { class: 'al-lista' });
-      const tit = js.filter((j) => j.titular === '1').sort(porDorsal);
-      for (const [titulo, grupo] of [['Titulares', tit], ['Suplentes', js.filter((j) => j.titular !== '1').sort(porDorsal)]]) {
-        if (!grupo.length) continue;
-        lista.append(el('p', { class: 'rm-sub' }, titulo));
-        for (const j of grupo) {
-          const fila = el('div', { class: 'al-fila' });
-          fila.append(el('span', { class: 'al-dorsal' }, j.dorsal || ''), el('span', {}, j.jugador),
-            j.posicion ? el('span', { class: 'al-pos' }, POS_ES[j.posicion] || j.posicion) : '');
-          lista.append(fila);
-        }
-      }
-      cuerpo.append(lista);
-      if (tit.some((j) => j.px !== '')) cuerpo.append(campito(tit, equipo === RM ? C_RM() : C_RIV()));
-      c.append(cuerpo);
-      return c;
-    }));
+  if (p) pintarFicha($('#alineacion'), p, 'h2');
+}
+
+// Ficha de un partido (resultado, ronda, goleadores y alineaciones): se usa en Histórico y en Títulos
+function pintarFicha(cont, p, tagTitulo = 'h3') {
+  const al = rows('historico_alineaciones').filter((r) => r.partido_id === p.partido_id);
+  const titulo = el(tagTitulo, { class: 'ficha-titulo' });
+  titulo.append(`${p.fecha} · ${p.competicion}${p.ronda ? ` (${p.ronda})` : ''} · `, conEscudo(p.local),
+    ` ${p.goles_local}–${p.goles_visitante}${p.penaltis ? ` (${p.penaltis.replace('-', '–')} pen.)` : ''} `,
+    conEscudo(p.visitante), p.estadio ? ` · ${p.estadio}` : '');
+  // goleadores de cada equipo (Wikipedia; no siempre están)
+  const gol = el('div', { class: 'ficha-goles' });
+  for (const [eq, g] of [[p.local, p.goleadores_local], [p.visitante, p.goleadores_visitante]]) {
+    if (g) gol.append(el('p', {}, `⚽ ${eq}: ${g.split('; ').map((x) => x.replace(/ ([\d+,]+)/, " $1'").replace(/,(\d)/g, "', $1")).join(' · ')}`));
   }
+  if (!gol.childNodes.length) gol.append(el('p', { class: 'rm-sub' }, al.length ? 'Sin goleadores en las fuentes.' : 'Sin goleadores ni alineaciones en las fuentes para este partido.'));
+  else if (!al.length) gol.append(el('p', { class: 'rm-sub' }, 'Sin alineaciones en las fuentes para este partido.'));
+  const porDorsal = (a, b) => (a.dorsal === '' ? 999 : N(a.dorsal)) - (b.dorsal === '' ? 999 : N(b.dorsal));
+  // primero el local, luego el visitante
+  const equipos = d3.groups(al, (r) => r.equipo).sort(([a], [b]) => (b === p.local) - (a === p.local));
+  const grid = el('div', { class: 'rm-grid' });
+  grid.append(...equipos.map(([equipo, js]) => {
+    const c = el('div', { class: 'rm-lineup' });
+    c.append(conEscudo(equipo, 'h3'));
+    const cuerpo = el('div', { class: 'al-cuerpo' });
+    const lista = el('div', { class: 'al-lista' });
+    const tit = js.filter((j) => j.titular === '1').sort(porDorsal);
+    for (const [nombre, grupo] of [['Titulares', tit], ['Suplentes', js.filter((j) => j.titular !== '1').sort(porDorsal)]]) {
+      if (!grupo.length) continue;
+      lista.append(el('p', { class: 'rm-sub' }, nombre));
+      for (const j of grupo) {
+        const fila = el('div', { class: 'al-fila' });
+        fila.append(el('span', { class: 'al-dorsal' }, j.dorsal || ''), el('span', {}, j.jugador),
+          j.posicion ? el('span', { class: 'al-pos' }, POS_ES[j.posicion] || j.posicion) : '');
+        lista.append(fila);
+      }
+    }
+    cuerpo.append(lista);
+    if (tit.some((j) => j.px !== '')) cuerpo.append(campito(tit, equipo === RM ? C_RM() : C_RIV()));
+    c.append(cuerpo);
+    return c;
+  }));
+  cont.replaceChildren(titulo, gol, grid);
 }
 
 // ---------- Títulos ----------
 let titSel = null;
-$('#tit-lista').addEventListener('click', (ev) => { const b = ev.target.closest('button[data-key]'); if (b) { titSel = b.dataset.key; render(); $('#tit-detalle').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } });
+$('#tit-lista').addEventListener('click', (ev) => { const b = ev.target.closest('button[data-key]'); if (b) { titSel = b.dataset.key; fichaTit = null; render(); $('#tit-detalle').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } });
+// la ficha del partido se abre justo debajo de su fila (otro clic la cierra)
+let fichaTit = null;
 $('#tit-tabla').addEventListener('click', (ev) => {
   const tr = ev.target.closest('tr[data-key]');
-  if (tr && tr.dataset.key) { partidoHist = tr.dataset.key; showTab('historico'); $('#alineacion').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  if (!tr || !tr.dataset.key) return;
+  fichaTit = fichaTit === tr.dataset.key ? null : tr.dataset.key;
+  render();
 });
 const esRM = (n) => /^(Real )?Madrid( CF| FC)?$/.test(n.trim());
 
@@ -813,8 +823,8 @@ function renderTitulos() {
       for (const t of [...xs].sort((a, b) => a.etiqueta.slice(0, 4).localeCompare(b.etiqueta.slice(0, 4)))) {
         const key = `${t.competicion}|${t.tipo}|${t.etiqueta}`;
         const b = el('button', { type: 'button', 'data-key': key, 'aria-pressed': String(key === titSel), class: t.tipo === 'Campeón' ? '' : 'sub',
-          title: `${t.tipo} · ${t.temporada || 'sin partidos en la base'}` }, t.etiqueta);
-        if (!t.temporada) b.disabled = true;
+          title: `${t.tipo} · ${t.temporada && (t.comp_hist === 'LaLiga' || t.hasta) ? t.temporada : 'sin partidos en la base'}` }, t.etiqueta);
+        if (t.comp_hist === 'LaLiga' ? !t.temporada : !t.hasta) b.disabled = true;
         anios.append(b);
       }
       fila.append(cab, anios);
@@ -845,9 +855,10 @@ function renderTitulos() {
     tb.append(th, bd); wrap.replaceChildren(tb);
     return;
   }
-  const ps = rows('historico').filter((r) => r.competicion === t.comp_hist && r.temporada === t.temporada).sort((a, b) => a.fecha.localeCompare(b.fecha));
+  // la edición: los partidos de esa competición hasta su final (desde/hasta los calcula historico.py)
+  const ps = rows('historico').filter((r) => r.competicion === t.comp_hist && r.fecha >= t.desde && r.fecha <= t.hasta).sort((a, b) => a.fecha.localeCompare(b.fecha));
   const b = balance(ps);
-  $('#tit-resumen').textContent = `${ps.length} partidos en la base: ${b.v}V ${b.e}E ${b.d}D, ${b.gf}–${b.gc} goles. Pulsa un partido para ver su ficha.`;
+  $('#tit-resumen').textContent = `${ps.length} partidos en la base: ${b.v}V ${b.e}E ${b.d}D, ${b.gf}–${b.gc} goles. Pulsa un partido para ver su ficha aquí mismo.`;
   const tb = el('table'); const th = el('thead'); const hr = el('tr');
   for (const [h, a] of [['Fecha'], ['Ronda'], ['Partido', 3], ['Resultado'], ['Estadio']]) hr.append(el('th', a ? { colspan: a, class: 'partido' } : {}, h));
   th.append(hr); const bd = el('tbody');
@@ -859,6 +870,16 @@ function renderTitulos() {
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}`), el('td', { class: 'estadio' }, r.estadio || '—'));
     tr.children[5].style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     bd.append(tr);
+    if (r.partido_id === fichaTit) {
+      tr.className = 'sel';
+      const td = el('td', { colspan: 7, class: 'ficha-celda' });
+      const caja = el('div', { class: 'ficha' });
+      pintarFicha(caja, r);
+      td.append(caja);
+      const fila = el('tr', { class: 'ficha-fila' });
+      fila.append(td);
+      bd.append(fila);
+    }
   }
   tb.append(th, bd); tb.id = 'tabla-titulo'; wrap.replaceChildren(tb);
 }

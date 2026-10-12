@@ -33,7 +33,7 @@ Cada partido de WhoScored se descarga una sola vez (solo si empezó hace más de
 | engsoccerdata | Liga 1928/29–2011/12 y Copa de Europa 1955–2012 |
 | [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (CC0) | Todas las competiciones 2012/13–2025/26, con alineaciones |
 | ESPN | Resultados de la temporada actual en todas las competiciones |
-| Wikipedia | Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; goleadores, rondas, penaltis, alineaciones de finales, clasificaciones de Liga y palmarés. Extraído una vez de las páginas de temporada del club (en.wikipedia), de cada final y del palmarés (es.wikipedia) y guardado en `data/historico/wikipedia/wikipedia_rm.json` |
+| Wikipedia | Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; estadios, goleadores y jornadas de Liga; rondas, penaltis, alineaciones de finales, clasificaciones de Liga y palmarés. Extraído una vez de las páginas de temporada del club y de cada final (en.wikipedia), y del palmarés y las ediciones de Copa y Supercopa (es.wikipedia) y guardado en `data/historico/wikipedia/wikipedia_rm.json` |
 
 La Copa del Rey anterior a 2012 está incompleta (sobre todo antes de 1940): Wikipedia no tiene todos sus partidos.
 
