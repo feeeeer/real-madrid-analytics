@@ -5,7 +5,8 @@ Web de análisis de datos del Real Madrid que se actualiza sola después de cada
 - **Post-partido** de cada jornada de la temporada: comparativa con el rival, informe táctico automático, mapas de pases (origen → destino) y de tiros por jugador, xG acumulado.
 - **Rendimiento vs esperado**: goles frente a xG, asistencias frente a xA, percentil de cada jugador frente a los de su puesto en toda la Liga y pérdidas peligrosas.
 - **Temporada**: xG a favor y en contra partido a partido, mapas acumulados por jugador.
-- **Histórico**: todos los resultados oficiales disponibles en fuentes abiertas, con alineaciones de los dos equipos desde 2012.
+- **Histórico**: todos los resultados oficiales disponibles en fuentes abiertas, con alineaciones de los dos equipos desde 2012 y de las grandes finales anteriores, goleadores y rondas.
+- **Títulos**: el palmarés completo; cada título enlaza a su clasificación de Liga o a los partidos hasta la copa.
 
 ## Cómo funciona
 
@@ -32,8 +33,9 @@ Cada partido de WhoScored se descarga una sola vez (solo si empezó hace más de
 | engsoccerdata | Liga 1928/29–2011/12 y Copa de Europa 1955–2012 |
 | [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (CC0) | Todas las competiciones 2012/13–2025/26, con alineaciones |
 | ESPN | Resultados de la temporada actual en todas las competiciones |
+| Wikipedia | Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; goleadores, rondas, penaltis, alineaciones de finales, clasificaciones de Liga y palmarés. Extraído una vez de las páginas de temporada del club (en.wikipedia), de cada final y del palmarés (es.wikipedia) y guardado en `data/historico/wikipedia/wikipedia_rm.json` |
 
-Copa del Rey y Supercopa anteriores a 2012 no están en ninguna fuente abierta.
+La Copa del Rey anterior a 2012 está incompleta (sobre todo antes de 1940): Wikipedia no tiene todos sus partidos.
 
 ## Métricas
 

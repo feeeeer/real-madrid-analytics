@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/historico docs/data/historico.csv docs/data/historico_alineaciones.csv docs/data/escudos.csv docs/escudos
+          git add data/historico docs/data/historico.csv docs/data/historico_alineaciones.csv docs/data/escudos.csv docs/data/ligas.csv docs/data/titulos.csv docs/escudos
           git diff --cached --quiet && exit 0
           git commit -qm "Histórico actualizado"
           git pull -q --rebase origin main

@@ -87,7 +87,7 @@ def words(s):
 
 def unificar(nombres, canon):
     """Nombre de cada equipo en su forma canónica (la del histórico), si hay un candidato claro; si no, el suyo."""
-    canon = sorted(set(canon))
+    canon = sorted(set(canon) - {RM})  # nadie hereda el nombre del Madrid ("Real Madrid Castilla" es otro equipo)
     out = {}
     for n in set(nombres):
         if n in canon:
@@ -109,7 +109,216 @@ ALIAS = {"AFC Ajax": "Ajax Amsterdam", "APOEL Nikosia": "APOEL Nicosia", "Associ
          "Internazionale": "Inter Milan", "Olympiakos Syndesmos Filathlon Peiraios": "Olympiacos",
          "Frankfurter SG Eintracht": "Eintracht Frankfurt", "Fußballclub Red Bull Salzburg": "Red Bull Salzburg",
          "Malmö Fotbollförening": "Malmö FF", "Al-Hilal Saudi Football Club": "Al-Hilal",
-         "Club Atlético San Lorenzo de Almagro": "San Lorenzo", "Grêmio Foot-Ball Porto Alegrense": "Grêmio"}
+         "Club Atlético San Lorenzo de Almagro": "San Lorenzo", "Grêmio Foot-Ball Porto Alegrense": "Grêmio",
+         # nombres de Wikipedia
+         "RCD Español": "Espanyol Barcelona", "Club Atlético de Bilbao": "Athletic Bilbao", "F.C. Internazionale Milano": "Inter Milan",
+         "Real Gijón": "Sporting Gijon", "Sport Club Corinthians Paulista": "Corinthians", "Aberdeen F.C.": "Aberdeen",
+         "Torino F.C.": "Torino", "Málaga CF": "Málaga"}
+
+
+# ---------- Wikipedia (data/historico/wikipedia/wikipedia_rm.json, extraído a mano de las páginas de temporada del Madrid,
+# de las finales y de las temporadas de Liga; no se descarga aquí) ----------
+WIKI = BASE / "wikipedia" / "wikipedia_rm.json"
+INTERNACIONAL = ["Copa de Europa / Champions", "Supercopa de Europa", "Mundial de Clubes", "Copa de la UEFA", "Recopa de Europa",
+                 "Copa Intercontinental", "Copa Intercontinental de la FIFA", "Copa Latina", "Copa Iberoamericana"]
+POS_WIKI = {"GK": "Goalkeeper", "SW": "Sweeper", "CB": "Centre-Back", "CH": "Centre-Back", "RB": "Right-Back", "RWB": "Right-Back",
+            "LB": "Left-Back", "LWB": "Left-Back", "DF": "Defender", "DM": "Defensive Midfield", "CM": "Central Midfield",
+            "RH": "Right Midfield", "LH": "Left Midfield", "RM": "Right Midfield", "LM": "Left Midfield", "MF": "Midfield",
+            "AM": "Attacking Midfield", "IR": "Second Striker", "IL": "Second Striker", "SS": "Second Striker", "OR": "Right Winger",
+            "OL": "Left Winger", "RW": "Right Winger", "LW": "Left Winger", "RF": "Right Winger", "LF": "Left Winger",
+            "CF": "Centre-Forward", "ST": "Centre-Forward", "FW": "Attack", "W": "Attack"}
+ES_RM = r"^(?!.*Castilla)(Real Madrid|Madrid FC|Madrid CF|Madrid C\.F\.|Madrid Club de Fútbol)"
+MESES = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september",
+                                     "october", "november", "december"], 1)}
+
+
+def fecha_wiki(s):
+    """Fecha de una caja de partido de Wikipedia: {{Start date|1962|5|2}}, '2 May 1962' o 'May 2, 1962'."""
+    m = re.search(r"\{\{\s*(?:start date|dts)[^|]*\|(\d{4})\|(\d{1,2})\|(\d{1,2})", s, re.I)
+    if m:
+        return f"{m[1]}-{int(m[2]):02d}-{int(m[3]):02d}"
+    s = re.sub(r"\[\[[^\]|]*\|?([^\]]*)\]\]", r"\1", s)
+    m = re.search(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", s) or re.search(r"([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})", s)
+    if not m:
+        return ""
+    d, mes, y = (m[1], m[2], m[3]) if m[1].isdigit() else (m[2], m[1], m[3])
+    return f"{y}-{MESES[mes.lower()]:02d}-{int(d):02d}" if mes.lower() in MESES else ""
+
+
+def wikipedia(h, al):
+    """Completa el histórico con Wikipedia: añade los partidos que no están (copas antes de 2012, Recopa, UEFA, Intercontinental...),
+    pone ronda, goleadores, penaltis y estadio a los que sí están y las alineaciones de las finales.
+    Devuelve h, al, la clasificación de cada Liga y el palmarés."""
+    d = json.loads(WIKI.read_text())
+    w = pd.DataFrame(d["partidos"], columns=d["partidos_cols"]).drop_duplicates(["fecha", "competicion", "local_wiki", "visitante_wiki"])
+    w[["goles_local", "goles_visitante"]] = w[["goles_local", "goles_visitante"]].astype(int)
+    w["rm_local"] = w["local_wiki"].str.match(ES_RM) | w["local"].str.match(ES_RM)
+    assert (w["rm_local"] | w["visitante_wiki"].str.match(ES_RM) | w["visitante"].str.match(ES_RM)).all(), "partido de Wikipedia sin el Madrid"
+    w["g_rm"] = np.where(w["rm_local"], w["goles_local"], w["goles_visitante"])
+    w["g_riv"] = np.where(w["rm_local"], w["goles_visitante"], w["goles_local"])
+    pen = w["penaltis"].str.extract(r"(\d+)-(\d+)").fillna(0).astype(int)
+    w["p_rm"] = np.where(w["rm_local"], pen[0], pen[1])
+    w["p_riv"] = np.where(w["rm_local"], pen[1], pen[0])
+    w["rival_wiki"] = np.where(w["rm_local"], w["visitante_wiki"], w["local_wiki"])
+    # estadio sin referencias ni ciudad ("Santiago Bernabéu Stadium, Madrid" -> "Santiago Bernabéu")
+    w["estadio"] = (w["estadio"].str.replace(r"\s*\[http\S*.*$", "", regex=True).str.replace(r",.*$", "", regex=True)
+                    .str.replace(r"^(Estadio )?Santiago Bernab[eé]u( Stadium)?$", "Santiago Bernabéu", regex=True).str.strip(" ,"))
+    for c in ("ronda", "goleadores_local", "goleadores_visitante"):
+        w[c] = w[c].str.replace(r"\[\[[^\]|]*\|?([^\]]*)\]\]?|\*", r"\1", regex=True).str.strip(" ;")
+
+    def goleadores(s, fecha):
+        # "Ramos , 90+3; Khedira; Bale 110" -> "Ramos 90+3; Bale 110": desde 1990 las páginas meten tarjetas y tandas de penaltis
+        # en la misma lista, así que solo cuenta quien tiene minuto
+        out = []
+        for g in s.split(";"):
+            g = re.sub(r"\s+,\s*", " ", g).strip()
+            if g and (fecha < "1990" or re.search(r"\d", g)):
+                out.append(g)
+        return "; ".join(out)
+    for c in ("goleadores_local", "goleadores_visitante"):
+        w[c] = [goleadores(s, f) for s, f in zip(w[c], w["fecha"])]
+
+    for c in ("ronda", "penaltis", "goleadores_local", "goleadores_visitante"):
+        h[c] = ""
+    rm_l = h["local"].str.contains("Real Madrid") & ~h["local"].str.contains("Castilla")
+    h_rm = np.where(rm_l, h["goles_local"], h["goles_visitante"]).astype(int)
+    h_riv = np.where(rm_l, h["goles_visitante"], h["goles_local"]).astype(int)
+    hf, usados, nuevos, rival_de = pd.to_datetime(h["fecha"]), set(), [], {}
+    for r in w.itertuples():
+        # el mismo partido: misma competición, ±4 días (las fechas antiguas no siempre coinciden) y mismo marcador,
+        # o el marcador con la tanda de penaltis sumada (Transfermarkt la mete en los goles)
+        cand = h.index[(h["competicion"] == r.competicion) & ((hf - pd.Timestamp(r.fecha)).abs() <= pd.Timedelta(days=4))
+                       & (((h_rm == r.g_rm) & (h_riv == r.g_riv)) | ((h_rm == r.g_rm + r.p_rm) & (h_riv == r.g_riv + r.p_riv)))]
+        cand = [i for i in cand if i not in usados]
+        if cand:
+            i = min(cand, key=lambda i: abs(hf[i] - pd.Timestamp(r.fecha)))
+            usados.add(i)
+            mismo_local = rm_l[i] == r.rm_local
+            h.loc[i, ["goles_local", "goles_visitante"]] = (r.goles_local, r.goles_visitante) if mismo_local else (r.goles_visitante, r.goles_local)
+            h.loc[i, "penaltis"] = r.penaltis if mismo_local or not r.penaltis else "-".join(r.penaltis.split("-")[::-1])
+            h.loc[i, "ronda"] = r.ronda
+            gl, gv = (r.goleadores_local, r.goleadores_visitante) if mismo_local else (r.goleadores_visitante, r.goleadores_local)
+            h.loc[i, ["goleadores_local", "goleadores_visitante"]] = gl, gv
+            if pd.isna(h.loc[i, "estadio"]) or h.loc[i, "estadio"] == "":
+                h.loc[i, "estadio"] = r.estadio
+            rival_de.setdefault(r.rival_wiki, h.loc[i, "visitante"] if rm_l[i] else h.loc[i, "local"])
+        elif r.competicion != "Copa de Europa / Champions":  # la Copa de Europa ya está entera en engsoccerdata y Transfermarkt
+            nuevos.append(r)
+    n = pd.DataFrame([{"fecha": r.fecha, "competicion": r.competicion, "goles_local": r.goles_local, "goles_visitante": r.goles_visitante,
+                       "local": RM if r.rm_local else r.local_wiki, "visitante": r.visitante_wiki if r.rm_local else RM,
+                       "partido_id": "wk" + hashlib.md5(f"{r.fecha}{r.competicion}{r.local_wiki}{r.visitante_wiki}".encode()).hexdigest()[:10],
+                       "fuente": "wikipedia", "neutral": False, "estadio": r.estadio, "ronda": r.ronda, "penaltis": r.penaltis,
+                       "goleadores_local": r.goleadores_local, "goleadores_visitante": r.goleadores_visitante} for r in nuevos])
+    # el rival con el nombre que ya tiene en el histórico (aprendido de los partidos emparejados)
+    for c in ("local", "visitante"):
+        n[c] = n[c].map(lambda x: rival_de.get(x, x))
+    print(f"Wikipedia: {len(usados)} partidos completados, {len(n)} añadidos ({n.groupby('competicion').size().to_dict()})")
+    h = pd.concat([h, n], ignore_index=True)
+
+    # finales que no están en las páginas de temporada (Supercopa de 1997...): se añaden con su página de final
+    limpio = lambda x: re.sub(r"\{\{[^}]*\}\}|\[\[[^\]|]*\||[\[\]']", "", x.replace("&ndash;", "–")).strip()
+    extra = []
+    for f in d["finales"]:
+        fecha, sc = fecha_wiki(f["fecha"]), re.search(r"(\d+)\s*[–\-−]\s*(\d+)", limpio(f["marcador"]))
+        comp = COMP_PALMARES.get(f["clave"].split("|")[0], "")
+        if not (fecha and sc and comp) or ((pd.to_datetime(h["fecha"]) - pd.Timestamp(fecha)).abs() <= pd.Timedelta(days=1)).any() \
+                or any(e["fecha"] == fecha for e in extra):
+            continue
+        e1, e2 = limpio(f["e1"]), limpio(f["e2"])
+        rm1 = bool(re.match(ES_RM, e1))
+        if not (rm1 or re.match(ES_RM, e2)):
+            continue  # página de otra final (otro año)
+        extra.append({"fecha": fecha, "competicion": comp, "local": RM if rm1 else e1, "visitante": e2 if rm1 else RM,
+                      "goles_local": int(sc[1]), "goles_visitante": int(sc[2]), "estadio": limpio(f["estadio"]), "fuente": "wikipedia",
+                      "neutral": False, "ronda": "Final", "partido_id": "wk" + hashlib.md5(f"{fecha}{comp}".encode()).hexdigest()[:10]})
+    if extra:
+        extra = pd.DataFrame(extra)
+        for c in ("local", "visitante"):
+            extra[c] = extra[c].map(lambda x: rival_de.get(x, x))
+        print(f"Wikipedia: {len(extra)} finales añadidas desde su página: {extra[['fecha', 'competicion']].values.tolist()}")
+        h = pd.concat([h, extra], ignore_index=True).fillna({c: "" for c in ("penaltis", "goleadores_local", "goleadores_visitante")})
+
+    # alineaciones de las finales (las que no tenga ya Transfermarkt)
+    filas = []
+    con_al = set(al["partido_id"])
+    hf = pd.to_datetime(h["fecha"])
+    for f in d["finales"]:
+        n1, n2 = {j["nombre"] for j in f["l1"]}, {j["nombre"] for j in f["l2"]}
+        if n1 & n2 or sum(j["titular"] for j in f["l1"]) != 11 or sum(j["titular"] for j in f["l2"]) != 11:
+            continue  # tabla mal leída de Wikipedia (los dos equipos con los mismos jugadores o sin once completo)
+        fecha = fecha_wiki(f["fecha"])
+        cand = h.index[(hf - pd.Timestamp(fecha)).abs() <= pd.Timedelta(days=1)] if fecha else []
+        if len(cand) != 1:
+            continue
+        i = cand[0]
+        pid = h.loc[i, "partido_id"]
+        if pid in con_al:
+            continue
+        con_al.add(pid)  # una final puede venir dos veces (palmarés de campeón y de subcampeón)
+        rm1 = bool(re.match(ES_RM, limpio(f["e1"])))
+        if not (rm1 or re.match(ES_RM, limpio(f["e2"]))):
+            continue
+        rival = h.loc[i, "visitante"] if h.loc[i, "local"] == RM else h.loc[i, "local"]
+        for lado, equipo in ((f["l1"], RM if rm1 else rival), (f["l2"], rival if rm1 else RM)):
+            for j in lado:
+                filas.append({"partido_id": pid, "equipo": equipo, "jugador": j["nombre"], "posicion": POS_WIKI.get(j["pos"], ""),
+                              "titular": j["titular"], "dorsal": pd.to_numeric(j["num"], errors="coerce")})
+    if filas:
+        al = pd.concat([al, colocar(pd.DataFrame(filas))], ignore_index=True)
+    print(f"Wikipedia: alineaciones de {len({f['partido_id'] for f in filas})} finales")
+
+    ligas = pd.DataFrame([[f"{k[:4]}/{k[5:]}", *fila.split("|")] for k, v in d["ligas"].items() for fila in v],
+                         columns=["temporada", "pos", "equipo", "pj", "g", "e", "p", "gf", "gc", "pts"])
+    palmares = pd.DataFrame([{"competicion": c["comp"], "tipo": tipo, "etiqueta": et, "pagina": pg}
+                             for c in d["palmares"] if c.get("comp") for tipo, lista in (("Campeón", c["titulos"]), ("Subcampeón", c["sub"]))
+                             for et, pg in lista])
+    return h, al, ligas, palmares
+
+
+# palmarés de Wikipedia -> competición del histórico
+COMP_PALMARES = {"Primera División de España": "LaLiga", "Copa del Rey": "Copa del Rey", "Supercopa de España": "Supercopa de España",
+                 "Copa de la Liga": "Copa de la Liga", "Copa Eva Duarte": "Copa Eva Duarte", "Liga de Campeones": "Copa de Europa / Champions",
+                 "Liga Europa": "Copa de la UEFA", "Recopa de Europa": "Recopa de Europa", "Supercopa de Europa": "Supercopa de Europa",
+                 "Copa Intercontinental": "Copa Intercontinental", "Copa Intercontinental de la FIFA": "Copa Intercontinental de la FIFA",
+                 "Copa Mundial de Clubes": "Mundial de Clubes", "Copa Latina": "Copa Latina", "Copa Iberoamericana": "Copa Iberoamericana"}
+NACIONAL = {"Primera División de España", "Copa del Rey", "Supercopa de España", "Copa de la Liga", "Copa Eva Duarte"}
+REGIONAL = {"Campeonato de Madrid / Centro", "Trofeo Mancomunado", "Copa Federación Centro"}
+OTROS = {"Pequeña Copa del Mundo", "Copa Ibérica"}  # torneos no oficiales
+
+
+def titulos(palmares, h):
+    """Cada título y subcampeonato con la temporada del histórico en que se jugó (para enlazar sus partidos)."""
+    t = palmares[palmares["competicion"].isin(set(COMP_PALMARES) | REGIONAL | OTROS)].copy()
+    t["comp_hist"] = t["competicion"].map(COMP_PALMARES).fillna("")
+    t["grupo"] = np.select([t["competicion"].isin(NACIONAL), t["competicion"].isin(REGIONAL), t["competicion"].isin(OTROS)],
+                           ["Nacional", "Regional", "Otros"], "Internacional")
+
+    def temp(r):
+        if r.comp_hist == "LaLiga":  # "Primera División de España 1931-32"
+            m = re.search(r"(\d{4})-(\d{2})", r.pagina)
+            return f"{m[1]}/{m[2]}" if m else ""
+        partidos = h[h["competicion"] == r.comp_hist]
+        if r.comp_hist == "" or partidos.empty:
+            return ""
+        m = re.match(r"(\d{4})(?:-(\d{2}))?$", r.etiqueta)
+        y = int(m[1][:2] + m[2]) if m and m[2] else int(r.etiqueta[:4])
+        # la temporada cuyo último partido de esa competición cae en el año del título; si no, la más cercana
+        ultimo = partidos.groupby("temporada")["fecha"].max().str[:4].astype(int)
+        exacta = ultimo[ultimo == y]
+        if len(exacta):
+            return exacta.index[0]
+        # sin partido ese año (Copa Eva Duarte de 1947, jugada en 1948): la temporada vecina si no es ya la de otro título
+        cerca = ultimo[((ultimo - y).abs() <= 1) & ~ultimo.index.isin(usadas.get(r.comp_hist, set()))]
+        return cerca.index[0] if len(cerca) else ""
+    usadas = {}
+    for r in t.itertuples():
+        if r.comp_hist and r.comp_hist != "LaLiga":
+            m = re.match(r"(\d{4})(?:-(\d{2}))?$", r.etiqueta)
+            y = int(m[1][:2] + m[2]) if m and m[2] else int(r.etiqueta[:4])
+            ult = h[h["competicion"] == r.comp_hist].groupby("temporada")["fecha"].max().str[:4].astype(int)
+            usadas.setdefault(r.comp_hist, set()).update(ult[ult == y].index)
+    t["temporada"] = [temp(r) for r in t.itertuples()]
+    return t[["grupo", "competicion", "comp_hist", "tipo", "etiqueta", "temporada"]]
 
 
 def construir_base():
@@ -186,12 +395,18 @@ def main():
     actual = espn_actual()
     actual = actual[actual["fecha"] > base["fecha"].max()]
     h = pd.concat([base, actual], ignore_index=True)
-    h["temporada"] = h["fecha"].map(temporada)
     h[["local", "visitante"]] = h[["local", "visitante"]].replace(ALIAS)
     al["equipo"] = al["equipo"].replace(ALIAS)
+    # todos los partidos con id, también los antiguos, para poder enlazar alineaciones y títulos
+    sin_id = h["partido_id"].fillna("") == ""
+    h.loc[sin_id, "partido_id"] = ["h" + hashlib.md5(f"{f}{c}".encode()).hexdigest()[:10]
+                                   for f, c in zip(h.loc[sin_id, "fecha"], h.loc[sin_id, "competicion"])]
+    h, al, ligas, palmares = wikipedia(h, al)
+    h[["local", "visitante"]] = h[["local", "visitante"]].replace(ALIAS)
+    h["temporada"] = h["fecha"].map(temporada)
 
     # nombres de rival: los de la base más antigua (Liga con Liga, Europa con Europa)
-    domestico = ~h["competicion"].isin(["Copa de Europa / Champions", "Supercopa de Europa", "Mundial de Clubes"])
+    domestico = ~h["competicion"].isin(INTERNACIONAL)
     for mask in (domestico, ~domestico):
         canon = pd.concat([h.loc[mask & (h["fuente"] == "engsoccerdata"), c] for c in ("local", "visitante")])
         nombres = pd.concat([h.loc[mask, c] for c in ("local", "visitante")])
@@ -206,8 +421,9 @@ def main():
     for c in ("local", "visitante"):
         h[c] = h[c].map(lambda n: mejor.get(clave(n), n))
     al["equipo"] = al["equipo"].map(lambda n: mejor.get(clave(n), n))
-    h.loc[h["local"].str.contains("Real Madrid"), "local"] = RM
-    h.loc[h["visitante"].str.contains("Real Madrid"), "visitante"] = RM
+    # el Madrid se llama igual en todas las fuentes (su filial, el Castilla, no)
+    h.loc[h["local"].str.contains("Real Madrid") & ~h["local"].str.contains("Castilla"), "local"] = RM
+    h.loc[h["visitante"].str.contains("Real Madrid") & ~h["visitante"].str.contains("Castilla"), "visitante"] = RM
 
     local = h["local"] == RM
     h["rival"] = np.where(local, h["visitante"], h["local"])
@@ -258,15 +474,20 @@ def main():
     print("Sin escudo:", sorted((set(h["local"]) | set(h["visitante"])) - set(escudos)))
 
     # autocomprobaciones
-    assert h["partido_id"].replace("", np.nan).dropna().is_unique
-    assert not al.dropna(subset=["px"]).duplicated(["partido_id", "equipo", "px", "py"]).any(), "dos titulares en el mismo punto"
+    assert h["partido_id"].is_unique and (h["partido_id"] != "").all(), h[h["partido_id"].duplicated(keep=False)][["fecha", "competicion", "local", "visitante", "partido_id"]]
+    assert not al.dropna(subset=["px"]).duplicated(["partido_id", "equipo", "px", "py"]).any(), al[al.dropna(subset=["px"]).duplicated(["partido_id", "equipo", "px", "py"], keep=False).reindex(al.index, fill_value=False)].head(30).to_string()
     assert (h["local"] == RM).sum() + (h["visitante"] == RM).sum() == len(h), "partido sin el Madrid"
-    assert not h.duplicated(["fecha", "competicion"]).any(), h[h.duplicated(["fecha", "competicion"], keep=False)]
+    # Wikipedia pone a veces la ida y la vuelta el mismo día (1954, 1961): se quedan los dos partidos
+    dup = h.duplicated(["fecha", "competicion"], keep=False)
+    assert (h.loc[dup, "fuente"] == "wikipedia").all(), h[dup]
 
     h = h.sort_values("fecha")[["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante",
-                                "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente"]]
+                                "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente",
+                                "ronda", "penaltis", "goleadores_local", "goleadores_visitante"]]
     WEB.mkdir(parents=True, exist_ok=True)
     h.to_csv(WEB / "historico.csv", index=False)
+    ligas.to_csv(WEB / "ligas.csv", index=False)
+    titulos(palmares, h).to_csv(WEB / "titulos.csv", index=False)
     al["dorsal"] = pd.to_numeric(al["dorsal"], errors="coerce").astype("Int64")
     al[["partido_id", "equipo", "jugador", "posicion", "titular", "dorsal", "px", "py"]].to_csv(WEB / "historico_alineaciones.csv", index=False)
     # cada escudo se descarga una vez y se sirve desde la propia web (sin depender de que el origen permita enlazarlo)

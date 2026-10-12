@@ -53,7 +53,10 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 #dash-root { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
 .rm-score b { margin: 0 2px; }
 #tabla-hist td:nth-child(2), #tabla-hist th:nth-child(2), #tabla-hist td.vis, #tabla-hist td.estadio, #tabla-hist th.estadio { text-align: left; }
-#tabla-hist th.partido, #tabla-hist td.sep { text-align: center; }
+#tabla-hist th.partido, #tabla-hist td.sep, #tabla-titulo th.partido, #tabla-titulo td.sep { text-align: center; }
+#tabla-titulo td.loc { text-align: right; } #tabla-titulo td.vis, #tabla-titulo td:nth-child(2), #tabla-titulo td.estadio { text-align: left; }
+#tit-tabla td:nth-child(2), #tit-tabla th:nth-child(2) { text-align: left; }
+#tabla-titulo td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.estadio { white-space: normal; color: var(--color-fg-muted); min-width: 8rem; }
 .con-esc { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
@@ -68,6 +71,20 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm-lineup h3 { margin-top: 0; display: flex; }
 .al-cuerpo { display: grid; grid-template-columns: minmax(0, max-content) 230px; justify-content: start; gap: var(--cds-gap-lg); align-items: start; }
 .al-fila { display: flex; gap: 8px; }
+.tit-comp { display: grid; grid-template-columns: minmax(9rem, 14rem) 1fr; gap: var(--cds-gap-xs) var(--cds-gap-md); padding: var(--cds-pad-sm) 0; border-bottom: 1px solid var(--color-border-line); align-items: start; }
+.tit-comp:last-child { border-bottom: 0; }
+.tit-comp h3 { margin: 0; font-size: var(--cds-font-size-body); }
+.tit-comp .n { font-family: var(--font-anthropic-serif); font-size: 1.5rem; line-height: 1.1; }
+.tit-anios { display: flex; flex-wrap: wrap; gap: 4px; }
+.tit-anios button { font: inherit; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; padding: 2px 8px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); }
+.tit-anios button.sub { color: var(--color-fg-muted); border-style: dashed; }
+.tit-anios button[aria-pressed="true"] { background: var(--serie-rm); border-color: var(--serie-rm); color: #fff; }
+.tit-anios button:disabled { cursor: default; opacity: .7; }
+.rm tbody tr.rm-fila td { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
+.tit-h { margin: var(--cds-gap-md) 0 var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .04em; }
+@media (max-width: 480px) { .tit-comp { grid-template-columns: 1fr; } }
+.ficha-goles { font-size: var(--cds-font-size-caption); line-height: 1.6; margin: var(--cds-gap-xs) 0 var(--cds-gap-sm); }
 .al-dorsal { width: 1.6rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--color-fg-muted); flex: none; }
 .al-pos { color: var(--color-fg-muted); }
 .campito { width: 100%; height: auto; position: sticky; top: 8px; }
@@ -155,6 +172,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     <button class="rm-tab" role="tab" data-tab="rendimiento" aria-selected="false">Rendimiento vs esperado</button>
     <button class="rm-tab" role="tab" data-tab="temporada" aria-selected="false">Temporada</button>
     <button class="rm-tab" role="tab" data-tab="historico" aria-selected="false">Histórico</button>
+    <button class="rm-tab" role="tab" data-tab="titulos" aria-selected="false">Títulos</button>
   </nav>
 
   <!-- POST-PARTIDO -->
@@ -341,9 +359,26 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </div>
     <div class="rm-card" id="alineacion" hidden>
       <h2 id="al-titulo"></h2>
+      <div id="al-goles"></div>
       <div class="rm-grid" id="al-equipos"></div>
     </div>
-    <p class="rm-note">Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2016), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada) y, para el análisis de cada partido, WhoScored y Understat.</p>
+    <p class="rm-note">Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2012), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada), Wikipedia (Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; rondas, goleadores, penaltis y alineaciones de las finales) y, para el análisis de cada partido, WhoScored y Understat. La Copa anterior a 2012 está incompleta, sobre todo antes de 1940: Wikipedia no tiene todos sus partidos.</p>
+  </section>
+
+  <!-- TÍTULOS -->
+  <section class="rm-page" id="titulos" hidden>
+    <div class="rm-kpis" id="tit-kpis"></div>
+    <div class="rm-card">
+      <h2>Palmarés oficial</h2>
+      <p class="rm-sub">Pulsa un año para ver cómo se ganó: la clasificación de esa Liga o los partidos hasta levantar la copa. En gris, las finales y Ligas en las que fue subcampeón.</p>
+      <div id="tit-lista"></div>
+    </div>
+    <div class="rm-card" id="tit-detalle" hidden>
+      <h2 id="tit-titulo"></h2>
+      <p class="rm-sub" id="tit-resumen"></p>
+      <div class="rm-tablewrap" id="tit-tabla"></div>
+    </div>
+    <p class="rm-note">Fuente: Wikipedia (palmarés del Real Madrid, temporadas del club y de la Liga). «Títulos oficiales» cuenta los nacionales e internacionales; los campeonatos regionales y los torneos no oficiales (Pequeña Copa del Mundo, Copa Ibérica) aparecen aparte y no tienen partidos en la base.</p>
   </section>
 </div>
 </div>
