@@ -260,7 +260,7 @@ const segTiros = segmented('#p-tiros', toggleTiro);
 const segTirosT = segmented('#t-tiros', toggleTiro);
 
 $('#sel-partido').addEventListener('change', (e) => dash.setParams({ partido: Number(e.target.value), jugador: null }));
-$('#p-jugador').addEventListener('change', (e) => dash.setParams({ jugador: e.target.value || null }));
+$('#p-jugador').addEventListener('change', (e) => dash.setParams({ jugador: e.target.value }));  // '*' = todo el equipo
 $('#sel-temporada').addEventListener('change', (e) => dash.setParams({ temporada: e.target.value, jugador_t: null }));
 $('#t-jugador').addEventListener('change', (e) => dash.setParams({ jugador_t: e.target.value || null }));
 $('#tabla-partido').addEventListener('click', (ev) => {
@@ -373,25 +373,62 @@ function fillTable(table, data, cols, keyOf, selKey) {
   }));
 }
 
+// Impacto de un jugador en el partido: goles y asistencias primero; luego lo que generó (xG, xA, pases clave, progresión)
+// y lo que defendió (recuperaciones, duelos), restando las pérdidas en nuestro tercio. Sirve para ordenar, no es una nota oficial.
+const impacto = (r) => N(r.goles) + 0.75 * N(r.asistencias) + 0.5 * (N(r.xg) + N(r.xa)) + 0.1 * N(r.pases_clave) + 0.02 * N(r.pases_progresivos)
+  + 0.05 * N(r.recuperaciones) + 0.03 * N(r.duelos_ganados) - 0.1 * N(r.perdidas_peligrosas);
+const resumenJugador = (r) => {
+  const pl = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
+  const partes = [];
+  if (N(r.goles)) partes.push(pl(N(r.goles), 'gol', 'goles'));
+  if (N(r.asistencias)) partes.push(pl(N(r.asistencias), 'asistencia', 'asistencias'));
+  if (N(r.pases_clave)) partes.push(pl(N(r.pases_clave), 'pase clave', 'pases clave'));
+  if (N(r.xg) + N(r.xa) >= 0.2) partes.push(`${N(r.xg).toFixed(2)} xG y ${N(r.xa).toFixed(2)} xA`);
+  if (N(r.recuperaciones) >= 5) partes.push(`${r.recuperaciones} recuperaciones`);
+  if (N(r.duelos_ganados) >= 5) partes.push(`${r.duelos_ganados} duelos ganados`);
+  return partes.slice(0, 4).join(', ') || 'partido completo sin errores';
+};
+
 function renderPartido() {
   const partidos = rows('partidos');
   const sel = $('#sel-partido');
   const mid = Number(P().partido) || Number(rows('partidos').at(-1)?.match_id); // por defecto, el último partido
-  if (partidos.length && !sel.options.length) {
+  if (partidos.length && (!sel.options.length || (sel.dataset.conHist !== '1' && ok('historico')))) {
+    sel.replaceChildren();
+    sel.dataset.conHist = ok('historico') ? '1' : '';
     const groups = d3.groups([...partidos].sort((a, b) => b.fecha.localeCompare(a.fecha)), (p) => `${p.competicion} ${p.temporada}`);
     for (const [label, ps] of groups) {
       const og = el('optgroup', { label });
-      for (const p of ps) og.appendChild(el('option', { value: p.match_id }, `${p.fecha} · ${p.local} ${p.goles_local}–${p.goles_visitante} ${p.visitante}`));
+      for (const p of ps) {
+        // con los nombres del histórico ("Atletico Madrid", no "Atletico")
+        const h = rows('historico').find((r) => r.fecha === p.fecha && r.competicion === 'LaLiga');
+        const n = (x) => (!h || x === RM ? x : h.rival);
+        og.appendChild(el('option', { value: p.match_id }, `${p.fecha} · ${n(p.local)} ${p.goles_local}–${p.goles_visitante} ${n(p.visitante)}`));
+      }
       sel.appendChild(og);
     }
   }
   sel.value = String(mid);
   const p = partidos.find((x) => Number(x.match_id) === mid);
   const w = `match_id=${mid}`;
+  // el mismo partido en el histórico: nombres de equipo, estadio y jornada con los que se ve el resto de la web
+  const hp = p && rows('historico').find((r) => r.fecha === p.fecha && r.competicion === 'LaLiga');
+  const nombre = (n) => (!hp ? n : n === RM ? RM : hp.rival);
   if (p) {
-    $('#m-meta').textContent = `${p.competicion} · ${p.temporada}${p.jornada ? ' · Jornada ' + p.jornada : ''} · ${p.fecha}${p.estadio ? ' · ' + p.estadio : ''}`;
-    $('#m-score').replaceChildren(escudo(p.local), markEl('span', 'partidos', 'local', w, p.local), markEl('b', 'partidos', 'goles_local', w, p.goles_local),
-      el('span', {}, '–'), markEl('b', 'partidos', 'goles_visitante', w, p.goles_visitante), markEl('span', 'partidos', 'visitante', w, p.visitante));
+    $('#m-meta').textContent = [p.competicion === 'La Liga' ? 'LaLiga' : p.competicion, p.temporada.replace(/^(\d{4})\/\d{2}(\d{2})$/, '$1/$2'),
+      hp && hp.ronda ? hp.ronda : '', p.fecha, hp && hp.estadio ? hp.estadio : ''].filter(Boolean).join(' · ');
+    $('#m-score').replaceChildren(conEscudo(nombre(p.local)), markEl('b', 'partidos', 'goles_local', w, p.goles_local),
+      el('span', {}, '–'), markEl('b', 'partidos', 'goles_visitante', w, p.goles_visitante), conEscudo(nombre(p.visitante), 'span', true));
+    // goleadores: los tiros que acabaron en gol (Understat); los goles en propia puerta no son tiros, salen como "(p.p.)"
+    const goles = rows('tiros').filter((t) => Number(t.match_id) === mid && t.resultado === 'Goal').sort((a, b) => N(a.minuto) - N(b.minuto));
+    const lista = (eq) => goles.filter((t) => t.equipo === eq).map((t) => `${t.jugador} ${t.minuto}'${t.subtipo === 'Penalty' ? ' (pen.)' : ''}`);
+    const linea = (eq, marcados) => {
+      const l = lista(eq);
+      for (let i = l.length; i < marcados; i++) l.push('(p.p.)');
+      return l.length ? `⚽ ${nombre(eq)}: ${l.join(' · ')}` : '';
+    };
+    const gl = linea(p.local, N(p.goles_local)), gv = linea(p.visitante, N(p.goles_visitante));
+    $('#m-goles').replaceChildren(...[gl, gv].filter(Boolean).map((t) => el('p', {}, t)));
     $('#m-coach').replaceChildren('Entrenador del Madrid: ', markEl('span', 'partidos', 'entrenador_rm', w, p.entrenador_rm));
   }
 
@@ -403,8 +440,8 @@ function renderPartido() {
   cmp.replaceChildren();
   if (a && b) {
     const wa = `clave=${enc(a.clave)}`, wb = `clave=${enc(b.clave)}`;
-    cmp.append(el('span', { class: 'v head' }, 'RM'), el('span'), el('span', { class: 'lab head' }, ''), el('span'), el('span', { class: 'v r head' }, b.equipo.slice(0, 12)));
-    for (const [k, label, , dir] of CMP) {
+    cmp.append(el('span', { class: 'v head' }, 'RM'), el('span'), el('span', { class: 'lab head' }, ''), el('span'), el('span', { class: 'v r head' }, nombre(b.equipo)));
+    for (const [k, label, dec, dir] of CMP) {
       if (a[k] === '' && b[k] === '') continue; // Opta no registra presiones
       const va = N(a[k]), vb = N(b[k]), mx = Math.max(va, vb) || 1;
       const better = dir === 0 || va === vb ? 0 : (va > vb) === (dir > 0) ? 1 : -1;
@@ -412,7 +449,8 @@ function renderPartido() {
       barA.style.width = `${(100 * va) / mx}%`; barB.style.width = `${(100 * vb) / mx}%`;
       barA.style.background = C_RM(); barB.style.background = C_RIV();
       barA.style.opacity = better < 0 ? 0.45 : 1; barB.style.opacity = better > 0 ? 0.45 : 1;
-      const ta = markEl('span', 'metricas_equipo', k, wa, a[k]), tb = markEl('span', 'metricas_equipo', k, wb, b[k]);
+      const fmt = (v) => (v === '' ? '—' : N(v).toFixed(dec));
+      const ta = markEl('span', 'metricas_equipo', k, wa, fmt(a[k])), tb = markEl('span', 'metricas_equipo', k, wb, fmt(b[k]));
       ta.className = 'v'; tb.className = 'v r';
       cmp.append(ta, barA, el('span', { class: 'lab' }, label), barB, tb);
     }
@@ -472,11 +510,10 @@ function renderPartido() {
     rep.append(el('h3', {}, '3. 🛡️ Puntos fuertes y potenciación'));
     if (pos.length) pos.forEach((r) => rep.append(block(r, false)));
     else rep.append(el('p', { class: 'item' }, 'Ninguna métrica colectiva claramente por encima de lo habitual.'));
-    const mejor = [...jug].sort((x, y) => (N(y.xg) + N(y.xa)) - (N(x.xg) + N(x.xa)))[0];
-    if (mejor && N(mejor.xg) + N(mejor.xa) > 0.3) {
+    const mejor = [...jug].sort((x, y) => impacto(y) - impacto(x))[0];
+    if (mejor && impacto(mejor) > 0.5) {
       const it = el('div', { class: 'item good' });
-      it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Jugador a potenciar: '), `${mejor.jugador}, xG `,
-        markEl('b', 'metricas_jugador', 'xg', `clave=${enc(mejor.clave)}`, mejor.xg), ' y xA ', markEl('b', 'metricas_jugador', 'xa', `clave=${enc(mejor.clave)}`, mejor.xa), '.');
+      it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Jugador a potenciar: '), `${mejor.jugador}: `, el('b', {}, resumenJugador(mejor)), '.');
       it.append(el('p', {}, 'Míster, a este hay que reconocérselo en público delante del grupo: que el resto vea que el que genera, juega.'));
       rep.append(it);
     }
@@ -498,14 +535,17 @@ function renderPartido() {
   $('#p-tipos').hidden = (P().capa || 'pases') !== 'pases';
   segTiros((v) => (P().tiros_tipo || []).includes(v));
   $('#p-tiros').hidden = !$('#p-tipos').hidden;
-  $('#p-equipo').querySelector('[data-v=rival]').textContent = b ? b.equipo : 'Rival';
+  $('#p-equipo').querySelector('[data-v=rival]').textContent = b ? nombre(b.equipo) : 'Rival';
   const js = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === equipoSel && N(r.minutos) > 0)
     .sort((x, y) => N(y.minutos) - N(x.minutos));
   const pj = $('#p-jugador');
-  pj.replaceChildren(el('option', { value: '' }, 'Todo el equipo'), ...js.map((r) => el('option', { value: r.jugador }, r.jugador)));
-  pj.value = P().jugador || '';
+  pj.replaceChildren(el('option', { value: '*' }, 'Todo el equipo'), ...js.map((r) => el('option', { value: r.jugador }, r.jugador)));
+  // sin elegir: el que más pases dio (con los 400 pases del equipo el mapa no se lee)
+  const masPases = [...js].sort((x, y) => N(y.pases) - N(x.pases))[0];
+  const jugSel = P().jugador && (P().jugador === '*' || js.some((r) => r.jugador === P().jugador)) ? P().jugador : masPases?.jugador || '*';
+  pj.value = jugSel;
   const color = equipoSel === RM ? C_RM() : C_RIV();
-  const filt = (r) => Number(r.match_id) === mid && r.equipo === equipoSel && (!P().jugador || r.jugador === P().jugador);
+  const filt = (r) => Number(r.match_id) === mid && r.equipo === equipoSel && (jugSel === '*' || r.jugador === jugSel);
   if (ok('pases', 'tiros')) {
     const legend = drawPitch($('#pitch-partido'), {
       capa: P().capa || 'pases', color, tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
@@ -521,14 +561,16 @@ function renderPartido() {
   // Tabla jugadores
   const tab = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === equipoSel && N(r.minutos) > 0)
     .sort((x, y) => N(y.titular) - N(x.titular) || N(y.minutos) - N(x.minutos));
-  const sel2 = tab.find((r) => r.jugador === P().jugador);
-  fillTable($('#tabla-partido'), tab, ['jugador', 'minutos', 'goles', 'xg', 'xa', 'pases_clave', 'acierto_pase', 'pases_progresivos', 'regates',
-    'recuperaciones', 'duelos_ganados', 'duelos_perdidos', 'perdidas_peligrosas', 'presiones'], (r) => r.clave, sel2 && sel2.clave);
+  const sel2 = tab.find((r) => r.jugador === jugSel);
+  const vista = tab.map((r) => ({ ...r, xg: N(r.xg).toFixed(2), xa: N(r.xa).toFixed(2), acierto_pase: r.acierto_pase === '' ? '—' : N(r.acierto_pase).toFixed(1),
+    duelos: `${N(r.duelos_ganados)}/${N(r.duelos_ganados) + N(r.duelos_perdidos)}`, impacto: impacto(r).toFixed(2) }));
+  fillTable($('#tabla-partido'), vista, ['jugador', 'minutos', 'goles', 'asistencias', 'xg', 'xa', 'pases_clave', 'acierto_pase', 'pases_progresivos', 'regates',
+    'recuperaciones', 'duelos', 'perdidas_peligrosas', 'impacto'], (r) => r.clave, sel2 && sel2.clave);
 
   const tk = $('#takeaway');
   if (p && a) {
     const wa = `clave=${enc(a.clave)}`;
-    tk.replaceChildren(`${p.local} – ${p.visitante} (${p.fecha}): xG `, markEl('b', 'metricas_equipo', 'xg', wa, a.xg),
+    tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${p.fecha}): xG `, markEl('b', 'metricas_equipo', 'xg', wa, a.xg),
       ' del Madrid frente a ', markEl('b', 'metricas_equipo', 'xg_contra', wa, a.xg_contra), ' del rival.');
   }
 }
@@ -578,7 +620,9 @@ function drawXgLine(box, shots, p, b) {
 function renderTemporada() {
   const partidos = rows('partidos');
   const sel = $('#sel-temporada');
-  if (partidos.length && !sel.options.length) {
+  if (partidos.length && (!sel.options.length || (sel.dataset.conHist !== '1' && ok('historico')))) {
+    sel.replaceChildren();
+    sel.dataset.conHist = ok('historico') ? '1' : '';
     const keys = d3.groups([...partidos].sort((a, b) => b.fecha.localeCompare(a.fecha)), (p) => p.competicion + '|' + p.temporada).map(([k]) => k);
     keys.forEach((k) => sel.appendChild(el('option', { value: k }, k.replace('|', ' '))));
   }

@@ -60,7 +60,11 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 #tabla-hist td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.estadio { white-space: normal; color: var(--color-fg-muted); min-width: 8rem; }
 .con-esc { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
-#historico #rivales, #historico #partidos-hist { grid-column: 1 / -1; }
+#historico #rivales, #historico #partidos-hist, #jugadores-partido, #xg-timeline { grid-column: 1 / -1; }
+.rm-score .con-esc { gap: 10px; }
+#m-score { align-items: center; }
+.rm-controls label { max-width: 100%; min-width: 0; }
+.rm-controls select { min-width: 0; flex: 1 1 auto; text-overflow: ellipsis; }
 /* escudo sobre una placa clara: los escudos oscuros (Eibar, Juventus...) se ven igual en modo claro y oscuro */
 .esc { width: 22px; height: 22px; object-fit: contain; flex: none; background: #fff; border-radius: 5px; padding: 2px; box-shadow: 0 0 0 1px var(--color-border-line); }
 .esc-vacio { background: none; box-shadow: none; }
@@ -197,6 +201,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     <div class="rm-card" id="marcador" data-source="partidos">
       <p class="rm-sub" id="m-meta">—</p>
       <div class="rm-score" id="m-score">—</div>
+      <div class="ficha-goles" id="m-goles"></div>
       <p class="rm-sub" id="m-coach"></p>
     </div>
 
@@ -237,15 +242,15 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       </div>
       <div class="rm-card" id="jugadores-partido">
         <h2>Jugadores</h2>
-        <p class="rm-sub">Pulsa un jugador para verlo en el mapa.</p>
+        <p class="rm-sub">Pulsa un jugador para verlo en el mapa. Duelos: ganados/disputados. Impacto: ordena quién influyó más (goles, asistencias, ocasiones generadas, recuperaciones y duelos, restando pérdidas peligrosas); pasa el ratón por la cabecera para ver la fórmula.</p>
         <div class="rm-tablewrap">
           <table id="tabla-partido" data-source="metricas_jugador" data-row-key="clave">
             <thead><tr>
-              <th data-field="jugador">Jugador</th><th data-field="minutos">Min</th><th data-field="goles">G</th><th data-field="xg">xG</th>
+              <th data-field="jugador">Jugador</th><th data-field="minutos">Min</th><th data-field="goles">G</th><th data-field="asistencias">A</th><th data-field="xg">xG</th>
               <th data-field="xa">xA</th><th data-field="pases_clave">P. clave</th><th data-field="acierto_pase">% pase</th>
               <th data-field="pases_progresivos">Progr.</th><th data-field="regates">Regates</th><th data-field="recuperaciones">Recup.</th>
-              <th data-field="duelos_ganados">Duelos G</th><th data-field="duelos_perdidos">Duelos P</th>
-              <th data-field="perdidas_peligrosas">Pérd. pelig.</th><th data-field="presiones">Presiones</th>
+              <th data-field="duelos" title="Ganados / disputados">Duelos</th>
+              <th data-field="perdidas_peligrosas">Pérd. pelig.</th><th data-field="impacto" title="Goles + 0,75·asistencias + 0,5·(xG + xA) + 0,1·pases clave + 0,02·progresivos + 0,05·recuperaciones + 0,03·duelos ganados − 0,1·pérdidas peligrosas">Impacto</th>
             </tr></thead>
             <tbody></tbody>
           </table>
