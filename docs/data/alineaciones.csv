@@ -246,7 +246,102 @@ match_id,equipo,jugador,dorsal,titular,posicion
 1994179,Real Madrid,Arda Güler,15,1,Attacking Midfield
 1994179,Real Madrid,Vinícius Júnior,7,1,Left Winger
 1994179,Real Madrid,Jude Bellingham,5,0,Attacking Midfield
-1994179,Real Madrid,Endrick,9,0,
+1994179,Real Madrid,Endrick,9,0,Right Winger
 1994179,Real Madrid,Carlos Espí,19,0,
 1994179,Real Madrid,Brahim Díaz,21,0,Right Winger
 1994179,Real Madrid,Denzel Dumfries,24,0,Right-Back
+1994188,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+1994188,Real Madrid,Federico Valverde,8,1,Right-Back
+1994188,Real Madrid,Marc Cucurella,17,1,Left-Back
+1994188,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield
+1994188,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+1994188,Real Madrid,Dean Huijsen,4,1,Centre-Back
+1994188,Real Madrid,Endrick,9,1,Right Winger
+1994188,Real Madrid,Arda Güler,15,1,Defensive Midfield
+1994188,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+1994188,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+1994188,Real Madrid,Yan Diomande,25,1,Left Winger
+1994188,Real Madrid,Éder Militão,3,0,
+1994188,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield
+1994188,Real Madrid,Carlos Espí,19,0,
+1994188,Real Madrid,Bernardo Silva,20,0,Defensive Midfield
+1994188,Real Madrid,Brahim Díaz,21,0,Right Winger
+1994188,Sevilla,Odysseas Vlachodimos,1,1,Goalkeeper
+1994188,Sevilla,Juan Iglesias,2,1,Right-Back
+1994188,Sevilla,Gabriel Suazo,17,1,Left-Back
+1994188,Sevilla,Youssouf Fofana,24,1,Defensive Midfield
+1994188,Sevilla,Andrés Castrín,5,1,Centre-Back
+1994188,Sevilla,Kike Salas,4,1,Centre-Back
+1994188,Sevilla,Rubén Vargas,11,1,Right Winger
+1994188,Sevilla,Lucien Agoumé,6,1,Defensive Midfield
+1994188,Sevilla,Robbie Ure,9,1,Centre-Forward
+1994188,Sevilla,Peque Fernández,10,1,Attacking Midfield
+1994188,Sevilla,Félix Correia,20,1,Left Winger
+1994188,Sevilla,Alfon González,7,0,
+1994188,Sevilla,Manu Bueno,14,0,
+1994188,Sevilla,Lucas Stassin,19,0,
+1994188,Sevilla,Chidera Ejuke,21,0,
+1994188,Sevilla,José Ángel Carmona,22,0,
+2029114,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+2029114,Real Madrid,Denzel Dumfries,24,1,Right-Back
+2029114,Real Madrid,Marc Cucurella,17,1,Left-Back
+2029114,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+2029114,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+2029114,Real Madrid,Dean Huijsen,4,1,Centre-Back
+2029114,Real Madrid,Brahim Díaz,21,1,Right Winger
+2029114,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back
+2029114,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+2029114,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+2029114,Real Madrid,Vinícius Júnior,7,1,Left Winger
+2029114,Real Madrid,Aurélien Tchouaméni,14,0,Defensive Midfield
+2029114,Real Madrid,Álvaro Carreras,18,0,Left-Back
+2029114,Real Madrid,Carlos Espí,19,0,
+2029114,Real Madrid,Yan Diomande,25,0,Right Winger
+2029114,Inter,Josep Martínez,1,1,Goalkeeper
+2029114,Inter,Andy Diouf,17,1,Central Midfield
+2029114,Inter,Carlos Augusto,30,1,Central Midfield
+2029114,Inter,Alessandro Bastoni,95,1,Centre-Back
+2029114,Inter,Yann Bisseck,31,1,Centre-Back
+2029114,Inter,Benjamin Pavard,28,1,Centre-Back
+2029114,Inter,Nicolò Barella,23,1,Central Midfield
+2029114,Inter,Curtis Jones,21,1,Central Midfield
+2029114,Inter,Marcus Thuram,9,1,Centre-Forward
+2029114,Inter,Lautaro Martínez,10,1,Centre-Forward
+2029114,Inter,Hakan Çalhanoglu,20,1,Central Midfield
+2029114,Inter,John Stones,6,0,
+2029114,Inter,Piotr Zielinski,7,0,
+2029114,Inter,Petar Sucic,8,0,
+2029114,Inter,Ange-Yoan Bonny,14,0,
+2029114,Inter,Henrikh Mkhitaryan,22,0,
+2029142,Roma,Pierluigi Gollini,95,1,Goalkeeper
+2029142,Roma,Wesley,43,1,Central Midfield
+2029142,Roma,Nahuel Molina,20,1,Central Midfield
+2029142,Roma,Mario Hermoso,22,1,Centre-Back
+2029142,Roma,Evan Ndicka,5,1,Centre-Back
+2029142,Roma,Gianluca Mancini,23,1,Centre-Back
+2029142,Roma,Marten de Roon,15,1,Central Midfield
+2029142,Roma,Manu Koné,17,1,Central Midfield
+2029142,Roma,Donyell Malen,14,1,Centre-Forward
+2029142,Roma,Matías Soulé,18,1,Centre-Forward
+2029142,Roma,Paulo Dybala,21,1,Centre-Forward
+2029142,Roma,Konstantinos Koulierakis,3,0,
+2029142,Roma,Lorenzo Pellegrini,7,0,
+2029142,Roma,Leonardo Balerdi,26,0,
+2029142,Roma,Niccolò Pisilli,61,0,
+2029142,Roma,Rodrigo Mora,86,0,
+2029142,Real Madrid,Thibaut Courtois,1,1,Goalkeeper
+2029142,Real Madrid,Denzel Dumfries,24,1,Right-Back
+2029142,Real Madrid,Marc Cucurella,17,1,Left-Back
+2029142,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield
+2029142,Real Madrid,Ibrahima Konaté,16,1,Centre-Back
+2029142,Real Madrid,Antonio Rüdiger,22,1,Centre-Back
+2029142,Real Madrid,Yan Diomande,25,1,Right Winger
+2029142,Real Madrid,Federico Valverde,8,1,Defensive Midfield
+2029142,Real Madrid,Kylian Mbappé,10,1,Centre-Forward
+2029142,Real Madrid,Jude Bellingham,5,1,Attacking Midfield
+2029142,Real Madrid,Vinícius Júnior,7,1,Left Winger
+2029142,Real Madrid,Endrick,9,0,Right Winger
+2029142,Real Madrid,Arda Güler,15,0,Right Winger
+2029142,Real Madrid,Álvaro Carreras,18,0,Left-Back
+2029142,Real Madrid,Carlos Espí,19,0,
+2029142,Real Madrid,Bernardo Silva,20,0,Defensive Midfield

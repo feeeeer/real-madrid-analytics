@@ -7,6 +7,8 @@ clave,match_id,equipo,rival,goles,xg,npxg,xg_contraataque,tiros,tiros_puerta,pos
 1993924|Malaga,1993924,Malaga,Real Madrid,0,0.76,0.76,0.06,14,1,43.6,476,86.8,68,40,29.9,,,11,43.2,16,,,3.45,Opta
 1993928|Real Betis,1993928,Real Betis,Real Madrid,1,0.9,0.9,0.01,10,5,41.5,437,84.0,56,25,27.4,,,7,59.6,18,,,3.65,Opta
 1993928|Real Madrid,1993928,Real Madrid,Real Betis,0,3.65,3.65,0.54,20,6,58.5,617,89.0,120,71,15.6,,,16,65.0,8,,,0.9,Opta
+2029114|Real Madrid,2029114,Real Madrid,Inter,2,,,,16,8,35.6,362,84.8,25,9,15.4,,,14,57.5,10,,,,Opta
+2029114|Inter,2029114,Inter,Real Madrid,1,,,,21,7,64.4,655,91.1,78,50,20.8,,,9,55.9,15,,,,Opta
 1994162|Real Madrid,1994162,Real Madrid,Rayo Vallecano,4,3.13,3.13,0.11,24,11,55.9,562,89.5,73,39,16.3,,,17,71.4,18,,,1.19,Opta
 1994162|Rayo Vallecano,1994162,Rayo Vallecano,Real Madrid,1,1.19,1.19,0.0,18,7,44.1,443,83.5,66,34,14.0,,,15,47.7,16,,,3.13,Opta
 1994179|Elche,1994179,Elche,Real Madrid,2,1.05,1.05,0.0,11,3,55.7,565,88.8,63,37,12.5,,,9,53.5,19,,,3.56,Opta
@@ -15,3 +17,7 @@ clave,match_id,equipo,rival,goles,xg,npxg,xg_contraataque,tiros,tiros_puerta,pos
 1994150|Real Madrid,1994150,Real Madrid,Atletico,1,0.42,0.42,0.0,8,3,39.1,412,83.7,44,27,24.8,,,12,76.9,20,,,2.42,Opta
 1994174|Real Madrid,1994174,Real Madrid,Villarreal,1,1.43,1.43,0.08,11,4,46.3,426,81.0,65,37,18.3,,,10,65.7,13,,,0.53,Opta
 1994174|Villarreal,1994174,Villarreal,Real Madrid,0,0.53,0.53,0.0,15,4,53.7,495,87.1,59,41,28.8,,,7,58.3,22,,,1.43,Opta
+2029142|Roma,2029142,Roma,Real Madrid,3,,,,14,7,53.9,565,84.4,67,39,15.8,,,16,51.2,24,,,,Opta
+2029142|Real Madrid,2029142,Real Madrid,Roma,4,,,,16,8,46.1,484,81.6,54,25,21.8,,,19,59.5,9,,,,Opta
+1994188|Real Madrid,1994188,Real Madrid,Sevilla,4,2.13,2.13,0.36,15,7,65.1,681,90.0,102,42,13.8,,,9,63.4,9,,,1.32,Opta
+1994188|Sevilla,1994188,Sevilla,Real Madrid,1,1.32,1.32,0.12,11,5,34.9,365,77.8,48,25,21.2,,,11,59.1,17,,,2.13,Opta
