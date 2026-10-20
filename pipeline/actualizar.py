@@ -3,7 +3,8 @@
 Uso: python pipeline/actualizar.py
 
 - Understat: calendario, xG por jugador y partido, tiros con coordenadas (Liga).
-- WhoScored: eventos Opta de cada partido (solo descarga los que faltan; un partido descargado no se vuelve a pedir).
+- WhoScored: eventos Opta de cada partido de Liga, Champions y Copa (solo descarga los que faltan; un partido
+  descargado no se vuelve a pedir).
 - FBref: estadísticas básicas de toda la Liga (para los percentiles por puesto).
 Si una fuente falla se conservan sus últimos datos, se procesa igual y el programa termina con error para que
 GitHub avise por email.
@@ -16,6 +17,12 @@ import certifi
 import pandas as pd
 
 os.environ.setdefault("SSL_CERT_FILE", certifi.where())  # Python de python.org en Mac no trae certificados
+# soccerdata no trae la Champions ni la Copa para WhoScored: se le añaden en su fichero de ligas propias
+EXTRA = {"INT-Champions League": {"WhoScored": "Europe - Champions League", "season_start": "Aug", "season_end": "May"},
+         "ESP-Copa del Rey": {"WhoScored": "Spain - Copa del Rey", "season_start": "Aug", "season_end": "May"}}
+_cfg = Path(os.environ.get("SOCCERDATA_DIR", Path.home() / "soccerdata")) / "config"
+_cfg.mkdir(parents=True, exist_ok=True)
+(_cfg / "league_dict.json").write_text(json.dumps(EXTRA))
 import soccerdata as sd  # noqa: E402
 
 RM, LIGA = "Real Madrid", "ESP-La Liga"
@@ -65,20 +72,35 @@ def _():
 
 @paso("whoscored")
 def _():
-    ws = sd.WhoScored(LIGA, SEASON, headless=True)
-    sched = ws.read_schedule(force_cache=False).reset_index()
-    # terminado = empezó hace más de 4 horas y tiene marcador (así nunca se guarda un partido a medias)
-    fin = pd.to_datetime(sched["date"], utc=True) < pd.Timestamp(hoy) - pd.Timedelta(hours=4)
-    jugados = sched[es_rm(sched) & fin & sched["home_score"].notna()]
-    guardar(jugados, "whoscored_partidos_rm")
-    hechos = {int(p.stem) for p in (F / "whoscored_eventos").glob("*.csv")}
-    nuevos = [int(g) for g in jugados["game_id"] if int(g) not in hechos]
-    print(f"   {len(nuevos)} partidos nuevos", flush=True)
-    for gid in nuevos:
-        ev = ws.read_events(match_id=gid).reset_index()
-        assert len(ev) > 500, f"partido {gid}: solo {len(ev)} eventos"  # un partido completo tiene ~1.500
-        ev.to_csv(F / "whoscored_eventos" / f"{gid}.csv", index=False)
-        print(f"   partido {gid}: {len(ev)} eventos", flush=True)
+    # una competición que falle no frena a las demás; el calendario de la que falle conserva su última versión
+    viejo = pd.read_csv(F / "whoscored_partidos_rm.csv") if (F / "whoscored_partidos_rm.csv").exists() else pd.DataFrame(columns=["league"])
+    calendarios, errores = [], []
+    for liga in [LIGA, *EXTRA]:
+        print(f"   -- {liga}", flush=True)
+        try:
+            ws = sd.WhoScored(liga, SEASON, headless=True)
+            sched = ws.read_schedule(force_cache=False).reset_index()
+            # terminado = empezó hace más de 4 horas y tiene marcador (así nunca se guarda un partido a medias)
+            fin = pd.to_datetime(sched["date"], utc=True) < pd.Timestamp(hoy) - pd.Timedelta(hours=4)
+            jugados = sched[es_rm(sched) & fin & sched["home_score"].notna()]
+            hechos = {int(p.stem) for p in (F / "whoscored_eventos").glob("*.csv")}
+            nuevos = [int(g) for g in jugados["game_id"] if int(g) not in hechos]
+            print(f"   {len(jugados)} partidos jugados, {len(nuevos)} nuevos", flush=True)
+            for gid in nuevos:
+                ev = ws.read_events(match_id=gid).reset_index()
+                if len(ev) < 500:  # un partido completo tiene ~1.500; algunas rondas de Copa no tienen datos Opta
+                    assert liga != LIGA, f"partido {gid}: solo {len(ev)} eventos"
+                    print(f"   partido {gid}: solo {len(ev)} eventos, se omite", flush=True)
+                    continue
+                ev.to_csv(F / "whoscored_eventos" / f"{gid}.csv", index=False)
+                print(f"   partido {gid}: {len(ev)} eventos", flush=True)
+            calendarios.append(jugados)
+        except Exception:
+            traceback.print_exc()
+            errores.append(liga)
+            calendarios.append(viejo[viejo["league"] == liga])
+    guardar(pd.concat(calendarios, ignore_index=True).drop(columns="index", errors="ignore"), "whoscored_partidos_rm")
+    assert not errores, f"fallaron: {errores}"
 
 
 @paso("fbref")

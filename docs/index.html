@@ -127,6 +127,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm-seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; }
 .rm-seg button { font: inherit; font-size: var(--cds-font-size-caption); background: var(--color-bg); color: var(--color-fg-muted); border: 0; padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
 .rm-seg[hidden] { display: none; }
+.sin-xg { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 8px 0; }
+.rm-chart:has(.sin-xg) { min-height: 0; height: auto; }
 .rm-seg button + button { border-left: 1px solid var(--color-border-line); }
 .rm-seg button[aria-pressed="true"] { background: var(--color-panel); color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
 .rm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }

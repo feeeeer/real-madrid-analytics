@@ -2,8 +2,9 @@
 
 Uso: python pipeline/procesar.py [data/fuentes/2026-2027] [docs/data]
 
-Solo entran los partidos que ya tienen eventos de WhoScored y xG de Understat; el resto espera a la siguiente
-ejecución. Coordenadas: Opta 0-100 -> campo 120x80, cada equipo atacando de izquierda a derecha.
+Solo entran los partidos que ya tienen eventos de WhoScored; los de Liga, además, el xG de Understat (el resto
+espera a la siguiente ejecución). Champions y Copa no tienen xG (Understat solo cubre la Liga): sus tiros salen de
+los eventos de WhoScored con el xG vacío. Coordenadas: Opta 0-100 -> campo 120x80, cada equipo atacando de izquierda a derecha.
 """
 import ast, re, sys, unicodedata
 from pathlib import Path
@@ -15,6 +16,7 @@ SRC = Path(sys.argv[1] if len(sys.argv) > 1 else "data/fuentes/2026-2027")
 OUT = Path(sys.argv[2] if len(sys.argv) > 2 else "docs/data")
 RM, ENTRENADOR = "Real Madrid", "José Mourinho"
 TEMPORADA = SRC.name.replace("-", "/")
+COMP = {"ESP-La Liga": "La Liga", "INT-Champions League": "Champions League", "ESP-Copa del Rey": "Copa del Rey"}
 MIN_LIGA = 270  # minutos mínimos para entrar en los percentiles de la Liga
 
 ws = pd.concat([pd.read_csv(f, low_memory=False) for f in sorted((SRC / "whoscored_eventos").glob("*.csv"))], ignore_index=True)
@@ -52,27 +54,28 @@ ws["ok"] = ws["outcome_type"] == "Successful"
 ws["X"], ws["Y"] = ws["x"] * 1.2, (100 - ws["y"]) * 0.8
 ws["EX"], ws["EY"] = ws["end_x"] * 1.2, (100 - ws["end_y"]) * 0.8
 ws["fecha"] = ws["game"].str[:10]
-# solo partidos con eventos de WhoScored y resultado en Understat
+# solo partidos con eventos de WhoScored; los de Liga, además con resultado en Understat
 us_fechas = set(us_games.loc[us_games["is_result"].astype(str) == "True", "date"].str[:10])
-g = ws_games[ws_games["game_id"].isin(ws["game_id"])].assign(fecha=lambda d: d["game"].str[:10])
-g = g[g["fecha"].isin(us_fechas)]
+g = ws_games[ws_games["game_id"].isin(ws["game_id"])].assign(fecha=lambda d: d["game"].str[:10], competicion=lambda d: d["league"].map(COMP))
+g = g[(g["competicion"] != "La Liga") | g["fecha"].isin(us_fechas)]
 ws = ws[ws["game_id"].isin(g["game_id"])]
 ws_teams = set(ws["team"])
 to_ws = lambda t: t if t in ws_teams else match_names([t], ws_teams).get(t, t)  # el calendario y los eventos nombran distinto a algunos equipos
 g["home_team"], g["away_team"] = g["home_team"].map(to_ws), g["away_team"].map(to_ws)
 partidos = pd.DataFrame({
-    "match_id": g["game_id"], "fecha": g["fecha"], "competicion": "La Liga", "temporada": TEMPORADA, "jornada": "",
+    "match_id": g["game_id"], "fecha": g["fecha"], "competicion": g["competicion"], "temporada": TEMPORADA, "jornada": "",
     "local": g["home_team"], "visitante": g["away_team"], "goles_local": g["home_score"].astype(int), "goles_visitante": g["away_score"].astype(int),
     "rival": np.where(g["home_team"] == RM, g["away_team"], g["home_team"]), "entrenador_rm": ENTRENADOR, "estadio": "",
 }).sort_values("fecha")
 mid_by_fecha = dict(zip(partidos["fecha"], partidos["match_id"]))
+liga_ids = set(partidos.loc[partidos["competicion"] == "La Liga", "match_id"])
 ws["match_id"] = ws["fecha"].map(mid_by_fecha)
 assert ws["match_id"].notna().all()
 
 # ---------- Tiros Understat (+ contraataque de WhoScored por coordenadas exactas) ----------
 us_shots["fecha"] = us_shots["date"].str[:10]
 us_shots["match_id"] = us_shots["fecha"].map(mid_by_fecha)
-us_shots = us_shots[us_shots["match_id"].notna()]
+us_shots = us_shots[us_shots["match_id"].isin(liga_ids)]
 us_shots["equipo"] = us_shots["team"].map(to_ws)
 ws_shots = ws[ws["type"].isin(["Goal", "SavedShot", "MissedShots", "ShotOnPost"])]
 fast = set()
@@ -92,6 +95,26 @@ tiros = pd.DataFrame({
     "minuto": us_shots["minute"],
 })
 tiros = tiros[tiros["resultado"] != "Own Goal"]  # el gol en propia meta no es un tiro de quien lo marca
+
+# los mismos tiros desde los eventos de WhoScored (sin xG): los de Champions y Copa salen de aquí
+s = ws_shots[~ws_shots["q"].map(lambda q: "OwnGoal" in q)]
+q = s["q"]
+tiros_ws = pd.DataFrame({
+    "tiro_id": "ws" + s["game_id"].astype(str) + "_" + s["team_id"].astype(str) + "_" + s["event_id"].astype(str),
+    "match_id": s["match_id"], "equipo": s["team"], "jugador": s["player"], "x": s["X"].round(1), "y": s["Y"].round(1), "xg": np.nan,
+    "resultado": np.select([s["type"] == "Goal", s["type"] == "ShotOnPost", s["type"] == "MissedShots", q.map(lambda q: "Blocked" in q)],
+                           ["Goal", "Post", "Off T", "Blocked"], "Saved"),
+    "subtipo": np.where(q.map(lambda q: "Penalty" in q), "Penalty", "Open Play"),
+    "patron_juego": q.map(lambda q: "From Counter" if "FastBreak" in q else "Other" if "Penalty" in q else "From Corner" if "FromCorner" in q
+                          else "From Free Kick" if q & {"SetPiece", "DirectFreekick", "ThrowinSetPiece"} else "Regular Play"),
+    "minuto": s["minute"],
+})
+# comprobación: en la Liga, WhoScored y Understat deben contar los mismos tiros por resultado
+for mid in liga_ids:
+    a = tiros_ws[tiros_ws["match_id"] == mid]["resultado"].value_counts()
+    b = tiros[tiros["match_id"] == mid]["resultado"].value_counts()
+    assert (a.sub(b, fill_value=0).abs() <= 2).all(), (mid, a.to_dict(), b.to_dict())
+tiros = pd.concat([tiros, tiros_ws[~tiros_ws["match_id"].isin(liga_ids)]], ignore_index=True)
 # el tirador con el nombre de WhoScored ("Kylian Mbappe-Lottin" -> "Kylian Mbappé"), el mismo que en pases y alineaciones
 for (mid, eq), idx in tiros.groupby(["match_id", "equipo"]).groups.items():
     m = match_names(tiros.loc[idx, "jugador"].unique(), ws.loc[(ws["match_id"] == mid) & (ws["team"] == eq), "player"].dropna().unique())
@@ -113,13 +136,14 @@ for p in partidos.itertuples():
         pa = passes_all[(passes_all["match_id"] == p.match_id) & (passes_all["team"] == t)]
         pa_op = passes_all[(passes_all["match_id"] == p.match_id) & (passes_all["team"] == riv)]
         comp = pa[pa["ok"]]
+        xg = (lambda d: round(d["xg"].sum(), 2)) if p.match_id in liga_ids else (lambda d: np.nan)  # sin xG fuera de la Liga
         def_act = me[(me["X"] >= 48) & (me["type"].isin(["Tackle", "Interception"]) | ((me["type"] == "Foul") & ~me["ok"]))]
         won = ((me["type"] == "Tackle") | ((me["type"] == "Aerial") & me["ok"])).sum()
         lost = ((me["type"] == "Challenge") | ((me["type"] == "Aerial") & ~me["ok"])).sum()
         eq_rows.append(dict(
             match_id=p.match_id, equipo=t, rival=riv, goles=p.goles_local if t == p.local else p.goles_visitante,
-            xg=round(sh["xg"].sum(), 2), npxg=round(sh[sh["subtipo"] != "Penalty"]["xg"].sum(), 2),
-            xg_contraataque=round(sh[sh["patron_juego"] == "From Counter"]["xg"].sum(), 2), tiros=len(sh),
+            xg=xg(sh), npxg=xg(sh[sh["subtipo"] != "Penalty"]),
+            xg_contraataque=xg(sh[sh["patron_juego"] == "From Counter"]), tiros=len(sh),
             tiros_puerta=int(sh["resultado"].isin(["Goal", "Saved"]).sum()),
             posesion=round(100 * len(pa) / max(len(pa) + len(pa_op), 1), 1), pases=len(pa),
             acierto_pase=round(100 * len(comp) / max(len(pa), 1), 1),
@@ -130,7 +154,7 @@ for p in partidos.itertuples():
             recuperaciones_campo_rival=int((me["type"].isin(["BallRecovery", "Interception"]) & me["ok"] & (me["X"] >= 60)).sum()),
             duelos_ganados_pct=round(100 * won / max(won + lost, 1), 1),
             perdidas_peligrosas=int(danger_loss(me).sum()), contrapresiones=np.nan, recup_tras_perdida=np.nan,
-            xg_contra=round(sh_op["xg"].sum(), 2), fuente="Opta",
+            xg_contra=xg(sh_op), fuente="Opta",
         ))
 eq = pd.DataFrame(eq_rows)
 eq.insert(0, "clave", eq["match_id"].astype(str) + "|" + eq["equipo"])
@@ -148,6 +172,7 @@ for (mid, team, pid), e in ws[ws["player_id"].notna()].groupby(["match_id", "tea
         posicion="GK" if e["type"].isin(["KeeperPickup", "Claim", "Punch", "Smother", "KeeperSweeper"]).any() else "",
         minutos=int(max(mins, 1)), goles=int(((e["type"] == "Goal") & ~e["q"].map(lambda q: "OwnGoal" in q)).sum()),
         pases_clave=int(pa["q"].map(lambda q: bool(q & {"KeyPass", "IntentionalGoalAssist", "IntentionalAssist"})).sum()),
+        asistencias=int(pa["q"].map(lambda q: "IntentionalGoalAssist" in q).sum()),
         pases=len(pa), acierto_pase=round(100 * len(comp) / max(len(pa), 1), 1),
         pases_progresivos=int((comp["EX"] - comp["X"] >= 15).sum()),
         regates=int(((e["type"] == "TakeOn") & e["ok"]).sum()), presiones=np.nan,
@@ -161,8 +186,8 @@ jug = pd.DataFrame(jug_rows)
 # xG, xA y asistencias por jugador desde Understat, emparejando nombres dentro de cada partido y equipo
 us_pm["match_id"] = us_pm["game"].str[:10].map(mid_by_fecha)
 us_pm["equipo"] = us_pm["team"].map(to_ws)
-us_pm = us_pm[us_pm["match_id"].notna()]
-jug[["xg", "xa", "asistencias"]] = 0.0
+us_pm = us_pm[us_pm["match_id"].isin(liga_ids)]
+jug["xg"] = jug["xa"] = np.where(jug["match_id"].isin(liga_ids), 0.0, np.nan)
 sin_emparejar = []
 for (mid, team), u in us_pm.groupby(["match_id", "equipo"]):
     jj = jug[(jug["match_id"] == mid) & (jug["equipo"] == team)]
@@ -174,7 +199,6 @@ for (mid, team), u in us_pm.groupby(["match_id", "equipo"]):
             continue
         i = jj.index[jj["jugador"] == m[r.player]][0]
         jug.loc[i, ["xg", "xa", "asistencias"]] = [round(r.xg, 2), round(r.xa, 2), r.assists]
-jug["asistencias"] = jug["asistencias"].astype(int)
 jug.insert(0, "clave", jug["match_id"].astype(str) + "|" + jug["jugador_id"].astype(str))
 
 # ---------- Alineaciones: dorsal y titularidad del FormationSet de WhoScored ----------
@@ -190,7 +214,7 @@ for r in ws[ws["type"] == "FormationSet"].drop_duplicates(["match_id", "team"]).
             continue  # suplente que no jugó: WhoScored no da su nombre
         titular = linea.strip() in LINEA
         al_rows.append(dict(match_id=r.match_id, equipo=r.team, jugador=j["jugador"].iloc[0], dorsal=int(dorsal),
-                            titular=int(titular)))
+                            titular=int(titular), linea=LINEA.get(linea.strip(), "")))
 alineaciones = pd.DataFrame(al_rows)
 # posición titular de cada jugador en el partido (Understat: GK, DC, DL, AML, FW...), con las etiquetas de Transfermarkt
 US_POS = {"GK": "Goalkeeper", "DC": "Centre-Back", "DL": "Left-Back", "DR": "Right-Back", "DMC": "Defensive Midfield",
@@ -207,6 +231,16 @@ for (mid, team), u in us_pm.groupby(["match_id", "equipo"]):
         pos = r.position if r.position != "Sub" else habitual.get(r.player, "")
         if r.player in m:
             alineaciones.loc[sel & (alineaciones["jugador"] == m[r.player]), "posicion"] = US_POS.get(pos, "")
+# fuera de la Liga no hay posición de Understat: la habitual del jugador en la Liga y, si no la hay (rivales), su línea
+# shortcut: línea gruesa (todos los defensas como centrales), usar TeamFormation de Opta si se quiere el dibujo exacto
+hab = us_pm[(us_pm["position"] != "Sub") & (us_pm["equipo"] == RM)].groupby("player")["position"].agg(lambda v: v.value_counts().index[0])
+hab_rm = match_names(hab.index.tolist(), alineaciones.loc[alineaciones["equipo"] == RM, "jugador"].unique())
+hab_rm = {b: US_POS.get(hab[a], "") for a, b in hab_rm.items()}
+LINEA_POS = {"GK": "Goalkeeper", "DF": "Centre-Back", "MF": "Central Midfield", "FW": "Centre-Forward"}
+vacia = alineaciones["posicion"] == ""
+alineaciones.loc[vacia, "posicion"] = [(hab_rm.get(j, "") if e == RM else "") or LINEA_POS.get(l, "")
+                                       for j, e, l in alineaciones.loc[vacia, ["jugador", "equipo", "linea"]].itertuples(index=False)]
+alineaciones = alineaciones.drop(columns="linea")
 assert (alineaciones.loc[alineaciones["titular"] == 1, "posicion"] != "").mean() > 0.95, "titulares sin posición"
 assert (alineaciones.groupby(["match_id", "equipo"])["titular"].sum() == 11).all(), "alineación sin 11 titulares"
 
@@ -248,7 +282,7 @@ def pct(series, value):
 
 ROL = {"F": ["xg90", "xa90", "xg_chain90"], "M": ["xg_chain90", "xg_buildup90", "xa90", "int90", "tklw90"],
        "D": ["int90", "tklw90", "xg_buildup90"]}
-ws_rm = jug[jug["equipo"] == RM].groupby("jugador").agg(
+ws_rm = jug[(jug["equipo"] == RM) & jug["match_id"].isin(liga_ids)].groupby("jugador").agg(
     pases=("pases", "sum"), acierto=("acierto_pase", lambda s: np.average(s, weights=jug.loc[s.index, "pases"].clip(lower=1))),
     prog=("pases_progresivos", "sum"), recup=("recuperaciones", "sum"), dg=("duelos_ganados", "sum"),
     dp=("duelos_perdidos", "sum"), perd=("perdidas_peligrosas", "sum"), mins_ws=("minutos", "sum"))
@@ -315,7 +349,7 @@ for p in partidos.itertuples():
                      ((ws["team"] != t) & ws["q"].map(lambda q: "OwnGoal" in q)))).sum()
         assert ev_goals == goles, (p.fecha, t, ev_goals, goles)
 us_x = us_games.assign(f=us_games["date"].str[:10]).set_index("f")
-for p in partidos.itertuples():
+for p in partidos[partidos["match_id"].isin(liga_ids)].itertuples():
     rm_xg = eq[(eq["match_id"] == p.match_id) & (eq["equipo"] == RM)]["xg"].iloc[0]
     ref = us_x.loc[p.fecha, "home_xg" if p.local == RM else "away_xg"]
     assert abs(rm_xg - ref) < 0.35, (p.fecha, rm_xg, ref)  # el xG de partido de Understat no es exactamente la suma de sus tiros
