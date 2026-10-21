@@ -60,7 +60,9 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 #tabla-hist td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.estadio { white-space: normal; color: var(--color-fg-muted); min-width: 8rem; }
 .con-esc { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
-#historico #rivales, #historico #partidos-hist, #jugadores-partido, #xg-timeline { grid-column: 1 / -1; }
+#historico #rivales, #historico #partidos-hist { grid-column: 1 / -1; }
+.rm-col { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-width: 0; }
+.rm-col > .rm-card { margin-bottom: 0; }
 .rm-score .con-esc { gap: 10px; }
 #m-score { align-items: center; }
 .rm-controls label { max-width: 100%; min-width: 0; }
@@ -209,11 +211,19 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </div>
 
     <div class="rm-grid">
+      <div class="rm-col">
       <div class="rm-card" id="comparativa">
         <h2>Real Madrid vs rival</h2>
         <p class="rm-sub">Las métricas que le importan al míster. Barra más llena = mejor dato del duelo.</p>
         <div class="rm-cmp" id="cmp" data-source="metricas_equipo"></div>
         <p class="rm-note"><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p>
+      </div>
+
+      <div class="rm-card" id="xg-timeline">
+        <h2>xG acumulado</h2>
+        <p class="rm-sub">Cómo se fue construyendo el partido, tiro a tiro. Los puntos son goles.</p>
+        <div class="rm-chart" id="xgline" data-source="tiros"></div>
+      </div>
       </div>
 
       <div class="rm-card rm-rep" id="informe">
@@ -225,27 +235,21 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 
     <div class="rm-card" id="mapa-partido">
       <h2>Mapa del partido</h2>
-      <p class="rm-sub">Cada equipo ataca de izquierda a derecha. Pases: flecha del origen al destino. Tiros: tamaño = xG, relleno = gol.</p>
+      <p class="rm-sub">Cada equipo ataca de izquierda a derecha. Pases: flecha del origen al destino; al abrir, solo progresivos (avanzan 15 m o más) y pases clave. Tiros: tamaño = xG, relleno = gol.</p>
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
         <span class="rm-seg" id="p-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
         <span class="rm-seg" id="p-equipo"><button data-v="rm">Real Madrid</button><button data-v="rival">Rival</button></span>
         <label>Jugador <select id="p-jugador" data-source="metricas_jugador" aria-label="Jugador"></select></label>
-        <span class="rm-seg" id="p-tipos" aria-label="Tipos de pase"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+        <span class="rm-seg" id="p-tipos" aria-label="Tipos de pase"><button data-v="progresivo">Progresivos</button><button data-v="completo">Otros completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
         <span class="rm-seg" id="p-tiros" aria-label="Tipos de tiro" hidden><button data-v="gol">Gol</button><button data-v="parado">Parado</button><button data-v="fuera">Fuera</button><button data-v="bloqueado">Bloqueado</button></span>
       </div>
       <div class="rm-pitch" id="pitch-partido" data-source="pases tiros"></div>
       <div class="rm-legend" id="legend-partido"></div>
     </div>
 
-    <div class="rm-grid">
-      <div class="rm-card" id="xg-timeline">
-        <h2>xG acumulado</h2>
-        <p class="rm-sub">Cómo se fue construyendo el partido, tiro a tiro. Los puntos son goles.</p>
-        <div class="rm-chart" id="xgline" data-source="tiros"></div>
-      </div>
-      <div class="rm-card" id="jugadores-partido">
+    <div class="rm-card" id="jugadores-partido">
         <h2>Jugadores</h2>
-        <p class="rm-sub">Pulsa un jugador para verlo en el mapa. Duelos: ganados/disputados. Impacto: ordena quién influyó más (goles, asistencias, ocasiones generadas, recuperaciones y duelos, restando pérdidas peligrosas); pasa el ratón por la cabecera para ver la fórmula.</p>
+        <p class="rm-sub">Pulsa un jugador para verlo en el mapa. Duelos: ganados/disputados. Forma: este partido frente a sus anteriores (▲ mejor, ▼ peor, = igual; los mismos datos que la sección 4 del informe). Impacto: ordena quién influyó más (goles, asistencias, ocasiones generadas, recuperaciones y duelos, restando pérdidas peligrosas); pasa el ratón por la cabecera para ver la fórmula.</p>
         <div class="rm-tablewrap">
           <table id="tabla-partido" data-source="metricas_jugador" data-row-key="clave">
             <thead><tr>
@@ -253,12 +257,11 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
               <th data-field="xa">xA</th><th data-field="pases_clave">P. clave</th><th data-field="acierto_pase">% pase</th>
               <th data-field="pases_progresivos">Progr.</th><th data-field="regates">Regates</th><th data-field="recuperaciones">Recup.</th>
               <th data-field="duelos" title="Ganados / disputados">Duelos</th>
-              <th data-field="perdidas_peligrosas">Pérd. pelig.</th><th data-field="impacto" title="Goles + 0,75·asistencias + 0,5·(xG + xA) + 0,1·pases clave + 0,02·progresivos + 0,05·recuperaciones + 0,03·duelos ganados − 0,1·pérdidas peligrosas">Impacto</th>
+              <th data-field="perdidas_peligrosas">Pérd. pelig.</th><th data-field="forma" title="Frente a sus partidos anteriores: ▲ mejor, ▼ peor, = igual">Forma</th><th data-field="impacto" title="Goles + 0,75·asistencias + 0,5·(xG + xA) + 0,1·pases clave + 0,02·progresivos + 0,05·recuperaciones + 0,03·duelos ganados − 0,1·pérdidas peligrosas">Impacto</th>
             </tr></thead>
             <tbody></tbody>
           </table>
         </div>
-      </div>
     </div>
   </section>
 
@@ -304,20 +307,21 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
   <!-- TEMPORADA -->
   <section class="rm-page" id="temporada" hidden>
     <div class="rm-controls">
-      <label>Temporada <select id="sel-temporada" data-source="partidos" aria-label="Temporada"></select></label>
+      <label>Competición <select id="sel-temporada" data-source="partidos" aria-label="Competición y temporada"></select></label>
     </div>
+    <div class="rm-kpis" id="t-kpis" data-source="partidos metricas_equipo"></div>
     <div class="rm-card" id="xg-jornadas">
       <h2>xG a favor y en contra, partido a partido</h2>
-      <p class="rm-sub">Cuando la línea roja supera a la azul, el rival generó más que nosotros. Puntos: verde victoria, gris empate, rojo derrota.</p>
+      <p class="rm-sub">Cuando la línea roja supera a la azul, el rival generó más que nosotros. Puntos: verde victoria, gris empate, rojo derrota. Solo partidos de Liga: Understat no tiene xG de las demás.</p>
       <div class="rm-chart" id="xgseason" data-source="metricas_equipo partidos"></div>
     </div>
     <div class="rm-card" id="mapa-temporada">
       <h2>Mapa de la temporada por jugador</h2>
-      <p class="rm-sub">Todos sus pases o tiros del periodo seleccionado.</p>
+      <p class="rm-sub">Zonas: dónde participa (salida de sus pases y sus tiros; más intenso = más acciones). Pases y tiros: todos los del periodo elegido.</p>
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
-        <span class="rm-seg" id="t-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
+        <span class="rm-seg" id="t-capa"><button data-v="zonas">Zonas</button><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
         <label>Jugador <select id="t-jugador" data-source="jugadores_temporada" aria-label="Jugador de la temporada"></select></label>
-        <span class="rm-seg" id="t-tipos" aria-label="Tipos de pase"><button data-v="completo">Completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
+        <span class="rm-seg" id="t-tipos" aria-label="Tipos de pase"><button data-v="progresivo">Progresivos</button><button data-v="completo">Otros completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
         <span class="rm-seg" id="t-tiros" aria-label="Tipos de tiro" hidden><button data-v="gol">Gol</button><button data-v="parado">Parado</button><button data-v="fuera">Fuera</button><button data-v="bloqueado">Bloqueado</button></span>
       </div>
       <div class="rm-pitch" id="pitch-temporada" data-source="pases tiros"></div>
@@ -325,7 +329,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </div>
     <div class="rm-card" id="plantilla">
       <h2>La plantilla en números</h2>
-      <p class="rm-sub">Real Madrid en la competición y temporada elegidas. Pulsa un jugador para ver su mapa; pulsa una cabecera para ordenar.</p>
+      <p class="rm-sub">Real Madrid en la competición y temporada elegidas. Pulsa un jugador para ver su mapa; pulsa una cabecera para ordenar. xG y xA solo de la Liga.</p>
       <div class="rm-tablewrap">
         <table id="tabla-temporada" data-source="jugadores_temporada" data-row-key="clave">
           <thead><tr>

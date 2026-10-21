@@ -9,6 +9,8 @@ const el = (tag, attrs = {}, text) => {
   if (text != null) e.textContent = text;
   return e;
 };
+const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const fechaEs = (iso, anio = true) => { const [y, m, d] = String(iso).split('-'); return `${Number(d)} ${MESES[m - 1]}${anio ? ' ' + y : ''}`; };
 const markEl = (tag, src, field, where, text) => el(tag, { 'data-source': src, 'data-field': field, 'data-where': where }, text);
 const ok = (...ids) => ids.every((id) => dash.data(id).status === 'ok');
 const rows = (id) => (dash.data(id).status === 'ok' ? dash.data(id).data : []);
@@ -47,16 +49,18 @@ dash.calc('informe', {
   },
 });
 
+const TODAS = 'Todas las competiciones';
 dash.calc('jugadores_temporada', {
   inputs: ['metricas_jugador', 'partidos'],
   title: 'Plantilla por temporada',
-  description: 'Suma por jugador del Madrid de sus partidos en cada competición y temporada; % de duelos = ganados / (ganados + perdidos).',
+  description: 'Suma por jugador del Madrid de sus partidos en cada competición y temporada, y en todas juntas; % de duelos = ganados / (ganados + perdidos). xG y xA solo de la Liga.',
   fn: (metricas_jugador, partidos) => {
     const comp = Object.fromEntries(partidos.map((p) => [p.match_id, p.competicion + '|' + p.temporada]));
     const acc = {};
     for (const r of metricas_jugador) {
       if (r.equipo !== 'Real Madrid') continue;
-      const t = comp[r.match_id];
+      const tc = comp[r.match_id];
+      for (const t of [tc, TODAS + '|' + tc.split('|')[1]]) {
       const k = t + '|' + r.jugador_id;
       const a = (acc[k] ??= { clave: k, temporada: t, jugador: r.jugador, pj: 0, minutos: 0, goles: 0, xg: 0, asistencias: 0, xa: 0,
         pases_progresivos: 0, recuperaciones: 0, dg: 0, dp: 0, perdidas_peligrosas: 0 });
@@ -64,6 +68,7 @@ dash.calc('jugadores_temporada', {
       a.asistencias += Number(r.asistencias); a.xa += Number(r.xa); a.pases_progresivos += Number(r.pases_progresivos);
       a.recuperaciones += Number(r.recuperaciones); a.dg += Number(r.duelos_ganados); a.dp += Number(r.duelos_perdidos);
       a.perdidas_peligrosas += Number(r.perdidas_peligrosas);
+      }
     }
     // sin xG (Champions y Copa: Understat solo cubre la Liga) se deja vacío, no 0
     return Object.values(acc).map(({ dg, dp, conXg, ...a }) => ({ ...a, xg: conXg ? Math.round(a.xg * 100) / 100 : '', xa: conXg ? Math.round(a.xa * 100) / 100 : '',
@@ -99,48 +104,37 @@ const lineaForma = (f, arriba) => {
 const MET = {
   xg: { label: 'xG generado', fmt: 2,
     impacto: 'Dominamos sin herir: el equipo no fabrica ocasiones claras y el rival sale vivo del partido.',
-    explotar: 'Repetir el patrón que generó las ocasiones y cargar el área con cuatro hombres en cada llegada.',
-    mensaje: '"Llegamos una y otra vez. Ahora quiero la misma fe para matar los partidos."' },
+    bien: 'El equipo fabricó más ocasiones de calidad que de costumbre.' },
   xg_contra: { label: 'xG concedido', fmt: 2,
     impacto: 'El rival entra en nuestra área con demasiada facilidad. La solidez defensiva es innegociable.',
-    explotar: 'El bloque está cerrado: los laterales pueden asumir más riesgo arriba porque la retaguardia aguanta.',
-    mensaje: '"Esta portería es de todos. Nadie nos hace daño si estamos así de juntos."' },
+    bien: 'El rival apenas encontró ocasiones claras: el bloque estuvo cerrado.' },
   tiros_puerta: { label: 'Tiros a puerta', fmt: 0,
     impacto: 'Llegamos pero no obligamos al portero: decisiones malas en el último metro.',
-    explotar: 'El equipo pisa área con convicción: seguir buscando el disparo temprano.',
-    mensaje: '"El portero rival se va a casa cansado. Así se gana."' },
+    bien: 'Más disparos entre los tres palos: obligamos al portero rival a intervenir.' },
   acierto_pase: { label: '% acierto de pase', fmt: 1,
     impacto: 'Perdemos demasiados balones simples y regalamos transiciones al rival.',
-    explotar: 'Circulación limpia: permite atraer la presión y lanzar el contragolpe con el campo largo.',
-    mensaje: '"Con el balón somos un reloj. Que el rival corra detrás."' },
+    bien: 'Circulación más limpia de lo habitual: menos balones regalados.' },
   pases_progresivos: { label: 'Pases progresivos', fmt: 0,
     impacto: 'Circulamos sin avanzar: el rival se reorganiza antes de que lleguemos.',
-    explotar: 'Rompemos líneas con facilidad: buscar antes al delantero de espaldas para descargar y correr.',
-    mensaje: '"Cada pase hacia delante es una puñalada. Seguid así."' },
+    bien: 'Rompimos líneas más que de costumbre y llegamos antes al último tercio.' },
   presiones_campo_rival: { label: 'Presiones en campo rival', fmt: 0,
     impacto: 'El rival sale jugando cómodo: no hay agresividad en la primera línea.',
-    explotar: 'Las trampas de presión funcionan: robar arriba es media ocasión hecha.',
-    mensaje: '"Hoy el rival no ha podido respirar. Esa intensidad es la nuestra."' },
+    bien: 'Más presión arriba de lo habitual: el rival no salió cómodo.' },
   recuperaciones_campo_rival: { label: 'Recuperaciones en campo rival', fmt: 0,
     impacto: 'Robamos lejos de su portería: cada contraataque empieza a 60 metros.',
-    explotar: 'Robamos arriba: que los extremos ataquen el espacio en cuanto se recupera.',
-    mensaje: '"Robar ahí arriba es lo que hace un equipo campeón."' },
+    bien: 'Robamos más cerca de su portería: los contraataques empiezan más cerca del gol.' },
   duelos_ganados_pct: { label: '% duelos ganados', fmt: 1,
     impacto: 'Perdemos la batalla física. Sin duelos ganados no hay bloque que aguante.',
-    explotar: 'Ganamos el cuerpo a cuerpo: buscar segundas jugadas y balón directo al hombre fuerte.',
-    mensaje: '"Hoy hemos sido hombres. Así se compite en este club."' },
+    bien: 'Ganamos el cuerpo a cuerpo más que en otros partidos.' },
   perdidas_peligrosas: { label: 'Pérdidas peligrosas', fmt: 0,
     impacto: 'Regalamos el balón en nuestro tercio: es exactamente cómo un rival nos mata en transición.',
-    explotar: 'Salida limpia y segura: podemos invitar al rival a presionar para correr a su espalda.',
-    mensaje: '"Ni un regalo atrás. Eso es madurez."' },
+    bien: 'Menos balones perdidos en nuestro tercio: menos transiciones regaladas.' },
   contrapresiones: { label: 'Contrapresiones', fmt: 0,
     impacto: 'Tras perder el balón no reaccionamos: el rival sale limpio a la contra.',
-    explotar: 'La reacción tras pérdida es inmediata: el equipo está mentalmente en el partido.',
-    mensaje: '"Perdemos el balón y en cinco segundos es nuestro otra vez. Eso es hambre."' },
+    bien: 'Reaccionamos mejor tras pérdida: el rival salió menos limpio a la contra.' },
   xg_contraataque: { label: 'xG en contraataque', fmt: 2,
     impacto: 'No castigamos al rival cuando se desordena: nuestra arma principal está apagada.',
-    explotar: 'La transición es letal: esperar en bloque medio y dejar que el rival se desordene.',
-    mensaje: '"Que tengan el balón. Nosotros tenemos el contraataque."' },
+    bien: 'Las transiciones generaron más peligro de lo habitual.' },
 };
 
 const CMP = [
@@ -182,6 +176,8 @@ const TIPO_TIRO = { Goal: 'gol', Saved: 'parado', 'Saved to Post': 'parado', 'Sa
 function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
   box.querySelector('svg')?.remove();
   const half = capa === 'tiros';
+  // pase progresivo = completado que avanza 15 m o más (misma definición que procesar.py)
+  passes = passes.map((p) => ({ ...p, tipo: p.tipo === 'completo' && p.fin_x - p.x >= 15 ? 'progresivo' : p.tipo }));
   const vb = [-2, -2, 124, 84];
   const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', vb.join(' '))
     .attr('role', 'img').attr('aria-label', half ? 'Mapa de tiros' : 'Mapa de pases');
@@ -199,9 +195,20 @@ function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
   }
   const tip = tooltip(box);
   const legend = [];
-  if (!half) {
+  if (capa === 'zonas') {
+    // dónde participa: origen de sus pases y sus tiros, en celdas de 10 × 10 m
+    const n = d3.rollup([...passes, ...shots], (v) => v.length, (d) => Math.min(11, Math.floor(d.x / 10)), (d) => Math.min(7, Math.floor(d.y / 10)));
+    const celdas = [...n].flatMap(([cx, m]) => [...m].map(([cy, v]) => ({ cx, cy, v })));
+    const max = d3.max(celdas, (c) => c.v) || 1;
+    svg.insert('g', ':first-child').selectAll('rect').data(celdas).join('rect')
+      .attr('x', (c) => c.cx * 10).attr('y', (c) => c.cy * 10).attr('width', 10).attr('height', 10)
+      .style('fill', color).attr('opacity', (c) => 0.08 + 0.72 * (c.v / max))
+      .on('mouseenter', (ev, c) => tip.show(ev, `${c.v} acciones`, ['Pases que salen de esta zona y tiros']))
+      .on('mouseleave', () => tip.hide());
+    legend.push(['poco', 'Pocas acciones', color, 'dot0'], ['mucho', 'Muchas acciones', color]);
+  } else if (!half) {
     const defs = svg.append('defs');
-    const COL = { completo: color, fallado: C_BAD, clave: C_KEY() };
+    const COL = { progresivo: color, completo: 'var(--cds-chart-muted)', fallado: C_BAD, clave: C_KEY() };
     for (const [k, c] of Object.entries(COL)) {
       defs.append('marker').attr('id', `arr-${box.id}-${k}`).attr('viewBox', '0 0 10 10').attr('refX', 9).attr('refY', 5)
         .attr('markerWidth', 4).attr('markerHeight', 4).attr('orient', 'auto')
@@ -210,7 +217,8 @@ function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
     const ps = passes.filter((p) => tipos.includes(p.tipo));
     const op = ps.length > 800 ? 0.25 : ps.length > 250 ? 0.45 : 0.8;
     // los pases clave se dibujan encima
-    ps.sort((a, b) => (a.tipo === 'clave') - (b.tipo === 'clave'));
+    const capaDe = { completo: 0, fallado: 1, progresivo: 2, clave: 3 };
+    ps.sort((a, b) => capaDe[a.tipo] - capaDe[b.tipo]);
     svg.append('g').selectAll('line').data(ps).join('line')
       .attr('x1', (d) => d.x).attr('y1', (d) => d.y).attr('x2', (d) => d.fin_x).attr('y2', (d) => d.fin_y)
       .style('stroke', (d) => COL[d.tipo]).attr('stroke-width', (d) => (d.tipo === 'clave' ? 0.55 : 0.35))
@@ -218,13 +226,13 @@ function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
       .attr('marker-end', (d) => `url(#arr-${box.id}-${d.tipo})`)
       .on('mouseenter', function (ev, d) {
         d3.select(this).attr('stroke-width', 1).attr('opacity', 1);
-        tip.show(ev, `${d.jugador} · ${d.minuto}'`, [{ completo: 'Pase completado', fallado: 'Pase fallado', clave: 'Pase clave (acaba en tiro)' }[d.tipo]]);
+        tip.show(ev, `${d.jugador} · ${d.minuto}'`, [{ progresivo: 'Pase progresivo (avanza 15 m o más)', completo: 'Pase completado', fallado: 'Pase fallado', clave: 'Pase clave (acaba en tiro)' }[d.tipo]]);
       })
       .on('mouseleave', function (ev, d) {
         d3.select(this).attr('stroke-width', d.tipo === 'clave' ? 0.55 : 0.35).attr('opacity', d.tipo === 'clave' ? 1 : op);
         tip.hide();
       });
-    legend.push(['completo', 'Completado', color], ['fallado', 'Fallado', C_BAD], ['clave', 'Pase clave', C_KEY()]);
+    legend.push(['progresivo', 'Progresivo', color], ['completo', 'Otro completado', 'var(--cds-chart-muted)'], ['fallado', 'Fallado', C_BAD], ['clave', 'Pase clave', C_KEY()]);
   } else {
     const ss = shots.filter((d) => tiposTiro.includes(TIPO_TIRO[d.resultado])).sort((a, b) => (b.xg || 0) - (a.xg || 0));
     svg.append('g').selectAll('circle').data(ss).join('circle')
@@ -245,6 +253,7 @@ function drawLegend(node, items) {
     const i = el('i', { class: shape || '' });
     i.style.background = c;
     if (c === 'transparent') i.style.border = '1px solid currentColor';
+    if (shape === 'dot0') i.style.opacity = 0.2;
     s.append(i, label);
     return s;
   }));
@@ -409,7 +418,7 @@ function renderPartido() {
         // con los nombres del histórico ("Atletico Madrid", no "Atletico")
         const h = rows('historico').find((r) => r.fecha === p.fecha);
         const n = (x) => (!h || x === RM ? x : h.rival);
-        og.appendChild(el('option', { value: p.match_id }, `${p.fecha} · ${n(p.local)} ${p.goles_local}–${p.goles_visitante} ${n(p.visitante)}`));
+        og.appendChild(el('option', { value: p.match_id }, `${fechaEs(p.fecha, false)} · ${n(p.local)} ${p.goles_local}–${p.goles_visitante} ${n(p.visitante)}`));
       }
       sel.appendChild(og);
     }
@@ -422,7 +431,7 @@ function renderPartido() {
   const nombre = (n) => (!hp ? n : n === RM ? RM : hp.rival);
   if (p) {
     $('#m-meta').textContent = [p.competicion === 'La Liga' ? 'LaLiga' : p.competicion, p.temporada.replace(/^(\d{4})\/\d{2}(\d{2})$/, '$1/$2'),
-      hp && hp.ronda ? hp.ronda : '', p.fecha, hp && hp.estadio ? hp.estadio : ''].filter(Boolean).join(' · ');
+      hp && hp.ronda ? hp.ronda : '', fechaEs(p.fecha), hp && hp.estadio ? hp.estadio : ''].filter(Boolean).join(' · ');
     $('#m-score').replaceChildren(conEscudo(nombre(p.local)), markEl('b', 'partidos', 'goles_local', w, p.goles_local),
       el('span', {}, '–'), markEl('b', 'partidos', 'goles_visitante', w, p.goles_visitante), conEscudo(nombre(p.visitante), 'span', true));
     // goleadores: los tiros que acabaron en gol (Understat); los goles en propia puerta no son tiros, salen como "(p.p.)"
@@ -494,12 +503,7 @@ function renderPartido() {
       dato.append(el('span', { class: 'k' }, 'El dato: '), `${m.label} `, markEl('b', 'informe', 'valor', `clave=${enc(r.clave)}`, fmt(r)),
         ' frente a una media de ', markEl('b', 'informe', 'media', `clave=${enc(r.clave)}`, r.media), ` en los ${r.previos} partidos anteriores.`);
       it.append(dato);
-      if (bad) {
-        it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'El impacto: '), m.impacto);
-      } else {
-        it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Cómo explotarlo: '), m.explotar);
-        it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Mensaje al grupo: '), m.mensaje);
-      }
+      it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'El impacto: '), bad ? m.impacto : m.bien);
       return it;
     };
 
@@ -573,16 +577,19 @@ function renderPartido() {
   const tab = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === equipoSel && N(r.minutos) > 0)
     .sort((x, y) => N(y.titular) - N(x.titular) || N(y.minutos) - N(x.minutos));
   const sel2 = tab.find((r) => r.jugador === jugSel);
-  const vista = tab.map((r) => ({ ...r, xg: r.xg === '' ? '—' : N(r.xg).toFixed(2), xa: r.xa === '' ? '—' : N(r.xa).toFixed(2), acierto_pase: r.acierto_pase === '' ? '—' : N(r.acierto_pase).toFixed(1),
+  const formaDe = Object.fromEntries(formaJugadores(mid, Object.fromEntries(partidos.map((x) => [x.match_id, x.fecha])), rows('metricas_jugador'))
+    .map((f) => [f.r.jugador, f.score]));
+  const flecha = (v) => (v == null ? '—' : `${v >= 0.3 ? '▲' : v <= -0.3 ? '▼' : '='} ${(Math.round(v * 10) / 10 || 0).toFixed(1)}`);
+  const vista = tab.map((r) => ({ ...r, forma: equipoSel === RM ? flecha(formaDe[r.jugador]) : '—', xg: r.xg === '' ? '—' : N(r.xg).toFixed(2), xa: r.xa === '' ? '—' : N(r.xa).toFixed(2), acierto_pase: r.acierto_pase === '' ? '—' : N(r.acierto_pase).toFixed(1),
     duelos: `${N(r.duelos_ganados)}/${N(r.duelos_ganados) + N(r.duelos_perdidos)}`, impacto: impacto(r).toFixed(2) }));
   fillTable($('#tabla-partido'), vista, ['jugador', 'minutos', 'goles', 'asistencias', 'xg', 'xa', 'pases_clave', 'acierto_pase', 'pases_progresivos', 'regates',
-    'recuperaciones', 'duelos', 'perdidas_peligrosas', 'impacto'], (r) => r.clave, sel2 && sel2.clave);
+    'recuperaciones', 'duelos', 'perdidas_peligrosas', 'forma', 'impacto'], (r) => r.clave, sel2 && sel2.clave);
 
   const tk = $('#takeaway');
-  if (p && a && a.xg === '') tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${p.fecha}): ${p.competicion}, sin xG.`);
+  if (p && a && a.xg === '') tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${fechaEs(p.fecha)}): ${p.competicion}, sin xG.`);
   else if (p && a) {
     const wa = `clave=${enc(a.clave)}`;
-    tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${p.fecha}): xG `, markEl('b', 'metricas_equipo', 'xg', wa, a.xg),
+    tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${fechaEs(p.fecha)}): xG `, markEl('b', 'metricas_equipo', 'xg', wa, a.xg),
       ' del Madrid frente a ', markEl('b', 'metricas_equipo', 'xg_contra', wa, a.xg_contra), ' del rival.');
   }
 }
@@ -631,25 +638,46 @@ function drawXgLine(box, shots, p, b) {
   for (const l of labels) svg.append('text').attr('x', W - m.r + 6).attr('y', l.y + 4).style('fill', l.color).style('font-size', 'var(--cds-font-size-caption)').text(l.text);
 }
 
+// "Real Sociedad" -> SOC, "Rayo Vallecano" -> RAY: tres letras del nombre sin prefijos de club
+const abrev = (n) => (String(n).replace(/\b(Real|Club|CF|FC|CD|RCD|UD|SD|AS|SSC|AC|Deportivo|de|Atlético de)\b/gi, ' ').trim().split(/\s+/)[0] || String(n))
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '').slice(0, 3).toUpperCase();
+
 function renderTemporada() {
   const partidos = rows('partidos');
   const sel = $('#sel-temporada');
   if (partidos.length && (!sel.options.length || (sel.dataset.conHist !== '1' && ok('historico')))) {
     sel.replaceChildren();
     sel.dataset.conHist = ok('historico') ? '1' : '';
-    const keys = d3.groups([...partidos].sort((a, b) => b.fecha.localeCompare(a.fecha)), (p) => p.competicion + '|' + p.temporada).map(([k]) => k);
-    keys.forEach((k) => sel.appendChild(el('option', { value: k }, k.replace('|', ' '))));
+    for (const [temp, ps] of d3.groups([...partidos].sort((a, b) => b.fecha.localeCompare(a.fecha)), (p) => p.temporada)) {
+      const og = el('optgroup', { label: temp });
+      [TODAS, ...new Set(ps.map((p) => p.competicion))].forEach((c) => og.appendChild(el('option', { value: c + '|' + temp }, c)));
+      sel.appendChild(og);
+    }
   }
-  const key = P().temporada || (partidos.length ? partidos.at(-1).competicion + '|' + partidos.at(-1).temporada : '');
+  const key = P().temporada || (partidos.length ? TODAS + '|' + partidos.at(-1).temporada : '');
   sel.value = key;
-  const ids = new Set(partidos.filter((p) => p.competicion + '|' + p.temporada === key).map((p) => p.match_id));
+  const [compSel, tempSel] = key.split('|');
+  const enKey = (p) => p.temporada === tempSel && (compSel === TODAS || p.competicion === compSel);
+  const ids = new Set(partidos.filter(enKey).map((p) => p.match_id));
+
+  // Resumen
+  const ps = partidos.filter(enKey);
+  const gl = (p) => (p.local === RM ? [N(p.goles_local), N(p.goles_visitante)] : [N(p.goles_visitante), N(p.goles_local)]);
+  const v = ps.filter((p) => gl(p)[0] > gl(p)[1]).length, e = ps.filter((p) => gl(p)[0] === gl(p)[1]).length;
+  const meq = rows('metricas_equipo').filter((r) => r.equipo === RM && ids.has(r.match_id) && r.xg !== '');
+  const kpis = [['Partidos', ps.length], ['Victorias · empates · derrotas', `${v} · ${e} · ${ps.length - v - e}`],
+    ['Goles a favor – en contra', `${d3.sum(ps, (p) => gl(p)[0])} – ${d3.sum(ps, (p) => gl(p)[1])}`]];
+  if (meq.length) kpis.push([`xG a favor – en contra${meq.length < ps.length ? ' (solo Liga)' : ''}`, `${d3.sum(meq, (r) => N(r.xg)).toFixed(1)} – ${d3.sum(meq, (r) => N(r.xg_contra)).toFixed(1)}`]);
+  if (compSel === 'La Liga' && ps.length) kpis.push(['Puntos por partido', ((3 * v + e) / ps.length).toFixed(2)]);
+  $('#t-kpis').replaceChildren(...kpis.map(([l, val]) => { const c = el('div', { class: 'rm-card rm-kpi' }); c.append(el('p', { class: 'rm-sub' }, l), el('p', { class: 'n' }, val)); return c; }));
   const byId = Object.fromEntries(partidos.map((p) => [p.match_id, p]));
 
   // xG por partido
   const box = $('#xgseason');
   box.querySelector('svg')?.remove();
   box.querySelector('.sin-xg')?.remove();
-  const ms = rows('metricas_equipo').filter((r) => r.equipo === RM && ids.has(r.match_id))
+  // en "todas", el gráfico solo puede llevar los partidos con xG (Liga)
+  const ms = rows('metricas_equipo').filter((r) => r.equipo === RM && ids.has(r.match_id) && (compSel !== TODAS || r.xg !== ''))
     .map((r) => ({ ...r, p: byId[r.match_id] })).sort((a, b) => a.p.fecha.localeCompare(b.p.fecha));
   if (ms.length && ms.every((d) => d.xg === '')) box.prepend(el('p', { class: 'sin-xg' }, 'Sin xG en esta competición: Understat solo cubre la Liga.'));
   else if (ms.length) {
@@ -662,7 +690,7 @@ function renderTemporada() {
       .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
     const step = Math.ceil(ms.length / (W < 500 ? 5 : 10));
     svg.append('g').attr('transform', `translate(0,${H - m.b})`)
-      .call(d3.axisBottom(x).tickValues(ms.filter((_, i) => i % step === 0).map((d) => d.match_id)).tickFormat((id) => byId[id].fecha.slice(2, 7)))
+      .call(d3.axisBottom(x).tickValues(ms.filter((_, i) => i % step === 0).map((d) => d.match_id)).tickFormat((id) => `${abrev(byId[id].rival)} ${byId[id].fecha.slice(8).replace(/^0/, '')}/${Number(byId[id].fecha.slice(5, 7))}`))
       .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
       .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
     const lines = [['xg', 'xG a favor', C_RM()], ['xg_contra', 'xG en contra', C_BAD]];
@@ -675,7 +703,7 @@ function renderTemporada() {
     const tip = tooltip(box);
     svg.append('g').selectAll('circle').data(ms).join('circle').attr('cx', (d) => x(d.match_id)).attr('cy', (d) => y(N(d.xg))).attr('r', 4)
       .style('fill', resCol).style('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
-      .on('mouseenter', (ev, d) => tip.show(ev, `${d.p.fecha} · ${d.p.local} ${d.p.goles_local}–${d.p.goles_visitante} ${d.p.visitante}`,
+      .on('mouseenter', (ev, d) => tip.show(ev, `${fechaEs(d.p.fecha)} · ${d.p.local} ${d.p.goles_local}–${d.p.goles_visitante} ${d.p.visitante}`,
         [`xG a favor ${d.xg}`, `xG en contra ${d.xg_contra}`, 'Pulsa para abrir el post-partido']))
       .on('mouseleave', () => tip.hide())
       .on('click', (ev, d) => { dash.setParams({ partido: Number(d.match_id), jugador: null }); showTab('partido'); });
@@ -691,24 +719,26 @@ function renderTemporada() {
   jt.sort((a, b) => (sk === 'jugador' ? a.jugador.localeCompare(b.jugador) : N(a[sk]) - N(b[sk])) * (sortT.asc ? 1 : -1));
   document.querySelectorAll('#tabla-temporada th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === sk ? (sortT.asc ? 'ascending' : 'descending') : 'none'));
   const selT = jt.find((r) => r.jugador === P().jugador_t);
-  fillTable($('#tabla-temporada'), jt, ['jugador', 'pj', 'minutos', 'goles', 'xg', 'asistencias', 'xa', 'pases_progresivos', 'recuperaciones', 'duelos_pct', 'perdidas_peligrosas'],
+  const d2 = (x) => (x === '' ? '—' : N(x).toFixed(2));
+  fillTable($('#tabla-temporada'), jt.map((r) => ({ ...r, xg: d2(r.xg), xa: d2(r.xa), duelos_pct: N(r.duelos_pct).toFixed(1) })), ['jugador', 'pj', 'minutos', 'goles', 'xg', 'asistencias', 'xa', 'pases_progresivos', 'recuperaciones', 'duelos_pct', 'perdidas_peligrosas'],
     (r) => r.clave, selT && selT.clave);
 
   // Mapa de temporada
   const tj = $('#t-jugador');
   const byMin = [...jt].sort((a, b) => b.minutos - a.minutos);
   tj.replaceChildren(...byMin.map((r) => el('option', { value: r.jugador }, r.jugador)));
-  const jugador = byMin.some((r) => r.jugador === P().jugador_t) ? P().jugador_t : byMin[0]?.jugador;
+  const porteros = new Set(rows('metricas_jugador').filter((r) => r.posicion === 'GK').map((r) => r.jugador));
+  const jugador = byMin.some((r) => r.jugador === P().jugador_t) ? P().jugador_t : (byMin.find((r) => !porteros.has(r.jugador)) || byMin[0])?.jugador;
   tj.value = jugador || '';
-  segCapaT((v) => v === (P().capa_t || 'pases'));
+  segCapaT((v) => v === (P().capa_t || 'zonas'));
   segTiposT((v) => (P().tipos || []).includes(v));
-  $('#t-tipos').hidden = (P().capa_t || 'pases') !== 'pases';
+  $('#t-tipos').hidden = (P().capa_t || 'zonas') !== 'pases';
   segTirosT((v) => (P().tiros_tipo || []).includes(v));
-  $('#t-tiros').hidden = !$('#t-tipos').hidden;
+  $('#t-tiros').hidden = P().capa_t !== 'tiros';
   if (ok('pases', 'tiros') && jugador) {
     const filt = (r) => ids.has(r.match_id) && r.equipo === RM && r.jugador === jugador;
     const legend = drawPitch($('#pitch-temporada'), {
-      capa: P().capa_t || 'pases', color: C_RM(), tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
+      capa: P().capa_t || 'zonas', color: C_RM(), tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
       passes: rows('pases').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), fin_x: N(r.fin_x), fin_y: N(r.fin_y) })),
       shots: rows('tiros').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), xg: r.xg === '' ? NaN : N(r.xg) })),
     });
@@ -965,7 +995,7 @@ function scatterRen(box, rs, xk, yk, xLabel, yLabel, unidad) {
   box.querySelector('svg')?.remove();
   const pts = rs.filter((d) => d[xk] > 0 || d[yk] > 0);
   if (!pts.length) return;
-  const W = Math.max(280, box.clientWidth), H = 300, m = { t: 14, r: 16, b: 34, l: 40 };
+  const W = Math.max(280, box.clientWidth), H = 310, m = { t: 14, r: 16, b: 46, l: 40 };
   const mx = Math.ceil(Math.max(d3.max(pts, (d) => d[xk]), d3.max(pts, (d) => d[yk])) + 0.5);
   const x = d3.scaleLinear([0, mx], [m.l, W - m.r]), y = d3.scaleLinear([0, mx], [H - m.b, m.t]);
   const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
@@ -985,14 +1015,17 @@ function scatterRen(box, rs, xk, yk, xLabel, yLabel, unidad) {
     .on('mouseenter', (ev, d) => tip.show(ev, d.jugador, [`${d[yk]} ${yLabel.toLowerCase()} con ${d[xk].toFixed(2)} ${unidad}`]))
     .on('mouseleave', () => tip.hide());
   // etiquetas sin pisarse: se descarta la que cae encima de otra ya puesta (queda el tooltip)
-  const puestas = [];
+  // etiquetas sin pisarse: se prueba a la derecha, izquierda, arriba y abajo del punto; si no cabe, queda el tooltip
+  const puestas = [];  // cajas [x0, y0, x1, y1] ya ocupadas
+  const choca = (b) => puestas.some((q) => b[0] < q[2] && q[0] < b[2] && b[1] < q[3] && q[1] < b[3]);
   for (const d of pts.filter((d) => desvio(d[yk], d[xk]) || d[xk] >= 2).sort((a, b) => Math.abs(desvio(b[yk], b[xk])) - Math.abs(desvio(a[yk], a[xk])) || b[xk] - a[xk])) {
-    const px = x(d[xk]) + 9, py = y(d[yk]) + 4;
-    if (puestas.some(([qx, qy]) => Math.abs(qx - px) < 70 && Math.abs(qy - py) < 13)) continue;
-    puestas.push([px, py]);
-    const p = d.jugador.split(' ');
-    svg.append('text').attr('x', px).attr('y', py).style('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)')
-      .text(p.at(-1) === 'Júnior' ? p[0] : p.at(-1));
+    const p = d.jugador.split(' '), txt = p.at(-1) === 'Júnior' ? p[0] : p.at(-1), w = txt.length * 7.5, cx = x(d[xk]), cy = y(d[yk]);
+    const sitio = [[cx + 9, cy + 4, 'start'], [cx - 9, cy + 4, 'end'], [cx, cy - 10, 'middle'], [cx, cy + 18, 'middle']]
+      .map(([px, py, a]) => [px, py, a, a === 'start' ? [px, py - 10, px + w, py + 2] : a === 'end' ? [px - w, py - 10, px, py + 2] : [px - w / 2, py - 10, px + w / 2, py + 2]])
+      .find(([, , , b]) => !choca(b) && b[0] >= m.l && b[2] <= W - 4);
+    if (!sitio) continue;
+    puestas.push(sitio[3]);
+    svg.append('text').attr('x', sitio[0]).attr('y', sitio[1]).attr('text-anchor', sitio[2]).style('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').text(txt);
   }
 }
 
@@ -1011,30 +1044,34 @@ function tendencias() {
 
 function renderRendimiento() {
   const ten = ok('partidos', 'metricas_jugador') ? tendencias() : {};
-  const rs = rows('rendimiento').map((r) => ({ ...r, npxg: N(r.npxg), xa: N(r.xa), asistencias: N(r.asistencias), npg: N(r.goles) - N(r.penaltis),
+  // el del portero sale de un xG previo al tiro: se muestra como aproximado y en gris
+  const rs = rows('rendimiento').map((r) => ({ ...r, veredicto: r.puesto === 'Portero' && r.veredicto !== 'Pocos minutos' ? `${r.veredicto} (aprox.)` : r.veredicto,
+    pct_rol: r.pct_rol === '' ? '' : Math.round(N(r.pct_rol)), npxg: N(r.npxg), xa: N(r.xa), asistencias: N(r.asistencias), npg: N(r.goles) - N(r.penaltis),
     tendencia: ten[r.jugador] || '' }));
   scatterRen($('#ren-scatter'), rs.filter((d) => d.puesto !== 'Portero'), 'npxg', 'npg', 'xG sin penaltis (calidad de sus ocasiones)', 'Goles', 'xG');
   scatterRen($('#ren-scatter-xa'), rs.filter((d) => d.puesto !== 'Portero'), 'xa', 'asistencias', 'xA (calidad de las ocasiones que da)', 'Asistencias', 'xA');
   // Alertas
   const al = $('#ren-alertas');
-  const malos = rs.filter((r) => r.veredicto === 'Por debajo').sort((a, b) => N(b.minutos) - N(a.minutos));
+  const malos = rs.filter((r) => r.veredicto.startsWith('Por debajo')).sort((a, b) => N(b.minutos) - N(a.minutos));
   al.replaceChildren(...(malos.length ? malos.map((r) => {
-    const it = el('div', { class: 'item bad' });
+    const it = el('div', { class: r.puesto === 'Portero' ? 'item' : 'item bad' });
     const w = `jugador=${enc(r.jugador)}`;
-    it.append(el('p')); it.lastChild.append(markEl('b', 'rendimiento', 'jugador', w, r.jugador), ` · ${r.puesto} · `, markEl('span', 'rendimiento', 'minutos', w, r.minutos), ' min');
+    it.append(el('p')); it.lastChild.append(markEl('b', 'rendimiento', 'jugador', w, r.jugador), ` · ${r.puesto} · `, markEl('span', 'rendimiento', 'minutos', w, r.minutos), ' min',
+      r.puesto === 'Portero' ? ' · aproximado: el xG no mide lo colocado que iba cada tiro' : '');
     it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'El dato: '), markEl('span', 'rendimiento', 'motivo', w, r.motivo), '.');
     return it;
   }) : [el('p', { class: 'item' }, 'Nadie claramente por debajo de lo esperado.')]));
   // Tabla
-  const sk = sortRen.k, ord = { 'Por debajo': 0, 'En línea': 1, 'Por encima': 2, 'Pocos minutos': 3 };
+  const sk = sortRen.k, ord = { 'Por debajo': 0, 'En línea': 1, 'Por encima': 2, 'Pocos minutos': 4 };
   const txt = ['jugador', 'puesto', 'motivo'].includes(sk);
   const val = (r) => (sk === 'tendencia' ? (r.tendencia ? Number(r.tendencia.slice(2)) : -99) : N(r[sk]));
-  rs.sort((a, b) => (sk === 'veredicto' ? ord[a.veredicto] - ord[b.veredicto] || N(b.minutos) - N(a.minutos)
+  const o = (v) => ord[v] ?? 3;  // los del portero (aprox.), antes de "Pocos minutos"
+  rs.sort((a, b) => (sk === 'veredicto' ? o(a.veredicto) - o(b.veredicto) || N(b.minutos) - N(a.minutos)
     : txt ? String(a[sk]).localeCompare(String(b[sk])) : val(a) - val(b)) * (sortRen.asc || sk === 'veredicto' ? 1 : -1));
   document.querySelectorAll('#tabla-rendimiento th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === sk ? (sortRen.asc ? 'ascending' : 'descending') : 'none'));
   fillTable($('#tabla-rendimiento'), rs, ['jugador', 'puesto', 'minutos', 'goles', 'penaltis', 'npxg', 'g_menos_xg', 'asistencias', 'xa', 'a_menos_xa',
     'pct_rol', 'acierto_pase', 'prog90', 'recup90', 'duelos_pct', 'perdidas90', 'tendencia', 'veredicto', 'motivo'], (r) => r.jugador);
-  $('#tabla-rendimiento tbody').querySelectorAll('tr').forEach((tr, i) => { tr.children[17].style.color = VER_COL[rs[i].veredicto]; });
+  $('#tabla-rendimiento tbody').querySelectorAll('tr').forEach((tr, i) => { tr.children[17].style.color = VER_COL[rs[i].veredicto] || 'var(--color-fg-muted)'; });
 }
 
 function render() {
