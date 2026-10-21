@@ -19,10 +19,11 @@ const C_BAD = 'var(--cds-chart-status-critical)';
 
 // ---------- Cálculos (visibles en Fuentes) ----------
 dash.calc('informe', {
-  inputs: ['metricas_equipo'],
-  title: 'Informe vs media del Madrid',
-  description: 'Cada métrica del Madrid en el partido frente a su media en los partidos de la misma fuente (StatsBomb u Opta); z en desviaciones típicas, positivo = mejor para el estilo del míster. Métricas que la fuente no tiene, fuera.',
-  fn: (metricas_equipo) => {
+  inputs: ['metricas_equipo', 'partidos'],
+  title: 'Informe vs partidos anteriores',
+  description: 'Cada métrica del Madrid en el partido frente a su media en los partidos anteriores de la misma fuente (mínimo 3); z en desviaciones típicas, positivo = mejor para el estilo del míster. Métricas que la fuente no tiene, fuera.',
+  fn: (metricas_equipo, partidos) => {
+    const fecha = Object.fromEntries(partidos.map((p) => [p.match_id, p.fecha]));
     // signo: +1 más es mejor, -1 menos es mejor. Posesión y PPDA fuera: un bloque medio/bajo no se juzga por ellas.
     const M = { xg: 1, xg_contra: -1, tiros_puerta: 1, acierto_pase: 1, pases_progresivos: 1, presiones_campo_rival: 1,
       recuperaciones_campo_rival: 1, duelos_ganados_pct: 1, perdidas_peligrosas: -1, contrapresiones: 1, xg_contraataque: 1 };
@@ -32,12 +33,14 @@ dash.calc('informe', {
       const rm = metricas_equipo.filter((r) => r.equipo === 'Real Madrid' && r.fuente === fuente);
       for (const [k, sign] of Object.entries(M)) {
         const rk = rm.filter((r) => r[k] !== '' && r[k] != null);
-        if (rk.length < 3) continue;
-        const v = rk.map((r) => Number(r[k]));
-        const media = v.reduce((a, b) => a + b, 0) / v.length;
-        const sd = Math.sqrt(v.reduce((a, b) => a + (b - media) ** 2, 0) / (v.length - 1)) || 1;
-        rk.forEach((r, i) => out.push({ clave: r.match_id + '|' + k, match_id: r.match_id, metrica: k, valor: v[i],
-          media: Math.round(media * 100) / 100, z: Math.round((sign * (v[i] - media) / sd) * 100) / 100 }));
+        for (const r of rk) {
+          const v = rk.filter((x) => fecha[x.match_id] < fecha[r.match_id]).map((x) => Number(x[k]));
+          if (v.length < 3) continue;
+          const media = v.reduce((a, b) => a + b, 0) / v.length;
+          const sd = Math.sqrt(v.reduce((a, b) => a + (b - media) ** 2, 0) / (v.length - 1)) || 1;
+          out.push({ clave: r.match_id + '|' + k, match_id: r.match_id, metrica: k, valor: Number(r[k]), previos: v.length,
+            media: Math.round(media * 100) / 100, z: Math.round((sign * (Number(r[k]) - media) / sd) * 100) / 100 });
+        }
       }
     }
     return out;
@@ -68,61 +71,74 @@ dash.calc('jugadores_temporada', {
   },
 });
 
+// Cada jugador del Madrid en el partido frente a sus partidos anteriores (por 90 min; métricas Opta, válidas en todas las competiciones)
+const FORMA = [['goles', ['gol', 'goles'], 1], ['asistencias', ['asistencia', 'asistencias'], 1], ['pases_clave', ['pase clave', 'pases clave'], 1],
+  ['pases_progresivos', ['pase progresivo', 'pases progresivos'], 1], ['regates', ['regate', 'regates'], 1], ['recuperaciones', ['recuperación', 'recuperaciones'], 1],
+  ['duelos_ganados', ['duelo ganado', 'duelos ganados'], 1], ['perdidas_peligrosas', ['pérdida peligrosa', 'pérdidas peligrosas'], -1]];
+function formaJugadores(mid, fecha, jug) {
+  const p90 = (r, k) => (N(r[k]) * 90) / N(r.minutos);
+  const out = [];
+  for (const r of jug.filter((r) => Number(r.match_id) === mid && r.equipo === RM && r.posicion !== 'GK' && N(r.minutos) >= 45)) {
+    // shortcut: mínimo 30 min por partido previo y 3 partidos; con pocas jornadas la media aún se mueve mucho
+    const prev = jug.filter((x) => x.jugador_id === r.jugador_id && x.equipo === RM && N(x.minutos) >= 30 && fecha[x.match_id] < fecha[r.match_id]);
+    if (prev.length < 3) continue;
+    const ms = FORMA.map(([k, label, sign]) => {
+      const v = prev.map((x) => p90(x, k)), media = d3.mean(v), sd = Math.max(d3.deviation(v) || 0, 0.5);
+      return { label, valor: N(r[k]), esperado: (media * N(r.minutos)) / 90, z: (sign * (p90(r, k) - media)) / sd };
+    });
+    out.push({ r, prev: prev.length, score: d3.mean(ms, (m) => m.z), ms });
+  }
+  return out;
+}
+const lineaForma = (f, arriba) => {
+  const top = [...f.ms].sort((a, b) => (arriba ? b.z - a.z : a.z - b.z)).filter((m) => (arriba ? m.z > 0.5 : m.z < -0.5)).slice(0, 3);
+  return `${f.r.jugador} (${f.r.minutos}'): ` + top.map((m) => `${m.valor} ${m.label[m.valor === 1 ? 0 : 1]} (suele ${m.esperado.toFixed(1)})`).join(' · ');
+};
+
 // ---------- Textos del informe (estilo Mourinho) ----------
 const MET = {
   xg: { label: 'xG generado', fmt: 2,
     impacto: 'Dominamos sin herir: el equipo no fabrica ocasiones claras y el rival sale vivo del partido.',
-    correccion: 'Tras robo, máximo dos pases verticales antes de buscar el remate. Extremos abiertos fijando a los laterales para liberar el carril central al 9.',
     explotar: 'Repetir el patrón que generó las ocasiones y cargar el área con cuatro hombres en cada llegada.',
     mensaje: '"Llegamos una y otra vez. Ahora quiero la misma fe para matar los partidos."' },
   xg_contra: { label: 'xG concedido', fmt: 2,
     impacto: 'El rival entra en nuestra área con demasiada facilidad. La solidez defensiva es innegociable.',
-    correccion: 'Bajar el bloque cinco metros, cerrar el pasillo interior con el mediocentro y mantener vigilancias ofensivas 2+1 cuando atacamos.',
     explotar: 'El bloque está cerrado: los laterales pueden asumir más riesgo arriba porque la retaguardia aguanta.',
     mensaje: '"Esta portería es de todos. Nadie nos hace daño si estamos así de juntos."' },
   tiros_puerta: { label: 'Tiros a puerta', fmt: 0,
     impacto: 'Llegamos pero no obligamos al portero: decisiones malas en el último metro.',
-    correccion: 'Sesión de finalización tras transición: tres contra dos con dos toques máximo y tiro.',
     explotar: 'El equipo pisa área con convicción: seguir buscando el disparo temprano.',
     mensaje: '"El portero rival se va a casa cansado. Así se gana."' },
   acierto_pase: { label: '% acierto de pase', fmt: 1,
     impacto: 'Perdemos demasiados balones simples y regalamos transiciones al rival.',
-    correccion: 'Rondos de presión con un toque menos y apoyos más cercanos al poseedor; prohibido el pase horizontal en zona de riesgo.',
     explotar: 'Circulación limpia: permite atraer la presión y lanzar el contragolpe con el campo largo.',
     mensaje: '"Con el balón somos un reloj. Que el rival corra detrás."' },
   pases_progresivos: { label: 'Pases progresivos', fmt: 0,
     impacto: 'Circulamos sin avanzar: el rival se reorganiza antes de que lleguemos.',
-    correccion: 'Mediocentro perfilado para el pase vertical a la primera; interiores atacando la espalda del pivote rival.',
     explotar: 'Rompemos líneas con facilidad: buscar antes al delantero de espaldas para descargar y correr.',
     mensaje: '"Cada pase hacia delante es una puñalada. Seguid así."' },
   presiones_campo_rival: { label: 'Presiones en campo rival', fmt: 0,
     impacto: 'El rival sale jugando cómodo: no hay agresividad en la primera línea.',
-    correccion: 'Activar la presión solo en trampa (pase al lateral o pase atrás), con el 9 cerrando la línea de pase al pivote.',
     explotar: 'Las trampas de presión funcionan: robar arriba es media ocasión hecha.',
     mensaje: '"Hoy el rival no ha podido respirar. Esa intensidad es la nuestra."' },
   recuperaciones_campo_rival: { label: 'Recuperaciones en campo rival', fmt: 0,
     impacto: 'Robamos lejos de su portería: cada contraataque empieza a 60 metros.',
-    correccion: 'Adelantar 10 metros la línea de presión en los momentos de pase atrás del rival.',
     explotar: 'Robamos arriba: que los extremos ataquen el espacio en cuanto se recupera.',
     mensaje: '"Robar ahí arriba es lo que hace un equipo campeón."' },
   duelos_ganados_pct: { label: '% duelos ganados', fmt: 1,
     impacto: 'Perdemos la batalla física. Sin duelos ganados no hay bloque que aguante.',
-    correccion: 'Doblar al jugador que pierde los duelos con ayuda del interior; balón al espacio en lugar de al pie si el emparejamiento no nos favorece.',
     explotar: 'Ganamos el cuerpo a cuerpo: buscar segundas jugadas y balón directo al hombre fuerte.',
     mensaje: '"Hoy hemos sido hombres. Así se compite en este club."' },
   perdidas_peligrosas: { label: 'Pérdidas peligrosas', fmt: 0,
     impacto: 'Regalamos el balón en nuestro tercio: es exactamente cómo un rival nos mata en transición.',
-    correccion: 'Regla clara en salida: ante presión, balón largo al 9 o al lateral contrario. Nadie conduce en nuestro tercio.',
     explotar: 'Salida limpia y segura: podemos invitar al rival a presionar para correr a su espalda.',
     mensaje: '"Ni un regalo atrás. Eso es madurez."' },
   contrapresiones: { label: 'Contrapresiones', fmt: 0,
     impacto: 'Tras perder el balón no reaccionamos: el rival sale limpio a la contra.',
-    correccion: 'Regla de 5 segundos: los tres más cercanos al balón perdido presionan, el resto cierra centro.',
     explotar: 'La reacción tras pérdida es inmediata: el equipo está mentalmente en el partido.',
     mensaje: '"Perdemos el balón y en cinco segundos es nuestro otra vez. Eso es hambre."' },
   xg_contraataque: { label: 'xG en contraataque', fmt: 2,
     impacto: 'No castigamos al rival cuando se desordena: nuestra arma principal está apagada.',
-    correccion: 'Automatismo de transición: primer pase al hombre libre por fuera, dos corredores al área y uno llegando de segunda línea.',
     explotar: 'La transición es letal: esperar en bloque medio y dejar que el rival se desordene.',
     mensaje: '"Que tengan el balón. Nosotros tenemos el contraataque."' },
 };
@@ -378,17 +394,6 @@ function fillTable(table, data, cols, keyOf, selKey) {
 // y lo que defendió (recuperaciones, duelos), restando las pérdidas en nuestro tercio. Sirve para ordenar, no es una nota oficial.
 const impacto = (r) => N(r.goles) + 0.75 * N(r.asistencias) + 0.5 * (N(r.xg) + N(r.xa)) + 0.1 * N(r.pases_clave) + 0.02 * N(r.pases_progresivos)
   + 0.05 * N(r.recuperaciones) + 0.03 * N(r.duelos_ganados) - 0.1 * N(r.perdidas_peligrosas);
-const resumenJugador = (r) => {
-  const pl = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
-  const partes = [];
-  if (N(r.goles)) partes.push(pl(N(r.goles), 'gol', 'goles'));
-  if (N(r.asistencias)) partes.push(pl(N(r.asistencias), 'asistencia', 'asistencias'));
-  if (N(r.pases_clave)) partes.push(pl(N(r.pases_clave), 'pase clave', 'pases clave'));
-  if (N(r.xg) + N(r.xa) >= 0.2) partes.push(`${N(r.xg).toFixed(2)} xG y ${N(r.xa).toFixed(2)} xA`);
-  if (N(r.recuperaciones) >= 5) partes.push(`${r.recuperaciones} recuperaciones`);
-  if (N(r.duelos_ganados) >= 5) partes.push(`${r.duelos_ganados} duelos ganados`);
-  return partes.slice(0, 4).join(', ') || 'partido completo sin errores';
-};
 
 function renderPartido() {
   const partidos = rows('partidos');
@@ -462,7 +467,7 @@ function renderPartido() {
   rep.replaceChildren();
   const inf = rows('informe').filter((r) => Number(r.match_id) === mid);
   const jug = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === RM && N(r.minutos) > 0);
-  if (inf.length && a && b && p) {
+  if (a && b && p) {
     const sorted = [...inf].sort((x, y) => x.z - y.z);
     const neg = sorted.filter((r) => r.z < -0.5).slice(0, 2);
     const pos = sorted.filter((r) => r.z > 0.5).reverse().slice(0, 2);
@@ -487,11 +492,10 @@ function renderPartido() {
       const it = el('div', { class: 'item ' + (bad ? 'bad' : 'good') });
       const dato = el('p');
       dato.append(el('span', { class: 'k' }, 'El dato: '), `${m.label} `, markEl('b', 'informe', 'valor', `clave=${enc(r.clave)}`, fmt(r)),
-        ' frente a una media de ', markEl('b', 'informe', 'media', `clave=${enc(r.clave)}`, r.media), '.');
+        ' frente a una media de ', markEl('b', 'informe', 'media', `clave=${enc(r.clave)}`, r.media), ` en los ${r.previos} partidos anteriores.`);
       it.append(dato);
       if (bad) {
         it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'El impacto: '), m.impacto);
-        it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Corrección: '), m.correccion);
       } else {
         it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Cómo explotarlo: '), m.explotar);
         it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Mensaje al grupo: '), m.mensaje);
@@ -499,30 +503,30 @@ function renderPartido() {
       return it;
     };
 
-    rep.append(el('h3', {}, '2. 🚨 Alertas rojas y plan de choque'));
+    rep.append(el('h3', {}, '2. 🚨 Alertas rojas: el equipo peor que en sus partidos anteriores'));
     if (neg.length) neg.forEach((r) => rep.append(block(r, true)));
-    else rep.append(el('p', { class: 'item' }, 'Ninguna métrica colectiva claramente por debajo de lo habitual.'));
-    const peor = [...jug].filter((r) => r.posicion !== 'GK').sort((x, y) => N(y.perdidas_peligrosas) - N(x.perdidas_peligrosas))[0];
-    if (peor && N(peor.perdidas_peligrosas) >= 3) {
-      const it = el('div', { class: 'item bad' });
-      it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Jugador señalado: '), `${peor.jugador}, `,
-        markEl('b', 'metricas_jugador', 'perdidas_peligrosas', `clave=${enc(peor.clave)}`, peor.perdidas_peligrosas), ' pérdidas peligrosas en nuestro tercio.');
-      it.append(el('p', {}, `Míster, a este hay que tocarle el orgullo en privado y con el vídeo delante: una pérdida más ahí y nos cuesta un partido. Si se repite, banquillo.`));
-      rep.append(it);
-    }
-
-    rep.append(el('h3', {}, '3. 🛡️ Puntos fuertes y potenciación'));
+    else rep.append(el('p', { class: 'item' }, inf.length ? 'Ninguna métrica colectiva claramente por debajo de lo habitual.' : 'Aún no hay 3 partidos anteriores para comparar.'));
+    rep.append(el('h3', {}, '3. 🛡️ Puntos fuertes: el equipo mejor que en sus partidos anteriores'));
     if (pos.length) pos.forEach((r) => rep.append(block(r, false)));
-    else rep.append(el('p', { class: 'item' }, 'Ninguna métrica colectiva claramente por encima de lo habitual.'));
-    const mejor = [...jug].sort((x, y) => impacto(y) - impacto(x))[0];
-    if (mejor && impacto(mejor) > 0.5) {
-      const it = el('div', { class: 'item good' });
-      it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Jugador a potenciar: '), `${mejor.jugador}: `, el('b', {}, resumenJugador(mejor)), '.');
-      it.append(el('p', {}, 'Míster, a este hay que reconocérselo en público delante del grupo: que el resto vea que el que genera, juega.'));
-      rep.append(it);
+    else rep.append(el('p', { class: 'item' }, inf.length ? 'Ninguna métrica colectiva claramente por encima de lo habitual.' : 'Aún no hay 3 partidos anteriores para comparar.'));
+
+    rep.append(el('h3', {}, '4. Jugadores frente a sus partidos anteriores'));
+    const forma = formaJugadores(mid, Object.fromEntries(partidos.map((x) => [x.match_id, x.fecha])), rows('metricas_jugador'));
+    const arriba = forma.filter((f) => f.score >= 0.3).sort((x, y) => y.score - x.score);
+    const abajo = forma.filter((f) => f.score <= -0.3).sort((x, y) => x.score - y.score);
+    if (!forma.length) rep.append(el('p', { class: 'item' }, 'Aún no hay 3 partidos anteriores con minutos para comparar a ningún jugador.'));
+    else {
+      for (const [lista, bien, titulo] of [[arriba, true, 'Por encima de lo suyo'], [abajo, false, 'Por debajo de lo suyo']]) {
+        const it = el('div', { class: 'item ' + (bien ? 'good' : 'bad') });
+        it.append(el('p', {}, '')); it.lastChild.append(el('span', { class: 'k' }, titulo + ': '), lista.length ? '' : 'nadie claramente.');
+        lista.forEach((f) => it.append(el('p', {}, lineaForma(f, bien))));
+        rep.append(it);
+      }
+      const resto = forma.length - arriba.length - abajo.length;
+      if (resto) rep.append(el('p', { class: 'item' }, `${resto} jugador${resto > 1 ? 'es' : ''} en su línea habitual. Entre paréntesis, lo que suele dar en esos minutos según sus partidos anteriores. Solo cuentan quienes jugaron 45 minutos o más y tienen 3 partidos anteriores; porteros fuera.`));
     }
 
-    rep.append(el('h3', {}, '4. Veredicto para el próximo partido'));
+    rep.append(el('h3', {}, '5. Veredicto para el próximo partido'));
     const v = !conXg ? { victoria: 'Victoria. Mantener el once; rotar solo por carga física.',
         empate: 'Empate. Mantener la estructura y ajustar los duelos individuales que se perdieron.',
         derrota: 'Derrota. Lunes, vídeo de las pérdidas y los duelos perdidos; revisar la titularidad de los señalados.' }[res]
@@ -531,7 +535,7 @@ function renderPartido() {
       : dxg > 0.5 ? 'El plan funcionó; faltó pegada. No tocar el sistema: sesión extra de finalización en transición.'
       : dxg < -0.5 ? 'Resultado justo y preocupante. Bloque más bajo y salida en transición; revisar la titularidad de los señalados.'
       : 'Partido de detalles. Mantener la estructura y ajustar los duelos individuales que se perdieron.';
-    rep.append(el('p', { class: 'rm-verdict' }, v + (mejor ? ` Titular seguro: ${mejor.jugador}.` : '')));
+    rep.append(el('p', { class: 'rm-verdict' }, v));
   }
 
   // Mapa

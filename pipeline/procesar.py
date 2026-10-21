@@ -78,20 +78,23 @@ us_shots["match_id"] = us_shots["fecha"].map(mid_by_fecha)
 us_shots = us_shots[us_shots["match_id"].isin(liga_ids)]
 us_shots["equipo"] = us_shots["team"].map(to_ws)
 ws_shots = ws[ws["type"].isin(["Goal", "SavedShot", "MissedShots", "ShotOnPost"])]
-fast = set()
+fast, pen = set(), set()  # Understat marca los penaltis como "Set Piece": se toman de WhoScored
 for r in us_shots.itertuples():
     c = ws_shots[(ws_shots["match_id"] == r.match_id) & ((ws_shots["x"] - 100 * r.location_x).abs() < 0.6)
                  & ((ws_shots["y"] - 100 * r.location_y).abs() < 0.6)]
     if len(c) and "FastBreak" in c.iloc[0]["q"]:
         fast.add(r.shot_id)
+    if len(c) and "Penalty" in c.iloc[0]["q"]:
+        pen.add(r.shot_id)
+es_pen = (us_shots["situation"] == "Penalty") | us_shots["shot_id"].isin(pen)
 RES = {"Goal": "Goal", "Saved Shot": "Saved", "Missed Shot": "Off T", "Blocked Shot": "Blocked", "Shot On Post": "Post", "Own Goal": "Own Goal"}
 PAT = {"Open Play": "Regular Play", "From Corner": "From Corner", "Set Piece": "From Free Kick", "Direct Freekick": "From Free Kick", "Penalty": "Other"}
 tiros = pd.DataFrame({
     "tiro_id": "us" + us_shots["shot_id"].astype(str), "match_id": us_shots["match_id"], "equipo": us_shots["equipo"],
     "jugador": us_shots["player"], "x": (us_shots["location_x"] * 120).round(1), "y": ((1 - us_shots["location_y"]) * 80).round(1),
     "xg": us_shots["xg"].round(3), "resultado": us_shots["result"].map(RES),
-    "subtipo": np.where(us_shots["situation"] == "Penalty", "Penalty", "Open Play"),
-    "patron_juego": np.where(us_shots["shot_id"].isin(fast), "From Counter", us_shots["situation"].map(PAT)),
+    "subtipo": np.where(es_pen, "Penalty", "Open Play"),
+    "patron_juego": np.where(us_shots["shot_id"].isin(fast), "From Counter", np.where(es_pen, "Other", us_shots["situation"].map(PAT))),
     "minuto": us_shots["minute"],
 })
 tiros = tiros[tiros["resultado"] != "Own Goal"]  # el gol en propia meta no es un tiro de quien lo marca
