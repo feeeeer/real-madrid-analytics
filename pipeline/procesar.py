@@ -283,9 +283,20 @@ fbm["int90"], fbm["tklw90"] = fbm["Performance_Int"] / fbm["90s"], fbm["Performa
 def pct(series, value):
     return round(100 * (series < value).mean() + 50 * (series == value).mean())
 
-ROL = {"F": ["xg90", "xa90", "xg_chain90"], "M": ["xg_chain90", "xg_buildup90", "xa90", "int90", "tklw90"],
-       "D": ["int90", "tklw90", "xg_buildup90"]}
-ws_rm = jug[(jug["equipo"] == RM) & jug["match_id"].isin(liga_ids)].groupby("jugador").agg(
+# rol fino del jugador del Madrid: su posición más habitual de titular en la Liga (Understat), no solo defensa/medio/delantero
+ROL_US = {"GK": "Portero", "DC": "Central", "DL": "Lateral", "DR": "Lateral", "DML": "Lateral", "DMR": "Lateral",
+          "DMC": "Mediocentro", "MC": "Mediocentro", "ML": "Mediapunta o extremo", "MR": "Mediapunta o extremo",
+          "AML": "Mediapunta o extremo", "AMR": "Mediapunta o extremo", "AMC": "Mediapunta o extremo",
+          "FW": "Delantero", "FWL": "Delantero", "FWR": "Delantero"}
+ROL_GRUESO = {"GK": "Portero", "D": "Central", "M": "Mediocentro", "F": "Delantero"}
+# con quién se compara cada rol en la Liga (grupos de FBref/Understat) y con qué métricas
+ROL = {"Central": ("D", ["int90", "tklw90", "xg_buildup90"]), "Lateral": ("D", ["xa90", "xg_buildup90", "tklw90"]),
+       "Mediocentro": ("M", ["xg_buildup90", "int90", "tklw90", "xa90"]),
+       "Mediapunta o extremo": ("MF", ["xg90", "xa90", "xg_chain90"]), "Delantero": ("F", ["xg90", "xa90", "xg_chain90"])}
+rm_pm = us_pm[(us_pm["equipo"] == RM) & (us_pm["position"] != "Sub")]
+rol_us = rm_pm.groupby("player")["position"].agg(lambda v: ROL_US.get(v.value_counts().index[0]))
+# métricas Opta (pase, progresivos, recuperaciones, duelos, pérdidas): todas las competiciones
+ws_rm = jug[jug["equipo"] == RM].groupby("jugador").agg(
     pases=("pases", "sum"), acierto=("acierto_pase", lambda s: np.average(s, weights=jug.loc[s.index, "pases"].clip(lower=1))),
     prog=("pases_progresivos", "sum"), recup=("recuperaciones", "sum"), dg=("duelos_ganados", "sum"),
     dp=("duelos_perdidos", "sum"), perd=("perdidas_peligrosas", "sum"), mins_ws=("minutos", "sum"))
@@ -293,56 +304,81 @@ us_rm = us_liga[us_liga["team"] == RM]
 m_ws = match_names(us_rm["player"].tolist(), ws_rm.index.tolist())
 fb_rm = fb_misc[fb_misc["team"] == RM]
 m_fb = match_names(us_rm["player"].tolist(), fb_rm["player"].tolist())
+pen = tiros[(tiros["subtipo"] == "Penalty") & (tiros["resultado"] == "Goal") & tiros["match_id"].isin(liga_ids)]["jugador"].value_counts()
+
+
+def desvio(real, esperado):
+    """Desvío claro: al menos 1 de diferencia y un 30 % de lo esperado (−1.9 sobre 10.9 xG no es lo mismo que −2.6 sobre 3.6)."""
+    d = real - esperado
+    return np.sign(d) if abs(d) >= 1 and abs(d) >= 0.3 * max(esperado, 1) else 0
+
 
 ren = []
 for r in us_rm.itertuples():
-    grupo = grupo_de(r.team, r.player, r.position)
-    if r.minutes < 90 or grupo in (None, "GK"):
+    if r.minutes < 90:
+        continue
+    rol = rol_us.get(r.player) or ROL_GRUESO.get(grupo_de(r.team, r.player, r.position))
+    if rol is None:
         continue
     w = ws_rm.loc[m_ws[r.player]] if r.player in m_ws else None
+    nombre = m_ws.get(r.player, r.player)
     f = fb_rm[fb_rm["player"] == m_fb.get(r.player)]
     f90 = f["90s"].iloc[0] if len(f) and f["90s"].iloc[0] > 0 else None
+    fila = dict(jugador=nombre, puesto=rol, minutos=r.minutes, goles=r.goals, penaltis=int(pen.get(nombre, 0)), npxg=round(r.np_xg, 2),
+                g_menos_xg=round(r.np_goals - r.np_xg, 2), asistencias=r.assists, xa=round(r.xa, 2), a_menos_xa=round(r.assists - r.xa, 2),
+                xg90=round(r.xg * 90 / r.minutes, 2), xa90=round(r.xa * 90 / r.minutes, 2), xgchain90=round(r.xg_chain * 90 / r.minutes, 2),
+                pct_rol=np.nan, acierto_pase=round(w["acierto"], 1) if w is not None else np.nan,
+                prog90=round(w["prog"] * 90 / w["mins_ws"], 1) if w is not None else np.nan,
+                recup90=round(w["recup"] * 90 / w["mins_ws"], 1) if w is not None else np.nan,
+                duelos_pct=round(100 * w["dg"] / max(w["dg"] + w["dp"], 1), 1) if w is not None else np.nan,
+                perdidas90=round(w["perd"] * 90 / w["mins_ws"], 2) if w is not None else np.nan, _malos=[], _buenos=[])
+    if rol == "Portero":
+        # paradas frente al xG de los tiros a puerta recibidos en la Liga (xG previo al tiro: aproximación)
+        # shortcut: se le cuentan todos los tiros de los partidos en que jugó, aunque saliera antes; usar minutos si hay rotación
+        mids = jug[(jug["jugador"] == nombre) & jug["match_id"].isin(liga_ids)]["match_id"]
+        rec = tiros[tiros["match_id"].isin(mids) & (tiros["equipo"] != RM) & tiros["resultado"].isin(["Goal", "Saved"])]
+        gc, xgc = int((rec["resultado"] == "Goal").sum()), rec["xg"].sum()
+        texto = f"encajó {gc} goles en tiros a puerta que valían {xgc:.1f} xG: {abs(gc - xgc):.1f} {'más' if gc > xgc else 'menos'} de lo esperado"
+        {1: fila["_buenos"], -1: fila["_malos"], 0: []}[desvio(xgc, gc)].append(texto)
+        fila["_neutro"] = texto
+        ren.append(fila)
+        continue
+    grupos, metricas = ROL[rol]
+    grupos = list(grupos)
     val = {"xg90": r.xg * 90 / r.minutes, "xa90": r.xa * 90 / r.minutes, "xg_chain90": r.xg_chain * 90 / r.minutes,
            "xg_buildup90": r.xg_buildup * 90 / r.minutes,
            "int90": f["Performance_Int"].iloc[0] / f90 if f90 else np.nan, "tklw90": f["Performance_TklW"].iloc[0] / f90 if f90 else np.nan}
-    pcts = {k: pct((liga if k not in ("int90", "tklw90") else fbm).query("grupo == @grupo")[k], v)
-            for k, v in val.items() if not np.isnan(v)}
-    rol = [pcts[k] for k in ROL[grupo] if k in pcts]
-    pct_rol = round(np.mean(rol)) if rol else np.nan
-    perd90 = w["perd"] * 90 / w["mins_ws"] if w is not None else np.nan
-    malos, buenos = [], []
-    if r.goals - r.xg <= -1:
-        malos.append(f"remata por debajo de su xG ({r.goals} goles con {r.xg:.1f} xG)")
-    if r.assists - r.xa <= -1:
-        malos.append(f"sus pases generan más de lo que acaban en asistencia ({r.assists} con {r.xa:.1f} xA)")
-    if pct_rol < 35:
-        malos.append(f"percentil {pct_rol} de su puesto en la Liga en las métricas de su rol")
-    if r.goals - r.xg >= 1:
-        buenos.append(f"remata por encima de su xG ({r.goals} goles con {r.xg:.1f} xG)")
-    if pct_rol >= 75:
-        buenos.append(f"percentil {pct_rol} de su puesto en la Liga")
-    if malos and buenos:
-        malos.append("aunque " + " y ".join(buenos))
-    ren.append(dict(
-        jugador=m_ws.get(r.player, r.player), puesto={"D": "Defensa", "M": "Centrocampista", "F": "Delantero"}[grupo],
-        minutos=r.minutes, goles=r.goals, xg=round(r.xg, 2), g_menos_xg=round(r.goals - r.xg, 2), asistencias=r.assists,
-        xa=round(r.xa, 2), a_menos_xa=round(r.assists - r.xa, 2), xg90=round(val["xg90"], 2), xa90=round(val["xa90"], 2),
-        xgchain90=round(val["xg_chain90"], 2), pct_rol=pct_rol,
-        acierto_pase=round(w["acierto"], 1) if w is not None else np.nan,
-        prog90=round(w["prog"] * 90 / w["mins_ws"], 1) if w is not None else np.nan,
-        recup90=round(w["recup"] * 90 / w["mins_ws"], 1) if w is not None else np.nan,
-        duelos_pct=round(100 * w["dg"] / max(w["dg"] + w["dp"], 1), 1) if w is not None else np.nan,
-        perdidas90=round(perd90, 2), _malos=malos, _buenos=buenos,
-    ))
+    pcts = [pct((liga if k not in ("int90", "tklw90") else fbm).query("grupo in @grupos")[k], val[k]) for k in metricas if not np.isnan(val[k])]
+    if r.minutes >= MIN_LIGA and pcts:
+        fila["pct_rol"] = round(np.mean(pcts))
+    d = desvio(r.np_goals, r.np_xg)
+    if d:
+        (fila["_buenos"] if d > 0 else fila["_malos"]).append(
+            f"remata {'por encima' if d > 0 else 'por debajo'} de su xG sin penaltis ({r.np_goals} {'gol' if r.np_goals == 1 else 'goles'} con {r.np_xg:.1f})")
+    d = desvio(r.assists, r.xa)
+    if d:
+        (fila["_buenos"] if d > 0 else fila["_malos"]).append(
+            f"{'da más asistencias de lo que valen sus pases' if d > 0 else 'sus pases merecen más asistencias de las que llegan'} ({r.assists} con {r.xa:.1f} xA)")
+    if fila["pct_rol"] >= 75:
+        fila["_buenos"].append(f"percentil {fila['pct_rol']:.0f} entre los de su puesto en la Liga")
+    elif fila["pct_rol"] < 35:
+        fila["_malos"].append(f"percentil {fila['pct_rol']:.0f} entre los de su puesto en la Liga")
+    ren.append(fila)
 ren = pd.DataFrame(ren)
-# pérdidas peligrosas: alerta si está en el cuartil más alto de la plantilla
-lim = ren["perdidas90"].quantile(0.75)
-for i, r in ren.iterrows():
-    if r["perdidas90"] > lim and r["perdidas90"] > 0.5:
-        r["_malos"].append(f"{r['perdidas90']:.1f} pérdidas peligrosas por 90 min, de las más altas de la plantilla")
-ren["veredicto"] = ren.apply(lambda r: "Por debajo" if r["_malos"] else "Por encima" if r["_buenos"] else "En línea", axis=1)
-ren["motivo"] = ren.apply(lambda r: "; ".join(r["_malos"] or r["_buenos"]) or "Sin desviaciones claras", axis=1)
-ren = ren.drop(columns=["_malos", "_buenos"]).sort_values(["veredicto", "minutos"], ascending=[True, False])
+# pérdidas peligrosas: alerta solo si dobla la mediana de su puesto en la plantilla (los defensas pierden más en su tercio)
+campo = ren[(ren["puesto"] != "Portero") & (ren["minutos"] >= MIN_LIGA)]
+for i, r in ren[ren["puesto"] != "Portero"].iterrows():
+    mismos = campo[campo["puesto"] == r["puesto"]]
+    med = (mismos if len(mismos) >= 3 else campo)["perdidas90"].median()
+    if r["perdidas90"] >= max(2 * med, 1.0):
+        r["_malos"].append(f"{r['perdidas90']:.1f} pérdidas peligrosas por 90 min, el doble de lo normal en su puesto ({med:.1f})")
+pocos = ren["minutos"] < MIN_LIGA
+balance = ren["_buenos"].map(len) - ren["_malos"].map(len)
+ren["veredicto"] = np.where(pocos, "Pocos minutos", np.where(balance > 0, "Por encima", np.where(balance < 0, "Por debajo", "En línea")))
+ren["motivo"] = [f"menos de {MIN_LIGA} minutos en la Liga: sin veredicto" if p else "; ".join(m + b) or neutro if isinstance(neutro, str) else "; ".join(m + b) or "sin desviaciones claras"
+                 for p, m, b, neutro in zip(pocos, ren["_malos"], ren["_buenos"], ren.get("_neutro", pd.Series([np.nan] * len(ren))))]
+ren["motivo"] = ren["motivo"].str[0].str.upper() + ren["motivo"].str[1:]
+ren = ren.drop(columns=["_malos", "_buenos", "_neutro"], errors="ignore").sort_values(["veredicto", "minutos"], ascending=[True, False])
 
 # ---------- Autocomprobaciones ----------
 for p in partidos.itertuples():

@@ -168,6 +168,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm tbody tr { cursor: pointer; }
 .rm tbody tr:hover td { color: var(--color-fg); background: var(--color-bg); }
 .rm tbody tr.sel td { background: var(--color-bg); font-weight: var(--cds-font-weight-medium); }
+#tabla-rendimiento td:last-child { white-space: normal; text-align: left; min-width: 18rem; }
 .rm-search { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); margin-bottom: var(--cds-gap-sm); width: min(100%, 16rem); }
 .rm-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
 .rm-kpi .n { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; }
@@ -263,31 +264,36 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 
   <!-- RENDIMIENTO VS ESPERADO -->
   <section class="rm-page" id="rendimiento" hidden>
-    <p class="rm-lead">Liga 2026/27. Cada jugador del Madrid frente a lo que deberían haber dado sus ocasiones (xG, xA de Understat) y frente a los jugadores de su puesto en toda la Liga (percentil de rol, mínimo 270 min). Muestra pequeña: pocas jornadas, conclusiones provisionales.</p>
+    <p class="rm-lead">Liga 2026/27. Cada jugador del Madrid frente a lo que valían sus ocasiones (xG y xA de Understat, sin penaltis) y frente a los de su puesto en toda la Liga (percentil de rol, mínimo 270 min). Pase, progresivos, recuperaciones, duelos y pérdidas salen de los eventos Opta de todas las competiciones. Entradas e intercepciones vienen de FBref, que puede ir una jornada por detrás. Muestra pequeña: conclusiones provisionales.</p>
     <div class="rm-grid" style="margin-top: var(--cds-gap-md)">
       <div class="rm-card" id="ren-goles-xg">
-        <h2>Goles frente a xG</h2>
-        <p class="rm-sub">Por debajo de la diagonal: marca menos de lo que valen sus ocasiones. Rojo = por debajo de lo esperado, verde = por encima.</p>
+        <h2>Goles frente a xG (sin penaltis)</h2>
+        <p class="rm-sub">Por debajo de la diagonal: marca menos de lo que valen sus ocasiones. Rojo o verde: desvío claro (al menos 1 y un 30 % de lo esperado).</p>
         <div class="rm-chart" id="ren-scatter" data-source="rendimiento"></div>
       </div>
-      <div class="rm-card rm-rep" id="ren-informe">
-        <h2>🚨 Por debajo de lo esperado</h2>
-        <p class="rm-sub">Criterios: goles − xG ≤ −1, asistencias − xA ≤ −1, percentil de rol &lt; 35 o pérdidas peligrosas en el cuartil más alto de la plantilla.</p>
-        <div id="ren-alertas" data-source="rendimiento"></div>
+      <div class="rm-card" id="ren-asist-xa">
+        <h2>Asistencias frente a xA</h2>
+        <p class="rm-sub">Por debajo de la diagonal: sus pases merecen más asistencias de las que le llegan (el problema suele estar en quien remata). Mismos colores.</p>
+        <div class="rm-chart" id="ren-scatter-xa" data-source="rendimiento"></div>
       </div>
+    </div>
+    <div class="rm-card rm-rep" id="ren-informe">
+      <h2>🚨 Por debajo de lo esperado</h2>
+      <p class="rm-sub">Cuenta a favor y en contra: rematar o asistir por encima o por debajo de lo esperado (al menos 1 de diferencia y un 30 %), percentil de rol ≥ 75 o &lt; 35, y pérdidas peligrosas que doblan lo normal en su puesto. Sale "por debajo" quien tiene más en contra que a favor. Portero: goles encajados frente al xG de los tiros a puerta recibidos.</p>
+      <div id="ren-alertas" data-source="rendimiento"></div>
     </div>
     <div class="rm-card" id="ren-tabla">
       <h2>Toda la plantilla</h2>
-      <p class="rm-sub">Pulsa una cabecera para ordenar. Pase, progresivos, recuperaciones, duelos y pérdidas salen de los eventos Opta (WhoScored); por 90 minutos.</p>
+      <p class="rm-sub">Pulsa una cabecera para ordenar. Datos por 90 minutos. Tendencia: sus últimos 3 partidos frente a los anteriores (▲ mejor, ▼ peor, = igual), con las mismas métricas que el post-partido.</p>
       <div class="rm-tablewrap">
         <table id="tabla-rendimiento" data-source="rendimiento" data-row-key="jugador">
           <thead><tr>
             <th data-field="jugador">Jugador</th><th data-field="puesto">Puesto</th><th data-field="minutos">Min</th>
-            <th data-field="goles">G</th><th data-field="xg">xG</th><th data-field="g_menos_xg">G − xG</th>
+            <th data-field="goles">G</th><th data-field="penaltis">Pen.</th><th data-field="npxg">xG sin pen.</th><th data-field="g_menos_xg">G − xG sin pen.</th>
             <th data-field="asistencias">A</th><th data-field="xa">xA</th><th data-field="a_menos_xa">A − xA</th>
             <th data-field="pct_rol">Pctl. rol</th><th data-field="acierto_pase">% pase</th><th data-field="prog90">Progr./90</th>
             <th data-field="recup90">Recup./90</th><th data-field="duelos_pct">% duelos</th><th data-field="perdidas90">Pérd. pelig./90</th>
-            <th data-field="veredicto">Veredicto</th>
+            <th data-field="tendencia">Tendencia</th><th data-field="veredicto">Veredicto</th><th data-field="motivo">Motivo</th>
           </tr></thead>
           <tbody></tbody>
         </table>

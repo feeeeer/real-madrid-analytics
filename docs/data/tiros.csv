@@ -116,7 +116,7 @@ us691958,1993928,Real Madrid,Kylian Mbappé,111.2,33.5,0.539,Blocked,Open Play,F
 us691963,1993928,Real Madrid,Kylian Mbappé,88.2,25.3,0.013,Off T,Open Play,Regular Play,46
 us691965,1993928,Real Madrid,Kylian Mbappé,106.2,33.0,0.143,Saved,Open Play,Regular Play,67
 us691968,1993928,Real Madrid,Kylian Mbappé,109.3,58.6,0.041,Post,Open Play,From Corner,84
-us691970,1993928,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Saved,Open Play,,93
+us691970,1993928,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Saved,Penalty,Other,93
 us691945,1993928,Real Madrid,Vinícius Júnior,109.9,44.1,0.094,Off T,Open Play,Regular Play,7
 us691948,1993928,Real Madrid,Vinícius Júnior,115.1,22.6,0.043,Blocked,Open Play,Regular Play,11
 us691950,1993928,Real Madrid,Vinícius Júnior,118.1,30.0,0.294,Post,Open Play,Regular Play,14
@@ -152,7 +152,7 @@ us694293,1994162,Real Madrid,Jude Bellingham,101.9,37.9,0.115,Goal,Open Play,Reg
 us694296,1994162,Real Madrid,Jude Bellingham,97.0,46.2,0.066,Blocked,Open Play,Regular Play,39
 us694315,1994162,Real Madrid,Jude Bellingham,102.7,37.3,0.083,Blocked,Open Play,Regular Play,81
 us694320,1994162,Real Madrid,Jude Bellingham,118.1,25.0,0.093,Saved,Open Play,Regular Play,87
-us694286,1994162,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Goal,Open Play,,13
+us694286,1994162,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Goal,Penalty,Other,13
 us694299,1994162,Real Madrid,Kylian Mbappé,97.6,39.0,0.078,Post,Open Play,Regular Play,44
 us694303,1994162,Real Madrid,Kylian Mbappé,92.2,47.8,0.041,Off T,Open Play,Regular Play,47
 us694316,1994162,Real Madrid,Kylian Mbappé,114.5,29.0,0.168,Saved,Open Play,From Corner,82
@@ -210,7 +210,7 @@ us696618,1994150,Atletico,Koke,99.1,41.4,0.116,Saved,Open Play,Regular Play,91
 us696600,1994150,Atletico,Lee Kang-In,95.4,63.6,0.02,Blocked,Open Play,Regular Play,32
 us696605,1994150,Atletico,Lee Kang-In,87.6,50.4,0.019,Saved,Open Play,Regular Play,55
 us696603,1994150,Atletico,Álex Baena,97.8,23.5,0.023,Saved,Open Play,Regular Play,46
-us696604,1994150,Atletico,Alejandro Grimaldo,106.2,40.0,0.743,Goal,Open Play,,52
+us696604,1994150,Atletico,Alejandro Grimaldo,106.2,40.0,0.743,Goal,Penalty,Other,52
 us696608,1994150,Atletico,Alejandro Grimaldo,103.1,32.9,0.074,Blocked,Open Play,Regular Play,64
 us696616,1994150,Real Madrid,Antonio Rüdiger,109.7,41.6,0.059,Goal,Open Play,From Free Kick,88
 us696601,1994150,Real Madrid,Arda Güler,82.9,48.2,0.011,Saved,Open Play,From Free Kick,39
@@ -256,7 +256,7 @@ us699976,1994188,Real Madrid,Kylian Mbappé,97.0,29.6,0.042,Off T,Open Play,Regu
 us699984,1994188,Real Madrid,Kylian Mbappé,105.6,52.2,0.175,Saved,Open Play,From Counter,32
 us699985,1994188,Real Madrid,Kylian Mbappé,113.4,35.4,0.603,Goal,Open Play,Regular Play,36
 us699988,1994188,Real Madrid,Kylian Mbappé,104.0,21.0,0.122,Blocked,Open Play,From Counter,47
-us699994,1994188,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Goal,Open Play,,62
+us699994,1994188,Real Madrid,Kylian Mbappé,106.2,40.0,0.743,Goal,Penalty,Other,62
 us699978,1994188,Real Madrid,Yan Diomande,112.0,21.1,0.045,Off T,Open Play,Regular Play,6
 us699982,1994188,Real Madrid,Yan Diomande,110.5,21.9,0.032,Off T,Open Play,Regular Play,21
 us699991,1994188,Real Madrid,Yan Diomande,104.9,27.5,0.085,Off T,Open Play,Regular Play,54

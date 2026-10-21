@@ -951,69 +951,90 @@ function renderTitulos() {
 }
 
 // ---------- Rendimiento frente a lo esperado ----------
-const VER_COL = { 'Por debajo': C_BAD, 'Por encima': 'var(--color-ok)', 'En línea': 'var(--cds-chart-muted)' };
+const VER_COL = { 'Por debajo': C_BAD, 'Por encima': 'var(--color-ok)', 'En línea': 'var(--cds-chart-muted)', 'Pocos minutos': 'var(--color-fg-muted)' };
 let sortRen = { k: 'veredicto', asc: true };
 $('#tabla-rendimiento').addEventListener('click', (ev) => {
   const th = ev.target.closest('th');
-  if (th) { sortRen = { k: th.dataset.field, asc: sortRen.k === th.dataset.field ? !sortRen.asc : ['jugador', 'puesto', 'veredicto'].includes(th.dataset.field) }; render(); }
+  if (th) { sortRen = { k: th.dataset.field, asc: sortRen.k === th.dataset.field ? !sortRen.asc : ['jugador', 'puesto', 'veredicto', 'motivo'].includes(th.dataset.field) }; render(); }
 });
-const consejo = (m) => m.includes('remata por debajo')
-  ? 'Míster, a este hay que arroparlo en privado: genera las ocasiones, el gol llegará. Sesión extra de finalización tras transición, sin presión pública.'
-  : m.includes('asistencia')
-    ? 'Sus pases merecen más: el problema está en quien remata. Más hombres pisando área cuando él tenga el balón.'
-    : m.includes('pérdidas')
-      ? 'Míster, a este hay que tocarle el orgullo con el vídeo delante: en nuestro tercio, balón seguro o fuera. Una más y nos cuesta un partido.'
-      : 'Percentil bajo para su puesto: revisar su rol antes que su actitud.';
+// Mismo criterio que procesar.py: desvío claro = al menos 1 de diferencia y un 30 % de lo esperado
+const desvio = (real, esp) => (Math.abs(real - esp) >= 1 && Math.abs(real - esp) >= 0.3 * Math.max(esp, 1) ? Math.sign(real - esp) : 0);
+const DESVIO_COL = { '-1': C_BAD, 0: 'var(--cds-chart-muted)', 1: 'var(--color-ok)' };
+// Puntos de un jugador: real frente a esperado, con la diagonal "real = esperado"
+function scatterRen(box, rs, xk, yk, xLabel, yLabel, unidad) {
+  box.querySelector('svg')?.remove();
+  const pts = rs.filter((d) => d[xk] > 0 || d[yk] > 0);
+  if (!pts.length) return;
+  const W = Math.max(280, box.clientWidth), H = 300, m = { t: 14, r: 16, b: 34, l: 40 };
+  const mx = Math.ceil(Math.max(d3.max(pts, (d) => d[xk]), d3.max(pts, (d) => d[yk])) + 0.5);
+  const x = d3.scaleLinear([0, mx], [m.l, W - m.r]), y = d3.scaleLinear([0, mx], [H - m.b, m.t]);
+  const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(5))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
+    .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - m.l - m.r)))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove())
+    .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
+  svg.append('line').attr('x1', x(0)).attr('y1', y(0)).attr('x2', x(mx)).attr('y2', y(mx)).style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
+  svg.append('text').attr('x', x(mx) - 4).attr('y', y(mx) + 14).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(`${yLabel.toLowerCase()} = ${unidad}`);
+  svg.append('text').attr('x', W - m.r).attr('y', H - 4).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(xLabel);
+  svg.append('text').attr('x', m.l).attr('y', m.t - 2).style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(yLabel);
+  const tip = tooltip(box);
+  svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (d) => x(d[xk])).attr('cy', (d) => y(d[yk])).attr('r', 6)
+    .style('fill', (d) => DESVIO_COL[desvio(d[yk], d[xk])]).style('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
+    .on('mouseenter', (ev, d) => tip.show(ev, d.jugador, [`${d[yk]} ${yLabel.toLowerCase()} con ${d[xk].toFixed(2)} ${unidad}`]))
+    .on('mouseleave', () => tip.hide());
+  // etiquetas sin pisarse: se descarta la que cae encima de otra ya puesta (queda el tooltip)
+  const puestas = [];
+  for (const d of pts.filter((d) => desvio(d[yk], d[xk]) || d[xk] >= 2).sort((a, b) => Math.abs(desvio(b[yk], b[xk])) - Math.abs(desvio(a[yk], a[xk])) || b[xk] - a[xk])) {
+    const px = x(d[xk]) + 9, py = y(d[yk]) + 4;
+    if (puestas.some(([qx, qy]) => Math.abs(qx - px) < 70 && Math.abs(qy - py) < 13)) continue;
+    puestas.push([px, py]);
+    const p = d.jugador.split(' ');
+    svg.append('text').attr('x', px).attr('y', py).style('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)')
+      .text(p.at(-1) === 'Júnior' ? p[0] : p.at(-1));
+  }
+}
+
+// Tendencia: media de la forma (como en el post-partido) en sus 3 últimos partidos frente a los anteriores
+function tendencias() {
+  const partidos = rows('partidos'), jug = rows('metricas_jugador');
+  const fecha = Object.fromEntries(partidos.map((p) => [p.match_id, p.fecha]));
+  const por = {};
+  for (const p of [...partidos].sort((a, b) => a.fecha.localeCompare(b.fecha)))
+    for (const f of formaJugadores(Number(p.match_id), fecha, jug)) (por[f.r.jugador] ??= []).push(f.score);
+  return Object.fromEntries(Object.entries(por).map(([j, v]) => {
+    const m = Math.round(d3.mean(v.slice(-3)) * 10) / 10 || 0;  // || 0: sin "-0.0"
+    return [j, v.length < 3 ? '' : `${m >= 0.2 ? '▲' : m <= -0.2 ? '▼' : '='} ${m.toFixed(1)}`];
+  }));
+}
 
 function renderRendimiento() {
-  const rs = rows('rendimiento').map((r) => ({ ...r, xg: N(r.xg), goles: N(r.goles) }));
-  // Gráfico goles frente a xG
-  const box = $('#ren-scatter');
-  box.querySelector('svg')?.remove();
-  if (rs.length) {
-    const W = Math.max(280, box.clientWidth), H = 300, m = { t: 14, r: 16, b: 34, l: 40 };
-    const mx = Math.ceil(Math.max(d3.max(rs, (d) => d.xg), d3.max(rs, (d) => d.goles)) + 0.5);
-    const x = d3.scaleLinear([0, mx], [m.l, W - m.r]), y = d3.scaleLinear([0, mx], [H - m.b, m.t]);
-    const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
-    svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(5))
-      .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
-      .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
-    svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - m.l - m.r)))
-      .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove())
-      .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
-    svg.append('line').attr('x1', x(0)).attr('y1', y(0)).attr('x2', x(mx)).attr('y2', y(mx)).style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
-    svg.append('text').attr('x', x(mx) - 4).attr('y', y(mx) + 14).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('goles = xG');
-    svg.append('text').attr('x', W - m.r).attr('y', H - 4).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('xG (calidad de sus ocasiones)');
-    svg.append('text').attr('x', m.l).attr('y', m.t - 2).style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text('Goles');
-    const tip = tooltip(box);
-    const pts = rs.filter((d) => d.xg > 0 || d.goles > 0);
-    svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (d) => x(d.xg)).attr('cy', (d) => y(d.goles)).attr('r', 6)
-      .style('fill', (d) => VER_COL[d.veredicto]).style('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
-      .on('mouseenter', (ev, d) => tip.show(ev, d.jugador, [`${d.goles} goles con ${d.xg.toFixed(2)} xG`, d.veredicto]))
-      .on('mouseleave', () => tip.hide());
-    svg.append('g').selectAll('text').data(pts.filter((d) => Math.abs(d.goles - d.xg) >= 0.9 || d.xg >= 2)).join('text')
-      .attr('x', (d) => x(d.xg) + 9).attr('y', (d) => y(d.goles) + 4).style('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)')
-      .text((d) => d.jugador.split(' ').slice(-1)[0]);
-  }
+  const ten = ok('partidos', 'metricas_jugador') ? tendencias() : {};
+  const rs = rows('rendimiento').map((r) => ({ ...r, npxg: N(r.npxg), xa: N(r.xa), asistencias: N(r.asistencias), npg: N(r.goles) - N(r.penaltis),
+    tendencia: ten[r.jugador] || '' }));
+  scatterRen($('#ren-scatter'), rs.filter((d) => d.puesto !== 'Portero'), 'npxg', 'npg', 'xG sin penaltis (calidad de sus ocasiones)', 'Goles', 'xG');
+  scatterRen($('#ren-scatter-xa'), rs.filter((d) => d.puesto !== 'Portero'), 'xa', 'asistencias', 'xA (calidad de las ocasiones que da)', 'Asistencias', 'xA');
   // Alertas
   const al = $('#ren-alertas');
-  al.replaceChildren(...rs.filter((r) => r.veredicto === 'Por debajo').sort((a, b) => N(b.minutos) - N(a.minutos)).map((r) => {
+  const malos = rs.filter((r) => r.veredicto === 'Por debajo').sort((a, b) => N(b.minutos) - N(a.minutos));
+  al.replaceChildren(...(malos.length ? malos.map((r) => {
     const it = el('div', { class: 'item bad' });
     const w = `jugador=${enc(r.jugador)}`;
     it.append(el('p')); it.lastChild.append(markEl('b', 'rendimiento', 'jugador', w, r.jugador), ` · ${r.puesto} · `, markEl('span', 'rendimiento', 'minutos', w, r.minutos), ' min');
     it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'El dato: '), markEl('span', 'rendimiento', 'motivo', w, r.motivo), '.');
-    it.append(el('p')); it.lastChild.append(el('span', { class: 'k' }, 'Cómo tratarlo: '), consejo(r.motivo));
     return it;
-  }));
+  }) : [el('p', { class: 'item' }, 'Nadie claramente por debajo de lo esperado.')]));
   // Tabla
-  const sk = sortRen.k, ord = { 'Por debajo': 0, 'En línea': 1, 'Por encima': 2 };
-  const txt = ['jugador', 'puesto'].includes(sk);
+  const sk = sortRen.k, ord = { 'Por debajo': 0, 'En línea': 1, 'Por encima': 2, 'Pocos minutos': 3 };
+  const txt = ['jugador', 'puesto', 'motivo'].includes(sk);
+  const val = (r) => (sk === 'tendencia' ? (r.tendencia ? Number(r.tendencia.slice(2)) : -99) : N(r[sk]));
   rs.sort((a, b) => (sk === 'veredicto' ? ord[a.veredicto] - ord[b.veredicto] || N(b.minutos) - N(a.minutos)
-    : txt ? String(a[sk]).localeCompare(String(b[sk])) : N(a[sk]) - N(b[sk])) * (sortRen.asc || sk === 'veredicto' ? 1 : -1));
+    : txt ? String(a[sk]).localeCompare(String(b[sk])) : val(a) - val(b)) * (sortRen.asc || sk === 'veredicto' ? 1 : -1));
   document.querySelectorAll('#tabla-rendimiento th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === sk ? (sortRen.asc ? 'ascending' : 'descending') : 'none'));
-  fillTable($('#tabla-rendimiento'), rs, ['jugador', 'puesto', 'minutos', 'goles', 'xg', 'g_menos_xg', 'asistencias', 'xa', 'a_menos_xa',
-    'pct_rol', 'acierto_pase', 'prog90', 'recup90', 'duelos_pct', 'perdidas90', 'veredicto'], (r) => r.jugador);
-  $('#tabla-rendimiento tbody').querySelectorAll('tr').forEach((tr, i) => { tr.lastChild.style.color = VER_COL[rs[i].veredicto]; });
+  fillTable($('#tabla-rendimiento'), rs, ['jugador', 'puesto', 'minutos', 'goles', 'penaltis', 'npxg', 'g_menos_xg', 'asistencias', 'xa', 'a_menos_xa',
+    'pct_rol', 'acierto_pase', 'prog90', 'recup90', 'duelos_pct', 'perdidas90', 'tendencia', 'veredicto', 'motivo'], (r) => r.jugador);
+  $('#tabla-rendimiento tbody').querySelectorAll('tr').forEach((tr, i) => { tr.children[17].style.color = VER_COL[rs[i].veredicto]; });
 }
 
 function render() {
