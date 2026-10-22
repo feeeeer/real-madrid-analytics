@@ -640,8 +640,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1951-05-06,1950/51,Copa del Rey,Atletico Madrid,Real Madrid,0,1,Atletico Madrid,Visitante,1,0,V,Madrid,wk942d8ed0c1,wikipedia,Cuartos de final,,,
 1951-05-10,1950/51,Copa del Rey,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Madrid,wkfaa2675c84,wikipedia,Cuartos de final (vuelta),,Pahiño 53,Juncosa 64
 1951-05-13,1950/51,Copa del Rey,Real Sociedad,Real Madrid,1,0,Real Sociedad,Visitante,0,1,D,Estadio Atocha,wkbb5938f4de,wikipedia,Semifinales,,,
-1951-05-20,1950/51,Copa del Rey,Real Madrid,Real Sociedad,0,2,Real Sociedad,Local,0,2,D,Nuevo Chamartín,wkd367cbac36,wikipedia,Semifinales,,,
 1951-05-20,1950/51,Copa del Rey,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Nuevo Estadio Chamartín,wk8015bc5409,wikipedia,Cuartos de final,,,
+1951-05-20,1950/51,Copa del Rey,Real Madrid,Real Sociedad,0,2,Real Sociedad,Local,0,2,D,Nuevo Chamartín,wkd367cbac36,wikipedia,Semifinales,,,
 1951-09-09,1951/52,LaLiga,UD Las Palmas,Real Madrid,1,4,UD Las Palmas,Visitante,4,1,V,Estadio Insular,h091cf0e456,engsoccerdata,Jornada 1,,,
 1951-09-16,1951/52,LaLiga,Real Madrid,Atletico Tetuan,4,2,Atletico Tetuan,Local,4,2,V,Santiago Bernabéu,h93e147efef,engsoccerdata,Jornada 2,,,
 1951-09-23,1951/52,LaLiga,Espanyol Barcelona,Real Madrid,4,3,Espanyol Barcelona,Visitante,3,4,D,Estadio Sarriá,h97b1cb8b2f,engsoccerdata,Jornada 3,,,
@@ -955,8 +955,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1959-04-19,1958/59,LaLiga,Real Madrid,Espanyol Barcelona,3,3,Espanyol Barcelona,Local,3,3,E,Santiago Bernabéu,h0353c15518,engsoccerdata,Jornada 30,,Kopa 50; Rial 68; Santamaría 89,Szolnok 14; Coll 38; Sastre 84 (pen.)
 1959-04-23,1958/59,Copa de Europa / Champions,Real Madrid,Atletico Madrid,2,1,Atletico Madrid,Local,2,1,V,Santiago Bernabéu,h30aa99240a,engsoccerdata,,,,
 1959-04-26,1958/59,Copa del Rey,CF Extremadura,Real Madrid,0,5,CF Extremadura,Visitante,5,0,V,Estadio Francisco de la Hera,wk764ba089e8,wikipedia,Dieciseisavos de final,,,
-1959-05-03,1958/59,Copa del Rey,Real Madrid,CF Extremadura,3,0,CF Extremadura,Local,3,0,V,Santiago Bernabéu,wk319469d0c5,wikipedia,Dieciseisavos de final,,,
 1959-05-03,1958/59,Copa del Rey,Real Sociedad,Real Madrid,2,3,Real Sociedad,Visitante,3,2,V,Atocha,wed4463d2cf2,wikipedia,Dieciseisavos de final (vuelta),,,
+1959-05-03,1958/59,Copa del Rey,Real Madrid,CF Extremadura,3,0,CF Extremadura,Local,3,0,V,Santiago Bernabéu,wk319469d0c5,wikipedia,Dieciseisavos de final,,,
 1959-05-07,1958/59,Copa de Europa / Champions,Atletico Madrid,Real Madrid,1,0,Atletico Madrid,Visitante,0,1,D,Metropolitano,h08aff8d205,engsoccerdata,Semifinales,,Collar 43,
 1959-05-10,1958/59,Copa del Rey,Deportivo La Coruna,Real Madrid,3,1,Deportivo La Coruna,Visitante,1,3,D,Nuevo Riazor,we41988ed86e,wikipedia,Octavos de final (ida),,,
 1959-05-10,1958/59,Copa del Rey,Real Madrid,Athletic Bilbao,4,1,Athletic Bilbao,Local,4,1,V,Santiago Bernabéu,wk3dfb9176fb,wikipedia,Octavos de final,,,
@@ -1053,8 +1053,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1961-04-30,1960/61,LaLiga,Racing Santander,Real Madrid,1,1,Racing Santander,Visitante,1,1,E,El Sardinero,h695d5b86bc,engsoccerdata,Jornada 30,,Wilson 32,Sampedro 70
 1961-05-07,1960/61,Copa del Rey,Hercules CF,Real Madrid,0,5,Hercules CF,Visitante,5,0,V,,wkc8846ef7a7,wikipedia,Dieciseisavos de final,,,
 1961-05-11,1960/61,Copa del Rey,Real Madrid,Hercules CF,6,0,Hercules CF,Local,6,0,V,Chamartín,wk3933ec40bd,wikipedia,Dieciseisavos de final,,,
-1961-05-21,1960/61,Copa del Rey,Racing Santander,Real Madrid,1,1,Racing Santander,Visitante,1,1,E,El Sardinero,wkd0a2331463,wikipedia,Octavos de final,,,
 1961-05-21,1960/61,Copa del Rey,Real Madrid,Racing Santander,3,0,Racing Santander,Local,3,0,V,Chamartín,wk9511204665,wikipedia,Octavos de final,,,
+1961-05-21,1960/61,Copa del Rey,Racing Santander,Real Madrid,1,1,Racing Santander,Visitante,1,1,E,El Sardinero,wkd0a2331463,wikipedia,Octavos de final,,,
 1961-06-01,1960/61,Copa del Rey,Athletic Bilbao,Real Madrid,0,2,Athletic Bilbao,Visitante,2,0,V,San Mamés,wk2d55d6c841,wikipedia,Cuartos de final,,,
 1961-06-04,1960/61,Copa del Rey,Real Madrid,Athletic Bilbao,3,0,Athletic Bilbao,Local,3,0,V,Chamartín,wk8e0a887ba1,wikipedia,Cuartos de final,,,
 1961-06-18,1960/61,Copa del Rey,Real Madrid,Real Betis,7,1,Real Betis,Local,7,1,V,Chamartín,wk7a96687c53,wikipedia,Semifinales,,,
@@ -4451,3 +4451,4 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 2026-10-10,2026/27,LaLiga,Real Madrid,Villarreal CF,1,0,Villarreal CF,Local,1,0,V,Santiago Bernabéu,espn401882848,ESPN,Jornada 8,,Diomande 62,
 2026-10-14,2026/27,Copa de Europa / Champions,AS Roma,Real Madrid,3,4,AS Roma,Visitante,4,3,V,Olimpico,espn401915414,ESPN,,,,
 2026-10-18,2026/27,LaLiga,Real Madrid,Sevilla FC,4,1,Sevilla FC,Local,4,1,V,Santiago Bernabéu,espn401882839,ESPN,,,,
+2026-10-21,2026/27,Copa de Europa / Champions,Real Madrid,RB Leipzig,4,1,RB Leipzig,Local,4,1,V,Santiago Bernabéu,espn401915313,ESPN,,,,
