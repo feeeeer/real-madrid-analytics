@@ -1,0 +1,376 @@
+match_id,equipo,jugador,x,y,toques,pases
+1993904,Real Madrid,Arda Güler,77.6,53.6,59,44
+1993904,Real Madrid,Bernardo Silva,59.3,36.7,88,65
+1993904,Real Madrid,Brahim Díaz,73.7,58.3,17,12
+1993904,Real Madrid,Carlos Espí,102.2,44.7,1,0
+1993904,Real Madrid,Dean Huijsen,41.8,27.9,92,70
+1993904,Real Madrid,Denzel Dumfries,74.5,69.2,55,42
+1993904,Real Madrid,Eduardo Camavinga,64.4,45.4,21,17
+1993904,Real Madrid,Federico Valverde,68.2,39.9,72,57
+1993904,Real Madrid,Ibrahima Konaté,43.5,55.1,67,51
+1993904,Real Madrid,Jude Bellingham,68.4,26.3,62,40
+1993904,Real Madrid,Kylian Mbappé,87.4,34.6,57,36
+1993904,Real Madrid,Marc Cucurella,50.1,9.7,34,27
+1993904,Real Madrid,Thibaut Courtois,12.5,38.7,27,21
+1993904,Real Madrid,Vinícius Júnior,87.2,15.5,47,24
+1993904,Real Madrid,Yan Diomande,85.5,14.7,11,3
+1993904,Real Madrid,Álvaro Carreras,61.8,9.3,42,33
+1993904,Real Sociedad,Ander Barrenetxea,66.1,56.7,15,8
+1993904,Real Sociedad,Beñat Turrientes,57.3,38.6,85,72
+1993904,Real Sociedad,Carlos Soler,60.9,43.2,31,21
+1993904,Real Sociedad,Gonçalo Guedes,77.6,18.8,16,9
+1993904,Real Sociedad,Igor Zubeldia,55.6,71.1,31,22
+1993904,Real Sociedad,Job Ochieng,71.3,16.2,19,9
+1993904,Real Sociedad,Jon Aramburu,65.4,72.6,48,33
+1993904,Real Sociedad,Jon Martín,32.9,24.9,56,50
+1993904,Real Sociedad,Luka Sucic,68.2,43.9,70,56
+1993904,Real Sociedad,Luken Beitia,36.0,54.6,73,56
+1993904,Real Sociedad,Mikel Oyarzabal,64.3,39.2,32,21
+1993904,Real Sociedad,Orri Óskarsson,66.0,44.7,13,7
+1993904,Real Sociedad,Sergio Gómez,60.7,8.5,101,77
+1993904,Real Sociedad,Takefusa Kubo,80.5,58.8,28,12
+1993904,Real Sociedad,Yangel Herrera,57.9,41.7,54,37
+1993904,Real Sociedad,Álex Remiro,14.0,40.8,56,35
+1993911,Espanyol,Cala,71.3,51.5,33,15
+1993911,Espanyol,Clemens Riedel,39.3,56.1,34,22
+1993911,Espanyol,Edu Expósito,58.1,33.8,69,40
+1993911,Espanyol,Javi Hernández,67.5,31.2,32,15
+1993911,Espanyol,Jofre Carreras,72.7,64.9,6,2
+1993911,Espanyol,Marko Dmitrovic,8.3,42.0,33,14
+1993911,Espanyol,Omar El Hilali,60.9,71.7,51,31
+1993911,Espanyol,Pere Milla,70.2,46.3,7,5
+1993911,Espanyol,Pol Lozano,50.6,40.4,9,6
+1993911,Espanyol,Rafel Bauzà,76.0,39.0,19,9
+1993911,Espanyol,Roberto Fernández,64.6,38.0,22,8
+1993911,Espanyol,Roger Hinojo,50.7,18.4,52,38
+1993911,Espanyol,Tyrhys Dolan,68.9,16.1,39,19
+1993911,Espanyol,Unai Núñez,35.6,33.1,51,37
+1993911,Espanyol,Urko González de Zárate,62.4,48.3,36,28
+1993911,Espanyol,Vanja Drkusic,36.2,51.9,16,7
+1993911,Real Madrid,Arda Güler,72.4,54.7,63,43
+1993911,Real Madrid,Bernardo Silva,61.4,44.7,68,54
+1993911,Real Madrid,Carlos Espí,87.8,45.6,9,2
+1993911,Real Madrid,Dean Huijsen,46.2,26.9,85,74
+1993911,Real Madrid,Denzel Dumfries,62.6,69.1,53,32
+1993911,Real Madrid,Eduardo Camavinga,59.1,48.5,15,13
+1993911,Real Madrid,Federico Valverde,56.7,33.8,79,64
+1993911,Real Madrid,Ibrahima Konaté,43.3,50.7,89,73
+1993911,Real Madrid,Jude Bellingham,72.0,30.5,61,37
+1993911,Real Madrid,Kylian Mbappé,86.1,34.5,67,33
+1993911,Real Madrid,Marc Cucurella,59.4,12.6,27,23
+1993911,Real Madrid,Thibaut Courtois,18.4,37.3,29,22
+1993911,Real Madrid,Trent Alexander-Arnold,59.5,63.9,15,9
+1993911,Real Madrid,Vinícius Júnior,81.2,19.9,38,9
+1993911,Real Madrid,Yan Diomande,89.7,68.1,21,11
+1993911,Real Madrid,Álvaro Carreras,60.0,10.9,47,34
+1993924,Malaga,Alfonso Herrero,9.0,41.3,34,23
+1993924,Malaga,Carlos Dotor,60.2,30.1,69,55
+1993924,Malaga,Carlos Puga,51.4,70.8,43,24
+1993924,Malaga,Chupe,74.7,39.9,29,16
+1993924,Malaga,David Larrubia,75.7,63.7,59,26
+1993924,Malaga,Einar Galilea,34.4,24.0,40,33
+1993924,Malaga,Haitam Abaida,93.3,11.4,15,8
+1993924,Malaga,Izan Merino,50.1,40.1,57,48
+1993924,Malaga,Joaquín Muñoz,62.9,19.8,24,16
+1993924,Malaga,José Salinas,55.2,18.8,15,12
+1993924,Malaga,Juan Cruz,76.2,43.1,19,12
+1993924,Malaga,Pablo Martínez,69.9,55.0,39,29
+1993924,Malaga,Rafa Rodríguez,64.1,49.5,37,24
+1993924,Malaga,Rafita,54.1,35.6,73,53
+1993924,Malaga,Ramón Enríquez,66.4,39.0,7,7
+1993924,Malaga,Ángel Recio,37.3,54.1,53,33
+1993924,Real Madrid,Antonio Rüdiger,35.8,56.1,91,79
+1993924,Real Madrid,Arda Güler,77.3,33.7,8,1
+1993924,Real Madrid,Bernardo Silva,51.7,25.8,12,9
+1993924,Real Madrid,Brahim Díaz,72.3,58.0,35,27
+1993924,Real Madrid,Dean Huijsen,41.3,24.1,62,49
+1993924,Real Madrid,Eduardo Camavinga,55.7,42.1,84,64
+1993924,Real Madrid,Federico Valverde,64.0,40.5,64,52
+1993924,Real Madrid,Jude Bellingham,74.9,38.1,57,36
+1993924,Real Madrid,Kylian Mbappé,90.1,34.5,56,31
+1993924,Real Madrid,Marc Cucurella,61.5,9.7,77,56
+1993924,Real Madrid,Thibaut Courtois,11.9,40.6,37,32
+1993924,Real Madrid,Trent Alexander-Arnold,61.4,63.9,117,94
+1993924,Real Madrid,Vinícius Júnior,87.7,17.4,53,27
+1993924,Real Madrid,Yan Diomande,57.7,53.3,17,13
+1993928,Real Betis,Antony,67.8,68.4,45,32
+1993928,Real Betis,Cucho Hernández,70.2,49.0,23,8
+1993928,Real Betis,Diego Llorente,32.6,53.7,18,10
+1993928,Real Betis,Facundo Bernal,51.6,46.2,41,29
+1993928,Real Betis,Fran García,59.5,10.9,49,34
+1993928,Real Betis,Héctor Bellerín,54.0,68.7,70,42
+1993928,Real Betis,Isco,71.5,32.7,45,33
+1993928,Real Betis,Marc Bartra,26.6,56.8,27,11
+1993928,Real Betis,Marc Roca,48.7,29.8,71,53
+1993928,Real Betis,Natan,34.7,23.5,39,30
+1993928,Real Betis,Nelson Deossa,64.0,54.1,14,7
+1993928,Real Betis,Pablo Fornals,66.4,24.6,72,50
+1993928,Real Betis,Rodrigo Riquelme,77.2,37.4,7,4
+1993928,Real Betis,Troy Parrott,65.3,37.7,11,2
+1993928,Real Betis,Álvaro Fidalgo,62.0,26.8,17,13
+1993928,Real Betis,Álvaro Valles,11.4,39.4,36,18
+1993928,Real Madrid,Arda Güler,77.5,48.7,62,41
+1993928,Real Madrid,Bernardo Silva,66.3,40.6,23,21
+1993928,Real Madrid,Carlos Espí,105.6,45.8,2,0
+1993928,Real Madrid,Dean Huijsen,51.1,25.9,101,87
+1993928,Real Madrid,Denzel Dumfries,72.0,71.6,31,23
+1993928,Real Madrid,Eduardo Camavinga,53.1,38.6,56,40
+1993928,Real Madrid,Federico Valverde,58.3,46.0,67,51
+1993928,Real Madrid,Ibrahima Konaté,43.7,52.4,89,73
+1993928,Real Madrid,Jude Bellingham,71.9,27.1,69,43
+1993928,Real Madrid,Kylian Mbappé,86.1,31.7,61,30
+1993928,Real Madrid,Marc Cucurella,64.5,12.9,76,60
+1993928,Real Madrid,Thibaut Courtois,16.5,40.1,35,29
+1993928,Real Madrid,Trent Alexander-Arnold,71.2,48.9,24,17
+1993928,Real Madrid,Vinícius Júnior,90.7,13.4,65,30
+1993928,Real Madrid,Yan Diomande,77.8,68.0,13,9
+1993928,Real Madrid,Álvaro Carreras,56.8,11.2,8,6
+1994150,Atletico,Ademola Lookman,78.6,11.7,17,13
+1994150,Atletico,Alejandro Grimaldo,64.3,17.3,64,47
+1994150,Atletico,Cristian Romero,44.2,46.3,68,54
+1994150,Atletico,Dávid Hancko,46.3,24.5,80,59
+1994150,Atletico,Giuliano Simeone,76.3,66.2,64,34
+1994150,Atletico,Jan Oblak,12.9,39.4,39,27
+1994150,Atletico,Johnny Cardoso,60.7,37.8,75,65
+1994150,Atletico,Jonathan David,80.0,36.8,20,11
+1994150,Atletico,Julián Alvarez,80.8,32.4,30,18
+1994150,Atletico,Koke,71.7,41.7,70,63
+1994150,Atletico,Lee Kang-In,76.7,61.4,73,49
+1994150,Atletico,Marc Pubill,62.6,67.1,34,24
+1994150,Atletico,Marcos Llorente,60.8,62.8,94,80
+1994150,Atletico,Morten Hjulmand,67.0,44.3,3,2
+1994150,Atletico,Robin Le Normand,53.6,43.5,3,3
+1994150,Atletico,Álex Baena,77.1,35.6,50,33
+1994150,Real Madrid,Antonio Rüdiger,39.7,26.9,28,21
+1994150,Real Madrid,Arda Güler,71.5,49.5,36,17
+1994150,Real Madrid,Aurélien Tchouaméni,62.0,31.4,41,30
+1994150,Real Madrid,Bernardo Silva,63.1,42.2,26,22
+1994150,Real Madrid,Dean Huijsen,37.2,24.9,46,36
+1994150,Real Madrid,Denzel Dumfries,55.3,64.2,37,19
+1994150,Real Madrid,Eduardo Camavinga,53.8,39.4,24,17
+1994150,Real Madrid,Federico Valverde,54.8,39.3,37,25
+1994150,Real Madrid,Ibrahima Konaté,36.5,57.0,57,42
+1994150,Real Madrid,Jude Bellingham,63.7,32.1,46,25
+1994150,Real Madrid,Kylian Mbappé,80.2,24.8,45,21
+1994150,Real Madrid,Marc Cucurella,53.4,11.5,74,49
+1994150,Real Madrid,Thibaut Courtois,12.9,42.2,36,20
+1994150,Real Madrid,Vinícius Júnior,71.7,14.4,22,8
+1994150,Real Madrid,Yan Diomande,81.6,18.1,32,9
+1994162,Rayo Vallecano,Adrià Pedrosa,59.7,10.3,49,35
+1994162,Rayo Vallecano,Alemão,73.2,40.0,11,3
+1994162,Rayo Vallecano,Andrei Ratiu,71.2,67.4,71,43
+1994162,Rayo Vallecano,Emil Audero,10.7,42.0,43,25
+1994162,Rayo Vallecano,Florian Lejeune,39.9,53.9,66,45
+1994162,Rayo Vallecano,Giorgi Tsitaishvili,86.6,63.1,26,12
+1994162,Rayo Vallecano,Gnangoro,59.3,45.5,41,28
+1994162,Rayo Vallecano,Iván Balliu,84.4,71.5,12,8
+1994162,Rayo Vallecano,Mujaid Sadick,46.8,27.0,11,10
+1994162,Rayo Vallecano,Pathé Ciss,43.2,35.1,73,52
+1994162,Rayo Vallecano,Pedro Díaz,75.2,52.3,29,19
+1994162,Rayo Vallecano,Rayane Belaid,69.5,48.2,9,5
+1994162,Rayo Vallecano,Sergio Camello,70.0,29.4,39,16
+1994162,Rayo Vallecano,Unai López,62.1,30.7,71,51
+1994162,Rayo Vallecano,Álvaro García,87.0,17.3,36,16
+1994162,Rayo Vallecano,Óscar Valentín,63.8,41.4,21,17
+1994162,Real Madrid,Antonio Rüdiger,35.1,26.2,96,74
+1994162,Real Madrid,Arda Güler,80.6,42.7,31,18
+1994162,Real Madrid,Aurélien Tchouaméni,54.0,34.3,25,19
+1994162,Real Madrid,Bernardo Silva,54.5,36.6,71,54
+1994162,Real Madrid,Denzel Dumfries,54.2,68.4,48,31
+1994162,Real Madrid,Eduardo Camavinga,54.7,41.3,34,25
+1994162,Real Madrid,Federico Valverde,62.9,30.5,39,35
+1994162,Real Madrid,Ibrahima Konaté,43.8,54.0,47,39
+1994162,Real Madrid,Jude Bellingham,68.7,30.3,64,32
+1994162,Real Madrid,Kylian Mbappé,85.1,34.0,51,29
+1994162,Real Madrid,Marc Cucurella,28.7,7.1,3,1
+1994162,Real Madrid,Thibaut Courtois,10.2,37.9,49,35
+1994162,Real Madrid,Vinícius Júnior,82.4,16.9,51,33
+1994162,Real Madrid,Yan Diomande,68.8,59.2,46,25
+1994162,Real Madrid,Álvaro Carreras,54.3,13.4,91,67
+1994174,Real Madrid,Antonio Rüdiger,33.2,24.1,50,34
+1994174,Real Madrid,Arda Güler,68.5,42.3,53,37
+1994174,Real Madrid,Aurélien Tchouaméni,53.9,32.3,54,39
+1994174,Real Madrid,Denzel Dumfries,105.4,77.0,2,1
+1994174,Real Madrid,Eduardo Camavinga,80.3,18.9,8,4
+1994174,Real Madrid,Federico Valverde,66.0,52.7,52,34
+1994174,Real Madrid,Ibrahima Konaté,44.3,52.2,48,34
+1994174,Real Madrid,Jude Bellingham,75.5,29.3,51,24
+1994174,Real Madrid,Kylian Mbappé,86.9,28.3,39,17
+1994174,Real Madrid,Marc Cucurella,57.8,12.1,40,22
+1994174,Real Madrid,Thibaut Courtois,14.3,36.2,46,30
+1994174,Real Madrid,Trent Alexander-Arnold,67.9,57.0,39,26
+1994174,Real Madrid,Vinícius Júnior,84.4,14.8,14,4
+1994174,Real Madrid,Yan Diomande,77.2,21.1,53,24
+1994174,Real Madrid,Álvaro Carreras,59.9,19.1,43,31
+1994174,Villarreal,Alberto Moleiro,82.7,35.8,43,33
+1994174,Villarreal,Alex Freeman,47.2,66.9,93,58
+1994174,Villarreal,Ayoze Pérez,74.7,48.6,31,16
+1994174,Villarreal,Carlos Romero,60.7,19.1,29,16
+1994174,Villarreal,Georges Mikautadze,74.2,29.5,9,6
+1994174,Villarreal,Gerard Moreno,83.9,59.7,20,12
+1994174,Villarreal,Ilias Akhomach,76.2,64.3,30,13
+1994174,Villarreal,Juan Foyth,51.9,42.1,44,35
+1994174,Villarreal,Nathan Saliba,62.4,52.6,40,28
+1994174,Villarreal,Nizar,66.7,70.0,13,4
+1994174,Villarreal,Pape Gueye,60.1,37.3,61,40
+1994174,Villarreal,Pau Navarro,39.2,54.1,76,58
+1994174,Villarreal,Péter Gulácsi,9.1,44.5,32,23
+1994174,Villarreal,Renato Veiga,42.8,26.5,79,56
+1994174,Villarreal,Santi Comesaña,64.3,47.6,30,20
+1994174,Villarreal,Sergi Cardona,55.2,13.3,40,30
+1994179,Elche,Abiel Osorio,67.4,43.0,28,13
+1994179,Elche,Buba Sangaré,57.3,64.9,33,19
+1994179,Elche,Federico Redondo,41.3,56.2,69,52
+1994179,Elche,Fer Niño,74.8,48.4,8,5
+1994179,Elche,Germán Valera,71.1,63.7,27,14
+1994179,Elche,Gonzalo Villar,60.3,27.4,77,57
+1994179,Elche,Josan,74.3,71.0,14,7
+1994179,Elche,Lucas Cepeda,76.9,41.1,28,22
+1994179,Elche,Marc Aguado,45.0,34.6,37,28
+1994179,Elche,Martim Neto,69.1,52.6,45,34
+1994179,Elche,Matías Dituro,11.4,40.3,65,48
+1994179,Elche,Roy Revivo,59.3,11.1,74,54
+1994179,Elche,Rubén Sánchez,49.6,63.4,17,9
+1994179,Elche,Tete Morente,83.4,17.5,43,23
+1994179,Elche,Thomas Lemar,73.1,38.3,42,33
+1994179,Elche,Víctor Chust,39.2,24.0,109,92
+1994179,Real Madrid,Arda Güler,69.4,35.3,46,26
+1994179,Real Madrid,Aurélien Tchouaméni,53.3,37.6,51,41
+1994179,Real Madrid,Brahim Díaz,82.8,49.4,13,9
+1994179,Real Madrid,Carlos Espí,84.1,35.5,7,2
+1994179,Real Madrid,Dean Huijsen,44.9,29.1,62,49
+1994179,Real Madrid,Endrick,74.6,57.1,2,0
+1994179,Real Madrid,Federico Valverde,58.9,33.6,53,38
+1994179,Real Madrid,Ibrahima Konaté,40.6,53.9,64,52
+1994179,Real Madrid,Jude Bellingham,83.3,20.2,21,9
+1994179,Real Madrid,Kylian Mbappé,86.5,28.6,61,33
+1994179,Real Madrid,Marc Cucurella,59.3,14.1,58,42
+1994179,Real Madrid,Thibaut Courtois,9.9,40.4,34,28
+1994179,Real Madrid,Trent Alexander-Arnold,52.1,65.7,57,38
+1994179,Real Madrid,Vinícius Júnior,88.1,19.5,34,13
+1994179,Real Madrid,Yan Diomande,76.7,47.9,54,22
+1994188,Real Madrid,Arda Güler,57.2,46.0,74,60
+1994188,Real Madrid,Aurélien Tchouaméni,52.0,35.2,78,64
+1994188,Real Madrid,Bernardo Silva,53.9,34.3,26,21
+1994188,Real Madrid,Brahim Díaz,60.4,58.5,17,10
+1994188,Real Madrid,Carlos Espí,72.5,52.2,2,1
+1994188,Real Madrid,Dean Huijsen,40.7,23.1,106,91
+1994188,Real Madrid,Eduardo Camavinga,59.6,50.1,20,16
+1994188,Real Madrid,Endrick,71.5,61.0,35,11
+1994188,Real Madrid,Federico Valverde,55.9,67.3,56,40
+1994188,Real Madrid,Ibrahima Konaté,36.3,56.0,78,64
+1994188,Real Madrid,Jude Bellingham,62.3,26.1,61,41
+1994188,Real Madrid,Kylian Mbappé,84.7,34.5,54,26
+1994188,Real Madrid,Marc Cucurella,58.9,9.2,95,72
+1994188,Real Madrid,Thibaut Courtois,13.5,38.9,48,42
+1994188,Real Madrid,Yan Diomande,70.7,13.9,87,59
+1994188,Real Madrid,Éder Militão,64.2,72.7,14,12
+1994188,Sevilla,Alfon González,83.9,9.3,8,4
+1994188,Sevilla,Andrés Castrín,47.0,60.4,48,37
+1994188,Sevilla,Chidera Ejuke,78.3,65.5,27,11
+1994188,Sevilla,Félix Correia,70.0,22.7,29,16
+1994188,Sevilla,Gabriel Suazo,53.2,14.6,49,28
+1994188,Sevilla,José Ángel Carmona,57.0,70.8,14,9
+1994188,Sevilla,Juan Iglesias,53.8,68.7,50,20
+1994188,Sevilla,Kike Salas,41.1,28.1,51,32
+1994188,Sevilla,Lucas Stassin,71.1,44.2,14,10
+1994188,Sevilla,Lucien Agoumé,54.4,48.5,57,35
+1994188,Sevilla,Manu Bueno,69.3,44.5,22,15
+1994188,Sevilla,Odysseas Vlachodimos,9.6,42.5,28,13
+1994188,Sevilla,Peque Fernández,66.0,28.7,34,19
+1994188,Sevilla,Robbie Ure,72.0,34.1,5,3
+1994188,Sevilla,Rubén Vargas,78.6,48.8,26,13
+1994188,Sevilla,Youssouf Fofana,65.9,32.6,56,33
+2029114,Inter,Alessandro Bastoni,57.7,18.9,95,80
+2029114,Inter,Andy Diouf,76.3,65.1,77,50
+2029114,Inter,Ange-Yoan Bonny,91.8,38.0,9,3
+2029114,Inter,Benjamin Pavard,49.6,54.3,39,33
+2029114,Inter,Carlos Augusto,72.7,13.8,62,44
+2029114,Inter,Curtis Jones,75.1,25.5,84,71
+2029114,Inter,Hakan Çalhanoglu,65.9,41.8,83,66
+2029114,Inter,Henrikh Mkhitaryan,72.3,31.4,17,13
+2029114,Inter,John Stones,48.9,42.3,27,23
+2029114,Inter,Josep Martínez,13.5,39.9,41,30
+2029114,Inter,Lautaro Martínez,79.9,37.0,56,38
+2029114,Inter,Marcus Thuram,88.9,48.3,18,10
+2029114,Inter,Nicolò Barella,72.2,48.4,65,51
+2029114,Inter,Petar Sucic,86.2,45.4,33,19
+2029114,Inter,Piotr Zielinski,70.0,42.6,31,24
+2029114,Inter,Yann Bisseck,51.9,48.3,73,57
+2029114,Real Madrid,Aurélien Tchouaméni,46.0,50.7,4,3
+2029114,Real Madrid,Brahim Díaz,78.5,57.6,42,26
+2029114,Real Madrid,Dean Huijsen,33.8,30.2,58,32
+2029114,Real Madrid,Denzel Dumfries,58.1,67.9,38,23
+2029114,Real Madrid,Federico Valverde,50.5,26.1,52,38
+2029114,Real Madrid,Ibrahima Konaté,37.8,54.7,40,26
+2029114,Real Madrid,Jude Bellingham,62.4,30.8,55,27
+2029114,Real Madrid,Kylian Mbappé,74.9,33.0,49,34
+2029114,Real Madrid,Marc Cucurella,51.1,11.6,61,47
+2029114,Real Madrid,Thibaut Courtois,10.3,41.6,39,19
+2029114,Real Madrid,Trent Alexander-Arnold,59.9,42.5,35,21
+2029114,Real Madrid,Vinícius Júnior,76.1,13.6,46,24
+2029114,Real Madrid,Yan Diomande,93.8,62.1,7,2
+2029124,RBL,Andrija Maksimovic,71.1,61.2,10,10
+2029124,RBL,Antonio Nusa,75.4,18.0,30,12
+2029124,RBL,Brajan Gruda,69.5,63.3,54,29
+2029124,RBL,Castello Lukeba,29.1,26.9,56,40
+2029124,RBL,Christoph Baumgartner,66.5,36.3,9,6
+2029124,RBL,Christopher Nkunku,74.9,42.0,33,23
+2029124,RBL,David Raum,56.5,14.6,51,36
+2029124,RBL,Maarten Vandevoordt,10.2,42.1,53,32
+2029124,RBL,Max Finkgräfe,56.2,12.7,16,5
+2029124,RBL,Neil El Aynaoui,57.7,36.6,43,36
+2029124,RBL,Nicolas Seiwald,55.3,44.1,65,48
+2029124,RBL,Ridle Baku,60.1,68.5,66,41
+2029124,RBL,Rocco Reitz,67.6,34.4,13,10
+2029124,RBL,Rômulo,73.8,45.1,35,11
+2029124,RBL,Tidiam Gomis,85.3,16.2,6,5
+2029124,RBL,Willi Orbán,35.4,57.1,48,31
+2029124,Real Madrid,Antonio Rüdiger,39.9,54.9,82,73
+2029124,Real Madrid,Arda Güler,81.9,53.7,74,56
+2029124,Real Madrid,Bernardo Silva,61.2,49.5,89,76
+2029124,Real Madrid,Brahim Díaz,66.0,60.8,14,11
+2029124,Real Madrid,Carlos Espí,74.0,43.6,2,0
+2029124,Real Madrid,Dean Huijsen,45.7,25.5,115,97
+2029124,Real Madrid,Eduardo Camavinga,55.3,40.1,87,65
+2029124,Real Madrid,Endrick,78.7,66.0,6,3
+2029124,Real Madrid,Federico Valverde,63.9,68.3,116,85
+2029124,Real Madrid,Jude Bellingham,72.5,28.6,69,49
+2029124,Real Madrid,Kylian Mbappé,86.4,40.6,52,31
+2029124,Real Madrid,Marc Cucurella,55.0,6.1,18,17
+2029124,Real Madrid,Thibaut Courtois,10.5,39.2,48,39
+2029124,Real Madrid,Vinícius Júnior,79.6,12.3,45,29
+2029124,Real Madrid,Yan Diomande,71.4,16.5,13,10
+2029124,Real Madrid,Álvaro Carreras,57.0,13.6,69,57
+2029142,Real Madrid,Antonio Rüdiger,33.6,22.4,63,47
+2029142,Real Madrid,Arda Güler,66.8,29.0,37,24
+2029142,Real Madrid,Aurélien Tchouaméni,53.5,27.1,44,32
+2029142,Real Madrid,Bernardo Silva,46.0,30.8,18,13
+2029142,Real Madrid,Carlos Espí,82.4,20.6,10,3
+2029142,Real Madrid,Denzel Dumfries,53.6,68.1,25,18
+2029142,Real Madrid,Endrick,86.4,56.7,16,3
+2029142,Real Madrid,Federico Valverde,53.0,58.2,47,32
+2029142,Real Madrid,Ibrahima Konaté,36.5,55.3,71,51
+2029142,Real Madrid,Jude Bellingham,64.9,35.4,63,39
+2029142,Real Madrid,Kylian Mbappé,80.9,36.8,49,20
+2029142,Real Madrid,Marc Cucurella,57.8,7.3,51,38
+2029142,Real Madrid,Thibaut Courtois,19.1,37.4,68,47
+2029142,Real Madrid,Vinícius Júnior,77.4,31.6,22,12
+2029142,Real Madrid,Yan Diomande,72.6,37.5,64,25
+2029142,Real Madrid,Álvaro Carreras,71.1,6.4,9,6
+2029142,Roma,Donyell Malen,83.5,36.9,35,16
+2029142,Roma,Evan Ndicka,43.0,35.4,55,41
+2029142,Roma,Gianluca Mancini,45.1,65.6,40,24
+2029142,Roma,Konstantinos Koulierakis,48.4,23.7,9,7
+2029142,Roma,Leonardo Balerdi,38.7,54.8,17,8
+2029142,Roma,Lorenzo Pellegrini,59.1,68.7,24,15
+2029142,Roma,Manu Koné,70.7,28.2,19,17
+2029142,Roma,Mario Hermoso,45.8,19.8,66,48
+2029142,Roma,Marten de Roon,49.8,52.7,65,44
+2029142,Roma,Matías Soulé,78.4,65.7,54,36
+2029142,Roma,Nahuel Molina,65.2,10.0,75,52
+2029142,Roma,Niccolò Pisilli,59.7,34.4,57,47
+2029142,Roma,Paulo Dybala,85.3,16.3,37,24
+2029142,Roma,Pierluigi Gollini,10.7,41.5,41,29
+2029142,Roma,Rodrigo Mora,73.5,19.7,29,19
+2029142,Roma,Wesley,57.8,68.6,104,67

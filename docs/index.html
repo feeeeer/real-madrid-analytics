@@ -107,6 +107,36 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
   .mf-res b { font-size: 1.5rem; }
 }
 .ficha-falta:empty { display: none; }
+/* cabecera del partido tipo "match centre": fondo oscuro en los dos temas */
+.rm-card.mc { background: linear-gradient(135deg, #0d1b2e 0%, #1b3360 100%); border: 0; color: #f2f4f8;
+  --color-fg: #f2f4f8; --color-fg-muted: #a9b8d0; --color-border-line: rgba(255, 255, 255, 0.16); --color-panel: #13233d; --color-bg: rgba(255, 255, 255, 0.08); }
+.mc .mf-res b { font-size: 2.6rem; }
+.mc .mf-eq .esc { width: 40px; height: 40px; }
+.mc .btn-sec { background: rgba(255, 255, 255, 0.1); color: #f2f4f8; border-color: rgba(255, 255, 255, 0.2); }
+.mc-linea { margin-top: var(--cds-gap-sm); border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: var(--cds-gap-xs); position: relative; }
+.mc-linea svg { display: block; overflow: visible; }
+.mc-eje { stroke: rgba(255, 255, 255, 0.35); }
+.mc-min { fill: #a9b8d0; font-size: 10px; letter-spacing: 0.05em; }
+.mc-ico { font-size: 13px; cursor: default; }
+.mc-ico.cambio { fill: #a9b8d0; font-size: 14px; font-weight: 700; }
+#m-coach { margin-top: var(--cds-gap-xs); }
+.mf-eq > .con-esc { flex-wrap: wrap; min-width: 0; }
+.mf-l > .con-esc { justify-content: flex-end; }
+@media (max-width: 640px) {
+  .mc .mf-res b { font-size: 1.8rem; }
+  .mc .mf-eq .esc { width: 28px; height: 28px; }
+  .mc .mf-eq > .con-esc { font-size: 0.95rem; }
+}
+/* apartados dentro del partido */
+.sub-tabs { display: flex; gap: 2px; overflow-x: auto; margin: 0 0 var(--cds-gap-md); border-bottom: 1px solid var(--color-border-line); }
+.sub-tabs button { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; color: var(--color-fg-muted); cursor: pointer; white-space: nowrap; }
+.sub-tabs button:hover { color: var(--color-fg); }
+.sub-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--serie-rm); font-weight: var(--cds-font-weight-medium); }
+.sub-oculto { display: none !important; }
+.sel-nav { display: flex; gap: 4px; align-items: stretch; }
+.btn-nav { font: inherit; font-size: 1.1rem; line-height: 1; width: 2rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+.btn-nav:disabled { opacity: 0.35; cursor: default; }
+@media print { .sub-tabs { display: none; } .sub-oculto { display: block !important; } .rm-card.mc { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 /* jornada y clasificación (partidos sin xG) */
 .jor-res { list-style: none; margin: 0 0 var(--cds-gap-sm); padding: 0; font-size: var(--cds-font-size-caption); }
 .jor-res li { display: grid; grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr); gap: 8px; padding: 3px 0; border-bottom: 1px solid var(--color-border-line); }
@@ -144,7 +174,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 @media (max-width: 900px) { .fj-cuerpo { grid-template-columns: minmax(0, 1fr); } }
 .btn-sec { font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 12px; border: 1px solid var(--color-border-line); border-radius: 6px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
 .btn-sec:hover { border-color: var(--serie-rm); }
-.exportar { float: right; }
+.mc-pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--cds-gap-sm); margin-top: var(--cds-gap-sm); }
 /* carga, transiciones y foco */
 [data-cargando] { position: relative; min-height: 5rem; }
 [data-cargando]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; z-index: 2;
@@ -358,7 +388,7 @@ details.nota p + p { margin-top: 6px; }
       </div>
       <div class="filtros">
         <label data-en="resumen jugadores">Competición <select id="sel-temporada" data-source="partidos" aria-label="Competición y temporada"></select></label>
-        <label data-en="partido" hidden>Partido <select id="sel-partido" data-source="partidos" aria-label="Partido"></select></label>
+        <label data-en="partido" hidden>Partido <span class="sel-nav"><button type="button" class="btn-nav" id="p-ant" aria-label="Partido anterior">‹</button><select id="sel-partido" data-source="partidos" aria-label="Partido"></select><button type="button" class="btn-nav" id="p-sig" aria-label="Partido siguiente">›</button></span></label>
         <label data-en="historico" hidden>Competición <select id="sel-comp" aria-label="Competición"></select></label>
       </div>
     </div>
@@ -399,40 +429,47 @@ details.nota p + p { margin-top: 6px; }
     </div>
       </section>
       <section class="rm-page" id="partido" hidden>
-    <div class="rm-card" id="marcador" data-source="partidos">
-      <button type="button" class="btn-sec exportar" id="exportar">⤓ Descargar informe (PDF)</button>
+    <div class="rm-card mc" id="marcador" data-source="partidos incidencias">
       <div id="m-ficha"></div>
-      <p class="rm-sub" id="m-coach"></p>
+      <div class="mc-linea" id="m-linea" data-source="incidencias"></div>
+      <div class="mc-pie"><p class="rm-sub" id="m-coach"></p><button type="button" class="btn-sec exportar" id="exportar">⤓ Descargar informe (PDF)</button></div>
     </div>
-
-    <div class="rm-grid">
-      <div class="rm-col">
-      <div class="rm-card" id="comparativa">
-        <h2>Real Madrid vs rival</h2>
-        <div class="rm-cmp" id="cmp" data-source="metricas_equipo"></div>
-        <details class="nota"><summary>Glosario</summary><p><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p></details>
-      </div>
-
-      <div class="rm-card" id="xg-timeline">
-        <h2 id="xg-tit">xG acumulado</h2>
-        <div class="rm-chart" id="xgline" data-source="tiros"></div>
+    <nav class="sub-tabs" id="p-sub" role="tablist" aria-label="Apartados del partido">
+      <button role="tab" data-v="resumen">Resumen</button><button role="tab" data-v="estadisticas">Estadísticas</button><button role="tab" data-v="mapas">Mapas</button><button role="tab" data-v="jugadores">Jugadores</button><button role="tab" data-v="alineaciones">Alineaciones</button>
+    </nav>
+    <div class="rm-grid rm-grid-2-1" data-sub="resumen">
+      <div class="rm-card rm-rep" id="informe">
+        <h2>📊 Informe táctico para el míster</h2>
+        <div id="rep" data-source="informe metricas_jugador metricas_equipo"></div>
       </div>
       <div class="rm-card" id="jornada-card">
         <h2>Jornada y clasificación</h2>
         <div id="jornada" data-source="competicion"></div>
       </div>
+    </div>
+    <div class="rm-grid" data-sub="estadisticas">
+      <div class="rm-card" id="comparativa">
+        <h2>Real Madrid vs rival</h2>
+        <div class="rm-cmp" id="cmp" data-source="metricas_equipo"></div>
+        <details class="nota"><summary>Glosario</summary><p><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p></details>
       </div>
-
-      <div class="rm-card rm-rep" id="informe">
-        <h2>📊 Informe táctico para el míster</h2>
-        <div id="rep" data-source="informe metricas_jugador metricas_equipo"></div>
+      <div class="rm-col">
+      <div class="rm-card" id="momentum">
+        <h2>Momentum del partido</h2>
+        <div class="rm-legend" id="mom-ley"></div>
+        <div class="rm-chart" id="momline" data-source="pases tiros incidencias"></div>
+      </div>
+      <div class="rm-card" id="xg-timeline">
+        <h2 id="xg-tit">xG acumulado</h2>
+        <div class="rm-chart" id="xgline" data-source="tiros"></div>
+      </div>
       </div>
     </div>
-
+    <div data-sub="mapas">
     <div class="rm-card" id="mapa-partido">
       <h2>Mapa del partido</h2>
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
-        <span class="rm-seg" id="p-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
+        <span class="rm-seg" id="p-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button><button data-v="red">Red de pases</button><button data-v="acciones">Recuperaciones y pérdidas</button><button data-v="zonas">Calor</button></span>
         <span class="rm-seg" id="p-equipo"><button data-v="rm">Real Madrid</button><button data-v="rival">Rival</button></span>
         <label>Jugador <select id="p-jugador" data-source="metricas_jugador" aria-label="Jugador"></select></label>
         <span class="rm-seg" id="p-tipos" aria-label="Tipos de pase"><button data-v="progresivo">Progresivos</button><button data-v="completo">Otros completados</button><button data-v="fallado">Fallados</button><button data-v="clave">Pase clave</button></span>
@@ -441,7 +478,8 @@ details.nota p + p { margin-top: 6px; }
       <div class="rm-pitch" id="pitch-partido" data-source="pases tiros"></div>
       <div class="rm-legend" id="legend-partido"></div>
     </div>
-
+    </div>
+    <div data-sub="jugadores">
     <div class="rm-card" id="jugadores-partido">
         <h2>Jugadores</h2>
         <div class="rm-tablewrap">
@@ -457,10 +495,12 @@ details.nota p + p { margin-top: 6px; }
           </table>
         </div>
     </div>
-
+    </div>
+    <div data-sub="alineaciones">
     <div class="rm-card" id="alineaciones-partido">
       <h2>Alineaciones</h2>
       <div id="al-partido" data-source="alineaciones"></div>
+    </div>
     </div>
       </section>
       <section class="rm-page" id="jugadores" hidden>

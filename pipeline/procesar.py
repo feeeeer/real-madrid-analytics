@@ -262,6 +262,48 @@ pases = pd.DataFrame({
                      np.where(pa["ok"], "completo", "fallado")), "minuto": pa["minute"],
 })
 
+# ---------- Incidencias del partido (línea de tiempo): goles, tarjetas y cambios ----------
+equipos_de = {p.match_id: (p.local, p.visitante) for p in partidos.itertuples()}
+otro = lambda mid, t: [x for x in equipos_de[mid] if x != t][0]
+inc = []
+for r in ws[ws["type"] == "Goal"].itertuples():
+    pp = "OwnGoal" in r.q
+    inc.append(dict(match_id=r.match_id, minuto=r.minute, orden=r.expanded_minute, equipo=otro(r.match_id, r.team) if pp else r.team,
+                    tipo="gol_pp" if pp else "penalti" if "Penalty" in r.q else "gol", jugador=r.player, sale=""))
+TARJ = {"Yellow": "amarilla", "SecondYellow": "segunda_amarilla", "Red": "roja"}
+for r in ws[ws["type"] == "Card"].itertuples():
+    inc.append(dict(match_id=r.match_id, minuto=r.minute, orden=r.expanded_minute, equipo=r.team, tipo=TARJ.get(r.card_type, "amarilla"), jugador=r.player, sale=""))
+entra = ws[ws["type"] == "SubstitutionOn"].set_index(["match_id", "player_id"])["player"]
+for r in ws[ws["type"] == "SubstitutionOff"].itertuples():
+    inc.append(dict(match_id=r.match_id, minuto=r.minute, orden=r.expanded_minute, equipo=r.team, tipo="cambio",
+                    jugador=entra.get((r.match_id, r.related_player_id), ""), sale=r.player))
+incidencias = pd.DataFrame(inc, columns=["match_id", "minuto", "orden", "equipo", "tipo", "jugador", "sale"]).sort_values(["match_id", "orden"])
+# comprobación: los goles de la línea de tiempo cuadran con el marcador
+for p in partidos.itertuples():
+    gi = incidencias[(incidencias["match_id"] == p.match_id) & incidencias["tipo"].isin(["gol", "penalti", "gol_pp"])]["equipo"].value_counts()
+    assert gi.get(p.local, 0) == p.goles_local and gi.get(p.visitante, 0) == p.goles_visitante, (p.fecha, gi.to_dict())
+
+# ---------- Red de pases: posición media de cada jugador y pases entre cada pareja ----------
+toques = ws[ws["is_touch"].astype(str) == "True"].copy()  # orden de los ficheros = orden del partido
+toques["sig_equipo"] = toques.groupby("match_id")["team"].shift(-1)
+toques["sig_jugador"] = toques.groupby("match_id")["player"].shift(-1)
+pc = toques[(toques["type"] == "Pass") & toques["ok"] & (toques["sig_equipo"] == toques["team"]) & (toques["sig_jugador"] != toques["player"])]
+red_enlaces = pc.groupby(["match_id", "team", "player", "sig_jugador"]).size().reset_index(name="n")
+red_enlaces.columns = ["match_id", "equipo", "de", "a", "n"]
+red_nodos = toques[toques["player"].notna()].groupby(["match_id", "team", "player"]).agg(x=("X", "mean"), y=("Y", "mean"), toques=("type", "size")).reset_index()
+red_nodos = red_nodos.rename(columns={"team": "equipo", "player": "jugador"}).round({"x": 1, "y": 1})
+red_nodos["pases"] = red_nodos.apply(lambda r: int(red_enlaces[(red_enlaces["match_id"] == r.match_id) & (red_enlaces["de"] == r.jugador)]["n"].sum()), axis=1)
+
+# ---------- Recuperaciones y pérdidas (mapa) ----------
+rec = ws[ws["type"].isin(["BallRecovery", "Interception"]) & ws["ok"]]
+per = ws[(ws["type"] == "Dispossessed") | ((ws["type"] == "BallTouch") & ~ws["ok"])]
+acciones = pd.concat([
+    pd.DataFrame({"match_id": rec["match_id"], "equipo": rec["team"], "jugador": rec["player"], "tipo": "recuperacion",
+                  "x": rec["X"].round(1), "y": rec["Y"].round(1), "minuto": rec["minute"], "peligrosa": 0}),
+    pd.DataFrame({"match_id": per["match_id"], "equipo": per["team"], "jugador": per["player"], "tipo": "perdida",
+                  "x": per["X"].round(1), "y": per["Y"].round(1), "minuto": per["minute"], "peligrosa": danger_loss(per).astype(int)}),
+], ignore_index=True).sort_values(["match_id", "minuto"])
+
 # ---------- Rendimiento frente a lo esperado ----------
 fb_teams = set(fb_misc["team"])
 to_fb_team = lambda t: t if t in fb_teams else match_names([t], fb_teams).get(t, t)
@@ -418,6 +460,7 @@ competicion = pd.DataFrame({
 # ---------- Guardar ----------
 OUT.mkdir(parents=True, exist_ok=True)
 for name, df in {"partidos": partidos, "metricas_equipo": eq, "metricas_jugador": jug, "pases": pases,
-                 "tiros": tiros, "rendimiento": ren, "alineaciones": alineaciones, "competicion": competicion}.items():
+                 "tiros": tiros, "rendimiento": ren, "alineaciones": alineaciones, "competicion": competicion,
+                 "incidencias": incidencias, "red_nodos": red_nodos, "red_enlaces": red_enlaces, "acciones": acciones}.items():
     df.to_csv(OUT / f"{name}.csv", index=False)
     print(f"{name}.csv: {len(df)} filas")

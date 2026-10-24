@@ -1,0 +1,220 @@
+match_id,minuto,orden,equipo,tipo,jugador,sale
+1993904,9,9,Real Madrid,amarilla,Álvaro Carreras,
+1993904,30,30,Real Sociedad,amarilla,Yangel Herrera,
+1993904,39,39,Real Madrid,gol,Kylian Mbappé,
+1993904,43,43,Real Sociedad,gol,Luka Sucic,
+1993904,46,46,Real Sociedad,amarilla,Jon Aramburu,
+1993904,45,48,Real Madrid,cambio,Marc Cucurella,Álvaro Carreras
+1993904,56,59,Real Sociedad,cambio,Igor Zubeldia,Jon Aramburu
+1993904,57,60,Real Sociedad,cambio,Orri Óskarsson,Mikel Oyarzabal
+1993904,59,62,Real Madrid,gol,Kylian Mbappé,
+1993904,65,68,Real Sociedad,cambio,Ander Barrenetxea,Job Ochieng
+1993904,65,68,Real Sociedad,cambio,Carlos Soler,Yangel Herrera
+1993904,67,70,Real Madrid,gol,Vinícius Júnior,
+1993904,70,73,Real Sociedad,amarilla,Luken Beitia,
+1993904,72,75,Real Madrid,amarilla,Ibrahima Konaté,
+1993904,73,76,Real Sociedad,cambio,Gonçalo Guedes,Takefusa Kubo
+1993904,77,80,Real Madrid,cambio,Eduardo Camavinga,Jude Bellingham
+1993904,77,80,Real Madrid,cambio,Brahim Díaz,Arda Güler
+1993904,79,82,Real Madrid,gol,Kylian Mbappé,
+1993904,83,86,Real Madrid,cambio,Yan Diomande,Vinícius Júnior
+1993904,85,88,Real Madrid,cambio,Carlos Espí,Bernardo Silva
+1993904,93,96,Real Madrid,amarilla,Eduardo Camavinga,
+1993911,8,8,Real Madrid,gol,Jude Bellingham,
+1993911,29,29,Espanyol,gol,Cala,
+1993911,31,31,Espanyol,amarilla,Cala,
+1993911,31,31,Real Madrid,amarilla,Vinícius Júnior,
+1993911,58,62,Espanyol,amarilla,Clemens Riedel,
+1993911,63,67,Real Madrid,cambio,Marc Cucurella,Álvaro Carreras
+1993911,63,67,Real Madrid,cambio,Yan Diomande,Arda Güler
+1993911,65,69,Espanyol,cambio,Vanja Drkusic,Clemens Riedel
+1993911,65,69,Espanyol,cambio,Rafel Bauzà,Cala
+1993911,74,78,Espanyol,cambio,Pol Lozano,Urko González de Zárate
+1993911,74,78,Espanyol,cambio,Pere Milla,Javi Hernández
+1993911,79,83,Real Madrid,cambio,Eduardo Camavinga,Bernardo Silva
+1993911,79,83,Real Madrid,cambio,Trent Alexander-Arnold,Denzel Dumfries
+1993911,79,83,Real Madrid,cambio,Carlos Espí,Jude Bellingham
+1993911,83,87,Espanyol,amarilla,Edu Expósito,
+1993911,87,91,Espanyol,cambio,Jofre Carreras,Edu Expósito
+1993911,89,93,Real Madrid,gol,Carlos Espí,
+1993911,90,94,Espanyol,amarilla,Pere Milla,
+1993911,93,97,Espanyol,amarilla,Pol Lozano,
+1993924,18,18,Real Madrid,gol,Jude Bellingham,
+1993924,25,25,Real Madrid,gol_pp,Alfonso Herrero,
+1993924,29,29,Real Madrid,gol,Kylian Mbappé,
+1993924,45,49,Malaga,cambio,Pablo Martínez,Rafa Rodríguez
+1993924,60,64,Malaga,cambio,José Salinas,Carlos Puga
+1993924,60,64,Malaga,cambio,Juan Cruz,Joaquín Muñoz
+1993924,64,68,Real Madrid,cambio,Yan Diomande,Brahim Díaz
+1993924,65,69,Malaga,amarilla,Chupe,
+1993924,73,77,Malaga,cambio,Haitam Abaida,Einar Galilea
+1993924,76,80,Real Madrid,cambio,Bernardo Silva,Federico Valverde
+1993924,86,90,Real Madrid,cambio,Arda Güler,Jude Bellingham
+1993924,86,90,Malaga,cambio,Ramón Enríquez,Izan Merino
+1993924,90,94,Real Madrid,gol,Arda Güler,
+1993924,92,96,Malaga,amarilla,Ramón Enríquez,
+1993928,38,38,Real Betis,cambio,Marc Bartra,Diego Llorente
+1993928,47,47,Real Madrid,amarilla,Arda Güler,
+1993928,53,60,Real Madrid,amarilla,Ibrahima Konaté,
+1993928,53,60,Real Madrid,amarilla,,
+1993928,59,66,Real Betis,cambio,Álvaro Fidalgo,Isco
+1993928,60,67,Real Madrid,amarilla,Eduardo Camavinga,
+1993928,63,70,Real Betis,amarilla,Facundo Bernal,
+1993928,63,70,Real Madrid,cambio,Bernardo Silva,Eduardo Camavinga
+1993928,63,70,Real Madrid,cambio,Trent Alexander-Arnold,Denzel Dumfries
+1993928,63,70,Real Madrid,cambio,Yan Diomande,Arda Güler
+1993928,67,74,Real Betis,cambio,Nelson Deossa,Facundo Bernal
+1993928,67,74,Real Betis,cambio,Troy Parrott,Cucho Hernández
+1993928,76,83,Real Betis,cambio,Rodrigo Riquelme,Antony
+1993928,80,87,Real Betis,gol,Troy Parrott,
+1993928,81,88,Real Madrid,cambio,Carlos Espí,Federico Valverde
+1993928,82,89,Real Betis,amarilla,Marc Roca,
+1993928,87,94,Real Madrid,cambio,Álvaro Carreras,Marc Cucurella
+1993928,92,99,Real Betis,amarilla,Natan,
+1993928,98,105,Real Madrid,amarilla,Vinícius Júnior,
+1994150,5,5,Atletico,amarilla,,
+1994150,34,34,Atletico,amarilla,Marc Pubill,
+1994150,38,38,Atletico,amarilla,Cristian Romero,
+1994150,45,48,Atletico,cambio,Koke,Marc Pubill
+1994150,48,51,Real Madrid,amarilla,Denzel Dumfries,
+1994150,51,54,Real Madrid,roja,Dean Huijsen,
+1994150,52,55,Atletico,penalti,Alejandro Grimaldo,
+1994150,53,56,Real Madrid,cambio,Antonio Rüdiger,Arda Güler
+1994150,53,56,Real Madrid,cambio,Yan Diomande,Vinícius Júnior
+1994150,58,61,Atletico,gol,Jonathan David,
+1994150,61,64,Atletico,cambio,Julián Alvarez,Jonathan David
+1994150,66,69,Atletico,cambio,Ademola Lookman,Álex Baena
+1994150,70,73,Real Madrid,cambio,Eduardo Camavinga,Aurélien Tchouaméni
+1994150,77,80,Real Madrid,amarilla,Jude Bellingham,
+1994150,81,84,Real Madrid,cambio,Bernardo Silva,Jude Bellingham
+1994150,88,91,Real Madrid,gol,Antonio Rüdiger,
+1994150,88,91,Atletico,cambio,Robin Le Normand,Cristian Romero
+1994150,88,91,Atletico,cambio,Morten Hjulmand,Lee Kang-In
+1994162,13,13,Real Madrid,penalti,Kylian Mbappé,
+1994162,16,16,Real Madrid,gol,Álvaro Carreras,
+1994162,34,34,Real Madrid,gol,Jude Bellingham,
+1994162,45,49,Real Madrid,cambio,Eduardo Camavinga,Federico Valverde
+1994162,50,54,Rayo Vallecano,gol,Sergio Camello,
+1994162,66,70,Rayo Vallecano,cambio,Óscar Valentín,Gnangoro
+1994162,66,70,Rayo Vallecano,cambio,Rayane Belaid,Pedro Díaz
+1994162,68,72,Real Madrid,cambio,Aurélien Tchouaméni,Bernardo Silva
+1994162,71,75,Real Madrid,cambio,Arda Güler,Yan Diomande
+1994162,74,78,Rayo Vallecano,cambio,Alemão,Sergio Camello
+1994162,74,78,Rayo Vallecano,cambio,Mujaid Sadick,Unai López
+1994162,75,79,Rayo Vallecano,amarilla,Pathé Ciss,
+1994162,85,89,Rayo Vallecano,cambio,Iván Balliu,Adrià Pedrosa
+1994162,88,92,Real Madrid,cambio,Marc Cucurella,Vinícius Júnior
+1994162,90,94,Real Madrid,gol,Kylian Mbappé,
+1994174,9,9,Villarreal,amarilla,Renato Veiga,
+1994174,18,18,Real Madrid,amarilla,Jude Bellingham,
+1994174,45,46,Real Madrid,cambio,Marc Cucurella,Álvaro Carreras
+1994174,51,52,Real Madrid,cambio,Vinícius Júnior,Trent Alexander-Arnold
+1994174,55,56,Villarreal,cambio,Nathan Saliba,Santi Comesaña
+1994174,55,56,Villarreal,cambio,Carlos Romero,Juan Foyth
+1994174,62,63,Real Madrid,gol,Yan Diomande,
+1994174,66,67,Villarreal,cambio,Gerard Moreno,Ilias Akhomach
+1994174,66,67,Villarreal,cambio,Georges Mikautadze,Sergi Cardona
+1994174,67,68,Real Madrid,amarilla,,
+1994174,71,72,Real Madrid,roja,Vinícius Júnior,
+1994174,76,77,Real Madrid,cambio,Eduardo Camavinga,Arda Güler
+1994174,80,81,Real Madrid,amarilla,Ibrahima Konaté,
+1994174,82,83,Real Madrid,amarilla,Antonio Rüdiger,
+1994174,83,84,Villarreal,amarilla,Pau Navarro,
+1994174,85,86,Real Madrid,cambio,Denzel Dumfries,Yan Diomande
+1994174,85,86,Villarreal,cambio,Nizar,Alberto Moleiro
+1994174,86,87,Real Madrid,amarilla,Aurélien Tchouaméni,
+1994174,92,93,Real Madrid,amarilla,Kylian Mbappé,
+1994179,3,3,Real Madrid,amarilla,Yan Diomande,
+1994179,24,24,Real Madrid,gol_pp,Matías Dituro,
+1994179,30,30,Elche,amarilla,Marc Aguado,
+1994179,32,32,Real Madrid,gol,Kylian Mbappé,
+1994179,57,60,Elche,cambio,Lucas Cepeda,Marc Aguado
+1994179,57,60,Elche,cambio,Thomas Lemar,Germán Valera
+1994179,67,70,Real Madrid,cambio,Brahim Díaz,Vinícius Júnior
+1994179,67,70,Real Madrid,cambio,Jude Bellingham,Arda Güler
+1994179,67,70,Elche,cambio,Rubén Sánchez,Buba Sangaré
+1994179,67,70,Elche,cambio,Fer Niño,Martim Neto
+1994179,70,73,Elche,gol,Abiel Osorio,
+1994179,72,75,Real Madrid,amarilla,Ibrahima Konaté,
+1994179,77,80,Elche,amarilla,Lucas Cepeda,
+1994179,79,82,Elche,cambio,Josan,Tete Morente
+1994179,82,85,Elche,gol,Fer Niño,
+1994179,85,88,Real Madrid,cambio,Endrick,Aurélien Tchouaméni
+1994179,86,89,Real Madrid,cambio,Carlos Espí,Trent Alexander-Arnold
+1994179,90,93,Real Madrid,gol,Carlos Espí,
+1994179,91,94,Real Madrid,cambio,Denzel Dumfries,Yan Diomande
+1994179,92,95,Elche,amarilla,Josan,
+1994179,93,96,Elche,amarilla,Gonzalo Villar,
+1994188,22,22,Sevilla,amarilla,Félix Correia,
+1994188,22,22,Real Madrid,amarilla,Dean Huijsen,
+1994188,29,29,Real Madrid,gol,Arda Güler,
+1994188,36,36,Real Madrid,gol,Kylian Mbappé,
+1994188,45,49,Sevilla,cambio,Chidera Ejuke,Rubén Vargas
+1994188,55,59,Sevilla,cambio,Lucas Stassin,Robbie Ure
+1994188,55,59,Sevilla,cambio,Manu Bueno,Peque Fernández
+1994188,62,66,Real Madrid,penalti,Kylian Mbappé,
+1994188,68,72,Sevilla,amarilla,Juan Iglesias,
+1994188,68,72,Real Madrid,cambio,Brahim Díaz,Endrick
+1994188,68,72,Real Madrid,cambio,Bernardo Silva,Jude Bellingham
+1994188,71,75,Sevilla,cambio,José Ángel Carmona,Juan Iglesias
+1994188,72,76,Real Madrid,amarilla,Marc Cucurella,
+1994188,72,76,Sevilla,cambio,Alfon González,Félix Correia
+1994188,77,81,Real Madrid,cambio,Eduardo Camavinga,Arda Güler
+1994188,79,83,Sevilla,gol,Manu Bueno,
+1994188,81,85,Real Madrid,gol,Yan Diomande,
+1994188,83,87,Real Madrid,cambio,Carlos Espí,Kylian Mbappé
+1994188,84,88,Real Madrid,cambio,Éder Militão,Federico Valverde
+2029114,13,13,Real Madrid,gol,Kylian Mbappé,
+2029114,22,22,Real Madrid,gol,Federico Valverde,
+2029114,39,39,Inter,amarilla,Hakan Çalhanoglu,
+2029114,45,47,Inter,cambio,John Stones,Benjamin Pavard
+2029114,59,61,Inter,cambio,Petar Sucic,Nicolò Barella
+2029114,59,61,Inter,cambio,Piotr Zielinski,Hakan Çalhanoglu
+2029114,59,61,Inter,cambio,Ange-Yoan Bonny,Marcus Thuram
+2029114,76,78,Inter,gol,Carlos Augusto,
+2029114,78,80,Real Madrid,amarilla,Dean Huijsen,
+2029114,78,80,Inter,amarilla,Lautaro Martínez,
+2029114,78,80,Real Madrid,cambio,Aurélien Tchouaméni,Trent Alexander-Arnold
+2029114,78,80,Real Madrid,cambio,Yan Diomande,Brahim Díaz
+2029114,82,84,Inter,cambio,Henrikh Mkhitaryan,Carlos Augusto
+2029114,86,88,Real Madrid,cambio,Álvaro Carreras,Vinícius Júnior
+2029114,92,94,Real Madrid,cambio,Carlos Espí,Kylian Mbappé
+2029114,93,95,Inter,amarilla,Yann Bisseck,
+2029124,43,43,Real Madrid,gol,Bernardo Silva,
+2029124,51,53,Real Madrid,gol,Arda Güler,
+2029124,62,64,RBL,cambio,Rocco Reitz,Neil El Aynaoui
+2029124,62,64,RBL,cambio,Andrija Maksimovic,Brajan Gruda
+2029124,67,69,Real Madrid,amarilla,Álvaro Carreras,
+2029124,69,71,RBL,amarilla,Rocco Reitz,
+2029124,69,71,Real Madrid,cambio,Yan Diomande,Vinícius Júnior
+2029124,69,71,Real Madrid,cambio,Marc Cucurella,Álvaro Carreras
+2029124,72,74,RBL,cambio,Max Finkgräfe,David Raum
+2029124,72,74,RBL,cambio,Tidiam Gomis,Antonio Nusa
+2029124,77,79,RBL,cambio,Christoph Baumgartner,Christopher Nkunku
+2029124,77,79,Real Madrid,cambio,Brahim Díaz,Arda Güler
+2029124,82,84,Real Madrid,gol,Kylian Mbappé,
+2029124,84,86,RBL,gol,Tidiam Gomis,
+2029124,86,88,Real Madrid,gol,Yan Diomande,
+2029124,87,89,Real Madrid,cambio,Carlos Espí,Kylian Mbappé
+2029124,87,89,Real Madrid,cambio,Endrick,Jude Bellingham
+2029142,16,16,Roma,cambio,Niccolò Pisilli,Manu Koné
+2029142,19,19,Roma,gol,Marten de Roon,
+2029142,24,24,Real Madrid,gol,Kylian Mbappé,
+2029142,45,47,Roma,cambio,Rodrigo Mora,Paulo Dybala
+2029142,50,52,Roma,gol,Donyell Malen,
+2029142,56,58,Roma,gol,Donyell Malen,
+2029142,58,60,Real Madrid,cambio,Arda Güler,Denzel Dumfries
+2029142,58,60,Real Madrid,cambio,Endrick,Vinícius Júnior
+2029142,59,61,Roma,amarilla,Gianluca Mancini,
+2029142,62,64,Roma,cambio,Lorenzo Pellegrini,Matías Soulé
+2029142,62,64,Roma,cambio,Leonardo Balerdi,Gianluca Mancini
+2029142,68,70,Roma,amarilla,Wesley,
+2029142,69,71,Real Madrid,cambio,Bernardo Silva,Aurélien Tchouaméni
+2029142,77,79,Real Madrid,cambio,Álvaro Carreras,Marc Cucurella
+2029142,77,79,Real Madrid,cambio,Carlos Espí,Yan Diomande
+2029142,80,82,Roma,cambio,Konstantinos Koulierakis,Mario Hermoso
+2029142,82,84,Real Madrid,gol,Carlos Espí,
+2029142,84,86,Real Madrid,gol,Endrick,
+2029142,88,90,Roma,amarilla,Lorenzo Pellegrini,
+2029142,89,91,Real Madrid,gol,Antonio Rüdiger,
+2029142,94,96,Real Madrid,amarilla,Álvaro Carreras,

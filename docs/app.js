@@ -173,7 +173,7 @@ function tooltip(box) {
 // resultado de Understat -> botón del filtro de tiros (el poste cuenta como fuera)
 const TIPO_TIRO = { Goal: 'gol', Saved: 'parado', 'Saved to Post': 'parado', 'Saved Off Target': 'parado', 'Off T': 'fuera', Post: 'fuera', Blocked: 'bloqueado' };
 
-function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
+function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro, acciones = [], red = null }) {
   box.querySelector('svg')?.remove();
   const half = capa === 'tiros';
   // pase progresivo = completado que avanza 15 m o más (misma definición que procesar.py)
@@ -195,9 +195,35 @@ function drawPitch(box, { capa, passes, shots, color, tipos, tiposTiro }) {
   }
   const tip = tooltip(box);
   const legend = [];
-  if (capa === 'zonas') {
-    // dónde participa: origen de sus pases y sus tiros, en celdas de 10 × 10 m
-    const n = d3.rollup([...passes, ...shots], (v) => v.length, (d) => Math.min(11, Math.floor(d.x / 10)), (d) => Math.min(7, Math.floor(d.y / 10)));
+  if (capa === 'red' && red) {
+    // red de pases: cada jugador en su posición media; la línea engorda con los pases entre los dos (mínimo 3)
+    const pos = new Map(red.nodos.map((n) => [n.jugador, n]));
+    const ens = red.enlaces.filter((e) => N(e.n) >= 3 && pos.has(e.de) && pos.has(e.a));
+    const maxN = d3.max(ens, (e) => N(e.n)) || 1;
+    svg.append('g').selectAll('line').data(ens).join('line')
+      .attr('x1', (e) => pos.get(e.de).x).attr('y1', (e) => pos.get(e.de).y).attr('x2', (e) => pos.get(e.a).x).attr('y2', (e) => pos.get(e.a).y)
+      .style('stroke', color).attr('stroke-width', (e) => 0.3 + 1.8 * (N(e.n) / maxN)).attr('opacity', (e) => 0.25 + 0.6 * (N(e.n) / maxN)).attr('stroke-linecap', 'round')
+      .on('mouseenter', (ev, e) => tip.show(ev, `${e.de} → ${e.a}`, [`${e.n} pases`])).on('mouseleave', () => tip.hide());
+    const maxP = d3.max(red.nodos, (n) => N(n.pases)) || 1;
+    const nodos = svg.append('g').selectAll('g').data(red.nodos.filter((n) => N(n.toques) >= 15)).join('g').attr('transform', (n) => `translate(${n.x},${n.y})`);
+    nodos.append('circle').attr('r', (n) => 1.6 + 2.4 * Math.sqrt(N(n.pases) / maxP)).style('fill', color).style('stroke', 'var(--color-panel)').attr('stroke-width', 0.4)
+      .on('mouseenter', (ev, n) => tip.show(ev, n.jugador, [`${n.pases} pases completados a compañeros`, `${n.toques} toques`])).on('mouseleave', () => tip.hide());
+    nodos.append('text').attr('y', -4.6).attr('text-anchor', 'middle').style('fill', 'var(--color-fg)').style('font-size', '2.6px').style('pointer-events', 'none')
+      .text((n) => n.jugador.split(' ').at(-1));
+    legend.push(['n', 'Círculo: posición media (tamaño = pases)', color, 'dot'], ['l', 'Línea: pases entre los dos (3 o más)', color]);
+  } else if (capa === 'acciones') {
+    // dónde roba (círculo verde) y dónde pierde el balón (aspa roja; rellena si fue en nuestro tercio)
+    const rec = acciones.filter((a) => a.tipo === 'recuperacion'), per = acciones.filter((a) => a.tipo === 'perdida');
+    svg.append('g').selectAll('circle').data(rec).join('circle').attr('cx', (a) => a.x).attr('cy', (a) => a.y).attr('r', 1.3)
+      .style('fill', 'var(--color-ok)').attr('opacity', 0.85)
+      .on('mouseenter', (ev, a) => tip.show(ev, `${a.jugador} · ${a.minuto}'`, ['Recuperación'])).on('mouseleave', () => tip.hide());
+    svg.append('g').selectAll('path').data(per).join('path').attr('d', d3.symbol(d3.symbolCross, 9))
+      .attr('transform', (a) => `translate(${a.x},${a.y}) rotate(45)`).style('fill', C_BAD).attr('opacity', (a) => (a.peligrosa === '1' ? 1 : 0.55))
+      .on('mouseenter', (ev, a) => tip.show(ev, `${a.jugador} · ${a.minuto}'`, [a.peligrosa === '1' ? 'Pérdida peligrosa (en nuestro tercio)' : 'Pérdida'])).on('mouseleave', () => tip.hide());
+    legend.push(['r', `Recuperaciones (${rec.length})`, 'var(--color-ok)', 'dot'], ['p', `Pérdidas (${per.length}; ${per.filter((a) => a.peligrosa === '1').length} peligrosas)`, C_BAD, 'dot']);
+  } else if (capa === 'zonas') {
+    // dónde participa: origen de sus pases, sus tiros, recuperaciones y pérdidas, en celdas de 10 × 10 m
+    const n = d3.rollup([...passes, ...shots, ...acciones], (v) => v.length, (d) => Math.min(11, Math.floor(d.x / 10)), (d) => Math.min(7, Math.floor(d.y / 10)));
     const celdas = [...n].flatMap(([cx, m]) => [...m].map(([cy, v]) => ({ cx, cy, v })));
     const max = d3.max(celdas, (c) => c.v) || 1;
     svg.insert('g', ':first-child').selectAll('rect').data(celdas).join('rect')
@@ -274,6 +300,7 @@ const toggleTipo = (v) => {
   dash.setParams({ tipos: [...t] });
 };
 const segCapa = segmented('#p-capa', (v) => dash.setParams({ capa: v }));
+$('#p-sub').addEventListener('click', (ev) => { const bt = ev.target.closest('button'); if (bt) dash.setParams({ sub_p: bt.dataset.v }); });
 const segEquipo = segmented('#p-equipo', (v) => dash.setParams({ equipo: v, jugador: null }));
 const segTipos = segmented('#p-tipos', toggleTipo);
 const segCapaT = segmented('#t-capa', (v) => dash.setParams({ capa_t: v }));
@@ -475,6 +502,18 @@ function renderPartido() {
     $('#m-coach').replaceChildren('Entrenador del Madrid: ', markEl('span', 'partidos', 'entrenador_rm', w, p.entrenador_rm));
   }
 
+  // Apartados del partido (Resumen, Estadísticas, Mapas, Jugadores, Alineaciones)
+  const sub = P().sub_p || 'resumen';
+  document.querySelectorAll('#partido [data-sub]').forEach((d) => d.classList.toggle('sub-oculto', d.dataset.sub !== sub));
+  document.querySelectorAll('#p-sub button').forEach((bt) => bt.setAttribute('aria-selected', String(bt.dataset.v === sub)));
+  // anterior / siguiente
+  const orden = [...partidos].sort((x, y) => x.fecha.localeCompare(y.fecha)), pos = orden.findIndex((x) => Number(x.match_id) === mid);
+  $('#p-ant').disabled = pos <= 0; $('#p-sig').disabled = pos < 0 || pos >= orden.length - 1;
+  $('#p-ant').onclick = () => pos > 0 && dash.setParams({ partido: Number(orden[pos - 1].match_id), jugador: null });
+  $('#p-sig').onclick = () => pos < orden.length - 1 && dash.setParams({ partido: Number(orden[pos + 1].match_id), jugador: null });
+  // línea de tiempo: goles, tarjetas y cambios; arriba el local, abajo el visitante
+  if (p && ok('incidencias')) drawLinea($('#m-linea'), rows('incidencias').filter((r) => Number(r.match_id) === mid), p, nombre);
+
   // Comparativa
   const me = rows('metricas_equipo');
   const a = me.find((r) => Number(r.match_id) === mid && r.equipo === RM);
@@ -572,12 +611,14 @@ function renderPartido() {
 
   // Mapa
   const equipoSel = P().equipo === 'rival' ? (b ? b.equipo : '') : RM;
-  segCapa((v) => v === (P().capa || 'pases'));
+  const capa = P().capa || 'pases';
+  segCapa((v) => v === capa);
   segEquipo((v) => v === (P().equipo || 'rm'));
   segTipos((v) => (P().tipos || []).includes(v));
-  $('#p-tipos').hidden = (P().capa || 'pases') !== 'pases';
+  $('#p-tipos').hidden = capa !== 'pases';
   segTiros((v) => (P().tiros_tipo || []).includes(v));
-  $('#p-tiros').hidden = !$('#p-tipos').hidden;
+  $('#p-tiros').hidden = capa !== 'tiros';
+  $('#p-jugador').parentElement.hidden = capa === 'red';  // la red de pases es de todo el equipo
   $('#p-equipo').querySelector('[data-v=rival]').textContent = b ? nombre(b.equipo) : 'Rival';
   const js = rows('metricas_jugador').filter((r) => Number(r.match_id) === mid && r.equipo === equipoSel && N(r.minutos) > 0)
     .sort((x, y) => N(y.minutos) - N(x.minutos));
@@ -589,11 +630,15 @@ function renderPartido() {
   pj.value = jugSel;
   const color = equipoSel === RM ? C_RM() : C_RIV();
   const filt = (r) => Number(r.match_id) === mid && r.equipo === equipoSel && (jugSel === '*' || r.jugador === jugSel);
-  if (ok('pases', 'tiros')) {
+  const delEquipo = (r) => Number(r.match_id) === mid && r.equipo === equipoSel;
+  if (ok('pases', 'tiros') && (capa !== 'red' || ok('red_nodos', 'red_enlaces')) && (!['acciones', 'zonas'].includes(capa) || ok('acciones'))) {
+    const xy = (r) => ({ ...r, x: N(r.x), y: N(r.y) });
     const legend = drawPitch($('#pitch-partido'), {
-      capa: P().capa || 'pases', color, tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
-      passes: rows('pases').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), fin_x: N(r.fin_x), fin_y: N(r.fin_y) })),
-      shots: rows('tiros').filter(filt).map((r) => ({ ...r, x: N(r.x), y: N(r.y), xg: r.xg === '' ? NaN : N(r.xg) })),
+      capa, color, tipos: P().tipos || [], tiposTiro: P().tiros_tipo || [],
+      passes: rows('pases').filter(filt).map((r) => ({ ...xy(r), fin_x: N(r.fin_x), fin_y: N(r.fin_y) })),
+      shots: rows('tiros').filter(filt).map((r) => ({ ...xy(r), xg: r.xg === '' ? NaN : N(r.xg) })),
+      acciones: capa === 'acciones' || capa === 'zonas' ? rows('acciones').filter(filt).map(xy) : [],
+      red: capa === 'red' ? { nodos: rows('red_nodos').filter(delEquipo).map(xy), enlaces: rows('red_enlaces').filter(delEquipo) } : null,
     });
     drawLegend($('#legend-partido'), legend);
   }
@@ -602,6 +647,8 @@ function renderPartido() {
   // sin xG (Champions, Copa) ese hueco muestra la jornada y la clasificación de la competición
   const conXgP = !a || a.xg !== '';
   $('#xg-timeline').hidden = !conXgP;
+  if (p && ok('pases', 'tiros', 'incidencias')) drawMomentum($('#momline'), rows('pases').filter((r) => Number(r.match_id) === mid), rows('tiros').filter((r) => Number(r.match_id) === mid),
+    rows('incidencias').filter((r) => Number(r.match_id) === mid), p, nombre);
   if (conXgP) drawXgLine($('#xgline'), rows('tiros').filter((r) => Number(r.match_id) === mid), p, b);
   if (p) pintarJornada($('#jornada'), p);
 
@@ -621,6 +668,65 @@ function renderPartido() {
   fillTable($('#tabla-partido'), vista, ['jugador', 'minutos', 'goles', 'asistencias', 'xg', 'xa', 'pases_clave', 'acierto_pase', 'pases_progresivos', 'regates',
     'recuperaciones', 'duelos', 'perdidas_peligrosas', 'forma', 'impacto'], (r) => r.clave, sel2 && sel2.clave);
 
+}
+
+const ICONO = { gol: '⚽', penalti: '⚽', gol_pp: '⚽', amarilla: '🟨', segunda_amarilla: '🟨🟥', roja: '🟥', cambio: '⇄' };
+function drawLinea(box, inc, p, nombre) {
+  box.replaceChildren();
+  const W = Math.max(300, box.clientWidth), H = 92, m = { l: 10, r: 10 }, yc = H / 2;
+  const fin = Math.max(90, d3.max(inc, (r) => N(r.orden)) || 0);
+  const x = d3.scaleLinear([0, fin], [m.l, W - m.r]);
+  const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', 'Línea de tiempo: ' + inc.map((r) => `${r.minuto}' ${r.tipo.replace('_', ' ')} ${r.jugador}`).join(', '));
+  svg.append('line').attr('x1', x(0)).attr('x2', x(fin)).attr('y1', yc).attr('y2', yc).attr('class', 'mc-eje');
+  for (const t of [0, 45, 90]) {
+    svg.append('line').attr('x1', x(t)).attr('x2', x(t)).attr('y1', yc - 4).attr('y2', yc + 4).attr('class', 'mc-eje');
+    svg.append('text').attr('x', x(t)).attr('y', yc + 3.5).attr('dx', t === 0 ? 4 : t === 90 ? -4 : 0).attr('text-anchor', t === 0 ? 'start' : t === 90 ? 'end' : 'middle')
+      .attr('class', 'mc-min').attr('dy', -8).text(`${t}'`);
+  }
+  const tip = tooltip(box);
+  // apilado: si caen dos en el mismo minuto, el segundo se aleja del eje
+  const usados = {};
+  for (const r of inc) {
+    const arriba = r.equipo === p.local, k = `${arriba}|${Math.round(N(r.orden) / 3)}`;
+    usados[k] = (usados[k] || 0) + 1;
+    const yy = arriba ? yc - 16 - 15 * (usados[k] - 1) : yc + 22 + 15 * (usados[k] - 1);
+    const txt = r.tipo === 'cambio' ? `Entra ${r.jugador} · sale ${r.sale}` : `${r.jugador}${r.tipo === 'penalti' ? ' (penalti)' : r.tipo === 'gol_pp' ? ' (en propia puerta)' : ''}`;
+    svg.append('text').attr('x', x(N(r.orden))).attr('y', yy).attr('text-anchor', 'middle').attr('class', `mc-ico ${r.tipo}`).text(ICONO[r.tipo] || '•')
+      .on('mouseenter', (ev) => tip.show(ev, `${r.minuto}' · ${nombre(r.equipo)}`, [txt])).on('mouseleave', () => tip.hide());
+  }
+}
+
+// Momentum: quién empujaba en cada tramo de 5 minutos (pases completados que llegan al último tercio + tiros × 3)
+function drawMomentum(box, pases, tiros, inc, p, nombre) {
+  box.querySelector('svg')?.remove();
+  const W = Math.max(280, box.clientWidth), H = 200, m = { t: 14, r: 10, b: 24, l: 10 };
+  const fin = Math.max(90, d3.max(pases, (r) => N(r.minuto)) || 0), tramos = d3.range(0, fin, 5);
+  const val = (eq, t0) => pases.filter((r) => r.equipo === eq && r.tipo !== 'fallado' && N(r.fin_x) >= 80 && N(r.minuto) >= t0 && N(r.minuto) < t0 + 5).length
+    + 3 * tiros.filter((r) => r.equipo === eq && N(r.minuto) >= t0 && N(r.minuto) < t0 + 5).length;
+  const d = tramos.map((t0) => ({ t0, v: val(p.local, t0) - val(p.visitante, t0) }));
+  const lim = Math.max(5, d3.max(d, (r) => Math.abs(r.v)));
+  const x = d3.scaleBand(tramos, [m.l, W - m.r]).padding(0.12), y = d3.scaleLinear([-lim, lim], [H - m.b, m.t]);
+  const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', `Momentum: ${d.filter((r) => r.v > 0).length} tramos de 5 minutos a favor de ${nombre(p.local)} y ${d.filter((r) => r.v < 0).length} de ${nombre(p.visitante)}`);
+  const colLocal = p.local === RM ? C_RM() : C_RIV(), colVis = p.local === RM ? C_RIV() : C_RM();
+  const tip = tooltip(box);
+  svg.append('g').selectAll('rect').data(d).join('rect').attr('x', (r) => x(r.t0)).attr('width', x.bandwidth())
+    .attr('y', (r) => y(Math.max(0, r.v))).attr('height', (r) => Math.abs(y(r.v) - y(0))).attr('rx', 2)
+    .style('fill', (r) => (r.v >= 0 ? colLocal : colVis)).attr('opacity', 0.85)
+    .on('mouseenter', (ev, r) => tip.show(ev, `Minutos ${r.t0}–${r.t0 + 5}`, [r.v === 0 ? 'Igualado' : `Domina ${nombre(r.v > 0 ? p.local : p.visitante)}`]))
+    .on('mouseleave', () => tip.hide());
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-reference)');
+  svg.append('line').attr('x1', x(45)).attr('x2', x(45)).attr('y1', m.t).attr('y2', H - m.b).style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 3');
+  for (const t of [0, 15, 30, 45, 60, 75, 90].filter((t) => x(t) != null))
+    svg.append('text').attr('x', x(t)).attr('y', H - 6).style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(`${t}'`);
+  // goles encima de su tramo
+  for (const g of inc.filter((r) => ['gol', 'penalti', 'gol_pp'].includes(r.tipo))) {
+    const t0 = Math.min(tramos.at(-1), Math.floor(N(g.minuto) / 5) * 5), arriba = g.equipo === p.local;
+    svg.append('text').attr('x', x(t0) + x.bandwidth() / 2).attr('y', arriba ? m.t - 2 : H - m.b + 12).attr('text-anchor', 'middle').style('font-size', '11px').text('⚽')
+      .append('title').text(`${g.minuto}' ${g.jugador}`);
+  }
+  drawLegend($('#mom-ley'), [['l', `Domina ${nombre(p.local)}`, colLocal], ['v', `Domina ${nombre(p.visitante)}`, colVis]]);
 }
 
 function drawXgLine(box, shots, p, b) {
@@ -1366,7 +1472,7 @@ function renderRendimiento() {
 }
 
 // La dirección guarda la sección y lo elegido en ella (#jugadores?jugador_t=...), para poder mandar el enlace exacto
-const ENLACE = { resumen: ['temporada'], partido: ['partido'], jugadores: ['temporada', 'jugador_t', 'comparar'], historico: ['comp'], titulos: [] };
+const ENLACE = { resumen: ['temporada'], partido: ['partido', 'sub_p'], jugadores: ['temporada', 'jugador_t', 'comparar'], historico: ['comp'], titulos: [] };
 function enlace(tab) {
   const q = new URLSearchParams();
   for (const k of ENLACE[tab] || []) if (P()[k] != null && P()[k] !== '') q.set(k, P()[k]);
