@@ -1,19 +1,19 @@
 jugador,puesto,minutos,goles,penaltis,npxg,g_menos_xg,asistencias,xa,a_menos_xa,xg90,xa90,xgchain90,pct_rol,acierto_pase,prog90,recup90,duelos_pct,perdidas90,veredicto,motivo
 Ibrahima Konaté,Central,720,0,0,0.31,-0.31,0,0.19,-0.19,0.04,0.02,0.59,38.0,92.1,8.2,3.6,74.3,1.47,En línea,Sin desviaciones claras
-Dean Huijsen,Central,594,0,0,0.51,-0.51,0,0.19,-0.19,0.08,0.03,0.82,69.0,95.5,11.2,3.9,71.4,0.23,En línea,Sin desviaciones claras
-Vinícius Júnior,Mediapunta o extremo,592,1,0,3.59,-2.59,3,2.49,0.51,0.55,0.38,1.09,91.0,73.7,1.7,3.6,47.1,0.34,En línea,Remata por debajo de su xG sin penaltis (1 gol con 3.6); percentil 91 entre los de su puesto en la Liga
-Arda Güler,Mediapunta o extremo,517,2,0,2.07,-0.07,2,4.29,-2.29,0.36,0.75,1.24,90.0,84.9,11.5,4.9,64.7,0.32,En línea,Sus pases merecen más asistencias de las que llegan (2 con 4.3 xA); percentil 90 entre los de su puesto en la Liga
+Dean Huijsen,Central,594,0,0,0.51,-0.51,0,0.19,-0.19,0.08,0.03,0.82,69.0,95.4,11.8,4.4,69.4,0.31,En línea,Sin desviaciones claras
+Vinícius Júnior,Mediapunta o extremo,592,1,0,3.59,-2.59,3,2.49,0.51,0.55,0.38,1.09,91.0,74.6,1.7,3.7,52.6,0.31,En línea,Remata por debajo de su xG sin penaltis (1 gol con 3.6); percentil 91 entre los de su puesto en la Liga
+Arda Güler,Mediapunta o extremo,517,2,0,2.07,-0.07,2,4.29,-2.29,0.36,0.75,1.24,90.0,84.8,11.0,4.6,63.2,0.28,En línea,Sus pases merecen más asistencias de las que llegan (2 con 4.3 xA); percentil 90 entre los de su puesto en la Liga
 Denzel Dumfries,Lateral,428,0,0,0.63,-0.63,0,0.21,-0.21,0.13,0.04,0.57,69.0,86.0,2.3,2.0,69.2,1.46,En línea,Sin desviaciones claras
 Aurélien Tchouaméni,Mediocentro,359,0,0,0.13,-0.13,1,0.3,0.7,0.03,0.08,0.44,57.0,91.9,5.4,6.1,63.6,0.96,En línea,Sin desviaciones claras
-Antonio Rüdiger,Central,304,1,0,0.15,0.85,0,0.14,-0.14,0.04,0.04,0.39,42.0,93.0,8.9,2.7,77.8,1.24,En línea,Sin desviaciones claras
+Antonio Rüdiger,Central,304,1,0,0.15,0.85,0,0.14,-0.14,0.04,0.04,0.39,42.0,93.7,9.0,2.7,61.5,1.02,En línea,Sin desviaciones claras
 Trent Alexander-Arnold,Lateral,258,0,0,0.18,-0.18,1,0.87,0.13,0.06,0.3,0.78,,80.2,9.5,5.9,60.0,0.98,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
-Eduardo Camavinga,Mediocentro,257,0,0,0.0,0.0,0,0.0,0.0,0.0,0.0,1.19,,92.8,6.4,6.4,80.0,1.45,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
-Álvaro Carreras,Lateral,252,1,0,0.47,0.53,0,0.82,-0.82,0.17,0.29,0.74,,88.6,7.3,4.0,69.2,1.82,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
-Brahim Díaz,Mediapunta o extremo,116,0,0,0.14,-0.14,0,0.2,-0.2,0.11,0.16,0.87,,94.3,2.1,4.1,40.0,0.0,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
-Thibaut Courtois,Portero,810,0,0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.3,,82.1,9.8,1.8,100.0,1.0,Por debajo,Encajó 9 goles en tiros a puerta que valían 5.0 xG: 4.0 más de lo esperado
-Bernardo Silva,Mediocentro,296,0,0,0.14,-0.14,1,0.23,0.77,0.04,0.07,0.53,62.0,90.0,6.2,4.8,52.4,3.0,Por debajo,"3.0 pérdidas peligrosas por 90 min, el doble de lo normal en su puesto (1.0)"
-Kylian Mbappé,Delantero,808,9,2,8.68,-1.68,2,1.94,0.06,1.22,0.22,1.17,84.0,82.7,2.9,2.0,44.4,0.25,Por encima,Percentil 84 entre los de su puesto en la Liga
-Federico Valverde,Mediocentro,755,0,0,0.3,-0.3,2,0.97,1.03,0.04,0.12,0.61,61.0,90.6,5.8,4.6,80.0,0.91,Por encima,Da más asistencias de lo que valen sus pases (2 con 1.0 xA)
-Jude Bellingham,Mediapunta o extremo,700,3,0,1.65,1.35,3,3.42,-0.42,0.21,0.44,0.91,81.0,87.4,6.2,4.8,58.1,0.77,Por encima,Remata por encima de su xG sin penaltis (3 goles con 1.6); percentil 81 entre los de su puesto en la Liga
-Marc Cucurella,Lateral,560,0,0,0.0,0.0,0,0.22,-0.22,0.0,0.03,0.66,77.0,87.0,6.4,4.7,76.7,1.24,Por encima,Percentil 77 entre los de su puesto en la Liga
-Yan Diomande,Mediapunta o extremo,444,2,0,0.93,1.07,2,0.81,1.19,0.19,0.16,0.88,67.0,79.9,3.0,4.6,58.3,0.91,Por encima,Remata por encima de su xG sin penaltis (2 goles con 0.9); da más asistencias de lo que valen sus pases (2 con 0.8 xA)
+Eduardo Camavinga,Mediocentro,257,0,0,0.0,0.0,0,0.0,0.0,0.0,0.0,1.19,,92.5,6.9,6.4,86.4,1.11,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
+Álvaro Carreras,Lateral,252,1,0,0.47,0.53,0,0.82,-0.82,0.17,0.29,0.74,,89.3,7.1,4.7,70.6,2.21,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
+Brahim Díaz,Mediapunta o extremo,116,0,0,0.14,-0.14,0,0.2,-0.2,0.11,0.16,0.87,,94.0,2.3,3.9,40.0,0.0,Pocos minutos,Menos de 270 minutos en la Liga: sin veredicto
+Thibaut Courtois,Portero,810,0,0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.3,,83.1,10.3,1.9,100.0,1.07,Por debajo,Encajó 9 goles en tiros a puerta que valían 5.0 xG: 4.0 más de lo esperado
+Bernardo Silva,Mediocentro,296,0,0,0.14,-0.14,1,0.23,0.77,0.04,0.07,0.53,62.0,90.6,6.3,4.5,50.0,2.77,Por debajo,"2.8 pérdidas peligrosas por 90 min, el doble de lo normal en su puesto (1.0)"
+Kylian Mbappé,Delantero,808,9,2,8.68,-1.68,2,1.94,0.06,1.22,0.22,1.17,84.0,83.2,3.1,2.0,44.4,0.23,Por encima,Percentil 84 entre los de su puesto en la Liga
+Federico Valverde,Mediocentro,755,0,0,0.3,-0.3,2,0.97,1.03,0.04,0.12,0.61,61.0,89.8,6.4,4.7,75.7,1.0,Por encima,Da más asistencias de lo que valen sus pases (2 con 1.0 xA)
+Jude Bellingham,Mediapunta o extremo,700,3,0,1.65,1.35,3,3.42,-0.42,0.21,0.44,0.91,81.0,87.0,6.1,4.5,59.1,0.71,Por encima,Remata por encima de su xG sin penaltis (3 goles con 1.6); percentil 81 entre los de su puesto en la Liga
+Marc Cucurella,Lateral,560,0,0,0.0,0.0,0,0.22,-0.22,0.0,0.03,0.66,78.0,87.3,6.2,4.7,77.3,1.21,Por encima,Percentil 78 entre los de su puesto en la Liga
+Yan Diomande,Mediapunta o extremo,444,2,0,0.93,1.07,2,0.81,1.19,0.19,0.16,0.88,67.0,80.4,2.9,4.4,58.3,0.88,Por encima,Remata por encima de su xG sin penaltis (2 goles con 0.9); da más asistencias de lo que valen sus pases (2 con 0.8 xA)

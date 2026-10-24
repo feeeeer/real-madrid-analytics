@@ -61,7 +61,9 @@ g = g[(g["competicion"] != "La Liga") | g["fecha"].isin(us_fechas)]
 ws = ws[ws["game_id"].isin(g["game_id"])]
 ws_teams = set(ws["team"])
 to_ws = lambda t: t if t in ws_teams else match_names([t], ws_teams).get(t, t)  # el calendario y los eventos nombran distinto a algunos equipos
-g["home_team"], g["away_team"] = g["home_team"].map(to_ws), g["away_team"].map(to_ws)
+# por id de equipo: el calendario y los eventos pueden nombrar distinto ("RB Leipzig" / "RBL")
+nombre_ws = ws.drop_duplicates("team_id").set_index("team_id")["team"]
+g["home_team"], g["away_team"] = g["home_team_id"].map(nombre_ws).fillna(g["home_team"]), g["away_team_id"].map(nombre_ws).fillna(g["away_team"])
 partidos = pd.DataFrame({
     "match_id": g["game_id"], "fecha": g["fecha"], "competicion": g["competicion"], "temporada": TEMPORADA, "jornada": "",
     "local": g["home_team"], "visitante": g["away_team"], "goles_local": g["home_score"].astype(int), "goles_visitante": g["away_score"].astype(int),

@@ -10287,6 +10287,1192 @@ match_id,equipo,jugador,x,y,fin_x,fin_y,tipo,minuto
 2029114,Inter,Andy Diouf,108.1,69.3,109.2,77.2,completo,92
 2029114,Inter,Petar Sucic,109.2,77.2,118.4,69.0,fallado,92
 2029114,Real Madrid,Thibaut Courtois,5.2,11.8,85.9,11.8,fallado,93
+2029124,RBL,Neil El Aynaoui,60.0,40.0,57.0,43.6,completo,0
+2029124,RBL,Brajan Gruda,58.4,42.6,32.0,45.9,completo,0
+2029124,RBL,Willi Orbán,33.1,46.1,78.0,9.3,completo,0
+2029124,Real Madrid,Federico Valverde,35.2,70.6,67.2,33.9,fallado,0
+2029124,RBL,Willi Orbán,57.4,48.0,88.1,42.8,fallado,0
+2029124,Real Madrid,Dean Huijsen,32.8,37.3,40.6,35.8,completo,0
+2029124,Real Madrid,Eduardo Camavinga,40.2,35.8,65.6,35.4,fallado,0
+2029124,RBL,Brajan Gruda,67.2,50.1,63.6,47.6,completo,0
+2029124,RBL,Nicolas Seiwald,61.2,45.8,50.8,40.6,completo,0
+2029124,RBL,Castello Lukeba,51.1,40.2,62.0,39.6,completo,0
+2029124,RBL,Neil El Aynaoui,53.2,46.2,67.6,77.0,completo,0
+2029124,RBL,Brajan Gruda,70.2,76.0,44.2,56.7,completo,0
+2029124,RBL,Willi Orbán,47.9,54.3,34.4,37.7,completo,0
+2029124,RBL,Castello Lukeba,34.6,37.7,37.3,19.3,completo,0
+2029124,RBL,David Raum,37.4,17.8,108.8,23.6,fallado,0
+2029124,Real Madrid,Thibaut Courtois,11.6,42.7,13.9,19.0,completo,0
+2029124,Real Madrid,Dean Huijsen,26.0,16.3,29.3,2.7,completo,1
+2029124,Real Madrid,Álvaro Carreras,29.3,2.7,40.7,8.2,fallado,1
+2029124,RBL,Nicolas Seiwald,80.3,69.2,96.5,60.6,completo,1
+2029124,RBL,Rômulo,96.5,60.6,87.7,62.8,completo,1
+2029124,RBL,Nicolas Seiwald,87.5,62.6,97.9,62.2,completo,1
+2029124,RBL,Rômulo,97.6,61.9,94.8,55.7,fallado,1
+2029124,Real Madrid,Eduardo Camavinga,26.0,23.8,34.2,18.6,completo,1
+2029124,Real Madrid,Vinícius Júnior,36.5,17.3,35.9,8.5,completo,1
+2029124,Real Madrid,Jude Bellingham,35.9,8.5,19.0,7.0,completo,1
+2029124,Real Madrid,Álvaro Carreras,19.0,7.0,11.4,21.1,completo,1
+2029124,Real Madrid,Dean Huijsen,11.0,21.6,31.9,67.4,completo,1
+2029124,Real Madrid,Federico Valverde,31.9,67.4,42.7,77.5,completo,1
+2029124,Real Madrid,Arda Güler,42.7,77.5,49.4,66.2,completo,1
+2029124,Real Madrid,Bernardo Silva,53.6,60.0,107.0,65.3,fallado,1
+2029124,RBL,Castello Lukeba,15.8,12.8,3.5,35.5,completo,1
+2029124,RBL,Maarten Vandevoordt,10.8,37.7,54.0,19.8,fallado,1
+2029124,Real Madrid,Arda Güler,68.2,53.3,69.5,73.0,completo,1
+2029124,Real Madrid,Federico Valverde,72.1,73.8,72.1,65.6,completo,1
+2029124,Real Madrid,Arda Güler,73.6,66.6,72.6,75.1,completo,1
+2029124,Real Madrid,Federico Valverde,72.2,73.2,47.8,54.3,completo,1
+2029124,Real Madrid,Antonio Rüdiger,49.2,52.1,50.8,31.7,completo,1
+2029124,Real Madrid,Dean Huijsen,71.6,30.3,76.4,15.6,completo,1
+2029124,Real Madrid,Kylian Mbappé,78.2,14.4,89.5,3.4,completo,2
+2029124,Real Madrid,Vinícius Júnior,88.2,3.4,79.8,8.4,completo,2
+2029124,Real Madrid,Kylian Mbappé,82.0,12.8,67.2,27.7,completo,2
+2029124,Real Madrid,Dean Huijsen,64.8,37.0,79.6,54.2,completo,2
+2029124,Real Madrid,Arda Güler,79.6,54.2,86.8,48.2,fallado,2
+2029124,RBL,Christopher Nkunku,40.8,31.3,45.8,22.2,completo,2
+2029124,RBL,Christopher Nkunku,56.3,23.0,49.7,23.1,completo,2
+2029124,RBL,Neil El Aynaoui,51.0,23.5,43.7,34.3,completo,2
+2029124,RBL,Nicolas Seiwald,43.7,34.3,22.1,40.4,completo,2
+2029124,RBL,Maarten Vandevoordt,22.1,40.4,26.9,64.0,completo,2
+2029124,RBL,Willi Orbán,27.2,63.7,12.1,45.1,completo,2
+2029124,RBL,Maarten Vandevoordt,17.0,50.1,106.3,53.9,fallado,2
+2029124,Real Madrid,Thibaut Courtois,13.6,28.3,23.6,28.2,completo,2
+2029124,Real Madrid,Dean Huijsen,29.3,30.0,45.1,42.6,completo,2
+2029124,Real Madrid,Bernardo Silva,44.9,43.3,27.0,61.0,completo,3
+2029124,Real Madrid,Antonio Rüdiger,27.0,61.0,40.1,76.8,completo,3
+2029124,Real Madrid,Federico Valverde,40.1,76.6,38.3,67.3,completo,3
+2029124,Real Madrid,Bernardo Silva,36.6,60.3,33.4,32.7,completo,3
+2029124,Real Madrid,Dean Huijsen,38.6,28.6,95.5,2.7,completo,3
+2029124,Real Madrid,Vinícius Júnior,91.4,5.0,80.4,5.4,completo,3
+2029124,Real Madrid,Jude Bellingham,80.4,5.4,78.1,17.1,completo,3
+2029124,Real Madrid,Eduardo Camavinga,78.1,17.1,78.4,11.6,completo,3
+2029124,Real Madrid,Jude Bellingham,74.0,18.2,58.7,44.6,completo,3
+2029124,Real Madrid,Antonio Rüdiger,60.7,48.3,79.7,72.6,completo,3
+2029124,Real Madrid,Arda Güler,67.3,62.0,57.0,33.4,completo,3
+2029124,Real Madrid,Dean Huijsen,72.5,25.2,79.2,11.8,completo,3
+2029124,Real Madrid,Kylian Mbappé,79.8,10.3,95.6,2.2,completo,3
+2029124,Real Madrid,Vinícius Júnior,91.8,3.6,72.7,9.7,completo,3
+2029124,Real Madrid,Dean Huijsen,69.0,21.6,71.8,51.1,completo,3
+2029124,Real Madrid,Bernardo Silva,71.4,51.4,77.4,76.8,completo,3
+2029124,Real Madrid,Federico Valverde,86.0,75.4,79.6,72.8,completo,3
+2029124,Real Madrid,Bernardo Silva,81.6,71.5,64.7,34.6,completo,4
+2029124,Real Madrid,Dean Huijsen,64.7,34.6,66.8,12.0,completo,4
+2029124,Real Madrid,Álvaro Carreras,70.2,12.2,77.6,18.6,completo,4
+2029124,Real Madrid,Eduardo Camavinga,77.6,18.6,69.6,13.9,completo,4
+2029124,Real Madrid,Álvaro Carreras,66.7,12.1,76.8,3.4,completo,4
+2029124,Real Madrid,Vinícius Júnior,74.8,4.1,79.6,11.5,fallado,4
+2029124,RBL,Nicolas Seiwald,44.0,62.6,50.0,68.0,completo,4
+2029124,RBL,Brajan Gruda,50.2,67.0,66.1,62.3,completo,4
+2029124,RBL,Rômulo,73.4,67.0,76.7,51.9,completo,4
+2029124,RBL,Christopher Nkunku,77.9,51.8,88.1,57.4,fallado,4
+2029124,RBL,Christopher Nkunku,111.4,61.0,106.4,4.1,completo,4
+2029124,RBL,David Raum,105.0,3.8,76.7,16.3,completo,4
+2029124,RBL,Neil El Aynaoui,75.1,16.8,80.2,27.5,completo,4
+2029124,RBL,Brajan Gruda,80.2,27.5,79.8,37.1,completo,4
+2029124,RBL,Nicolas Seiwald,78.1,36.9,70.7,53.9,completo,4
+2029124,RBL,Willi Orbán,78.2,61.8,88.9,66.7,completo,4
+2029124,RBL,Ridle Baku,79.9,62.3,67.7,65.8,completo,4
+2029124,RBL,Willi Orbán,68.3,65.1,74.5,52.0,completo,4
+2029124,RBL,Neil El Aynaoui,73.8,54.6,72.0,76.4,completo,4
+2029124,RBL,Ridle Baku,71.9,76.4,77.2,76.2,completo,4
+2029124,RBL,Neil El Aynaoui,73.8,70.6,72.6,54.2,completo,5
+2029124,RBL,Willi Orbán,55.3,56.7,43.0,27.8,completo,5
+2029124,RBL,Castello Lukeba,41.8,25.4,48.0,17.0,completo,5
+2029124,RBL,David Raum,48.0,17.0,55.3,41.0,completo,5
+2029124,RBL,Nicolas Seiwald,55.3,41.0,24.5,42.6,completo,5
+2029124,RBL,Maarten Vandevoordt,24.1,41.6,29.8,17.4,completo,5
+2029124,RBL,Castello Lukeba,30.5,16.1,35.4,3.8,completo,5
+2029124,RBL,David Raum,35.5,3.6,91.3,27.8,completo,5
+2029124,Real Madrid,Antonio Rüdiger,18.1,35.8,26.5,24.6,completo,5
+2029124,Real Madrid,Álvaro Carreras,26.8,25.9,4.1,37.3,completo,5
+2029124,Real Madrid,Thibaut Courtois,4.0,38.2,52.0,80.0,fallado,5
+2029124,RBL,Neil El Aynaoui,39.8,8.2,15.8,38.3,completo,6
+2029124,RBL,Maarten Vandevoordt,19.4,39.0,13.4,13.3,completo,6
+2029124,RBL,Castello Lukeba,13.3,14.6,9.8,42.6,completo,6
+2029124,RBL,Maarten Vandevoordt,13.4,45.0,84.8,70.2,fallado,6
+2029124,Real Madrid,Álvaro Carreras,40.1,12.2,46.9,19.5,completo,6
+2029124,Real Madrid,Dean Huijsen,46.9,19.5,74.9,7.0,fallado,6
+2029124,RBL,Ridle Baku,49.3,71.9,75.7,77.1,completo,6
+2029124,Real Madrid,Dean Huijsen,14.6,18.6,4.7,38.0,completo,6
+2029124,Real Madrid,Thibaut Courtois,4.9,39.2,9.0,60.2,completo,6
+2029124,Real Madrid,Antonio Rüdiger,9.0,60.2,18.0,76.1,completo,6
+2029124,Real Madrid,Federico Valverde,18.0,76.1,27.7,58.6,completo,6
+2029124,Real Madrid,Eduardo Camavinga,27.8,60.5,15.2,76.1,completo,6
+2029124,Real Madrid,Federico Valverde,15.0,75.7,2.8,48.8,completo,6
+2029124,Real Madrid,Thibaut Courtois,4.6,38.4,36.4,2.2,completo,7
+2029124,Real Madrid,Álvaro Carreras,38.6,6.1,40.8,18.7,completo,7
+2029124,Real Madrid,Jude Bellingham,40.7,20.5,50.6,30.5,completo,7
+2029124,Real Madrid,Kylian Mbappé,64.9,19.8,84.7,64.3,completo,7
+2029124,Real Madrid,Bernardo Silva,84.7,64.3,100.3,76.8,completo,7
+2029124,Real Madrid,Federico Valverde,100.4,76.8,81.8,55.2,completo,7
+2029124,Real Madrid,Arda Güler,92.8,67.3,93.1,77.3,completo,7
+2029124,Real Madrid,Federico Valverde,93.1,77.3,111.1,62.6,completo,7
+2029124,Real Madrid,Arda Güler,115.1,61.2,112.3,31.5,fallado,7
+2029124,Real Madrid,Dean Huijsen,91.6,44.2,92.6,56.6,completo,7
+2029124,Real Madrid,Federico Valverde,92.6,56.6,67.3,45.7,completo,7
+2029124,Real Madrid,Antonio Rüdiger,67.3,45.7,77.3,62.0,completo,7
+2029124,Real Madrid,Federico Valverde,77.3,62.0,109.9,34.2,fallado,7
+2029124,RBL,Maarten Vandevoordt,12.0,46.4,25.2,13.3,completo,7
+2029124,RBL,David Raum,25.2,13.3,29.8,34.4,completo,7
+2029124,RBL,Nicolas Seiwald,29.8,34.4,65.6,10.9,fallado,7
+2029124,Real Madrid,Federico Valverde,54.6,59.8,47.5,37.7,completo,8
+2029124,Real Madrid,Dean Huijsen,54.2,36.7,51.8,54.6,completo,8
+2029124,Real Madrid,Antonio Rüdiger,52.7,57.4,57.5,75.4,completo,8
+2029124,Real Madrid,Federico Valverde,58.9,75.8,75.0,78.0,completo,8
+2029124,Real Madrid,Arda Güler,72.4,76.9,96.6,54.3,fallado,8
+2029124,RBL,David Raum,17.2,3.8,29.2,2.8,fallado,8
+2029124,Real Madrid,Federico Valverde,85.4,73.6,87.6,70.8,fallado,8
+2029124,RBL,David Raum,31.2,2.4,23.5,65.6,completo,8
+2029124,RBL,Willi Orbán,23.5,65.6,28.7,78.3,completo,8
+2029124,RBL,Ridle Baku,28.8,78.3,44.5,75.7,fallado,8
+2029124,RBL,Castello Lukeba,5.6,31.8,5.0,41.4,completo,9
+2029124,RBL,Maarten Vandevoordt,12.7,44.6,23.6,73.4,completo,9
+2029124,RBL,Willi Orbán,27.7,75.7,91.9,65.3,fallado,9
+2029124,Real Madrid,Thibaut Courtois,20.4,24.0,18.5,40.6,completo,9
+2029124,Real Madrid,Antonio Rüdiger,18.7,40.4,14.0,32.0,completo,9
+2029124,Real Madrid,Thibaut Courtois,15.0,32.6,34.8,29.3,completo,9
+2029124,Real Madrid,Eduardo Camavinga,39.8,19.9,55.6,5.3,completo,9
+2029124,Real Madrid,Dean Huijsen,44.6,5.5,44.8,28.9,completo,10
+2029124,Real Madrid,Bernardo Silva,43.2,26.2,49.2,11.8,completo,10
+2029124,Real Madrid,Dean Huijsen,57.0,13.9,81.4,12.8,completo,10
+2029124,Real Madrid,Vinícius Júnior,81.4,12.8,81.6,2.2,completo,10
+2029124,Real Madrid,Álvaro Carreras,81.6,2.9,87.1,12.5,completo,10
+2029124,Real Madrid,Vinícius Júnior,87.1,12.5,79.6,31.9,completo,10
+2029124,Real Madrid,Jude Bellingham,79.4,32.6,76.7,42.5,completo,10
+2029124,Real Madrid,Álvaro Carreras,76.7,42.5,77.2,75.6,completo,10
+2029124,Real Madrid,Federico Valverde,77.2,75.6,82.8,57.0,completo,10
+2029124,Real Madrid,Arda Güler,82.8,57.9,78.2,72.1,completo,10
+2029124,Real Madrid,Federico Valverde,78.7,68.4,82.3,62.7,completo,10
+2029124,Real Madrid,Jude Bellingham,82.3,62.7,92.0,75.9,completo,10
+2029124,Real Madrid,Arda Güler,92.0,75.9,93.6,63.9,completo,10
+2029124,Real Madrid,Bernardo Silva,93.6,63.9,82.0,72.0,completo,10
+2029124,Real Madrid,Federico Valverde,82.8,72.0,88.7,64.2,completo,10
+2029124,Real Madrid,Bernardo Silva,88.7,64.2,94.2,76.3,completo,10
+2029124,Real Madrid,Bernardo Silva,119.5,79.4,112.2,72.1,completo,10
+2029124,Real Madrid,Arda Güler,106.0,75.4,96.4,73.4,completo,10
+2029124,Real Madrid,Bernardo Silva,89.8,63.1,79.3,32.1,completo,10
+2029124,Real Madrid,Dean Huijsen,82.4,31.0,92.4,33.0,completo,11
+2029124,Real Madrid,Vinícius Júnior,88.9,27.1,87.0,7.5,completo,11
+2029124,RBL,Ridle Baku,62.8,57.8,64.4,45.0,completo,11
+2029124,RBL,Antonio Nusa,68.3,51.0,85.8,78.0,completo,11
+2029124,RBL,Christopher Nkunku,86.9,74.6,87.2,68.5,completo,11
+2029124,RBL,Brajan Gruda,85.2,69.4,76.8,71.3,completo,11
+2029124,RBL,Nicolas Seiwald,77.3,71.2,91.0,76.6,completo,11
+2029124,RBL,Ridle Baku,90.8,76.6,77.0,77.1,completo,11
+2029124,RBL,Brajan Gruda,75.8,67.0,75.1,49.4,completo,11
+2029124,RBL,Neil El Aynaoui,74.2,49.1,57.6,32.1,completo,11
+2029124,RBL,Castello Lukeba,57.6,32.1,66.1,19.0,completo,11
+2029124,RBL,David Raum,65.6,18.9,54.7,26.9,completo,11
+2029124,RBL,Castello Lukeba,64.7,25.8,68.4,37.2,completo,11
+2029124,RBL,Neil El Aynaoui,68.4,37.2,62.5,23.8,completo,11
+2029124,RBL,Castello Lukeba,63.0,22.3,65.0,5.5,completo,11
+2029124,RBL,David Raum,65.6,5.0,76.4,16.3,completo,11
+2029124,RBL,Christopher Nkunku,69.1,17.4,56.5,27.8,completo,11
+2029124,RBL,Neil El Aynaoui,56.6,33.7,64.8,71.3,completo,11
+2029124,RBL,Willi Orbán,67.2,73.7,81.1,78.0,completo,12
+2029124,RBL,Brajan Gruda,83.0,67.0,90.0,6.4,completo,12
+2029124,RBL,Antonio Nusa,115.3,26.8,112.1,32.2,fallado,12
+2029124,Real Madrid,Thibaut Courtois,4.7,46.4,43.2,50.9,completo,12
+2029124,Real Madrid,Eduardo Camavinga,46.7,52.8,43.2,26.3,completo,12
+2029124,Real Madrid,Dean Huijsen,54.8,21.6,76.7,3.0,completo,12
+2029124,Real Madrid,Álvaro Carreras,80.6,4.3,68.0,9.4,completo,12
+2029124,Real Madrid,Dean Huijsen,71.2,15.7,65.2,30.2,completo,12
+2029124,Real Madrid,Eduardo Camavinga,65.2,33.2,63.7,59.8,completo,13
+2029124,Real Madrid,Antonio Rüdiger,67.2,60.2,92.5,32.9,fallado,13
+2029124,Real Madrid,Antonio Rüdiger,61.8,45.9,54.1,28.3,completo,13
+2029124,Real Madrid,Dean Huijsen,78.7,27.8,73.2,12.5,completo,13
+2029124,Real Madrid,Álvaro Carreras,73.2,12.5,87.5,13.4,completo,13
+2029124,Real Madrid,Jude Bellingham,87.5,13.4,97.0,4.3,completo,13
+2029124,Real Madrid,Vinícius Júnior,97.0,4.3,90.1,11.3,completo,13
+2029124,Real Madrid,Jude Bellingham,87.0,14.1,93.5,27.7,completo,13
+2029124,Real Madrid,Kylian Mbappé,95.5,27.0,107.3,7.0,completo,13
+2029124,Real Madrid,Vinícius Júnior,109.2,9.9,104.4,26.9,completo,13
+2029124,RBL,Nicolas Seiwald,16.3,52.6,30.2,42.8,completo,13
+2029124,RBL,Willi Orbán,38.4,47.7,27.8,29.6,completo,14
+2029124,RBL,Castello Lukeba,26.6,29.6,10.9,41.4,completo,14
+2029124,RBL,Maarten Vandevoordt,10.6,40.7,13.3,21.4,completo,14
+2029124,RBL,Castello Lukeba,36.5,19.1,49.8,30.6,fallado,14
+2029124,RBL,Ridle Baku,50.5,48.9,76.2,76.7,completo,14
+2029124,Real Madrid,Thibaut Courtois,11.3,51.2,31.3,75.2,completo,14
+2029124,Real Madrid,Federico Valverde,31.8,69.7,36.6,41.5,completo,14
+2029124,Real Madrid,Eduardo Camavinga,39.7,37.9,66.6,3.0,completo,14
+2029124,Real Madrid,Vinícius Júnior,74.6,5.6,71.0,14.9,completo,14
+2029124,Real Madrid,Álvaro Carreras,71.9,19.3,57.0,39.9,completo,14
+2029124,Real Madrid,Eduardo Camavinga,65.0,44.9,76.4,75.8,completo,14
+2029124,Real Madrid,Arda Güler,75.2,76.4,76.3,64.4,completo,14
+2029124,Real Madrid,Kylian Mbappé,76.3,64.4,67.1,70.6,completo,14
+2029124,Real Madrid,Federico Valverde,67.1,70.6,66.4,55.2,completo,15
+2029124,Real Madrid,Eduardo Camavinga,65.4,50.4,55.6,29.3,completo,15
+2029124,Real Madrid,Dean Huijsen,56.8,28.6,71.9,29.1,completo,15
+2029124,Real Madrid,Jude Bellingham,72.4,26.4,72.7,5.8,completo,15
+2029124,Real Madrid,Álvaro Carreras,72.7,5.8,84.7,2.7,completo,15
+2029124,Real Madrid,Vinícius Júnior,84.7,2.7,77.8,9.1,completo,15
+2029124,Real Madrid,Jude Bellingham,80.5,10.6,90.1,75.1,completo,15
+2029124,Real Madrid,Arda Güler,88.6,74.6,82.6,62.5,completo,15
+2029124,Real Madrid,Federico Valverde,82.6,62.5,84.8,74.2,completo,15
+2029124,Real Madrid,Arda Güler,89.8,71.0,100.7,73.5,completo,15
+2029124,Real Madrid,Kylian Mbappé,100.6,73.5,103.9,69.8,fallado,15
+2029124,Real Madrid,Arda Güler,118.8,57.9,114.2,46.9,completo,15
+2029124,Real Madrid,Federico Valverde,95.6,60.2,110.0,41.8,fallado,15
+2029124,RBL,Neil El Aynaoui,22.6,28.3,31.4,20.6,fallado,15
+2029124,Real Madrid,Federico Valverde,89.5,58.9,73.9,48.3,completo,15
+2029124,Real Madrid,Antonio Rüdiger,68.0,37.4,79.0,29.4,completo,15
+2029124,Real Madrid,Jude Bellingham,77.0,13.6,83.0,5.3,completo,15
+2029124,Real Madrid,Vinícius Júnior,84.5,5.5,89.3,5.0,fallado,15
+2029124,Real Madrid,Dean Huijsen,54.8,13.2,54.1,42.5,completo,16
+2029124,Real Madrid,Antonio Rüdiger,53.8,44.5,63.4,65.0,completo,16
+2029124,Real Madrid,Bernardo Silva,58.1,58.7,44.3,36.5,completo,16
+2029124,Real Madrid,Antonio Rüdiger,49.1,37.8,53.5,19.9,completo,16
+2029124,Real Madrid,Dean Huijsen,54.0,18.2,63.0,30.3,completo,16
+2029124,Real Madrid,Eduardo Camavinga,70.9,21.0,74.6,2.4,completo,16
+2029124,Real Madrid,Álvaro Carreras,74.6,2.4,86.6,4.8,completo,16
+2029124,Real Madrid,Vinícius Júnior,86.6,4.8,85.6,20.4,completo,16
+2029124,Real Madrid,Eduardo Camavinga,91.8,35.0,90.2,45.6,completo,16
+2029124,Real Madrid,Federico Valverde,114.1,67.8,104.6,63.9,completo,16
+2029124,Real Madrid,Arda Güler,116.0,58.6,108.1,9.4,completo,16
+2029124,Real Madrid,Álvaro Carreras,107.6,10.8,93.1,13.4,completo,16
+2029124,Real Madrid,Vinícius Júnior,90.5,19.9,83.2,38.4,completo,16
+2029124,Real Madrid,Eduardo Camavinga,83.2,38.4,83.3,57.6,completo,16
+2029124,Real Madrid,Antonio Rüdiger,83.3,57.6,114.8,21.0,completo,16
+2029124,Real Madrid,Vinícius Júnior,117.2,9.2,117.5,12.5,fallado,16
+2029124,RBL,Nicolas Seiwald,12.0,56.2,27.8,56.4,completo,17
+2029124,RBL,Rômulo,27.8,56.4,16.4,61.9,completo,17
+2029124,RBL,Brajan Gruda,16.4,61.9,15.8,54.6,completo,17
+2029124,RBL,Nicolas Seiwald,16.9,55.2,41.8,47.9,completo,17
+2029124,RBL,Christopher Nkunku,41.0,48.5,44.9,58.6,completo,17
+2029124,Real Madrid,Jude Bellingham,75.6,18.3,77.3,22.7,fallado,17
+2029124,Real Madrid,Eduardo Camavinga,77.4,26.0,63.1,21.4,completo,17
+2029124,Real Madrid,Dean Huijsen,65.6,24.6,82.9,37.4,completo,17
+2029124,Real Madrid,Arda Güler,85.4,38.4,97.4,42.6,completo,17
+2029124,Real Madrid,Kylian Mbappé,97.1,48.3,106.8,70.2,completo,17
+2029124,Real Madrid,Arda Güler,84.6,65.4,107.6,38.9,fallado,17
+2029124,Real Madrid,Eduardo Camavinga,85.0,61.2,87.0,62.5,fallado,17
+2029124,RBL,David Raum,17.9,14.8,76.9,27.3,fallado,17
+2029124,Real Madrid,Antonio Rüdiger,45.0,44.5,48.8,24.7,completo,17
+2029124,Real Madrid,Dean Huijsen,51.8,26.4,45.5,44.6,completo,17
+2029124,Real Madrid,Antonio Rüdiger,48.0,50.9,53.5,68.4,completo,17
+2029124,Real Madrid,Eduardo Camavinga,53.8,72.0,76.4,77.6,completo,17
+2029124,Real Madrid,Federico Valverde,76.4,77.6,85.1,68.5,completo,17
+2029124,Real Madrid,Arda Güler,85.1,68.5,79.3,72.1,completo,17
+2029124,RBL,Castello Lukeba,17.6,33.6,40.2,10.6,completo,18
+2029124,Real Madrid,Eduardo Camavinga,83.3,67.2,69.7,74.9,completo,18
+2029124,Real Madrid,Federico Valverde,64.1,77.0,70.1,66.1,completo,18
+2029124,Real Madrid,Bernardo Silva,64.8,66.1,62.6,71.5,completo,18
+2029124,Real Madrid,Federico Valverde,62.6,71.5,84.5,76.4,completo,18
+2029124,Real Madrid,Eduardo Camavinga,91.6,67.7,99.1,76.3,completo,18
+2029124,Real Madrid,Arda Güler,96.5,74.4,85.3,64.6,completo,18
+2029124,Real Madrid,Bernardo Silva,80.6,58.6,69.5,30.5,completo,18
+2029124,Real Madrid,Dean Huijsen,70.9,28.8,93.2,2.2,completo,18
+2029124,Real Madrid,Álvaro Carreras,93.4,6.1,95.4,20.6,completo,18
+2029124,Real Madrid,Vinícius Júnior,94.9,18.6,78.6,18.2,completo,18
+2029124,Real Madrid,Dean Huijsen,77.2,15.7,81.1,27.0,completo,18
+2029124,Real Madrid,Bernardo Silva,81.1,27.0,78.8,13.0,completo,18
+2029124,Real Madrid,Dean Huijsen,78.7,13.0,77.4,25.8,completo,18
+2029124,Real Madrid,Bernardo Silva,77.6,29.8,78.1,50.7,completo,19
+2029124,Real Madrid,Eduardo Camavinga,78.1,50.7,85.8,43.8,completo,19
+2029124,Real Madrid,Jude Bellingham,85.8,43.8,82.2,46.1,fallado,19
+2029124,RBL,Neil El Aynaoui,38.6,38.2,51.1,62.1,completo,19
+2029124,RBL,Brajan Gruda,64.1,60.4,83.4,61.9,fallado,19
+2029124,Real Madrid,Álvaro Carreras,36.0,1.2,33.0,3.2,fallado,19
+2029124,RBL,Christopher Nkunku,83.5,47.9,78.5,51.7,completo,19
+2029124,RBL,Nicolas Seiwald,78.5,51.7,86.4,63.9,completo,19
+2029124,RBL,Brajan Gruda,95.8,58.1,111.7,59.3,clave,19
+2029124,Real Madrid,Thibaut Courtois,16.9,38.6,37.4,39.6,completo,19
+2029124,Real Madrid,Arda Güler,39.6,37.7,52.9,28.6,completo,19
+2029124,Real Madrid,Jude Bellingham,82.8,41.8,100.1,56.2,clave,19
+2029124,RBL,Maarten Vandevoordt,2.5,36.6,12.4,23.4,completo,20
+2029124,RBL,Castello Lukeba,10.6,26.6,7.0,40.1,completo,20
+2029124,RBL,Maarten Vandevoordt,14.2,41.2,89.0,37.9,fallado,20
+2029124,Real Madrid,Thibaut Courtois,34.1,38.2,38.5,47.5,completo,20
+2029124,Real Madrid,Antonio Rüdiger,40.0,48.0,40.3,28.1,completo,20
+2029124,Real Madrid,Dean Huijsen,40.3,28.1,45.0,36.1,completo,20
+2029124,Real Madrid,Eduardo Camavinga,45.0,36.1,17.2,37.5,completo,20
+2029124,Real Madrid,Thibaut Courtois,17.2,37.5,36.4,75.6,completo,20
+2029124,Real Madrid,Federico Valverde,37.0,74.4,55.7,44.9,completo,20
+2029124,Real Madrid,Jude Bellingham,56.6,34.2,58.0,8.7,completo,20
+2029124,Real Madrid,Álvaro Carreras,62.3,9.0,76.7,3.7,completo,20
+2029124,Real Madrid,Vinícius Júnior,79.3,3.9,77.5,15.1,completo,20
+2029124,Real Madrid,Jude Bellingham,83.2,34.6,94.1,76.6,completo,20
+2029124,Real Madrid,Arda Güler,93.5,66.8,104.5,45.9,fallado,20
+2029124,Real Madrid,Eduardo Camavinga,85.0,55.8,93.1,73.0,completo,20
+2029124,Real Madrid,Arda Güler,89.3,68.2,79.0,59.6,completo,20
+2029124,Real Madrid,Federico Valverde,79.3,55.0,76.6,31.2,completo,21
+2029124,Real Madrid,Dean Huijsen,77.2,31.5,86.8,33.1,completo,21
+2029124,Real Madrid,Jude Bellingham,86.8,33.1,88.0,33.6,fallado,21
+2029124,RBL,Rômulo,41.0,55.7,37.7,51.8,completo,21
+2029124,RBL,Brajan Gruda,38.8,52.2,33.8,48.6,completo,21
+2029124,RBL,Nicolas Seiwald,33.8,48.6,40.6,74.5,completo,21
+2029124,RBL,Ridle Baku,40.6,74.5,36.6,52.4,completo,21
+2029124,RBL,Nicolas Seiwald,42.2,45.7,37.8,55.3,completo,21
+2029124,RBL,Willi Orbán,41.2,60.2,56.3,78.6,completo,21
+2029124,RBL,Brajan Gruda,71.9,75.4,96.2,76.4,fallado,21
+2029124,RBL,Brajan Gruda,94.0,65.7,100.7,75.0,completo,21
+2029124,RBL,Ridle Baku,100.9,75.0,105.4,49.4,fallado,21
+2029124,Real Madrid,Vinícius Júnior,27.4,12.2,31.7,21.4,completo,21
+2029124,Real Madrid,Eduardo Camavinga,31.7,21.4,43.1,7.4,completo,21
+2029124,Real Madrid,Jude Bellingham,73.6,28.4,88.7,75.4,completo,22
+2029124,Real Madrid,Federico Valverde,88.9,75.4,83.0,70.3,completo,22
+2029124,Real Madrid,Bernardo Silva,84.7,70.1,88.7,77.0,completo,22
+2029124,Real Madrid,Federico Valverde,88.4,75.4,75.7,66.7,completo,22
+2029124,Real Madrid,Arda Güler,77.5,61.8,69.5,32.4,completo,22
+2029124,Real Madrid,Dean Huijsen,74.2,28.9,87.6,32.2,completo,22
+2029124,Real Madrid,Jude Bellingham,80.3,22.6,94.7,5.3,completo,22
+2029124,Real Madrid,Álvaro Carreras,97.0,2.9,88.8,7.5,completo,22
+2029124,Real Madrid,Jude Bellingham,86.9,12.7,71.3,42.3,completo,22
+2029124,Real Madrid,Antonio Rüdiger,72.4,44.0,79.7,62.2,completo,22
+2029124,Real Madrid,Arda Güler,82.7,62.7,98.8,76.6,completo,22
+2029124,Real Madrid,Federico Valverde,100.7,76.2,114.6,58.6,fallado,22
+2029124,RBL,Maarten Vandevoordt,5.6,33.4,15.4,24.0,completo,23
+2029124,RBL,Castello Lukeba,11.4,22.9,19.4,39.1,completo,23
+2029124,RBL,Nicolas Seiwald,19.6,36.9,18.0,23.6,completo,23
+2029124,RBL,Castello Lukeba,23.5,25.1,45.5,2.6,completo,23
+2029124,RBL,David Raum,51.1,2.6,66.4,42.1,completo,23
+2029124,RBL,Christopher Nkunku,79.4,51.1,90.8,67.2,completo,23
+2029124,RBL,Brajan Gruda,101.2,50.1,110.9,48.6,fallado,23
+2029124,Real Madrid,Álvaro Carreras,13.4,26.2,51.1,1.8,completo,23
+2029124,Real Madrid,Vinícius Júnior,101.4,23.5,105.8,28.1,fallado,23
+2029124,RBL,Nicolas Seiwald,19.2,50.9,27.2,44.2,completo,23
+2029124,RBL,Neil El Aynaoui,23.8,41.0,34.3,51.2,completo,23
+2029124,RBL,Antonio Nusa,32.6,53.0,37.2,63.7,completo,23
+2029124,RBL,Ridle Baku,37.2,63.7,36.7,45.7,completo,23
+2029124,RBL,Neil El Aynaoui,34.2,45.2,38.0,8.5,completo,23
+2029124,RBL,David Raum,35.3,10.1,36.4,30.8,completo,23
+2029124,RBL,Neil El Aynaoui,36.7,31.3,48.5,32.5,completo,23
+2029124,RBL,Christopher Nkunku,48.5,32.5,40.9,30.6,completo,23
+2029124,RBL,Neil El Aynaoui,41.3,30.8,48.2,34.1,completo,23
+2029124,RBL,Christopher Nkunku,48.2,33.9,43.3,31.4,completo,23
+2029124,RBL,Neil El Aynaoui,43.9,30.9,38.4,38.6,completo,24
+2029124,RBL,Nicolas Seiwald,38.4,38.6,37.1,60.4,completo,24
+2029124,RBL,Willi Orbán,39.2,60.9,69.0,77.6,completo,24
+2029124,RBL,Brajan Gruda,68.9,77.4,44.3,70.3,completo,24
+2029124,RBL,Willi Orbán,53.8,68.2,64.2,75.3,completo,24
+2029124,RBL,Brajan Gruda,58.8,72.4,54.4,57.9,completo,24
+2029124,RBL,Nicolas Seiwald,54.7,58.1,84.6,41.4,completo,24
+2029124,RBL,Christopher Nkunku,93.8,66.2,89.2,74.8,completo,24
+2029124,RBL,Brajan Gruda,88.3,74.5,83.8,70.8,completo,24
+2029124,RBL,Christopher Nkunku,83.0,70.8,87.0,74.8,completo,24
+2029124,RBL,Brajan Gruda,107.2,76.2,102.4,68.9,completo,24
+2029124,RBL,Ridle Baku,102.4,68.2,101.4,59.7,completo,24
+2029124,RBL,Christopher Nkunku,102.1,53.9,91.9,46.6,fallado,24
+2029124,Real Madrid,Arda Güler,41.5,8.2,18.6,12.5,completo,24
+2029124,Real Madrid,Álvaro Carreras,18.0,13.0,20.8,29.5,completo,24
+2029124,Real Madrid,Dean Huijsen,16.8,31.0,18.1,52.4,completo,25
+2029124,Real Madrid,Antonio Rüdiger,22.3,54.1,38.4,56.0,completo,25
+2029124,Real Madrid,Eduardo Camavinga,38.4,56.0,52.3,77.3,completo,25
+2029124,Real Madrid,Federico Valverde,52.3,77.3,41.2,64.1,completo,25
+2029124,Real Madrid,Eduardo Camavinga,50.6,62.4,48.1,55.3,completo,25
+2029124,Real Madrid,Bernardo Silva,48.1,55.3,48.7,61.3,completo,25
+2029124,Real Madrid,Eduardo Camavinga,48.7,61.5,56.8,72.5,completo,25
+2029124,Real Madrid,Bernardo Silva,56.0,72.3,48.8,60.0,completo,25
+2029124,Real Madrid,Eduardo Camavinga,46.9,54.0,47.0,24.3,completo,25
+2029124,Real Madrid,Dean Huijsen,51.2,27.4,41.9,42.3,completo,25
+2029124,Real Madrid,Antonio Rüdiger,43.1,46.8,53.3,59.6,completo,25
+2029124,Real Madrid,Bernardo Silva,73.9,61.8,90.1,76.3,completo,25
+2029124,Real Madrid,Federico Valverde,92.5,75.9,84.7,66.0,completo,25
+2029124,Real Madrid,Bernardo Silva,84.2,65.4,99.6,76.6,completo,25
+2029124,Real Madrid,Federico Valverde,99.6,76.6,87.1,72.2,completo,25
+2029124,Real Madrid,Bernardo Silva,88.2,72.0,93.4,76.6,completo,25
+2029124,Real Madrid,Federico Valverde,94.3,77.1,87.5,62.7,completo,25
+2029124,Real Madrid,Arda Güler,87.5,62.7,92.3,57.0,completo,25
+2029124,RBL,Castello Lukeba,16.7,26.3,8.8,36.6,completo,26
+2029124,RBL,Maarten Vandevoordt,9.0,36.6,13.3,61.1,completo,26
+2029124,RBL,Willi Orbán,13.4,61.1,28.9,79.2,completo,26
+2029124,RBL,Ridle Baku,26.9,78.5,7.3,60.2,completo,26
+2029124,RBL,Maarten Vandevoordt,10.0,64.9,49.2,72.5,fallado,26
+2029124,Real Madrid,Álvaro Carreras,64.8,1.9,94.7,0.0,fallado,26
+2029124,RBL,Brajan Gruda,42.6,70.2,46.2,65.4,completo,26
+2029124,RBL,Christopher Nkunku,48.4,64.2,44.3,60.6,completo,26
+2029124,RBL,Nicolas Seiwald,47.9,57.7,37.6,54.1,completo,26
+2029124,RBL,Willi Orbán,37.1,54.4,26.6,27.1,completo,26
+2029124,RBL,Castello Lukeba,26.8,26.8,33.6,10.4,completo,27
+2029124,RBL,David Raum,33.5,8.5,54.0,8.0,completo,27
+2029124,RBL,Neil El Aynaoui,49.0,5.7,30.1,5.2,completo,27
+2029124,RBL,David Raum,29.0,8.1,9.2,40.0,completo,27
+2029124,RBL,Maarten Vandevoordt,9.2,39.8,17.8,65.1,completo,27
+2029124,RBL,Willi Orbán,17.8,65.1,10.0,49.8,completo,27
+2029124,RBL,Maarten Vandevoordt,11.5,52.7,37.4,65.7,completo,27
+2029124,RBL,Ridle Baku,35.0,66.7,38.8,77.0,completo,27
+2029124,RBL,Ridle Baku,49.6,54.1,58.0,36.1,completo,27
+2029124,RBL,Christopher Nkunku,67.7,34.3,78.5,26.2,completo,27
+2029124,RBL,David Raum,96.2,22.1,100.8,35.3,fallado,27
+2029124,RBL,David Raum,119.4,79.6,102.6,47.5,fallado,28
+2029124,Real Madrid,Federico Valverde,28.4,26.7,52.2,10.8,fallado,28
+2029124,RBL,Ridle Baku,72.4,78.3,74.3,77.1,fallado,28
+2029124,Real Madrid,Dean Huijsen,41.5,18.8,75.8,5.4,clave,28
+2029124,Real Madrid,Federico Valverde,75.5,75.6,92.5,78.6,completo,29
+2029124,Real Madrid,Arda Güler,92.2,78.2,89.8,64.4,completo,29
+2029124,Real Madrid,Kylian Mbappé,87.1,66.6,64.4,59.3,completo,29
+2029124,Real Madrid,Antonio Rüdiger,64.4,59.3,63.1,31.9,completo,29
+2029124,Real Madrid,Dean Huijsen,67.8,31.0,64.1,49.7,completo,29
+2029124,Real Madrid,Antonio Rüdiger,65.0,53.4,77.8,55.4,completo,29
+2029124,Real Madrid,Kylian Mbappé,77.8,55.4,84.8,78.0,completo,29
+2029124,Real Madrid,Arda Güler,88.9,75.2,80.3,62.7,completo,29
+2029124,Real Madrid,Kylian Mbappé,83.6,60.6,108.6,69.4,completo,29
+2029124,Real Madrid,Arda Güler,107.4,69.2,107.6,61.0,completo,29
+2029124,Real Madrid,Kylian Mbappé,119.2,55.3,114.5,47.5,fallado,29
+2029124,Real Madrid,Arda Güler,119.4,79.6,115.6,39.2,fallado,30
+2029124,RBL,Maarten Vandevoordt,19.3,41.7,35.0,49.1,completo,30
+2029124,RBL,Christopher Nkunku,35.3,48.6,42.0,17.4,completo,30
+2029124,RBL,Antonio Nusa,74.5,11.4,90.8,71.7,completo,30
+2029124,RBL,Neil El Aynaoui,92.4,67.0,88.0,76.4,completo,31
+2029124,RBL,Ridle Baku,85.1,75.0,74.8,74.1,completo,31
+2029124,RBL,Willi Orbán,76.3,74.6,87.5,77.1,completo,31
+2029124,RBL,Ridle Baku,88.3,76.7,93.4,72.2,completo,31
+2029124,RBL,Neil El Aynaoui,100.3,75.2,113.0,77.4,completo,31
+2029124,RBL,Ridle Baku,114.8,77.0,107.8,42.2,fallado,31
+2029124,RBL,Castello Lukeba,44.9,27.6,62.4,17.0,completo,31
+2029124,RBL,David Raum,64.9,16.1,84.5,4.7,completo,31
+2029124,RBL,Antonio Nusa,93.5,14.8,85.8,26.2,completo,31
+2029124,RBL,Neil El Aynaoui,85.8,26.2,91.7,45.2,completo,31
+2029124,RBL,Brajan Gruda,91.3,43.6,90.2,31.6,completo,31
+2029124,RBL,Neil El Aynaoui,90.2,31.1,95.5,17.6,completo,31
+2029124,RBL,David Raum,94.9,17.0,102.4,6.8,clave,31
+2029124,RBL,David Raum,97.3,16.6,85.4,21.4,completo,31
+2029124,RBL,Nicolas Seiwald,85.3,21.4,91.7,10.3,completo,31
+2029124,RBL,David Raum,91.7,10.3,85.0,18.1,completo,31
+2029124,RBL,Nicolas Seiwald,83.8,20.7,87.4,8.2,completo,32
+2029124,RBL,David Raum,87.4,7.3,95.6,3.1,completo,32
+2029124,RBL,Antonio Nusa,89.9,14.1,111.0,45.6,clave,32
+2029124,Real Madrid,Thibaut Courtois,13.4,35.1,32.0,9.4,completo,32
+2029124,Real Madrid,Álvaro Carreras,32.0,9.4,16.6,24.2,completo,32
+2029124,Real Madrid,Dean Huijsen,18.5,24.9,22.2,41.4,completo,32
+2029124,Real Madrid,Eduardo Camavinga,22.6,52.1,36.4,75.8,completo,32
+2029124,Real Madrid,Federico Valverde,36.4,75.8,45.0,56.2,completo,32
+2029124,Real Madrid,Bernardo Silva,45.0,56.2,40.8,70.9,completo,32
+2029124,Real Madrid,Federico Valverde,40.9,69.7,25.7,56.2,completo,32
+2029124,Real Madrid,Antonio Rüdiger,26.5,53.5,32.0,28.1,completo,32
+2029124,Real Madrid,Dean Huijsen,32.0,28.1,48.6,32.2,completo,32
+2029124,Real Madrid,Jude Bellingham,45.2,37.4,37.2,45.8,completo,32
+2029124,Real Madrid,Eduardo Camavinga,37.2,45.8,46.1,74.2,completo,32
+2029124,Real Madrid,Federico Valverde,46.8,75.1,53.4,67.0,completo,32
+2029124,Real Madrid,Bernardo Silva,50.0,63.1,45.1,52.3,completo,32
+2029124,Real Madrid,Eduardo Camavinga,47.8,51.4,78.7,5.3,fallado,32
+2029124,Real Madrid,Dean Huijsen,64.2,11.5,53.6,29.1,completo,33
+2029124,Real Madrid,Eduardo Camavinga,53.6,29.8,53.4,55.7,completo,33
+2029124,Real Madrid,Antonio Rüdiger,66.8,60.7,79.7,73.8,completo,33
+2029124,Real Madrid,Federico Valverde,82.0,74.0,64.1,72.7,completo,33
+2029124,Real Madrid,Antonio Rüdiger,45.8,67.2,45.6,36.6,completo,33
+2029124,Real Madrid,Dean Huijsen,44.4,37.0,47.2,15.4,completo,33
+2029124,Real Madrid,Álvaro Carreras,47.2,31.0,44.8,62.5,completo,33
+2029124,Real Madrid,Antonio Rüdiger,52.8,56.1,62.4,5.9,completo,33
+2029124,Real Madrid,Jude Bellingham,69.4,11.5,90.4,70.9,fallado,33
+2029124,Real Madrid,Eduardo Camavinga,86.0,75.2,85.8,78.2,completo,33
+2029124,Real Madrid,Federico Valverde,85.8,78.2,58.0,74.4,fallado,33
+2029124,Real Madrid,Bernardo Silva,68.2,43.9,70.3,23.5,completo,34
+2029124,Real Madrid,Álvaro Carreras,76.8,24.0,87.8,4.1,completo,34
+2029124,Real Madrid,Vinícius Júnior,87.8,4.1,80.3,13.0,completo,34
+2029124,Real Madrid,Álvaro Carreras,80.4,14.7,87.7,26.9,completo,34
+2029124,Real Madrid,Kylian Mbappé,90.4,20.0,93.8,27.6,completo,34
+2029124,Real Madrid,Jude Bellingham,93.8,27.6,101.5,28.3,fallado,34
+2029124,RBL,Maarten Vandevoordt,5.9,41.1,9.4,21.4,completo,34
+2029124,RBL,Castello Lukeba,9.5,21.2,4.4,43.5,completo,34
+2029124,RBL,Maarten Vandevoordt,10.4,40.0,19.7,37.4,completo,34
+2029124,RBL,Nicolas Seiwald,19.7,37.4,7.0,42.3,completo,34
+2029124,RBL,Maarten Vandevoordt,6.0,42.3,14.4,68.5,completo,34
+2029124,RBL,Willi Orbán,14.6,69.0,25.7,78.7,completo,34
+2029124,RBL,Ridle Baku,25.7,78.7,47.3,59.5,completo,34
+2029124,RBL,Rômulo,47.3,59.5,49.3,77.4,completo,34
+2029124,RBL,Brajan Gruda,49.8,73.6,66.0,9.8,completo,34
+2029124,RBL,David Raum,77.8,9.5,75.0,22.2,completo,34
+2029124,RBL,Neil El Aynaoui,75.0,22.2,83.0,32.2,completo,34
+2029124,RBL,Christopher Nkunku,83.0,32.2,76.9,36.7,completo,34
+2029124,RBL,Nicolas Seiwald,78.1,37.7,91.3,76.6,completo,34
+2029124,RBL,Brajan Gruda,91.6,68.5,78.0,56.0,completo,35
+2029124,RBL,Nicolas Seiwald,76.2,53.4,83.2,42.6,completo,35
+2029124,RBL,Neil El Aynaoui,83.2,42.6,73.3,56.9,completo,35
+2029124,RBL,Willi Orbán,73.3,56.9,101.3,74.3,completo,35
+2029124,RBL,Ridle Baku,102.0,73.2,113.9,61.6,completo,35
+2029124,RBL,Neil El Aynaoui,109.7,65.2,103.0,57.8,completo,35
+2029124,RBL,Ridle Baku,103.0,57.8,102.5,38.1,completo,35
+2029124,RBL,Christopher Nkunku,103.1,38.1,102.6,43.3,fallado,35
+2029124,Real Madrid,Bernardo Silva,19.0,41.1,40.2,40.9,fallado,35
+2029124,RBL,Nicolas Seiwald,83.5,52.6,64.2,43.3,completo,35
+2029124,RBL,Willi Orbán,66.1,43.1,75.6,20.0,completo,35
+2029124,RBL,David Raum,71.4,14.6,87.1,15.3,completo,35
+2029124,RBL,David Raum,87.7,8.1,104.3,36.0,fallado,36
+2029124,RBL,Castello Lukeba,73.9,27.5,66.4,9.5,completo,36
+2029124,RBL,David Raum,67.6,15.1,56.2,63.8,completo,36
+2029124,RBL,Ridle Baku,54.8,59.9,66.4,51.1,completo,36
+2029124,RBL,Nicolas Seiwald,63.2,51.8,51.4,58.6,completo,36
+2029124,RBL,Ridle Baku,47.8,58.3,16.9,41.1,completo,36
+2029124,RBL,Maarten Vandevoordt,21.8,45.2,49.4,77.2,completo,36
+2029124,Real Madrid,Dean Huijsen,26.5,12.2,41.2,18.2,completo,36
+2029124,Real Madrid,Eduardo Camavinga,41.2,18.2,32.2,28.1,completo,36
+2029124,Real Madrid,Bernardo Silva,32.5,26.4,25.3,11.5,completo,36
+2029124,Real Madrid,Dean Huijsen,25.3,11.5,23.0,46.6,completo,36
+2029124,Real Madrid,Antonio Rüdiger,33.6,48.3,37.2,67.0,completo,37
+2029124,Real Madrid,Federico Valverde,39.7,70.2,55.9,76.9,completo,37
+2029124,RBL,David Raum,68.3,17.8,69.7,43.5,completo,37
+2029124,RBL,Neil El Aynaoui,80.9,36.9,85.0,23.5,completo,37
+2029124,RBL,David Raum,85.0,23.5,94.1,3.8,completo,37
+2029124,RBL,Antonio Nusa,108.7,11.6,95.2,18.9,completo,37
+2029124,RBL,Christopher Nkunku,100.7,22.8,93.8,21.6,completo,37
+2029124,RBL,Neil El Aynaoui,93.8,21.4,106.3,6.3,completo,37
+2029124,RBL,Antonio Nusa,106.1,10.3,115.4,21.2,completo,37
+2029124,Real Madrid,Thibaut Courtois,5.2,38.4,29.6,33.8,completo,38
+2029124,Real Madrid,Eduardo Camavinga,28.9,33.4,44.3,4.2,completo,38
+2029124,Real Madrid,Álvaro Carreras,44.3,4.2,49.2,14.2,completo,38
+2029124,Real Madrid,Jude Bellingham,49.2,15.4,37.8,28.3,completo,38
+2029124,Real Madrid,Dean Huijsen,37.8,28.3,37.2,52.2,completo,38
+2029124,Real Madrid,Antonio Rüdiger,43.7,49.8,36.8,32.9,completo,38
+2029124,Real Madrid,Dean Huijsen,36.8,32.5,46.6,18.8,completo,38
+2029124,Real Madrid,Álvaro Carreras,46.2,17.0,69.2,4.4,completo,38
+2029124,Real Madrid,Jude Bellingham,67.0,4.3,47.6,11.8,completo,38
+2029124,Real Madrid,Álvaro Carreras,47.6,11.8,42.5,37.5,completo,38
+2029124,Real Madrid,Dean Huijsen,42.5,37.5,77.9,76.8,completo,38
+2029124,Real Madrid,Arda Güler,77.9,76.8,80.9,71.8,completo,38
+2029124,Real Madrid,Federico Valverde,87.8,58.1,87.8,27.2,clave,38
+2029124,RBL,Maarten Vandevoordt,6.2,35.1,56.9,42.3,fallado,39
+2029124,Real Madrid,Jude Bellingham,77.2,31.4,82.2,37.2,completo,39
+2029124,Real Madrid,Eduardo Camavinga,82.2,37.2,80.9,27.8,completo,39
+2029124,Real Madrid,Jude Bellingham,81.4,29.0,89.0,14.4,completo,39
+2029124,Real Madrid,Kylian Mbappé,83.5,23.1,82.7,14.4,completo,39
+2029124,Real Madrid,Álvaro Carreras,79.3,12.7,88.6,8.5,completo,39
+2029124,Real Madrid,Jude Bellingham,88.8,7.9,81.0,13.3,completo,39
+2029124,Real Madrid,Kylian Mbappé,83.3,12.3,93.1,3.6,completo,39
+2029124,Real Madrid,Álvaro Carreras,93.2,3.6,97.0,12.0,completo,39
+2029124,Real Madrid,Jude Bellingham,96.0,10.1,97.1,21.8,completo,39
+2029124,Real Madrid,Kylian Mbappé,97.1,21.8,104.9,20.5,fallado,39
+2029124,Real Madrid,Dean Huijsen,88.3,20.4,120.0,37.9,fallado,39
+2029124,RBL,Castello Lukeba,6.6,30.4,5.5,42.2,completo,40
+2029124,RBL,Maarten Vandevoordt,5.9,42.2,51.0,74.8,completo,40
+2029124,RBL,Brajan Gruda,45.4,72.6,40.7,64.2,completo,40
+2029124,RBL,Nicolas Seiwald,41.6,62.6,45.0,50.4,completo,40
+2029124,RBL,Neil El Aynaoui,37.0,42.2,66.7,29.1,completo,40
+2029124,RBL,David Raum,75.0,29.9,99.0,49.6,clave,40
+2029124,Real Madrid,Álvaro Carreras,37.0,27.0,41.0,35.1,completo,40
+2029124,Real Madrid,Eduardo Camavinga,69.7,21.2,99.1,19.4,completo,40
+2029124,Real Madrid,Kylian Mbappé,103.8,22.4,97.1,36.0,fallado,40
+2029124,RBL,Neil El Aynaoui,42.8,49.0,53.5,45.1,completo,40
+2029124,RBL,Castello Lukeba,52.7,40.9,46.2,20.0,completo,41
+2029124,RBL,David Raum,46.2,19.5,74.3,35.0,completo,41
+2029124,RBL,Christopher Nkunku,62.8,34.2,60.7,41.2,completo,41
+2029124,RBL,Nicolas Seiwald,60.7,41.2,45.4,22.4,completo,41
+2029124,RBL,David Raum,45.8,22.4,37.0,32.7,completo,41
+2029124,RBL,Castello Lukeba,34.8,31.6,15.1,43.5,completo,41
+2029124,RBL,Maarten Vandevoordt,27.0,48.4,104.0,54.8,fallado,41
+2029124,Real Madrid,Thibaut Courtois,10.9,22.6,30.4,20.2,completo,41
+2029124,Real Madrid,Dean Huijsen,44.4,27.4,103.0,15.7,completo,41
+2029124,Real Madrid,Jude Bellingham,109.8,15.2,110.8,41.4,fallado,41
+2029124,Real Madrid,Bernardo Silva,87.0,46.4,81.1,38.9,completo,42
+2029124,Real Madrid,Eduardo Camavinga,81.1,38.9,78.7,30.2,completo,42
+2029124,Real Madrid,Álvaro Carreras,78.4,30.2,76.7,43.9,completo,42
+2029124,Real Madrid,Eduardo Camavinga,76.7,43.9,77.8,62.2,completo,42
+2029124,Real Madrid,Bernardo Silva,77.8,62.2,87.7,74.6,completo,42
+2029124,Real Madrid,Arda Güler,103.0,67.7,92.4,68.9,completo,42
+2029124,Real Madrid,Bernardo Silva,90.8,65.5,80.3,52.6,completo,42
+2029124,Real Madrid,Eduardo Camavinga,80.3,46.6,78.2,31.3,completo,42
+2029124,Real Madrid,Dean Huijsen,78.7,29.8,84.6,15.9,completo,42
+2029124,Real Madrid,Álvaro Carreras,84.7,15.8,75.0,23.6,completo,42
+2029124,Real Madrid,Dean Huijsen,74.9,24.8,69.8,44.0,completo,42
+2029124,Real Madrid,Antonio Rüdiger,70.0,45.4,73.9,56.0,completo,42
+2029124,Real Madrid,Bernardo Silva,75.6,60.0,92.4,76.6,completo,42
+2029124,Real Madrid,Federico Valverde,89.0,71.4,80.0,63.6,completo,42
+2029124,Real Madrid,Bernardo Silva,82.3,66.0,101.8,76.2,completo,42
+2029124,Real Madrid,Federico Valverde,102.4,75.7,85.0,73.9,completo,42
+2029124,Real Madrid,Bernardo Silva,82.9,70.2,73.0,28.2,completo,42
+2029124,Real Madrid,Dean Huijsen,82.1,29.0,80.0,11.4,completo,42
+2029124,Real Madrid,Álvaro Carreras,78.8,18.0,88.2,6.6,completo,42
+2029124,Real Madrid,Vinícius Júnior,88.2,6.6,81.4,10.6,completo,42
+2029124,Real Madrid,Álvaro Carreras,81.4,10.6,79.4,28.2,completo,42
+2029124,Real Madrid,Jude Bellingham,82.0,30.0,95.0,45.8,completo,42
+2029124,Real Madrid,Arda Güler,95.3,45.6,103.4,44.9,completo,42
+2029124,Real Madrid,Kylian Mbappé,103.4,44.9,109.3,53.3,completo,42
+2029124,Real Madrid,Federico Valverde,113.4,55.0,107.6,40.7,clave,42
+2029124,RBL,Neil El Aynaoui,59.9,39.6,37.7,17.0,completo,44
+2029124,RBL,Castello Lukeba,41.5,9.2,52.3,3.5,completo,44
+2029124,RBL,Antonio Nusa,54.2,4.6,44.2,17.2,completo,44
+2029124,RBL,Neil El Aynaoui,44.9,19.1,41.5,35.8,completo,44
+2029124,RBL,Nicolas Seiwald,41.5,35.8,70.8,75.3,completo,44
+2029124,RBL,Brajan Gruda,77.8,69.0,84.7,58.8,completo,44
+2029124,RBL,Rômulo,84.7,58.8,78.7,55.0,fallado,44
+2029124,Real Madrid,Bernardo Silva,46.2,20.5,58.9,21.6,clave,44
+2029124,Real Madrid,Arda Güler,119.4,0.4,109.2,39.4,fallado,45
+2029124,Real Madrid,Arda Güler,86.0,9.4,108.0,34.9,fallado,45
+2029124,Real Madrid,Eduardo Camavinga,92.9,24.1,115.3,36.7,fallado,45
+2029124,RBL,Maarten Vandevoordt,9.0,50.8,45.8,4.7,fallado,45
+2029124,Real Madrid,Federico Valverde,73.9,75.4,75.7,69.2,completo,45
+2029124,Real Madrid,Kylian Mbappé,60.0,40.0,26.2,44.0,completo,45
+2029124,Real Madrid,Thibaut Courtois,30.0,41.8,89.8,37.5,fallado,45
+2029124,RBL,Willi Orbán,29.0,47.9,42.4,45.2,fallado,45
+2029124,Real Madrid,Eduardo Camavinga,70.9,32.6,63.6,28.3,fallado,45
+2029124,Real Madrid,Bernardo Silva,63.6,36.2,72.8,53.1,completo,45
+2029124,Real Madrid,Arda Güler,72.8,53.1,72.7,72.8,completo,45
+2029124,Real Madrid,Federico Valverde,73.0,73.0,77.8,66.3,completo,45
+2029124,Real Madrid,Bernardo Silva,77.8,66.3,72.6,72.3,completo,45
+2029124,Real Madrid,Federico Valverde,72.6,72.3,84.6,76.6,completo,45
+2029124,Real Madrid,Arda Güler,81.2,76.1,99.1,62.2,fallado,45
+2029124,Real Madrid,Federico Valverde,109.0,62.2,109.4,59.0,fallado,45
+2029124,RBL,Castello Lukeba,4.3,13.7,63.7,0.0,fallado,45
+2029124,Real Madrid,Thibaut Courtois,17.0,54.7,23.6,76.4,completo,45
+2029124,Real Madrid,Antonio Rüdiger,23.6,73.8,13.1,49.8,completo,45
+2029124,Real Madrid,Thibaut Courtois,12.6,46.9,31.8,37.2,completo,45
+2029124,Real Madrid,Jude Bellingham,31.4,32.2,30.4,7.7,completo,46
+2029124,Real Madrid,Álvaro Carreras,35.6,39.2,28.6,57.8,completo,46
+2029124,Real Madrid,Antonio Rüdiger,28.6,57.8,39.6,76.4,completo,46
+2029124,Real Madrid,Bernardo Silva,40.1,67.8,49.1,67.0,completo,46
+2029124,Real Madrid,Arda Güler,57.6,63.6,64.1,75.1,completo,46
+2029124,Real Madrid,Federico Valverde,63.5,74.2,45.2,50.5,completo,46
+2029124,Real Madrid,Antonio Rüdiger,42.6,55.8,39.4,32.6,completo,46
+2029124,Real Madrid,Dean Huijsen,40.2,33.0,51.7,8.2,completo,46
+2029124,Real Madrid,Jude Bellingham,52.0,11.8,35.6,27.4,completo,46
+2029124,Real Madrid,Dean Huijsen,36.8,27.4,50.5,40.6,completo,46
+2029124,Real Madrid,Bernardo Silva,50.5,40.6,46.0,34.6,completo,46
+2029124,Real Madrid,Jude Bellingham,44.8,37.3,45.2,74.6,completo,46
+2029124,Real Madrid,Federico Valverde,53.9,71.3,72.6,77.0,completo,46
+2029124,Real Madrid,Kylian Mbappé,72.6,77.0,70.1,72.5,completo,46
+2029124,Real Madrid,Federico Valverde,70.1,72.5,89.9,73.8,completo,46
+2029124,Real Madrid,Arda Güler,95.5,56.7,111.4,56.4,clave,46
+2029124,Real Madrid,Arda Güler,119.4,0.4,110.6,39.8,completo,47
+2029124,RBL,Castello Lukeba,22.6,27.8,47.4,31.8,fallado,47
+2029124,Real Madrid,Álvaro Carreras,59.9,50.2,55.3,34.8,completo,47
+2029124,Real Madrid,Bernardo Silva,50.2,53.3,47.3,72.8,completo,47
+2029124,Real Madrid,Federico Valverde,45.4,73.8,68.6,76.8,completo,47
+2029124,Real Madrid,Kylian Mbappé,68.6,76.8,74.8,74.6,completo,47
+2029124,RBL,David Raum,50.2,12.1,62.9,27.8,completo,47
+2029124,RBL,Christopher Nkunku,63.1,31.8,73.6,47.8,completo,47
+2029124,RBL,Brajan Gruda,74.0,43.1,80.0,43.1,completo,48
+2029124,RBL,Christopher Nkunku,83.8,47.7,81.0,40.7,completo,48
+2029124,RBL,Brajan Gruda,81.7,40.2,96.6,44.5,completo,48
+2029124,RBL,Rômulo,96.1,44.9,96.5,45.1,fallado,48
+2029124,Real Madrid,Vinícius Júnior,41.9,26.7,54.6,54.0,completo,48
+2029124,Real Madrid,Jude Bellingham,55.9,58.9,82.4,62.6,completo,48
+2029124,RBL,Maarten Vandevoordt,5.6,22.8,12.7,12.6,completo,48
+2029124,RBL,David Raum,16.8,11.4,30.1,31.5,completo,48
+2029124,RBL,Neil El Aynaoui,36.7,38.6,51.1,67.0,completo,48
+2029124,RBL,Ridle Baku,51.1,67.0,54.1,72.9,completo,48
+2029124,RBL,Brajan Gruda,57.4,70.7,48.8,73.7,completo,48
+2029124,RBL,Ridle Baku,48.5,73.7,8.5,59.0,completo,48
+2029124,RBL,Maarten Vandevoordt,14.9,56.4,22.1,37.7,completo,48
+2029124,RBL,Castello Lukeba,22.1,38.3,27.0,65.6,completo,48
+2029124,RBL,Willi Orbán,36.6,69.1,45.0,77.1,completo,48
+2029124,RBL,Brajan Gruda,45.1,77.1,65.3,55.8,completo,48
+2029124,RBL,Brajan Gruda,71.8,64.5,81.6,54.4,completo,49
+2029124,Real Madrid,Federico Valverde,17.6,60.8,15.8,52.6,completo,50
+2029124,Real Madrid,Antonio Rüdiger,16.0,51.0,22.7,21.4,completo,50
+2029124,Real Madrid,Dean Huijsen,30.5,20.2,45.5,15.4,completo,50
+2029124,Real Madrid,Kylian Mbappé,68.0,28.4,82.9,71.4,completo,50
+2029124,Real Madrid,Federico Valverde,103.9,61.4,116.8,41.1,fallado,50
+2029124,RBL,Maarten Vandevoordt,10.0,44.6,24.1,67.3,completo,50
+2029124,RBL,Ridle Baku,22.6,69.1,27.7,55.9,completo,50
+2029124,RBL,Nicolas Seiwald,27.7,55.9,9.0,48.0,completo,50
+2029124,RBL,Maarten Vandevoordt,9.0,48.0,19.3,21.4,completo,50
+2029124,RBL,Castello Lukeba,23.4,22.1,34.1,13.2,completo,50
+2029124,RBL,David Raum,34.1,13.2,49.9,2.3,completo,50
+2029124,Real Madrid,Arda Güler,56.9,69.6,66.2,42.3,completo,50
+2029124,Real Madrid,Jude Bellingham,74.9,46.9,89.8,7.4,completo,51
+2029124,Real Madrid,Álvaro Carreras,88.3,7.3,86.0,16.1,completo,51
+2029124,Real Madrid,Vinícius Júnior,86.6,21.9,86.0,36.1,completo,51
+2029124,Real Madrid,Jude Bellingham,86.0,26.4,99.4,9.4,completo,51
+2029124,Real Madrid,Álvaro Carreras,99.6,6.1,84.0,10.4,completo,51
+2029124,Real Madrid,Jude Bellingham,86.0,8.0,83.8,2.9,completo,51
+2029124,Real Madrid,Vinícius Júnior,83.8,2.9,106.1,13.3,completo,51
+2029124,Real Madrid,Jude Bellingham,115.4,15.4,115.4,45.1,clave,51
+2029124,RBL,Rômulo,60.4,40.2,52.6,54.9,completo,52
+2029124,RBL,Nicolas Seiwald,50.8,54.6,45.7,66.8,completo,52
+2029124,RBL,Ridle Baku,45.6,66.6,34.6,54.4,completo,52
+2029124,RBL,Willi Orbán,33.8,55.5,44.8,70.8,completo,52
+2029124,RBL,Nicolas Seiwald,67.6,59.3,66.0,46.3,completo,53
+2029124,RBL,Neil El Aynaoui,69.6,51.3,63.6,55.9,completo,53
+2029124,RBL,Nicolas Seiwald,63.6,55.9,52.7,59.0,completo,53
+2029124,RBL,Neil El Aynaoui,52.6,59.0,70.3,76.6,completo,53
+2029124,Real Madrid,Vinícius Júnior,43.1,13.0,26.2,27.7,completo,53
+2029124,Real Madrid,Antonio Rüdiger,25.8,31.5,25.3,18.0,completo,53
+2029124,Real Madrid,Dean Huijsen,25.3,18.0,38.3,22.6,completo,53
+2029124,Real Madrid,Eduardo Camavinga,33.2,25.3,9.2,40.1,completo,53
+2029124,Real Madrid,Thibaut Courtois,9.7,41.8,10.9,57.1,completo,53
+2029124,Real Madrid,Antonio Rüdiger,11.3,58.2,31.7,52.1,completo,53
+2029124,Real Madrid,Bernardo Silva,31.7,52.1,31.4,75.7,completo,53
+2029124,Real Madrid,Federico Valverde,31.4,75.7,43.4,76.3,completo,53
+2029124,Real Madrid,Arda Güler,43.4,76.3,42.2,71.6,completo,54
+2029124,Real Madrid,Federico Valverde,40.9,69.9,45.1,69.6,fallado,54
+2029124,Real Madrid,Federico Valverde,49.6,54.2,68.5,34.4,completo,54
+2029124,Real Madrid,Kylian Mbappé,69.0,34.1,78.0,11.5,completo,54
+2029124,Real Madrid,Jude Bellingham,87.1,33.0,85.8,52.8,completo,54
+2029124,Real Madrid,Arda Güler,85.8,52.8,104.4,62.6,completo,54
+2029124,Real Madrid,Bernardo Silva,100.1,63.2,83.8,60.1,completo,54
+2029124,Real Madrid,Antonio Rüdiger,100.9,68.7,92.8,72.7,completo,54
+2029124,Real Madrid,Bernardo Silva,92.8,72.7,82.4,64.1,completo,54
+2029124,Real Madrid,Arda Güler,82.0,54.3,104.2,12.1,completo,54
+2029124,Real Madrid,Vinícius Júnior,107.4,16.8,97.6,22.1,completo,54
+2029124,Real Madrid,Jude Bellingham,97.6,22.1,98.3,24.7,fallado,54
+2029124,Real Madrid,Vinícius Júnior,103.6,13.2,107.5,23.5,completo,54
+2029124,Real Madrid,Jude Bellingham,107.5,24.2,107.3,33.8,clave,54
+2029124,RBL,Castello Lukeba,6.7,34.8,6.7,44.5,completo,55
+2029124,RBL,Maarten Vandevoordt,11.6,44.2,58.1,76.2,completo,55
+2029124,RBL,Brajan Gruda,90.5,56.7,102.6,36.3,completo,55
+2029124,RBL,Nicolas Seiwald,67.2,6.9,77.2,19.6,completo,55
+2029124,RBL,Neil El Aynaoui,77.0,19.6,94.2,16.2,completo,55
+2029124,RBL,Rômulo,92.4,15.4,77.3,12.8,completo,55
+2029124,RBL,Nicolas Seiwald,75.2,17.8,105.2,69.1,completo,55
+2029124,RBL,David Raum,105.0,68.0,113.9,36.5,clave,56
+2029124,Real Madrid,Thibaut Courtois,2.9,41.8,26.6,40.9,completo,56
+2029124,Real Madrid,Eduardo Camavinga,21.7,42.2,25.4,71.4,completo,56
+2029124,Real Madrid,Federico Valverde,24.4,70.6,30.7,74.6,completo,56
+2029124,Real Madrid,Arda Güler,30.7,74.6,28.2,68.5,completo,56
+2029124,Real Madrid,Bernardo Silva,28.2,68.5,43.7,75.8,completo,56
+2029124,Real Madrid,Federico Valverde,67.8,70.1,67.2,55.0,completo,56
+2029124,Real Madrid,Arda Güler,79.0,47.0,96.1,61.4,completo,56
+2029124,Real Madrid,Federico Valverde,107.9,59.7,100.4,33.7,clave,56
+2029124,RBL,Maarten Vandevoordt,14.6,38.4,13.3,25.4,completo,57
+2029124,RBL,Castello Lukeba,13.1,25.8,4.3,41.6,completo,57
+2029124,RBL,Maarten Vandevoordt,4.2,41.7,27.8,73.7,completo,57
+2029124,RBL,Brajan Gruda,28.7,74.1,22.4,73.9,completo,57
+2029124,RBL,Ridle Baku,22.4,73.9,47.3,74.6,completo,57
+2029124,RBL,Rômulo,42.8,77.1,42.6,75.7,fallado,57
+2029124,RBL,Ridle Baku,38.8,74.6,42.6,68.9,completo,57
+2029124,RBL,Ridle Baku,41.3,63.2,31.1,37.2,completo,57
+2029124,RBL,Castello Lukeba,31.9,34.9,62.4,9.0,fallado,57
+2029124,Real Madrid,Federico Valverde,54.2,73.6,72.8,60.0,fallado,57
+2029124,RBL,Castello Lukeba,48.0,22.1,62.8,8.0,completo,57
+2029124,RBL,David Raum,70.4,7.0,92.2,16.2,fallado,57
+2029124,Real Madrid,Eduardo Camavinga,34.1,57.9,35.2,76.3,completo,57
+2029124,Real Madrid,Bernardo Silva,36.2,78.5,39.2,78.3,fallado,57
+2029124,Real Madrid,Antonio Rüdiger,11.2,70.6,4.9,45.6,completo,58
+2029124,Real Madrid,Thibaut Courtois,8.2,38.7,13.3,7.4,completo,58
+2029124,Real Madrid,Álvaro Carreras,13.2,7.8,31.4,7.4,completo,58
+2029124,Real Madrid,Arda Güler,30.1,7.8,43.3,6.0,completo,58
+2029124,Real Madrid,Vinícius Júnior,43.3,6.0,52.8,15.1,completo,58
+2029124,Real Madrid,Jude Bellingham,52.8,15.1,48.1,20.4,completo,58
+2029124,Real Madrid,Vinícius Júnior,48.4,21.1,101.9,27.0,fallado,58
+2029124,RBL,Maarten Vandevoordt,15.8,50.2,41.2,16.6,completo,58
+2029124,RBL,David Raum,53.5,14.2,64.6,9.5,completo,58
+2029124,RBL,Antonio Nusa,68.0,7.4,60.1,11.4,completo,58
+2029124,RBL,David Raum,62.6,12.2,62.4,25.0,completo,58
+2029124,RBL,Neil El Aynaoui,62.4,25.0,55.3,39.8,completo,58
+2029124,RBL,Nicolas Seiwald,61.3,42.6,56.9,59.7,completo,58
+2029124,RBL,Willi Orbán,65.4,64.9,78.0,76.9,completo,58
+2029124,Real Madrid,Dean Huijsen,3.8,23.8,2.8,38.4,completo,59
+2029124,Real Madrid,Thibaut Courtois,2.8,42.0,6.5,65.3,completo,59
+2029124,Real Madrid,Antonio Rüdiger,6.5,65.3,16.9,77.6,completo,59
+2029124,Real Madrid,Federico Valverde,16.9,77.6,24.6,66.5,completo,59
+2029124,Real Madrid,Arda Güler,24.6,66.5,11.5,39.2,completo,59
+2029124,Real Madrid,Dean Huijsen,15.0,30.2,28.4,10.3,completo,59
+2029124,Real Madrid,Álvaro Carreras,28.4,9.8,31.2,15.8,completo,59
+2029124,Real Madrid,Bernardo Silva,31.0,15.4,30.0,7.8,completo,59
+2029124,Real Madrid,Álvaro Carreras,30.0,7.8,36.6,13.2,completo,59
+2029124,Real Madrid,Eduardo Camavinga,36.6,13.2,38.4,6.1,completo,59
+2029124,Real Madrid,Jude Bellingham,45.0,3.2,63.7,4.9,completo,59
+2029124,Real Madrid,Jude Bellingham,65.8,3.8,41.3,27.0,completo,59
+2029124,Real Madrid,Dean Huijsen,41.3,27.0,41.6,48.1,completo,59
+2029124,Real Madrid,Antonio Rüdiger,46.6,53.4,93.0,34.4,fallado,59
+2029124,Real Madrid,Eduardo Camavinga,79.4,20.0,88.6,9.8,completo,60
+2029124,Real Madrid,Vinícius Júnior,79.4,7.8,67.3,9.9,completo,60
+2029124,Real Madrid,Álvaro Carreras,67.3,9.9,67.3,20.2,completo,60
+2029124,Real Madrid,Bernardo Silva,64.9,23.3,53.2,45.7,completo,60
+2029124,Real Madrid,Antonio Rüdiger,53.2,45.7,52.9,30.3,completo,60
+2029124,Real Madrid,Dean Huijsen,65.4,29.1,82.4,32.2,completo,60
+2029124,RBL,Castello Lukeba,47.2,48.2,38.4,51.7,completo,60
+2029124,RBL,Willi Orbán,38.3,51.8,29.0,27.0,completo,60
+2029124,RBL,David Raum,28.2,27.0,37.4,30.4,completo,60
+2029124,RBL,Neil El Aynaoui,40.9,31.3,32.4,34.3,completo,60
+2029124,RBL,Castello Lukeba,33.0,33.8,86.4,29.1,fallado,60
+2029124,Real Madrid,Antonio Rüdiger,31.3,48.0,37.0,32.0,completo,60
+2029124,Real Madrid,Dean Huijsen,37.0,32.0,71.3,12.3,completo,60
+2029124,Real Madrid,Jude Bellingham,71.3,12.3,88.1,1.7,completo,60
+2029124,Real Madrid,Vinícius Júnior,95.2,5.0,95.4,6.6,fallado,60
+2029124,Real Madrid,Arda Güler,119.4,0.4,99.6,13.3,completo,61
+2029124,Real Madrid,Bernardo Silva,97.8,11.8,112.8,40.9,fallado,61
+2029124,RBL,David Raum,11.0,1.4,68.4,24.2,fallado,61
+2029124,Real Madrid,Álvaro Carreras,50.5,55.8,58.8,34.1,completo,61
+2029124,Real Madrid,Bernardo Silva,58.8,34.1,54.6,45.9,completo,61
+2029124,Real Madrid,Álvaro Carreras,54.6,45.9,54.5,61.7,completo,61
+2029124,Real Madrid,Eduardo Camavinga,54.5,61.7,73.9,76.4,completo,61
+2029124,Real Madrid,Federico Valverde,73.9,76.4,51.4,69.8,completo,61
+2029124,Real Madrid,Eduardo Camavinga,51.4,69.8,53.5,46.8,completo,61
+2029124,Real Madrid,Dean Huijsen,53.4,44.2,51.7,31.5,completo,61
+2029124,Real Madrid,Bernardo Silva,51.7,31.5,65.5,8.7,completo,61
+2029124,Real Madrid,Arda Güler,65.5,8.7,78.4,7.5,completo,61
+2029124,Real Madrid,Kylian Mbappé,78.4,7.5,64.9,7.5,completo,61
+2029124,Real Madrid,Arda Güler,64.9,7.5,74.5,4.1,completo,61
+2029124,Real Madrid,Kylian Mbappé,74.5,4.1,63.1,9.4,completo,61
+2029124,Real Madrid,Arda Güler,62.9,12.8,51.7,40.6,completo,61
+2029124,Real Madrid,Dean Huijsen,52.6,41.8,53.4,58.3,completo,61
+2029124,Real Madrid,Antonio Rüdiger,53.4,58.3,52.8,45.4,completo,61
+2029124,Real Madrid,Dean Huijsen,52.6,39.2,50.9,19.0,completo,61
+2029124,Real Madrid,Álvaro Carreras,50.9,19.0,61.9,22.4,completo,61
+2029124,Real Madrid,Arda Güler,61.9,22.4,76.6,4.1,completo,61
+2029124,Real Madrid,Vinícius Júnior,76.6,4.1,84.4,5.0,fallado,61
+2029124,Real Madrid,Kylian Mbappé,90.7,28.4,109.8,20.2,clave,62
+2029124,RBL,Antonio Nusa,24.2,43.3,31.8,46.1,fallado,62
+2029124,RBL,Ridle Baku,24.1,57.8,35.3,64.4,completo,62
+2029124,RBL,Nicolas Seiwald,63.6,57.8,71.3,66.1,completo,63
+2029124,RBL,Andrija Maksimovic,74.6,67.7,89.2,74.2,completo,63
+2029124,RBL,Ridle Baku,86.0,74.1,90.5,47.8,fallado,63
+2029124,Real Madrid,Federico Valverde,23.9,51.4,5.4,41.8,completo,63
+2029124,Real Madrid,Thibaut Courtois,4.9,40.8,3.8,22.2,completo,63
+2029124,Real Madrid,Dean Huijsen,6.4,21.6,12.7,5.8,completo,63
+2029124,Real Madrid,Álvaro Carreras,8.9,4.8,35.3,4.9,fallado,63
+2029124,RBL,Nicolas Seiwald,73.3,78.2,80.8,76.7,completo,63
+2029124,RBL,Andrija Maksimovic,80.5,76.7,74.9,57.9,completo,63
+2029124,RBL,Rocco Reitz,77.2,52.4,74.5,24.5,completo,63
+2029124,RBL,David Raum,78.0,24.6,82.6,22.1,completo,63
+2029124,RBL,Antonio Nusa,100.1,10.3,79.2,16.0,completo,63
+2029124,RBL,Rocco Reitz,81.2,7.0,79.0,25.4,completo,63
+2029124,RBL,Nicolas Seiwald,81.4,30.6,81.4,50.6,completo,63
+2029124,RBL,Ridle Baku,83.5,31.8,94.3,31.6,completo,63
+2029124,Real Madrid,Kylian Mbappé,96.1,67.3,89.4,2.2,completo,64
+2029124,Real Madrid,Vinícius Júnior,81.5,2.6,76.6,6.3,completo,64
+2029124,Real Madrid,Álvaro Carreras,71.3,9.9,80.2,21.4,completo,64
+2029124,Real Madrid,Arda Güler,76.9,21.6,70.9,12.5,completo,64
+2029124,Real Madrid,Álvaro Carreras,71.2,15.8,62.5,28.2,completo,64
+2029124,Real Madrid,Dean Huijsen,62.5,28.2,62.9,40.3,completo,64
+2029124,Real Madrid,Bernardo Silva,62.9,40.3,68.0,56.5,completo,64
+2029124,Real Madrid,Antonio Rüdiger,73.6,58.2,79.6,73.9,completo,64
+2029124,Real Madrid,Kylian Mbappé,80.4,74.7,71.9,68.0,completo,64
+2029124,Real Madrid,Federico Valverde,71.9,68.0,80.4,76.1,completo,64
+2029124,Real Madrid,Kylian Mbappé,79.9,75.9,69.1,74.5,completo,64
+2029124,Real Madrid,Federico Valverde,69.1,74.5,68.6,62.7,completo,64
+2029124,Real Madrid,Bernardo Silva,68.6,62.7,64.0,67.5,completo,64
+2029124,Real Madrid,Antonio Rüdiger,64.9,65.8,63.7,41.1,completo,64
+2029124,Real Madrid,Dean Huijsen,63.7,41.1,74.2,36.0,completo,64
+2029124,Real Madrid,Jude Bellingham,74.2,36.0,64.0,38.9,completo,64
+2029124,Real Madrid,Dean Huijsen,63.7,38.7,65.6,50.6,completo,64
+2029124,Real Madrid,Bernardo Silva,66.1,52.3,72.7,75.6,completo,64
+2029124,Real Madrid,Federico Valverde,73.4,74.5,84.7,76.4,completo,64
+2029124,Real Madrid,Kylian Mbappé,82.4,76.4,92.3,75.1,completo,64
+2029124,Real Madrid,Arda Güler,92.2,75.0,80.2,80.0,fallado,64
+2029124,RBL,Castello Lukeba,15.4,13.4,4.0,36.2,completo,64
+2029124,RBL,Maarten Vandevoordt,4.1,35.1,56.0,70.2,fallado,65
+2029124,Real Madrid,Álvaro Carreras,27.7,8.9,4.8,23.1,completo,65
+2029124,Real Madrid,Thibaut Courtois,5.4,48.0,7.3,66.1,completo,65
+2029124,Real Madrid,Antonio Rüdiger,7.3,66.1,26.6,76.6,completo,65
+2029124,Real Madrid,Federico Valverde,24.6,70.8,30.2,10.1,completo,65
+2029124,Real Madrid,Álvaro Carreras,29.5,7.7,42.0,4.8,completo,65
+2029124,Real Madrid,Álvaro Carreras,46.2,4.6,40.9,12.2,completo,65
+2029124,Real Madrid,Jude Bellingham,40.4,13.9,38.0,27.6,completo,65
+2029124,Real Madrid,Bernardo Silva,37.8,27.6,37.7,22.2,completo,65
+2029124,Real Madrid,Jude Bellingham,36.7,30.8,36.4,46.4,completo,65
+2029124,Real Madrid,Dean Huijsen,36.5,46.6,47.3,32.0,completo,65
+2029124,Real Madrid,Jude Bellingham,50.0,29.4,49.2,11.3,completo,65
+2029124,Real Madrid,Álvaro Carreras,49.2,11.3,68.5,3.1,completo,65
+2029124,Real Madrid,Vinícius Júnior,67.7,3.6,53.9,8.5,completo,66
+2029124,Real Madrid,Álvaro Carreras,52.6,13.5,44.6,30.3,completo,66
+2029124,Real Madrid,Dean Huijsen,45.7,37.0,50.6,49.2,completo,66
+2029124,Real Madrid,Bernardo Silva,53.9,54.7,68.9,75.7,completo,66
+2029124,Real Madrid,Federico Valverde,68.9,75.7,76.4,58.4,completo,66
+2029124,Real Madrid,Bernardo Silva,91.3,55.9,99.6,47.6,fallado,66
+2029124,RBL,Maarten Vandevoordt,8.3,43.1,63.8,46.8,fallado,66
+2029124,Real Madrid,Antonio Rüdiger,58.2,31.9,74.9,1.7,fallado,66
+2029124,RBL,Ridle Baku,41.0,77.4,51.8,72.2,completo,66
+2029124,RBL,Andrija Maksimovic,51.8,72.2,52.1,75.5,completo,66
+2029124,RBL,Ridle Baku,95.2,75.2,96.6,37.7,fallado,66
+2029124,Real Madrid,Federico Valverde,23.5,43.4,29.5,36.1,completo,66
+2029124,Real Madrid,Bernardo Silva,29.5,36.1,26.3,26.9,completo,66
+2029124,Real Madrid,Álvaro Carreras,41.6,14.0,75.0,15.7,fallado,66
+2029124,RBL,Willi Orbán,41.4,64.2,49.2,72.9,completo,67
+2029124,RBL,Andrija Maksimovic,49.2,72.9,40.6,62.2,completo,67
+2029124,RBL,Willi Orbán,40.6,62.2,52.8,58.8,completo,67
+2029124,RBL,Nicolas Seiwald,64.8,56.4,76.9,44.4,completo,67
+2029124,RBL,Christopher Nkunku,85.6,38.1,91.3,15.8,clave,67
+2029124,Real Madrid,Thibaut Courtois,5.0,40.9,44.4,54.2,completo,67
+2029124,Real Madrid,Bernardo Silva,44.4,54.2,49.8,71.1,completo,67
+2029124,Real Madrid,Arda Güler,49.8,71.1,47.3,61.0,completo,67
+2029124,Real Madrid,Bernardo Silva,47.3,61.5,49.0,74.0,completo,67
+2029124,Real Madrid,Arda Güler,47.5,72.7,33.1,36.0,completo,67
+2029124,Real Madrid,Dean Huijsen,35.6,32.2,42.4,17.1,completo,67
+2029124,Real Madrid,Álvaro Carreras,42.4,17.1,69.5,12.5,completo,67
+2029124,Real Madrid,Kylian Mbappé,69.7,12.5,85.4,5.8,completo,68
+2029124,Real Madrid,Vinícius Júnior,87.4,4.8,79.2,10.8,completo,68
+2029124,Real Madrid,Kylian Mbappé,79.0,11.8,71.6,23.6,completo,68
+2029124,Real Madrid,Eduardo Camavinga,71.6,23.6,72.0,10.2,completo,68
+2029124,Real Madrid,Álvaro Carreras,72.0,10.2,81.8,7.5,completo,68
+2029124,Real Madrid,Kylian Mbappé,81.8,7.5,72.4,8.6,completo,68
+2029124,Real Madrid,Álvaro Carreras,72.4,8.6,52.9,22.3,completo,68
+2029124,Real Madrid,Dean Huijsen,52.9,22.3,53.0,44.4,completo,68
+2029124,Real Madrid,Antonio Rüdiger,53.6,45.9,63.7,44.4,completo,68
+2029124,Real Madrid,Bernardo Silva,64.0,42.2,52.3,22.8,completo,68
+2029124,Real Madrid,Dean Huijsen,61.7,25.8,69.7,34.9,fallado,68
+2029124,RBL,Nicolas Seiwald,43.2,45.4,47.0,33.6,completo,68
+2029124,RBL,Rocco Reitz,75.8,29.6,81.4,26.2,completo,68
+2029124,RBL,Christopher Nkunku,79.6,23.1,93.0,13.9,completo,68
+2029124,RBL,Antonio Nusa,101.2,15.4,91.4,22.1,completo,68
+2029124,RBL,Christopher Nkunku,91.1,22.6,91.3,29.9,completo,68
+2029124,RBL,Rômulo,91.3,29.9,83.0,28.5,completo,68
+2029124,RBL,Nicolas Seiwald,83.0,28.5,80.4,16.0,completo,68
+2029124,RBL,David Raum,80.4,16.0,88.0,8.0,completo,68
+2029124,RBL,Antonio Nusa,87.8,8.3,81.2,18.6,completo,68
+2029124,RBL,Nicolas Seiwald,81.6,19.1,89.6,37.7,completo,68
+2029124,RBL,Rômulo,89.5,37.4,79.1,21.7,completo,68
+2029124,RBL,Nicolas Seiwald,79.1,21.7,83.0,35.8,completo,68
+2029124,RBL,Ridle Baku,83.0,35.8,87.2,30.9,completo,68
+2029124,RBL,Rômulo,90.0,33.2,94.3,35.8,fallado,68
+2029124,Real Madrid,Antonio Rüdiger,26.3,49.8,42.1,70.6,completo,70
+2029124,Real Madrid,Federico Valverde,42.1,70.6,33.0,54.7,completo,70
+2029124,Real Madrid,Antonio Rüdiger,33.0,54.7,23.0,40.6,completo,70
+2029124,Real Madrid,Thibaut Courtois,23.0,40.6,29.5,23.1,completo,70
+2029124,Real Madrid,Dean Huijsen,29.0,30.7,29.2,60.2,completo,70
+2029124,Real Madrid,Antonio Rüdiger,29.2,60.2,41.2,53.3,completo,70
+2029124,Real Madrid,Bernardo Silva,38.9,46.2,39.6,25.0,completo,70
+2029124,Real Madrid,Dean Huijsen,40.7,21.4,47.8,3.1,completo,70
+2029124,Real Madrid,Marc Cucurella,47.4,2.7,55.8,2.2,completo,70
+2029124,Real Madrid,Yan Diomande,55.8,2.4,33.0,20.2,completo,70
+2029124,Real Madrid,Dean Huijsen,33.0,20.2,37.1,37.9,completo,70
+2029124,Real Madrid,Bernardo Silva,39.6,45.7,39.0,66.2,completo,70
+2029124,Real Madrid,Antonio Rüdiger,38.4,67.8,51.5,76.2,completo,70
+2029124,Real Madrid,Federico Valverde,51.6,74.6,48.4,65.4,completo,70
+2029124,Real Madrid,Eduardo Camavinga,48.4,65.4,36.0,70.3,completo,70
+2029124,Real Madrid,Antonio Rüdiger,33.6,62.7,45.8,57.9,completo,70
+2029124,Real Madrid,Federico Valverde,45.8,57.9,48.6,75.2,completo,70
+2029124,Real Madrid,Eduardo Camavinga,63.8,55.0,62.3,65.1,completo,70
+2029124,Real Madrid,Federico Valverde,62.3,65.1,75.2,76.2,completo,70
+2029124,Real Madrid,Jude Bellingham,75.2,76.2,67.0,70.6,completo,71
+2029124,Real Madrid,Federico Valverde,67.0,70.6,77.8,4.6,completo,71
+2029124,Real Madrid,Arda Güler,77.6,4.4,69.4,21.1,completo,71
+2029124,Real Madrid,Bernardo Silva,69.4,21.1,62.9,32.4,completo,71
+2029124,Real Madrid,Dean Huijsen,62.9,32.4,70.4,50.5,completo,71
+2029124,Real Madrid,Eduardo Camavinga,70.4,50.5,62.2,55.0,completo,71
+2029124,Real Madrid,Antonio Rüdiger,62.2,55.0,77.6,76.6,completo,71
+2029124,Real Madrid,Federico Valverde,77.6,68.6,67.0,71.4,completo,71
+2029124,Real Madrid,Antonio Rüdiger,66.8,67.5,55.3,39.4,completo,71
+2029124,Real Madrid,Dean Huijsen,59.8,34.9,63.6,10.2,completo,71
+2029124,Real Madrid,Marc Cucurella,63.6,10.2,72.7,2.7,completo,71
+2029124,Real Madrid,Yan Diomande,72.7,2.7,75.1,13.8,completo,71
+2029124,Real Madrid,Arda Güler,75.1,13.8,92.4,6.3,completo,71
+2029124,Real Madrid,Yan Diomande,115.3,21.0,115.1,38.0,fallado,71
+2029124,Real Madrid,Arda Güler,119.4,0.4,93.8,56.4,clave,72
+2029124,RBL,Maarten Vandevoordt,10.9,40.5,12.1,20.0,completo,72
+2029124,RBL,Castello Lukeba,12.0,20.5,31.9,1.9,completo,72
+2029124,RBL,Max Finkgräfe,38.8,3.1,23.6,11.3,completo,72
+2029124,RBL,Castello Lukeba,25.7,13.3,28.2,22.8,completo,72
+2029124,RBL,Nicolas Seiwald,28.1,22.8,82.8,77.8,completo,72
+2029124,Real Madrid,Marc Cucurella,11.0,10.4,2.8,28.2,completo,73
+2029124,Real Madrid,Thibaut Courtois,2.6,25.5,48.2,32.2,fallado,73
+2029124,RBL,Rocco Reitz,71.6,45.8,82.3,42.6,fallado,73
+2029124,Real Madrid,Dean Huijsen,37.4,37.0,41.9,33.8,completo,73
+2029124,Real Madrid,Eduardo Camavinga,42.0,33.8,80.0,57.4,completo,73
+2029124,RBL,Rocco Reitz,38.5,21.7,34.6,11.8,completo,73
+2029124,RBL,Max Finkgräfe,34.6,11.8,47.3,30.6,completo,73
+2029124,RBL,Nicolas Seiwald,62.3,26.8,68.6,21.0,completo,73
+2029124,RBL,Max Finkgräfe,85.4,19.7,104.4,34.4,fallado,74
+2029124,Real Madrid,Thibaut Courtois,4.4,41.5,27.5,8.4,completo,74
+2029124,Real Madrid,Marc Cucurella,27.2,10.2,17.0,34.9,completo,74
+2029124,Real Madrid,Dean Huijsen,17.0,34.9,30.1,71.3,completo,74
+2029124,Real Madrid,Federico Valverde,30.1,71.3,23.4,62.9,completo,75
+2029124,Real Madrid,Antonio Rüdiger,23.4,62.4,11.4,43.8,completo,75
+2029124,Real Madrid,Thibaut Courtois,11.4,43.8,25.0,17.8,completo,75
+2029124,Real Madrid,Dean Huijsen,29.9,19.9,18.0,43.9,completo,75
+2029124,Real Madrid,Thibaut Courtois,19.1,45.7,33.4,76.8,completo,75
+2029124,Real Madrid,Federico Valverde,34.6,76.3,28.7,68.2,completo,75
+2029124,Real Madrid,Antonio Rüdiger,29.3,65.8,31.8,50.6,completo,75
+2029124,Real Madrid,Eduardo Camavinga,31.8,50.6,27.5,70.1,completo,75
+2029124,Real Madrid,Antonio Rüdiger,27.5,70.1,36.2,56.6,completo,75
+2029124,Real Madrid,Bernardo Silva,35.3,59.8,31.6,75.9,completo,75
+2029124,Real Madrid,Antonio Rüdiger,32.8,72.6,10.6,52.2,completo,75
+2029124,Real Madrid,Thibaut Courtois,10.6,52.2,22.6,25.7,completo,75
+2029124,Real Madrid,Dean Huijsen,23.3,25.5,31.7,31.0,completo,75
+2029124,Real Madrid,Jude Bellingham,31.7,31.0,24.6,33.2,completo,75
+2029124,Real Madrid,Bernardo Silva,22.1,36.3,25.1,71.6,completo,75
+2029124,Real Madrid,Antonio Rüdiger,44.4,71.0,62.4,77.1,completo,75
+2029124,Real Madrid,Federico Valverde,62.4,77.1,87.8,78.2,completo,75
+2029124,Real Madrid,Arda Güler,84.4,78.1,80.3,70.9,completo,75
+2029124,Real Madrid,Federico Valverde,80.3,70.9,76.3,77.1,completo,75
+2029124,Real Madrid,Arda Güler,76.2,77.1,73.9,61.8,completo,75
+2029124,Real Madrid,Eduardo Camavinga,72.6,59.4,64.9,45.4,completo,75
+2029124,Real Madrid,Bernardo Silva,63.4,39.1,65.2,10.3,completo,76
+2029124,Real Madrid,Marc Cucurella,66.8,4.2,57.2,19.7,completo,76
+2029124,Real Madrid,Dean Huijsen,67.1,20.2,81.1,5.0,completo,76
+2029124,Real Madrid,Marc Cucurella,80.8,3.9,76.4,8.6,completo,76
+2029124,Real Madrid,Bernardo Silva,76.4,8.6,81.4,3.0,completo,76
+2029124,Real Madrid,Marc Cucurella,81.4,3.0,75.1,6.8,completo,76
+2029124,Real Madrid,Bernardo Silva,76.9,6.2,68.4,18.7,completo,76
+2029124,Real Madrid,Dean Huijsen,67.3,19.9,73.8,75.0,completo,76
+2029124,Real Madrid,Arda Güler,73.6,74.0,76.4,62.7,completo,76
+2029124,Real Madrid,Federico Valverde,76.4,62.7,70.1,71.4,completo,76
+2029124,Real Madrid,Arda Güler,70.1,71.5,78.0,64.1,completo,76
+2029124,Real Madrid,Federico Valverde,78.0,64.1,72.7,64.2,fallado,76
+2029124,RBL,Nicolas Seiwald,36.0,29.7,47.0,26.1,fallado,76
+2029124,Real Madrid,Eduardo Camavinga,64.3,55.0,64.2,39.1,completo,76
+2029124,Real Madrid,Bernardo Silva,69.8,28.9,71.5,15.0,completo,76
+2029124,Real Madrid,Yan Diomande,72.6,13.0,82.4,3.4,completo,76
+2029124,Real Madrid,Marc Cucurella,80.6,2.6,72.2,3.4,completo,76
+2029124,Real Madrid,Yan Diomande,75.2,3.2,71.3,16.6,completo,76
+2029124,RBL,Willi Orbán,17.9,73.0,15.7,12.8,completo,77
+2029124,RBL,Castello Lukeba,16.8,14.3,8.0,37.9,completo,77
+2029124,RBL,Maarten Vandevoordt,8.0,37.9,16.6,69.7,completo,77
+2029124,RBL,Willi Orbán,16.6,69.7,25.6,77.8,completo,77
+2029124,RBL,Ridle Baku,25.4,77.6,40.7,67.0,completo,77
+2029124,RBL,Andrija Maksimovic,38.6,63.7,51.8,60.2,completo,77
+2029124,RBL,Rocco Reitz,86.6,68.2,103.3,59.3,fallado,77
+2029124,Real Madrid,Dean Huijsen,21.7,24.1,9.5,40.1,completo,78
+2029124,Real Madrid,Thibaut Courtois,9.8,40.6,11.9,64.8,completo,78
+2029124,Real Madrid,Antonio Rüdiger,11.8,65.4,24.7,78.2,completo,78
+2029124,Real Madrid,Federico Valverde,23.0,75.1,21.7,42.5,completo,78
+2029124,Real Madrid,Eduardo Camavinga,21.7,42.5,42.4,19.0,completo,78
+2029124,RBL,Andrija Maksimovic,73.8,57.4,74.5,39.8,completo,78
+2029124,RBL,Rocco Reitz,74.8,37.9,89.4,37.4,completo,78
+2029124,RBL,Christoph Baumgartner,88.8,39.6,87.1,46.3,completo,78
+2029124,RBL,Andrija Maksimovic,88.2,46.2,104.4,62.6,completo,78
+2029124,RBL,Ridle Baku,104.4,62.6,109.4,48.0,clave,78
+2029124,Real Madrid,Thibaut Courtois,4.3,35.4,25.8,19.0,completo,78
+2029124,Real Madrid,Dean Huijsen,43.4,19.4,66.2,26.4,completo,79
+2029124,Real Madrid,Brahim Díaz,66.2,26.4,72.1,12.8,completo,79
+2029124,Real Madrid,Jude Bellingham,70.9,19.1,93.0,0.0,fallado,79
+2029124,RBL,Willi Orbán,8.9,65.8,2.4,53.6,completo,79
+2029124,RBL,Maarten Vandevoordt,2.4,53.6,46.0,68.2,fallado,79
+2029124,Real Madrid,Marc Cucurella,74.0,11.8,65.6,28.8,fallado,79
+2029124,Real Madrid,Eduardo Camavinga,64.2,29.1,39.4,37.8,completo,79
+2029124,Real Madrid,Antonio Rüdiger,38.3,36.8,38.0,10.4,completo,79
+2029124,Real Madrid,Dean Huijsen,38.0,10.4,45.4,3.4,completo,79
+2029124,Real Madrid,Marc Cucurella,40.9,6.7,22.2,30.2,completo,79
+2029124,Real Madrid,Thibaut Courtois,22.1,32.4,24.4,54.7,completo,79
+2029124,Real Madrid,Antonio Rüdiger,24.4,54.7,16.8,30.7,completo,79
+2029124,Real Madrid,Thibaut Courtois,15.5,31.4,23.6,8.4,completo,79
+2029124,Real Madrid,Dean Huijsen,34.4,14.4,37.2,3.7,completo,79
+2029124,Real Madrid,Marc Cucurella,35.8,7.8,22.6,26.2,completo,79
+2029124,Real Madrid,Eduardo Camavinga,22.6,26.2,11.5,41.6,completo,79
+2029124,Real Madrid,Thibaut Courtois,11.5,41.6,23.0,69.2,completo,79
+2029124,Real Madrid,Antonio Rüdiger,22.7,69.2,34.2,75.9,completo,80
+2029124,Real Madrid,Brahim Díaz,34.2,75.9,35.9,62.2,completo,80
+2029124,Real Madrid,Bernardo Silva,36.2,74.5,6.2,73.2,completo,80
+2029124,Real Madrid,Antonio Rüdiger,6.2,73.2,5.8,47.4,completo,80
+2029124,Real Madrid,Thibaut Courtois,10.2,44.2,28.7,36.0,completo,80
+2029124,Real Madrid,Eduardo Camavinga,26.8,35.1,46.3,50.0,completo,80
+2029124,Real Madrid,Brahim Díaz,46.3,50.0,43.0,47.4,completo,80
+2029124,Real Madrid,Jude Bellingham,42.6,53.8,62.0,74.4,fallado,80
+2029124,Real Madrid,Jude Bellingham,40.9,67.5,41.2,54.5,completo,80
+2029124,Real Madrid,Bernardo Silva,41.2,54.5,32.6,57.8,completo,80
+2029124,Real Madrid,Antonio Rüdiger,32.3,56.9,37.2,51.2,completo,80
+2029124,Real Madrid,Bernardo Silva,36.4,50.0,37.2,22.8,completo,80
+2029124,Real Madrid,Dean Huijsen,37.2,22.8,50.9,9.1,completo,80
+2029124,Real Madrid,Marc Cucurella,42.1,8.7,22.7,25.9,completo,80
+2029124,Real Madrid,Dean Huijsen,22.7,25.9,25.1,55.9,completo,80
+2029124,Real Madrid,Antonio Rüdiger,25.1,55.9,9.0,42.2,completo,80
+2029124,Real Madrid,Thibaut Courtois,8.6,38.4,26.6,3.6,completo,80
+2029124,Real Madrid,Marc Cucurella,26.6,3.4,26.5,21.6,completo,80
+2029124,Real Madrid,Eduardo Camavinga,26.5,21.6,18.6,9.0,completo,80
+2029124,Real Madrid,Dean Huijsen,18.6,9.0,11.0,31.4,completo,80
+2029124,Real Madrid,Bernardo Silva,32.5,43.0,45.1,68.0,completo,81
+2029124,Real Madrid,Brahim Díaz,45.1,68.0,33.2,67.0,completo,81
+2029124,Real Madrid,Antonio Rüdiger,33.2,67.0,32.9,40.8,completo,81
+2029124,Real Madrid,Eduardo Camavinga,38.9,48.1,42.7,66.6,completo,81
+2029124,Real Madrid,Bernardo Silva,42.7,66.6,38.9,51.9,completo,81
+2029124,Real Madrid,Eduardo Camavinga,38.9,51.9,36.5,28.4,completo,81
+2029124,Real Madrid,Dean Huijsen,37.0,28.4,47.8,2.9,completo,81
+2029124,Real Madrid,Marc Cucurella,42.8,3.9,31.9,22.6,completo,81
+2029124,Real Madrid,Dean Huijsen,37.1,19.3,18.7,31.0,completo,81
+2029124,Real Madrid,Thibaut Courtois,17.8,34.8,18.1,58.4,completo,81
+2029124,Real Madrid,Antonio Rüdiger,18.1,56.9,10.8,35.1,completo,81
+2029124,Real Madrid,Thibaut Courtois,10.7,32.5,14.0,7.7,completo,81
+2029124,Real Madrid,Dean Huijsen,14.6,8.6,8.3,35.8,completo,81
+2029124,Real Madrid,Thibaut Courtois,12.6,43.0,41.9,75.8,completo,81
+2029124,Real Madrid,Bernardo Silva,32.8,64.3,24.6,25.3,completo,81
+2029124,Real Madrid,Dean Huijsen,25.9,26.5,86.3,55.8,fallado,82
+2029124,Real Madrid,Brahim Díaz,84.8,74.2,78.1,64.6,completo,82
+2029124,Real Madrid,Bernardo Silva,81.0,66.1,77.6,74.9,completo,82
+2029124,Real Madrid,Jude Bellingham,73.1,63.6,65.9,63.4,completo,82
+2029124,Real Madrid,Antonio Rüdiger,65.6,64.2,81.0,77.1,completo,82
+2029124,Real Madrid,Federico Valverde,79.0,75.7,79.0,57.8,completo,82
+2029124,Real Madrid,Jude Bellingham,79.8,58.6,88.1,59.7,completo,82
+2029124,Real Madrid,Bernardo Silva,92.5,56.7,106.3,19.1,completo,82
+2029124,Real Madrid,Yan Diomande,108.6,18.5,101.5,27.7,clave,82
+2029124,RBL,Christoph Baumgartner,60.1,40.0,43.3,38.3,completo,83
+2029124,RBL,Rocco Reitz,48.4,31.0,43.2,8.5,completo,83
+2029124,RBL,Max Finkgräfe,43.2,8.5,28.8,20.0,completo,83
+2029124,RBL,Castello Lukeba,28.8,20.0,38.4,25.4,completo,83
+2029124,RBL,Rocco Reitz,38.4,25.4,28.9,13.9,completo,83
+2029124,RBL,Castello Lukeba,29.8,13.6,39.1,2.2,completo,83
+2029124,RBL,Max Finkgräfe,40.2,2.6,48.1,8.0,completo,84
+2029124,RBL,Rômulo,48.6,8.2,41.9,9.4,completo,84
+2029124,RBL,Max Finkgräfe,46.4,18.8,62.8,40.6,completo,84
+2029124,RBL,Andrija Maksimovic,63.8,40.7,76.4,29.2,completo,84
+2029124,RBL,Christoph Baumgartner,94.4,30.6,104.3,47.8,clave,84
+2029124,Real Madrid,Kylian Mbappé,60.6,40.1,46.3,20.9,completo,84
+2029124,Real Madrid,Yan Diomande,46.0,20.9,25.2,28.8,completo,84
+2029124,Real Madrid,Dean Huijsen,25.2,28.8,51.6,71.8,fallado,84
+2029124,RBL,Tidiam Gomis,66.7,9.9,76.0,18.6,completo,85
+2029124,RBL,Christoph Baumgartner,76.0,18.6,65.8,19.6,completo,85
+2029124,RBL,Nicolas Seiwald,79.2,16.5,86.6,3.6,completo,85
+2029124,RBL,Tidiam Gomis,82.8,3.0,70.0,21.0,completo,85
+2029124,RBL,Castello Lukeba,69.0,21.7,75.2,29.0,completo,85
+2029124,RBL,Rocco Reitz,75.2,28.9,78.8,42.6,completo,85
+2029124,RBL,Ridle Baku,78.6,42.6,85.0,39.3,completo,85
+2029124,RBL,Christoph Baumgartner,86.6,40.2,85.1,47.4,completo,85
+2029124,RBL,Ridle Baku,85.7,51.5,97.1,65.6,completo,85
+2029124,RBL,Andrija Maksimovic,96.2,64.9,84.4,47.9,completo,85
+2029124,RBL,Rocco Reitz,83.8,49.0,99.7,44.9,fallado,85
+2029124,RBL,Andrija Maksimovic,93.8,50.1,107.3,63.0,clave,85
+2029124,Real Madrid,Antonio Rüdiger,4.3,49.2,3.7,42.1,completo,86
+2029124,Real Madrid,Thibaut Courtois,3.7,42.1,67.2,26.9,completo,86
+2029124,Real Madrid,Kylian Mbappé,78.8,40.6,94.3,50.9,completo,86
+2029124,Real Madrid,Brahim Díaz,102.2,50.7,103.7,28.5,clave,86
+2029124,RBL,Christoph Baumgartner,59.5,39.4,45.6,43.2,completo,87
+2029124,RBL,Nicolas Seiwald,48.1,47.1,41.8,31.3,completo,87
+2029124,RBL,Rocco Reitz,41.2,31.3,31.4,55.8,completo,87
+2029124,RBL,Willi Orbán,33.6,55.5,40.0,72.4,completo,87
+2029124,RBL,Ridle Baku,40.0,72.4,15.5,48.5,completo,87
+2029124,RBL,Maarten Vandevoordt,12.0,47.4,17.4,22.1,completo,88
+2029124,RBL,Castello Lukeba,26.9,26.4,54.2,26.2,completo,88
+2029124,RBL,Tidiam Gomis,70.0,22.6,76.2,10.6,completo,88
+2029124,Real Madrid,Federico Valverde,34.7,73.4,37.0,72.3,fallado,88
+2029124,RBL,Max Finkgräfe,76.4,14.9,81.2,15.4,fallado,88
+2029124,Real Madrid,Federico Valverde,43.8,76.3,44.2,51.7,completo,88
+2029124,Real Madrid,Yan Diomande,55.7,33.7,53.3,11.6,completo,88
+2029124,Real Madrid,Marc Cucurella,55.9,6.2,64.9,12.2,completo,88
+2029124,Real Madrid,Yan Diomande,58.0,12.1,51.2,21.6,completo,88
+2029124,Real Madrid,Dean Huijsen,47.6,21.8,54.5,14.2,completo,88
+2029124,Real Madrid,Yan Diomande,52.4,21.4,54.2,41.8,completo,88
+2029124,Real Madrid,Bernardo Silva,54.6,42.2,54.2,59.1,completo,88
+2029124,Real Madrid,Brahim Díaz,54.2,59.1,47.2,52.4,completo,88
+2029124,Real Madrid,Antonio Rüdiger,46.1,52.9,70.8,68.2,completo,88
+2029124,Real Madrid,Endrick,70.8,68.2,69.2,56.6,completo,88
+2029124,Real Madrid,Brahim Díaz,69.2,56.6,80.2,56.9,completo,88
+2029124,Real Madrid,Endrick,80.2,56.9,109.4,58.9,clave,88
+2029124,RBL,Maarten Vandevoordt,6.0,36.4,17.6,27.1,completo,89
+2029124,RBL,Castello Lukeba,18.1,24.9,5.5,39.3,completo,89
+2029124,RBL,Maarten Vandevoordt,4.4,41.0,16.6,61.5,completo,89
+2029124,RBL,Willi Orbán,10.8,68.6,20.4,75.9,completo,89
+2029124,RBL,Ridle Baku,20.0,75.8,8.5,67.2,completo,89
+2029124,RBL,Willi Orbán,15.4,59.9,5.4,43.5,completo,89
+2029124,RBL,Maarten Vandevoordt,5.4,43.5,15.2,20.3,completo,89
+2029124,RBL,Castello Lukeba,64.9,13.8,72.2,2.9,completo,89
+2029124,RBL,Tidiam Gomis,74.3,4.2,85.4,25.9,completo,89
+2029124,RBL,Rômulo,85.7,26.8,83.0,20.1,completo,89
+2029124,RBL,Rocco Reitz,86.4,18.9,104.2,12.0,completo,89
+2029124,RBL,Tidiam Gomis,109.7,13.0,108.6,73.2,completo,89
+2029124,RBL,Ridle Baku,108.4,73.2,107.6,42.6,fallado,89
+2029124,Real Madrid,Carlos Espí,37.9,30.6,40.3,26.5,fallado,90
+2029124,Real Madrid,Dean Huijsen,41.8,22.9,40.6,34.1,completo,90
+2029124,Real Madrid,Eduardo Camavinga,40.6,34.1,50.0,43.5,completo,90
+2029124,Real Madrid,Brahim Díaz,50.0,43.5,42.2,38.5,completo,90
+2029124,Real Madrid,Eduardo Camavinga,42.2,38.5,37.2,53.4,completo,90
+2029124,Real Madrid,Antonio Rüdiger,37.9,51.7,39.6,39.4,completo,90
+2029124,Real Madrid,Eduardo Camavinga,40.7,37.4,44.2,17.3,completo,90
+2029124,Real Madrid,Dean Huijsen,47.8,18.5,46.1,37.7,completo,90
+2029124,Real Madrid,Eduardo Camavinga,50.9,41.3,51.1,73.2,completo,90
+2029124,Real Madrid,Federico Valverde,51.0,73.0,66.7,77.8,completo,90
+2029124,Real Madrid,Federico Valverde,49.0,72.0,39.1,53.8,completo,90
+2029124,Real Madrid,Antonio Rüdiger,38.3,50.2,42.4,25.0,completo,90
+2029124,Real Madrid,Dean Huijsen,43.1,26.0,41.0,55.3,completo,90
+2029124,Real Madrid,Antonio Rüdiger,45.2,54.8,43.0,44.2,completo,90
+2029124,Real Madrid,Bernardo Silva,43.3,43.5,49.6,23.3,completo,90
+2029124,Real Madrid,Dean Huijsen,64.2,20.0,63.0,6.7,completo,91
+2029124,Real Madrid,Marc Cucurella,63.2,7.4,52.6,29.4,completo,91
+2029124,Real Madrid,Bernardo Silva,60.1,28.9,67.2,12.8,completo,91
+2029124,Real Madrid,Eduardo Camavinga,66.5,12.3,77.3,2.2,completo,91
+2029124,Real Madrid,Marc Cucurella,76.3,2.7,66.1,11.1,completo,91
+2029124,Real Madrid,Eduardo Camavinga,66.1,11.1,51.0,10.9,completo,91
+2029124,Real Madrid,Dean Huijsen,49.0,11.6,49.8,30.5,completo,91
+2029124,Real Madrid,Bernardo Silva,49.0,30.5,38.2,62.4,completo,91
+2029124,Real Madrid,Antonio Rüdiger,37.7,63.0,40.3,43.9,completo,91
+2029124,Real Madrid,Bernardo Silva,39.6,41.4,46.9,16.8,completo,91
+2029124,Real Madrid,Dean Huijsen,47.8,16.3,73.6,4.1,completo,91
+2029124,Real Madrid,Marc Cucurella,73.4,3.9,70.9,14.2,completo,91
+2029124,Real Madrid,Yan Diomande,67.6,14.2,49.6,13.5,completo,91
+2029124,Real Madrid,Dean Huijsen,49.6,13.5,52.8,26.2,completo,91
+2029124,Real Madrid,Bernardo Silva,52.7,26.2,55.9,11.3,fallado,91
+2029124,Real Madrid,Eduardo Camavinga,55.1,10.6,43.1,5.1,completo,91
+2029124,Real Madrid,Dean Huijsen,34.6,9.1,35.4,33.9,completo,91
+2029124,Real Madrid,Brahim Díaz,61.1,55.7,68.6,74.5,completo,92
+2029124,Real Madrid,Federico Valverde,68.6,74.5,104.2,65.5,completo,92
+2029124,Real Madrid,Endrick,104.2,65.5,115.1,41.0,fallado,92
+2029124,RBL,Maarten Vandevoordt,13.9,39.4,31.0,35.1,completo,92
+2029124,Real Madrid,Eduardo Camavinga,107.5,56.6,103.4,37.1,fallado,92
+2029124,Real Madrid,Federico Valverde,85.4,63.7,91.0,72.1,completo,92
+2029124,Real Madrid,Brahim Díaz,95.2,72.3,115.1,67.5,completo,92
+2029124,Real Madrid,Federico Valverde,115.1,67.5,115.6,66.1,fallado,92
+2029124,Real Madrid,Brahim Díaz,119.4,79.6,108.8,40.8,fallado,93
 2029142,Roma,Matías Soulé,60.0,40.0,38.3,41.6,completo,0
 2029142,Roma,Evan Ndicka,38.8,41.9,42.1,15.5,completo,0
 2029142,Roma,Mario Hermoso,42.1,15.5,49.2,3.0,completo,0
