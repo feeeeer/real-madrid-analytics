@@ -4,9 +4,11 @@ Web de análisis de datos del Real Madrid que se actualiza sola después de cada
 
 **Web:** [real-madrid-analytics.vercel.app](https://real-madrid-analytics.vercel.app)
 
-- **Post-partido** de cada jornada de la temporada: comparativa con el rival, informe táctico automático, mapas de pases (origen → destino) y de tiros por jugador, xG acumulado.
-- **Rendimiento vs esperado**: goles frente a xG, asistencias frente a xA, percentil de cada jugador frente a los de su puesto en toda la Liga y pérdidas peligrosas.
-- **Temporada**: xG a favor y en contra partido a partido, mapas acumulados por jugador.
+Panel de analista con menú lateral, filtros arriba y cinco secciones:
+
+- **Resumen**: KPIs de la temporada (o de una competición), xG a favor y en contra partido a partido, últimos resultados, líderes de la plantilla y perfil del equipo frente a sus rivales.
+- **Partido**: comparativa con el rival, informe táctico frente a los partidos anteriores, forma de cada jugador, mapas de pases (origen → destino) y de tiros, xG acumulado.
+- **Jugadores**: goles frente a xG y asistencias frente a xA, percentil de cada jugador frente a los de su puesto en la Liga, tendencia, estadísticas de la temporada y mapas de zonas, pases y tiros.
 - **Histórico**: todos los resultados oficiales disponibles en fuentes abiertas, con alineaciones de los dos equipos desde 2012 y de las grandes finales anteriores, goleadores y rondas.
 - **Títulos**: el palmarés completo; cada título enlaza a su clasificación de Liga o a los partidos hasta la copa.
 

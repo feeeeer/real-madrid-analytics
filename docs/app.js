@@ -320,6 +320,12 @@ const tabs = [...document.querySelectorAll('.rm-tab')];
 function showTab(id, link = true) {
   for (const t of tabs) t.setAttribute('aria-selected', String(t.dataset.tab === id));
   for (const s of document.querySelectorAll('.rm-page')) s.hidden = s.id !== id;
+  const t = tabs.find((x) => x.dataset.tab === id);
+  $('#pag-titulo').textContent = t.dataset.titulo;
+  $('#pag-desc').textContent = t.dataset.desc;
+  document.title = `${t.dataset.titulo} · Real Madrid Analytics`;
+  // cada filtro de la barra solo en las secciones a las que afecta
+  for (const f of document.querySelectorAll('.filtros [data-en]')) f.hidden = !f.dataset.en.split(' ').includes(id);
   if (link) dash.setLink(id);
   render();
 }
@@ -347,7 +353,7 @@ const conEscudo = (nombre, tag = 'span', detras = false) => {
 (() => {
   const b = $('#tema');
   const actual = () => document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  const pintar = () => { const osc = actual() === 'dark'; b.textContent = osc ? '☀️' : '🌙'; b.title = osc ? 'Modo claro' : 'Modo oscuro'; };
+  const pintar = () => { const osc = actual() === 'dark'; b.textContent = osc ? '☀️ Modo claro' : '🌙 Modo oscuro'; b.title = osc ? 'Modo claro' : 'Modo oscuro'; };
   b.addEventListener('click', () => {
     const t = actual() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = t;
@@ -585,13 +591,6 @@ function renderPartido() {
   fillTable($('#tabla-partido'), vista, ['jugador', 'minutos', 'goles', 'asistencias', 'xg', 'xa', 'pases_clave', 'acierto_pase', 'pases_progresivos', 'regates',
     'recuperaciones', 'duelos', 'perdidas_peligrosas', 'forma', 'impacto'], (r) => r.clave, sel2 && sel2.clave);
 
-  const tk = $('#takeaway');
-  if (p && a && a.xg === '') tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${fechaEs(p.fecha)}): ${p.competicion}, sin xG.`);
-  else if (p && a) {
-    const wa = `clave=${enc(a.clave)}`;
-    tk.replaceChildren(`${nombre(p.local)} – ${nombre(p.visitante)} (${fechaEs(p.fecha)}): xG `, markEl('b', 'metricas_equipo', 'xg', wa, a.xg),
-      ' del Madrid frente a ', markEl('b', 'metricas_equipo', 'xg_contra', wa, a.xg_contra), ' del rival.');
-  }
 }
 
 function drawXgLine(box, shots, p, b) {
@@ -672,6 +671,55 @@ function renderTemporada() {
   $('#t-kpis').replaceChildren(...kpis.map(([l, val]) => { const c = el('div', { class: 'rm-card rm-kpi' }); c.append(el('p', { class: 'rm-sub' }, l), el('p', { class: 'n' }, val)); return c; }));
   const byId = Object.fromEntries(partidos.map((p) => [p.match_id, p]));
 
+  // Líderes de la plantilla
+  const gk = new Set(rows('metricas_jugador').filter((r) => r.posicion === 'GK').map((r) => r.jugador));
+  const jtSel = rows('jugadores_temporada').filter((r) => r.temporada === key && !gk.has(r.jugador));  // porteros fuera: sus saques inflan los pases
+  $('#t-lideres').replaceChildren(...[['goles', 'Goles'], ['asistencias', 'Asistencias'], ['pases_progresivos', 'Pases progresivos'], ['recuperaciones', 'Recuperaciones']].map(([k, label]) => {
+    const caja = el('div');
+    const ol = el('ol');
+    for (const r of [...jtSel].sort((a, b) => N(b[k]) - N(a[k])).slice(0, 3)) {
+      const li = el('li', { tabindex: '0' });
+      li.append(el('span', {}, r.jugador), el('b', {}, r[k]));
+      const abrir = () => { dash.setParams({ jugador_t: r.jugador }); showTab('jugadores'); };
+      li.addEventListener('click', abrir);
+      li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') abrir(); });
+      ol.append(li);
+    }
+    caja.append(el('h3', {}, label), ol);
+    return caja;
+  }));
+
+  // Perfil del equipo: media por partido, Madrid frente a rivales
+  const me = rows('metricas_equipo').filter((r) => ids.has(r.match_id));
+  const media = (rs, k) => { const v = rs.filter((r) => r[k] !== '').map((r) => N(r[k])); return v.length ? d3.mean(v) : NaN; };
+  $('#t-perfil tbody').replaceChildren(...[['tiros', 'Tiros', 1], ['tiros_puerta', 'Tiros a puerta', 1], ['xg', 'xG (solo Liga)', 2], ['posesion', 'Posesión (%)', 1],
+    ['acierto_pase', '% acierto de pase', 1], ['pases_progresivos', 'Pases progresivos', 1], ['ppda', 'PPDA', 1],
+    ['recuperaciones_campo_rival', 'Recuperaciones en campo rival', 1], ['duelos_ganados_pct', '% duelos ganados', 1], ['perdidas_peligrosas', 'Pérdidas peligrosas', 1]]
+    .map(([k, label, dec]) => {
+      const tr = el('tr');
+      const f = (v) => (isNaN(v) ? '—' : v.toFixed(dec));
+      tr.append(el('td', {}, label), el('td', {}, f(media(me.filter((r) => r.equipo === RM), k))), el('td', {}, f(media(me.filter((r) => r.equipo !== RM), k))));
+      return tr;
+    }));
+
+  // Últimos partidos
+  const xgDe = Object.fromEntries(rows('metricas_equipo').filter((r) => r.equipo === RM).map((r) => [r.match_id, r]));
+  const RES_COL = { V: 'var(--color-ok)', E: 'var(--cds-chart-muted)', D: C_BAD };
+  $('#t-ultimos').replaceChildren(...[...ps].sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 8).map((p) => {
+    const [f, c] = gl(p), r = f > c ? 'V' : f === c ? 'E' : 'D', m = xgDe[p.match_id];
+    const hp = rows('historico').find((h) => h.fecha === p.fecha);
+    const li = el('li', { tabindex: '0', title: 'Abrir el análisis del partido' });
+    const res = el('span', { class: 'res' }, r); res.style.background = RES_COL[r];
+    const quien = el('div', { class: 'quien' });
+    quien.append(escudo(hp ? hp.rival : p.rival), el('span', {}, `${p.local === RM ? 'vs' : 'en'} ${hp ? hp.rival : p.rival}`));
+    const izq = el('div'); izq.append(quien, el('span', { class: 'det' }, `${fechaEs(p.fecha)} · ${p.competicion}${m && m.xg !== '' ? ` · xG ${m.xg}–${m.xg_contra}` : ''}`));
+    li.append(res, izq, el('span', { class: 'marc' }, `${f}–${c}`));
+    const abrir = () => { dash.setParams({ partido: Number(p.match_id), jugador: null }); showTab('partido'); };
+    li.addEventListener('click', abrir);
+    li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') abrir(); });
+    return li;
+  }));
+
   // xG por partido
   const box = $('#xgseason');
   box.querySelector('svg')?.remove();
@@ -681,14 +729,14 @@ function renderTemporada() {
     .map((r) => ({ ...r, p: byId[r.match_id] })).sort((a, b) => a.p.fecha.localeCompare(b.p.fecha));
   if (ms.length && ms.every((d) => d.xg === '')) box.prepend(el('p', { class: 'sin-xg' }, 'Sin xG en esta competición: Understat solo cubre la Liga.'));
   else if (ms.length) {
-    const W = Math.max(280, box.clientWidth), H = 240, m = { t: 14, r: 96, b: 26, l: 34 };
+    const W = Math.max(280, box.clientWidth), H = 320, m = { t: 14, r: 96, b: 26, l: 34 };
     const x = d3.scalePoint(ms.map((d) => d.match_id), [m.l, W - m.r]).padding(0.3);
     const y = d3.scaleLinear([0, d3.max(ms, (d) => Math.max(N(d.xg), N(d.xg_contra)))], [H - m.b, m.t]).nice();
     const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
     svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(W - m.l - m.r)))
       .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove())
       .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
-    const step = Math.ceil(ms.length / (W < 500 ? 5 : 10));
+    const step = Math.ceil(ms.length / Math.max(2, Math.floor((W - m.l - m.r) / 72)));  // ~72 px por etiqueta ("SEV 18/10")
     svg.append('g').attr('transform', `translate(0,${H - m.b})`)
       .call(d3.axisBottom(x).tickValues(ms.filter((_, i) => i % step === 0).map((d) => d.match_id)).tickFormat((id) => `${abrev(byId[id].rival)} ${byId[id].fecha.slice(8).replace(/^0/, '')}/${Number(byId[id].fecha.slice(5, 7))}`))
       .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
@@ -1075,15 +1123,18 @@ function renderRendimiento() {
 }
 
 function render() {
+  const marca = $('#brand-esc');
+  if (!marca.firstChild && ok('escudos')) marca.append(escudo(RM));
   const tab = document.querySelector('.rm-page:not([hidden])')?.id;
   if (tab === 'partido') renderPartido();
-  else if (tab === 'temporada') renderTemporada();
+  else if (tab === 'resumen') renderTemporada();
+  else if (tab === 'jugadores') { renderRendimiento(); renderTemporada(); }
   else if (tab === 'historico') renderHistorico();
-  else if (tab === 'rendimiento') renderRendimiento();
   else if (tab === 'titulos') renderTitulos();
 }
 
 dash.onData(render);
-const named = location.hash.slice(1);
-if (['partido', 'temporada', 'historico', 'rendimiento', 'titulos'].includes(named)) showTab(named, false);
+// enlaces antiguos (#temporada, #rendimiento) siguen funcionando
+const named = { temporada: 'resumen', rendimiento: 'jugadores' }[location.hash.slice(1)] || location.hash.slice(1);
+showTab(['resumen', 'partido', 'jugadores', 'historico', 'titulos'].includes(named) ? named : 'resumen', false);
 })();
