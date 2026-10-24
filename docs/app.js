@@ -56,16 +56,16 @@ document.addEventListener('scroll', (ev) => { if (ev.target.matches?.(CON_SCROLL
 dash.calc('informe', {
   inputs: ['metricas_equipo', 'partidos'],
   title: 'Informe vs partidos anteriores',
-  description: 'Cada métrica del Madrid en el partido frente a su media en los partidos anteriores de la misma fuente (mínimo 3); z en desviaciones típicas, positivo = mejor para el estilo del míster. Métricas que la fuente no tiene, fuera.',
+  description: 'Cada métrica del Madrid en el partido frente a su media en los partidos anteriores que la tienen (mínimo 3); z en desviaciones típicas, positivo = mejor para el estilo del míster. Métricas que la fuente no tiene, fuera.',
   fn: (metricas_equipo, partidos) => {
     const fecha = Object.fromEntries(partidos.map((p) => [p.match_id, p.fecha]));
     // signo: +1 más es mejor, -1 menos es mejor. Posesión y PPDA fuera: un bloque medio/bajo no se juzga por ellas.
     const M = { xg: 1, xg_contra: -1, tiros_puerta: 1, acierto_pase: 1, pases_progresivos: 1, presiones_campo_rival: 1,
       recuperaciones_campo_rival: 1, duelos_ganados_pct: 1, perdidas_peligrosas: -1, contrapresiones: 1, xg_contraataque: 1 };
     const out = [];
-    const fuentes = [...new Set(metricas_equipo.map((r) => r.fuente))];
-    for (const fuente of fuentes) {
-      const rm = metricas_equipo.filter((r) => r.equipo === 'Real Madrid' && r.fuente === fuente);
+    // todas las fuentes juntas (Opta y ESPN): cada métrica solo con los partidos que la tienen
+    {
+      const rm = metricas_equipo.filter((r) => r.equipo === 'Real Madrid');
       for (const [k, sign] of Object.entries(M)) {
         const rk = rm.filter((r) => r[k] !== '' && r[k] != null);
         for (const r of rk) {
@@ -116,9 +116,10 @@ const FORMA = [['goles', ['gol', 'goles'], 1], ['asistencias', ['asistencia', 'a
 function formaJugadores(mid, fecha, jug) {
   const p90 = (r, k) => (N(r[k]) * 90) / N(r.minutos);
   const out = [];
-  for (const r of jug.filter((r) => Number(r.match_id) === mid && r.equipo === RM && r.posicion !== 'GK' && N(r.minutos) >= 45)) {
+  // solo partidos con eventos Opta (los que aún solo tienen datos de ESPN no traen pases, duelos ni recuperaciones)
+  for (const r of jug.filter((r) => Number(r.match_id) === mid && r.equipo === RM && r.posicion !== 'GK' && N(r.minutos) >= 45 && r.pases !== '')) {
     // shortcut: mínimo 30 min por partido previo y 3 partidos; con pocas jornadas la media aún se mueve mucho
-    const prev = jug.filter((x) => x.jugador_id === r.jugador_id && x.equipo === RM && N(x.minutos) >= 30 && fecha[x.match_id] < fecha[r.match_id]);
+    const prev = jug.filter((x) => x.jugador_id === r.jugador_id && x.equipo === RM && N(x.minutos) >= 30 && x.pases !== '' && fecha[x.match_id] < fecha[r.match_id]);
     if (prev.length < 3) continue;
     const ms = FORMA.map(([k, label, sign]) => {
       const v = prev.map((x) => p90(x, k)), media = d3.mean(v), sd = Math.max(d3.deviation(v) || 0, 0.5);
@@ -524,8 +525,12 @@ function renderPartido() {
   const nombre = (n) => (!hp ? n : n === RM ? RM : hp.rival);
   if (p) {
     // goleadores: los tiros que acabaron en gol (Understat); los goles en propia puerta no son tiros, salen como "(p.p.)"
-    const goles = rows('tiros').filter((t) => Number(t.match_id) === mid && t.resultado === 'Goal').sort((a, b) => N(a.minuto) - N(b.minuto));
-    const lista = (eq) => goles.filter((t) => t.equipo === eq).map((t) => `${t.jugador} ${t.minuto}'${t.subtipo === 'Penalty' ? ' (pen.)' : ''}`);
+    // goleadores de las incidencias (WhoScored o ESPN: incluyen penaltis y goles en propia puerta); si no hay, de los tiros
+    const inc = rows('incidencias').filter((r) => Number(r.match_id) === mid && ['gol', 'penalti', 'gol_pp'].includes(r.tipo));
+    const goles = inc.length ? inc.map((r) => ({ equipo: r.equipo, txt: `${r.jugador} ${r.minuto}'${r.tipo === 'penalti' ? ' (pen.)' : r.tipo === 'gol_pp' ? ' (p.p.)' : ''}`, m: N(r.orden) }))
+      : rows('tiros').filter((t) => Number(t.match_id) === mid && t.resultado === 'Goal')
+        .map((t) => ({ equipo: t.equipo, txt: `${t.jugador} ${t.minuto}'${t.subtipo === 'Penalty' ? ' (pen.)' : ''}`, m: N(t.minuto) }));
+    const lista = (eq) => goles.filter((g) => g.equipo === eq).sort((a, b) => a.m - b.m).map((g) => g.txt);
     const conPP = (eq, marcados) => {
       const l = lista(eq);
       for (let i = l.length; i < marcados; i++) l.push('(p.p.)');
@@ -549,6 +554,10 @@ function renderPartido() {
   $('#p-ant').disabled = pos <= 0; $('#p-sig').disabled = pos < 0 || pos >= orden.length - 1;
   $('#p-ant').onclick = () => pos > 0 && dash.setParams({ partido: Number(orden[pos - 1].match_id), jugador: null });
   $('#p-sig').onclick = () => pos < orden.length - 1 && dash.setParams({ partido: Number(orden[pos + 1].match_id), jugador: null });
+  // partido aún sin eventos Opta (el Mac no lo ha descargado): datos básicos de ESPN y Understat
+  const soloEspn = rows('metricas_equipo').some((r) => Number(r.match_id) === mid && r.fuente === 'ESPN');
+  $('#p-aviso').hidden = !soloEspn;
+  $('#momentum').hidden = soloEspn;
   // línea de tiempo: goles, tarjetas y cambios; arriba el local, abajo el visitante
   if (p && ok('incidencias')) drawLinea($('#m-linea'), rows('incidencias').filter((r) => Number(r.match_id) === mid), p, nombre);
 
@@ -1559,6 +1568,12 @@ if (hashQ) dash.setParams(Object.fromEntries([...new URLSearchParams(hashQ)].map
 const named = { temporada: 'resumen', rendimiento: 'jugadores' }[hashTab] || hashTab;
 showTab(['resumen', 'partido', 'jugadores', 'historico', 'titulos'].includes(named) ? named : 'resumen', false);
 dash.onData(render);
+// un enlace pegado en la misma pestaña (solo cambia lo que va tras #) también se abre
+window.addEventListener('hashchange', () => {
+  const [tab, q] = location.hash.slice(1).split('?');
+  if (q) dash.setParams(Object.fromEntries([...new URLSearchParams(q)].map(([k, v]) => [k, k === 'partido' ? Number(v) : v])));
+  if (['resumen', 'partido', 'jugadores', 'historico', 'titulos'].includes(tab)) showTab(tab, false);
+});
 
 // ---------- Accesibilidad: filas y cabeceras de tabla se usan con el teclado (Intro o espacio) ----------
 document.querySelectorAll('th[data-field]').forEach((th) => { th.tabIndex = 0; });

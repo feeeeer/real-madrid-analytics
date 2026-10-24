@@ -6,7 +6,7 @@ Solo entran los partidos que ya tienen eventos de WhoScored; los de Liga, ademá
 espera a la siguiente ejecución). Champions y Copa no tienen xG (Understat solo cubre la Liga): sus tiros salen de
 los eventos de WhoScored con el xG vacío. Coordenadas: Opta 0-100 -> campo 120x80, cada equipo atacando de izquierda a derecha.
 """
-import ast, re, sys, unicodedata
+import ast, json, re, sys, unicodedata
 from pathlib import Path
 
 import numpy as np
@@ -456,6 +456,162 @@ competicion = pd.DataFrame({
     "local": cal["home_team"], "visitante": cal["away_team"],
     "goles_local": cal["home_score"].astype("Int64"), "goles_visitante": cal["away_score"].astype("Int64"),
 }).sort_values(["competicion", "fecha"])
+
+# la Liga entera de Understat (accesible desde la nube) y la fase de liga de la Copa de Europa de ESPN: se usa la fuente
+# con más partidos de cada competición (la de WhoScored solo llega cuando el Mac está encendido)
+def resultados(comp, df):
+    global competicion
+    if len(df) > (competicion["competicion"] == comp).sum():
+        competicion = pd.concat([competicion[competicion["competicion"] != comp], df], ignore_index=True)
+
+uc_f = SRC / "understat_calendario.csv"
+if uc_f.exists():
+    uc = pd.read_csv(uc_f)
+    resultados("La Liga", pd.DataFrame({"competicion": "La Liga", "fase": "liga", "fecha": uc["date"].astype(str).str[:10],
+                                        "local": uc["home_team"], "visitante": uc["away_team"],
+                                        "goles_local": uc["home_goals"].astype("Int64"), "goles_visitante": uc["away_goals"].astype("Int64")}))
+marc = [m for f in sorted((SRC / "espn").glob("marcador_uefa.champions_*.json")) for m in json.loads(f.read_text())]
+if marc:
+    loc = lambda m, l: next(e for e in m["equipos"] if e["local"] == l)
+    resultados("Champions League", pd.DataFrame([{"competicion": "Champions League", "fase": "liga", "fecha": m["fecha"],
+        "local": loc(m, True)["nombre"], "visitante": loc(m, False)["nombre"],
+        "goles_local": int(loc(m, True)["goles"]), "goles_visitante": int(loc(m, False)["goles"])} for m in marc]).drop_duplicates())
+competicion = competicion.sort_values(["competicion", "fecha"])
+
+# ---------- Partidos sin eventos de WhoScored todavía (Mac apagado): datos básicos de ESPN y, en Liga, xG y tiros de Understat ----------
+LIGA_ESPN = {"esp.1": "La Liga", "uefa.champions": "Champions League", "esp.copa_del_rey": "Copa del Rey", "esp.super_cup": "Supercopa de España"}
+# profundidad de cada puesto de ESPN en el campo: así se reparten los titulares en las líneas del sistema ("4-2-3-1")
+PROF = {"G": 0, "CD": 1, "LB": 1, "RB": 1, "LWB": 1.5, "RWB": 1.5, "DM": 2, "CM": 3, "LM": 3, "RM": 3, "AM": 4, "LW": 4.5, "RW": 4.5, "F": 5, "CF": 5, "ST": 5}
+def minuto(txt):
+    """ "90'+4'" -> 94"""
+    n = [int(x) for x in re.findall(r"\d+", str(txt))]
+    return sum(n[:2]) if n else 0
+
+ws_fechas = pd.to_datetime(partidos["fecha"])
+nombres_rm = jug.loc[jug["equipo"] == RM].drop_duplicates("jugador").set_index("jugador")["jugador_id"]
+us_tiros_all = pd.read_csv(SRC / "understat_tiros.csv").assign(fecha=lambda d: d["date"].str[:10])
+us_pm_all = pd.read_csv(SRC / "understat_jugadores_partido.csv").assign(fecha=lambda d: d["game"].str[:10])
+nuevos = {k: [] for k in ("partidos", "eq", "jug", "al", "tiros", "inc")}
+for fj in sorted((SRC / "espn").glob("[0-9]*.json")) if (SRC / "espn").exists() else []:
+    r = json.loads(fj.read_text())
+    cab = r["header"]["competitions"][0]
+    fecha = cab["date"][:10]
+    if (abs(ws_fechas - pd.Timestamp(fecha)) <= pd.Timedelta(days=1)).any():
+        continue  # ya está con los eventos de WhoScored, más completos
+    mid, comp = int(fj.stem), LIGA_ESPN[r["liga"]]
+    lado = {c["homeAway"]: c for c in cab["competitors"]}
+    local, visit = lado["home"]["team"]["displayName"], lado["away"]["team"]["displayName"]
+    gl, gv = int(lado["home"]["score"]), int(lado["away"]["score"])
+    nuevos["partidos"].append(dict(match_id=mid, fecha=fecha, competicion=comp, temporada=TEMPORADA, jornada="", local=local, visitante=visit,
+                                   goles_local=gl, goles_visitante=gv, rival=visit if local == RM else local, entrenador_rm=ENTRENADOR, estadio=""))
+    # nombres del Madrid como en WhoScored (los del resto de la temporada); los rivales, como los da ESPN
+    rm_nom = match_names([j["athlete"]["displayName"] for e in r["rosters"] if e["team"]["displayName"] == RM for j in e["roster"]], nombres_rm.index.tolist())
+    nom = lambda eq, n: rm_nom.get(n, n) if eq == RM else n
+    # Understat (solo Liga): tiros y xG de jugador, con los equipos emparejados por nombre
+    ut = us_tiros_all[us_tiros_all["fecha"] == fecha] if comp == "La Liga" else us_tiros_all.iloc[0:0]
+    a_espn = match_names(list(ut["team"].unique()), [local, visit]) if len(ut) else {}
+    up = us_pm_all[us_pm_all["fecha"] == fecha] if comp == "La Liga" else us_pm_all.iloc[0:0]
+    xg_eq = {a_espn.get(t, t): v for t, v in ut[ut["result"] != "Own Goal"].groupby("team")["xg"].sum().items()}
+    # nombres de Understat ("Kylian Mbappe-Lottin") -> los de la web, dentro de cada equipo
+    n_us = {}
+    for tu in set(ut["team"]) | set(up["team"]):
+        te = a_espn.get(tu, tu)
+        web = [nom(te, j["athlete"]["displayName"]) for e in r["rosters"] if e["team"]["displayName"] == te for j in e["roster"]]
+        n_us.update(match_names(list(set(ut.loc[ut["team"] == tu, "player"]) | set(up.loc[up["team"] == tu, "player"])), web))
+    for e in r["boxscore"]["teams"]:
+        t, st = e["team"]["displayName"], {x["name"]: x.get("displayValue") for x in e["statistics"]}
+        num = lambda k: float(st[k]) if st.get(k) not in (None, "") else np.nan
+        otro_eq = visit if t == local else local
+        nuevos["eq"].append(dict(match_id=mid, equipo=t, rival=otro_eq, goles=gl if t == local else gv,
+                                 xg=round(xg_eq.get(t, 0), 2) if len(ut) else np.nan, tiros=num("totalShots"), tiros_puerta=num("shotsOnTarget"),
+                                 posesion=num("possessionPct"), pases=num("totalPasses"),
+                                 acierto_pase=round(100 * num("accuratePasses") / num("totalPasses"), 1) if num("totalPasses") else np.nan,
+                                 xg_contra=round(xg_eq.get(otro_eq, 0), 2) if len(ut) else np.nan, fuente="ESPN"))
+    # alineaciones, minutos y goles de cada jugador
+    for e in r["rosters"]:
+        t = e["team"]["displayName"]
+        tit = [j for j in e["roster"] if j.get("starter")]
+        lineas = [int(x) for x in str(e.get("formation", "")).split("-") if x.isdigit()]
+        prof = lambda j: PROF.get(j["position"]["abbreviation"].split("-")[0], 3)
+        # de izquierda a derecha: LB 0, CD-L 1, CD 2, CD-R 3, RB 4
+        lado_j = lambda j: (lambda a: 0 if a[0] == "L" else 4 if a[0] == "R" else 1 if a.endswith("-L") else 3 if a.endswith("-R") else 2)(j["position"]["abbreviation"])
+        campo = [j for j in sorted(tit, key=prof) if prof(j) > 0]
+        coloca, i0 = {}, 0
+        if sum(lineas) == len(campo):  # reparte por líneas del sistema, de izquierda a derecha
+            for n_l, (k, n) in enumerate(zip(range(len(lineas)), lineas)):
+                fila = sorted(campo[i0:i0 + n], key=lado_j)
+                i0 += n
+                for i, j in enumerate(fila):
+                    lj = lado_j(j)
+                    izq, der = lj <= 1 and n > 1, lj >= 3 and n > 1
+                    lab = ("Left-Back" if lj == 0 else "Right-Back" if lj == 4 else "Centre-Back") if k == 0 else \
+                          "Centre-Forward" if k == len(lineas) - 1 and n <= 2 else \
+                          ("Left Winger" if izq else "Right Winger" if der else "Centre-Forward") if k == len(lineas) - 1 else \
+                          "Defensive Midfield" if k == 1 and len(lineas) >= 4 else \
+                          ("Left Winger" if izq else "Right Winger" if der else "Attacking Midfield") if k >= 2 else \
+                          ("Left Midfield" if lj == 0 else "Right Midfield" if lj == 4 else "Central Midfield")
+                    coloca[j["athlete"]["id"]] = (round(0.1 + 0.8 * (i + 0.5) / n, 3), round(0.23 + 0.63 * k / max(len(lineas) - 1, 1), 2), lab)
+        for j in e["roster"]:
+            jugo = j.get("starter") or j.get("subbedIn")
+            n = nom(t, j["athlete"]["displayName"])
+            px, py, lab = coloca.get(j["athlete"]["id"], (0.5, 0.06, "Goalkeeper") if j.get("starter") and prof(j) == 0 else (np.nan, np.nan, ""))
+            nuevos["al"].append(dict(match_id=mid, equipo=t, jugador=n, dorsal=int(j["jersey"]) if str(j.get("jersey", "")).isdigit() else "",
+                                     titular=int(bool(j.get("starter"))), posicion=lab, px=px, py=py))
+            if not jugo:
+                continue
+            cambios = [minuto(p["clock"]["displayValue"]) for p in j.get("plays", []) if p.get("substitution")]
+            ent = 0 if j.get("starter") else (cambios[0] if cambios else 90)
+            sal = (cambios[-1] if j.get("subbedOut") and cambios else 90)
+            stt = {x["name"]: x.get("value") or 0 for x in j.get("stats", [])}
+            u = up[up["player"].map(lambda x: n_us.get(x, x)) == n] if len(up) else up
+            nuevos["jug"].append(dict(match_id=mid, equipo=t, jugador_id=int(nombres_rm.get(n, j["athlete"]["id"])), jugador=n,
+                                      titular=int(bool(j.get("starter"))), posicion="GK" if prof(j) == 0 else "", minutos=max(sal - ent, 1),
+                                      goles=int(stt.get("totalGoals", 0)), asistencias=int(stt.get("goalAssists", 0)),
+                                      xg=round(u["xg"].sum(), 2) if len(u) else (0.0 if len(ut) else np.nan),
+                                      xa=round(u["xa"].sum(), 2) if len(u) else (0.0 if len(ut) else np.nan)))
+    # tiros de Understat (Liga); el penalti se reconoce por su sitio exacto (Understat lo apunta como balón parado)
+    for s_ in ut[ut["result"] != "Own Goal"].itertuples():
+        t = a_espn.get(s_.team, s_.team)
+        pen = s_.location_x == 0.885 and s_.location_y == 0.5
+        nuevos["tiros"].append(dict(tiro_id=f"us{s_.shot_id}", match_id=mid, equipo=t, jugador=n_us.get(s_.player, s_.player), x=round(s_.location_x * 120, 1),
+                                    y=round((1 - s_.location_y) * 80, 1), xg=round(s_.xg, 3), resultado=RES.get(s_.result, s_.result),
+                                    subtipo="Penalty" if pen else "Open Play", patron_juego="Other" if pen else PAT.get(s_.situation, s_.situation), minuto=s_.minute))
+    # incidencias: goles, tarjetas y cambios
+    TIPO = {"Yellow Card": "amarilla", "Red Card": "roja", "Second Yellow": "segunda_amarilla"}
+    inc_p = []
+    for k in r.get("keyEvents", []):
+        tx, part = k["type"]["text"], [p["athlete"]["displayName"] for p in k.get("participants", [])]
+        t = k.get("team", {}).get("displayName")
+        if not t or not part:
+            continue
+        mnt = minuto(k.get("clock", {}).get("displayValue"))
+        tipo = "gol_pp" if "Own Goal" in tx else "penalti" if tx.startswith("Penalty - Scored") else "gol" if tx.startswith("Goal") else \
+            TIPO.get(tx, "segunda_amarilla" if "Second" in tx else "cambio" if tx == "Substitution" else "")
+        if tipo:
+            inc_p.append(dict(match_id=mid, minuto=mnt, orden=mnt, equipo=t, tipo=tipo, jugador=nom(t, part[0]),
+                              sale=nom(t, part[1]) if tipo == "cambio" and len(part) > 1 else ""))
+    goles_inc = pd.Series([x["equipo"] for x in inc_p if x["tipo"] in ("gol", "penalti", "gol_pp")]).value_counts()
+    if goles_inc.get(local, 0) != gl or goles_inc.get(visit, 0) != gv:  # ESPN apunta el gol en propia puerta al equipo del que lo marca
+        for x in inc_p:
+            if x["tipo"] == "gol_pp":
+                x["equipo"] = visit if x["equipo"] == local else local
+    nuevos["inc"].extend(inc_p)
+
+if nuevos["partidos"]:
+    print("Partidos solo con ESPN (falta el detalle de WhoScored):", [p["fecha"] for p in nuevos["partidos"]])
+    pn = pd.DataFrame(nuevos["partidos"])
+    partidos = pd.concat([partidos, pn], ignore_index=True).sort_values("fecha")
+    en = pd.DataFrame(nuevos["eq"]); en.insert(0, "clave", en["match_id"].astype(str) + "|" + en["equipo"])
+    eq = pd.concat([eq, en], ignore_index=True)
+    jn = pd.DataFrame(nuevos["jug"]); jn.insert(0, "clave", jn["match_id"].astype(str) + "|" + jn["jugador_id"].astype(str))
+    jug = pd.concat([jug, jn], ignore_index=True)
+    alineaciones = pd.concat([alineaciones, pd.DataFrame(nuevos["al"])], ignore_index=True)
+    tiros = pd.concat([tiros, pd.DataFrame(nuevos["tiros"])], ignore_index=True)
+    incidencias = pd.concat([incidencias, pd.DataFrame(nuevos["inc"])], ignore_index=True)
+    # comprobación: goles de las incidencias = marcador
+    for p in nuevos["partidos"]:
+        gi = incidencias[(incidencias["match_id"] == p["match_id"]) & incidencias["tipo"].isin(["gol", "penalti", "gol_pp"])]["equipo"].value_counts()
+        assert gi.get(p["local"], 0) == p["goles_local"] and gi.get(p["visitante"], 0) == p["goles_visitante"], (p["fecha"], gi.to_dict())
 
 # ---------- Guardar ----------
 OUT.mkdir(parents=True, exist_ok=True)

@@ -1,4 +1,5 @@
-# Análisis de la temporada. Se ejecuta en el Mac de Fer (runner propio): WhoScored y FBref bloquean a los servidores de GitHub.
+# Detalle Opta de la temporada. Se ejecuta en el Mac de Fer (runner propio): WhoScored y FBref bloquean a los servidores de GitHub.
+# Lo básico (resultados, xG, alineaciones, clasificaciones) lo actualiza nube.yml cada 3 horas aunque el Mac esté apagado.
 # Si el Mac está dormido a la hora programada, la tarea espera en cola y se ejecuta al despertar.
 name: Actualizar temporada
 on:
@@ -31,7 +32,7 @@ jobs:
           git add data/fuentes docs/data
           git diff --cached --quiet && exit 0
           git commit -qm "Datos de la temporada actualizados"
-          git pull -q --rebase origin main
+          git pull -q --rebase -X theirs origin main
           git push -q origin main
       - name: Guardar el registro si algo falló
         if: failure()

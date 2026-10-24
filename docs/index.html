@@ -132,6 +132,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .sub-tabs button { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; color: var(--color-fg-muted); cursor: pointer; white-space: nowrap; }
 .sub-tabs button[aria-selected="true"] { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
 .sub-oculto { display: none !important; }
+.aviso { font-size: var(--cds-font-size-caption); color: var(--color-fg); background: color-mix(in srgb, var(--serie-rival) 14%, transparent); border-left: 3px solid var(--serie-rival); padding: var(--cds-pad-sm) var(--cds-pad-md); border-radius: 6px; margin: 0 0 var(--cds-gap-md); }
+.aviso[hidden] { display: none; }
 .sel-nav { display: flex; gap: 4px; align-items: stretch; }
 .btn-nav { font: inherit; font-size: 1.1rem; line-height: 1; width: 2rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
 .btn-nav:disabled { opacity: 0.35; cursor: default; }
@@ -472,6 +474,7 @@ html { scroll-padding-top: 5.5rem; }
       <div class="mc-linea" id="m-linea" data-source="incidencias"></div>
       <div class="mc-pie"><p class="rm-sub" id="m-coach"></p><button type="button" class="btn-sec exportar" id="exportar">⤓ Descargar informe (PDF)</button></div>
     </div>
+    <p class="aviso" id="p-aviso" hidden>Este partido tiene de momento los datos básicos (ESPN y, en Liga, xG y tiros de Understat). Los pases, duelos, mapas y la red de pases de Opta llegarán con la próxima actualización desde el Mac.</p>
     <nav class="sub-tabs" id="p-sub" role="tablist" aria-label="Apartados del partido">
       <button role="tab" data-v="resumen">Resumen</button><button role="tab" data-v="estadisticas">Estadísticas</button><button role="tab" data-v="mapas">Mapas</button><button role="tab" data-v="jugadores">Jugadores</button><button role="tab" data-v="alineaciones">Alineaciones</button>
     </nav>
