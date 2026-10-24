@@ -295,6 +295,7 @@ ROL_GRUESO = {"GK": "Portero", "D": "Central", "M": "Mediocentro", "F": "Delante
 ROL = {"Central": ("D", ["int90", "tklw90", "xg_buildup90"]), "Lateral": ("D", ["xa90", "xg_buildup90", "tklw90"]),
        "Mediocentro": ("M", ["xg_buildup90", "int90", "tklw90", "xa90"]),
        "Mediapunta o extremo": ("MF", ["xg90", "xa90", "xg_chain90"]), "Delantero": ("F", ["xg90", "xa90", "xg_chain90"])}
+RADAR = ["xg90", "xa90", "key_passes90", "xg_chain90", "xg_buildup90", "tklw90", "int90"]
 rm_pm = us_pm[(us_pm["equipo"] == RM) & (us_pm["position"] != "Sub")]
 rol_us = rm_pm.groupby("player")["position"].agg(lambda v: ROL_US.get(v.value_counts().index[0]))
 # métricas Opta (pase, progresivos, recuperaciones, duelos, pérdidas): todas las competiciones
@@ -351,6 +352,10 @@ for r in us_rm.itertuples():
            "xg_buildup90": r.xg_buildup * 90 / r.minutes,
            "int90": f["Performance_Int"].iloc[0] / f90 if f90 else np.nan, "tklw90": f["Performance_TklW"].iloc[0] / f90 if f90 else np.nan}
     pcts = [pct((liga if k not in ("int90", "tklw90") else fbm).query("grupo in @grupos")[k], val[k]) for k in metricas if not np.isnan(val[k])]
+    # radar de la ficha del jugador: percentil de cada métrica frente a los de su puesto en la Liga
+    val["key_passes90"] = r.key_passes * 90 / r.minutes
+    for k in RADAR:
+        fila["r_" + k] = pct((liga if k not in ("int90", "tklw90") else fbm).query("grupo in @grupos")[k], val[k]) if not np.isnan(val[k]) else np.nan
     if r.minutes >= MIN_LIGA and pcts:
         fila["pct_rol"] = round(np.mean(pcts))
     d = desvio(r.np_goals, r.np_xg)

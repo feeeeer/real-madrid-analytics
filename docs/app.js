@@ -291,6 +291,8 @@ $('#sel-partido').addEventListener('change', (e) => dash.setParams({ partido: Nu
 $('#p-jugador').addEventListener('change', (e) => dash.setParams({ jugador: e.target.value }));  // '*' = todo el equipo
 $('#sel-temporada').addEventListener('change', (e) => dash.setParams({ temporada: e.target.value, jugador_t: null }));
 $('#t-jugador').addEventListener('change', (e) => dash.setParams({ jugador_t: e.target.value || null }));
+$('#f-jugador').addEventListener('change', (e) => dash.setParams({ jugador_t: e.target.value || null }));
+$('#f-comparar').addEventListener('change', (e) => dash.setParams({ comparar: e.target.value || null }));
 $('#tabla-partido').addEventListener('click', (ev) => {
   const tr = ev.target.closest('tr[data-key]');
   if (!tr) return;
@@ -327,7 +329,6 @@ function showTab(id, link = true) {
   document.title = `${t.dataset.titulo} · Real Madrid Analytics`;
   // cada filtro de la barra solo en las secciones a las que afecta
   for (const f of document.querySelectorAll('.filtros [data-en]')) f.hidden = !f.dataset.en.split(' ').includes(id);
-  if (link) dash.setLink(id);
   render();
 }
 tabs.forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
@@ -422,7 +423,7 @@ function campito(titulares, color) {
 function fillTable(table, data, cols, keyOf, selKey) {
   const tb = table.querySelector('tbody');
   tb.replaceChildren(...data.map((r) => {
-    const tr = el('tr', { 'data-key': keyOf(r) });
+    const tr = el('tr', { 'data-key': keyOf(r), tabindex: '0' });
     if (selKey && keyOf(r) === selKey) tr.className = 'sel';
     for (const c of cols) tr.appendChild(el('td', {}, r[c]));
     return tr;
@@ -600,11 +601,9 @@ function renderPartido() {
   // xG acumulado
   // sin xG (Champions, Copa) ese hueco muestra la jornada y la clasificación de la competición
   const conXgP = !a || a.xg !== '';
-  $('#xg-tit').textContent = conXgP ? 'xG acumulado' : 'Jornada y clasificación';
-  $('#xgline').hidden = !conXgP;
-  $('#jornada').hidden = conXgP;
+  $('#xg-timeline').hidden = !conXgP;
   if (conXgP) drawXgLine($('#xgline'), rows('tiros').filter((r) => Number(r.match_id) === mid), p, b);
-  else if (p) pintarJornada($('#jornada'), p);
+  if (p) pintarJornada($('#jornada'), p);
 
   // Alineaciones
   const alP = rows('alineaciones').filter((r) => Number(r.match_id) === mid).map((r) => ({ ...r, equipo: nombre(r.equipo) }));
@@ -733,6 +732,9 @@ function renderTemporada() {
       return tr;
     }));
 
+  // Clasificaciones
+  pintarClasificaciones($('#t-clasif'), compSel === TODAS ? [...new Set(ps.map((p) => p.competicion))] : [compSel]);
+
   // Mapa de tiros de la temporada: a favor o en contra, con su desglose por origen
   const lado = P().tiros_r || 'favor';
   segRT((v) => v === lado);
@@ -825,8 +827,7 @@ function renderTemporada() {
   const tj = $('#t-jugador');
   const byMin = [...jt].sort((a, b) => b.minutos - a.minutos);
   tj.replaceChildren(...byMin.map((r) => el('option', { value: r.jugador }, r.jugador)));
-  const porteros = new Set(rows('metricas_jugador').filter((r) => r.posicion === 'GK').map((r) => r.jugador));
-  const jugador = byMin.some((r) => r.jugador === P().jugador_t) ? P().jugador_t : (byMin.find((r) => !porteros.has(r.jugador)) || byMin[0])?.jugador;
+  const jugador = jugadorSel(jt);
   tj.value = jugador || '';
   segCapaT((v) => v === (P().capa_t || 'zonas'));
   segTiposT((v) => (P().tipos || []).includes(v));
@@ -919,7 +920,7 @@ function renderHistorico() {
     const local = el('td', { class: 'loc' }), visitante = el('td', { class: 'vis' });
     local.append(conEscudo(r.local, 'span', true));
     visitante.append(conEscudo(r.visitante));
-    tr.append(el('td', {}, r.fecha), el('td', {}, r.competicion), local, el('td', { class: 'sep' }, '–'), visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
+    tr.append(el('td', {}, fechaEs(r.fecha)), el('td', {}, r.competicion), local, el('td', { class: 'sep' }, '–'), visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}${conAl.has(r.partido_id) ? ' 👥' : ''}`));
     tr.lastChild.style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     return tr;
@@ -942,51 +943,81 @@ function pintarFicha(cont, p, tagTitulo = 'h3') {
   cont.replaceChildren(titulo, gol, alineacionesEl(al, p.local));
 }
 
-// Resultados de la jornada del partido y clasificación tras ella (calendario completo de WhoScored)
+// ---------- Jornadas y clasificaciones (calendario completo de WhoScored) ----------
+// ronda de cada partido = cuántos partidos lleva ya su equipo en esa fase (vale para la Liga y para la fase de liga de Champions)
+function conRondas(fase) {
+  const n = {};
+  return [...fase].sort((a, b) => a.fecha.localeCompare(b.fecha)).map((r) => {
+    n[r.local] = (n[r.local] || 0) + 1; n[r.visitante] = (n[r.visitante] || 0) + 1;
+    return { ...r, ronda: Math.max(n[r.local], n[r.visitante]) };
+  });
+}
+// zonas de la tabla: [hasta la posición, clase, texto]
+const ZONAS = { 'La Liga': [[4, 'zona-a', 'Champions'], [6, 'zona-b', 'Europa League'], [7, 'zona-c', 'Conference League'], [17, '', ''], [20, 'zona-d', 'Descenso']],
+  'Champions League': [[8, 'zona-a', 'Octavos directos'], [24, 'zona-b', 'Eliminatoria previa'], [99, '', '']] };
+function tablaClasif(partidos, comp) {
+  const t = {};
+  for (const r of partidos)
+    for (const [eq, gf, gc] of [[r.local, N(r.goles_local), N(r.goles_visitante)], [r.visitante, N(r.goles_visitante), N(r.goles_local)]]) {
+      const x = (t[eq] ??= { eq, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0 });
+      x.pj += 1; x.gf += gf; x.gc += gc; x[gf > gc ? 'g' : gf === gc ? 'e' : 'p'] += 1;
+    }
+  // desempate simplificado: diferencia de goles y goles a favor
+  const tabla = Object.values(t).map((x) => ({ ...x, pts: 3 * x.g + x.e, dg: x.gf - x.gc })).sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
+  const zonas = ZONAS[comp] || [];
+  const tb = el('tbody');
+  tabla.forEach((x, i) => {
+    const z = zonas.find(([hasta]) => i < hasta);
+    const tr = el('tr', { class: `${x.eq === RM ? 'rm-fila ' : ''}${z ? z[1] : ''}` });
+    [i + 1, x.eq, x.pj, x.g, x.e, x.p, `${x.gf}:${x.gc}`, x.dg > 0 ? `+${x.dg}` : x.dg, x.pts].forEach((v) => tr.append(el('td', {}, v)));
+    tb.append(tr);
+  });
+  const tab = el('table', { class: 'tabla-clasif' });
+  const th = el('tr');
+  ['#', 'Equipo', 'PJ', 'G', 'E', 'P', 'Goles', 'DG', 'Pts'].forEach((h) => th.append(el('th', {}, h)));
+  const thead = el('thead'); thead.append(th);
+  tab.append(thead, tb);
+  const wrap = el('div', { class: 'rm-tablewrap' }); wrap.append(tab);
+  const ley = el('div', { class: 'rm-legend' });
+  for (const [, cl, txt] of zonas.filter(([, cl]) => cl)) { const sp = el('span', {}); sp.append(el('i', { class: `zona ${cl}` }), txt); ley.append(sp); }
+  return [wrap, ley];
+}
+// fase de la competición en que está el partido del Madrid (la que tenga clasificación si es fase de liga)
+const faseDe = (cs, mio) => cs.filter((r) => r.fase === mio.fase);
+const esLiga = (fase) => new Set(fase.flatMap((r) => [r.local, r.visitante])).size >= 16;
+
 function pintarJornada(cont, p) {
   const cs = rows('competicion').filter((r) => r.competicion === p.competicion);
   const mio = cs.find((r) => r.fecha === p.fecha && (r.local === RM || r.visitante === RM));
-  if (!mio) { cont.replaceChildren(el('p', { class: 'rm-sub' }, 'Los resultados de la jornada y la clasificación aparecerán con la próxima actualización de datos.')); return; }
-  const fase = cs.filter((r) => r.fase === mio.fase);
-  // jornada = bloque de fechas seguidas (con menos de 4 días entre una y otra)
-  const fechas = [...new Set(fase.map((r) => r.fecha))].sort();
-  const jor = [];
-  for (const f of fechas) {
-    const ult = jor.at(-1);
-    if (ult && (new Date(f) - new Date(ult.at(-1))) / 864e5 < 4) ult.push(f); else jor.push([f]);
-  }
-  const n = jor.findIndex((j) => j.includes(p.fecha)), hasta = jor[n].at(-1);
+  if (!mio) { cont.replaceChildren(el('p', { class: 'rm-sub' }, 'Sin resultados de la competición para este partido todavía.')); return; }
+  const fase = conRondas(faseDe(cs, mio));
+  const n = fase.find((r) => r.fecha === mio.fecha && r.local === mio.local).ronda;
   const res = el('ul', { class: 'jor-res' });
-  for (const r of fase.filter((r) => jor[n].includes(r.fecha))) {
-    const li = el('li', { class: r === mio ? 'rm-fila' : '' });
+  for (const r of fase.filter((r) => r.ronda === n)) {
+    const li = el('li', { class: r.local === RM || r.visitante === RM ? 'rm-fila' : '' });
     li.append(el('span', { class: 'l' }, r.local), el('b', {}, `${r.goles_local}–${r.goles_visitante}`), el('span', {}, r.visitante));
     res.append(li);
   }
-  const partes = [el('h3', {}, `Jornada ${n + 1}: resultados`), res];
-  const equipos = new Set(fase.flatMap((r) => [r.local, r.visitante]));
-  if (equipos.size >= 16) {  // fase de liga: hay clasificación; en eliminatorias no
-    const t = {};
-    for (const r of fase.filter((r) => r.fecha <= hasta))
-      for (const [eq, gf, gc] of [[r.local, N(r.goles_local), N(r.goles_visitante)], [r.visitante, N(r.goles_visitante), N(r.goles_local)]]) {
-        const x = (t[eq] ??= { eq, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0 });
-        x.pj += 1; x.gf += gf; x.gc += gc; x[gf > gc ? 'g' : gf === gc ? 'e' : 'p'] += 1;
-      }
-    const tabla = Object.values(t).map((x) => ({ ...x, pts: 3 * x.g + x.e, dg: x.gf - x.gc })).sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
-    const tb = el('tbody');
-    tabla.forEach((x, i) => {
-      const tr = el('tr', { class: (x.eq === RM ? 'rm-fila ' : '') + (i < 8 ? 'zona-a' : i < 24 ? 'zona-b' : '') });
-      [i + 1, x.eq, x.pj, x.g, x.e, x.p, `${x.gf}:${x.gc}`, x.dg > 0 ? `+${x.dg}` : x.dg, x.pts].forEach((v) => tr.append(el('td', {}, v)));
-      tb.append(tr);
-    });
-    const tab = el('table', { class: 'tabla-clasif' });
-    const th = el('tr');
-    ['#', 'Equipo', 'PJ', 'G', 'E', 'P', 'Goles', 'DG', 'Pts'].forEach((h) => th.append(el('th', {}, h)));
-    tab.append(el('thead'), tb); tab.firstChild.append(th);
-    const wrap = el('div', { class: 'rm-tablewrap' }); wrap.append(tab);
-    partes.push(el('h3', {}, `Clasificación tras la jornada ${n + 1}`), wrap,
-      el('p', { class: 'rm-sub' }, 'Verde: octavos directos (1.º–8.º). Ámbar: eliminatoria previa (9.º–24.º).'));
-  }
+  const partes = [el('h3', {}, `Jornada ${n}: resultados`), res];
+  if (esLiga(fase)) partes.push(el('h3', {}, `Clasificación tras la jornada ${n}`), ...tablaClasif(fase.filter((r) => r.ronda <= n), p.competicion));
   cont.replaceChildren(...partes);
+}
+
+// Clasificaciones actuales de la selección del Resumen (una por competición con fase de liga)
+function pintarClasificaciones(cont, comps) {
+  const cajas = [];
+  for (const comp of comps) {
+    const cs = rows('competicion').filter((r) => r.competicion === comp);
+    const mio = [...cs].reverse().find((r) => r.local === RM || r.visitante === RM);
+    if (!mio) continue;
+    const fase = conRondas(faseDe(cs, mio));
+    if (!esLiga(fase)) continue;
+    const c = el('div', { class: 'rm-card' });
+    c.append(el('h2', {}, `Clasificación · ${comp === 'La Liga' ? 'LaLiga' : comp}`), el('p', { class: 'rm-sub' }, `Tras la jornada ${d3.max(fase, (r) => r.ronda)}`), ...tablaClasif(fase, comp));
+    cajas.push(c);
+  }
+  cont.replaceChildren(...cajas);
+  cont.hidden = !cajas.length;
 }
 
 // Alineaciones de los dos equipos: dorsal, jugador y posición en columnas; campito si hay coordenadas
@@ -1107,7 +1138,7 @@ function renderTitulos() {
     const tr = el('tr', { 'data-key': r.partido_id });
     const loc = el('td', { class: 'loc' }), vis = el('td', { class: 'vis' });
     loc.append(conEscudo(r.local, 'span', true)); vis.append(conEscudo(r.visitante));
-    tr.append(el('td', {}, r.fecha), el('td', {}, r.ronda || '—'), loc, el('td', { class: 'sep' }, '–'), vis,
+    tr.append(el('td', {}, fechaEs(r.fecha)), el('td', {}, r.ronda || '—'), loc, el('td', { class: 'sep' }, '–'), vis,
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}`), el('td', { class: 'estadio' }, r.estadio || '—'));
     tr.children[5].style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     bd.append(tr);
@@ -1130,7 +1161,9 @@ const VER_COL = { 'Por debajo': C_BAD, 'Por encima': 'var(--color-ok)', 'En lín
 let sortRen = { k: 'veredicto', asc: true };
 $('#tabla-rendimiento').addEventListener('click', (ev) => {
   const th = ev.target.closest('th');
-  if (th) { sortRen = { k: th.dataset.field, asc: sortRen.k === th.dataset.field ? !sortRen.asc : ['jugador', 'puesto', 'veredicto', 'motivo'].includes(th.dataset.field) }; render(); }
+  if (th) { sortRen = { k: th.dataset.field, asc: sortRen.k === th.dataset.field ? !sortRen.asc : ['jugador', 'puesto', 'veredicto', 'motivo'].includes(th.dataset.field) }; render(); return; }
+  const tr = ev.target.closest('tr[data-key]');
+  if (tr) { dash.setParams({ jugador_t: tr.dataset.key }); $('#ficha-jugador').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 });
 // Mismo criterio que procesar.py: desvío claro = al menos 1 de diferencia y un 30 % de lo esperado
 const desvio = (real, esp) => (Math.abs(real - esp) >= 1 && Math.abs(real - esp) >= 0.3 * Math.max(esp, 1) ? Math.sign(real - esp) : 0);
@@ -1187,6 +1220,114 @@ function tendencias() {
   }));
 }
 
+// ---------- Ficha del jugador: radar frente a su puesto (con comparación) y forma partido a partido ----------
+const RADAR = [['r_xg90', 'xG'], ['r_xa90', 'xA'], ['r_key_passes90', 'Pases clave'], ['r_xg_chain90', 'xGChain'], ['r_xg_buildup90', 'xGBuildup'],
+  ['r_tklw90', 'Entradas'], ['r_int90', 'Intercep.']];
+const claveSel = () => P().temporada || (rows('partidos').length ? TODAS + '|' + rows('partidos').at(-1).temporada : '');
+// jugador elegido; si no hay, el de campo con más minutos (los saques del portero no dicen nada en un mapa)
+function jugadorSel(jt) {
+  if (jt.some((r) => r.jugador === P().jugador_t)) return P().jugador_t;
+  const gk = new Set(rows('metricas_jugador').filter((r) => r.posicion === 'GK').map((r) => r.jugador));
+  return ([...jt].sort((a, b) => b.minutos - a.minutos).find((r) => !gk.has(r.jugador)) || jt[0])?.jugador;
+}
+
+function drawRadar(box, series) {
+  box.querySelector('svg')?.remove();
+  if (!series.length) return;
+  const W = Math.min(460, Math.max(300, box.clientWidth)), H = W * 0.82, cx = W / 2, cy = H / 2 + 4, R = W * 0.24;  // margen para las etiquetas
+  const ang = (i) => -Math.PI / 2 + (2 * Math.PI * i) / RADAR.length;
+  const pt = (i, v) => [cx + Math.cos(ang(i)) * (R * v) / 100, cy + Math.sin(ang(i)) * (R * v) / 100];
+  const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', series.map((s) => `${s.nombre}: ${RADAR.map(([k, l]) => `${l} percentil ${s.r[k] === '' ? 'sin dato' : s.r[k]}`).join(', ')}`).join('. '));
+  for (const v of [25, 50, 75, 100])
+    svg.append('polygon').attr('points', RADAR.map((_, i) => pt(i, v).join(',')).join(' ')).attr('fill', 'none').style('stroke', 'var(--cds-chart-grid)');
+  RADAR.forEach(([, l], i) => {
+    const [x, y] = pt(i, 100), [lx, ly] = pt(i, 122);
+    svg.append('line').attr('x1', cx).attr('y1', cy).attr('x2', x).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
+    svg.append('text').attr('x', lx).attr('y', ly + 4).attr('text-anchor', Math.abs(lx - cx) < 8 ? 'middle' : lx > cx ? 'start' : 'end')
+      .style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text(l);
+  });
+  svg.append('text').attr('x', cx + 3).attr('y', cy - R / 2 + 3).style('fill', 'var(--cds-chart-reference)').style('font-size', '10px').text('50');
+  const tip = tooltip(box);
+  for (const s of series) {
+    const pts = RADAR.map(([k], i) => pt(i, s.r[k] === '' ? 0 : N(s.r[k])));
+    svg.append('polygon').attr('points', pts.map((p) => p.join(',')).join(' ')).style('fill', s.color).attr('fill-opacity', 0.18)
+      .style('stroke', s.color).attr('stroke-width', 2).attr('stroke-dasharray', s.discontinua ? '5 4' : null);
+    svg.append('g').selectAll('circle').data(RADAR.map(([k, l], i) => ({ k, l, p: pts[i], v: s.r[k] }))).join('circle')
+      .attr('cx', (d) => d.p[0]).attr('cy', (d) => d.p[1]).attr('r', 3.5).style('fill', s.color)
+      .on('mouseenter', (ev, d) => tip.show(ev, s.nombre, [`${d.l}: percentil ${d.v === '' ? '—' : d.v}`]))
+      .on('mouseleave', () => tip.hide());
+  }
+}
+
+function drawForma(box, pts) {
+  box.querySelector('svg')?.remove();
+  box.querySelector('.sin-xg')?.remove();
+  if (pts.length < 2) { box.prepend(el('p', { class: 'sin-xg' }, 'Hacen falta al menos 3 partidos previos con minutos para medir su forma.')); return; }
+  const W = Math.max(280, box.clientWidth), H = 220, m = { t: 12, r: 10, b: 30, l: 34 };
+  const x = d3.scaleBand(pts.map((d) => d.id), [m.l, W - m.r]).padding(0.25);
+  const lim = Math.max(1, d3.max(pts, (d) => Math.abs(d.score)));
+  const y = d3.scaleLinear([-lim, lim], [H - m.b, m.t]).nice();
+  const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', `Forma en ${pts.length} partidos: ${pts.filter((d) => d.score >= 0.3).length} por encima de lo suyo y ${pts.filter((d) => d.score <= -0.3).length} por debajo`);
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(W - m.l - m.r)))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove())
+    .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
+  const paso = Math.ceil(pts.length / Math.max(2, Math.floor((W - m.l - m.r) / 44)));
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickValues(pts.filter((_, i) => i % paso === 0).map((d) => d.id)).tickFormat((id) => pts.find((d) => d.id === id).etq).tickSize(0))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove()).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)').attr('dy', '1em'));
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-reference)');
+  const tip = tooltip(box);
+  svg.append('g').selectAll('rect').data(pts).join('rect').attr('x', (d) => x(d.id)).attr('width', x.bandwidth())
+    .attr('y', (d) => y(Math.max(0, d.score))).attr('height', (d) => Math.abs(y(d.score) - y(0)))
+    .style('fill', (d) => (d.score >= 0.3 ? 'var(--color-ok)' : d.score <= -0.3 ? C_BAD : 'var(--cds-chart-muted)')).attr('rx', 2)
+    .on('mouseenter', (ev, d) => tip.show(ev, d.titulo, [`Forma ${d.score > 0 ? '+' : ''}${d.score.toFixed(1)} · ${d.min}'`, d.detalle]))
+    .on('mouseleave', () => tip.hide());
+}
+
+function renderFicha() {
+  const key = claveSel();
+  const jt = rows('jugadores_temporada').filter((r) => r.temporada === key);
+  if (!jt.length) return;
+  const nombre = jugadorSel(jt);
+  const porMin = [...jt].sort((a, b) => b.minutos - a.minutos);
+  $('#f-jugador').replaceChildren(...porMin.map((r) => el('option', { value: r.jugador }, r.jugador)));
+  $('#f-jugador').value = nombre;
+  const comp = porMin.some((r) => r.jugador === P().comparar) && P().comparar !== nombre ? P().comparar : '';
+  $('#f-comparar').replaceChildren(el('option', { value: '' }, 'Nadie'), ...porMin.filter((r) => r.jugador !== nombre).map((r) => el('option', { value: r.jugador }, r.jugador)));
+  $('#f-comparar').value = comp;
+  const yo = jt.find((r) => r.jugador === nombre);
+  const ren = rows('rendimiento').find((r) => r.jugador === nombre);
+  const ten = tendencias()[nombre];
+  $('#fj-nombre').textContent = nombre + (ren ? ` · ${ren.puesto}` : '');
+  $('#fj-kpis').replaceChildren(...[['Partidos', yo.pj], ['Minutos', yo.minutos], ['Goles', yo.goles], ['Asistencias', yo.asistencias],
+    ['Veredicto', ren ? ren.veredicto : '—'], ['Tendencia', ten || '—']]
+    .map(([l, v]) => { const c = el('div', { class: 'rm-card rm-kpi' }); c.append(el('p', { class: 'rm-sub' }, l), el('p', { class: 'n' }, v)); return c; }));
+  $('#fj-motivo').textContent = ren ? ren.motivo + '.' : '';
+  // radar (Liga): necesita sus percentiles; el portero no tiene
+  const series = [];
+  if (ren && RADAR.some(([k]) => ren[k] !== '')) series.push({ nombre, r: ren, color: C_RM() });
+  const ren2 = comp && rows('rendimiento').find((r) => r.jugador === comp);
+  if (ren2 && RADAR.some(([k]) => ren2[k] !== '')) series.push({ nombre: comp, r: ren2, color: C_RIV(), discontinua: true });
+  const caja = $('#fj-radar');
+  caja.querySelector('.sin-xg')?.remove();
+  drawRadar(caja, series);
+  if (!series.length) caja.prepend(el('p', { class: 'sin-xg' }, 'Sin percentiles: hacen falta 90 minutos en la Liga y no se calculan para porteros.'));
+  drawLegend($('#fj-ley'), series.map((s) => ['', s.nombre, s.color]));
+  // forma en cada partido de la selección
+  const partidos = rows('partidos'), fecha = Object.fromEntries(partidos.map((p) => [p.match_id, p.fecha]));
+  const [compSel, tempSel] = key.split('|');
+  const pts = [];
+  for (const p of [...partidos].filter((p) => p.temporada === tempSel && (compSel === TODAS || p.competicion === compSel)).sort((a, b) => a.fecha.localeCompare(b.fecha))) {
+    const f = formaJugadores(Number(p.match_id), fecha, rows('metricas_jugador')).find((x) => x.r.jugador === nombre);
+    if (!f) continue;
+    const top = [...f.ms].sort((a, b) => Math.abs(b.z) - Math.abs(a.z))[0];
+    pts.push({ id: p.match_id, score: f.score, min: f.r.minutos, etq: abrev(p.rival), titulo: `${fechaEs(p.fecha)} · ${p.local} ${p.goles_local}–${p.goles_visitante} ${p.visitante}`,
+      detalle: `${top.valor} ${top.label[top.valor === 1 ? 0 : 1]} (suele ${top.esperado.toFixed(1)})` });
+  }
+  drawForma($('#fj-forma'), pts);
+}
+
 function renderRendimiento() {
   const ten = ok('partidos', 'metricas_jugador') ? tendencias() : {};
   // el del portero sale de un xG previo al tiro: se muestra como aproximado y en gris
@@ -1219,19 +1360,83 @@ function renderRendimiento() {
   $('#tabla-rendimiento tbody').querySelectorAll('tr').forEach((tr, i) => { tr.children[17].style.color = VER_COL[rs[i].veredicto] || 'var(--color-fg-muted)'; });
 }
 
+// La dirección guarda la sección y lo elegido en ella (#jugadores?jugador_t=...), para poder mandar el enlace exacto
+const ENLACE = { resumen: ['temporada'], partido: ['partido'], jugadores: ['temporada', 'jugador_t', 'comparar'], historico: ['comp'], titulos: [] };
+function enlace(tab) {
+  const q = new URLSearchParams();
+  for (const k of ENLACE[tab] || []) if (P()[k] != null && P()[k] !== '') q.set(k, P()[k]);
+  const h = `#${tab}${q.toString() ? '?' + q : ''}`;
+  if (location.hash !== h) history.replaceState(null, '', h);
+}
+
 function render() {
   const marca = $('#brand-esc');
   if (!marca.firstChild && ok('escudos')) marca.append(escudo(RM));
   const tab = document.querySelector('.rm-page:not([hidden])')?.id;
   if (tab === 'partido') renderPartido();
   else if (tab === 'resumen') renderTemporada();
-  else if (tab === 'jugadores') { renderRendimiento(); renderTemporada(); }
+  else if (tab === 'jugadores') { renderFicha(); renderRendimiento(); renderTemporada(); }
   else if (tab === 'historico') renderHistorico();
   else if (tab === 'titulos') renderTitulos();
+  if (tab) enlace(tab);
+  // gráficos sin descripción propia: lector de pantalla lee el título de su tarjeta
+  for (const g of document.querySelectorAll(`#${tab} .rm-chart > svg:not([aria-label])`))
+    g.setAttribute('role', 'img'), g.setAttribute('aria-label', g.closest('.rm-card')?.querySelector('h2')?.textContent || 'Gráfico');
+  // mientras llega un CSV, su hueco muestra una animación de carga
+  for (const e of document.querySelectorAll(`#${tab} [data-source]`))
+    e.toggleAttribute('data-cargando', e.dataset.source.split(' ').some((id) => dash.data(id).status === 'loading'));
 }
 
-dash.onData(render);
+// la dirección se lee antes de pintar nada: el primer render la reescribe
+const [hashTab, hashQ] = location.hash.slice(1).split('?');
+if (hashQ) dash.setParams(Object.fromEntries([...new URLSearchParams(hashQ)].map(([k, v]) => [k, k === 'partido' ? Number(v) : v])));
 // enlaces antiguos (#temporada, #rendimiento) siguen funcionando
-const named = { temporada: 'resumen', rendimiento: 'jugadores' }[location.hash.slice(1)] || location.hash.slice(1);
+const named = { temporada: 'resumen', rendimiento: 'jugadores' }[hashTab] || hashTab;
 showTab(['resumen', 'partido', 'jugadores', 'historico', 'titulos'].includes(named) ? named : 'resumen', false);
+dash.onData(render);
+
+// ---------- Accesibilidad: filas y cabeceras de tabla se usan con el teclado (Intro o espacio) ----------
+document.querySelectorAll('th[data-field]').forEach((th) => { th.tabIndex = 0; });
+document.addEventListener('keydown', (ev) => {
+  const t = ev.target;
+  if ((ev.key === 'Enter' || ev.key === ' ') && t.matches && t.matches('tbody tr[tabindex], th[tabindex]')) { ev.preventDefault(); t.click(); }
+});
+
+// ---------- Exportar el informe del partido: la vista de impresión del navegador permite guardarlo en PDF ----------
+$('#exportar').addEventListener('click', () => window.print());
+
+// ---------- Buscador global: jugadores, partidos de la temporada y rivales del histórico ----------
+(() => {
+  const inp = $('#buscar'), lista = $('#buscar-res');
+  const sinTildes = (x) => String(x).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  let res = [];
+  const cerrar = () => { lista.hidden = true; inp.setAttribute('aria-expanded', 'false'); };
+  const ir = (r) => { cerrar(); inp.value = ''; r.ir(); };
+  inp.addEventListener('input', () => {
+    const q = sinTildes(inp.value.trim());
+    if (q.length < 2) { cerrar(); return; }
+    // el histórico solo se descarga si se busca un rival
+    const jug = [...new Set(rows('metricas_jugador').filter((r) => r.equipo === RM).map((r) => r.jugador))]
+      .filter((n) => sinTildes(n).includes(q)).slice(0, 5)
+      .map((n) => ({ tipo: 'Jugador', txt: n, ir: () => { dash.setParams({ jugador_t: n }); showTab('jugadores'); } }));
+    const par = rows('partidos').filter((p) => sinTildes(`${p.rival} ${p.fecha} ${fechaEs(p.fecha)} ${p.competicion}`).includes(q)).slice(-5).reverse()
+      .map((p) => ({ tipo: 'Partido', txt: `${fechaEs(p.fecha)} · ${p.local} ${p.goles_local}–${p.goles_visitante} ${p.visitante}`,
+        ir: () => { dash.setParams({ partido: Number(p.match_id), jugador: null }); showTab('partido'); } }));
+    const riv = [...new Set(rows('historico').map((r) => r.rival))].filter((n) => sinTildes(n).includes(q)).slice(0, 4)
+      .map((n) => ({ tipo: 'Rival (histórico)', txt: n, ir: () => { $('#q-rival').value = n; showTab('historico'); $('#rivales').scrollIntoView({ behavior: 'smooth' }); } }));
+    res = [...jug, ...par, ...riv];
+    lista.replaceChildren(...(res.length ? res.map((r, i) => {
+      const li = el('li', { role: 'option', id: `bus-${i}` });
+      li.append(el('span', { class: 'tipo' }, r.tipo), el('span', {}, r.txt));
+      li.addEventListener('mousedown', (ev) => { ev.preventDefault(); ir(r); });
+      return li;
+    }) : [el('li', { class: 'vacio' }, 'Sin resultados')]));
+    lista.hidden = false; inp.setAttribute('aria-expanded', 'true');
+  });
+  inp.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' && res.length) ir(res[0]);
+    if (ev.key === 'Escape') { inp.value = ''; cerrar(); }
+  });
+  inp.addEventListener('blur', cerrar);
+})();
 })();

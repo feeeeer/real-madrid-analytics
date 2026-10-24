@@ -116,6 +116,52 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .tabla-clasif td:nth-child(2), .tabla-clasif th:nth-child(2) { text-align: left; }
 .tabla-clasif tr.zona-a td:first-child { box-shadow: inset 3px 0 var(--color-ok); }
 .tabla-clasif tr.zona-b td:first-child { box-shadow: inset 3px 0 var(--serie-rival); }
+.tabla-clasif tr.zona-c td:first-child { box-shadow: inset 3px 0 var(--serie-clave); }
+.tabla-clasif tr.zona-d td:first-child { box-shadow: inset 3px 0 var(--cds-chart-status-critical); }
+.rm-legend i.zona { width: 3px; height: 0.8rem; border-radius: 1px; }
+.rm-legend i.zona-a { background: var(--color-ok); } .rm-legend i.zona-b { background: var(--serie-rival); }
+.rm-legend i.zona-c { background: var(--serie-clave); } .rm-legend i.zona-d { background: var(--cds-chart-status-critical); }
+.tabla-clasif tr.rm-fila td { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
+#t-clasif .rm-tablewrap { max-height: 24rem; }
+/* buscador de la barra */
+.buscador { position: relative; flex: 1 1 16rem; max-width: 26rem; }
+.buscador input { width: 100%; font: inherit; font-size: var(--cds-font-size-body); padding: 7px 12px; border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); }
+.buscador ul { position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 4px); list-style: none; margin: 0; padding: 4px; background: var(--cds-surface-popover);
+  border: 1px solid var(--cds-border); border-radius: 8px; box-shadow: var(--cds-shadow-popover); max-height: 22rem; overflow: auto; }
+.buscador li { display: flex; flex-direction: column; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: var(--cds-font-size-caption); }
+.buscador li:hover { background: var(--color-bg); }
+.buscador li .tipo { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-fg-muted); }
+.buscador li.vacio { color: var(--color-fg-muted); cursor: default; }
+/* ficha del jugador */
+.fj-ctrl { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); }
+.fj-ctrl label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: flex; align-items: center; gap: 6px; }
+.fj-kpis { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); margin-bottom: var(--cds-gap-sm); }
+.fj-kpis .n { font-size: 1.3rem; }
+.fj-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--cds-gap-lg); align-items: start; }
+.fj-cuerpo h3 { margin-top: 0; }
+#fj-radar svg { margin: 0 auto; max-width: 440px; }
+@media (max-width: 900px) { .fj-cuerpo { grid-template-columns: minmax(0, 1fr); } }
+.btn-sec { font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 12px; border: 1px solid var(--color-border-line); border-radius: 6px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+.btn-sec:hover { border-color: var(--serie-rm); }
+.exportar { float: right; }
+/* carga, transiciones y foco */
+[data-cargando] { position: relative; min-height: 5rem; }
+[data-cargando]::after { content: ""; position: absolute; inset: 0; border-radius: 6px; z-index: 2;
+  background: linear-gradient(90deg, var(--color-panel) 25%, var(--color-border-line) 50%, var(--color-panel) 75%); background-size: 300% 100%; animation: brillo 1.3s ease-in-out infinite; }
+@keyframes brillo { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.rm-page:not([hidden]) { animation: aparecer 0.25s ease; }
+@keyframes aparecer { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .rm-page:not([hidden]), [data-cargando]::after { animation: none; } }
+.rm tbody tr:focus-visible td, .rm th:focus-visible, .lista-partidos li:focus-visible, .lideres li:focus-visible { outline: 2px solid var(--serie-rm); outline-offset: -2px; }
+/* impresión: el informe del partido limpio para guardarlo en PDF */
+@media print {
+  .side, .barra, .exportar, #mapa-partido .rm-controls, details { display: none !important; }
+  .app { display: block; }
+  body { background: #fff; }
+  .contenido { padding: 0; max-width: none; }
+  .rm-card { break-inside: avoid; box-shadow: none; }
+  .rm-tablewrap { max-height: none; overflow: visible; }
+}
 #jornada .rm-tablewrap { max-height: 20rem; }
 /* textos de ayuda plegados */
 details.nota { margin-top: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
@@ -305,6 +351,10 @@ details.nota p + p { margin-top: 6px; }
   <main class="principal">
     <div class="barra">
       <div class="barra-tit"><h1 id="pag-titulo">Resumen de la temporada</h1></div>
+      <div class="buscador" role="search">
+        <input type="search" id="buscar" placeholder="Buscar jugador, rival o partido…" aria-label="Buscar jugador, rival o partido" autocomplete="off" aria-controls="buscar-res" aria-expanded="false">
+        <ul id="buscar-res" role="listbox" hidden></ul>
+      </div>
       <div class="filtros">
         <label data-en="resumen jugadores">Competición <select id="sel-temporada" data-source="partidos" aria-label="Competición y temporada"></select></label>
         <label data-en="partido" hidden>Partido <select id="sel-partido" data-source="partidos" aria-label="Partido"></select></label>
@@ -325,6 +375,7 @@ details.nota p + p { margin-top: 6px; }
         <ol class="lista-partidos" id="t-ultimos" data-source="partidos metricas_equipo"></ol>
       </div>
     </div>
+    <div class="rm-grid" id="t-clasif" data-source="competicion"></div>
     <div class="rm-grid">
       <div class="rm-card" id="lideres">
         <h2>Líderes de la plantilla</h2>
@@ -348,6 +399,7 @@ details.nota p + p { margin-top: 6px; }
       </section>
       <section class="rm-page" id="partido" hidden>
     <div class="rm-card" id="marcador" data-source="partidos">
+      <button type="button" class="btn-sec exportar" id="exportar">⤓ Descargar informe (PDF)</button>
       <div id="m-ficha"></div>
       <p class="rm-sub" id="m-coach"></p>
     </div>
@@ -363,7 +415,10 @@ details.nota p + p { margin-top: 6px; }
       <div class="rm-card" id="xg-timeline">
         <h2 id="xg-tit">xG acumulado</h2>
         <div class="rm-chart" id="xgline" data-source="tiros"></div>
-        <div id="jornada" data-source="competicion" hidden></div>
+      </div>
+      <div class="rm-card" id="jornada-card">
+        <h2>Jornada y clasificación</h2>
+        <div id="jornada" data-source="competicion"></div>
       </div>
       </div>
 
@@ -408,6 +463,16 @@ details.nota p + p { margin-top: 6px; }
     </div>
       </section>
       <section class="rm-page" id="jugadores" hidden>
+    <div class="rm-card" id="ficha-jugador">
+      <div class="card-cab"><h2 id="fj-nombre">Ficha del jugador</h2>
+        <div class="fj-ctrl"><label>Jugador <select id="f-jugador" aria-label="Jugador"></select></label>
+          <label>Comparar con <select id="f-comparar" aria-label="Comparar con otro jugador"></select></label></div></div>
+      <div class="rm-kpis fj-kpis" id="fj-kpis"></div>
+      <div class="fj-cuerpo">
+        <div><h3>Percentil frente a los de su puesto en la Liga</h3><div class="rm-chart" id="fj-radar" data-source="rendimiento"></div><div class="rm-legend" id="fj-ley"></div></div>
+        <div><h3>Forma partido a partido</h3><div class="rm-chart" id="fj-forma" data-source="metricas_jugador partidos"></div><p class="rm-sub" id="fj-motivo"></p></div>
+      </div>
+    </div>
     <div class="rm-grid" style="margin-top: var(--cds-gap-md)">
       <div class="rm-card" id="ren-goles-xg">
         <h2>Goles frente a xG (sin penaltis)</h2>

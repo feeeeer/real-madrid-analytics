@@ -12,7 +12,9 @@ window.dash = (() => {
   const avisar = () => subs.forEach((fn) => fn());
   const guardar = () => { try { sessionStorage.setItem('rm-params', JSON.stringify(params)); } catch (e) { /* nada */ } };
 
-  for (const id of FUENTES) {
+  // cada CSV se descarga la primera vez que alguna sección lo pide (el histórico de alineaciones pesa casi 2 MB)
+  function cargar(id) {
+    if (store[id]) return;
     store[id] = { status: 'loading', data: [] };
     d3.csv(`data/${id}.csv`)
       .then((rows) => { store[id] = { status: 'ok', data: rows }; })
@@ -22,7 +24,10 @@ window.dash = (() => {
 
   function data(id) {
     const c = calcs[id];
-    if (!c) return store[id] || { status: 'missing', data: [] };
+    if (!c) {
+      if (FUENTES.includes(id)) cargar(id);
+      return store[id] || { status: 'missing', data: [] };
+    }
     const ins = c.inputs.map(data);
     const bad = ins.find((d) => d.status !== 'ok');
     if (bad) return { status: bad.status, data: [] };
