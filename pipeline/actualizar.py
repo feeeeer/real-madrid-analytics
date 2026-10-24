@@ -158,9 +158,9 @@ def _():
             r["liga"], r["fase"] = liga, ev.get("seasonType", {}).get("name", "")
             dest.write_text(json.dumps(r, ensure_ascii=False))
             nuevos += 1
-        # fase de liga de la Copa de Europa: todos los resultados de esa jornada (el día anterior, el mismo y el siguiente)
+        # fase de liga de la Copa de Europa: todos los resultados de esa jornada (se juega de martes a jueves)
         if liga == "uefa.champions" and "League" in ev.get("seasonType", {}).get("name", ""):
-            for dia in (fecha - timedelta(days=1), fecha, fecha + timedelta(days=1)):
+            for dia in (fecha + timedelta(days=k) for k in range(-2, 3)):
                 m = d / f"marcador_{liga}_{dia:%Y%m%d}.json"
                 if m.exists():
                     continue
