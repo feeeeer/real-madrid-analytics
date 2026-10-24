@@ -1,7 +1,7 @@
 // Mini-motor de datos de la web: carga los CSV de data/, calcula los derivados y avisa a la página cuando hay datos.
 // Mantiene la misma interfaz que el cuadro de mando original (dash.data, dash.calc, dash.onData, dash.params...).
 window.dash = (() => {
-  const FUENTES = ['partidos', 'metricas_equipo', 'metricas_jugador', 'pases', 'tiros', 'rendimiento', 'historico', 'historico_alineaciones', 'escudos', 'ligas', 'titulos', 'alineaciones', 'competicion', 'incidencias', 'red_nodos', 'red_enlaces', 'acciones'];
+  const FUENTES = ['partidos', 'metricas_equipo', 'metricas_jugador', 'pases', 'tiros', 'rendimiento', 'historico', 'historico_alineaciones', 'escudos', 'ligas', 'titulos', 'alineaciones', 'competicion', 'incidencias', 'red_nodos', 'red_enlaces', 'acciones', 'proximos'];
   // nombres clásicos de las competiciones europeas en toda la web
   const NOMBRES = { 'Champions League': 'Copa de Europa', 'Liga de Campeones': 'Copa de Europa', 'Copa de Europa / Champions': 'Copa de Europa',
     'Liga Europa': 'Copa de la UEFA', 'Europa League': 'Copa de la UEFA' };
@@ -21,6 +21,7 @@ window.dash = (() => {
     store[id] = { status: 'loading', data: [] };
     d3.csv(`data/${id}.csv`, (r) => {
       for (const k of ['competicion', 'comp_hist']) if (r[k] in NOMBRES) r[k] = NOMBRES[r[k]];
+      if (r.motivo) r.motivo = r.motivo.replace(/(\d)\.(\d)/g, '$1,$2');  // decimales en español en los textos del rendimiento
       return r;
     })
       .then((rows) => { store[id] = { status: 'ok', data: rows }; })

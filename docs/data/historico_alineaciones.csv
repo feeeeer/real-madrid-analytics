@@ -29434,6 +29434,28 @@ wk6774d2ec0d,Real Madrid,Cristiano Ronaldo,Centre-Forward,1,7,0.5,0.86
 wk6774d2ec0d,Real Madrid,Ezequiel Garay,Defender,0,19,,
 wk6774d2ec0d,Real Madrid,Esteban Granero,Midfield,0,11,,
 wk6774d2ec0d,Real Madrid,Emmanuel Adebayor,Attack,0,6,,
+wk6db1325b29,Athletic Bilbao,Alejandro Acha,Goalkeeper,1,,0.5,0.06
+wk6db1325b29,Athletic Bilbao,Luis Silva,Defender,1,,0.3,0.23
+wk6db1325b29,Athletic Bilbao,Amado Arana,Defender,1,,0.7,0.23
+wk6db1325b29,Athletic Bilbao,Enrique Goiri,Midfield,1,,0.233,0.54
+wk6db1325b29,Athletic Bilbao,George Cochran,Midfield,1,,0.5,0.54
+wk6db1325b29,Athletic Bilbao,Manuel Ansoleaga,Midfield,1,,0.767,0.54
+wk6db1325b29,Athletic Bilbao,Alejandro de la Sota,Attack,1,,0.18,0.86
+wk6db1325b29,Athletic Bilbao,Eduardo Montejo,Attack,1,,0.34,0.86
+wk6db1325b29,Athletic Bilbao,Juan Astorquia,Attack,1,,0.5,0.86
+wk6db1325b29,Athletic Bilbao,Raymond Cazeaux,Attack,1,,0.66,0.86
+wk6db1325b29,Athletic Bilbao,Walter Evans,Attack,1,,0.82,0.86
+wk6db1325b29,Real Madrid,Arthur Johnson,Goalkeeper,1,,0.5,0.06
+wk6db1325b29,Real Madrid,Rafael Molera,Defender,1,,0.3,0.23
+wk6db1325b29,Real Madrid,Mario Giralt,Defender,1,,0.7,0.23
+wk6db1325b29,Real Madrid,Armando Giralt,Midfield,1,,0.233,0.54
+wk6db1325b29,Real Madrid,José Giralt,Midfield,1,,0.5,0.54
+wk6db1325b29,Real Madrid,Enrique Normand,Midfield,1,,0.767,0.54
+wk6db1325b29,Real Madrid,Pedro Parages,Attack,1,,0.18,0.86
+wk6db1325b29,Real Madrid,Miguel de Valdeterrazo,Attack,1,,0.34,0.86
+wk6db1325b29,Real Madrid,Antonio Neyra,Attack,1,,0.5,0.86
+wk6db1325b29,Real Madrid,Federico Revuelto,Attack,1,,0.66,0.86
+wk6db1325b29,Real Madrid,Manuel Vallarino,Attack,1,,0.82,0.86
 wk62a4f16c58,Athletic Bilbao,Gregorio Blasco,Goalkeeper,1,1,0.5,0.06
 wk62a4f16c58,Athletic Bilbao,José María Castellanos,Defender,1,2,0.3,0.23
 wk62a4f16c58,Athletic Bilbao,Juan Urquizu,Defender,1,3,0.7,0.23
@@ -29525,6 +29547,30 @@ wk0a413b7d80,Real Madrid,Santillana,Attack,1,9,0.5,0.86
 wk0a413b7d80,Real Madrid,Francisco Aguilar,Attack,1,11,0.767,0.86
 wk0a413b7d80,Real Madrid,Javier Maté,Goalkeeper,0,13,,
 wk0a413b7d80,Real Madrid,Alberto Vitoria,Midfield,0,14,,
+wk1b173e339c,FC Barcelona,Urruti,Goalkeeper,1,1,0.5,0.06
+wk1b173e339c,FC Barcelona,Tente Sánchez,Defender,1,2,0.2,0.23
+wk1b173e339c,FC Barcelona,Migueli,Defender,1,3,0.4,0.23
+wk1b173e339c,FC Barcelona,Gerardo,Defender,1,6,0.8,0.23
+wk1b173e339c,FC Barcelona,Julio Alberto,Defender,1,4,0.6,0.23
+wk1b173e339c,FC Barcelona,Esteban,Midfield,1,9,0.6,0.54
+wk1b173e339c,FC Barcelona,Víctor,Midfield,1,5,0.2,0.54
+wk1b173e339c,FC Barcelona,Bernd Schuster,Midfield,1,8,0.4,0.54
+wk1b173e339c,FC Barcelona,Marcos Alonso,Midfield,1,11,0.8,0.54
+wk1b173e339c,FC Barcelona,Diego Maradona,Attack,1,10,0.7,0.86
+wk1b173e339c,FC Barcelona,Francisco Carrasco,Attack,1,7,0.3,0.86
+wk1b173e339c,FC Barcelona,Enrique Morán,Midfield,0,14,,
+wk1b173e339c,Real Madrid,Miguel Ángel,Goalkeeper,1,1,0.5,0.06
+wk1b173e339c,Real Madrid,Isidoro San José,Defender,1,2,0.2,0.23
+wk1b173e339c,Real Madrid,John Metgod,Defender,1,4,0.6,0.23
+wk1b173e339c,Real Madrid,Francisco Bonet,Defender,1,5,0.8,0.23
+wk1b173e339c,Real Madrid,José Antonio Camacho,Defender,1,3,0.4,0.23
+wk1b173e339c,Real Madrid,Ángel,Midfield,1,8,0.6,0.54
+wk1b173e339c,Real Madrid,Uli Stielike,Midfield,1,10,0.8,0.54
+wk1b173e339c,Real Madrid,Ricardo Gallego,Midfield,1,6,0.2,0.54
+wk1b173e339c,Real Madrid,José Antonio Salguero,Midfield,1,7,0.4,0.54
+wk1b173e339c,Real Madrid,Juanito,Attack,1,11,0.7,0.86
+wk1b173e339c,Real Madrid,Santillana,Attack,1,9,0.3,0.86
+wk1b173e339c,Real Madrid,Isidro,Midfield,0,15,,
 wkb4022e2b01,FC Barcelona,Andoni Zubizarreta,Goalkeeper,1,1,0.5,0.06
 wkb4022e2b01,FC Barcelona,José Ramón Alexanko,Right-Back,1,3,0.767,0.23
 wkb4022e2b01,FC Barcelona,Ronald Koeman,Centre-Back,1,4,0.5,0.23
@@ -29551,6 +29597,32 @@ wkb4022e2b01,Real Madrid,Emilio Butragueño,Right Winger,1,7,0.7,0.86
 wkb4022e2b01,Real Madrid,Hugo Sánchez,Left Winger,1,9,0.3,0.86
 wkb4022e2b01,Real Madrid,Adolfo Aldana,Right Midfield,0,12,,
 wkb4022e2b01,Real Madrid,Julio Llorente,Right-Back,0,15,,
+wk74cb5936e3,Atletico Madrid,Abel,Goalkeeper,1,1,0.5,0.06
+wk74cb5936e3,Atletico Madrid,Tomás,Right-Back,1,2,0.8,0.23
+wk74cb5936e3,Atletico Madrid,Juanma López,Centre-Back,1,5,0.6,0.23
+wk74cb5936e3,Atletico Madrid,Roberto Solozábal,Centre-Back,1,4,0.4,0.23
+wk74cb5936e3,Atletico Madrid,Miquel Soler,Left-Back,1,3,0.2,0.23
+wk74cb5936e3,Atletico Madrid,Donato,Right Midfield,1,6,0.8,0.54
+wk74cb5936e3,Atletico Madrid,Bernd Schuster,Central Midfield,1,8,0.4,0.54
+wk74cb5936e3,Atletico Madrid,Juan Vizcaíno,Central Midfield,1,11,0.6,0.54
+wk74cb5936e3,Atletico Madrid,Gabriel Moya,Left Midfield,1,9,0.2,0.54
+wk74cb5936e3,Atletico Madrid,Paulo Futre,Right Winger,1,10,0.7,0.86
+wk74cb5936e3,Atletico Madrid,Manolo,Left Winger,1,7,0.3,0.86
+wk74cb5936e3,Atletico Madrid,Toni,Left-Back,0,14,,
+wk74cb5936e3,Atletico Madrid,Alfredo Santaelena,Central Midfield,0,15,,
+wk74cb5936e3,Real Madrid,Francisco Buyo,Goalkeeper,1,1,0.5,0.06
+wk74cb5936e3,Real Madrid,Chendo,Right-Back,1,2,0.8,0.23
+wk74cb5936e3,Real Madrid,Manolo Sanchís,Centre-Back,1,5,0.6,0.23
+wk74cb5936e3,Real Madrid,Miguel Tendillo,Centre-Back,1,4,0.4,0.23
+wk74cb5936e3,Real Madrid,Francisco Villaroya,Left-Back,1,3,0.2,0.23
+wk74cb5936e3,Real Madrid,Míchel,Right Midfield,1,8,0.8,0.54
+wk74cb5936e3,Real Madrid,Luis Milla,Central Midfield,1,11,0.6,0.54
+wk74cb5936e3,Real Madrid,Fernando Hierro,Central Midfield,1,6,0.4,0.54
+wk74cb5936e3,Real Madrid,Luis Enrique,Left Midfield,1,7,0.2,0.54
+wk74cb5936e3,Real Madrid,Gheorghe Hagi,,1,10,,
+wk74cb5936e3,Real Madrid,Emilio Butragueño,Attack,1,9,0.5,0.86
+wk74cb5936e3,Real Madrid,Paco Llorente,Midfield,0,14,,
+wk74cb5936e3,Real Madrid,Alfonso,Attack,0,15,,
 wk7e5c192252,Real Madrid,César Sánchez,Goalkeeper,1,25,0.5,0.06
 wk7e5c192252,Real Madrid,Míchel Salgado,Right-Back,1,2,0.8,0.23
 wk7e5c192252,Real Madrid,Iván Helguera,Centre-Back,1,6,0.4,0.23

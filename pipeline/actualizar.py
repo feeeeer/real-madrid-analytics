@@ -172,6 +172,12 @@ def _():
     print(f"   {nuevos} partidos nuevos", flush=True)
 
 
+@paso("proximos")
+def _():
+    import proximos
+    proximos.main()
+
+
 print("\n== procesar ==", flush=True)
 r = subprocess.run([sys.executable, "pipeline/procesar.py", str(F), "docs/data"])
 if r.returncode:

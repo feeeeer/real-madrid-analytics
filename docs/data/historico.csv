@@ -1,10 +1,7 @@
 fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,condicion,goles_rm,goles_rival,resultado,estadio,partido_id,fuente,ronda,penaltis,goleadores_local,goleadores_visitante
-1903-04-06,1902/03,Copa del Rey,Real Madrid,Espanyol Barcelona,4,1,Espanyol Barcelona,Local,4,1,V,Hipódromo,wkb085ae63ba,wikipedia,Semifinales,,A. Giralt; Pache; Parages,Cenarro 40
 1903-04-06,1902/03,Copa del Rey,Espanyol Barcelona,Real Madrid,1,4,Espanyol Barcelona,Visitante,4,1,V,Hipódromo,wkd75c2278b7,wikipedia,,,Joaquim Cenarro,Armando Giralt; Armando Giralt; José Giralt; Pedro Parages
-1903-04-08,1902/03,Copa del Rey,Athletic Bilbao,Real Madrid,3,2,Athletic Bilbao,Visitante,2,3,D,Hipódromo,wk431bdf8def,wikipedia,Final,,Raymond Cazeaux 55; Eduardo Montejo 70; Alejandro de la Sota 80,de Valdeterrazo 15; Antonio Neyra 40
 1903-04-08,1902/03,Copa del Rey,Real Madrid,Athletic Bilbao,2,3,Athletic Bilbao,Local,2,3,D,Hipódromo,wk6db1325b29,wikipedia,Final,,Valdetarrazo 15; Neyra 40,Cazeaux 55; Montejo 60; Alejandro 80
 1904-03-19,1903/04,Copa del Rey,Real Madrid,Club Español de Madrid,5,5,Club Español de Madrid,Local,5,5,E,Tiro del Pichón,wk2c9abec83e,wikipedia,Semifinales,,"Yarza; Parages; Revuelto; Alonso [http://www.corazonblanco.com/wiki/copa_del_rey_alfonso_xiii Copa del Rey Alfonso XIII], Corazonblanco.com",?; ?; ?; ?; ?
-1904-03-19,1903/04,Copa del Rey,Club Español de Madrid,Real Madrid,5,5,Club Español de Madrid,Visitante,5,5,E,Campo del Retiro,we0cbd733ff5,wikipedia,Torneo Clasificatorio de Madrid Semifinales,,,Manuel Yarza; Parages; Revuelto; Alonso
 1905-04-02,1904/05,Copa del Rey,Real Madrid,Moncloa Football Club,2,0,Moncloa Football Club,Local,2,0,V,Tiro del Pichón,wk2fbd0c4331,wikipedia,Ronda previa,,Federico Revuelto; Pedro Parages,
 1905-04-16,1904/05,Copa del Rey,Real Madrid,Real Sociedad,3,0,Real Sociedad,Local,3,0,V,Tiro del Pichón,wk50ef5a9396,wikipedia,,,"Prast 20; Alonso 30,",
 1905-04-18,1904/05,Copa del Rey,Real Madrid,Athletic Bilbao,1,0,Athletic Bilbao,Local,1,0,V,Tiro del Pichón,wkd281fccd93,wikipedia,Final,,Prast 70,
@@ -13,9 +10,7 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1907-02-24,1906/07,Copa del Rey,Real Madrid,Excelsior FC,5,0,Excelsior FC,Local,5,0,V,Av. Plaza de Toros,wk16d4c0d264,wikipedia,Ronda previa,,,
 1907-03-10,1906/07,Copa del Rey,Real Madrid,Hispania FC,4,1,Hispania FC,Local,4,1,V,Av. Plaza de Toros,wk6cf7d5b477,wikipedia,Ronda previa,,"J. Giralt; Prast 35,40; ?",Trelles
 1907-03-24,1906/07,Copa del Rey,Real Madrid,Club Bizcaya,2,3,Club Bizcaya,Local,2,3,D,Hipódromo,wk53fd913638,wikipedia,Fase de grupos,,Revuelto; Prast 75,Simmons; Goyoaga; Simmons
-1907-03-24,1906/07,Copa del Rey,Club Bizcaya,Real Madrid,3,2,Club Bizcaya,Visitante,2,3,D,Hipódromo,wk6d8466f134,wikipedia,Fase de grupos,,"Charles Simmons 60,80; Alfonso Sena 75",Federico Revuelto 50; Manuel Prast 65
 1907-03-25,1906/07,Copa del Rey,Real Madrid,Real Vigo Sporting,3,1,Real Vigo Sporting,Local,3,1,V,Hipódromo,wkb70566491c,wikipedia,Fase de grupos,,J. Giralt; Ocaña (p.p.); A. Giralt,Hambly
-1907-03-25,1906/07,Copa del Rey,Real Vigo Sporting,Real Madrid,1,3,Real Vigo Sporting,Visitante,3,1,V,Hipódromo,wk8f1caf2631,wikipedia,Fase de grupos,,Wilfrid Hambly 30,José Giralt 20; Andrés Ocaña 40 (p.p.); Armando Giralt 70
 1907-03-28,1906/07,Copa del Rey,Real Madrid,UD Salamanca,5,0,UD Salamanca,Local,5,0,V,Hipódromo,wka3d1eeb174,wikipedia,Fase de grupos,,A. Giralt; Neyra; A. Giralt; Neyra,
 1907-03-29,1906/07,Copa del Rey,Real Madrid,Recreativo Huelva,4,2,Recreativo Huelva,Local,4,2,V,Hipódromo,wke9bc2c54f6,wikipedia,Fase de grupos,,,
 1907-03-30,1906/07,Copa del Rey,Real Madrid,Club Bizcaya,1,0,Club Bizcaya,Local,1,0,V,Hipódromo,wkd4b196efb7,wikipedia,Final,,Prast 80,
@@ -23,8 +18,6 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1910-03-19,1909/10,Copa del Rey,Athletic Bilbao,Real Madrid,2,0,Athletic Bilbao,Visitante,0,2,D,Ondarreta Stadium,wk7dbae3f842,wikipedia,Fase final,,Remigio Iza; Martyn Veitch,
 1910-03-21,1909/10,Copa del Rey,Real Sociedad,Real Madrid,2,0,Real Sociedad,Visitante,0,2,D,Ondarreta Stadium,wkf7de318a11,wikipedia,,,McGuinness,
 1913-03-17,1912/13,Copa del Rey,Real Madrid,Athletic Bilbao,0,3,Athletic Bilbao,Local,0,3,D,Campo de O'Donnell,wk41c8e2d1d0,wikipedia,Semifinales,,,"Pichichi 2,11; Cortadi 53"
-1913-03-17,1912/13,Copa del Rey,Athletic Bilbao,Real Madrid,3,0,Athletic Bilbao,Visitante,0,3,D,Estadio O'Donnell,wkbf41421d0e,wikipedia,Semifinales,,"Pichichi 2,11; Luis Cortadi 53",
-1916-03-26,1915/16,Copa del Rey,FC Barcelona,Real Madrid,2,0,FC Barcelona,Visitante,0,2,D,Camp del carrer Muntaner,wkb84842a8cf,wikipedia,Semifinales (ida),,Alcántara 39; Martínez,Bernabéu
 1916-03-26,1915/16,Copa del Rey,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,Camp del carrer Muntaner,wk1165c2a2c8,wikipedia,Semifinales (ida),,Alcántara 39; Martínez 85,Petit 17
 1916-04-02,1915/16,Copa del Rey,Real Madrid,FC Barcelona,4,1,FC Barcelona,Local,4,1,V,Campo de O'Donnell,wke6df0d6aaa,wikipedia,Semifinales (vuelta),,"Bernabéu 35,40,60 (pen.); J. Petit 80",Martínez 20
 1916-04-13,1915/16,Copa del Rey,Real Madrid,FC Barcelona,6,6,FC Barcelona,Local,6,6,E,Campo de O'Donnell,wk70de9b4263,wikipedia,Semifinales (desempate),,"Belaunde 2,13,87; Bernabéu 118 (pen.)",Alcántara 106; Bau; Mallorquí 70; Martínez 115
@@ -45,7 +38,6 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1918-04-21,1917/18,Copa del Rey,Recreativo Huelva,Real Madrid,1,2,Recreativo Huelva,Visitante,2,1,V,Huelva,wkcf327fa657,wikipedia,Semifinales (ida),,,Posada; Bernabéu
 1918-04-28,1917/18,Copa del Rey,Real Madrid,Recreativo Huelva,4,0,Recreativo Huelva,Local,4,0,V,Campo de O'Donnell,wk2f5c825e7f,wikipedia,Semifinales (vuelta),,Álvarez 40; Posada; Bernabéu,
 1918-05-12,1917/18,Copa del Rey,Real Madrid,Real Union,0,2,Real Union,Local,0,2,D,Campo de O'Donnell,wkae7b512489,wikipedia,Final,,,"Legarreta 45,85"
-1918-05-12,1917/18,Copa del Rey,Real Union,Real Madrid,2,0,Real Union,Visitante,0,2,D,Estadio O'Donnell,wk27460fcca4,wikipedia,Final,,"Juan Legarreta 45,85",
 1920-03-28,1919/20,Copa del Rey,Real Madrid,Athletic Bilbao,1,1,Athletic Bilbao,Local,1,1,E,Madrid,wk6f98d26266,wikipedia,Cuartos de final (ida),,Monjardín 45,Belauste I 10
 1920-04-04,1919/20,Copa del Rey,Athletic Bilbao,Real Madrid,4,1,Athletic Bilbao,Visitante,1,4,D,San Mamés Stadium,wk20b364306c,wikipedia,Cuartos de final (vuelta),,"Laca 7,30,40 (pen.); Echevarría 50",Paco 20
 1922-03-12,1921/22,Copa del Rey,Arenas de Getxo,Real Madrid,4,0,Arenas de Getxo,Visitante,0,4,D,Ibaondo,wk8f18df26ba,wikipedia,Cuartos de final (ida),,Zabalza 9; Vallana; Zubiaga; Barturen,
@@ -640,8 +632,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1951-05-06,1950/51,Copa del Rey,Atletico Madrid,Real Madrid,0,1,Atletico Madrid,Visitante,1,0,V,Madrid,wk942d8ed0c1,wikipedia,Cuartos de final,,,
 1951-05-10,1950/51,Copa del Rey,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Madrid,wkfaa2675c84,wikipedia,Cuartos de final (vuelta),,Pahiño 53,Juncosa 64
 1951-05-13,1950/51,Copa del Rey,Real Sociedad,Real Madrid,1,0,Real Sociedad,Visitante,0,1,D,Estadio Atocha,wkbb5938f4de,wikipedia,Semifinales,,,
-1951-05-20,1950/51,Copa del Rey,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Nuevo Estadio Chamartín,wk8015bc5409,wikipedia,Cuartos de final,,,
 1951-05-20,1950/51,Copa del Rey,Real Madrid,Real Sociedad,0,2,Real Sociedad,Local,0,2,D,Nuevo Chamartín,wkd367cbac36,wikipedia,Semifinales,,,
+1951-05-20,1950/51,Copa del Rey,Real Madrid,Atletico Madrid,1,1,Atletico Madrid,Local,1,1,E,Nuevo Estadio Chamartín,wk8015bc5409,wikipedia,Cuartos de final,,,
 1951-09-09,1951/52,LaLiga,UD Las Palmas,Real Madrid,1,4,UD Las Palmas,Visitante,4,1,V,Estadio Insular,h091cf0e456,engsoccerdata,Jornada 1,,,
 1951-09-16,1951/52,LaLiga,Real Madrid,Atletico Tetuan,4,2,Atletico Tetuan,Local,4,2,V,Santiago Bernabéu,h93e147efef,engsoccerdata,Jornada 2,,,
 1951-09-23,1951/52,LaLiga,Espanyol Barcelona,Real Madrid,4,3,Espanyol Barcelona,Visitante,3,4,D,Estadio Sarriá,h97b1cb8b2f,engsoccerdata,Jornada 3,,,
@@ -1003,8 +995,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1960-04-10,1959/60,LaLiga,Real Madrid,Real Sociedad,4,0,Real Sociedad,Local,4,0,V,Chamartín,h597e1082a6,engsoccerdata,Jornada 29,,Pepillo 11; Pepillo 17; Pepillo 19; Irulegui 60,
 1960-04-17,1959/60,LaLiga,UD Las Palmas,Real Madrid,0,1,UD Las Palmas,Visitante,1,0,V,Estadio Insular,h394bd018ef,engsoccerdata,Jornada 30,,,Bueno 74
 1960-04-21,1959/60,Copa de Europa / Champions,Real Madrid,FC Barcelona,3,1,FC Barcelona,Local,3,1,V,Santiago Bernabéu,h60fd2edaad,engsoccerdata,,,,
-1960-04-24,1959/60,Copa del Rey,Real Madrid,Barakaldo,3,0,Barakaldo,Local,3,0,V,Santiago Bernabéu,we4c20c90198,wikipedia,Dieciseisavos de final (ida),,,
 1960-04-24,1959/60,Copa del Rey,Real Madrid Castilla,Real Madrid,1,2,Real Madrid Castilla,Visitante,2,1,V,,we1077633448,wikipedia,Dieciseisavos de final (ida),,,
+1960-04-24,1959/60,Copa del Rey,Real Madrid,Barakaldo,3,0,Barakaldo,Local,3,0,V,Santiago Bernabéu,we4c20c90198,wikipedia,Dieciseisavos de final (ida),,,
 1960-04-27,1959/60,Copa de Europa / Champions,FC Barcelona,Real Madrid,1,3,FC Barcelona,Visitante,3,1,V,Estadio del CF Barcelona,hd5807a7351,engsoccerdata,,,,
 1960-05-01,1959/60,Copa del Rey,Real Betis,Real Madrid,2,1,Real Betis,Visitante,1,2,D,Heliópolis,wec17feb5342,wikipedia,Dieciseisavos de final (vuelta),,,
 1960-05-01,1959/60,Copa del Rey,Barakaldo,Real Madrid,1,1,Barakaldo,Visitante,1,1,E,,wefdc61e2fd3,wikipedia,Dieciseisavos de final (vuelta),,,
@@ -1053,8 +1045,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1961-04-30,1960/61,LaLiga,Racing Santander,Real Madrid,1,1,Racing Santander,Visitante,1,1,E,El Sardinero,h695d5b86bc,engsoccerdata,Jornada 30,,Wilson 32,Sampedro 70
 1961-05-07,1960/61,Copa del Rey,Hercules CF,Real Madrid,0,5,Hercules CF,Visitante,5,0,V,,wkc8846ef7a7,wikipedia,Dieciseisavos de final,,,
 1961-05-11,1960/61,Copa del Rey,Real Madrid,Hercules CF,6,0,Hercules CF,Local,6,0,V,Chamartín,wk3933ec40bd,wikipedia,Dieciseisavos de final,,,
-1961-05-21,1960/61,Copa del Rey,Real Madrid,Racing Santander,3,0,Racing Santander,Local,3,0,V,Chamartín,wk9511204665,wikipedia,Octavos de final,,,
 1961-05-21,1960/61,Copa del Rey,Racing Santander,Real Madrid,1,1,Racing Santander,Visitante,1,1,E,El Sardinero,wkd0a2331463,wikipedia,Octavos de final,,,
+1961-05-21,1960/61,Copa del Rey,Real Madrid,Racing Santander,3,0,Racing Santander,Local,3,0,V,Chamartín,wk9511204665,wikipedia,Octavos de final,,,
 1961-06-01,1960/61,Copa del Rey,Athletic Bilbao,Real Madrid,0,2,Athletic Bilbao,Visitante,2,0,V,San Mamés,wk2d55d6c841,wikipedia,Cuartos de final,,,
 1961-06-04,1960/61,Copa del Rey,Real Madrid,Athletic Bilbao,3,0,Athletic Bilbao,Local,3,0,V,Chamartín,wk8e0a887ba1,wikipedia,Cuartos de final,,,
 1961-06-18,1960/61,Copa del Rey,Real Madrid,Real Betis,7,1,Real Betis,Local,7,1,V,Chamartín,wk7a96687c53,wikipedia,Semifinales,,,
@@ -1904,8 +1896,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1980-11-23,1980/81,LaLiga,Real Madrid,Hercules CF,3,0,Hercules CF,Local,3,0,V,Santiago Bernabéu,h93aefe5e23,engsoccerdata,Jornada 12,,"Pineda Santillana Sabido 28,39,70",Megido Serrat
 1980-11-30,1980/81,LaLiga,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,Camp Nou,h12ea988f85,engsoccerdata,Jornada 13,,Schuster 15; Quini 64; Ramos,Juanito 22; García Hernandez
 1980-12-07,1980/81,LaLiga,Real Madrid,UD Salamanca,2,0,UD Salamanca,Local,2,0,V,Santiago Bernabéu,h7163a19d3f,engsoccerdata,Jornada 14,,"Hernandez Juanito 70,76 (pen.)",Tome
-1980-12-09,1980/81,Copa del Rey,Club Deportivo Constancia,Real Madrid,3,0,Club Deportivo Constancia,Visitante,0,3,D,,wee8ae8b9025,wikipedia,Segunda ronda (vuelta),,,
 1980-12-09,1980/81,Copa del Rey,Real Madrid Castilla,Real Madrid,1,0,Real Madrid Castilla,Visitante,0,1,D,,we22010bc484,wikipedia,Segunda ronda (vuelta),,,
+1980-12-09,1980/81,Copa del Rey,Club Deportivo Constancia,Real Madrid,3,0,Club Deportivo Constancia,Visitante,0,3,D,,wee8ae8b9025,wikipedia,Segunda ronda (vuelta),,,
 1980-12-14,1980/81,LaLiga,Real Zaragoza,Real Madrid,0,0,Real Zaragoza,Visitante,0,0,E,La Romareda,h53b1de96b9,engsoccerdata,Jornada 15,,,Stielike
 1980-12-21,1980/81,LaLiga,Atletico Madrid,Real Madrid,3,1,Atletico Madrid,Visitante,1,3,D,Estadio Vicente Calderón,h925dc6348d,engsoccerdata,Jornada 16,,"Ramos Kano Dirceu 44,67,69 (pen.)",Juanito Stylish Perez 37
 1980-12-28,1980/81,LaLiga,Real Madrid,Real Valladolid,1,1,Real Valladolid,Local,1,1,E,Santiago Bernabéu,h372721c1f1,engsoccerdata,Jornada 17,,Juanito Gallego Camacho 66 (pen.),Alonso Ruski 52
@@ -1913,8 +1905,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1981-01-11,1980/81,LaLiga,Athletic Bilbao,Real Madrid,1,1,Athletic Bilbao,Visitante,1,1,E,San Mamés,h2338533378,engsoccerdata,Jornada 19,,Sabido 5 (p.p.),Juanito 39 (pen.)
 1981-01-18,1980/81,LaLiga,Real Madrid,Sevilla FC,3,2,Sevilla FC,Local,3,2,V,Santiago Bernabéu,h2d125d816c,engsoccerdata,Jornada 20,,"Juanito 24; Juanito Santillana Rincon Warned 46,75","Montero Blanco Nimo Buyo 61,85"
 1981-01-25,1980/81,LaLiga,Real Murcia,Real Madrid,1,1,Real Murcia,Visitante,1,1,E,La Condomina,hf70e113e28,engsoccerdata,Jornada 21,,Gil Naharro 49,Santillana 68
-1981-01-28,1980/81,Copa del Rey,Valencia CF,Real Madrid,2,2,Valencia CF,Visitante,2,2,E,Estadio Mestalla,we9bbc09706c,wikipedia,Tercera ronda (ida),,,
 1981-01-28,1980/81,Copa del Rey,Club Deportivo Constancia,Real Madrid,2,0,Club Deportivo Constancia,Visitante,0,2,D,,wee50948a868,wikipedia,Tercera ronda (ida),,,
+1981-01-28,1980/81,Copa del Rey,Valencia CF,Real Madrid,2,2,Valencia CF,Visitante,2,2,E,Estadio Mestalla,we9bbc09706c,wikipedia,Tercera ronda (ida),,,
 1981-02-01,1980/81,LaLiga,Real Madrid,Espanyol Barcelona,1,2,Espanyol Barcelona,Local,1,2,D,Estadio Bernabeu,hb4ada253bd,engsoccerdata,Jornada 22,,Juanito Santillana 40 (pen.),"Urbano Marañon Verdugo Vilches 18,51"
 1981-02-08,1980/81,LaLiga,Sporting Gijon,Real Madrid,4,0,Sporting Gijon,Visitante,0,4,D,El Molinón,h2657dd3349,engsoccerdata,Jornada 23,,"Abel 34; Abel Mesa Ferrero 63,59,65",Stielike
 1981-02-11,1980/81,Copa del Rey,Palencia,Real Madrid,0,1,Palencia,Visitante,1,0,V,,wea3f98f65f2,wikipedia,Cuarta ronda (ida),,,
@@ -1951,8 +1943,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1981-10-17,1981/82,LaLiga,Real Madrid,Valencia CF,3,0,Valencia CF,Local,3,0,V,Santiago Bernabéu,he1df0f0220,engsoccerdata,Jornada 6,,Juanito 40; Uli Stielike 46; Santillana 78; Garcia Cortes,Castellanos
 1981-10-21,1981/82,Copa de la UEFA,Real Madrid,FC Carl Zeiss Jena,3,2,FC Carl Zeiss Jena,Local,3,2,V,Santiago Bernabéu,wke10ba5ee46,wikipedia,Segunda ronda,,Cortés 66 (pen.); Gallego 76; Isidro 78,Bielau 36; Kurbjuweit 72
 1981-10-21,1981/82,Copa del Rey,Real Madrid Castilla,Real Madrid,0,0,Real Madrid Castilla,Visitante,0,0,E,,we511dbedcf4,wikipedia,Segunda ronda (ida),,,
-1981-10-22,1981/82,Copa del Rey,Real Madrid Castilla,Real Madrid,2,1,Real Madrid Castilla,Visitante,1,2,D,,we6f72999386,wikipedia,Primera ronda (vuelta),,,
 1981-10-22,1981/82,Copa del Rey,AD Almeria,Real Madrid,3,0,AD Almeria,Visitante,0,3,D,Juan Rojas,we4c1a144b4c,wikipedia,Primera ronda (vuelta),,,
+1981-10-22,1981/82,Copa del Rey,Real Madrid Castilla,Real Madrid,2,1,Real Madrid Castilla,Visitante,1,2,D,,we6f72999386,wikipedia,Primera ronda (vuelta),,,
 1981-10-25,1981/82,LaLiga,Espanyol Barcelona,Real Madrid,1,0,Espanyol Barcelona,Visitante,0,1,D,Estadio Sarriá,hd51cb8e99b,engsoccerdata,Jornada 7,,Corominas 17; Ayufuh,
 1981-10-31,1981/82,LaLiga,Real Madrid,CA Osasuna,1,0,CA Osasuna,Local,1,0,V,Santiago Bernabéu,h180d29f1b5,engsoccerdata,Jornada 8,,Del Bosque 72,
 1981-11-04,1981/82,Copa de la UEFA,FC Carl Zeiss Jena,Real Madrid,0,0,FC Carl Zeiss Jena,Visitante,0,0,E,Ernst-Abbe-Sportfeld,wk67c3d10c79,wikipedia,Segunda ronda,,,
@@ -1961,14 +1953,14 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1981-11-11,1981/82,LaLiga,Real Madrid,Real Valladolid,3,1,Real Valladolid,Local,3,1,V,Santiago Bernabéu,hdfd57cd0d4,engsoccerdata,Jornada 10,,Stielike 43; Juanito 56; Santillana 74,Muñoz 78
 1981-11-15,1981/82,LaLiga,Real Madrid,Real Betis,4,1,Real Betis,Local,4,1,V,Santiago Bernabéu,h281a0c89aa,engsoccerdata,Jornada 11,,Camacho 4; Santillana 24; Garcia Cortez 27; Juanito 69; Goyo Benito,Lopez 79; Ortega
 1981-11-22,1981/82,LaLiga,Cadiz CF,Real Madrid,1,0,Cadiz CF,Visitante,0,1,D,Ramón Carranza,h8f8d5c3887,engsoccerdata,Jornada 12,,Mane 40; Mayas; Vasa,
-1981-11-24,1981/82,Copa del Rey,Sporting Gijon,Real Madrid,3,1,Sporting Gijon,Visitante,1,3,D,Estadio El Molinon,we3c9bfdc58e,wikipedia,Tercera ronda (ida),,,
 1981-11-24,1981/82,Copa del Rey,Atletico Madrid,Real Madrid,1,0,Atletico Madrid,Visitante,0,1,D,Estadio Vicente Calderón,wedf6cc55b63,wikipedia,Tercera ronda (ida),,,
+1981-11-24,1981/82,Copa del Rey,Sporting Gijon,Real Madrid,3,1,Sporting Gijon,Visitante,1,3,D,Estadio El Molinon,we3c9bfdc58e,wikipedia,Tercera ronda (ida),,,
 1981-11-25,1981/82,Copa de la UEFA,Rapid Wien,Real Madrid,0,1,Rapid Wien,Visitante,1,0,V,Gerhard Hanappi Stadium,wk8384c2f95f,wikipedia,Octavos de final,,,Santillana 79
 1981-11-29,1981/82,LaLiga,Real Madrid,UD Las Palmas,2,1,UD Las Palmas,Local,2,1,V,Santiago Bernabéu,h4c44965c4b,engsoccerdata,Jornada 13,,Juanito 16; Hernandez 65; Gonzalez,Savedra 40; Calvo; Juan; Maye; Fortunato
 1981-12-06,1981/82,LaLiga,Sporting Gijon,Real Madrid,0,1,Sporting Gijon,Visitante,1,0,V,Estadio El Molinon,hf5abd6e346,engsoccerdata,Jornada 14,,Joaquin; Redondo,Garcia Cortez 21; San Jose
 1981-12-09,1981/82,Copa de la UEFA,Real Madrid,Rapid Wien,0,0,Rapid Wien,Local,0,0,E,Santiago Bernabéu,wk0cc5dbbd3c,wikipedia,Octavos de final,,,
-1981-12-10,1981/82,Copa del Rey,Real Madrid Castilla,Real Madrid,1,2,Real Madrid Castilla,Visitante,2,1,V,,we2758dcabb8,wikipedia,Tercera ronda (vuelta),,,
 1981-12-10,1981/82,Copa del Rey,CD Castellon,Real Madrid,2,1,CD Castellon,Visitante,1,2,D,Nou Stadi Castilla,wee7cbd0f638,wikipedia,Tercera ronda (vuelta),,,
+1981-12-10,1981/82,Copa del Rey,Real Madrid Castilla,Real Madrid,1,2,Real Madrid Castilla,Visitante,2,1,V,,we2758dcabb8,wikipedia,Tercera ronda (vuelta),,,
 1981-12-13,1981/82,LaLiga,Real Madrid,CD Castellon,4,0,CD Castellon,Local,4,0,V,Santiago Bernabéu,haf1c40e456,engsoccerdata,Jornada 15,,"Stielike 13 (pen.); Pineda Garcia 47,52; Angel 77",
 1981-12-20,1981/82,LaLiga,FC Barcelona,Real Madrid,3,1,FC Barcelona,Visitante,1,3,D,Camp Nou,h4c6c8f989b,engsoccerdata,Jornada 16,,Alexanko 7; Quini 53; Quini 60 (pen.); Esteban Vigo,Juanito 49
 1981-12-27,1981/82,LaLiga,Real Madrid,Racing Santander,4,0,Racing Santander,Local,4,0,V,Santiago Bernabéu,h9a21df280c,engsoccerdata,Jornada 17,,Juanito 1; Juanito 53; Garcia Hernandez 30; Gallego 64,Mantilla
@@ -2048,7 +2040,6 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1983-05-04,1982/83,Copa del Rey,Real Madrid,Sporting Gijon,6,0,Sporting Gijon,Local,6,0,V,Santiago Bernabéu,wk0c9cd0aebc,wikipedia,Semifinales,,Santillana 10; Santillana 29; Santillana 53; Gonzalez 11; San Jose 55; Juanito 65; Metgod; Jose,Espinoza
 1983-05-11,1982/83,Recopa de Europa,Aberdeen,Real Madrid,2,1,Aberdeen,Visitante,1,2,D,Nya Ullevi,wk7477daf3e0,wikipedia,Final,,Black 7; Hewitt 112,Juanito 14 (pen.)
 1983-05-21,1982/83,Copa del Rey,Sporting Gijon,Real Madrid,4,0,Sporting Gijon,Visitante,0,4,D,Santiago Bernabéu,wk62734aa548,wikipedia,Semifinales,,Kundi 8; Mesa 10; Mesa 34; Ferrero 54 (pen.),Stielike
-1983-06-04,1982/83,Copa del Rey,Real Madrid,FC Barcelona,1,2,FC Barcelona,Local,1,2,D,La Romareda,wk166e7c223a,wikipedia,Final,,Santillana 50,Víctor 32; Marcos 90
 1983-06-04,1982/83,Copa del Rey,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,La Romareda,wk1b173e339c,wikipedia,Final,,Víctor 32; Marcos 90,Santillana 50
 1983-06-12,1982/83,Copa de la Liga,Real Madrid,Real Sociedad,1,0,Real Sociedad,Local,1,0,V,Santiago Bernabéu,wkf4c3039b6e,wikipedia,Cuartos de final,,Metgod 44; Pineda Garcia,Gayate; Orbegozo
 1983-06-15,1982/83,Copa de la Liga,Real Sociedad,Real Madrid,1,1,Real Sociedad,Visitante,1,1,E,Atotxa,wke4f12bcb78,wikipedia,Cuartos de final,,Cortabarria 22,Pineda Garcia 82; Stielike
@@ -2303,8 +2294,8 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1988-01-24,1987/88,LaLiga,Real Valladolid,Real Madrid,0,2,Real Valladolid,Visitante,2,0,V,Jose Zorrilla,hfaca8e2531,engsoccerdata,Jornada 19,,,Vázquez 40; Llorente 66
 1988-01-31,1987/88,LaLiga,Real Madrid,Cadiz CF,4,0,Cadiz CF,Local,4,0,V,Santiago Bernabéu,h55e54f5901,engsoccerdata,Jornada 20,,"Sanchis 10; Sánchez 26,43 (pen.); Maqueda 86",
 1988-02-07,1987/88,LaLiga,Sporting Gijon,Real Madrid,1,2,Sporting Gijon,Visitante,2,1,V,El Molinon,hc9672d6db7,engsoccerdata,Jornada 21,,Juanma 16,Vázquez 47; Sánchez 85
-1988-02-10,1987/88,LaLiga,Real Madrid,Real Zaragoza,2,1,Real Zaragoza,Local,2,1,V,Santiago Bernabéu,h7d3b3be837,engsoccerdata,Jornada 22,,Sanchis 34; Llorente 76,Sosa 59
 1988-02-10,1987/88,Copa del Rey,Real Sociedad,Real Madrid,1,0,Real Sociedad,Visitante,0,1,D,Anoeta,wkdbad48ae57,wikipedia,Semifinales,,Bakero 9,
+1988-02-10,1987/88,LaLiga,Real Madrid,Real Zaragoza,2,1,Real Zaragoza,Local,2,1,V,Santiago Bernabéu,h7d3b3be837,engsoccerdata,Jornada 22,,Sanchis 34; Llorente 76,Sosa 59
 1988-02-13,1987/88,LaLiga,CA Osasuna,Real Madrid,2,1,CA Osasuna,Visitante,1,2,D,El Sadar,hfa291a072b,engsoccerdata,Jornada 23,,Goikoetxea 21; Ripodas 60,Sánchez 54 (pen.)
 1988-02-17,1987/88,Copa del Rey,Real Madrid,Real Sociedad,0,4,Real Sociedad,Local,0,4,D,Santiago Bernabéu,wka5f2dc3c0f,wikipedia,Semifinales,,,"Górriz 54; Bakero 65,71; Begiristain 66"
 1988-02-21,1987/88,LaLiga,Real Madrid,UD Las Palmas,5,0,UD Las Palmas,Local,5,0,V,Santiago Bernabéu,h14893b7d1f,engsoccerdata,Jornada 24,,"Tendillo 39; Michel 41; Sanchis 55; Sánchez 62,83 (pen.)",
@@ -2535,7 +2526,6 @@ fecha,temporada,competicion,local,visitante,goles_local,goles_visitante,rival,co
 1992-06-07,1991/92,LaLiga,CD Tenerife,Real Madrid,3,2,CD Tenerife,Visitante,2,3,D,Estadio Heliodoro Rodriguez,hb73c4e00aa,engsoccerdata,Jornada 38,,Quique Estebaranz 36; Ricardo Rocha 77 (p.p.); Pier 78,Hierro 8; Hagi 28
 1992-06-13,1991/92,Copa del Rey,Sporting Gijon,Real Madrid,1,2,Sporting Gijon,Visitante,2,1,V,Estadio El Molinon,wk51f6e79380,wikipedia,Semifinales,,Iordanov 11,Butragueno 22; Míchel 27
 1992-06-20,1991/92,Copa del Rey,Real Madrid,Sporting Gijon,5,2,Sporting Gijon,Local,5,2,V,Santiago Bernabéu,wk0506ddb80f,wikipedia,Semifinales,,"Míchel 23; Hierro 36,90; Hagi 50; Sanchis 52",Monchu 60; Juanele 67
-1992-06-27,1991/92,Copa del Rey,Atletico Madrid,Real Madrid,2,0,Atletico Madrid,Visitante,0,2,D,Santiago Bernabéu,wkd07e9c75a9,wikipedia,Final,,Schuster 7; Futre 29,
 1992-06-27,1991/92,Copa del Rey,Real Madrid,Atletico Madrid,0,2,Atletico Madrid,Local,0,2,D,Santiago Bernabéu,wk74cb5936e3,wikipedia,Final,,,Schuster 7; Futre 28
 1992-09-05,1992/93,LaLiga,FC Barcelona,Real Madrid,2,1,FC Barcelona,Visitante,1,2,D,Camp Nou,hecdc5f4d4e,engsoccerdata,Jornada 1,,Bakero 4; Stoichkov 87,Míchel 71pen.
 1992-09-13,1992/93,LaLiga,Real Madrid,Real Burgos,3,0,Real Burgos,Local,3,0,V,Santiago Bernabéu,hbb6c918fa5,engsoccerdata,Jornada 2,,"Hierro 11; Zamorano 70,85",

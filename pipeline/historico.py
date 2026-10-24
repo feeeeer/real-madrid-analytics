@@ -226,7 +226,9 @@ def wikipedia_es(h, filas, rival_de, goleadores):
     hf, usados, nuevos, n_ok = pd.to_datetime(h["fecha"]), set(), [], 0
     for r in e.itertuples():
         dif = (hf - pd.Timestamp(r.fecha)).abs()
-        cand = h.index[(h["competicion"] == r.comp) & (dif <= pd.Timedelta(days=60)) & (h_rm == r.g_rm) & (h_riv == r.g_riv) & (rm_l == r.rm_local)]
+        # mismo campo; o el mismo día con local y visitante cambiados (1904: el 5-5 es local en una página y visitante en otra)
+        cand = h.index[(h["competicion"] == r.comp) & (dif <= pd.Timedelta(days=60)) & (h_rm == r.g_rm) & (h_riv == r.g_riv)
+                       & ((rm_l == r.rm_local) | (dif <= pd.Timedelta(days=1)))]
         # y el mismo rival (alguna palabra en común: "Valencia C. F." / "Valencia CF"), para no confundir dos eliminatorias
         rw = set(words(rival_de.get(r.rival_t, r.rival_t))) | set(words(r.rival_t))
         cand = [i for i in cand if i not in usados and rw & set(words(h.loc[i, "visitante"] if rm_l[i] else h.loc[i, "local"]))]
@@ -291,6 +293,13 @@ def wikipedia(h, al):
     for c in ("ronda", "goleadores_local", "goleadores_visitante"):
         w[c] = w[c].str.replace(r"\[\[[^\]|]*\|?([^\]]*)\]\]?|\*", r"\1", regex=True).str.strip(" ;")
     w["ronda"] = [ronda_es(r, sec, c) for r, sec, c in zip(w["ronda"], w["seccion"], w["competicion"])]
+    # el mismo partido en dos páginas con local y visitante cambiados (4-1 y 1-4), o con un gol de menos en el mismo campo:
+    # se queda el que trae más goleadores, que cuadran con el marcador (1916: el 2-0 da un goleador al que no marcó), y la ronda.
+    # La ida y la vuelta con la misma fecha por error (1954, 1961) siguen siendo dos partidos: cambian el marcador y el estadio
+    nombres = {lado: w[f"goleadores_{lado}"].fillna("").str.count(r"[^;]+") for lado in ("local", "visitante")}
+    datos = sum(2 * n + 3 * (n == w[f"goles_{lado}"]) for lado, n in nombres.items()) + (w["ronda"] != "")
+    w = w.loc[datos.sort_values(ascending=False, kind="stable").index]
+    w = w[~w.duplicated(["fecha", "competicion", "g_rm", "g_riv"]) & ~w.duplicated(["fecha", "competicion", "rival_wiki", "estadio"])].sort_index()
 
     def goleadores(s, fecha):
         # "Ramos , 90+3; Khedira; Bale 110" -> "Ramos 90+3; Bale 110": desde 1990 las páginas meten tarjetas y tandas de penaltis
@@ -636,6 +645,9 @@ def main():
     # Wikipedia pone a veces la ida y la vuelta el mismo día (1954, 1961): se quedan los dos partidos
     dup = h.duplicated(["fecha", "competicion"], keep=False)
     assert (h.loc[dup, "fuente"] == "wikipedia").all(), h[dup]
+    # pero nunca el mismo partido dos veces (mismo día, rival y resultado)
+    rep = h.duplicated(["fecha", "competicion", "rival", "goles_rm", "goles_rival"], keep=False)
+    assert not rep.any(), h[rep][["fecha", "competicion", "local", "visitante", "goles_local", "goles_visitante", "partido_id"]]
 
     finales = ["Supercopa de Europa", "Copa Intercontinental", "Copa Intercontinental de la FIFA", "Copa Eva Duarte", "Copa Iberoamericana"]
     solo_final = h["competicion"].isin(finales) | ((h["competicion"] == "Supercopa de España") & (h["fecha"] < "2019-07-01"))
