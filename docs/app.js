@@ -683,7 +683,7 @@ function renderTemporada() {
       sel.appendChild(og);
     }
   }
-  const key = P().temporada || (partidos.length ? TODAS + '|' + partidos.at(-1).temporada : '');
+  const key = claveSel();
   sel.value = key;
   const [compSel, tempSel] = key.split('|');
   const enKey = (p) => p.temporada === tempSel && (compSel === TODAS || p.competicion === compSel);
@@ -953,8 +953,8 @@ function conRondas(fase) {
   });
 }
 // zonas de la tabla: [hasta la posición, clase, texto]
-const ZONAS = { 'La Liga': [[4, 'zona-a', 'Champions'], [6, 'zona-b', 'Europa League'], [7, 'zona-c', 'Conference League'], [17, '', ''], [20, 'zona-d', 'Descenso']],
-  'Champions League': [[8, 'zona-a', 'Octavos directos'], [24, 'zona-b', 'Eliminatoria previa'], [99, '', '']] };
+const ZONAS = { 'La Liga': [[4, 'zona-a', 'Copa de Europa'], [6, 'zona-b', 'Copa de la UEFA'], [7, 'zona-c', 'Conference League'], [17, '', ''], [20, 'zona-d', 'Descenso']],
+  'Copa de Europa': [[8, 'zona-a', 'Octavos directos'], [24, 'zona-b', 'Eliminatoria previa'], [99, '', '']] };
 function tablaClasif(partidos, comp) {
   const t = {};
   for (const r of partidos)
@@ -1025,7 +1025,7 @@ function alineacionesEl(al, local) {
   const porDorsal = (a, b) => (a.dorsal === '' ? 999 : N(a.dorsal)) - (b.dorsal === '' ? 999 : N(b.dorsal));
   // primero el local, luego el visitante
   const equipos = d3.groups(al, (r) => r.equipo).sort(([a], [b]) => (b === local) - (a === local));
-  const grid = el('div', { class: 'rm-grid' });
+  const grid = el('div', { class: 'al-equipos' });
   grid.append(...equipos.map(([equipo, js]) => {
     const c = el('div', { class: 'rm-lineup' });
     c.append(conEscudo(equipo, 'h3'));
@@ -1071,7 +1071,7 @@ function renderTitulos() {
   const camp = ts.filter((t) => t.tipo === 'Campeón');
   const n = (f) => camp.filter(f).length;
   const kpis = [['Títulos oficiales', n((t) => t.grupo === 'Nacional' || t.grupo === 'Internacional')], ['Ligas', n((t) => t.comp_hist === 'LaLiga')],
-    ['Copas de Europa', n((t) => t.comp_hist === 'Copa de Europa / Champions')], ['Copas del Rey', n((t) => t.comp_hist === 'Copa del Rey')],
+    ['Copas de Europa', n((t) => t.comp_hist === 'Copa de Europa')], ['Copas del Rey', n((t) => t.comp_hist === 'Copa del Rey')],
     ['Mundiales de clubes', n((t) => ['Copa Intercontinental', 'Mundial de Clubes', 'Copa Intercontinental de la FIFA'].includes(t.comp_hist))]];
   $('#tit-kpis').replaceChildren(...kpis.map(([l, v]) => { const c = el('div', { class: 'rm-card rm-kpi' }); c.append(el('p', { class: 'rm-sub' }, l), el('p', { class: 'n' }, v)); return c; }));
 
@@ -1223,7 +1223,12 @@ function tendencias() {
 // ---------- Ficha del jugador: radar frente a su puesto (con comparación) y forma partido a partido ----------
 const RADAR = [['r_xg90', 'xG'], ['r_xa90', 'xA'], ['r_key_passes90', 'Pases clave'], ['r_xg_chain90', 'xGChain'], ['r_xg_buildup90', 'xGBuildup'],
   ['r_tklw90', 'Entradas'], ['r_int90', 'Intercep.']];
-const claveSel = () => P().temporada || (rows('partidos').length ? TODAS + '|' + rows('partidos').at(-1).temporada : '');
+// competición|temporada elegida; si ya no existe (p. ej. un enlace con el nombre antiguo "Champions League"), todas las de la última temporada
+const claveSel = () => {
+  const ps = rows('partidos'), k = P().temporada;
+  const vale = k && ps.some((p) => k === `${TODAS}|${p.temporada}` || k === `${p.competicion}|${p.temporada}`);
+  return vale ? k : ps.length ? TODAS + '|' + ps.at(-1).temporada : '';
+};
 // jugador elegido; si no hay, el de campo con más minutos (los saques del portero no dicen nada en un mapa)
 function jugadorSel(jt) {
   if (jt.some((r) => r.jugador === P().jugador_t)) return P().jugador_t;

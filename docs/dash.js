@@ -2,6 +2,9 @@
 // Mantiene la misma interfaz que el cuadro de mando original (dash.data, dash.calc, dash.onData, dash.params...).
 window.dash = (() => {
   const FUENTES = ['partidos', 'metricas_equipo', 'metricas_jugador', 'pases', 'tiros', 'rendimiento', 'historico', 'historico_alineaciones', 'escudos', 'ligas', 'titulos', 'alineaciones', 'competicion'];
+  // nombres clásicos de las competiciones europeas en toda la web
+  const NOMBRES = { 'Champions League': 'Copa de Europa', 'Liga de Campeones': 'Copa de Europa', 'Copa de Europa / Champions': 'Copa de Europa',
+    'Liga Europa': 'Copa de la UEFA', 'Europa League': 'Copa de la UEFA' };
   const store = {}; // id -> {status, data, message}
   const calcs = {}; // id -> {inputs, fn}
   const subs = [];
@@ -16,7 +19,10 @@ window.dash = (() => {
   function cargar(id) {
     if (store[id]) return;
     store[id] = { status: 'loading', data: [] };
-    d3.csv(`data/${id}.csv`)
+    d3.csv(`data/${id}.csv`, (r) => {
+      for (const k of ['competicion', 'comp_hist']) if (r[k] in NOMBRES) r[k] = NOMBRES[r[k]];
+      return r;
+    })
       .then((rows) => { store[id] = { status: 'ok', data: rows }; })
       .catch((e) => { store[id] = { status: 'error', data: [], message: String(e) }; })
       .finally(avisar);
