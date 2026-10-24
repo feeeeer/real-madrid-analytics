@@ -1,0 +1,107 @@
+[10/24/26 12:00:10] INFO     No custom team name replacements      _config.py:91
+                             found. You can configure these in                  
+                             /Users/fernandovelasco/soccerdata/con              
+                             fig/teamname_replacements.json.                    
+                    INFO     Custom league dict loaded from       _config.py:187
+                             /Users/fernandovelasco/soccerdata/co               
+                             nfig/league_dict.json.                             
+
+== understat ==
+                    INFO     Saving cached data to                _common.py:250
+                             /Users/fernandovelasco/soccerdata/da               
+                             ta/Understat                                       
+[2026-10-24 12:00:10] INFO     TLSLibrary:_load_library:397 - Successfully loaded TLS library: /Users/fernandovelasco/.rm-analytics-venv/lib/python3.12/site-packages/tls_requests/bin/tls-client-darwin-arm64-1.13.1.dylib
+                    INFO     Successfully loaded TLS library:   libraries.py:397
+                             /Users/fernandovelasco/.rm-analyti                 
+                             cs-venv/lib/python3.12/site-packag                 
+                             es/tls_requests/bin/tls-client-dar                 
+                             win-arm64-1.13.1.dylib                             
+   understat_partidos_rm.csv: 9 filas
+   understat_jugadores_liga.csv: 475 filas
+   understat_jugadores_partido.csv: 283 filas
+   understat_tiros.csv: 275 filas
+
+== whoscored ==
+   -- ESP-La Liga
+[10/24/26 12:00:16] INFO     Saving cached data to                _common.py:250
+                             /Users/fernandovelasco/soccerdata/da               
+                             ta/WhoScored                                       
+[10/24/26 12:00:32] INFO     Retrieving calendar for ESP-La     whoscored.py:368
+                             Liga 2627                                          
+[10/24/26 12:00:40] INFO     [1/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:00:47] INFO     [2/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:00:59] INFO     [3/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:08] INFO     [4/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:18] INFO     [5/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:25] INFO     [6/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:32] INFO     [7/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:39] INFO     [8/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:49] INFO     [9/10] Retrieving fixtures for     whoscored.py:399
+                             ESP-La Liga 2627                                   
+[10/24/26 12:01:56] INFO     [10/10] Retrieving fixtures for    whoscored.py:399
+                             ESP-La Liga 2627                                   
+   9 partidos jugados, 0 nuevos
+   -- INT-Champions League
+[10/24/26 12:02:04] INFO     Saving cached data to                _common.py:250
+                             /Users/fernandovelasco/soccerdata/da               
+                             ta/WhoScored                                       
+[10/24/26 12:02:14] INFO     Retrieving calendar for            whoscored.py:368
+                             INT-Champions League 2627                          
+[10/24/26 12:02:22] INFO     [1/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:02:29] INFO     [2/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:02:37] INFO     [3/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:02:46] INFO     [4/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:02:54] INFO     [5/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+   3 partidos jugados, 1 nuevos
+[10/24/26 12:03:10] INFO     Retrieving calendar for            whoscored.py:368
+                             INT-Champions League 2627                          
+[10/24/26 12:03:17] INFO     [1/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:03:25] INFO     [2/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:03:33] INFO     [3/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:03:44] INFO     [4/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:03:53] INFO     [5/5] Retrieving fixtures for      whoscored.py:399
+                             INT-Champions League 2627                          
+[10/24/26 12:04:01] INFO     [1/1] Retrieving game with         whoscored.py:691
+                             id=2029124                                         
+   partido 2029124: 1687 eventos
+   -- ESP-Copa del Rey
+[10/24/26 12:04:12] INFO     Saving cached data to                _common.py:250
+                             /Users/fernandovelasco/soccerdata/da               
+                             ta/WhoScored                                       
+[10/24/26 12:04:23] INFO     Retrieving calendar for ESP-Copa   whoscored.py:368
+                             del Rey 2627                                       
+[10/24/26 12:04:30] INFO     [1/1] Retrieving fixtures for      whoscored.py:399
+                             ESP-Copa del Rey 2627                              
+   0 partidos jugados, 0 nuevos
+   whoscored_partidos_rm.csv: 12 filas
+
+== fbref ==
+[10/24/26 12:04:41] INFO     Saving cached data to                _common.py:250
+                             /Users/fernandovelasco/soccerdata/da               
+                             ta/FBref                                           
+   fbref_jugadores_misc.csv: 468 filas
+
+== procesar ==
+Traceback (most recent call last):
+  File "/Users/fernandovelasco/actions-runner/_work/real-madrid-analytics/real-madrid-analytics/pipeline/procesar.py", line 389, in <module>
+    assert ev_goals == goles, (p.fecha, t, ev_goals, goles)
+AssertionError: ('2026-10-21', 'RB Leipzig', np.int64(0), 1)
+
+Partidos analizados: 11. Fallos: ['procesar']
