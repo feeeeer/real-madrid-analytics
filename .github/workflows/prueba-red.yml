@@ -1,0 +1,43 @@
+# Prueba temporal: qué fuentes responden desde los servidores de GitHub. Se borra después.
+name: Prueba de red
+on:
+  push:
+    paths: [".github/workflows/prueba-red.yml"]
+permissions:
+  contents: write
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q -r requirements.txt
+      - name: Probar
+        shell: bash
+        run: |
+          {
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+          for u in https://understat.com/league/La_liga/2026 https://www.whoscored.com/ https://fbref.com/en/comps/12/La-Liga-Stats \
+                   https://api.sofascore.com/api/v1/team/2829/events/last/0 https://www.fotmob.com/api/teams?id=8633 \
+                   "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/summary?event=401915313" \
+                   "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard?dates=20261018"; do
+            echo "$(curl -s -o /tmp/b -w '%{http_code}' -A "$UA" -L --max-time 30 "$u") $(wc -c </tmp/b) $u"
+          done
+          python - <<'PY'
+          import traceback, soccerdata as sd
+          try:
+              s = sd.Understat("ESP-La Liga", "2026-2027").read_schedule()
+              print("understat soccerdata OK", len(s), int(s["is_result"].sum()))
+          except Exception:
+              print("understat soccerdata FALLA"); traceback.print_exc()
+          PY
+          } 2>&1 | tee resultado.txt
+      - name: Guardar resultado
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp resultado.txt /tmp/r.txt; git checkout -q --orphan prueba-red; git rm -rq --cached .; cp /tmp/r.txt resultado.txt; git add resultado.txt
+          git commit -qm "Resultado de la prueba de red"; git push -qf origin prueba-red
