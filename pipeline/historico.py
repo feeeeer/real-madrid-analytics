@@ -54,6 +54,33 @@ def colocar(al):
     return al
 
 
+def temporada_actual(h):
+    """Partidos de esta temporada que analiza la web (Liga, Copa de Europa, Copa...): sus alineaciones de WhoScored y,
+    si la fuente del histórico no trae goleadores, los de los eventos. Se emparejan por fecha: el Madrid juega uno al día."""
+    if not ((WEB / "alineaciones.csv").exists() and (WEB / "partidos.csv").exists()):
+        return h, pd.DataFrame()
+    pj, aw = pd.read_csv(WEB / "partidos.csv"), pd.read_csv(WEB / "alineaciones.csv")
+    hoy = h[h["partido_id"].astype(str).str.startswith("espn")].drop_duplicates("fecha").set_index("fecha")
+    fecha_de = dict(zip(pj["match_id"], pj["fecha"]))
+    aw["fecha"] = aw["match_id"].map(fecha_de)
+    aw = aw[aw["fecha"].isin(hoy.index)]
+    aw["partido_id"] = aw["fecha"].map(hoy["partido_id"])
+    aw["equipo"] = np.where(aw["equipo"] == RM, RM, aw["fecha"].map(hoy["rival"]))  # el rival con el nombre del histórico
+    al = colocar(pd.DataFrame({"partido_id": aw["partido_id"], "equipo": aw["equipo"], "jugador": aw["jugador"],
+                               "posicion": aw["posicion"].fillna(""), "titular": aw["titular"], "dorsal": aw["dorsal"]}))
+    if (WEB / "incidencias.csv").exists():
+        inc = pd.read_csv(WEB / "incidencias.csv")
+        inc = inc[inc["tipo"].isin(["gol", "penalti", "gol_pp"])].assign(fecha=lambda d: d["match_id"].map(fecha_de))
+        txt = lambda gs: "; ".join(f"{r.jugador}{' (p.p.)' if r.tipo == 'gol_pp' else ''} {r.minuto}{' (pen.)' if r.tipo == 'penalti' else ''}"
+                                   for r in gs.itertuples())
+        for fecha, gs in inc[inc["fecha"].isin(hoy.index)].groupby("fecha"):
+            i = h.index[h["partido_id"] == hoy.loc[fecha, "partido_id"]][0]
+            if h.loc[i, "goleadores_local"] == "" and h.loc[i, "goleadores_visitante"] == "":
+                rm, riv = txt(gs[gs["equipo"] == RM]), txt(gs[gs["equipo"] != RM])
+                h.loc[i, ["goleadores_local", "goleadores_visitante"]] = (rm, riv) if h.loc[i, "local"] == RM else (riv, rm)
+    return h, al
+
+
 def estadio_madrid(fecha):
     """Campo del Madrid en casa antes de 2012 (las fuentes antiguas no traen estadio)."""
     if fecha < "1946-07-01":
@@ -577,19 +604,9 @@ def main():
             if dif.min() <= pd.Timedelta(days=3 * 365):
                 h.loc[i, "estadio"] = c.loc[dif.idxmin(), "estadio"]
 
-    # alineaciones de esta temporada: las de los eventos de WhoScored (dorsal y posición media de cada titular)
-    if (WEB / "alineaciones.csv").exists() and (WEB / "partidos.csv").exists():
-        pj, aw = pd.read_csv(WEB / "partidos.csv"), pd.read_csv(WEB / "alineaciones.csv")
-        liga = h[h["competicion"] == "LaLiga"].set_index("fecha")
-        aw["fecha"] = aw["match_id"].map(dict(zip(pj["match_id"], pj["fecha"])))
-        aw = aw[aw["fecha"].isin(liga.index)]
-        aw["partido_id"] = aw["fecha"].map(liga["partido_id"])
-        # el rival con el nombre del histórico
-        aw["equipo"] = np.where(aw["equipo"] == RM, RM, aw["fecha"].map(liga["rival"]))
-        aw = aw[aw["partido_id"].str.startswith("espn")]
-        al = pd.concat([al, colocar(pd.DataFrame({"partido_id": aw["partido_id"], "equipo": aw["equipo"], "jugador": aw["jugador"],
-                                                  "posicion": aw["posicion"].fillna(""), "titular": aw["titular"],
-                                                  "dorsal": aw["dorsal"]}))], ignore_index=True)
+    # esta temporada: alineaciones y goleadores de los partidos analizados en la web (todas las competiciones)
+    h, al_temp = temporada_actual(h)
+    al = pd.concat([al, al_temp], ignore_index=True)
 
     # escudos: el de Transfermarkt por id de club; si no hay, el logo de ESPN
     escudos = {}
