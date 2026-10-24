@@ -246,6 +246,10 @@ vacia = alineaciones["posicion"] == ""
 alineaciones.loc[vacia, "posicion"] = [(hab_rm.get(j, "") if e == RM else "") or LINEA_POS.get(l, "")
                                        for j, e, l in alineaciones.loc[vacia, ["jugador", "equipo", "linea"]].itertuples(index=False)]
 alineaciones = alineaciones.drop(columns="linea")
+# misma colocación en el campito que el histórico (una fila por línea, de izquierda a derecha)
+sys.path.insert(0, str(Path(__file__).parent))
+from historico import colocar  # noqa: E402
+alineaciones = colocar(alineaciones.rename(columns={"match_id": "partido_id"})).rename(columns={"partido_id": "match_id"})
 assert (alineaciones.loc[alineaciones["titular"] == 1, "posicion"] != "").mean() > 0.95, "titulares sin posición"
 assert (alineaciones.groupby(["match_id", "equipo"])["titular"].sum() == 11).all(), "alineación sin 11 titulares"
 
