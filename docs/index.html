@@ -77,8 +77,59 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 
 .rm-lineup { font-size: var(--cds-font-size-caption); line-height: 1.7; min-width: 0; }
 .rm-lineup h3 { margin-top: 0; display: flex; }
-.al-cuerpo { display: grid; grid-template-columns: minmax(0, max-content) 230px; justify-content: start; gap: var(--cds-gap-lg); align-items: start; }
-.al-fila { display: flex; gap: 8px; }
+.al-cuerpo { display: grid; grid-template-columns: minmax(0, 27rem) 230px; justify-content: start; gap: var(--cds-gap-lg); align-items: start; }
+/* alineación en columnas: dorsal | jugador | posición */
+.al-fila { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) minmax(0, 1fr); gap: 8px; padding: 2px 0; border-bottom: 1px solid var(--color-border-line); }
+.al-fila.al-cab { border-bottom-width: 2px; margin-top: var(--cds-gap-sm); font-size: 0.6875rem; font-weight: var(--cds-font-weight-medium); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-fg-muted); }
+.al-nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.al-pos { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* cabecera de partido: fecha y estadio | local | marcador | visitante */
+.mf { display: grid; grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--cds-gap-sm) var(--cds-gap-lg); align-items: start; padding: var(--cds-pad-sm) 0; }
+.mf-cuando { display: flex; flex-direction: column; gap: 2px; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); border-right: 1px solid var(--color-border-line); padding-right: var(--cds-pad-md); }
+.mf-cuando b { color: var(--color-fg); font-size: var(--cds-font-size-body); }
+.mf-meta { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.mf-eq { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.mf-eq > .con-esc { font-size: 1.15rem; font-weight: var(--cds-font-weight-medium); }
+.mf-eq .esc { width: 30px; height: 30px; }
+.mf-l { align-items: flex-end; text-align: right; }
+.mf-res { display: flex; flex-direction: column; align-items: center; }
+.mf-res b { font-size: 1.9rem; font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; line-height: 1.1; white-space: nowrap; }
+.mf-res small { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.mf-goles { list-style: none; margin: 0; padding: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
+.mf-goles li::before { content: "⚽ "; font-size: 0.65rem; }
+.mf-goles.en-linea { display: flex; flex-wrap: wrap; gap: 0 10px; }
+.mf-l .mf-goles.en-linea { justify-content: flex-end; }
+@media (max-width: 640px) {
+  .mf { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--cds-gap-sm); }
+  .mf-cuando { grid-column: 1 / -1; border-right: 0; padding: 0 0 var(--cds-pad-xs); border-bottom: 1px solid var(--color-border-line); }
+  .mf-eq > .con-esc { font-size: var(--cds-font-size-body); }
+  .mf-res b { font-size: 1.5rem; }
+}
+.ficha-falta:empty { display: none; }
+/* jornada y clasificación (partidos sin xG) */
+.jor-res { list-style: none; margin: 0 0 var(--cds-gap-sm); padding: 0; font-size: var(--cds-font-size-caption); }
+.jor-res li { display: grid; grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr); gap: 8px; padding: 3px 0; border-bottom: 1px solid var(--color-border-line); }
+.jor-res li .l { text-align: right; }
+.jor-res li b { text-align: center; font-variant-numeric: tabular-nums; }
+.jor-res li.rm-fila { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
+.tabla-clasif tbody tr { cursor: default; }
+.tabla-clasif td:nth-child(2), .tabla-clasif th:nth-child(2) { text-align: left; }
+.tabla-clasif tr.zona-a td:first-child { box-shadow: inset 3px 0 var(--color-ok); }
+.tabla-clasif tr.zona-b td:first-child { box-shadow: inset 3px 0 var(--serie-rival); }
+#jornada .rm-tablewrap { max-height: 20rem; }
+/* textos de ayuda plegados */
+details.nota { margin-top: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
+details.nota summary, .side-fuentes summary { cursor: pointer; width: fit-content; }
+details.nota summary:hover { color: var(--color-fg); }
+details.nota p + p { margin-top: 6px; }
+.card-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--cds-gap-sm); margin-bottom: var(--cds-gap-sm); }
+.card-cab h2 { margin: 0; }
+.tt-cuerpo { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--cds-gap-lg); align-items: start; }
+.tt-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#tt-tabla tbody tr { cursor: default; }
+#pitch-resumen { max-width: 520px; margin: 0 auto; }
+#tt-tabla td:first-child, #tt-tabla th:first-child { text-align: left; }
+@media (max-width: 900px) { .tt-cuerpo { grid-template-columns: minmax(0, 1fr); } }
 .tit-comp { display: grid; grid-template-columns: minmax(9rem, 14rem) 1fr; gap: var(--cds-gap-xs) var(--cds-gap-md); padding: var(--cds-pad-sm) 0; border-bottom: 1px solid var(--color-border-line); align-items: start; }
 .tit-comp:last-child { border-bottom: 0; }
 .tit-comp h3 { margin: 0; font-size: var(--cds-font-size-body); }
@@ -247,13 +298,13 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </nav>
     <div class="side-pie">
       <p id="estado"></p>
-      <p>Datos: Understat · WhoScored (Opta) · FBref · Transfermarkt · ESPN · Wikipedia</p>
+      <details class="side-fuentes"><summary>Fuentes de datos</summary><p>Understat · WhoScored (Opta) · FBref · Transfermarkt · ESPN · Wikipedia</p></details>
       <button type="button" id="tema" class="tema" aria-label="Cambiar entre modo claro y oscuro"></button>
     </div>
   </aside>
   <main class="principal">
     <div class="barra">
-      <div class="barra-tit"><h1 id="pag-titulo">Resumen de la temporada</h1><p class="rm-sub" id="pag-desc"></p></div>
+      <div class="barra-tit"><h1 id="pag-titulo">Resumen de la temporada</h1></div>
       <div class="filtros">
         <label data-en="resumen jugadores">Competición <select id="sel-temporada" data-source="partidos" aria-label="Competición y temporada"></select></label>
         <label data-en="partido" hidden>Partido <select id="sel-partido" data-source="partidos" aria-label="Partido"></select></label>
@@ -266,33 +317,38 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     <div class="rm-grid rm-grid-2-1">
       <div class="rm-card" id="xg-jornadas">
       <h2>xG a favor y en contra, partido a partido</h2>
-      <p class="rm-sub">Cuando la línea roja supera a la azul, el rival generó más que nosotros. Puntos: verde victoria, gris empate, rojo derrota. Solo partidos de Liga: Understat no tiene xG de las demás.</p>
+      <div class="rm-legend"><span><i style="background:var(--serie-rm)"></i>xG a favor</span><span><i style="background:var(--cds-chart-status-critical)"></i>xG en contra</span><span><i class="dot" style="background:var(--color-ok)"></i>Victoria</span><span><i class="dot" style="background:var(--cds-chart-muted)"></i>Empate</span><span><i class="dot" style="background:var(--cds-chart-status-critical)"></i>Derrota</span><span>· Solo Liga</span></div>
       <div class="rm-chart" id="xgseason" data-source="metricas_equipo partidos"></div>
     </div>
       <div class="rm-card" id="ultimos">
         <h2>Últimos partidos</h2>
-        <p class="rm-sub">De la selección, del más reciente al más antiguo. Pulsa uno para abrir su análisis.</p>
         <ol class="lista-partidos" id="t-ultimos" data-source="partidos metricas_equipo"></ol>
       </div>
     </div>
     <div class="rm-grid">
       <div class="rm-card" id="lideres">
         <h2>Líderes de la plantilla</h2>
-        <p class="rm-sub">Los tres primeros de cada apartado en la selección. Pulsa uno para verlo en Jugadores.</p>
         <div class="lideres" id="t-lideres" data-source="jugadores_temporada"></div>
       </div>
       <div class="rm-card" id="perfil">
         <h2>Perfil del equipo</h2>
-        <p class="rm-sub">Media por partido del Madrid y de sus rivales en la selección (eventos Opta).</p>
+        <p class="rm-sub">Media por partido</p>
         <div class="rm-tablewrap"><table id="t-perfil" data-source="metricas_equipo"><thead><tr><th>Métrica</th><th>Real Madrid</th><th>Rivales</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+    <div class="rm-card" id="tiros-temporada">
+      <div class="card-cab"><h2>Mapa de tiros de la temporada</h2>
+        <span class="rm-seg" id="r-tiros"><button data-v="favor">A favor</button><button data-v="contra">En contra</button></span></div>
+      <div class="tt-cuerpo">
+        <div><div class="rm-pitch" id="pitch-resumen" data-source="tiros"></div><div class="rm-legend" id="legend-resumen"></div></div>
+        <div><div class="rm-kpis tt-kpis" id="tt-kpis"></div>
+          <div class="rm-tablewrap"><table id="tt-tabla"><thead><tr><th>Origen del tiro</th><th>Tiros</th><th>Goles</th><th>xG</th><th>% gol</th></tr></thead><tbody></tbody></table></div></div>
       </div>
     </div>
       </section>
       <section class="rm-page" id="partido" hidden>
     <div class="rm-card" id="marcador" data-source="partidos">
-      <p class="rm-sub" id="m-meta">—</p>
-      <div class="rm-score" id="m-score">—</div>
-      <div class="ficha-goles" id="m-goles"></div>
+      <div id="m-ficha"></div>
       <p class="rm-sub" id="m-coach"></p>
     </div>
 
@@ -300,28 +356,25 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       <div class="rm-col">
       <div class="rm-card" id="comparativa">
         <h2>Real Madrid vs rival</h2>
-        <p class="rm-sub">Las métricas que le importan al míster. Barra más llena = mejor dato del duelo.</p>
         <div class="rm-cmp" id="cmp" data-source="metricas_equipo"></div>
-        <p class="rm-note"><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p>
+        <details class="nota"><summary>Glosario</summary><p><b>xG</b>: goles esperados según la calidad de cada tiro. <b>PPDA</b>: pases que deja dar el rival en su 60 % de campo por cada acción defensiva nuestra (bajo = presión alta; alto = bloque medio/bajo). <b>Pérdidas peligrosas</b>: balón perdido en nuestro tercio sin superar el medio campo. <b>Contrapresiones</b>: acciones de presión en los 5 s tras perder el balón. <b>Posesión</b>: aproximada por cuota de pases.</p></details>
       </div>
 
       <div class="rm-card" id="xg-timeline">
-        <h2>xG acumulado</h2>
-        <p class="rm-sub">Cómo se fue construyendo el partido, tiro a tiro. Los puntos son goles.</p>
+        <h2 id="xg-tit">xG acumulado</h2>
         <div class="rm-chart" id="xgline" data-source="tiros"></div>
+        <div id="jornada" data-source="competicion" hidden></div>
       </div>
       </div>
 
       <div class="rm-card rm-rep" id="informe">
         <h2>📊 Informe táctico para el míster</h2>
-        <p class="rm-sub">Cada dato del Madrid y de cada jugador frente a su media en los partidos anteriores a este.</p>
         <div id="rep" data-source="informe metricas_jugador metricas_equipo"></div>
       </div>
     </div>
 
     <div class="rm-card" id="mapa-partido">
       <h2>Mapa del partido</h2>
-      <p class="rm-sub">Cada equipo ataca de izquierda a derecha. Pases: flecha del origen al destino; al abrir, solo progresivos (avanzan 15 m o más) y pases clave. Tiros: tamaño = xG, relleno = gol.</p>
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
         <span class="rm-seg" id="p-capa"><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
         <span class="rm-seg" id="p-equipo"><button data-v="rm">Real Madrid</button><button data-v="rival">Rival</button></span>
@@ -335,7 +388,6 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 
     <div class="rm-card" id="jugadores-partido">
         <h2>Jugadores</h2>
-        <p class="rm-sub">Pulsa un jugador para verlo en el mapa. Duelos: ganados/disputados. Forma: este partido frente a sus anteriores (▲ mejor, ▼ peor, = igual; los mismos datos que la sección 4 del informe). Impacto: ordena quién influyó más (goles, asistencias, ocasiones generadas, recuperaciones y duelos, restando pérdidas peligrosas); pasa el ratón por la cabecera para ver la fórmula.</p>
         <div class="rm-tablewrap">
           <table id="tabla-partido" data-source="metricas_jugador" data-row-key="clave">
             <thead><tr>
@@ -349,29 +401,32 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
           </table>
         </div>
     </div>
+
+    <div class="rm-card" id="alineaciones-partido">
+      <h2>Alineaciones</h2>
+      <div id="al-partido" data-source="alineaciones"></div>
+    </div>
       </section>
       <section class="rm-page" id="jugadores" hidden>
-    <p class="rm-lead">Liga 2026/27. Cada jugador del Madrid frente a lo que valían sus ocasiones (xG y xA de Understat, sin penaltis) y frente a los de su puesto en toda la Liga (percentil de rol, mínimo 270 min). Pase, progresivos, recuperaciones, duelos y pérdidas salen de los eventos Opta de todas las competiciones. Entradas e intercepciones vienen de FBref, que puede ir una jornada por detrás. Muestra pequeña: conclusiones provisionales.</p>
     <div class="rm-grid" style="margin-top: var(--cds-gap-md)">
       <div class="rm-card" id="ren-goles-xg">
         <h2>Goles frente a xG (sin penaltis)</h2>
-        <p class="rm-sub">Por debajo de la diagonal: marca menos de lo que valen sus ocasiones. Rojo o verde: desvío claro (al menos 1 y un 30 % de lo esperado).</p>
+        <div class="rm-legend"><span><i class="dot" style="background:var(--color-ok)"></i>Por encima de lo esperado</span><span><i class="dot" style="background:var(--cds-chart-status-critical)"></i>Por debajo</span><span><i class="dot" style="background:var(--cds-chart-muted)"></i>En línea</span></div>
         <div class="rm-chart" id="ren-scatter" data-source="rendimiento"></div>
       </div>
       <div class="rm-card" id="ren-asist-xa">
         <h2>Asistencias frente a xA</h2>
-        <p class="rm-sub">Por debajo de la diagonal: sus pases merecen más asistencias de las que le llegan (el problema suele estar en quien remata). Mismos colores.</p>
+        <div class="rm-legend"><span><i class="dot" style="background:var(--color-ok)"></i>Por encima de lo esperado</span><span><i class="dot" style="background:var(--cds-chart-status-critical)"></i>Por debajo</span><span><i class="dot" style="background:var(--cds-chart-muted)"></i>En línea</span></div>
         <div class="rm-chart" id="ren-scatter-xa" data-source="rendimiento"></div>
       </div>
     </div>
     <div class="rm-card rm-rep" id="ren-informe">
       <h2>🚨 Por debajo de lo esperado</h2>
-      <p class="rm-sub">Cuenta a favor y en contra: rematar o asistir por encima o por debajo de lo esperado (al menos 1 de diferencia y un 30 %), percentil de rol ≥ 75 o &lt; 35, y pérdidas peligrosas que doblan lo normal en su puesto. Sale "por debajo" quien tiene más en contra que a favor. Portero: goles encajados frente al xG de los tiros a puerta recibidos.</p>
+      <details class="nota"><summary>Cómo se calcula</summary><p>Liga 2026/27. Cada jugador del Madrid frente a lo que valían sus ocasiones (xG y xA de Understat, sin penaltis) y frente a los de su puesto en toda la Liga (percentil de rol, mínimo 270 min). Pase, progresivos, recuperaciones, duelos y pérdidas salen de los eventos Opta de todas las competiciones. Entradas e intercepciones vienen de FBref, que puede ir una jornada por detrás. Muestra pequeña: conclusiones provisionales.</p><p>Cuenta a favor y en contra: rematar o asistir por encima o por debajo de lo esperado (al menos 1 de diferencia y un 30 %), percentil de rol ≥ 75 o &lt; 35, y pérdidas peligrosas que doblan lo normal en su puesto. Sale "por debajo" quien tiene más en contra que a favor. Portero: goles encajados frente al xG de los tiros a puerta recibidos.</p></details>
       <div id="ren-alertas" data-source="rendimiento"></div>
     </div>
     <div class="rm-card" id="ren-tabla">
       <h2>Toda la plantilla</h2>
-      <p class="rm-sub">Pulsa una cabecera para ordenar. Datos por 90 minutos. Tendencia: sus últimos 3 partidos frente a los anteriores (▲ mejor, ▼ peor, = igual), con las mismas métricas que el post-partido.</p>
       <div class="rm-tablewrap">
         <table id="tabla-rendimiento" data-source="rendimiento" data-row-key="jugador">
           <thead><tr>
@@ -380,7 +435,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
             <th data-field="asistencias">A</th><th data-field="xa">xA</th><th data-field="a_menos_xa">A − xA</th>
             <th data-field="pct_rol">Pctl. rol</th><th data-field="acierto_pase">% pase</th><th data-field="prog90">Progr./90</th>
             <th data-field="recup90">Recup./90</th><th data-field="duelos_pct">% duelos</th><th data-field="perdidas90">Pérd. pelig./90</th>
-            <th data-field="tendencia">Tendencia</th><th data-field="veredicto">Veredicto</th><th data-field="motivo">Motivo</th>
+            <th data-field="tendencia" title="Sus últimos 3 partidos frente a los anteriores: ▲ mejor, ▼ peor, = igual">Tendencia</th><th data-field="veredicto">Veredicto</th><th data-field="motivo">Motivo</th>
           </tr></thead>
           <tbody></tbody>
         </table>
@@ -388,12 +443,11 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </div>
     <div class="rm-card" id="plantilla">
       <h2>La plantilla en números</h2>
-      <p class="rm-sub">Real Madrid en la competición y temporada elegidas. Pulsa un jugador para ver su mapa; pulsa una cabecera para ordenar. xG y xA solo de la Liga.</p>
       <div class="rm-tablewrap">
         <table id="tabla-temporada" data-source="jugadores_temporada" data-row-key="clave">
           <thead><tr>
             <th data-field="jugador">Jugador</th><th data-field="pj">PJ</th><th data-field="minutos">Min</th><th data-field="goles">G</th>
-            <th data-field="xg">xG</th><th data-field="asistencias">A</th><th data-field="xa">xA</th>
+            <th data-field="xg" title="Solo partidos de Liga">xG</th><th data-field="asistencias">A</th><th data-field="xa" title="Solo partidos de Liga">xA</th>
             <th data-field="pases_progresivos">Progr.</th><th data-field="recuperaciones">Recup.</th>
             <th data-field="duelos_pct">% duelos</th><th data-field="perdidas_peligrosas">Pérd. pelig.</th>
           </tr></thead>
@@ -402,7 +456,6 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
       </div>
     </div>    <div class="rm-card" id="mapa-temporada">
       <h2>Mapa de la temporada por jugador</h2>
-      <p class="rm-sub">Zonas: dónde participa (salida de sus pases y sus tiros; más intenso = más acciones). Pases y tiros: todos los del periodo elegido.</p>
       <div class="rm-controls" style="margin-top: var(--cds-gap-sm)">
         <span class="rm-seg" id="t-capa"><button data-v="zonas">Zonas</button><button data-v="pases">Pases</button><button data-v="tiros">Tiros</button></span>
         <label>Jugador <select id="t-jugador" data-source="jugadores_temporada" aria-label="Jugador de la temporada"></select></label>
@@ -423,7 +476,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     </div>
     <div class="rm-card" id="evolucion">
       <h2>% de victorias por temporada</h2>
-      <p class="rm-sub" id="hist-rango">Pasa el ratón para ver el balance.</p>
+      <p class="rm-sub" id="hist-rango"></p>
       <div class="rm-chart" id="histline"></div>
     </div>
     <div class="rm-grid">
@@ -455,18 +508,18 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
     <div class="rm-card" id="alineacion" hidden>
 
     </div>
-    <p class="rm-note">Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2012), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada), Wikipedia (Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; rondas, goleadores, penaltis y alineaciones de las finales) y, para el análisis de cada partido, WhoScored y Understat. La Copa anterior a 2012 está incompleta, sobre todo antes de 1940: Wikipedia no tiene todos sus partidos.</p>
+    <details class="nota"><summary>Fuentes y cobertura</summary><p>Fuentes: engsoccerdata (Liga desde 1929 y Copa de Europa 1955–2012), transfermarkt-datasets (todas las competiciones y alineaciones desde 2012, CC0), ESPN (resultados de esta temporada), Wikipedia (Copa y Supercopa antes de 2012, Recopa, Copa de la UEFA, Supercopa de Europa, Intercontinental, Mundial de Clubes, Copa de la Liga y Copa Latina; rondas, goleadores, penaltis y alineaciones de las finales) y, para el análisis de cada partido, WhoScored y Understat. La Copa anterior a 2012 está incompleta, sobre todo antes de 1940: Wikipedia no tiene todos sus partidos.</p></details>
       </section>
       <section class="rm-page" id="titulos" hidden>
     <div class="rm-kpis" id="tit-kpis"></div>
-    <p class="rm-sub tit-intro">Pulsa un año para ver cómo se ganó: la clasificación de esa Liga o los partidos hasta levantar la copa. En gris y con borde discontinuo, las finales y Ligas en las que fue subcampeón.</p>
+    <p class="rm-sub tit-intro">Pulsa un año para ver el camino al título. Con borde discontinuo: subcampeón.</p>
     <div id="tit-lista"></div>
     <div class="rm-card" id="tit-detalle" hidden>
       <h2 id="tit-titulo"></h2>
       <p class="rm-sub" id="tit-resumen"></p>
       <div class="rm-tablewrap" id="tit-tabla"></div>
     </div>
-    <p class="rm-note">Fuente: Wikipedia (palmarés del Real Madrid, temporadas del club y de la Liga). «Títulos oficiales» cuenta los nacionales e internacionales; los campeonatos regionales y los torneos no oficiales (Pequeña Copa del Mundo, Copa Ibérica) aparecen aparte y no tienen partidos en la base.</p>
+    <details class="nota"><summary>Fuentes</summary><p>Fuente: Wikipedia (palmarés del Real Madrid, temporadas del club y de la Liga). «Títulos oficiales» cuenta los nacionales e internacionales; los campeonatos regionales y los torneos no oficiales (Pequeña Copa del Mundo, Copa Ibérica) aparecen aparte y no tienen partidos en la base.</p></details>
       </section>
     </div>
   </main>

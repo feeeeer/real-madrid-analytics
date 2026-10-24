@@ -1,7 +1,7 @@
 // Mini-motor de datos de la web: carga los CSV de data/, calcula los derivados y avisa a la página cuando hay datos.
 // Mantiene la misma interfaz que el cuadro de mando original (dash.data, dash.calc, dash.onData, dash.params...).
 window.dash = (() => {
-  const FUENTES = ['partidos', 'metricas_equipo', 'metricas_jugador', 'pases', 'tiros', 'rendimiento', 'historico', 'historico_alineaciones', 'escudos', 'ligas', 'titulos'];
+  const FUENTES = ['partidos', 'metricas_equipo', 'metricas_jugador', 'pases', 'tiros', 'rendimiento', 'historico', 'historico_alineaciones', 'escudos', 'ligas', 'titulos', 'alineaciones', 'competicion'];
   const store = {}; // id -> {status, data, message}
   const calcs = {}; // id -> {inputs, fn}
   const subs = [];

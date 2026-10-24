@@ -74,7 +74,8 @@ def _():
 def _():
     # una competición que falle no frena a las demás; el calendario de la que falle conserva su última versión
     viejo = pd.read_csv(F / "whoscored_partidos_rm.csv") if (F / "whoscored_partidos_rm.csv").exists() else pd.DataFrame(columns=["league"])
-    calendarios, errores = [], []
+    viejo_cal = pd.read_csv(F / "whoscored_calendario.csv") if (F / "whoscored_calendario.csv").exists() else pd.DataFrame(columns=["league"])
+    calendarios, completos, errores = [], [], []
     for liga in [LIGA, *EXTRA]:
         print(f"   -- {liga}", flush=True)
         try:
@@ -95,11 +96,15 @@ def _():
                 ev.to_csv(F / "whoscored_eventos" / f"{gid}.csv", index=False)
                 print(f"   partido {gid}: {len(ev)} eventos", flush=True)
             calendarios.append(jugados)
+            # todos los partidos ya jugados de la competición (no solo los del Madrid): resultados de la jornada y clasificación
+            completos.append(sched[fin & sched["home_score"].notna()][["league", "stage_id", "date", "home_team", "away_team", "home_score", "away_score"]])
         except Exception:
             traceback.print_exc()
             errores.append(liga)
             calendarios.append(viejo[viejo["league"] == liga])
+            completos.append(viejo_cal[viejo_cal["league"] == liga])
     guardar(pd.concat(calendarios, ignore_index=True).drop(columns="index", errors="ignore"), "whoscored_partidos_rm")
+    guardar(pd.concat(completos, ignore_index=True).drop(columns="index", errors="ignore"), "whoscored_calendario")
     assert not errores, f"fallaron: {errores}"
 
 

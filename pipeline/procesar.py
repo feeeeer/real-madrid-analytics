@@ -397,9 +397,18 @@ for p in partidos[partidos["match_id"].isin(liga_ids)].itertuples():
 assert len(ren) and ren["jugador"].notna().all()
 print("Sin emparejar (con xG o xA):", sorted(set(sin_emparejar)) or "ninguno")
 
+# ---------- Resultados de cada competición (para la jornada y la clasificación) ----------
+cal_f = SRC / "whoscored_calendario.csv"
+cal = pd.read_csv(cal_f) if cal_f.exists() else pd.DataFrame(columns=["league", "stage_id", "date", "home_team", "away_team", "home_score", "away_score"])
+competicion = pd.DataFrame({
+    "competicion": cal["league"].map(COMP), "fase": cal["stage_id"], "fecha": cal["date"].astype(str).str[:10],
+    "local": cal["home_team"], "visitante": cal["away_team"],
+    "goles_local": cal["home_score"].astype("Int64"), "goles_visitante": cal["away_score"].astype("Int64"),
+}).sort_values(["competicion", "fecha"])
+
 # ---------- Guardar ----------
 OUT.mkdir(parents=True, exist_ok=True)
 for name, df in {"partidos": partidos, "metricas_equipo": eq, "metricas_jugador": jug, "pases": pases,
-                 "tiros": tiros, "rendimiento": ren, "alineaciones": alineaciones}.items():
+                 "tiros": tiros, "rendimiento": ren, "alineaciones": alineaciones, "competicion": competicion}.items():
     df.to_csv(OUT / f"{name}.csv", index=False)
     print(f"{name}.csv: {len(df)} filas")
