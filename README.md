@@ -2,6 +2,8 @@
 
 Web de análisis de datos del Real Madrid que se actualiza sola después de cada partido.
 
+**Web:** [real-madrid-analytics.vercel.app](https://real-madrid-analytics.vercel.app)
+
 - **Post-partido** de cada jornada de la temporada: comparativa con el rival, informe táctico automático, mapas de pases (origen → destino) y de tiros por jugador, xG acumulado.
 - **Rendimiento vs esperado**: goles frente a xG, asistencias frente a xA, percentil de cada jugador frente a los de su puesto en toda la Liga y pérdidas peligrosas.
 - **Temporada**: xG a favor y en contra partido a partido, mapas acumulados por jugador.
@@ -16,7 +18,7 @@ Mac (runner propio de GitHub Actions), 02:00 y 08:00
   pipeline/procesar.py    ->  métricas, informe y mapas       ->  docs/data/*.csv
 Servidores de GitHub, 08:30
   pipeline/historico.py   ->  engsoccerdata + Transfermarkt + ESPN  ->  docs/data/historico*.csv
-GitHub Pages publica docs/ en cada cambio
+Vercel publica docs/ en cada cambio
 ```
 
 WhoScored y FBref bloquean las IPs de los servidores de GitHub, así que el análisis de la temporada se ejecuta en un Mac propio registrado como runner. Si está dormido a la hora programada, la tarea espera en cola y se ejecuta al despertar. El histórico no tiene ese problema y corre en la nube.
