@@ -130,8 +130,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 /* apartados dentro del partido */
 .sub-tabs { display: flex; gap: 2px; overflow-x: auto; margin: 0 0 var(--cds-gap-md); border-bottom: 1px solid var(--color-border-line); }
 .sub-tabs button { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; color: var(--color-fg-muted); cursor: pointer; white-space: nowrap; }
-.sub-tabs button:hover { color: var(--color-fg); }
-.sub-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--serie-rm); font-weight: var(--cds-font-weight-medium); }
+.sub-tabs button[aria-selected="true"] { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
 .sub-oculto { display: none !important; }
 .sel-nav { display: flex; gap: 4px; align-items: stretch; }
 .btn-nav { font: inherit; font-size: 1.1rem; line-height: 1; width: 2rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
@@ -160,7 +159,6 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .buscador ul { position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 4px); list-style: none; margin: 0; padding: 4px; background: var(--cds-surface-popover);
   border: 1px solid var(--cds-border); border-radius: 8px; box-shadow: var(--cds-shadow-popover); max-height: 22rem; overflow: auto; }
 .buscador li { display: flex; flex-direction: column; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: var(--cds-font-size-caption); }
-.buscador li:hover { background: var(--color-bg); }
 .buscador li .tipo { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-fg-muted); }
 .buscador li.vacio { color: var(--color-fg-muted); cursor: default; }
 /* ficha del jugador */
@@ -173,7 +171,6 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 #fj-radar svg { margin: 0 auto; max-width: 440px; }
 @media (max-width: 900px) { .fj-cuerpo { grid-template-columns: minmax(0, 1fr); } }
 .btn-sec { font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 12px; border: 1px solid var(--color-border-line); border-radius: 6px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
-.btn-sec:hover { border-color: var(--serie-rm); }
 .mc-pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--cds-gap-sm); margin-top: var(--cds-gap-sm); }
 /* carga, transiciones y foco */
 [data-cargando] { position: relative; min-height: 5rem; }
@@ -197,7 +194,6 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 /* textos de ayuda plegados */
 details.nota { margin-top: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
 details.nota summary, .side-fuentes summary { cursor: pointer; width: fit-content; }
-details.nota summary:hover { color: var(--color-fg); }
 details.nota p + p { margin-top: 6px; }
 .card-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--cds-gap-sm); margin-bottom: var(--cds-gap-sm); }
 .card-cab h2 { margin: 0; }
@@ -258,8 +254,7 @@ details.nota p + p { margin-top: 6px; }
 .rm-tab { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: none; border: 0; border-left: 3px solid transparent; border-radius: 0 6px 6px 0;
   padding: 9px var(--cds-pad-md); font: inherit; font-size: var(--cds-font-size-body); color: var(--side-muted); cursor: pointer; white-space: nowrap; }
 .rm-tab svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.rm-tab:hover { color: var(--side-fg); background: var(--side-hover); }
-.rm-tab[aria-selected="true"] { color: var(--side-fg); background: var(--side-hover); border-left-color: var(--oro); font-weight: var(--cds-font-weight-medium); }
+.rm-tab[aria-selected="true"] { color: var(--side-fg); font-weight: var(--cds-font-weight-medium); }
 .rm-tab:focus-visible, .tema:focus-visible { outline: 2px solid var(--oro); outline-offset: 2px; }
 .side-pie { margin-top: auto; font-size: 0.75rem; line-height: 1.5; color: var(--side-muted); display: flex; flex-direction: column; gap: var(--cds-gap-sm); padding: 0 var(--cds-pad-sm); }
 .tema { align-self: flex-start; font: inherit; font-size: var(--cds-font-size-caption); padding: 6px 10px; cursor: pointer; color: var(--side-fg);
@@ -277,7 +272,6 @@ details.nota p + p { margin-top: 6px; }
 .rm-grid-2-1 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
 .lista-partidos { list-style: none; margin: var(--cds-gap-sm) 0 0; padding: 0; font-size: var(--cds-font-size-caption); }
 .lista-partidos li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; align-items: center; gap: var(--cds-gap-sm); padding: 7px 4px; border-bottom: 1px solid var(--color-border-line); cursor: pointer; border-radius: 4px; }
-.lista-partidos li:hover { background: var(--color-bg); }
 .lista-partidos .res { width: 1.4rem; height: 1.4rem; border-radius: 4px; display: grid; place-items: center; color: #fff; font-weight: var(--cds-font-weight-medium); font-size: 0.7rem; }
 .lista-partidos .quien { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .lista-partidos .quien span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -296,7 +290,6 @@ details.nota p + p { margin-top: 6px; }
   .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); padding: var(--cds-pad-sm) var(--cds-pad-md); }
   .menu { flex-direction: row; overflow-x: auto; width: 100%; order: 3; }
   .rm-tab { width: auto; border-left: 0; border-bottom: 3px solid transparent; border-radius: 6px 6px 0 0; padding: 8px 10px; }
-  .rm-tab[aria-selected="true"] { border-bottom-color: var(--oro); }
   .side-pie { margin: 0 0 0 auto; flex-direction: row; align-items: center; padding: 0; }
   .side-pie p { display: none; }
   .barra { position: static; padding: var(--cds-pad-md); }
@@ -349,7 +342,6 @@ details.nota p + p { margin-top: 6px; }
 .rm th:first-child { z-index: 2; }
 .rm th button { font: inherit; color: var(--color-fg-muted); background: none; border: 0; padding: 0; cursor: pointer; }
 .rm tbody tr { cursor: pointer; }
-.rm tbody tr:hover td { color: var(--color-fg); background: var(--color-bg); }
 .rm tbody tr.sel td { background: var(--color-bg); font-weight: var(--cds-font-weight-medium); }
 #tabla-rendimiento td:last-child { white-space: normal; text-align: left; min-width: 18rem; }
 .rm-search { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); margin-bottom: var(--cds-gap-sm); width: min(100%, 16rem); }
@@ -360,6 +352,52 @@ details.nota p + p { margin-top: 6px; }
 .rm-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); line-height: 1.5; }
 [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
 [data-dash-source-state=empty] { color: transparent; }
+
+/* ---------- Pulido: scroll, movimiento y respuesta al tacto ---------- */
+:root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-mover: cubic-bezier(0.77, 0, 0.175, 1); }
+/* el #resumen de la dirección no debe bajar la página: con este margen el salto al ancla se queda en 0 */
+.rm-page { scroll-margin-top: 100vh; }
+/* lo que se lleva a la vista (ficha del jugador...) no queda bajo la barra fija */
+html { scroll-padding-top: 5.5rem; }
+/* respuesta al pulsar */
+.rm-tab, .btn-sec, .btn-nav, .rm-seg button, .sub-tabs button, .tit-anios button, .tema, .lista-partidos li { transition: transform 160ms var(--ease-out); }
+.rm-tab:active, .btn-sec:active, .btn-nav:active:not(:disabled), .rm-seg button:active, .sub-tabs button:active, .tit-anios button:active:not(:disabled), .tema:active, .lista-partidos li:active { transform: scale(0.97); }
+/* indicador de la pestaña elegida: se desliza de una a otra (lo coloca moverIndicador en app.js) */
+.menu, .sub-tabs { position: relative; }
+.menu > .rm-tab, .sub-tabs > button { position: relative; }
+.indicador { position: absolute; top: 0; left: 0; pointer-events: none; transition: transform 220ms var(--ease-mover), width 220ms var(--ease-mover), height 220ms var(--ease-mover); }
+.menu .indicador { background: var(--side-hover); border-left: 3px solid var(--oro); border-radius: 0 6px 6px 0; }
+.sub-tabs .indicador { border-bottom: 2px solid var(--serie-rm); }
+@media (max-width: 860px) { .menu .indicador { border-left: 0; border-bottom: 3px solid var(--oro); border-radius: 6px 6px 0 0; } }
+/* pista de "hay más": se difumina el borde mientras quede contenido por ver (clases que pone pistaScroll en app.js) */
+.mas-abajo { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent); }
+.mas-dcha { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent); }
+.mas-abajo.mas-dcha { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent), linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent), linear-gradient(to right, #000 calc(100% - 3rem), transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
+/* ejes de los gráficos a tamaño de pie de gráfico, no de texto */
+.rm-chart .tick text { font-size: 11px; }
+/* el gráfico de xG ocupa toda la altura de su tarjeta */
+#xg-jornadas { display: flex; flex-direction: column; }
+#xgseason { flex: 1; }
+/* las tarjetas entran escalonadas al abrir una sección (--i lo pone showTab) */
+.rm-page:not([hidden]) { animation: none; }
+.rm-page:not([hidden]) .rm-card { animation: aparecer 300ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 40ms); }
+/* desplegable del buscador: aparece desde el campo; al cerrarse, sin animación */
+.buscador ul { transform-origin: top; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out); }
+@starting-style { .buscador ul:not([hidden]) { opacity: 0; transform: translateY(-4px) scale(0.97); } }
+/* en pantallas táctiles el hover se queda pegado tras tocar: solo con ratón */
+@media (hover: hover) and (pointer: fine) {
+  .sub-tabs button:hover { color: var(--color-fg); }
+  .rm-tab:hover { color: var(--side-fg); background: var(--side-hover); }
+  .buscador li:hover, .lista-partidos li:hover { background: var(--color-bg); }
+  .btn-sec:hover { border-color: var(--serie-rm); }
+  details.nota summary:hover { color: var(--color-fg); }
+  .rm tbody tr:hover td { color: var(--color-fg); background: var(--color-bg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rm-page:not([hidden]) .rm-card, .indicador, .buscador ul { animation: none; transition: none; }
+  .rm-tab:active, .btn-sec:active, .btn-nav:active, .rm-seg button:active, .sub-tabs button:active, .tit-anios button:active, .tema:active, .lista-partidos li:active { transform: none; }
+}
 </style>
 </head>
 <body>

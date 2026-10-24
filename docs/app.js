@@ -19,6 +19,39 @@ const C_RIV = () => dash.colors[1];
 const C_KEY = () => dash.colors[2];
 const C_BAD = 'var(--cds-chart-status-critical)';
 
+// ---------- Movimiento ----------
+const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)', EASE_MOVER = 'cubic-bezier(0.77, 0, 0.175, 1)';
+const sinMovimiento = matchMedia('(prefers-reduced-motion: reduce)');
+// animación de entrada que solo se ve la primera vez que aparece "clave"; si se repinta a mitad (llega otro CSV), sigue por donde iba
+const inicios = new Map();
+function entrada(clave, nodo, frames, opts) {
+  if (!nodo || sinMovimiento.matches || !nodo.getClientRects().length) return;  // oculto: aún no lo ha visto nadie
+  const ahora = performance.now();
+  if (!inicios.has(clave)) inicios.set(clave, ahora);
+  const pasado = ahora - inicios.get(clave);
+  if (pasado > opts.duration + (opts.delay || 0)) return;
+  nodo.animate(frames, { fill: 'backwards', ...opts }).currentTime = pasado;
+}
+// indicador que se desliza bajo la pestaña elegida
+function moverIndicador(cont) {
+  const sel = cont.querySelector('[aria-selected="true"]');
+  let ind = cont.querySelector('.indicador');
+  if (!sel || !sel.offsetWidth) return;
+  const nuevo = !ind;
+  if (nuevo) { ind = el('span', { class: 'indicador', 'aria-hidden': 'true' }); cont.prepend(ind); ind.style.transition = 'none'; }
+  Object.assign(ind.style, { width: `${sel.offsetWidth}px`, height: `${sel.offsetHeight}px`, transform: `translate(${sel.offsetLeft}px, ${sel.offsetTop}px)` });
+  if (nuevo) requestAnimationFrame(() => { ind.style.transition = ''; });
+}
+// las tarjetas visibles entran escalonadas, como mucho 8 pasos para no hacer esperar
+const escalonar = (pag) => [...pag.querySelectorAll('.rm-card')].filter((c) => c.offsetParent).forEach((c, i) => c.style.setProperty('--i', Math.min(i, 8)));
+// difumina el borde de lo que tiene más contenido por ver con scroll
+const pistaScroll = (e) => {
+  e.classList.toggle('mas-abajo', e.scrollHeight - e.scrollTop - e.clientHeight > 2);
+  e.classList.toggle('mas-dcha', e.scrollWidth - e.scrollLeft - e.clientWidth > 2);
+};
+const CON_SCROLL = '.rm-tablewrap, .menu, .sub-tabs';
+document.addEventListener('scroll', (ev) => { if (ev.target.matches?.(CON_SCROLL)) pistaScroll(ev.target); }, true);
+
 // ---------- Cálculos (visibles en Fuentes) ----------
 dash.calc('informe', {
   inputs: ['metricas_equipo', 'partidos'],
@@ -356,6 +389,8 @@ function showTab(id, link = true) {
   document.title = `${t.dataset.titulo} · Real Madrid Analytics`;
   // cada filtro de la barra solo en las secciones a las que afecta
   for (const f of document.querySelectorAll('.filtros [data-en]')) f.hidden = !f.dataset.en.split(' ').includes(id);
+  escalonar($(`#${id}`));
+  if (link) scrollTo(0, 0);
   render();
 }
 tabs.forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
@@ -499,6 +534,7 @@ function renderPartido() {
     const meta = [p.competicion === 'La Liga' ? 'LaLiga' : p.competicion, p.temporada.replace(/^(\d{4})\/\d{2}(\d{2})$/, '$1/$2'), hp && hp.ronda ? hp.ronda : ''].filter(Boolean).join(' · ');
     $('#m-ficha').replaceChildren(marcadorFicha({ fecha: p.fecha, estadio: hp && hp.estadio, meta, local: nombre(p.local), visitante: nombre(p.visitante),
       gl: p.goles_local, gv: p.goles_visitante, golesL: conPP(p.local, N(p.goles_local)), golesV: conPP(p.visitante, N(p.goles_visitante)) }));
+    entrada('marcador', $('#m-ficha .mf-res'), [{ opacity: 0, transform: 'translateY(4px) scale(0.97)' }, { opacity: 1, transform: 'none' }], { duration: 400, delay: 120, easing: EASE_OUT });
     $('#m-coach').replaceChildren('Entrenador del Madrid: ', markEl('span', 'partidos', 'entrenador_rm', w, p.entrenador_rm));
   }
 
@@ -506,6 +542,8 @@ function renderPartido() {
   const sub = P().sub_p || 'resumen';
   document.querySelectorAll('#partido [data-sub]').forEach((d) => d.classList.toggle('sub-oculto', d.dataset.sub !== sub));
   document.querySelectorAll('#p-sub button').forEach((bt) => bt.setAttribute('aria-selected', String(bt.dataset.v === sub)));
+  moverIndicador($('#p-sub'));
+  escalonar($('#partido'));
   // anterior / siguiente
   const orden = [...partidos].sort((x, y) => x.fecha.localeCompare(y.fecha)), pos = orden.findIndex((x) => Number(x.match_id) === mid);
   $('#p-ant').disabled = pos <= 0; $('#p-sig').disabled = pos < 0 || pos >= orden.length - 1;
@@ -535,6 +573,12 @@ function renderPartido() {
       const ta = markEl('span', 'metricas_equipo', k, wa, fmt(a[k])), tb = markEl('span', 'metricas_equipo', k, wb, fmt(b[k]));
       ta.className = 'v'; tb.className = 'v r';
       cmp.append(ta, barA, el('span', { class: 'lab' }, label), barB, tb);
+      // la primera vez, cada barra crece desde el centro hacia fuera
+      const fila = cmp.querySelectorAll('.bar').length / 2;
+      for (const [bar, origen] of [[barA, 'right'], [barB, 'left']]) {
+        bar.style.transformOrigin = origen;
+        entrada('cmp', bar, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 500, delay: 100 + fila * 30, easing: EASE_OUT });
+      }
     }
   }
 
@@ -685,16 +729,19 @@ function drawLinea(box, inc, p, nombre) {
       .attr('class', 'mc-min').attr('dy', -8).text(`${t}'`);
   }
   const tip = tooltip(box);
-  // apilado: si caen dos en el mismo minuto, el segundo se aleja del eje
-  const usados = {};
-  for (const r of inc) {
-    const arriba = r.equipo === p.local, k = `${arriba}|${Math.round(N(r.orden) / 3)}`;
-    usados[k] = (usados[k] || 0) + 1;
-    const yy = arriba ? yc - 16 - 15 * (usados[k] - 1) : yc + 22 + 15 * (usados[k] - 1);
+  // apilado: si un icono cae a menos de 16 px de otro de su lado, sube (o baja) un piso; en orden de minuto
+  const ultimoX = { true: [], false: [] };
+  [...inc].sort((a, b) => N(a.orden) - N(b.orden)).forEach((r, i) => {
+    const arriba = r.equipo === p.local, xx = x(N(r.orden)), pisos = ultimoX[arriba];
+    let piso = pisos.findIndex((x0) => xx - x0 >= 16);
+    if (piso < 0) piso = pisos.length;
+    pisos[piso] = xx;
+    const yy = arriba ? yc - 16 - 15 * piso : yc + 22 + 15 * piso;
     const txt = r.tipo === 'cambio' ? `Entra ${r.jugador} · sale ${r.sale}` : `${r.jugador}${r.tipo === 'penalti' ? ' (penalti)' : r.tipo === 'gol_pp' ? ' (en propia puerta)' : ''}`;
-    svg.append('text').attr('x', x(N(r.orden))).attr('y', yy).attr('text-anchor', 'middle').attr('class', `mc-ico ${r.tipo}`).text(ICONO[r.tipo] || '•')
+    const ico = svg.append('text').attr('x', xx).attr('y', yy).attr('text-anchor', 'middle').attr('class', `mc-ico ${r.tipo}`).text(ICONO[r.tipo] || '•')
       .on('mouseenter', (ev) => tip.show(ev, `${r.minuto}' · ${nombre(r.equipo)}`, [txt])).on('mouseleave', () => tip.hide());
-  }
+    entrada('linea', ico.node(), [{ opacity: 0, transform: `translateY(${arriba ? 4 : -4}px)` }, { opacity: 1, transform: 'none' }], { duration: 250, delay: 300 + i * 40, easing: EASE_OUT });
+  });
 }
 
 // Momentum: quién empujaba en cada tramo de 5 minutos (pases completados que llegan al último tercio + tiros × 3)
@@ -887,7 +934,8 @@ function renderTemporada() {
     .map((r) => ({ ...r, p: byId[r.match_id] })).sort((a, b) => a.p.fecha.localeCompare(b.p.fecha));
   if (ms.length && ms.every((d) => d.xg === '')) box.prepend(el('p', { class: 'sin-xg' }, 'Sin xG en esta competición: Understat solo cubre la Liga.'));
   else if (ms.length) {
-    const W = Math.max(280, box.clientWidth), H = 320, m = { t: 14, r: 96, b: 26, l: 34 };
+    // alto: el de la tarjeta (se estira hasta la de últimos partidos), mínimo 300
+    const W = Math.max(280, box.clientWidth), H = Math.max(300, box.clientHeight), m = { t: 14, r: 96, b: 26, l: 34 };
     const x = d3.scalePoint(ms.map((d) => d.match_id), [m.l, W - m.r]).padding(0.3);
     const y = d3.scaleLinear([0, d3.max(ms, (d) => Math.max(N(d.xg), N(d.xg_contra)))], [H - m.b, m.t]).nice();
     const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
@@ -901,8 +949,11 @@ function renderTemporada() {
       .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
     const lines = [['xg', 'xG a favor', C_RM()], ['xg_contra', 'xG en contra', C_BAD]];
     for (const [k, , c] of lines) {
-      svg.append('path').datum(ms).attr('fill', 'none').style('stroke', c).attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round')
-        .attr('d', d3.line().x((d) => x(d.match_id)).y((d) => y(N(d[k]))));
+      const linea = svg.append('path').datum(ms).attr('fill', 'none').style('stroke', c).attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round')
+        .attr('d', d3.line().x((d) => x(d.match_id)).y((d) => y(N(d[k])))).node();
+      // la primera vez, la línea se dibuja de izquierda a derecha
+      const L = linea.getTotalLength();
+      entrada('xgseason', linea, [{ strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDasharray: `${L} ${L}`, strokeDashoffset: 0 }], { duration: 700, delay: 150, easing: EASE_MOVER });
     }
     const resCol = (d) => (N(d.goles) > N(d.p.goles_local) + N(d.p.goles_visitante) - N(d.goles) ? 'var(--color-ok)'
       : N(d.goles) * 2 === N(d.p.goles_local) + N(d.p.goles_visitante) ? 'var(--cds-chart-muted)' : C_BAD);
@@ -912,7 +963,8 @@ function renderTemporada() {
       .on('mouseenter', (ev, d) => tip.show(ev, `${fechaEs(d.p.fecha)} · ${d.p.local} ${d.p.goles_local}–${d.p.goles_visitante} ${d.p.visitante}`,
         [`xG a favor ${d.xg}`, `xG en contra ${d.xg_contra}`, 'Pulsa para abrir el post-partido']))
       .on('mouseleave', () => tip.hide())
-      .on('click', (ev, d) => { dash.setParams({ partido: Number(d.match_id), jugador: null }); showTab('partido'); });
+      .on('click', (ev, d) => { dash.setParams({ partido: Number(d.match_id), jugador: null }); showTab('partido'); })
+      .each(function (d, i) { entrada('xgseason', this, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, delay: 150 + (700 * i) / ms.length, easing: EASE_OUT }); });
     const last = ms.at(-1);
     const ends = lines.map(([k, label, c]) => ({ y: y(N(last[k])), text: label, c })).sort((a, b) => a.y - b.y);
     if (ends[1].y - ends[0].y < 14) ends[1].y = ends[0].y + 14;
@@ -1496,6 +1548,8 @@ function render() {
   // mientras llega un CSV, su hueco muestra una animación de carga
   for (const e of document.querySelectorAll(`#${tab} [data-source]`))
     e.toggleAttribute('data-cargando', e.dataset.source.split(' ').some((id) => dash.data(id).status === 'loading'));
+  moverIndicador($('.menu'));
+  document.querySelectorAll(CON_SCROLL).forEach(pistaScroll);
 }
 
 // la dirección se lee antes de pintar nada: el primer render la reescribe
