@@ -89,6 +89,7 @@ index,league,season,game,league_id,season_id,game_id,date,home_team_id,away_team
 88,ESP-La Liga,2627,2026-10-19 Getafe-Rayo Vallecano,4,2026,30854,2026-10-19 19:00:00,142,145,Getafe,Rayo Vallecano,RVL,GET,1,1,0.897086,2.29305,True,True,https://understat.com/match/30854
 89,ESP-La Liga,2627,2026-10-21 Levante-Athletic Club,4,2026,30827,2026-10-21 18:00:00,151,147,Levante,Athletic Club,ATH,LEV,3,1,1.84305,1.71396,True,True,https://understat.com/match/30827
 90,ESP-La Liga,2627,2026-10-23 Alaves-Malaga,4,2026,30860,2026-10-23 19:00:00,158,137,Alaves,Malaga,MAL,ALA,1,1,1.80426,0.805685,True,True,https://understat.com/match/30860
+91,ESP-La Liga,2627,2026-10-24 Atletico Madrid-Deportivo La Coruna,4,2026,30862,2026-10-24 19:00:00,143,139,Atletico Madrid,Deportivo La Coruna,DEP,ATL,1,0,2.21854,2.23522,True,True,https://understat.com/match/30862
 92,ESP-La Liga,2627,2026-10-24 Racing Santander-Espanyol,4,2026,30865,2026-10-24 14:15:00,293,141,Racing Santander,Espanyol,ESP,RAS,2,1,2.82622,0.580589,True,True,https://understat.com/match/30865
 93,ESP-La Liga,2627,2026-10-24 Rayo Vallecano-Elche,4,2026,30866,2026-10-24 12:00:00,145,207,Rayo Vallecano,Elche,ELC,RVL,0,3,1.23307,2.40158,True,True,https://understat.com/match/30866
 94,ESP-La Liga,2627,2026-10-24 Valencia-Villarreal,4,2026,30869,2026-10-24 16:30:00,146,154,Valencia,Villarreal,VIL,VAL,1,2,1.1723,1.506,True,True,https://understat.com/match/30869
