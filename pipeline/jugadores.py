@@ -2,8 +2,8 @@
 
 - partidos: es.wikipedia, "Anexo:Jugadores con más partidos del Real Madrid Club de Fútbol" (partidos oficiales).
 - goles: es.wikipedia, "Anexo:Máximos goleadores del Real Madrid Club de Fútbol" (los partidos salen de su promedio, "450 / 438").
-- asistencias: en.wikipedia, "List of Real Madrid CF records and statistics" (criterio Opta, desde 1902); sus partidos, del anexo
-  de partidos, si un solo jugador de ese anexo encaja con el nombre.
+- asistencias: es.wikipedia, "Anexo:Estadísticas del Real Madrid Club de Fútbol" (datos desde 1980, se actualiza tras cada partido);
+  sus partidos, del anexo de partidos.
 El nombre es el del enlace; si es una sola palabra, el del artículo ("Ronaldo" -> "Ronaldo Nazário", nunca "Cristiano Ronaldo").
 Uso suelto: python pipeline/jugadores.py
 """
@@ -105,19 +105,19 @@ def main(dest=Path("docs/data")):
             pj = next((p["partidos"] for p in part if p["jugador"] == c2), None) or (int(pj.group(1)) if pj else "")
             salida.append({"tipo": "goles", "jugador": c2, "partidos": pj, "valor": g, "desde": d, "hasta": h})
     assert any(r["tipo"] == "goles" and r["valor"] >= 450 for r in salida), "no se ha leído la tabla de goleadores"
-    txt = wikitext("en", "List of Real Madrid CF records and statistics")
-    i = txt.index("==== Most appearances ====")
-    part_en = {n: t for c in filas(txt[txt.index("{|", i):txt.index("\n|}", i)]) if len(c) > 7 and (n := jugador(c[1])) and (t := numero(c[7]))}
-    i = txt.index("==== Most assists ====")
-    for c in filas(txt[txt.index("{|", i):txt.index("\n|}", i)]):
-        if len(c) > 3 and (n := jugador(c[1])) and (a := numero(c[2])):
-            d, h = anios(c[3])
-            # sus partidos: el único del anexo cuyo nombre contiene al otro ("Míchel" / "Míchel"; "Paco Gento" / "Francisco Gento" no)
-            # partidos: los del anexo español con su nombre de allí; si no está, los de la tabla de esta misma página
-            c2 = canonico(n, part)
-            pj = next((p["partidos"] for p in part if p["jugador"] == c2), None) or part_en.get(n, "")
-            salida.append({"tipo": "asistencias", "jugador": c2, "partidos": pj, "valor": a, "desde": d, "hasta": h})
-    assert any(r["tipo"] == "asistencias" and r["valor"] >= 150 for r in salida), "no se ha leído la tabla de asistencias"
+    # asistencias: es.wikipedia, "Anexo:Estadísticas del Real Madrid Club de Fútbol" (se actualiza tras cada partido)
+    txt = wikitext("es", "Anexo:Estadísticas del Real Madrid Club de Fútbol")
+    i = txt.index("=== Máximos asistentes ===")
+    tabla = re.sub(r"<!--.*?-->", "", txt[txt.index("{|", i):txt.index("\n|}", i)], flags=re.S)  # hay comentarios que parten la fila
+    for c in filas(tabla):
+        if len(c) > 2 and (n := jugador(c[0])) and (a := numero(c[1])):
+            c2 = canonico(n, part)  # su nombre y sus partidos, los del anexo de partidos
+            # si no está en el anexo de partidos (menos de ~200), los de la tabla de goleadores ("Ángel di María" = "Ángel Di María")
+            gol = next((r for r in salida if r["tipo"] == "goles" and palabras(r["jugador"]) == palabras(c2)), None)
+            c2 = gol["jugador"] if gol and c2 not in {p["jugador"] for p in part} else c2
+            pj = next((p["partidos"] for p in part if p["jugador"] == c2), "") or (gol["partidos"] if gol else "")
+            salida.append({"tipo": "asistencias", "jugador": c2, "partidos": pj, "valor": a, "desde": "", "hasta": ""})
+    assert sum(r["tipo"] == "asistencias" for r in salida) >= 10, "no se ha leído la tabla de asistencias"
     nombres = {p["jugador"] for p in part}
     sueltos = sorted({r["jugador"] for r in salida if r["jugador"] not in nombres and r["tipo"] != "partidos" and float(r["valor"] or 0) >= 100})
     if sueltos:
