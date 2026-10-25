@@ -735,8 +735,8 @@ def main():
     print(h.groupby("competicion").agg(partidos=("fecha", "size"), desde=("fecha", "min"), hasta=("fecha", "max")))
     print(f"{len(h)} partidos; alineaciones de {al['partido_id'].nunique()} partidos; temporada actual (ESPN): {len(actual)}")
     print("Rivales distintos:", h["rival"].nunique())
-    # entrenadores de cada etapa (Wikipedia) y coordenadas de los estadios (Wikidata): si fallan, se quedan los ficheros de la última vez
-    for modulo in ("entrenadores", "estadios"):
+    # entrenadores de cada etapa y clasificaciones de jugadores (Wikipedia), coordenadas de los estadios (Wikidata): si fallan, se quedan los ficheros de la última vez
+    for modulo in ("entrenadores", "estadios", "jugadores"):
         try:
             __import__(modulo).main(WEB)
         except Exception as e:

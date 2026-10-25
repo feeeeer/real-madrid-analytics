@@ -1295,52 +1295,26 @@ function pintarEntrenadores(hs) {
   })).filter((f) => f.pj).sort((a, b) => b.pj - a.pj || b.titulos - a.titulos);
   $('#tabla-entr tbody').replaceChildren(...filas.map((f) => {
     const tr = el('tr');
-    [f.n, f.etapas, f.pj, f.v, f.e, f.d, fx(f.pct_v, 1), f.titulos || '—'].forEach((v) => tr.append(el('td', {}, v)));
+    const nom = el('td', {}, f.n); nom.append(el('span', { class: 'etapas' }, f.etapas));
+    tr.append(nom);
+    [f.pj, f.v, f.e, f.d, fx(f.pct_v, 1), f.titulos || '—'].forEach((v) => tr.append(el('td', {}, v)));
     if (f.detalle) tr.lastChild.title = f.detalle;
     return tr;
   }));
 }
 
-// ---------- Máximos goleadores (los goleadores de cada partido que trae la base) ----------
+// ---------- Jugadores con más partidos, máximos goleadores y asistentes (Wikipedia, pipeline/jugadores.py) ----------
 const sinTilde = (x) => String(x).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-function goleadoresRM(hs) {
-  const jug = new Map();
-  let conAutor = 0, enPartidos = 0;
-  for (const r of hs) {
-    const txt = r.condicion === 'Local' ? r.goleadores_local : r.goleadores_visitante;
-    if (!txt) continue;
-    enPartidos += N(r.goles_rm);
-    const vistos = new Set();
-    for (const e of txt.split(';')) {
-      const limpio = e.replace(/\(.*?\)/g, '');
-      const n = Math.max(1, (limpio.match(/\d+(\+\d+)?/g) || []).length);  // "Puskás 34,62,83" = 3 goles
-      conAutor += n;
-      if (/p\.\s?p\./i.test(e)) continue;  // en propia puerta: cuenta para el Madrid, sin goleador suyo
-      const nombre = limpio.replace(/[\d+',\s]+$/, '').trim();
-      if (!nombre) continue;
-      // el mismo apellido más de dos años sin marcar es otro jugador (Ronaldo Nazário hasta 2007, Cristiano desde 2009)
-      let k = sinTilde(nombre);
-      while (jug.has(k) && (new Date(r.fecha) - new Date(jug.get(k).hasta)) / 864e5 > 730 && !vistos.has(k)) k += '#';
-      const j = jug.get(k) || { goles: 0, partidos: 0, formas: new Map(), desde: r.fecha, hasta: r.fecha };
-      j.goles += n; if (!vistos.has(k)) { j.partidos += 1; vistos.add(k); }
-      j.formas.set(nombre, (j.formas.get(nombre) || 0) + 1);
-      j.hasta = r.fecha;
-      jug.set(k, j);
-    }
-  }
-  // de cada jugador, la forma de escribir su nombre que más se repite ("Hernández" mejor que "Hernandez")
-  const lista = [...jug.values()].map((j) => ({ ...j, nombre: d3.greatest([...j.formas], (f) => f[1])[0] })).sort((a, b) => b.goles - a.goles || b.partidos - a.partidos);
-  return { lista, conAutor, total: d3.sum(hs, (r) => N(r.goles_rm)), enPartidos };
-}
-function pintarGoleadores(hs) {
-  const { lista, conAutor, total } = goleadoresRM([...hs].sort((a, b) => a.fecha.localeCompare(b.fecha)));
-  $('#gol-nota').textContent = total ? `Con los goles que tienen autor en la base: ${conAutor.toLocaleString('es-ES')} de ${total.toLocaleString('es-ES')} (${fx((100 * conAutor) / total, 0)} %). `
-    + 'Aproximado: la base guarda casi siempre el apellido, así que dos jugadores con el mismo (González, Rodríguez…) suman juntos.' : '';
-  $('#tabla-gol tbody').replaceChildren(...lista.slice(0, 20).map((j, i) => {
+function pintarJugadores() {
+  const js = rows('jugadores');
+  const tabla = (id, tipo, n, cols) => $(`#${id} tbody`).replaceChildren(...js.filter((r) => r.tipo === tipo).slice(0, n).map((r, i) => {
     const tr = el('tr');
-    [i + 1, j.nombre, j.goles, j.partidos, j.desde.slice(0, 4) === j.hasta.slice(0, 4) ? j.desde.slice(0, 4) : `${j.desde.slice(0, 4)}–${j.hasta.slice(0, 4)}`].forEach((v) => tr.append(el('td', {}, v)));
+    [i + 1, r.jugador, ...cols(r)].forEach((v) => tr.append(el('td', {}, v === '' ? '—' : v)));
     return tr;
   }));
+  tabla('tabla-pj', 'partidos', 20, (r) => [r.partidos]);
+  tabla('tabla-gol', 'goles', 20, (r) => [r.partidos, r.valor]);
+  tabla('tabla-asis', 'asistencias', 20, (r) => [r.partidos, r.valor]);
 }
 
 // ---------- Récords del club (de la base, en la competición elegida) ----------
@@ -1443,7 +1417,7 @@ function renderHistorico() {
   $('#k-pct').textContent = hs.length ? `${fx(t.pct_v, 1)} %` : '—';
   pintarRecords(hs);
   pintarEntrenadores(hs);
-  pintarGoleadores(hs);
+  pintarJugadores();
   drawEstadios(hs);
 
   // % de victorias por temporada

@@ -500,12 +500,17 @@ html { scroll-padding-top: 5.5rem; }
 .rec.con-partido:active { transform: scale(0.98); }
 @media (hover: hover) and (pointer: fine) { .rec.con-partido:hover { border-color: var(--serie-rm); } }
 .rec:focus-visible { outline: 2px solid var(--serie-rm); outline-offset: 2px; }
-#tabla-entr td:nth-child(2), #tabla-entr th:nth-child(2) { text-align: left; white-space: normal; min-width: 7rem; color: var(--color-fg-muted); }
+#tabla-entr .etapas { display: block; font-size: 0.7rem; color: var(--color-fg-muted); white-space: normal; }
 #tabla-entr td:last-child[title] { text-decoration: underline dotted; cursor: help; }
-#tabla-gol td:nth-child(2), #tabla-gol th:nth-child(2) { text-align: left; }
-#tabla-gol td:first-child { color: var(--color-fg-muted); }
-#tabla-entr tbody tr, #tabla-gol tbody tr { cursor: default; }
-#historico #entrenadores, #historico #goleadores { grid-column: 1 / -1; }
+/* las cuatro tablas de jugadores y entrenadores, de dos en dos y a la misma altura */
+.hist-tablas { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); align-items: stretch; }
+.hist-tablas .rm-card { display: flex; flex-direction: column; }
+.hist-tablas .rm-tablewrap { max-height: 30rem; }
+.hist-fuente { grid-column: 1 / -1; margin: 0; }
+.tabla-jug td:nth-child(2), .tabla-jug th:nth-child(2) { text-align: left; }
+.tabla-jug td:first-child { color: var(--color-fg-muted); width: 2rem; }
+.tabla-jug td:last-child { font-family: var(--font-num); font-size: 1rem; font-weight: 600; }
+#tabla-entr tbody tr, .tabla-jug tbody tr { cursor: default; }
 .epoca { fill: var(--color-fg); opacity: 0.03; } .epoca.par { opacity: 0.07; }
 .epoca-n { fill: var(--color-fg-muted); font-size: 10px; }
 .mapa { min-height: 0; }
@@ -773,17 +778,28 @@ html { scroll-padding-top: 5.5rem; }
       <div class="rm-chart mapa" id="mapa-est" data-source="historico estadios"></div>
       <div class="rm-legend"><span>Tamaño: partidos jugados</span><span><i class="dot" style="background:#2e9e5b"></i>Gana 8 de cada 10 o más</span><span><i class="dot" style="background:#9aa1ad"></i>Algo más de la mitad</span><span><i class="dot" style="background:#d64545"></i>Un tercio o menos</span></div>
     </div>
-    <div class="rm-grid">
+    <div class="rm-grid hist-tablas">
       <div class="rm-card" id="entrenadores">
         <h2>Entrenadores</h2>
         <p class="rm-sub">Balance en la competición elegida arriba. Los títulos son los de toda su carrera en el club; pasa el ratón para ver cuáles.</p>
-        <div class="rm-tablewrap"><table id="tabla-entr" data-source="entrenadores"><thead><tr><th>Entrenador</th><th>Etapas</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>% V</th><th>Títulos</th></tr></thead><tbody></tbody></table></div>
+        <div class="rm-tablewrap"><table id="tabla-entr" data-source="entrenadores"><thead><tr><th>Entrenador</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>% V</th><th>Títulos</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="rm-card" id="mas-partidos">
+        <h2>Jugadores con más partidos</h2>
+        <p class="rm-sub">Partidos oficiales en todas las competiciones.</p>
+        <div class="rm-tablewrap"><table id="tabla-pj" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th></tr></thead><tbody></tbody></table></div>
       </div>
       <div class="rm-card" id="goleadores">
         <h2>Máximos goleadores</h2>
-        <p class="rm-sub" id="gol-nota"></p>
-        <div class="rm-tablewrap"><table id="tabla-gol" data-source="historico"><thead><tr><th>#</th><th>Jugador</th><th>Goles</th><th>Partidos marcando</th><th>Años</th></tr></thead><tbody></tbody></table></div>
+        <p class="rm-sub">Goles en partidos oficiales, todas las competiciones.</p>
+        <div class="rm-tablewrap"><table id="tabla-gol" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th><th>Goles</th></tr></thead><tbody></tbody></table></div>
       </div>
+      <div class="rm-card" id="asistentes">
+        <h2>Máximos asistentes</h2>
+        <p class="rm-sub">Los que pasan de 100 asistencias en partidos oficiales desde 1902 (criterio de Opta).</p>
+        <div class="rm-tablewrap"><table id="tabla-asis" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th><th>Asistencias</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <p class="rm-sub hist-fuente">Jugadores: Wikipedia (anexos de partidos y goleadores del Real Madrid, y récords del club para las asistencias). No dependen de la competición elegida arriba.</p>
     </div>
     <div class="rm-grid">
       <div class="rm-card" id="rivales">
