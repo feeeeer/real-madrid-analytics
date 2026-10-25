@@ -13,9 +13,9 @@ from pathlib import Path
 UA = {"User-Agent": "RealMadridAnalytics/1.0 (https://real-madrid-analytics.vercel.app; datos abiertos para una web sin ánimo de lucro)"}
 BERNABEU = (40.4531, -3.6883)
 # campos con varios nombres a lo largo del tiempo, o que el buscador confunde (lat, lon)
-MANUAL = {"Chamartín": BERNABEU, "Campo de Chamartín": BERNABEU, "Nuevo Chamartín": BERNABEU, "Nuevo Estadio Chamartín": BERNABEU,
-          "Estadio Chamartín": BERNABEU, "Metropolitano": (40.4473, -3.7085),  # el del Atlético en Cuatro Caminos (1923-1966)
-          "Estadio Metropolitano": (40.4362, -3.5995), "Vicente Calderón": (40.4017, -3.7206), "Estadio Vicente Calderón": (40.4017, -3.7206),
+MANUAL = {"Campo de Chamartín": (40.4521, -3.6885), "Nuevo Chamartín": BERNABEU, "Santiago Bernabéu": BERNABEU,  # historico.py los nombra por fecha
+          "Antiguo Metropolitano": (40.4473, -3.7085),  # el del Atlético en Cuatro Caminos (1923-1966)
+          "Metropolitano": (40.4362, -3.5995), "Vicente Calderón": (40.4017, -3.7206), "Estadio Vicente Calderón": (40.4017, -3.7206),
           "Nervión": (37.3840, -5.9705), "Atocha": (43.3156, -1.9737), "Estadio Atocha": (43.3156, -1.9737),
           # los que el buscador no encuentra (nombre corto o sin tilde)
           "San Mamés": (43.2641, -2.9494), "El Sardinero": (43.4762, -3.7935), "Sarrià": (41.3889, 2.1336), "Sarriá": (41.3889, 2.1336),

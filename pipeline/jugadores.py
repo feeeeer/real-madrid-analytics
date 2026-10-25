@@ -90,6 +90,18 @@ def canonico(n, part):
     return cands[0] if len(cands) == 1 else n
 
 
+def partidos_articulo(n):
+    """Partidos oficiales con el Madrid, de la fila "Total" del Madrid en "Career statistics" de su artículo en inglés."""
+    try:
+        t = wikitext("en", n)
+    except Exception:
+        return ""
+    i = t.find("[[Real Madrid CF|Real Madrid]]", t.find("Career statistics"))
+    m = re.search(r"!colspan=\"2\"\|Total\s*\n!(.*)", t[i:i + 4000]) if i > 0 else None
+    nums = re.findall(r"\d+", re.sub(r"colspan=\"\d\"", "", m.group(1))) if m else []
+    return int(nums[-2]) if len(nums) >= 2 else ""  # las dos últimas: partidos y goles en total
+
+
 def main(dest=Path("docs/data")):
     salida, part = [], []
     for c in filas(primera_tabla(wikitext("es", "Anexo:Jugadores con más partidos del Real Madrid Club de Fútbol"))):
@@ -118,6 +130,9 @@ def main(dest=Path("docs/data")):
             pj = next((p["partidos"] for p in part if p["jugador"] == c2), "") or (gol["partidos"] if gol else "")
             salida.append({"tipo": "asistencias", "jugador": c2, "partidos": pj, "valor": a, "desde": "", "hasta": ""})
     assert sum(r["tipo"] == "asistencias" for r in salida) >= 10, "no se ha leído la tabla de asistencias"
+    for r in salida:  # a quien no esté en ningún anexo (menos de ~200 partidos), los de su artículo
+        if r["partidos"] == "":
+            r["partidos"] = partidos_articulo(r["jugador"])
     nombres = {p["jugador"] for p in part}
     sueltos = sorted({r["jugador"] for r in salida if r["jugador"] not in nombres and r["tipo"] != "partidos" and float(r["valor"] or 0) >= 100})
     if sueltos:

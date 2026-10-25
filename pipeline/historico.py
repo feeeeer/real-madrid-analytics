@@ -156,6 +156,66 @@ ERRATAS = {"wk0453276107": "1923: la vuelta con el Athletic fue el 8 de abril, n
 # el mismo club con dos nombres en el histórico (según la fuente); los que se parecen pero son clubes distintos
 # (Burgos CF / Real Burgos, AD / UD Almería, Patria FC de Madrid / Patria Aragón) se quedan separados
 MISMO_CLUB = {"Sparta Praha": "AC Sparta Praha", "Sestao SC": "Sestao Sport Club"}
+# ---------- Estadios: un nombre por campo ----------
+# patrocinadores, grafías y nombres que no se unen solos; los cambios de nombre oficiales (Heliópolis, El Madrigal, Nervión) se respetan
+ALIAS_ESTADIO = {
+    "Spotify Camp Nou": "Camp Nou", "ABANCA Riazor": "Riazor", "Abanca Riazor": "Riazor", "Abanca Balaídos": "Balaídos",
+    "Gestaser El Collao": "El Collao", "Mallorca Son Moix": "Son Moix", "Iberostar": "Son Moix", "Iberostar Estadio": "Son Moix",
+    "El Molinón - Enrique Castro Quini": "El Molinón", 'Pistas del Helmántico "Javier Sotomayor"': "El Helmántico",
+    "Reale Arena": "Anoeta", "RCDE Stadium": "Cornellà-El Prat", "RCDE": "Cornellà-El Prat", "Riyadh Air Metropolitano": "Metropolitano",
+    "Civitas Metropolitano": "Metropolitano", "Sanchez Pizjuan": "Ramón Sánchez-Pizjuán", "Estadio Sanchez Pizjuan": "Ramón Sánchez-Pizjuán",
+    "Estadio Sánchez Pizjuán": "Ramón Sánchez-Pizjuán", "Heliodoro Rodriguez": "Heliodoro Rodríguez López",
+    "Estadio Heliodoro Rodriguez": "Heliodoro Rodríguez López", "Estadio Heliodoro Rodríguez": "Heliodoro Rodríguez López",
+    "Jose Rico": "José Rico Pérez", "Estadio Martínez Valero": "Manuel Martínez Valero", "Antas": "Estádio das Antas", "Das Antas": "Estádio das Antas",
+    "Camp de Les Corts": "Les Corts", "Campo de Fútbol de Vallecas": "Vallecas", "Ciudad de Valencia": "Ciutat de València",
+    "Estadio Ciudad de Valencia": "Ciutat de València", "Atotxa": "Atocha", "Atotxa Stadium": "Atocha", "Mendizorrotza": "Mendizorroza",
+    "Mendizorrotza Stadium": "Mendizorroza", "Karaiskakis Stadium": "Georgios Karaiskakis", "Stadio Georgios Karaiskakis": "Georgios Karaiskakis",
+    "Vasil Levski National Stadium": "Vasil Levski", "Olimpico": "Stadio Olimpico", "Las Lianas": "Las Llanas",
+    "Athens Olympic Stadium": "Estadio Olímpico de Atenas", "National Stadium": "Estadio Nacional de Tokio", "A": ""}
+# "Olympic Stadium" son tres campos distintos: el del rival de ese día
+OLIMPICO_DE = {"Dinamo Kiev": "Estadio Olímpico de Kiev", "Olympiacos": "Estadio Olímpico de Atenas", "Bayern Munich": "Estadio Olímpico de Múnich"}
+GENERICAS_ESTADIO = {"estadio", "stadium", "estadi", "stade", "stadio", "stadion", "campo", "de", "del", "la", "el", "les", "municipal",
+                     "do", "da", "des", "du", "di"}
+
+
+def words_estadio(n):
+    t = unicodedata.normalize("NFKD", str(n)).encode("ascii", "ignore").decode().lower()
+    return [w for w in re.sub(r"[^a-z0-9 ]", " ", t).split() if w not in GENERICAS_ESTADIO]
+
+
+def nombre_estadio(r):
+    """El nombre del campo de un partido: sin notas pegadas, sin patrocinador y, en Madrid, el que tenía ese día."""
+    e = re.sub(r"\s+Real Madrid (had|were) .*$", "", str(r["estadio"] or "")).strip()  # nota de la fuente pegada al nombre
+    e = re.sub(r",\s*Madrid$", "", re.sub(r"^de\s+", "", e)).strip()
+    if e == "Olympic Stadium":
+        return OLIMPICO_DE.get(r["rival"], e)
+    e = ALIAS_ESTADIO.get(e, e)
+    clave = set(words_estadio(e))
+    if clave & {"chamartin", "bernabeu"}:  # el campo del Madrid, con el nombre que tenía ese día (Santiago Bernabéu desde el 4-1-1955)
+        return "Campo de Chamartín" if r["fecha"] < "1947-12-14" else "Nuevo Chamartín" if r["fecha"] < "1955-01-04" else "Santiago Bernabéu"
+    if "metropolitano" in clave:  # el del Atlético: el de Cuatro Caminos (1923-1966) o el actual (desde 2017)
+        return "Antiguo Metropolitano" if r["fecha"] < "1970-01-01" else "Metropolitano"
+    return e
+
+
+def unificar_estadios(h):
+    """Un nombre por campo: los que solo cambian en "Estadio", "Stadium", tildes o artículos se juntan en la forma más limpia
+    (con tildes, sin "Estadio" delante, en su idioma; a igualdad, la más usada). "Madrid" o "Valencia" a secas no se tocan."""
+    h["estadio"] = [nombre_estadio(r) for r in h[["estadio", "fecha", "rival"]].to_dict("records")]
+    usos = h["estadio"].value_counts()
+    grupos = {}
+    for n in usos.index:
+        if n:
+            grupos.setdefault(frozenset(words_estadio(n)), []).append(n)
+
+    def nota(n):  # menor es mejor
+        return (n[:1].islower(), bool(re.search(r"\bStadium\b", n)), -sum(ord(ch) > 127 for ch in n),
+                bool(re.match(r"(Estadio|Estadi|Stadium|Campo) ", n)), -usos[n], len(n))
+    canon = {n: min(g, key=nota) for k, g in grupos.items() if k - {"madrid", "valencia", "olympic"} for n in g}
+    h["estadio"] = h["estadio"].map(lambda n: canon.get(n, n))
+    return h
+
+
 # y partidos con el año mal puesto (es.wikipedia pone el año de la edición a los de diciembre): la fecha buena
 FECHA_BUENA = {"we4b85603676": "1928-12-09", "we6e47995b5e": "1928-12-19"}  # Oviedo, dieciseisavos de la Copa de 1928-29 (en.wikipedia)
 # nombres de las clasificaciones y de las Ligas antiguas que no se emparejan solos con su escudo, o se emparejarían mal
@@ -676,6 +736,14 @@ def main():
     h = h[~h["partido_id"].isin(ERRATAS)]
     for c in ("local", "visitante", "rival"):  # el mismo club con dos nombres según la fuente: uno solo en el cara a cara
         h[c] = h[c].replace(MISMO_CLUB)
+    # un nombre por estadio; las coordenadas que ya tenía alguna variante pasan al nombre unificado (mapa de la web)
+    antes = h["estadio"].fillna("").copy()
+    h = unificar_estadios(h)
+    if (WEB / "estadios.csv").exists():
+        co = pd.read_csv(WEB / "estadios.csv").set_index("estadio")
+        nuevos = {b: co.loc[a] for a, b in set(zip(antes, h["estadio"])) if b and b not in co.index and a in co.index}
+        if nuevos:
+            pd.concat([co, pd.DataFrame(nuevos).T]).rename_axis("estadio").reset_index().to_csv(WEB / "estadios.csv", index=False)
     for pid, f in FECHA_BUENA.items():
         h.loc[h["partido_id"] == pid, ["fecha", "temporada"]] = f, temporada(f)
     hf = pd.to_datetime(h["fecha"])
