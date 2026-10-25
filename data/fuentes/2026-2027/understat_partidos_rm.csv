@@ -8,3 +8,4 @@ index,league,season,game,league_id,season_id,game_id,date,home_team_id,away_team
 64,ESP-La Liga,2627,2026-09-20 Atletico Madrid-Real Madrid,4,2026,30831,2026-09-20 14:15:00,143,150,Atletico Madrid,Real Madrid,RMA,ATL,2,1,2.40619,0.420774,True,True,https://understat.com/match/30831
 73,ESP-La Liga,2627,2026-10-10 Real Madrid-Villarreal,4,2026,30848,2026-10-10 19:00:00,150,154,Real Madrid,Villarreal,VIL,RMA,1,0,1.42593,0.526468,True,True,https://understat.com/match/30848
 87,ESP-La Liga,2627,2026-10-18 Real Madrid-Sevilla,4,2026,30857,2026-10-18 19:00:00,150,138,Real Madrid,Sevilla,SEV,RMA,4,1,2.125,1.3217,True,True,https://understat.com/match/30857
+96,ESP-La Liga,2627,2026-10-25 Barcelona-Real Madrid,4,2026,30864,2026-10-25 20:00:00,148,150,Barcelona,Real Madrid,RMA,BAR,1,2,1.64098,1.94936,True,True,https://understat.com/match/30864
