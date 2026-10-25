@@ -142,7 +142,15 @@ ALIAS = {"AFC Ajax": "Ajax Amsterdam", "APOEL Nikosia": "APOEL Nicosia", "Associ
          "Real Gijón": "Sporting Gijon", "Sport Club Corinthians Paulista": "Corinthians", "Aberdeen F.C.": "Aberdeen",
          "Torino F.C.": "Torino", "Málaga CF": "Málaga", "Real Madrid Castilla Club de Fútbol": "Real Madrid Castilla",
          "Real Madrid Castilla": "Real Madrid Castilla", "Agrupación Deportiva Almería": "AD Almeria", "Club Deportivo Badajoz": "CD Badajoz",
-         "Bizcaya (football team)": "Club Bizcaya", "Athletic Madrid": "Atletico Madrid"}
+         "Bizcaya (football team)": "Club Bizcaya", "Athletic Madrid": "Atletico Madrid",
+         # grafías antiguas de las páginas de la Copa en inglés
+         "Arenas de Guecho": "Arenas de Getxo", "CD Patria Aragón": "Patria Aragón", "Eclipse FC": "Eclipse Fútbol Club"}
+# partidos que Wikipedia da dos veces con fechas distintas: el de la fecha equivocada (la buena, en la página de la edición)
+ERRATAS = {"wk0453276107": "1923: la vuelta con el Athletic fue el 8 de abril, no el 4",
+           "wk8015bc5409": "1951: la vuelta con el Atlético fue el 10 de mayo; el 20 se jugó la semifinal con la Real Sociedad",
+           "wk3d97e7ee9b": "1991: la vuelta con el Atlético fue el 27 de febrero, no el 20"}
+# y partidos con el año mal puesto (es.wikipedia pone el año de la edición a los de diciembre): la fecha buena
+FECHA_BUENA = {"we4b85603676": "1928-12-09", "we6e47995b5e": "1928-12-19"}  # Oviedo, dieciseisavos de la Copa de 1928-29 (en.wikipedia)
 # nombres de las clasificaciones y de las Ligas antiguas que no se emparejan solos con su escudo, o se emparejarían mal
 # ("Madrid FC" es el Madrid de 1920-1931, no el Atlético; "Donostia", la Real Sociedad de 1931-1939)
 NOMBRE_CLUB = {"Madrid FC": RM, "Athletic Madrid": "Atletico Madrid", "Atlético Aviación": "Atletico Madrid", "Atlético Bilbao": "Athletic Bilbao",
@@ -279,6 +287,7 @@ def wikipedia(h, al):
             "visitante": np.where(vuelta, c["t1"], c["t2"]), "visitante_wiki": np.where(vuelta, c["t1w"], c["t2w"]),
             "goles_local": c["g1"], "goles_visitante": c["g2"], "penaltis": "", "estadio": c["estadio"], "ciudad": "",
             "goleadores_local": c["goles1"], "goleadores_visitante": c["goles2"],
+            "fecha_aprox": c["fecha_aprox"].fillna("") if "fecha_aprox" in c else "",  # fecha estimada por la ronda (copa_antigua.py)
             "seccion": c["seccion"] + np.where(c["pata"] == "1", " > First leg", np.where(vuelta, " > Second leg", ""))})], ignore_index=True)
         w = w[w["local_wiki"].str.match(ES_RM) | w["visitante_wiki"].str.match(ES_RM) | w["local"].str.match(ES_RM) | w["visitante"].str.match(ES_RM)]
     w = w.drop_duplicates(["fecha", "competicion", "local_wiki", "visitante_wiki"])
@@ -351,7 +360,8 @@ def wikipedia(h, al):
                        "local": RM if r.rm_local else r.local_wiki, "visitante": r.visitante_wiki if r.rm_local else RM,
                        "partido_id": "wk" + hashlib.md5(f"{r.fecha}{r.competicion}{r.local_wiki}{r.visitante_wiki}".encode()).hexdigest()[:10],
                        "fuente": "wikipedia", "neutral": False, "estadio": r.estadio, "ronda": r.ronda, "penaltis": r.penaltis,
-                       "goleadores_local": r.goleadores_local, "goleadores_visitante": r.goleadores_visitante} for r in nuevos])
+                       "goleadores_local": r.goleadores_local, "goleadores_visitante": r.goleadores_visitante,
+                       "fecha_aprox": getattr(r, "fecha_aprox", "") if isinstance(getattr(r, "fecha_aprox", ""), str) else ""} for r in nuevos])
     # el rival con el nombre que ya tiene en el histórico (aprendido de los partidos emparejados)
     for c in ("local", "visitante"):
         n[c] = n[c].map(lambda x: rival_de.get(x, x))
@@ -655,6 +665,16 @@ def main():
             escudos[a] = escudos[b]
     print("Sin escudo:", sorted((set(h["local"]) | set(h["visitante"])) - set(escudos)))
 
+    # el mismo partido con dos fechas en Wikipedia (comprobado en la página de cada edición): se quita el de la fecha mala
+    h = h[~h["partido_id"].isin(ERRATAS)]
+    for pid, f in FECHA_BUENA.items():
+        h.loc[h["partido_id"] == pid, ["fecha", "temporada"]] = f, temporada(f)
+    hf = pd.to_datetime(h["fecha"])
+    for _, g in h.assign(f=hf).sort_values("f").groupby(["competicion", "rival", "condicion", "goles_rm", "goles_rival"]):
+        cerca = g["f"].diff().dt.days.le(10)
+        if cerca.any():  # mismo rival, campo y resultado con días de diferencia: casi siempre una errata de fecha
+            print("Posible partido repetido, revisar:", g.loc[cerca | cerca.shift(-1, fill_value=False), ["fecha", "competicion", "rival", "partido_id"]].values.tolist())
+
     # autocomprobaciones
     assert h["partido_id"].is_unique and (h["partido_id"] != "").all(), h[h["partido_id"].duplicated(keep=False)][["fecha", "competicion", "local", "visitante", "partido_id"]]
     assert not al.dropna(subset=["px"]).duplicated(["partido_id", "equipo", "px", "py"]).any(), al[al.dropna(subset=["px"]).duplicated(["partido_id", "equipo", "px", "py"], keep=False).reindex(al.index, fill_value=False)].head(30).to_string()
@@ -673,9 +693,10 @@ def main():
         for i, pata in zip(g.index, patas):
             if h.loc[i, "ronda"] in ("", "Ida", "Vuelta", "Desempate", "Final"):
                 h.loc[i, "ronda"] = pata
+    h["fecha_aprox"] = h["fecha_aprox"].fillna("") if "fecha_aprox" in h else ""  # "1": fecha estimada por la ronda
     h = h.sort_values("fecha")[["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante",
                                 "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente",
-                                "ronda", "penaltis", "goleadores_local", "goleadores_visitante"]]
+                                "ronda", "penaltis", "goleadores_local", "goleadores_visitante", "fecha_aprox"]]
     WEB.mkdir(parents=True, exist_ok=True)
     tit = titulos(palmares, h)
     # la final de cada título o subcampeonato, aunque la fuente no diga la ronda

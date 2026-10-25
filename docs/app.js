@@ -11,6 +11,8 @@ const el = (tag, attrs = {}, text) => {
 };
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const fechaEs = (iso, anio = true) => { const [y, m, d] = String(iso).split('-'); return `${Number(d)} ${MESES[m - 1]}${anio ? ' ' + y : ''}`; };
+// partido del histórico: su fecha, avisando si es estimada (Copas antiguas sin fecha en la fuente, ver copa_antigua.py)
+const fechaH = (r) => `${fechaEs(r.fecha)}${r.fecha_aprox ? ' (aprox.)' : ''}`;
 const markEl = (tag, src, field, where, text) => el(tag, { 'data-source': src, 'data-field': field, 'data-where': where }, text);
 const ok = (...ids) => ids.every((id) => dash.data(id).status === 'ok');
 const rows = (id) => (dash.data(id).status === 'ok' ? dash.data(id).data : []);
@@ -425,10 +427,10 @@ const conEscudo = (nombre, tag = 'span', detras = false) => {
 };
 
 // Cabecera de un partido: fecha y estadio a la izquierda; equipos, marcador y goleadores de cada uno debajo de su equipo
-function marcadorFicha({ fecha, estadio, meta, local, visitante, gl, gv, penaltis, golesL = [], golesV = [] }) {
+function marcadorFicha({ fecha, aprox, estadio, meta, local, visitante, gl, gv, penaltis, golesL = [], golesV = [] }) {
   const caja = el('div', { class: 'mf' });
   const cuando = el('div', { class: 'mf-cuando' });
-  cuando.append(el('b', {}, fechaEs(fecha)), el('span', {}, estadio || 'Estadio sin datos'));
+  cuando.append(el('b', {}, `${fechaEs(fecha)}${aprox ? ' (aprox.)' : ''}`), el('span', {}, estadio || 'Estadio sin datos'));
   if (meta) cuando.append(el('span', { class: 'mf-meta' }, meta));
   const equipo = (nombre, goles, lado) => {
     const d = el('div', { class: `mf-eq mf-${lado}` });
@@ -857,7 +859,7 @@ const abrev = (n) => (String(n).replace(/\b(Real|Club|CF|FC|CD|RCD|UD|SD|AS|SSC|
 // ---------- Cara a cara: los enfrentamientos con un rival en el histórico ----------
 const RES_TXT = { V: 'Victoria', E: 'Empate', D: 'Derrota' };
 const pildora = (r, titulo) => el('span', { class: `res res-${r}`, title: titulo }, r);
-const textoPartido = (r) => `${fechaEs(r.fecha)} · ${r.competicion} · ${r.local} ${r.goles_local}–${r.goles_visitante} ${r.visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}`;
+const textoPartido = (r) => `${fechaH(r)} · ${r.competicion} · ${r.local} ${r.goles_local}–${r.goles_visitante} ${r.visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}`;
 const enfrentamientos = (rival, antes) => rows('historico').filter((r) => r.rival === rival && r.fecha < antes).sort((a, b) => b.fecha.localeCompare(a.fecha));
 // barra apilada de victorias, empates y derrotas
 function barraBalance(b, mini = false) {
@@ -878,7 +880,7 @@ function pintarCaraACara(cont, rival, antes, sel, alElegir) {
     const li = el('li', { tabindex: '0', title: 'Ver la ficha del partido' });
     if (r.partido_id && r.partido_id === sel) li.className = 'sel';
     const cuando = el('div', { class: 'h2h-cuando' });
-    cuando.append(el('b', {}, fechaEs(r.fecha)), el('span', {}, `${r.competicion}${r.ronda ? ` · ${r.ronda}` : ''}`));
+    cuando.append(el('b', {}, fechaH(r)), el('span', {}, `${r.competicion}${r.ronda ? ` · ${r.ronda}` : ''}`));
     const marc = el('span', { class: 'h2h-marc' }, `${r.goles_local}–${r.goles_visitante}`);
     if (r.penaltis) marc.append(el('small', {}, `${r.penaltis.replace('-', '–')} pen.`));
     li.append(cuando, conEscudo(r.local, 'span', true), marc, conEscudo(r.visitante), pildora(r.resultado, RES_TXT[r.resultado]));
@@ -1314,7 +1316,7 @@ function pintarRecords(hs) {
     return mejor;
   };
   const marcador = (r) => `${r.local} ${r.goles_local}–${r.goles_visitante} ${r.visitante}`;
-  const partido = (r) => `${fechaEs(r.fecha)} · ${r.competicion}${r.ronda ? ` · ${r.ronda}` : ''}`;
+  const partido = (r) => `${fechaH(r)} · ${r.competicion}${r.ronda ? ` · ${r.ronda}` : ''}`;
   const tramo = (rs) => (rs.length ? `Del ${fechaEs(rs[0].fecha)} al ${fechaEs(rs.at(-1).fecha)}` : '');
   const temps = d3.groups(ps, (r) => r.temporada).map(([t, rs]) => ({ t, gf: d3.sum(rs, (r) => N(r.goles_rm)), ...balance(rs) }));
   const goleadora = d3.greatest(temps, (t) => t.gf), mejorT = d3.greatest(temps.filter((t) => t.pj >= 25 && t !== temps.at(-1)), (t) => t.pct_v);  // temporadas completas
@@ -1483,12 +1485,13 @@ function renderHistorico() {
     const local = el('td', { class: 'loc' }), visitante = el('td', { class: 'vis' });
     local.append(conEscudo(r.local, 'span', true));
     visitante.append(conEscudo(r.visitante));
-    tr.append(el('td', {}, fechaEs(r.fecha)), el('td', {}, r.competicion), local, el('td', { class: 'sep' }, '–'), visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
+    tr.append(el('td', {}, fechaH(r)), el('td', {}, r.competicion), local, el('td', { class: 'sep' }, '–'), visitante, el('td', { class: 'estadio' }, r.estadio || '—'),
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}${conAl.has(r.partido_id) ? ' 👥' : ''}`));
     tr.lastChild.style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     return tr;
   }));
   $('#hist-nota').textContent = ps.length > MAX ? `Se muestran los ${MAX} más recientes de ${ps.length.toLocaleString('es-ES')}: usa el buscador para el resto. 👥 = con alineaciones.` : '👥 = con alineaciones.';
+  if (ps.some((r) => r.fecha_aprox)) $('#hist-nota').textContent += ' (aprox.) = fecha estimada por la ronda: la fuente da el resultado, pero no el día.';
 
   // Ficha del partido elegido
   const p = todos.find((r) => r.partido_id === partidoHist);
@@ -1499,7 +1502,7 @@ function renderHistorico() {
 // Ficha de un partido (resultado, ronda, goleadores y alineaciones): se usa en Histórico y en Títulos
 function pintarFicha(cont, p, tagTitulo = 'h3') {
   const al = rows('historico_alineaciones').filter((r) => r.partido_id === p.partido_id);
-  const titulo = marcadorFicha({ fecha: p.fecha, estadio: p.estadio, meta: `${p.competicion}${p.ronda ? ` · ${p.ronda}` : ''}`, local: p.local, visitante: p.visitante,
+  const titulo = marcadorFicha({ fecha: p.fecha, aprox: p.fecha_aprox, estadio: p.estadio, meta: `${p.competicion}${p.ronda ? ` · ${p.ronda}` : ''}`, local: p.local, visitante: p.visitante,
     gl: p.goles_local, gv: p.goles_visitante, penaltis: p.penaltis, golesL: golesWiki(p.goleadores_local), golesV: golesWiki(p.goleadores_visitante) });
   const faltan = [!p.goleadores_local && !p.goleadores_visitante && N(p.goles_local) + N(p.goles_visitante) ? 'goleadores' : '', al.length ? '' : 'alineaciones'].filter(Boolean);
   const gol = el('p', { class: 'rm-sub ficha-falta' }, faltan.length ? `Sin ${faltan.join(' ni ')} en las fuentes.` : '');
@@ -1744,7 +1747,7 @@ function renderTitulos() {
     const tr = el('tr', { 'data-key': r.partido_id });
     const loc = el('td', { class: 'loc' }), vis = el('td', { class: 'vis' });
     loc.append(conEscudo(r.local, 'span', true)); vis.append(conEscudo(r.visitante));
-    tr.append(el('td', {}, fechaEs(r.fecha)), el('td', {}, r.ronda || '—'), loc, el('td', { class: 'sep' }, '–'), vis,
+    tr.append(el('td', {}, fechaH(r)), el('td', {}, r.ronda || '—'), loc, el('td', { class: 'sep' }, '–'), vis,
       el('td', {}, `${r.goles_local}–${r.goles_visitante}${r.penaltis ? ` (${r.penaltis.replace('-', '–')} pen.)` : ''}`), el('td', { class: 'estadio' }, r.estadio || '—'));
     tr.children[5].style.color = r.resultado === 'V' ? 'var(--color-ok)' : r.resultado === 'D' ? C_BAD : '';
     bd.append(tr);
