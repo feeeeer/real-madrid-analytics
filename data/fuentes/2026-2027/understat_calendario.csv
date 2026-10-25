@@ -93,3 +93,4 @@ index,league,season,game,league_id,season_id,game_id,date,home_team_id,away_team
 92,ESP-La Liga,2627,2026-10-24 Racing Santander-Espanyol,4,2026,30865,2026-10-24 14:15:00,293,141,Racing Santander,Espanyol,ESP,RAS,2,1,2.82622,0.580589,True,True,https://understat.com/match/30865
 93,ESP-La Liga,2627,2026-10-24 Rayo Vallecano-Elche,4,2026,30866,2026-10-24 12:00:00,145,207,Rayo Vallecano,Elche,ELC,RVL,0,3,1.23307,2.40158,True,True,https://understat.com/match/30866
 94,ESP-La Liga,2627,2026-10-24 Valencia-Villarreal,4,2026,30869,2026-10-24 16:30:00,146,154,Valencia,Villarreal,VIL,VAL,1,2,1.1723,1.506,True,True,https://understat.com/match/30869
+95,ESP-La Liga,2627,2026-10-25 Athletic Club-Getafe,4,2026,30861,2026-10-25 13:00:00,147,142,Athletic Club,Getafe,GET,ATH,4,0,0.699958,0.349426,True,True,https://understat.com/match/30861
