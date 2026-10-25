@@ -405,6 +405,15 @@ tabs.forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
 // ---------- Render ----------
 // ---------- Escudos ----------
 let escudosMap = null;
+// el mismo club escrito de otra forma en otra fuente ("Deportivo de A Coruna" / "Deportivo La Coruna", "Deportivo Alaves" / "CD Alaves"):
+// el nombre de la tabla de escudos que comparte todas sus palabras, solo si es el único candidato (nunca el escudo de otro club)
+const otrosNombres = new Map();
+const ALIAS_ESCUDO = { RBL: 'RB Leipzig' };  // abreviaturas de WhoScored
+const otroNombre = (n) => {
+  // nunca el escudo del Madrid ni de sus nombres antiguos ("Madrid FC")
+  if (!otrosNombres.has(n)) otrosNombres.set(n, ALIAS_ESCUDO[n] || nombreEn([...escudosMap.keys()].filter((k) => escudosMap.get(k) !== escudosMap.get(RM)), n, (k) => escudosMap.get(k)));
+  return otrosNombres.get(n);
+};
 // clubes sin escudo conocido (los de principios del siglo XX): sus iniciales en el hueco del escudo ("Hispania FC" -> "H")
 const sinEscudo = (nombre) => {
   const ini = String(nombre || '').split(/\s+/).filter((w) => w && !/^(fc|cf|cd|sc|club|de|del|sport|football|fútbol|foot-ball|sociedad|deportiva|deportivo)$/i.test(w))
@@ -413,7 +422,7 @@ const sinEscudo = (nombre) => {
 };
 function escudo(nombre) {
   if (!escudosMap && dash.data('escudos').status === 'ok') escudosMap = new Map(rows('escudos').map((r) => [r.equipo, r.url]));
-  const url = escudosMap && escudosMap.get(nombre);
+  const url = escudosMap && (escudosMap.get(nombre) || escudosMap.get(otroNombre(nombre)));
   if (!url) return sinEscudo(nombre);
   const img = el('img', { class: 'esc', src: url, alt: '', loading: 'lazy', referrerpolicy: 'no-referrer' });
   img.addEventListener('error', () => img.replaceWith(sinEscudo(nombre)));
@@ -422,7 +431,7 @@ function escudo(nombre) {
 // detras: el escudo a la derecha del nombre (equipo local en "LOCAL – VISITANTE")
 const conEscudo = (nombre, tag = 'span', detras = false) => {
   const s = el(tag, { class: 'con-esc' });
-  if (detras) s.append(nombre, escudo(nombre)); else s.append(escudo(nombre), nombre);
+  if (detras) s.append(nombreEs(nombre), escudo(nombre)); else s.append(escudo(nombre), nombreEs(nombre));
   return s;
 };
 
@@ -537,7 +546,7 @@ function renderPartido() {
   const nombre = (n) => (!hp ? n : n === RM ? RM : hp.rival);
   // cara a cara: los enfrentamientos anteriores con este rival; uno pulsado abre su ficha debajo
   if (p && hp) {
-    $('#h2h-tit').textContent = `Cara a cara con ${hp.rival}`;
+    $('#h2h-tit').textContent = `Cara a cara con ${nombreEs(hp.rival)}`;
     pintarCaraACara($('#h2h'), hp.rival, p.fecha, h2hSel, (r) => {
       h2hSel = h2hSel === r.partido_id ? null : r.partido_id; render();
       if (h2hSel) $('#h2h-ficha').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -869,7 +878,7 @@ function barraBalance(b, mini = false) {
 }
 function pintarCaraACara(cont, rival, antes, sel, alElegir) {
   const ps = enfrentamientos(rival, antes);
-  if (!ps.length) { cont.replaceChildren(el('p', { class: 'rm-sub' }, `Es el primer partido oficial contra ${rival}.`)); return; }
+  if (!ps.length) { cont.replaceChildren(el('p', { class: 'rm-sub' }, `Es el primer partido oficial contra ${nombreEs(rival)}.`)); return; }
   const b = balance(ps), casa = balance(ps.filter((r) => r.condicion === 'Local')), fuera = balance(ps.filter((r) => r.condicion !== 'Local'));
   const cifras = el('div', { class: 'h2h-cifras' });
   for (const [n, l] of [[b.pj, b.pj === 1 ? 'partido' : 'partidos'], [b.v, 'victorias'], [b.e, 'empates'], [b.d, 'derrotas'], [`${b.gf}–${b.gc}`, 'goles']]) {
@@ -895,13 +904,43 @@ function pintarCaraACara(cont, rival, antes, sel, alElegir) {
 let h2hSel = null;
 
 // Nombre en español de los clubes que las fuentes dan en inglés o sin tildes (solo para mostrar: los datos cruzan por el original)
-const NOMBRE_ES = { 'Racing Santander': 'Racing de Santander', 'AEK Athens': 'AEK Atenas', 'Atletico Madrid': 'Atlético de Madrid', 'Athletic Bilbao': 'Athletic Club',
-  'Inter Milan': 'Inter de Milán', 'Bayern Munich': 'Bayern de Múnich', 'Deportivo La Coruna': 'Deportivo de La Coruña', 'Deportivo de A Coruna': 'Deportivo de La Coruña',
-  'Celta Vigo': 'Celta de Vigo', 'Sporting Gijon': 'Sporting de Gijón', 'Espanyol Barcelona': 'RCD Espanyol', 'Deportivo Alaves': 'Deportivo Alavés', 'Alaves': 'Alavés',
-  'Malaga': 'Málaga', 'Cadiz': 'Cádiz', 'Cadiz CF': 'Cádiz CF', 'Leganes': 'Leganés', 'Almeria': 'Almería', 'Napoli': 'SSC Nápoles', 'SSC Napoli': 'SSC Nápoles',
-  'Sporting CP': 'Sporting de Portugal', 'FC Porto': 'FC Oporto', 'Club Brugge': 'Club Brujas', 'Red Star Belgrade': 'Estrella Roja', 'Slavia Prague': 'Slavia de Praga',
-  'Sparta Prague': 'Sparta de Praga', 'Paris Saint-Germain': 'París Saint-Germain', 'Olympiacos Piraeus': 'Olympiacos', 'Ajax Amsterdam': 'Ajax', 'Bodoe/Glimt': 'Bodø/Glimt',
-  'Juventus FC': 'Juventus', 'Benfica Lisbon': 'Benfica', 'Steaua Bucharest': 'Steaua de Bucarest', 'Dinamo Zagreb': 'Dinamo de Zagreb', 'Lokomotiv Moscow': 'Lokomotiv de Moscú' };
+// Nombre en español de los clubes que las fuentes dan en inglés, sin tildes o con otra forma (solo para mostrar: los datos cruzan por
+// el original). Los nombres de época (Athletic de Madrid, Real Gijón, Español, Donostia...) se dejan como eran.
+const NOMBRE_ES = {
+  // España
+  'Racing Santander': 'Racing de Santander', 'Racing': 'Racing de Santander', 'Atletico Madrid': 'Atlético de Madrid', 'Atlético Madrid': 'Atlético de Madrid',
+  'Athletic Madrid': 'Athletic de Madrid', 'Athletic Bilbao': 'Athletic Club', 'Atletico Tetuan': 'Atlético Tetuán',
+  'Deportivo La Coruna': 'Deportivo de La Coruña', 'Deportivo de A Coruna': 'Deportivo de La Coruña', 'Deportivo La Coruña': 'Deportivo de La Coruña',
+  'RC Deportivo': 'Deportivo de La Coruña', 'Celta Vigo': 'Celta de Vigo', 'Celta': 'Celta de Vigo', 'Sporting Gijon': 'Sporting de Gijón',
+  'Sporting Gijón': 'Sporting de Gijón', 'Espanyol Barcelona': 'RCD Espanyol', 'Espanyol': 'RCD Espanyol', 'Deportivo Alaves': 'Deportivo Alavés',
+  'Alaves': 'Deportivo Alavés', 'Alavés': 'Deportivo Alavés', 'CD Alaves': 'Deportivo Alavés', 'Malaga': 'Málaga', 'Cadiz': 'Cádiz', 'Cadiz CF': 'Cádiz CF',
+  'Leganes': 'Leganés', 'Almeria': 'Almería', 'UD Almeria': 'UD Almería', 'AD Almeria': 'AD Almería', 'CD Castellon': 'CD Castellón', 'CD Logrones': 'CD Logroñés',
+  'CP Merida': 'CP Mérida', 'Cordoba CF': 'Córdoba CF', 'Gimnastic': 'Gimnàstic de Tarragona', 'Gimnàstic': 'Gimnàstic de Tarragona',
+  'Gimnastica de Torrelavega': 'Gimnástica de Torrelavega', 'Hercules CF': 'Hércules CF', 'Real Jaen': 'Real Jaén', 'Real Union': 'Real Unión',
+  'Recreativo Huelva': 'Recreativo de Huelva', 'Recreativo': 'Recreativo de Huelva', 'Arenas de Getxo': 'Arenas Club de Getxo',
+  // Europa y resto del mundo
+  'AEK Athens': 'AEK Atenas', 'Inter Milan': 'Inter de Milán', 'Inter': 'Inter de Milán', 'Bayern Munich': 'Bayern de Múnich', 'Napoli': 'SSC Nápoles',
+  'SSC Napoli': 'SSC Nápoles', 'Sporting CP': 'Sporting de Portugal', 'FC Porto': 'FC Oporto', 'Club Brugge': 'Club Brujas', 'Red Star Belgrade': 'Estrella Roja',
+  'Crvena Zvezda': 'Estrella Roja', 'Slavia Prague': 'Slavia de Praga', 'Sparta Prague': 'Sparta de Praga', 'AC Sparta Praha': 'Sparta de Praga',
+  'Dukla Praha': 'Dukla de Praga', 'Paris Saint-Germain': 'París Saint-Germain', 'Olympiacos Piraeus': 'Olympiacos', 'Ajax Amsterdam': 'Ajax',
+  'Bodoe/Glimt': 'Bodø/Glimt', 'Juventus FC': 'Juventus', 'Benfica Lisbon': 'Benfica', 'SL Benfica': 'Benfica', 'Steaua Bucharest': 'Steaua de Bucarest',
+  'Steaua Bucuresti': 'Steaua de Bucarest', 'Dinamo Bucuresti': 'Dinamo de Bucarest', 'Dinamo Zagreb': 'Dinamo de Zagreb', 'Dinamo Kiev': 'Dinamo de Kiev',
+  'Dinamo Moscow': 'Dinamo de Moscú', 'Lokomotiv Moscow': 'Lokomotiv de Moscú', 'Lokomotiv Moskva': 'Lokomotiv de Moscú', 'CSKA Moskva': 'CSKA de Moscú',
+  'Spartak Moskva': 'Spartak de Moscú', 'Torpedo Moscow': 'Torpedo de Moscú', 'Zenit St. Petersburg': 'Zenit de San Petersburgo',
+  'Olympique Lyon': 'Olympique de Lyon', 'Olympique Marseille': 'Olympique de Marsella', 'OGC Nice': 'OGC Niza', 'AS Monaco': 'AS Mónaco',
+  'Stade Reims': 'Stade de Reims', 'LOSC Lille': 'Lille', 'Partizan Belgrade': 'Partizán de Belgrado', 'Standard Liege': 'Standard de Lieja',
+  'RSC Anderlecht': 'Anderlecht', 'Royal Antwerp FC': 'Royal Amberes', 'Servette Geneve': 'Servette de Ginebra', 'FC Basel 1893': 'FC Basilea',
+  'FC Zurich': 'FC Zúrich', 'Grasshoppers Zurich': 'Grasshoppers de Zúrich', 'BSC Young Boys': 'Young Boys', 'Rapid Wien': 'Rapid de Viena',
+  'FK Austria Wien': 'Austria de Viena', 'Hamburger SV': 'Hamburgo SV', 'TSV 1860 Munchen': '1860 Múnich', 'Borussia Monchengladbach': 'Borussia Mönchengladbach',
+  '1. FC Köln': '1. FC Colonia', 'FC Schalke 04': 'Schalke 04', 'FC Copenhagen': 'FC Copenhague', 'Wisla Krakow': 'Wisla de Cracovia',
+  'Legia Warszawa': 'Legia de Varsovia', 'Gornik Zabrze': 'Górnik Zabrze', 'Fenerbahce': 'Fenerbahçe', 'Besiktas': 'Beşiktaş', 'Ferencvaros': 'Ferencváros',
+  'Budapest Honved SE': 'Honvéd de Budapest', 'Budapesti Vasas': 'Vasas de Budapest', 'Levski Sofia': 'Levski de Sofía', 'Arges Pitesti': 'Argeș Pitești',
+  'Slovan Bratislava': 'Slovan de Bratislava', 'ŠK Slovan Bratislava': 'Slovan de Bratislava', 'FC Viktoria Plzen': 'Viktoria Plzeň',
+  'FC Shakhtar Donetsk': 'Shakhtar Donetsk', 'FC Chornomorets Odessa': 'Chornomorets de Odesa', 'Spora Luxemburg': 'Spora Luxemburgo',
+  'Os Belenenses': 'Belenenses', 'SC Braga': 'Sporting de Braga', 'Atalanta BC': 'Atalanta', 'ACF Fiorentina': 'Fiorentina', 'AJ Auxerre': 'Auxerre',
+  'Raja Casablanca': 'Raja de Casablanca', 'CR Vasco da Gama': 'Vasco da Gama', 'Kashima Antlers FC': 'Kashima Antlers', 'Club Olimpia': 'Olimpia',
+  'CF Pachuca': 'Pachuca', 'CF América': 'Club América', 'CD Cruz Azul': 'Cruz Azul', 'Al Ahly FC': 'Al Ahly', 'Al-Ain FC': 'Al-Ain', 'Al-Jazira Club': 'Al-Jazira',
+};
 const nombreEs = (n) => NOMBRE_ES[n] || n;
 const ESTADIO_ES = { 'El Sardineros': 'El Sardinero', 'Mestalla Stadium': 'Mestalla' };
 
@@ -944,7 +983,7 @@ function renderProximo() {
   // el rival en esa competición: sus 5 últimos resultados y su puesto (Liga, o la fase liga de la Copa de Europa)
   const cs = rows('competicion').filter((r) => r.competicion === ({ LaLiga: 'La Liga' }[p.competicion] || p.competicion));
   const fase = cs.filter((r) => r.fase === d3.mode(cs, (r) => r.fase));
-  const riv = nombreEn([...new Set(fase.flatMap((r) => [r.local, r.visitante]))], rival);
+  const riv = nombreEn([...new Set(fase.flatMap((r) => [r.local, r.visitante]))].filter((n) => n !== RM), rival);
   if (riv) {
     const suyos = fase.filter((r) => r.local === riv || r.visitante === riv).sort((a, b) => a.fecha.localeCompare(b.fecha)).slice(-5);
     const res = (r) => { const [a, c] = r.local === riv ? [N(r.goles_local), N(r.goles_visitante)] : [N(r.goles_visitante), N(r.goles_local)]; return a > c ? 'V' : a === c ? 'E' : 'D'; };
@@ -1146,7 +1185,7 @@ function renderTemporada() {
     const li = el('li', { tabindex: '0', title: 'Abrir el análisis del partido' });
     const res = el('span', { class: 'res' }, r); res.style.background = RES_COL[r];
     const quien = el('div', { class: 'quien' });
-    quien.append(escudo(hp ? hp.rival : p.rival), el('span', {}, `${p.local === RM ? 'vs' : 'en'} ${hp ? hp.rival : p.rival}`));
+    quien.append(escudo(hp ? hp.rival : p.rival), el('span', {}, `${p.local === RM ? 'vs' : 'en'} ${nombreEs(hp ? hp.rival : p.rival)}`));
     const izq = el('div'); izq.append(quien, el('span', { class: 'det' }, `${fechaEs(p.fecha)} · ${p.competicion}${m && m.xg !== '' ? ` · xG ${dec(m.xg)}–${dec(m.xg_contra)}` : ''}`));
     li.append(res, izq, el('span', { class: 'marc' }, `${f}–${c}`));
     const abrir = () => { dash.setParams({ partido: Number(p.match_id), jugador: null }); showTab('partido'); };
@@ -1462,8 +1501,9 @@ function renderHistorico() {
   }
 
   // Rivales
-  const q = $('#q-rival').value.trim().toLowerCase();
-  const rv = d3.groups(hs, (r) => r.rival).map(([rival, rs]) => ({ rival, ...balance(rs) })).filter((r) => !q || r.rival.toLowerCase().includes(q));
+  const q = sinTilde($('#q-rival').value.trim());
+  const rv = d3.groups(hs, (r) => r.rival).map(([rival, rs]) => ({ rival, ...balance(rs) }))
+    .filter((r) => !q || sinTilde(`${r.rival} ${nombreEs(r.rival)}`).includes(q));
   rv.sort((a, b) => (sortR.k === 'rival' ? a.rival.localeCompare(b.rival) : a[sortR.k] - b[sortR.k]) * (sortR.asc ? 1 : -1));
   document.querySelectorAll('#tabla-rivales th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === sortR.k ? (sortR.asc ? 'ascending' : 'descending') : 'none'));
   fillTable($('#tabla-rivales'), rv, ['rival', 'pj', 'v', 'e', 'd', 'gf', 'gc', 'pct_v'], (r) => r.rival);
@@ -1473,9 +1513,9 @@ function renderHistorico() {
   });
 
   // Todos los partidos (los más recientes primero)
-  const qp = $('#q-partido').value.trim().toLowerCase();
+  const qp = sinTilde($('#q-partido').value.trim());
   const MAX = 400;
-  const ps = hs.filter((r) => !qp || `${r.fecha} ${r.temporada} ${r.local} ${r.visitante} ${r.competicion} ${r.estadio}`.toLowerCase().includes(qp))
+  const ps = hs.filter((r) => !qp || sinTilde(`${r.fecha} ${r.temporada} ${r.local} ${r.visitante} ${nombreEs(r.local)} ${nombreEs(r.visitante)} ${r.competicion} ${r.estadio}`).includes(qp))
     .sort((a, b) => b.fecha.localeCompare(a.fecha));
   const conAl = new Set(rows('historico_alineaciones').map((r) => r.partido_id));
   const tb = $('#tabla-hist tbody');
@@ -1531,12 +1571,26 @@ function clasificar(partidos) {
     }
   return Object.values(t).map((x) => ({ ...x, pts: 3 * x.g + x.e, dg: x.gf - x.gc })).sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
 }
-// el mismo club con otro nombre en otra fuente ("FC Barcelona" / "Barcelona"): el que comparte todas las palabras y menos le sobran
-const fichasNombre = (n) => new Set(sinTilde(n).replace(/[^a-z ]/g, ' ').split(/\s+/).filter((w) => w && !/^(fc|cf|cd|ud|sd|rcd|rc|ca|club|de|sad)$/.test(w)));
-function nombreEn(lista, n) {
-  const a = fichasNombre(n);
-  const cands = lista.filter((b) => { const f = fichasNombre(b); return a.size && f.size && ([...a].every((w) => f.has(w)) || [...f].every((w) => a.has(w))); });
-  return d3.least(cands, (b) => Math.abs(fichasNombre(b).size - a.size));
+// el mismo club con otro nombre en otra fuente: se comparan sus palabras sin tildes, siglas ni artículos ("Deportivo de A Coruna" =
+// "Deportivo La Coruna"), también con su nombre en español de NOMBRE_ES ("Athletic Bilbao" = "Athletic Club"). Si no hay ninguno igual,
+// vale uno con una sola palabra genérica de más o de menos ("Deportivo Alaves" = "Alavés"). Real, Racing, Athletic... sí cuentan:
+// distinguen clubes (Real Burgos / Burgos CF, Racing de Madrid / Athletic de Madrid)
+const SIGLAS = /^(fc|cf|cd|ud|sd|rcd|rc|ca|club|de|del|la|el|a|sad|sc|fk|ac|afc|cp|ce|ue|sk|bk)$/;
+const GENERICAS = new Set(['deportivo', 'sport', 'futbol', 'football', 'foot', 'ball', 'balompie']);
+const fichasNombre = (n) => new Set(sinTilde(n).replace(/[^a-z ]/g, ' ').split(/\s+/).filter((w) => w && !SIGLAS.test(w)));
+const formasNombre = (n) => [fichasNombre(n), fichasNombre(nombreEs(n))].filter((f) => f.size);
+function parecido(a, b) {  // 0: mismas palabras; 1: una genérica de diferencia; null: otro club
+  const dif = [...a].filter((w) => !b.has(w)).concat([...b].filter((w) => !a.has(w)));
+  return !dif.length ? 0 : dif.length === 1 && GENERICAS.has(dif[0]) ? 1 : null;
+}
+// el de la lista que es el mismo club; con "clave", varios nombres del mismo club valen. En la duda, ninguno: nunca el de otro club
+function nombreEn(lista, n, clave = (b) => b) {
+  const fa = formasNombre(n);
+  for (const nivel of [0, 1]) {
+    const cands = lista.filter((b) => formasNombre(b).some((fb) => fa.some((x) => parecido(x, fb) === nivel)));
+    if (cands.length) return new Set(cands.map(clave)).size === 1 ? cands[0] : undefined;
+  }
+  return undefined;
 }
 function tablaClasif(partidos, comp) {
   const tabla = clasificar(partidos);
@@ -2049,8 +2103,8 @@ $('#exportar').addEventListener('click', () => window.print());
     const par = rows('partidos').filter((p) => sinTildes(`${p.rival} ${p.fecha} ${fechaEs(p.fecha)} ${p.competicion}`).includes(q)).slice(-5).reverse()
       .map((p) => ({ tipo: 'Partido', txt: `${fechaEs(p.fecha)} · ${p.local} ${p.goles_local}–${p.goles_visitante} ${p.visitante}`,
         ir: () => { dash.setParams({ partido: Number(p.match_id), jugador: null }); showTab('partido'); } }));
-    const riv = [...new Set(rows('historico').map((r) => r.rival))].filter((n) => sinTildes(n).includes(q)).slice(0, 4)
-      .map((n) => ({ tipo: 'Rival (histórico)', txt: n, ir: () => { $('#q-rival').value = n; showTab('historico'); $('#rivales').scrollIntoView({ behavior: 'smooth' }); } }));
+    const riv = [...new Set(rows('historico').map((r) => r.rival))].filter((n) => sinTildes(`${n} ${nombreEs(n)}`).includes(q)).slice(0, 4)
+      .map((n) => ({ tipo: 'Rival (histórico)', txt: nombreEs(n), ir: () => { $('#q-rival').value = n; showTab('historico'); $('#rivales').scrollIntoView({ behavior: 'smooth' }); } }));
     res = [...jug, ...par, ...riv];
     lista.replaceChildren(...(res.length ? res.map((r, i) => {
       const li = el('li', { role: 'option', id: `bus-${i}` });

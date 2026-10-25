@@ -109,7 +109,8 @@ def temporada(fecha):
 
 def words(s):
     s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
-    return [w for w in re.sub(r"[^a-z ]", " ", s).split() if w not in ("fc", "cf", "club", "de", "sad", "cd", "ud", "sd", "rc", "ca", "rcd")]
+    # sin siglas ni artículos: "Deportivo de A Coruna" y "Deportivo La Coruna" son el mismo club
+    return [w for w in re.sub(r"[^a-z ]", " ", s).split() if w not in ("fc", "cf", "club", "de", "sad", "cd", "ud", "sd", "rc", "ca", "rcd", "la", "el", "a", "del")]
 
 
 def unificar(nombres, canon):
@@ -148,7 +149,13 @@ ALIAS = {"AFC Ajax": "Ajax Amsterdam", "APOEL Nikosia": "APOEL Nicosia", "Associ
 # partidos que Wikipedia da dos veces con fechas distintas: el de la fecha equivocada (la buena, en la página de la edición)
 ERRATAS = {"wk0453276107": "1923: la vuelta con el Athletic fue el 8 de abril, no el 4",
            "wk8015bc5409": "1951: la vuelta con el Atlético fue el 10 de mayo; el 20 se jugó la semifinal con la Real Sociedad",
-           "wk3d97e7ee9b": "1991: la vuelta con el Atlético fue el 27 de febrero, no el 20"}
+           "wk3d97e7ee9b": "1991: la vuelta con el Atlético fue el 27 de febrero, no el 20",
+           # salieron al unificar "Sestao SC" y "Sestao Sport Club": cada copia tenía un nombre y la fecha un día cambiada
+           "wk41c8bb472c": "1987: la ida con el Sestao fue el 11 de noviembre (crónica de Mundo Deportivo del 12), no el 10",
+           "wkfea0ae74c6": "1987: la vuelta con el Sestao fue el 25 de noviembre (crónica del 26), no el 24"}
+# el mismo club con dos nombres en el histórico (según la fuente); los que se parecen pero son clubes distintos
+# (Burgos CF / Real Burgos, AD / UD Almería, Patria FC de Madrid / Patria Aragón) se quedan separados
+MISMO_CLUB = {"Sparta Praha": "AC Sparta Praha", "Sestao SC": "Sestao Sport Club"}
 # y partidos con el año mal puesto (es.wikipedia pone el año de la edición a los de diciembre): la fecha buena
 FECHA_BUENA = {"we4b85603676": "1928-12-09", "we6e47995b5e": "1928-12-19"}  # Oviedo, dieciseisavos de la Copa de 1928-29 (en.wikipedia)
 # nombres de las clasificaciones y de las Ligas antiguas que no se emparejan solos con su escudo, o se emparejarían mal
@@ -667,6 +674,8 @@ def main():
 
     # el mismo partido con dos fechas en Wikipedia (comprobado en la página de cada edición): se quita el de la fecha mala
     h = h[~h["partido_id"].isin(ERRATAS)]
+    for c in ("local", "visitante", "rival"):  # el mismo club con dos nombres según la fuente: uno solo en el cara a cara
+        h[c] = h[c].replace(MISMO_CLUB)
     for pid, f in FECHA_BUENA.items():
         h.loc[h["partido_id"] == pid, ["fecha", "temporada"]] = f, temporada(f)
     hf = pd.to_datetime(h["fecha"])
