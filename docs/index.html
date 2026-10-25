@@ -69,7 +69,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 .rm-score b { margin: 0 2px; }
 #tabla-hist td:nth-child(2), #tabla-hist th:nth-child(2), #tabla-hist td.vis, #tabla-hist td.estadio, #tabla-hist th.estadio { text-align: left; }
 #tabla-hist th.partido, #tabla-hist td.sep, #tabla-titulo th.partido, #tabla-titulo td.sep { text-align: center; }
-#tabla-titulo td.loc { text-align: right; } #tabla-titulo td.vis, #tabla-titulo td:nth-child(2), #tabla-titulo td.estadio { text-align: left; }
+#tabla-titulo td.loc { text-align: right; } #tabla-titulo th:last-child { text-align: left; } #tabla-titulo td.vis, #tabla-titulo td:nth-child(2), #tabla-titulo td.estadio { text-align: left; }
 #tit-tabla td:nth-child(2), #tit-tabla th:nth-child(2) { text-align: left; }
 #tabla-titulo td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
 #tabla-hist td.sep { padding-left: 0; padding-right: 0; color: var(--color-fg-muted); }
@@ -154,7 +154,8 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 /* jornada y clasificación (partidos sin xG) */
 .jor-res { list-style: none; margin: 0 0 var(--cds-gap-sm); padding: 0; font-size: var(--cds-font-size-caption); }
 .jor-res li { display: grid; grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr); gap: 8px; padding: 3px 0; border-bottom: 1px solid var(--color-border-line); }
-.jor-res li .l { text-align: right; }
+.jor-res li .l { text-align: right; justify-content: flex-end; }
+.jor-res .con-esc { min-width: 0; } .jor-res .con-esc .esc { width: 18px; height: 18px; }
 .jor-res li b { text-align: center; font-variant-numeric: tabular-nums; }
 .jor-res li.rm-fila { font-weight: var(--cds-font-weight-medium); color: var(--serie-rm); }
 .tabla-clasif tbody tr { cursor: default; }
@@ -358,6 +359,7 @@ details.nota p + p { margin-top: 6px; }
 .rm th button { font: inherit; color: var(--color-fg-muted); background: none; border: 0; padding: 0; cursor: pointer; }
 .rm tbody tr { cursor: pointer; }
 .rm tbody tr.sel td { background: var(--color-bg); font-weight: var(--cds-font-weight-medium); }
+#tabla-rendimiento th:last-child { text-align: left; }
 #tabla-rendimiento td:last-child { text-align: left; max-width: 22rem; overflow: hidden; text-overflow: ellipsis; cursor: help; }
 .rm-search { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); margin-bottom: var(--cds-gap-sm); width: min(100%, 16rem); }
 .rm-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
@@ -417,6 +419,7 @@ html { scroll-padding-top: 5.5rem; }
 .h2h-barra > span { display: grid; place-items: center; min-width: 1.6rem; color: #fff; font-size: var(--cds-font-size-caption); font-weight: 600; }
 .h2h-barra.mini { height: 0.5rem; width: 7rem; margin: 0; border-radius: 3px; gap: 1px; }
 .h2h-barra.mini > span { min-width: 0; }
+#tabla-rivales .h2h-barra.mini { margin-left: auto; }
 /* ---------- Próximo partido ---------- */
 .rm-card.proximo { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr); gap: var(--cds-gap-md) var(--cds-gap-lg); align-items: center;
   background: linear-gradient(120deg, #170f2b 0%, #2c1b57 60%, #3b2675 100%); border: 0; color: #f2f4f8;
@@ -463,6 +466,51 @@ html { scroll-padding-top: 5.5rem; }
 .vit-punto.con { opacity: 1; cursor: pointer; }
 .vit-punto.sel { stroke: var(--serie-rm); stroke-width: 3; }
 .tit-oro { fill: var(--oro); stroke: var(--color-panel); stroke-width: 1.5; pointer-events: none; }
+/* ---------- Esta temporada frente a las anteriores ---------- */
+.tp-linea { fill: none; stroke: var(--cds-chart-muted); stroke-width: 1; opacity: 0.3; }
+.tp-linea.camp { stroke: var(--oro); opacity: 0.4; }
+.tp-linea.hover { stroke: var(--color-fg); stroke-width: 2; opacity: 1; }
+.tp-media { fill: none; stroke: var(--oro-texto); stroke-width: 2; stroke-dasharray: 6 4; }
+.tp-actual { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.tp-etq { font-family: var(--font-num); font-size: 15px; font-weight: 600; paint-order: stroke; stroke: var(--color-panel); stroke-width: 4px; stroke-linejoin: round; }
+.eje-tit { fill: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.rm-legend i.discont { background: repeating-linear-gradient(90deg, var(--oro-texto) 0 5px, transparent 5px 8px); }
+/* ---------- Títulos: récords, reconocimientos y datos ---------- */
+.tit-record { display: inline-block; margin-left: 8px; padding: 0 7px; border-radius: 999px; font-style: normal; font-size: 0.68rem; font-weight: 600;
+  color: var(--oro-texto); border: 1px solid var(--oro); vertical-align: 1px; white-space: nowrap; }
+.recon { list-style: none; margin: var(--cds-gap-sm) 0 0; padding: 0; }
+.recon li { display: flex; justify-content: space-between; align-items: center; gap: var(--cds-gap-md); padding: 8px 0; border-bottom: 1px solid var(--color-border-line); font-size: var(--cds-font-size-body); }
+.recon li:last-child { border-bottom: 0; }
+.recon .tit-anios { justify-content: flex-end; flex: none; max-width: 50%; }
+.recon .tit-anios button:disabled { opacity: 1; cursor: default; }
+.curios { margin: var(--cds-gap-sm) 0 0; padding-left: 1.1rem; line-height: 1.6; }
+.curios li + li { margin-top: 6px; }
+.curios li::marker { color: var(--oro); }
+/* clubes sin escudo: sus iniciales */
+.esc-ini { display: inline-grid; place-items: center; font-size: 9px; font-weight: 700; letter-spacing: -0.02em; color: #4a3d6b; background: #ece8f5; }
+.mc .esc-ini, .px-eq .esc-ini, .rm-score .esc-ini { font-size: 14px; }
+/* ---------- Récords, entrenadores, goleadores y estadios (Histórico) ---------- */
+.rec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--cds-gap-md); margin-top: var(--cds-gap-sm); }
+.rec { border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md); border-top: 3px solid var(--oro); }
+.rec .rm-sub { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+.rec .n { font-family: var(--font-num); font-size: 2rem; font-weight: 600; line-height: 1.1; margin: 2px 0; }
+.rec-linea { font-size: var(--cds-font-size-caption); margin: 0; }
+.rec-det { font-size: 0.75rem; color: var(--color-fg-muted); margin: 2px 0 0; }
+.rec.con-partido { cursor: pointer; transition: transform 160ms var(--ease-out); }
+.rec.con-partido:active { transform: scale(0.98); }
+@media (hover: hover) and (pointer: fine) { .rec.con-partido:hover { border-color: var(--serie-rm); } }
+.rec:focus-visible { outline: 2px solid var(--serie-rm); outline-offset: 2px; }
+#tabla-entr td:nth-child(2), #tabla-entr th:nth-child(2) { text-align: left; white-space: normal; min-width: 7rem; color: var(--color-fg-muted); }
+#tabla-entr td:last-child[title] { text-decoration: underline dotted; cursor: help; }
+#tabla-gol td:nth-child(2), #tabla-gol th:nth-child(2) { text-align: left; }
+#tabla-gol td:first-child { color: var(--color-fg-muted); }
+#tabla-entr tbody tr, #tabla-gol tbody tr { cursor: default; }
+#historico #entrenadores, #historico #goleadores { grid-column: 1 / -1; }
+.epoca { fill: var(--color-fg); opacity: 0.03; } .epoca.par { opacity: 0.07; }
+.epoca-n { fill: var(--color-fg-muted); font-size: 10px; }
+.mapa { min-height: 0; }
+.mapa .pais { fill: var(--color-bg); stroke: var(--color-border-line); stroke-width: 0.6; }
+.mapa .est { stroke: var(--color-panel); stroke-width: 1; fill-opacity: 0.85; }
 /* el veredicto, como etiqueta al lado del nombre */
 .insignia { display: inline-block; margin-left: 10px; padding: 1px 10px; border: 1px solid currentColor; border-radius: 999px; font-size: var(--cds-font-size-caption); font-weight: 600; vertical-align: 2px; cursor: help; }
 /* el mapa de calor no necesita todo el ancho */
@@ -505,7 +553,7 @@ html { scroll-padding-top: 5.5rem; }
     </div>
     <div class="contenido">
       <section class="rm-page" id="resumen">
-    <div class="rm-card proximo" id="proximo" data-source="proximos historico" hidden></div>
+    <div class="rm-card proximo" id="proximo" data-source="proximos historico competicion" hidden></div>
     <div class="rm-kpis" id="t-kpis" data-source="partidos metricas_equipo"></div>
     <div class="rm-grid rm-grid-2-1">
       <div class="rm-card" id="xg-jornadas">
@@ -517,6 +565,12 @@ html { scroll-padding-top: 5.5rem; }
         <h2>Últimos partidos</h2>
         <ol class="lista-partidos" id="t-ultimos" data-source="partidos metricas_equipo"></ol>
       </div>
+    </div>
+    <div class="rm-card" id="temporadas">
+      <h2>Esta temporada frente a las anteriores</h2>
+      <p class="rm-sub" id="temporadas-txt"></p>
+      <div class="rm-legend"><span><i style="background:var(--serie-rm)"></i>Esta temporada</span><span><i class="discont"></i>Media de las Ligas ganadas</span><span><i style="background:var(--oro)"></i>Temporadas campeonas</span><span><i style="background:var(--cds-chart-muted)"></i>Resto</span><span>· Liga, con la victoria a 3 puntos en todas</span></div>
+      <div class="rm-chart" id="temporadas-svg" data-source="historico titulos"></div>
     </div>
     <div class="rm-grid" id="t-clasif" data-source="competicion"></div>
     <div class="rm-grid">
@@ -707,6 +761,30 @@ html { scroll-padding-top: 5.5rem; }
       <p class="rm-sub" id="hist-rango"></p>
       <div class="rm-chart" id="histline"></div>
     </div>
+    <div class="rm-card" id="records">
+      <h2>Récords del club</h2>
+      <p class="rm-sub">En la competición elegida arriba. Pulsa un partido para ver su ficha.</p>
+      <div class="rec-grid" id="rec-grid" data-source="historico"></div>
+    </div>
+    <div class="rm-card" id="estadios">
+      <div class="card-cab"><h2>Dónde ha jugado el Madrid</h2>
+        <span class="rm-seg" id="est-vista"><button data-v="es">España</button><button data-v="mundo">Todo</button></span></div>
+      <p class="rm-sub" id="est-nota"></p>
+      <div class="rm-chart mapa" id="mapa-est" data-source="historico estadios"></div>
+      <div class="rm-legend"><span>Tamaño: partidos jugados</span><span><i class="dot" style="background:#2e9e5b"></i>Gana 8 de cada 10 o más</span><span><i class="dot" style="background:#9aa1ad"></i>Algo más de la mitad</span><span><i class="dot" style="background:#d64545"></i>Un tercio o menos</span></div>
+    </div>
+    <div class="rm-grid">
+      <div class="rm-card" id="entrenadores">
+        <h2>Entrenadores</h2>
+        <p class="rm-sub">Balance en la competición elegida arriba. Los títulos son los de toda su carrera en el club; pasa el ratón para ver cuáles.</p>
+        <div class="rm-tablewrap"><table id="tabla-entr" data-source="entrenadores"><thead><tr><th>Entrenador</th><th>Etapas</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>% V</th><th>Títulos</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="rm-card" id="goleadores">
+        <h2>Máximos goleadores</h2>
+        <p class="rm-sub" id="gol-nota"></p>
+        <div class="rm-tablewrap"><table id="tabla-gol" data-source="historico"><thead><tr><th>#</th><th>Jugador</th><th>Goles</th><th>Partidos marcando</th><th>Años</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
     <div class="rm-grid">
       <div class="rm-card" id="rivales">
         <h2>Cara a cara contra cada rival</h2>
@@ -752,12 +830,32 @@ html { scroll-padding-top: 5.5rem; }
       <p class="rm-sub" id="tit-resumen"></p>
       <div class="rm-tablewrap" id="tit-tabla"></div>
     </div>
-    <details class="nota"><summary>Fuentes</summary><p>Fuente: Wikipedia (palmarés del Real Madrid, temporadas del club y de la Liga). «Títulos oficiales» cuenta los nacionales e internacionales; los campeonatos regionales y los torneos no oficiales (Pequeña Copa del Mundo, Copa Ibérica) aparecen aparte y no tienen partidos en la base.</p></details>
+    <div class="rm-grid">
+      <div class="rm-card" id="reconocimientos">
+        <h2>Reconocimientos internacionales</h2>
+        <ul class="recon">
+          <li><span>Club del Siglo XX de la FIFA</span><span class="tit-anios"><button type="button" disabled>2000</button></span></li>
+          <li><span>Mejor club del siglo XX de la revista Kicker</span><span class="tit-anios"><button type="button" disabled>1998</button></span></li>
+          <li><span>Club europeo del siglo XX de la IFFHS</span><span class="tit-anios"><button type="button" disabled>2009</button></span></li>
+          <li><span>Club del siglo XXI de los Globe Soccer Awards</span><span class="tit-anios"><button type="button" disabled>2020</button></span></li>
+          <li><span>Orden del Mérito de la FIFA</span><span class="tit-anios"><button type="button" disabled>2004</button></span></li>
+          <li><span>Primer Club Legendario del Mundo</span><span class="tit-anios"><button type="button" disabled>2014</button></span></li>
+          <li><span>Club del año de la IFFHS <em class="tit-record">Récord compartido</em></span><span class="tit-anios"><button type="button" disabled>2000</button><button type="button" disabled>2002</button><button type="button" disabled>2014</button><button type="button" disabled>2017</button><button type="button" disabled>2024</button></span></li>
+          <li><span>Premio Laureus al mejor equipo del año</span><span class="tit-anios"><button type="button" disabled>2025</button></span></li>
+        </ul>
+      </div>
+      <div class="rm-card" id="curiosidades">
+        <h2>Datos del palmarés</h2>
+        <ul class="curios" id="tit-datos"></ul>
+      </div>
+    </div>
+    <details class="nota"><summary>Fuentes</summary><p>Fuente: Wikipedia (palmarés del Real Madrid, temporadas del club y de la Liga; récords y reconocimientos, consultados en octubre de 2026). «Títulos oficiales» cuenta los nacionales e internacionales; los campeonatos regionales y los torneos no oficiales (Pequeña Copa del Mundo, Copa Ibérica) aparecen aparte y no tienen partidos en la base.</p></details>
       </section>
     </div>
   </main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script src="dash.js"></script>
 <script src="app.js"></script>
 </body>

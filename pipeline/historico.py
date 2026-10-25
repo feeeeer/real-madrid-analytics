@@ -143,6 +143,12 @@ ALIAS = {"AFC Ajax": "Ajax Amsterdam", "APOEL Nikosia": "APOEL Nicosia", "Associ
          "Torino F.C.": "Torino", "Málaga CF": "Málaga", "Real Madrid Castilla Club de Fútbol": "Real Madrid Castilla",
          "Real Madrid Castilla": "Real Madrid Castilla", "Agrupación Deportiva Almería": "AD Almeria", "Club Deportivo Badajoz": "CD Badajoz",
          "Bizcaya (football team)": "Club Bizcaya", "Athletic Madrid": "Atletico Madrid"}
+# nombres de las clasificaciones y de las Ligas antiguas que no se emparejan solos con su escudo, o se emparejarían mal
+# ("Madrid FC" es el Madrid de 1920-1931, no el Atlético; "Donostia", la Real Sociedad de 1931-1939)
+NOMBRE_CLUB = {"Madrid FC": RM, "Athletic Madrid": "Atletico Madrid", "Atlético Aviación": "Atletico Madrid", "Atlético Bilbao": "Athletic Bilbao",
+               "Donostia": "Real Sociedad", "Español": "Espanyol Barcelona", "Gimnástico": "Gimnastic", "Lérida": "UE Lleida",
+               "RC Deportivo": "Deportivo La Coruna", "Racing": "Racing Santander", "Real Santander": "Racing Santander",
+               "Real Gijón": "Sporting Gijon", "Unión Club": "Real Union"}
 
 
 # ---------- Wikipedia (data/historico/wikipedia/wikipedia_rm.json, extraído a mano de las páginas de temporada del Madrid,
@@ -636,6 +642,17 @@ def main():
                 escudos.setdefault(a, escudos[b])
     # clubes antiguos sin id de Transfermarkt en nuestras fuentes: tabla a mano (ids de Transfermarkt sacados de Wikidata, o el escudo de Wikipedia)
     escudos.update(dict(pd.read_csv(BASE / "escudos_manual.csv").values))
+    # los nombres de las clasificaciones (ESPN, Understat), las Ligas antiguas (Wikipedia) y los próximos partidos, con el escudo de su club
+    otros = set(ligas["equipo"].dropna())
+    for f in ("competicion.csv", "proximos.csv"):
+        if (WEB / f).exists():
+            d = pd.read_csv(WEB / f)
+            otros |= set(d["local"].dropna()) | set(d["visitante"].dropna())
+    auto = unificar(otros - set(escudos), [n for n in escudos if n != RM])
+    for a in otros - set(escudos):
+        b = NOMBRE_CLUB.get(a, auto.get(a))
+        if b in escudos and (a in NOMBRE_CLUB or set(words(a)) <= set(words(b))):
+            escudos[a] = escudos[b]
     print("Sin escudo:", sorted((set(h["local"]) | set(h["visitante"])) - set(escudos)))
 
     # autocomprobaciones
@@ -688,6 +705,12 @@ def main():
     print(h.groupby("competicion").agg(partidos=("fecha", "size"), desde=("fecha", "min"), hasta=("fecha", "max")))
     print(f"{len(h)} partidos; alineaciones de {al['partido_id'].nunique()} partidos; temporada actual (ESPN): {len(actual)}")
     print("Rivales distintos:", h["rival"].nunique())
+    # entrenadores de cada etapa (Wikipedia) y coordenadas de los estadios (Wikidata): si fallan, se quedan los ficheros de la última vez
+    for modulo in ("entrenadores", "estadios"):
+        try:
+            __import__(modulo).main(WEB)
+        except Exception as e:
+            print(f"{modulo}: sin actualizar ({e})")
 
 
 if __name__ == "__main__":

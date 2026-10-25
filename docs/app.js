@@ -403,12 +403,18 @@ tabs.forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
 // ---------- Render ----------
 // ---------- Escudos ----------
 let escudosMap = null;
+// clubes sin escudo conocido (los de principios del siglo XX): sus iniciales en el hueco del escudo ("Hispania FC" -> "H")
+const sinEscudo = (nombre) => {
+  const ini = String(nombre || '').split(/\s+/).filter((w) => w && !/^(fc|cf|cd|sc|club|de|del|sport|football|fútbol|foot-ball|sociedad|deportiva|deportivo)$/i.test(w))
+    .slice(0, 2).map((w) => w[0].toUpperCase()).join('');
+  return el('span', { class: `esc ${ini ? 'esc-ini' : 'esc-vacio'}`, 'aria-hidden': 'true' }, ini);
+};
 function escudo(nombre) {
   if (!escudosMap && dash.data('escudos').status === 'ok') escudosMap = new Map(rows('escudos').map((r) => [r.equipo, r.url]));
   const url = escudosMap && escudosMap.get(nombre);
-  if (!url) return el('span', { class: 'esc esc-vacio', 'aria-hidden': 'true' });
+  if (!url) return sinEscudo(nombre);
   const img = el('img', { class: 'esc', src: url, alt: '', loading: 'lazy', referrerpolicy: 'no-referrer' });
-  img.addEventListener('error', () => img.replaceWith(el('span', { class: 'esc esc-vacio', 'aria-hidden': 'true' })));
+  img.addEventListener('error', () => img.replaceWith(sinEscudo(nombre)));
   return img;
 }
 // detras: el escudo a la derecha del nombre (equipo local en "LOCAL – VISITANTE")
@@ -933,6 +939,17 @@ function renderProximo() {
     pie.append(ir);
     forma.append(fila(`Últimos ${Math.min(5, h2h.length)} contra ${nombreEs(rival)}`, h2h.slice(0, 5).reverse().map((r) => pildora(r.resultado, textoPartido(r))), pie));
   }
+  // el rival en esa competición: sus 5 últimos resultados y su puesto (Liga, o la fase liga de la Copa de Europa)
+  const cs = rows('competicion').filter((r) => r.competicion === ({ LaLiga: 'La Liga' }[p.competicion] || p.competicion));
+  const fase = cs.filter((r) => r.fase === d3.mode(cs, (r) => r.fase));
+  const riv = nombreEn([...new Set(fase.flatMap((r) => [r.local, r.visitante]))], rival);
+  if (riv) {
+    const suyos = fase.filter((r) => r.local === riv || r.visitante === riv).sort((a, b) => a.fecha.localeCompare(b.fecha)).slice(-5);
+    const res = (r) => { const [a, c] = r.local === riv ? [N(r.goles_local), N(r.goles_visitante)] : [N(r.goles_visitante), N(r.goles_local)]; return a > c ? 'V' : a === c ? 'E' : 'D'; };
+    const tabla = clasificar(fase), pos = tabla.findIndex((x) => x.eq === riv), yo = tabla.findIndex((x) => x.eq === RM);
+    forma.append(fila(`Forma de ${nombreEs(rival)} en ${p.competicion}`, suyos.map((r) => pildora(res(r), `${fechaEs(r.fecha)} · ${r.local} ${r.goles_local}–${r.goles_visitante} ${r.visitante}`)),
+      pos >= 0 ? el('p', { class: 'rm-sub' }, `Va ${pos + 1}.º con ${tabla[pos].pts} puntos${yo >= 0 ? `; el Madrid, ${yo + 1}.º con ${tabla[yo].pts}` : ''}.`) : null));
+  }
   const despues = ps.slice(1, 4).map((x) => `vs ${nombreEs(x.local === RM ? x.visitante : x.local)} (${fechaEs(x.fecha.slice(0, 10), false)})`);
   caja.replaceChildren(info, equipos, forma, ...(despues.length ? [el('p', { class: 'px-despues' }, `Después: ${despues.join(', ')}.`)] : []));
 }
@@ -973,8 +990,69 @@ function drawVitrina(box) {
   });
 }
 
+// ---------- Esta temporada frente a las anteriores (Liga): puntos acumulados partido a partido ----------
+const PTS = { V: 3, E: 1, D: 0 };  // la victoria a 3 en todas las temporadas (antes de 1995 valía 2): así se pueden comparar
+function drawTemporadas() {
+  const box = $('#temporadas-svg');
+  box.querySelector('svg')?.remove();
+  const liga = rows('historico').filter((r) => r.competicion === 'LaLiga');
+  if (!liga.length || !ok('titulos')) return;
+  const campeon = new Set(rows('titulos').filter((t) => t.comp_hist === 'LaLiga' && t.tipo === 'Campeón').map((t) => t.temporada));
+  const ts = d3.groups(liga, (r) => r.temporada).map(([temporada, rs]) => {
+    let s = 0;
+    return { temporada, campeon: campeon.has(temporada), pts: [0, ...[...rs].sort((a, b) => a.fecha.localeCompare(b.fecha)).map((r) => (s += PTS[r.resultado]))] };
+  }).sort((a, b) => a.temporada.localeCompare(b.temporada));
+  const actual = ts.at(-1), n = actual.pts.length - 1, antes = ts.slice(0, -1);
+  // media de las Ligas ganadas tras cada partido (mientras queden al menos 10 que llegaran a ese partido)
+  const largo = d3.max(ts, (t) => t.pts.length - 1);
+  const media = d3.range(0, largo + 1).map((k) => { const v = antes.filter((t) => t.campeon && t.pts.length > k).map((t) => t.pts[k]); return v.length >= 10 ? d3.mean(v) : null; });
+
+  // en cifras: el puesto de este arranque entre todas las temporadas que llegaron a ese partido
+  const comparables = antes.filter((t) => t.pts.length > n), mias = actual.pts[n];
+  const mejores = comparables.filter((t) => t.pts[n] > mias).length, iguales = comparables.filter((t) => t.pts[n] === mias).length;
+  const mejor = d3.greatest(comparables, (t) => t.pts[n]);
+  $('#temporadas-txt').textContent = n ? `Tras ${n} partidos de Liga, ${mias} puntos: el ${mejores + 1}.º mejor arranque de ${comparables.length + 1} temporadas`
+    + `${iguales ? ` (empatado con ${iguales} ${iguales === 1 ? 'otra' : 'otras'})` : ''}. Las Ligas ganadas llevaban de media ${fx(media[n] ?? 0, 1)} a estas alturas;`
+    + ` el mejor arranque fue el de ${mejor.temporada}, con ${mejor.pts[n]}.` : '';
+
+  const W = Math.max(280, box.clientWidth), H = 340, m = { t: 24, r: 16, b: 40, l: 40 };
+  const x = d3.scaleLinear([0, largo], [m.l, W - m.r]);
+  const y = d3.scaleLinear([0, d3.max(ts, (t) => t.pts.at(-1))], [H - m.b, m.t]).nice();
+  const svg = d3.select(box).insert('svg', ':first-child').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', $('#temporadas-txt').textContent);
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - m.l - m.r)))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.select('.domain').remove())
+    .call((g) => g.selectAll('line').style('stroke', 'var(--cds-chart-grid)')).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'));
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(W < 500 ? 4 : 8))
+    .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
+    .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+  svg.append('text').attr('x', W - m.r).attr('y', H - 2).attr('text-anchor', 'end').attr('class', 'eje-tit').text('partidos de Liga jugados');
+  svg.append('text').attr('x', m.l - 30).attr('y', m.t - 12).attr('class', 'eje-tit').text('puntos');
+  const ln = d3.line().x((_, k) => x(k)).y((v) => y(v));
+  const lineas = svg.append('g').selectAll('path').data(antes).join('path').attr('class', (t) => `tp-linea${t.campeon ? ' camp' : ''}`).attr('d', (t) => ln(t.pts));
+  svg.append('path').attr('class', 'tp-media').attr('d', d3.line().defined((v) => v != null).x((_, k) => x(k)).y((v) => y(v))(media));
+  const yo = svg.append('path').attr('class', 'tp-actual').style('stroke', C_RM()).attr('d', ln(actual.pts)).node();
+  const L = yo.getTotalLength();
+  entrada('temporadas', yo, [{ strokeDasharray: `${L} ${L}`, strokeDashoffset: L }, { strokeDasharray: `${L} ${L}`, strokeDashoffset: 0 }], { duration: 700, delay: 150, easing: EASE_MOVER });
+  svg.append('circle').attr('cx', x(n)).attr('cy', y(mias)).attr('r', 4.5).style('fill', C_RM()).style('stroke', 'var(--color-panel)').attr('stroke-width', 2);
+  svg.append('text').attr('x', x(n) + 8).attr('y', y(mias) + 4).attr('class', 'tp-etq').style('fill', C_RM()).text(`${actual.temporada}: ${mias}`);
+
+  // al pasar el ratón, la temporada más cercana a ese punto se resalta
+  const tip = tooltip(box);
+  svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+    .on('mousemove', (ev) => {
+      const [px, py] = d3.pointer(ev), k = Math.round(x.invert(px));
+      const t = d3.least(ts.filter((s) => s.pts.length > k), (s) => Math.abs(y(s.pts[k]) - py));
+      if (!t) return;
+      lineas.classed('hover', (s) => s === t);
+      tip.show(ev, `${t.temporada}${t.campeon ? ' · campeón' : ''}`, [`${t.pts[k]} puntos tras ${k} partidos`, `Final: ${t.pts.at(-1)} en ${t.pts.length - 1} partidos`]);
+    })
+    .on('mouseleave', () => { lineas.classed('hover', false); tip.hide(); });
+}
+
 function renderTemporada() {
   renderProximo();
+  drawTemporadas();
   const partidos = rows('partidos');
   const sel = $('#sel-temporada');
   if (partidos.length && (!sel.options.length || (sel.dataset.conHist !== '1' && ok('historico')))) {
@@ -1159,6 +1237,156 @@ function balance(rs) {
     pct_v: rs.length ? Math.round((1000 * v) / rs.length) / 10 : 0 };
 }
 
+// ---------- Entrenadores (Wikipedia): cada partido, con la etapa que empezó más tarde antes de esa fecha ----------
+// (las etapas antiguas solo tienen el año y se solapan: manda la última que empezó)
+function entrenadorDe(fecha, etapas) {
+  let e = null;
+  for (const x of etapas) { if (x.desde > fecha) break; e = x; }
+  return e;
+}
+function pintarEntrenadores(hs) {
+  const et = rows('entrenadores');
+  if (!et.length) return;
+  const por = d3.group(hs, (r) => entrenadorDe(r.fecha, et)?.entrenador);
+  const filas = d3.groups(et, (e) => e.entrenador).map(([n, es]) => ({
+    n, pais: es[0].pais, titulos: N(es[0].titulos), detalle: es[0].detalle_titulos, ...balance(por.get(n) || []),
+    etapas: es.map((e) => (e.hasta && e.hasta.slice(0, 4) !== e.desde.slice(0, 4) ? `${e.desde.slice(0, 4)}–${e.hasta.slice(0, 4)}` : e.hasta ? e.desde.slice(0, 4) : `${e.desde.slice(0, 4)}–hoy`)).join(', '),
+  })).filter((f) => f.pj).sort((a, b) => b.pj - a.pj || b.titulos - a.titulos);
+  $('#tabla-entr tbody').replaceChildren(...filas.map((f) => {
+    const tr = el('tr');
+    [f.n, f.etapas, f.pj, f.v, f.e, f.d, fx(f.pct_v, 1), f.titulos || '—'].forEach((v) => tr.append(el('td', {}, v)));
+    if (f.detalle) tr.lastChild.title = f.detalle;
+    return tr;
+  }));
+}
+
+// ---------- Máximos goleadores (los goleadores de cada partido que trae la base) ----------
+const sinTilde = (x) => String(x).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+function goleadoresRM(hs) {
+  const jug = new Map();
+  let conAutor = 0, enPartidos = 0;
+  for (const r of hs) {
+    const txt = r.condicion === 'Local' ? r.goleadores_local : r.goleadores_visitante;
+    if (!txt) continue;
+    enPartidos += N(r.goles_rm);
+    const vistos = new Set();
+    for (const e of txt.split(';')) {
+      const limpio = e.replace(/\(.*?\)/g, '');
+      const n = Math.max(1, (limpio.match(/\d+(\+\d+)?/g) || []).length);  // "Puskás 34,62,83" = 3 goles
+      conAutor += n;
+      if (/p\.\s?p\./i.test(e)) continue;  // en propia puerta: cuenta para el Madrid, sin goleador suyo
+      const nombre = limpio.replace(/[\d+',\s]+$/, '').trim();
+      if (!nombre) continue;
+      // el mismo apellido más de dos años sin marcar es otro jugador (Ronaldo Nazário hasta 2007, Cristiano desde 2009)
+      let k = sinTilde(nombre);
+      while (jug.has(k) && (new Date(r.fecha) - new Date(jug.get(k).hasta)) / 864e5 > 730 && !vistos.has(k)) k += '#';
+      const j = jug.get(k) || { goles: 0, partidos: 0, formas: new Map(), desde: r.fecha, hasta: r.fecha };
+      j.goles += n; if (!vistos.has(k)) { j.partidos += 1; vistos.add(k); }
+      j.formas.set(nombre, (j.formas.get(nombre) || 0) + 1);
+      j.hasta = r.fecha;
+      jug.set(k, j);
+    }
+  }
+  // de cada jugador, la forma de escribir su nombre que más se repite ("Hernández" mejor que "Hernandez")
+  const lista = [...jug.values()].map((j) => ({ ...j, nombre: d3.greatest([...j.formas], (f) => f[1])[0] })).sort((a, b) => b.goles - a.goles || b.partidos - a.partidos);
+  return { lista, conAutor, total: d3.sum(hs, (r) => N(r.goles_rm)), enPartidos };
+}
+function pintarGoleadores(hs) {
+  const { lista, conAutor, total } = goleadoresRM([...hs].sort((a, b) => a.fecha.localeCompare(b.fecha)));
+  $('#gol-nota').textContent = total ? `Con los goles que tienen autor en la base: ${conAutor.toLocaleString('es-ES')} de ${total.toLocaleString('es-ES')} (${fx((100 * conAutor) / total, 0)} %). `
+    + 'Aproximado: la base guarda casi siempre el apellido, así que dos jugadores con el mismo (González, Rodríguez…) suman juntos.' : '';
+  $('#tabla-gol tbody').replaceChildren(...lista.slice(0, 20).map((j, i) => {
+    const tr = el('tr');
+    [i + 1, j.nombre, j.goles, j.partidos, j.desde.slice(0, 4) === j.hasta.slice(0, 4) ? j.desde.slice(0, 4) : `${j.desde.slice(0, 4)}–${j.hasta.slice(0, 4)}`].forEach((v) => tr.append(el('td', {}, v)));
+    return tr;
+  }));
+}
+
+// ---------- Récords del club (de la base, en la competición elegida) ----------
+function pintarRecords(hs) {
+  const ps = [...hs].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  const caja = $('#rec-grid');
+  if (!ps.length) { caja.replaceChildren(); return; }
+  const dif = (r) => N(r.goles_rm) - N(r.goles_rival);
+  const racha = (cumple) => {  // la racha más larga de partidos seguidos que cumplen algo
+    let mejor = [], ini = 0;
+    ps.forEach((r, i) => { if (!cumple(r)) ini = i + 1; else if (i + 1 - ini > mejor.length) mejor = ps.slice(ini, i + 1); });
+    return mejor;
+  };
+  const marcador = (r) => `${r.local} ${r.goles_local}–${r.goles_visitante} ${r.visitante}`;
+  const partido = (r) => `${fechaEs(r.fecha)} · ${r.competicion}${r.ronda ? ` · ${r.ronda}` : ''}`;
+  const tramo = (rs) => (rs.length ? `Del ${fechaEs(rs[0].fecha)} al ${fechaEs(rs.at(-1).fecha)}` : '');
+  const temps = d3.groups(ps, (r) => r.temporada).map(([t, rs]) => ({ t, gf: d3.sum(rs, (r) => N(r.goles_rm)), ...balance(rs) }));
+  const goleadora = d3.greatest(temps, (t) => t.gf), mejorT = d3.greatest(temps.filter((t) => t.pj >= 25 && t !== temps.at(-1)), (t) => t.pct_v);  // temporadas completas
+  const goleada = d3.greatest(ps, (r) => dif(r) * 100 + N(r.goles_rm)), derrota = d3.least(ps, (r) => dif(r) * 100 - N(r.goles_rival));
+  const loca = d3.greatest(ps, (r) => N(r.goles_rm) + N(r.goles_rival));
+  const rv = racha((r) => r.resultado === 'V'), ri = racha((r) => r.resultado !== 'D'), rg = racha((r) => N(r.goles_rm) > 0), rsg = racha((r) => r.resultado !== 'V');
+  const tarjetas = [
+    ['Mayor goleada', `${goleada.goles_rm}–${goleada.goles_rival}`, marcador(goleada), partido(goleada), goleada],
+    ['Peor derrota', `${derrota.goles_rm}–${derrota.goles_rival}`, marcador(derrota), partido(derrota), derrota],
+    ['Partido con más goles', N(loca.goles_rm) + N(loca.goles_rival), marcador(loca), partido(loca), loca],
+    ['Victorias seguidas', rv.length, 'partidos ganados uno tras otro', tramo(rv)],
+    ['Partidos sin perder', ri.length, 'seguidos, entre victorias y empates', tramo(ri)],
+    ['Partidos seguidos marcando', rg.length, 'con al menos un gol del Madrid', tramo(rg)],
+    ['Temporada más goleadora', goleadora.gf, `goles en ${goleadora.t}`, `${goleadora.pj} partidos: ${fx(goleadora.gf / goleadora.pj, 2)} por partido`],
+    ...(mejorT ? [['Mejor temporada', `${fx(mejorT.pct_v, 1)} %`, `de victorias en ${mejorT.t}`, `${mejorT.v} V, ${mejorT.e} E, ${mejorT.d} D`]] : []),
+    ['Peor racha sin ganar', rsg.length, 'partidos seguidos sin ganar', tramo(rsg)],
+  ];
+  caja.replaceChildren(...tarjetas.map(([titulo, valor, linea, det, r]) => {
+    const c = el('div', { class: `rec${r ? ' con-partido' : ''}` });
+    c.append(el('p', { class: 'rm-sub' }, titulo), el('p', { class: 'n' }, valor), el('p', { class: 'rec-linea' }, linea), el('p', { class: 'rec-det' }, det));
+    if (r && r.partido_id) {
+      c.tabIndex = 0; c.title = 'Ver la ficha del partido';
+      const abrir = () => { partidoHist = r.partido_id; render(); $('#alineacion').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); };
+      c.addEventListener('click', abrir);
+      c.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') abrir(); });
+    }
+    return c;
+  }));
+}
+
+// ---------- Mapa de estadios: cada campo donde ha jugado, por partidos y % de victorias ----------
+const segEst = segmented('#est-vista', (v) => dash.setParams({ est_vista: v }));
+let atlas = null;  // contorno de los países (world-atlas), se descarga al abrir el mapa
+function drawEstadios(hs) {
+  const box = $('#mapa-est');
+  const coords = new Map(rows('estadios').map((r) => [r.estadio, [N(r.lon), N(r.lat)]]));
+  if (!coords.size || !box.offsetWidth) return;
+  if (!atlas) {
+    atlas = 'cargando';
+    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
+      .then((t) => { atlas = topojson.feature(t, t.objects.countries); render(); }).catch(() => { atlas = null; });
+    return;
+  }
+  if (atlas === 'cargando') return;
+  const vista = P().est_vista || 'es';
+  segEst((v) => v === vista);
+  // varios nombres del mismo campo ("Chamartín", "Nuevo Chamartín") caen en el mismo punto: se juntan
+  const conSitio = hs.filter((r) => coords.has(r.estadio));
+  const pts = d3.groups(conSitio, (r) => coords.get(r.estadio).join()).map(([, rs]) => ({
+    c: coords.get(rs[0].estadio), nombre: d3.greatest(d3.rollups(rs, (v) => v.length, (r) => r.estadio), (x) => x[1])[0],
+    desde: d3.min(rs, (r) => r.fecha), hasta: d3.max(rs, (r) => r.fecha), ...balance(rs) })).sort((a, b) => b.pj - a.pj);
+  $('#est-nota').textContent = `${pts.length} estadios (en «España», los de la Península y Baleares). Con el campo localizado: ${conSitio.length.toLocaleString('es-ES')} de ${hs.length.toLocaleString('es-ES')} partidos.`;
+  box.querySelector('svg')?.remove();
+  if (!pts.length) return;
+  const enEspana = (p) => p.c[0] > -10 && p.c[0] < 4.5 && p.c[1] > 35.5 && p.c[1] < 44;  // Península y Baleares (Canarias, en «Todo»)
+  const vis = vista === 'es' ? pts.filter(enEspana) : pts;
+  const W = box.clientWidth, H = Math.min(560, Math.round(W * 0.68));
+  const proy = d3.geoMercator().fitExtent([[16, 16], [W - 16, H - 16]], { type: 'MultiPoint', coordinates: vis.map((p) => p.c) });
+  const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', `Mapa de ${vis.length} estadios donde ha jugado el Madrid`);
+  svg.append('g').selectAll('path').data(atlas.features).join('path').attr('class', 'pais').attr('d', d3.geoPath(proy));
+  // el Bernabéu (1.500 partidos) no deja ver el resto: la escala llega hasta el percentil 97 y el resto se topa ahí
+  const r = d3.scaleSqrt([0, d3.quantile(vis.map((p) => p.pj).sort(d3.ascending), 0.97)], [0, vista === 'es' ? 16 : 13]).clamp(true);
+  const color = d3.scaleLinear([33, 55, 80], ['#d64545', '#9aa1ad', '#2e9e5b']).clamp(true);
+  const tip = tooltip(box);
+  svg.append('g').selectAll('circle').data(vis).join('circle').attr('class', 'est')
+    .attr('cx', (p) => proy(p.c)[0]).attr('cy', (p) => proy(p.c)[1]).attr('r', (p) => Math.max(2.5, r(p.pj))).style('fill', (p) => color(p.pct_v))
+    .on('mouseenter', (ev, p) => tip.show(ev, p.nombre, [`${p.pj} ${p.pj === 1 ? 'partido' : 'partidos'}: ${p.v} V, ${p.e} E, ${p.d} D (${fx(p.pct_v, 0)} % de victorias)`,
+      `${p.desde.slice(0, 4) === p.hasta.slice(0, 4) ? p.desde.slice(0, 4) : `De ${p.desde.slice(0, 4)} a ${p.hasta.slice(0, 4)}`} · goles ${p.gf}–${p.gc}`]))
+    .on('mouseleave', () => tip.hide());
+}
+
 function renderHistorico() {
   const todos = rows('historico');
   const sel = $('#sel-comp');
@@ -1172,6 +1400,10 @@ function renderHistorico() {
   const t = balance(hs);
   for (const k of ['pj', 'v', 'gf', 'gc']) $(`#k-${k}`).textContent = hs.length ? d3.format(',')(t[k]).replace(/,/g, '.') : '—';
   $('#k-pct').textContent = hs.length ? `${fx(t.pct_v, 1)} %` : '—';
+  pintarRecords(hs);
+  pintarEntrenadores(hs);
+  pintarGoleadores(hs);
+  drawEstadios(hs);
 
   // % de victorias por temporada
   const box = $('#histline');
@@ -1196,6 +1428,18 @@ function renderHistorico() {
     svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(W < 500 ? 4 : 9).tickFormat(d3.format('d')))
       .attr('font-size', null).attr('font-family', null).call((g) => g.selectAll('text').style('fill', 'var(--color-fg-muted)'))
       .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+    // épocas por entrenador: una banda por etapa; las que caben, con su apellido (la temporada empieza en julio)
+    const et = rows('entrenadores'), [x0, x1] = x.domain();
+    const ex = (f) => x(Math.max(x0, Math.min(x1 + 1, Number(f.slice(0, 4)) + (Number(f.slice(5, 7)) - 7) / 12)));
+    const bandas = svg.append('g');
+    et.forEach((e, i) => {
+      const a = ex(e.desde), b = ex(e.hasta || new Date().toISOString().slice(0, 10));
+      if (b - a < 1) return;
+      bandas.append('rect').attr('class', `epoca${i % 2 ? ' par' : ''}`).attr('x', a).attr('width', b - a).attr('y', m.t).attr('height', H - m.t - m.b);
+      const ap = e.entrenador.split(' ').slice(-1)[0];
+      if (b - a > ap.length * 6.5 + 6) bandas.append('text').attr('class', 'epoca-n').attr('x', (a + b) / 2).attr('y', H - m.b - 6).attr('text-anchor', 'middle').text(ap);
+    });
+    const ini = d3.rollup(hs, (v) => d3.min(v, (r) => r.fecha), (r) => r.temporada);
     const ln = d3.line().x((d) => x(d.year)).y((d) => y(d.pct_v));
     // un tramo por cada racha de temporadas seguidas (sin Liga en 1936–39, sin Copa de Europa antes de 1955...)
     const segs = [];
@@ -1210,7 +1454,7 @@ function renderHistorico() {
         const yr = x.invert(d3.pointer(ev)[0]);
         const d = ts[d3.minIndex(ts, (q) => Math.abs(q.year - yr))];
         dot.attr('cx', x(d.year)).attr('cy', y(d.pct_v)).attr('visibility', 'visible');
-        tip.show(ev, d.temporada, [`${fx(d.pct_v, 1)} % victorias`, `${d.v}V ${d.e}E ${d.d}D · ${d.gf}–${d.gc} goles`, ...(d.titulos.length ? [`Campeón: ${d.titulos.join(' y ')}`] : [])]);
+        tip.show(ev, d.temporada, [`${fx(d.pct_v, 1)} % victorias`, `${d.v}V ${d.e}E ${d.d}D · ${d.gf}–${d.gc} goles`, ...(d.titulos.length ? [`Campeón: ${d.titulos.join(' y ')}`] : []), ...(et.length ? [`Entrenador: ${entrenadorDe(ini.get(d.temporada), et)?.entrenador || '—'}`] : [])]);
       })
       .on('mouseleave', () => { dot.attr('visibility', 'hidden'); tip.hide(); });
   }
@@ -1274,21 +1518,32 @@ function conRondas(fase) {
 // zonas de la tabla: [hasta la posición, clase, texto]
 const ZONAS = { 'La Liga': [[4, 'zona-a', 'Copa de Europa'], [6, 'zona-b', 'Copa de la UEFA'], [7, 'zona-c', 'Conference League'], [17, '', ''], [20, 'zona-d', 'Descenso']],
   'Copa de Europa': [[8, 'zona-a', 'Octavos directos'], [24, 'zona-b', 'Eliminatoria previa'], [99, '', '']] };
-function tablaClasif(partidos, comp) {
+// clasificación a partir de los resultados (desempate simplificado: diferencia de goles y goles a favor)
+function clasificar(partidos) {
   const t = {};
   for (const r of partidos)
     for (const [eq, gf, gc] of [[r.local, N(r.goles_local), N(r.goles_visitante)], [r.visitante, N(r.goles_visitante), N(r.goles_local)]]) {
       const x = (t[eq] ??= { eq, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0 });
       x.pj += 1; x.gf += gf; x.gc += gc; x[gf > gc ? 'g' : gf === gc ? 'e' : 'p'] += 1;
     }
-  // desempate simplificado: diferencia de goles y goles a favor
-  const tabla = Object.values(t).map((x) => ({ ...x, pts: 3 * x.g + x.e, dg: x.gf - x.gc })).sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
+  return Object.values(t).map((x) => ({ ...x, pts: 3 * x.g + x.e, dg: x.gf - x.gc })).sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
+}
+// el mismo club con otro nombre en otra fuente ("FC Barcelona" / "Barcelona"): el que comparte todas las palabras y menos le sobran
+const fichasNombre = (n) => new Set(sinTilde(n).replace(/[^a-z ]/g, ' ').split(/\s+/).filter((w) => w && !/^(fc|cf|cd|ud|sd|rcd|rc|ca|club|de|sad)$/.test(w)));
+function nombreEn(lista, n) {
+  const a = fichasNombre(n);
+  const cands = lista.filter((b) => { const f = fichasNombre(b); return a.size && f.size && ([...a].every((w) => f.has(w)) || [...f].every((w) => a.has(w))); });
+  return d3.least(cands, (b) => Math.abs(fichasNombre(b).size - a.size));
+}
+function tablaClasif(partidos, comp) {
+  const tabla = clasificar(partidos);
   const zonas = ZONAS[comp] || [];
   const tb = el('tbody');
   tabla.forEach((x, i) => {
     const z = zonas.find(([hasta]) => i < hasta);
     const tr = el('tr', { class: `${x.eq === RM ? 'rm-fila ' : ''}${z ? z[1] : ''}` });
     [i + 1, x.eq, x.pj, x.g, x.e, x.p, `${x.gf}:${x.gc}`, x.dg > 0 ? `+${x.dg}` : x.dg, x.pts].forEach((v) => tr.append(el('td', {}, v)));
+    tr.children[1].replaceChildren(conEscudo(x.eq));
     tb.append(tr);
   });
   const tab = el('table', { class: 'tabla-clasif' });
@@ -1314,7 +1569,8 @@ function pintarJornada(cont, p) {
   const res = el('ul', { class: 'jor-res' });
   for (const r of fase.filter((r) => r.ronda === n)) {
     const li = el('li', { class: r.local === RM || r.visitante === RM ? 'rm-fila' : '' });
-    li.append(el('span', { class: 'l' }, r.local), el('b', {}, `${r.goles_local}–${r.goles_visitante}`), el('span', {}, r.visitante));
+    const l = conEscudo(r.local, 'span', true); l.classList.add('l');
+    li.append(l, el('b', {}, `${r.goles_local}–${r.goles_visitante}`), conEscudo(r.visitante));
     res.append(li);
   }
   const partes = [el('h3', {}, `Jornada ${n}: resultados`), res];
@@ -1384,6 +1640,12 @@ $('#tit-tabla').addEventListener('click', (ev) => {
 });
 const esRM = (n) => /^(Real )?Madrid( CF| FC)?$/.test(n.trim());
 
+// competiciones en las que el Madrid tiene el récord (es.wikipedia, Palmarés, octubre de 2026)
+const RECORD = { 'Primera División de España': 'Récord', 'Copa de Europa': 'Récord', 'Copa Mundial de Clubes': 'Récord', 'Supercopa de Europa': 'Récord',
+  'Copa Iberoamericana': 'Récord', 'Pequeña Copa del Mundo': 'Récord', 'Campeonato de Madrid / Centro': 'Récord', 'Trofeo Mancomunado': 'Récord',
+  'Copa Federación Centro': 'Récord', 'Copa Intercontinental de la FIFA': 'Récord compartido', 'Copa Intercontinental': 'Récord compartido',
+  'Copa Latina': 'Récord compartido', 'Copa del Rey': 'Récord de subcampeonatos', 'Recopa de Europa': 'Récord compartido de subcampeonatos' };
+
 function renderTitulos() {
   const ts = rows('titulos');
   if (!ts.length) return;
@@ -1410,7 +1672,9 @@ function renderTitulos() {
       const fila = el('div', { class: 'tit-comp' });
       const cab = el('div');
       const nt = xs.filter((t) => t.tipo === 'Campeón').length, ns = xs.length - nt;
-      cab.append(el('h3', {}, comp), el('p', { class: 'n' }, nt), el('p', { class: 'rm-sub' }, `${nt === 1 ? 'título' : 'títulos'}${ns ? ` · ${ns} ${ns === 1 ? 'vez' : 'veces'} subcampeón` : ''}`));
+      const h3 = el('h3', {}, comp);
+      if (RECORD[comp]) h3.append(el('em', { class: 'tit-record' }, RECORD[comp]));
+      cab.append(h3, el('p', { class: 'n' }, nt), el('p', { class: 'rm-sub' }, `${nt === 1 ? 'título' : 'títulos'}${ns ? ` · ${ns} ${ns === 1 ? 'vez' : 'veces'} subcampeón` : ''}`));
       const anios = el('div', { class: 'tit-anios' });
       for (const t of [...xs].sort((a, b) => a.etiqueta.slice(0, 4).localeCompare(b.etiqueta.slice(0, 4)))) {
         const key = `${t.competicion}|${t.tipo}|${t.etiqueta}`;
@@ -1424,6 +1688,27 @@ function renderTitulos() {
     }
   }
   $('#tit-lista').replaceChildren(...lista);
+
+  // datos del palmarés: lo que se calcula de la base y lo que cuenta Wikipedia
+  const yo = rows('ligas').filter((r) => esRM(r.equipo));
+  const peor = d3.greatest(yo, (r) => N(r.pos)), nLigas = new Set(rows('historico').filter((r) => r.competicion === 'LaLiga').map((r) => r.temporada)).size;
+  const rachas = (comp) => {  // las rachas más largas de títulos seguidos en una competición
+    const anios = camp.filter((t) => t.comp_hist === comp).map(anioTit).sort((a, b) => a - b), todas = [];
+    for (const a of anios) { if (todas.length && a === todas.at(-1).at(-1) + 1) todas.at(-1).push(a); else todas.push([a]); }
+    const max = d3.max(todas, (r) => r.length) || 0;
+    return todas.filter((r) => r.length === max);
+  };
+  const tramo = (r) => `${r[0]}–${r.at(-1)}`;
+  const rl = rachas('LaLiga'), re = rachas('Copa de Europa');
+  const datos = [
+    `Ha jugado las ${nLigas} temporadas de Primera desde 1929 sin descender nunca, como el Athletic y el Barcelona.`,
+    peor ? `Su peor puesto en Liga fue el ${peor.pos}.º, en ${peor.temporada}.` : '',
+    rl.length ? `Su mejor racha en Liga: ${rl[0].length} títulos seguidos${rl.length > 1 ? `, dos veces (${rl.map(tramo).join(' y ')})` : ` (${tramo(rl[0])})`}.` : '',
+    re.length ? `En la Copa de Europa ganó ${re[0].length} seguidas (${tramo(re[0])}), un récord que nadie ha igualado.` : '',
+    'Tiene en propiedad la Copa de Europa original, entregada por la UEFA al club más laureado, y lleva en la manga la insignia de campeón múltiple.',
+    'Posee cinco trofeos de Liga en propiedad (por ganarla tres años seguidos o cinco alternos) y dos de Copa.',
+  ].filter(Boolean);
+  $('#tit-datos').replaceChildren(...datos.map((d) => el('li', {}, d)));
 
   const t = ts.find((x) => `${x.competicion}|${x.tipo}|${x.etiqueta}` === titSel);
   $('#tit-detalle').hidden = !t;
@@ -1442,6 +1727,7 @@ function renderTitulos() {
     for (const r of tabla) {
       const tr = el('tr', esRM(r.equipo) ? { class: 'rm-fila' } : {});
       for (const c of ['pos', 'equipo', 'pj', 'g', 'e', 'p', 'gf', 'gc', 'pts']) tr.append(el('td', {}, r[c]));
+      tr.children[1].replaceChildren(conEscudo(r.equipo));
       bd.append(tr);
     }
     tb.append(th, bd); wrap.replaceChildren(tb);
