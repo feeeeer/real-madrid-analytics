@@ -54,6 +54,50 @@ def colocar(al):
     return al
 
 
+NOMBRE_EPOCA = {"Fehérvár FC": [("2018-07-01", "Videoton")], "Atletico Madrid": [("1939-10-01", "Athletic de Madrid"), ("1947-01-14", "Atlético Aviación")]}
+
+
+def nombre_de_epoca(h):
+    """El rival con el nombre que tenía entonces: la final de la Copa de la UEFA de 1985 fue contra el Videoton (hoy Fehérvár)."""
+    for col in ("local", "visitante", "rival"):
+        for actual, cambios in NOMBRE_EPOCA.items():
+            for hasta, antiguo in cambios:  # de más antiguo a más reciente: lo ya renombrado no vuelve a coincidir
+                h.loc[(h[col] == actual) & (h["fecha"] < hasta), col] = antiguo
+    return h
+
+
+def limpiar_goleadores(h):
+    """Las páginas de Wikipedia mezclan a veces tarjetas y cambios con los goles ("Prendes 73'", "Lozano" en un 6-1).
+    Cada lado debe sumar como mucho los goles de su equipo: si sobran, fuera los que no tienen minuto y luego los dudosos
+    (minuto con apóstrofo, pegado al nombre o delante); si aun así no cuadra, se deja vacío antes que mostrar uno falso."""
+    quitar_par = lambda e: re.sub(r"\(.*?\)", "", e)
+    goles_de = lambda e: max(1, len(re.findall(r"\d+(?:\+\d+)?", quitar_par(e))))
+    sin_min = lambda e: not re.search(r"\d", quitar_par(e))
+    dudosa = lambda e: sin_min(e) or "'" in e or re.search(r"[^\s\d,+]\d", quitar_par(e)) or re.match(r"\s*\d", e)
+
+    def limpia(txt, g):
+        txt = re.sub(r"\s*\+\s*", "+", re.sub(r"\[https?://[^\]]*\][^;]*", "", txt)).strip().strip(",; ")
+        if g == 0 or not txt:
+            return ""
+        es = [e.strip().rstrip(",") for e in txt.split(";") if e.strip()]
+        for lista in (es, [e for e in es if not sin_min(e)], [e for e in es if not dudosa(e)]):
+            if sum(map(goles_de, lista)) == g:
+                return "; ".join(lista)
+        return "; ".join(es) if sum(map(goles_de, es)) < g else ""  # incompletos (Copa antigua): se quedan
+
+    for lado in ("local", "visitante"):
+        h["goleadores_" + lado] = [limpia(t, int(g)) for t, g in zip(h["goleadores_" + lado].fillna(""), h["goles_" + lado])]
+    return h
+
+
+def rival_como_en_partido(al, h):
+    """El rival de la alineación con el mismo nombre que en el partido (Videoton, Atlético Aviación…): la web los empareja por nombre."""
+    rival = al["partido_id"].map(h.set_index("partido_id")["rival"])
+    otro = (al["equipo"] != RM) & rival.notna()
+    al.loc[otro, "equipo"] = rival[otro]
+    return al
+
+
 def temporada_actual(h):
     """Partidos de esta temporada que analiza la web (Liga, Copa de Europa, Copa...): sus alineaciones de WhoScored y,
     si la fuente del histórico no trae goleadores, los de los eventos. Se emparejan por fecha: el Madrid juega uno al día."""
@@ -730,6 +774,10 @@ def main():
         b = NOMBRE_CLUB.get(a, auto.get(a))
         if b in escudos and (a in NOMBRE_CLUB or set(words(a)) <= set(words(b))):
             escudos[a] = escudos[b]
+    for actual, cambios in NOMBRE_EPOCA.items():  # el nombre de entonces lleva el escudo de hoy
+        for _, antiguo in cambios:
+            if actual in escudos:
+                escudos.setdefault(antiguo, escudos[actual])
     print("Sin escudo:", sorted((set(h["local"]) | set(h["visitante"])) - set(escudos)))
 
     # el mismo partido con dos fechas en Wikipedia (comprobado en la página de cada edición): se quita el de la fecha mala
@@ -771,6 +819,7 @@ def main():
             if h.loc[i, "ronda"] in ("", "Ida", "Vuelta", "Desempate", "Final"):
                 h.loc[i, "ronda"] = pata
     h["fecha_aprox"] = h["fecha_aprox"].fillna("") if "fecha_aprox" in h else ""  # "1": fecha estimada por la ronda
+    h = nombre_de_epoca(limpiar_goleadores(h))
     h = h.sort_values("fecha")[["fecha", "temporada", "competicion", "local", "visitante", "goles_local", "goles_visitante",
                                 "rival", "condicion", "goles_rm", "goles_rival", "resultado", "estadio", "partido_id", "fuente",
                                 "ronda", "penaltis", "goleadores_local", "goleadores_visitante", "fecha_aprox"]]
@@ -784,6 +833,7 @@ def main():
     ligas.to_csv(WEB / "ligas.csv", index=False)
     tit.to_csv(WEB / "titulos.csv", index=False)
     al["dorsal"] = pd.to_numeric(al["dorsal"], errors="coerce").astype("Int64")
+    al = rival_como_en_partido(al, h)
     al[["partido_id", "equipo", "jugador", "posicion", "titular", "dorsal", "px", "py"]].to_csv(WEB / "historico_alineaciones.csv", index=False)
     # cada escudo se descarga una vez y se sirve desde la propia web (sin depender de que el origen permita enlazarlo)
     carpeta = WEB.parent / "escudos"
