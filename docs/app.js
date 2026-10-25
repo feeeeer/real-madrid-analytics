@@ -944,14 +944,34 @@ const NOMBRE_ES = {
 const nombreEs = (n) => NOMBRE_ES[n] || n;
 const ESTADIO_ES = { 'El Sardineros': 'El Sardinero', 'Mestalla Stadium': 'Mestalla' };
 
+// ---------- Marcador en directo: ESPN se puede consultar desde el navegador, así el día de partido no espera a la nube ----------
+let vivo = null, vivoDe = null, vivoReloj = null;
+async function marcadorVivo(p) {
+  try {
+    const r = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${p.liga}/scoreboard?dates=${p.fecha.slice(0, 10).replace(/-/g, '')}`).then((x) => x.json());
+    const ev = (r.events || []).find((e) => e.id === p.id);
+    if (!ev) return;
+    const c = ev.competitions[0], st = c.status.type, g = Object.fromEntries(c.competitors.map((t) => [t.homeAway, t.score]));
+    vivo = { id: p.id, estado: st.state, detalle: st.shortDetail || st.detail || '', local: g.home ?? 0, visitante: g.away ?? 0 };
+    if (st.state === 'post') { clearInterval(vivoReloj); vivoReloj = null; }  // acabado: el marcador final ya no cambia
+    renderProximo();
+  } catch (e) { /* sin conexión con ESPN: se queda el «próximo partido» */ }
+}
+
 // ---------- Próximo partido (ESPN): cuándo, dónde, racha del Madrid y lo último contra ese rival ----------
 function renderProximo() {
   const caja = $('#proximo');
+  if (dash.data('proximos').status === 'loading') return;  // su sitio queda reservado hasta que llegue
   const ahora = new Date();
-  const ps = rows('proximos').filter((r) => new Date(r.fecha) > ahora - 2 * 3600e3);  // se queda hasta 2 h después de empezar
+  const ps = rows('proximos').filter((r) => new Date(r.fecha) > ahora - 3 * 3600e3);  // se queda hasta 3 h después de empezar (el marcador final)
   caja.hidden = !ps.length;
   if (!ps.length) return;
   const p = ps[0], f = new Date(p.fecha), rival = p.local === RM ? p.visitante : p.local;
+  // desde un cuarto de hora antes del inicio, el marcador en directo de ESPN cada minuto
+  const enJuego = p.id && p.liga && ahora >= f - 15 * 60e3;
+  if (enJuego && vivoDe !== p.id) { clearInterval(vivoReloj); vivoDe = p.id; vivo = null; marcadorVivo(p); vivoReloj = setInterval(() => marcadorVivo(p), 60e3); }
+  if (!enJuego && vivoReloj) { clearInterval(vivoReloj); vivoReloj = null; vivoDe = null; }
+  const v = vivo && vivo.id === p.id && vivo.estado !== 'pre' ? vivo : null;
   const dia = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(d);  // AAAA-MM-DD en hora de Madrid
   const dias = Math.round((new Date(dia(f)) - new Date(dia(ahora))) / 864e5);
   const hora = f.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
@@ -959,11 +979,13 @@ function renderProximo() {
   const fecha = f.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Europe/Madrid' });
 
   const info = el('div', { class: 'px-info' });
-  info.append(el('p', { class: 'px-eti' }, 'Próximo partido'), el('p', { class: 'px-cuando' }, cuando),
+  const eti = el('p', { class: 'px-eti' }, v ? (v.estado === 'in' ? `En directo · ${v.detalle}` : 'Final') : 'Próximo partido');
+  if (v && v.estado === 'in') eti.prepend(el('span', { class: 'px-punto', 'aria-hidden': 'true' }));
+  info.append(eti, el('p', { class: 'px-cuando' }, v ? `${nombreEs(p.local)} ${v.local}–${v.visitante} ${nombreEs(p.visitante)}` : cuando),
     el('p', { class: 'px-det' }, `${fecha[0].toUpperCase() + fecha.slice(1)}. ${p.competicion}${p.estadio ? `, ${ESTADIO_ES[p.estadio] || p.estadio}` : ''}.`));
   const equipos = el('div', { class: 'px-equipos' });
   const eq = (n) => { const d = el('div', { class: 'px-eq' }); d.append(escudo(n), el('span', {}, nombreEs(n))); return d; };
-  equipos.append(eq(p.local), el('span', { class: 'px-vs' }, 'vs'), eq(p.visitante));
+  equipos.append(eq(p.local), el('span', { class: `px-vs${v ? ' px-marcador' : ''}`, 'aria-live': 'polite' }, v ? `${v.local}–${v.visitante}` : 'vs'), eq(p.visitante));
 
   const forma = el('div', { class: 'px-forma' });
   const fila = (titulo, pills, extra) => { const d = el('div'); const r = el('div', { class: 'racha' }); r.append(...pills); d.append(el('p', { class: 'rm-sub' }, titulo), r); if (extra) d.append(extra); return d; };
@@ -1305,16 +1327,25 @@ function pintarEntrenadores(hs) {
 
 // ---------- Jugadores con más partidos, máximos goleadores y asistentes (Wikipedia, pipeline/jugadores.py) ----------
 const sinTilde = (x) => String(x).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-function pintarJugadores() {
-  const js = rows('jugadores');
-  const tabla = (id, tipo, n, cols) => $(`#${id} tbody`).replaceChildren(...js.filter((r) => r.tipo === tipo).slice(0, n).map((r, i) => {
-    const tr = el('tr');
-    [i + 1, r.jugador, ...cols(r)].forEach((v) => tr.append(el('td', {}, v === '' ? '—' : v)));
-    return tr;
-  }));
-  tabla('tabla-pj', 'partidos', 20, (r) => [r.partidos]);
-  tabla('tabla-gol', 'goles', 20, (r) => [r.partidos, r.valor]);
-  tabla('tabla-asis', 'asistencias', 20, (r) => [r.partidos, r.valor]);
+// con una competición elegida en el Histórico, la clasificación de esa competición (la fuente desglosa Liga, Copa y Copa de Europa;
+// las asistencias, solo la Liga)
+const COMP_JUG = { LaLiga: 'liga', 'Copa del Rey': 'copa', 'Copa de Europa': 'europa' };
+function pintarJugadores(comp) {
+  const js = rows('jugadores'), k = COMP_JUG[comp];
+  const tabla = (id, tipo, conValor, nota, base, hay) => {
+    const usa = k && hay.includes(k);
+    const fs = js.filter((r) => r.tipo === tipo && (!usa || r[k] !== '')).map((r) => (usa ? { ...r, valor: r[k], partidos: r[`pj_${k}`] } : r))
+      .sort((a, b) => N(b.valor) - N(a.valor) || N(a.partidos) - N(b.partidos)).slice(0, 20);
+    $(`#${id} tbody`).replaceChildren(...fs.map((r, i) => {
+      const tr = el('tr');
+      [i + 1, r.jugador, ...(conValor ? [r.partidos, r.valor] : [r.partidos])].forEach((v) => tr.append(el('td', {}, v === '' || v == null ? '—' : v)));
+      return tr;
+    }));
+    $(`#${nota}`).textContent = usa ? `${base} En ${comp}.` : comp ? `${base} En todas las competiciones: la fuente no da el desglose de ${comp}.` : `${base} En todas las competiciones.`;
+  };
+  tabla('tabla-pj', 'partidos', false, 'pj-nota', 'Partidos oficiales.', ['liga', 'copa', 'europa']);
+  tabla('tabla-gol', 'goles', true, 'gol-nota', 'Goles en partidos oficiales.', ['liga', 'copa', 'europa']);
+  tabla('tabla-asis', 'asistencias', true, 'asis-nota', 'Desde 1980 (antes, solo algunos jugadores).', ['liga']);
 }
 
 // ---------- Récords del club (de la base, en la competición elegida) ----------
@@ -1417,7 +1448,7 @@ function renderHistorico() {
   $('#k-pct').textContent = hs.length ? `${fx(t.pct_v, 1)} %` : '—';
   pintarRecords(hs);
   pintarEntrenadores(hs);
-  pintarJugadores();
+  pintarJugadores(comp);
   drawEstadios(hs);
 
   // % de victorias por temporada
@@ -2079,7 +2110,17 @@ $('#exportar').addEventListener('click', () => window.print());
         ir: () => { dash.setParams({ partido: Number(p.match_id), jugador: null }); showTab('partido'); } }));
     const riv = [...new Set(rows('historico').map((r) => r.rival))].filter((n) => sinTildes(`${n} ${nombreEs(n)}`).includes(q)).slice(0, 4)
       .map((n) => ({ tipo: 'Rival (histórico)', txt: nombreEs(n), ir: () => { $('#q-rival').value = n; showTab('historico'); $('#rivales').scrollIntoView({ behavior: 'smooth' }); } }));
-    res = [...jug, ...par, ...riv];
+    // entrenadores, estadios y títulos ("copa de europa 2024", "liga 1932")
+    const ent = [...new Set(rows('entrenadores').map((r) => r.entrenador))].filter((n) => sinTildes(n).includes(q)).slice(0, 3)
+      .map((n) => ({ tipo: 'Entrenador', txt: n, ir: () => { showTab('historico'); $('#entrenadores').scrollIntoView({ behavior: 'smooth' }); } }));
+    const est = [...new Set(rows('historico').map((r) => r.estadio))].filter((n) => n && sinTildes(n).includes(q)).slice(0, 3)
+      .map((n) => ({ tipo: 'Estadio', txt: n, ir: () => { $('#q-partido').value = n; showTab('historico'); $('#partidos-hist').scrollIntoView({ behavior: 'smooth' }); } }));
+    const tit = rows('titulos').filter((t) => t.tipo === 'Campeón' && sinTildes(`${t.competicion} ${t.comp_hist === 'LaLiga' ? 'liga' : t.comp_hist} ${t.etiqueta}`).includes(q)).slice(-3).reverse()
+      .map((t) => ({ tipo: 'Título', txt: `${t.competicion} ${t.etiqueta}`, ir: () => {
+        titSel = `${t.competicion}|${t.tipo}|${t.etiqueta}`; fichaTit = null; showTab('titulos');
+        $(conPartidos(t) ? '#tit-detalle' : '#vitrina').scrollIntoView({ behavior: 'smooth' });
+      } }));
+    res = [...jug, ...par, ...riv, ...ent, ...est, ...tit];
     lista.replaceChildren(...(res.length ? res.map((r, i) => {
       const li = el('li', { role: 'option', id: `bus-${i}` });
       li.append(el('span', { class: 'tipo' }, r.tipo), el('span', {}, r.txt));

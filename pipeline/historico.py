@@ -215,7 +215,11 @@ ALIAS_ESTADIO = {
     "Estadio Ciudad de Valencia": "Ciutat de València", "Atotxa": "Atocha", "Atotxa Stadium": "Atocha", "Mendizorrotza": "Mendizorroza",
     "Mendizorrotza Stadium": "Mendizorroza", "Karaiskakis Stadium": "Georgios Karaiskakis", "Stadio Georgios Karaiskakis": "Georgios Karaiskakis",
     "Vasil Levski National Stadium": "Vasil Levski", "Olimpico": "Stadio Olimpico", "Las Lianas": "Las Llanas",
-    "Athens Olympic Stadium": "Estadio Olímpico de Atenas", "National Stadium": "Estadio Nacional de Tokio", "A": ""}
+    "Athens Olympic Stadium": "Estadio Olímpico de Atenas", "National Stadium": "Estadio Nacional de Tokio", "A": "",
+    # erratas y otras grafías de la fuente
+    "Olimpico di Roma": "Stadio Olimpico", "Montjuïch": "Montjuïc", "Ibaondo": "Ibaiondo", "Alatabix": "Campo de Altabix",
+    "23 August Stadium": "Stadionul 23 August", "Estadio El Molinero": "El Molinón", "Nou Stadi Castilla": "Nou Estadi Castàlia",
+    "Teresa Rivero": "Vallecas", "Ontime Butarque": "Butarque", "Vladimir Lenin Stadium": "Luzhniki", "Feijenoord Stadion": "De Kuip"}
 # "Olympic Stadium" son tres campos distintos: el del rival de ese día
 OLIMPICO_DE = {"Dinamo Kiev": "Estadio Olímpico de Kiev", "Olympiacos": "Estadio Olímpico de Atenas", "Bayern Munich": "Estadio Olímpico de Múnich"}
 GENERICAS_ESTADIO = {"estadio", "stadium", "estadi", "stade", "stadio", "stadion", "campo", "de", "del", "la", "el", "les", "municipal",
@@ -337,7 +341,11 @@ def wikipedia_es(h, filas, rival_de, goleadores):
     e = e[(e["fecha"] != "") & (e["local"] != "") & (e["visita"] != "")].drop_duplicates(["comp", "fecha", "local_t", "visita_t"])
     for c in ("local_t", "visita_t"):  # "Club Deportivo Badajoz (1905-2012)", "Palencia Club de Fútbol" -> nombre corto
         e[c] = e[c].str.replace(r"\s*\(.*\)$", "", regex=True).str.replace(r" Club de Fútbol$", "", regex=True).str.strip()
-    e["rm_local"] = e["local"].str.contains(r"Madrid F\.? ?C|Real Madrid|Madrid C\. ?F|Madrid Club", regex=True) & ~e["local"].str.contains("Castilla|Atl")
+    es_rm = lambda c: c.str.contains(r"Madrid F\.? ?C|Real Madrid|Madrid C\. ?F|Madrid Club", regex=True) & ~c.str.contains("Castilla|Atl|Aficionados|Plus Ultra")
+    # solo los partidos del Madrid: las páginas de cada edición traen todos (Castilla-Constancia, Valencia-Sevilla...) y antes, si el
+    # Madrid no era el local, se daba por hecho que era el visitante
+    e = e[es_rm(e["local"]) | es_rm(e["visita"])]
+    e["rm_local"] = es_rm(e["local"])
     e["g_rm"] = np.where(e["rm_local"], e["gl"], e["gv"]).astype(int)
     e["g_riv"] = np.where(e["rm_local"], e["gv"], e["gl"]).astype(int)
     e["rival_t"] = np.where(e["rm_local"], e["visita_t"], e["local_t"])

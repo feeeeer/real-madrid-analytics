@@ -5,6 +5,7 @@ Los nombres de ESPN ("Barcelona", "Athletic Club") se pasan a los del histórico
 Uso suelto: python pipeline/proximos.py
 """
 import csv, json, unicodedata, urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 COMP = {"esp.1": "LaLiga", "uefa.champions": "Copa de Europa", "esp.copa_del_rey": "Copa del Rey", "esp.super_cup": "Supercopa de España"}
@@ -30,15 +31,17 @@ def main(dest=Path("docs/data")):
     filas = []
     for ev in json.loads(urllib.request.urlopen(req, timeout=30).read())["events"]:
         liga, comp = ev["league"]["slug"], ev["competitions"][0]
-        if liga not in COMP or comp["status"]["type"]["state"] != "pre":
+        # el que se está jugando y el recién acabado también: la web pone su marcador en directo hasta que se procesa como jugado
+        reciente = datetime.now(timezone.utc) - datetime.fromisoformat(ev["date"].replace("Z", "+00:00")) < timedelta(hours=6)
+        if liga not in COMP or (comp["status"]["type"]["state"] != "pre" and not reciente):
             continue
         eq = {c["homeAway"]: c["team"]["displayName"] for c in comp["competitors"]}
         nom = {k: "Real Madrid" if v == "Real Madrid" else canonico(v, conocidos) for k, v in eq.items()}
-        filas.append({"fecha": ev["date"], "competicion": COMP[liga], "fase": ev.get("seasonType", {}).get("name", ""),
+        filas.append({"fecha": ev["date"], "id": ev["id"], "liga": liga, "competicion": COMP[liga], "fase": ev.get("seasonType", {}).get("name", ""),
                       "local": nom["home"], "visitante": nom["away"], "estadio": comp.get("venue", {}).get("fullName", "")})
     filas.sort(key=lambda r: r["fecha"])
     with open(dest / "proximos.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, ["fecha", "competicion", "fase", "local", "visitante", "estadio"])
+        w = csv.DictWriter(f, ["fecha", "id", "liga", "competicion", "fase", "local", "visitante", "estadio"])  # id y liga: marcador en directo
         w.writeheader()
         w.writerows(filas[:6])
     print(f"   proximos.csv: {len(filas[:6])} partidos", flush=True)

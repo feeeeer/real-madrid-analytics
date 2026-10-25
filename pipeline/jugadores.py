@@ -106,7 +106,10 @@ def main(dest=Path("docs/data")):
     salida, part = [], []
     for c in filas(primera_tabla(wikitext("es", "Anexo:Jugadores con más partidos del Real Madrid Club de Fútbol"))):
         if len(c) > 2 and (n := jugador(c[1])) and (t := numero(c[2])):
-            part.append({"tipo": "partidos", "jugador": n, "partidos": t, "valor": t, "desde": "", "hasta": ""})
+            # columnas: total, Liga, Copa, Copa de Europa (E1), Recopa, UEFA, Supercopa de Europa, otros
+            comp = {k: numero(c[i]) if len(c) > i else None for k, i in (("liga", 3), ("copa", 4), ("europa", 5))}
+            part.append({"tipo": "partidos", "jugador": n, "partidos": t, "valor": t, "desde": "", "hasta": "",
+                         **{k: v or 0 for k, v in comp.items()}, **{f"pj_{k}": v or 0 for k, v in comp.items()}})
     assert part and part[0]["valor"] >= 700, "no se ha leído la tabla de partidos"
     salida += part
     for c in filas(primera_tabla(wikitext("es", "Anexo:Máximos goleadores del Real Madrid Club de Fútbol"))):
@@ -115,7 +118,10 @@ def main(dest=Path("docs/data")):
             d, h = anios(c[2])
             c2 = canonico(n, part)  # los partidos, los del anexo de partidos si está (que un jugador tenga los mismos en todas las tablas)
             pj = next((p["partidos"] for p in part if p["jugador"] == c2), None) or (int(pj.group(1)) if pj else "")
-            salida.append({"tipo": "goles", "jugador": c2, "partidos": pj, "valor": g, "desde": d, "hasta": h})
+            pjc = next((p for p in part if p["jugador"] == c2), {})  # partidos por competición, los del anexo de partidos
+            salida.append({"tipo": "goles", "jugador": c2, "partidos": pj, "valor": g, "desde": d, "hasta": h,
+                           **{k: numero(c[i]) or 0 for k, i in (("liga", 4), ("copa", 5), ("europa", 6))},
+                           **{f"pj_{k}": pjc.get(f"pj_{k}", "") for k in ("liga", "copa", "europa")}})
     assert any(r["tipo"] == "goles" and r["valor"] >= 450 for r in salida), "no se ha leído la tabla de goleadores"
     # asistencias: es.wikipedia, "Anexo:Estadísticas del Real Madrid Club de Fútbol" (se actualiza tras cada partido)
     txt = wikitext("es", "Anexo:Estadísticas del Real Madrid Club de Fútbol")
@@ -128,7 +134,10 @@ def main(dest=Path("docs/data")):
             gol = next((r for r in salida if r["tipo"] == "goles" and palabras(r["jugador"]) == palabras(c2)), None)
             c2 = gol["jugador"] if gol and c2 not in {p["jugador"] for p in part} else c2
             pj = next((p["partidos"] for p in part if p["jugador"] == c2), "") or (gol["partidos"] if gol else "")
-            salida.append({"tipo": "asistencias", "jugador": c2, "partidos": pj, "valor": a, "desde": "", "hasta": ""})
+            pjc = next((p for p in part if p["jugador"] == c2), {})
+            # por competición, solo la Liga: la columna internacional junta Copa de Europa, Recopa y UEFA ("?" si no se sabe)
+            salida.append({"tipo": "asistencias", "jugador": c2, "partidos": pj, "valor": a, "desde": "", "hasta": "",
+                           "liga": numero(c[4]) if len(c) > 4 and numero(c[4]) is not None else "", "pj_liga": pjc.get("pj_liga", "")})
     assert sum(r["tipo"] == "asistencias" for r in salida) >= 10, "no se ha leído la tabla de asistencias"
     for r in salida:  # a quien no esté en ningún anexo (menos de ~200 partidos), los de su artículo
         if r["partidos"] == "":
@@ -138,7 +147,7 @@ def main(dest=Path("docs/data")):
     if sueltos:
         print("   jugadores sin emparejar con la tabla de partidos (revisar):", sueltos, flush=True)
     with open(dest / "jugadores.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, ["tipo", "jugador", "partidos", "valor", "desde", "hasta"])
+        w = csv.DictWriter(f, ["tipo", "jugador", "partidos", "valor", "desde", "hasta", "liga", "copa", "europa", "pj_liga", "pj_copa", "pj_europa"])
         w.writeheader()
         w.writerows(salida)
     print("   jugadores.csv: " + ", ".join(f"{t} {sum(r['tipo'] == t for r in salida)}" for t in ("partidos", "goles", "asistencias")), flush=True)

@@ -36,3 +36,7 @@ jobs:
           # si el Mac publicó mientras tanto, gana lo recién calculado (se rehace con todo lo que hay en el repo)
           git pull -q --rebase -X theirs origin main
           git push -q origin main
+      # escudos, nombres duplicados, partidos repetidos...: si algo no cuadra, el workflow falla y GitHub avisa por correo
+      - name: Revisar datos
+        if: always()
+        run: python pipeline/revisar.py

@@ -12,9 +12,13 @@
 <meta property="og:site_name" content="Real Madrid Analytics">
 <meta property="og:title" content="Real Madrid Analytics">
 <meta property="og:description" content="Post-partido de cada jornada, rendimiento frente a lo esperado, histórico desde 1902 y palmarés. Se actualiza solo tras cada partido.">
-<meta property="og:image" content="https://real-madrid-analytics.vercel.app/escudos/a693f8ffa8a1.png">
+<meta property="og:image" content="https://real-madrid-analytics.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Real Madrid Analytics: escudo y cifras del club">
 <meta property="og:url" content="https://real-madrid-analytics.vercel.app/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://real-madrid-analytics.vercel.app/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -421,6 +425,10 @@ html { scroll-padding-top: 5.5rem; }
 .h2h-barra.mini > span { min-width: 0; }
 #tabla-rivales .h2h-barra.mini { margin-left: auto; }
 /* ---------- Próximo partido ---------- */
+/* el sitio de la tarjeta y de las cifras, reservado mientras llegan los datos: sin saltos al cargar */
+#proximo:empty { min-height: 13.5rem; }
+.rm-kpis:empty { min-height: 5.6rem; }
+@media (max-width: 900px) { #proximo:empty { min-height: 24rem; } .rm-kpis:empty { min-height: 15rem; } }
 .rm-card.proximo { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr); gap: var(--cds-gap-md) var(--cds-gap-lg); align-items: center;
   background: linear-gradient(120deg, #170f2b 0%, #2c1b57 60%, #3b2675 100%); border: 0; color: #f2f4f8;
   --color-fg: #f2f4f8; --color-fg-muted: #b9addb; --color-border-line: rgba(255, 255, 255, 0.16); --color-bg: rgba(255, 255, 255, 0.08); }
@@ -431,6 +439,10 @@ html { scroll-padding-top: 5.5rem; }
 .px-eq { display: flex; flex-direction: column; align-items: center; gap: 6px; font-weight: 600; text-align: center; min-width: 6.5rem; }
 .px-eq .esc { width: 52px; height: 52px; padding: 4px; border-radius: 10px; }
 .px-vs { font-family: var(--font-num); font-size: 1.4rem; color: var(--oro); }
+.px-marcador { font-size: 2.6rem; font-weight: 700; color: #fff; }
+.px-punto { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ff4d4d; margin-right: 6px; vertical-align: 1px; animation: latido 1.4s ease-in-out infinite; }
+@keyframes latido { 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .px-punto { animation: none; } }
 .px-forma { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
 .px-forma .rm-sub { margin: 0 0 4px; }
 .px-forma .btn-sec { margin-left: 6px; padding: 2px 8px; }
@@ -514,7 +526,7 @@ html { scroll-padding-top: 5.5rem; }
 .epoca { fill: var(--color-fg); opacity: 0.03; } .epoca.par { opacity: 0.07; }
 .epoca-n { fill: var(--color-fg-muted); font-size: 10px; }
 .mapa { min-height: 0; }
-.mapa .pais { fill: var(--color-bg); stroke: var(--color-border-line); stroke-width: 0.6; }
+.mapa .pais { fill: color-mix(in srgb, var(--color-fg) 7%, var(--color-panel)); stroke: var(--color-border-line); stroke-width: 0.6; }
 .mapa .est { stroke: var(--color-panel); stroke-width: 1; fill-opacity: 0.85; }
 /* el veredicto, como etiqueta al lado del nombre */
 .insignia { display: inline-block; margin-left: 10px; padding: 1px 10px; border: 1px solid currentColor; border-radius: 999px; font-size: var(--cds-font-size-caption); font-weight: 600; vertical-align: 2px; cursor: help; }
@@ -547,7 +559,7 @@ html { scroll-padding-top: 5.5rem; }
     <div class="barra">
       <div class="barra-tit"><h1 id="pag-titulo">Resumen de la temporada</h1></div>
       <div class="buscador" role="search">
-        <input type="search" id="buscar" placeholder="Buscar jugador, rival o partido…" aria-label="Buscar jugador, rival o partido" autocomplete="off" aria-controls="buscar-res" aria-expanded="false">
+        <input type="search" id="buscar" role="combobox" aria-autocomplete="list" placeholder="Buscar jugador, rival o partido…" aria-label="Buscar jugador, rival o partido" autocomplete="off" aria-controls="buscar-res" aria-expanded="false">
         <ul id="buscar-res" role="listbox" hidden></ul>
       </div>
       <div class="filtros">
@@ -558,7 +570,7 @@ html { scroll-padding-top: 5.5rem; }
     </div>
     <div class="contenido">
       <section class="rm-page" id="resumen">
-    <div class="rm-card proximo" id="proximo" data-source="proximos historico competicion" hidden></div>
+    <div class="rm-card proximo" id="proximo" data-source="proximos historico competicion"></div>
     <div class="rm-kpis" id="t-kpis" data-source="partidos metricas_equipo"></div>
     <div class="rm-grid rm-grid-2-1">
       <div class="rm-card" id="xg-jornadas">
@@ -786,20 +798,20 @@ html { scroll-padding-top: 5.5rem; }
       </div>
       <div class="rm-card" id="mas-partidos">
         <h2>Jugadores con más partidos</h2>
-        <p class="rm-sub">Partidos oficiales en todas las competiciones.</p>
+        <p class="rm-sub" id="pj-nota"></p>
         <div class="rm-tablewrap"><table id="tabla-pj" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th></tr></thead><tbody></tbody></table></div>
       </div>
       <div class="rm-card" id="goleadores">
         <h2>Máximos goleadores</h2>
-        <p class="rm-sub">Goles en partidos oficiales, todas las competiciones.</p>
+        <p class="rm-sub" id="gol-nota"></p>
         <div class="rm-tablewrap"><table id="tabla-gol" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th><th>Goles</th></tr></thead><tbody></tbody></table></div>
       </div>
       <div class="rm-card" id="asistentes">
         <h2>Máximos asistentes</h2>
-        <p class="rm-sub">Los que pasan de 100 asistencias en partidos oficiales desde 1902 (criterio de Opta).</p>
+        <p class="rm-sub" id="asis-nota"></p>
         <div class="rm-tablewrap"><table id="tabla-asis" class="tabla-jug" data-source="jugadores"><thead><tr><th>#</th><th>Jugador</th><th>Partidos</th><th>Asistencias</th></tr></thead><tbody></tbody></table></div>
       </div>
-      <p class="rm-sub hist-fuente">Jugadores: Wikipedia (anexos de partidos y goleadores del Real Madrid, y récords del club para las asistencias). No dependen de la competición elegida arriba.</p>
+      <p class="rm-sub hist-fuente">Jugadores: Wikipedia (anexos de partidos, goleadores y estadísticas del Real Madrid). Con Liga, Copa del Rey o Copa de Europa elegida arriba, la clasificación de esa competición.</p>
     </div>
     <div class="rm-grid">
       <div class="rm-card" id="rivales">

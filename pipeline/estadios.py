@@ -28,7 +28,26 @@ MANUAL = {"Campo de Chamartín": (40.4521, -3.6885), "Nuevo Chamartín": BERNABE
           "Estadi Olímpic Lluís Companys": (41.3647, 2.1557), "Olímpic Lluís Companys": (41.3647, 2.1557), "Vicente Calderón Stadium": (40.4017, -3.7206),
           "Vicente Calderon": (40.4017, -3.7206), "Manzanares": (40.4017, -3.7206), "El Plantío": (42.3364, -3.6873),
           "Ramón de Carranza": (36.5027, -6.2729), "Stade de Gerland": (45.7238, 4.8320), "Castalia": (39.9933, -0.0469),
-          "Heliópolis": (37.3565, -5.9817), "Hipódromo": (40.4419, -3.6886)}
+          "Heliópolis": (37.3565, -5.9817), "Hipódromo": (40.4419, -3.6886),
+          # campos desaparecidos o que Wikidata no tiene: los conocidos, en su sitio; los demás, en el centro de su ciudad
+          "Madrid": (40.4168, -3.7038), "Bardin": (38.3452, -0.4810), "San Juan": (42.8125, -1.6458), "Patronato Obrero": (37.3830, -5.9900),
+          "Cruz Alta": (41.5480, 2.1070), "Eliondo": (43.3380, -3.0100), "El Arcángel": (37.8730, -4.7650), "Tiro del Pichón": (40.4200, -3.7200),
+          "Torrero": (41.6330, -0.8900), "Ibaiondo": (43.3400, -3.0100), "Montjuïc": (41.3647, 2.1557), "El Sequiol": (39.9860, -0.0500),
+          "Avenida Cataluña": (41.1200, 1.2450), "Nova Creu Alta": (41.5540, 2.1020), "Creu Alta": (41.5480, 2.1070), "Stadio delle Alpi": (45.1096, 7.6413),
+          "San Lázaro": (42.8860, -8.5250), "Camp de la Indústria": (41.3820, 2.1450), "Camp del Carrer Entença": (41.3800, 2.1490),
+          "La Viña": (38.3600, -0.4900), "Juan Rojas": (36.8400, -2.4460), "Los Pajaritos": (41.7690, -2.4780), "Av. Plaza de Toros": (40.4300, -3.6700),
+          "Ondarreta Stadium": (43.3180, -2.0050), "Campo del Mercantil": (37.3900, -5.9800), "Campo de la Reina Victoria": (37.3750, -5.9850),
+          "Santa Marina": (38.8780, -6.9700), "Valencia": (39.4699, -0.3763), "Municipal de Zorrilla": (41.6520, -4.7350),
+          "ChMP Central Stadium": (46.4800, 30.7500), "Nuevo Matapiñonera": (40.5480, -3.6260), "Diego Armando Maradona": (40.8280, 14.1930),
+          "NSK Olimpiyskyi": (50.4330, 30.5220), "Al-Awwal Park": (24.7890, 46.8390), "Butarque": (40.3410, -3.7610), "Velódromo": (41.3900, 2.1500),
+          "Huelva": (37.2614, -6.9447), "Martínez Campos": (43.3400, -3.0100), "Alicante": (38.3452, -0.4810), "Cantabria": (43.3500, -4.0500),
+          "El Calvario": (40.9600, -5.6600), "Domecq": (36.6900, -6.1300), "Varela": (35.5700, -5.3700), "La Puentecilla": (42.6000, -5.5700),
+          "Stade Bosuil": (51.2320, 4.4730), "Mithat Paşa Stadium": (41.0390, 28.9940), "Stadionul 23 August": (44.4370, 26.1520),
+          "Iparralde": (43.2600, -2.9300), "De Kuip": (51.8940, 4.5230), "Grünwalder Stadion": (48.1110, 11.5740),
+          "Stadion Dr. Václava Vacka": (50.1000, 14.4160), "Sevilla": (37.3891, -5.9845), "Castellón de la Plana": (39.9860, -0.0500),
+          "Las Palmas de Gran Canaria": (28.1000, -15.4200), "Baseball Ground": (52.9100, -1.4730), "Nuevo Mirador": (36.1300, -5.4600),
+          "Luzhniki": (55.7158, 37.5537), "Mini Estadi": (41.3790, 2.1180), "Colombino": (37.2500, -6.9400), "La Maladière": (46.9960, 6.9460),
+          "Stadion Crvena Zvezda": (44.7830, 20.4650), "Vallecas": (40.3918, -3.6588)}
 
 
 def pedir(url, datos=None):

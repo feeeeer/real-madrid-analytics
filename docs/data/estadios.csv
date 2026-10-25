@@ -1,8 +1,10 @@
 estadio,lat,lon
 A. Le Coq Arena,59.4213,24.7321
+Al-Awwal Park,24.789,46.839
 Alfredo Di Stéfano,40.4767,-3.6142
 Ali Sami Yen Spor Kompleksi RAMS Park,41.1034,28.991
 Ali Sami Yen Stadium,41.1034,28.991
+Alicante,38.3452,-0.481
 Allianz Arena,48.2188,11.6248
 Allianz Stadium,45.1096,7.6412
 Amsterdam Arena,52.3142,4.9419
@@ -11,35 +13,54 @@ Anoeta,43.3014,-1.9736
 Antiguo Metropolitano,40.4473,-3.7085
 Arena Lviv,49.7753,24.0278
 Atocha,43.3156,-1.9737
+Av. Plaza de Toros,40.43,-3.67
+Avenida Cataluña,41.12,1.245
 Balaídos,42.2119,-8.7403
 Bank of America Stadium,35.2258,-80.8528
+Bardin,38.3452,-0.481
+Baseball Ground,52.91,-1.473
 BayArena,51.0383,7.0022
 Benito Villamarín,37.3564,-5.9816
 Buenavista,43.3579,-5.8608
-Butarque,40.3404,-3.7607
+Butarque,40.341,-3.761
 Camp Nou,41.3808,2.1228
 Camp d'Esports,42.4764,1.4877
+Camp de la Indústria,41.382,2.145
+Camp del Carrer Entença,41.38,2.149
 Camp del carrer Muntaner,41.3925,2.1506
 Campo de Altabix,38.2698,-0.6835
 Campo de Chamartín,40.4521,-3.6885
 Campo de O'Donnell,40.4219,-3.6751
+Campo de la Reina Victoria,37.375,-5.985
+Campo del Mercantil,37.39,-5.98
 Campos de Sport de El Sardinero,43.4764,-3.7933
+Cantabria,43.35,-4.05
 Cardiff City Stadium,51.4728,-3.2031
 Carlos Belmonte,38.9811,-1.8521
 Carlos Tartiere,43.3579,-5.8608
 Castalia,39.9933,-0.0469
+Castellón de la Plana,39.986,-0.05
 Celtic Park,55.8499,-4.2013
 Central Lenin Stadium,55.7158,37.5536
+ChMP Central Stadium,46.48,30.75
 Charmilles Stadium,46.2091,6.1182
 Ciudad Deportiva de Lanzarote,28.9667,-13.5543
 Ciutat de València,39.4947,-0.3642
 Coliseum,40.3256,-3.7147
 Coliseum Alfonso Pérez,40.3256,-3.7147
+Colombino,37.25,-6.94
 Complexe Sportif Moulay Abdallah,33.9599,-6.8891
 Constant Vanden Stock,50.8342,4.2983
 Cornellà-El Prat,41.3479,2.0757
+Creu Alta,41.548,2.107
 Cristal Arena,51.005,5.5333
+Cruz Alta,41.548,2.107
+De Kuip,51.894,4.523
+Diego Armando Maradona,40.828,14.193
+Domecq,36.69,-6.13
 El Alcoraz,42.1319,-0.4244
+El Arcángel,37.873,-4.765
+El Calvario,40.96,-5.66
 El Collao,38.691,-0.4903
 El Helmántico,40.9953,-5.665
 El Madrigal,39.9442,-0.1036
@@ -47,7 +68,9 @@ El Molinón,43.5361,-5.6372
 El Plantío,42.3364,-3.6873
 El Sadar,42.7967,-1.6369
 El Sardinero,43.4762,-3.7935
+El Sequiol,39.986,-0.05
 Eleda Stadion,55.5836,12.9878
+Eliondo,43.338,-3.01
 Elland Road,53.7778,-1.5722
 Emirates Stadium,51.555,-0.1083
 Ernst-Abbe-Sportfeld,50.9158,11.5828
@@ -80,6 +103,7 @@ Gerhard Hanappi Stadium,48.1978,16.2653
 Gewiss Stadium,45.7089,9.6808
 Giuseppe Meazza,45.4781,9.124
 Gran Canaria,28.1,-15.4567
+Grünwalder Stadion,48.111,11.574
 Hampden Park,55.8304,-4.2566
 Hard Rock Stadium,25.9581,-80.2389
 Hardturm,47.3931,8.5047
@@ -88,27 +112,35 @@ Heliópolis,37.3565,-5.9817
 Heysel Stadium,50.8957,4.3341
 Highbury,51.5577,-0.103
 Hipódromo,40.4419,-3.6886
+Huelva,37.2614,-6.9447
+Ibaiondo,43.34,-3.01
 Ibrox Stadium,55.8531,-4.3092
 Idrætsparken,55.7025,12.5722
 Insular,28.129,-15.4338
 International Stadium Yokohama,35.51,139.6062
+Iparralde,43.26,-2.93
 Ipurua,43.1817,-2.4758
 Jan Breydelstadion,51.1933,3.1813
 Johan Cruijff ArenA,52.3142,4.9419
 José Rico Pérez,38.3572,-0.4925
 José Zorrilla,41.6445,-4.7612
+Juan Rojas,36.84,-2.446
 King Abdullah Sports City,21.7632,39.1643
 King Fahd International Stadium,24.7882,46.8392
 La Bombonera,-34.6356,-58.3646
 La Cartuja,37.4172,-6.0046
 La Cerámica,39.9441,-0.1035
 La Condomina,37.9861,-1.1214
+La Maladière,46.996,6.946
+La Puentecilla,42.6,-5.57
 La Romareda,41.6366,-0.9018
 La Rosaleda,36.7341,-4.4264
 La Victoria,37.7754,-3.7675
+La Viña,38.36,-0.49
 Lansdowne Road,53.335,-6.2283
 Las Gaunas,42.4553,-2.4504
 Las Llanas,43.3106,-3.0097
+Las Palmas de Gran Canaria,28.1,-15.42
 Laugardalsvöllur,64.1436,-21.879
 Lerkendal Stadion,63.4125,10.405
 Les Corts,41.3858,2.1356
@@ -118,31 +150,42 @@ Lluís Sitjar,39.5808,2.6407
 Lobanovsky Dynamo Stadium,50.4504,30.5352
 Lokomotiv Stadium,42.7376,23.3148
 Los Cármenes,37.153,-3.5957
+Los Pajaritos,41.769,-2.478
 Luis Casanova,39.4747,-0.3583
 Lusail Stadium,25.4209,51.4904
-Luzhniki,55.7158,37.5536
+Luzhniki,55.7158,37.5537
+Madrid,40.4168,-3.7038
 Manuel Martínez Valero,38.2669,-0.6633
 Manuel Ruiz de Lopera,37.3564,-5.9816
 Manzanares,40.4017,-3.7206
+Martínez Campos,43.34,-3.01
 Mendizorroza,42.8371,-2.688
 Mestalla,39.4747,-0.3583
 MetLife Stadium,40.8136,-74.0744
 Metropolitano,40.4362,-3.5995
 Millennium Stadium,51.4781,-3.1825
+Mini Estadi,41.379,2.118
+Mithat Paşa Stadium,41.039,28.994
 Montilivi,41.9612,2.8286
+Montjuïc,41.3647,2.1557
 Multiusos de San Lázaro,42.8828,-8.516
+Municipal de Zorrilla,41.652,-4.735
 NISSAN Stadium,36.1664,-86.7714
+NSK Olimpiyskyi,50.433,30.522
 Neckarstadion,48.7922,9.2319
 Nervión,37.384,-5.9705
 Nikos Goumas Stadium,38.0369,23.7414
 Nou Estadi,39.4947,-0.3642
 Nou Estadi Castàlia,39.9961,-0.0388
+Nova Creu Alta,41.554,2.102
 Nueva Condomina,38.0422,-1.1447
 Nuevo Chamartín,40.4531,-3.6883
 Nuevo Colombino,37.2464,-6.9542
 Nuevo Estadio Los Pajaritos,41.7544,-2.4678
 Nuevo José Zorrilla,41.6444,-4.7611
 Nuevo Los Cármenes,37.153,-3.5957
+Nuevo Matapiñonera,40.548,-3.626
+Nuevo Mirador,36.13,-5.46
 Nuevo Mirandilla,36.5028,-6.2731
 Nuevo Riazor,43.3687,-8.4174
 Nuevo Vivero,38.8589,-7.0059
@@ -154,9 +197,11 @@ Old Trafford,53.4631,-2.2914
 Olympiastadion,48.1731,11.5467
 Olympisch Stadion,51.185,4.3822
 Olímpic Lluís Companys,41.3647,2.1557
+Ondarreta Stadium,43.318,-2.005
 Parc des Princes,48.8414,2.253
 Partizan Stadium,44.7886,20.4592
 Pasarón,42.438,-8.641
+Patronato Obrero,37.383,-5.99
 Philips Stadion,51.4417,5.4674
 Power Horse Stadium,36.84,-2.4353
 Praterstadion,48.2072,16.4208
@@ -170,14 +215,19 @@ Riazor,43.3687,-8.4174
 Romano,38.9139,-6.3364
 Rugby Park,55.6042,-4.5081
 SIGNAL IDUNA PARK,51.4925,7.4517
+San Juan,42.8125,-1.6458
+San Lázaro,42.886,-8.525
 San Mamés,43.2641,-2.9494
 San Siro,45.4781,9.124
+Santa Marina,38.878,-6.97
 Santiago Bernabéu,40.4531,-3.6883
 Sarrià,41.3889,2.1336
+Sevilla,37.3891,-5.9845
 Silesian Stadium,50.2883,18.9731
 Son Moix,39.59,2.63
 St. Jakob Stadium,47.5414,7.62
 St. Jakob-Park,47.5414,7.62
+Stade Bosuil,51.232,4.473
 Stade Louis II,43.7278,7.4156
 Stade Maurice Dufrasne,50.6099,5.5433
 Stade Municipal,11.1903,-4.3308
@@ -191,6 +241,9 @@ Stade du Ray,43.7233,7.2588
 Stade du Thillenberg,49.5222,5.8755
 Stadio Comunale,44.4922,11.3098
 Stadio Olimpico,41.9339,12.4547
+Stadio delle Alpi,45.1096,7.6413
+Stadion Crvena Zvezda,44.783,20.465
+Stadion Dr. Václava Vacka,50.1,14.416
 Stadion Kantrida,45.3392,14.381
 Stadion Letná,50.0997,14.4161
 Stadion Maksimir,45.8189,16.0181
@@ -198,17 +251,23 @@ Stadion Miejski,51.1411,16.9436
 Stadion Miejski im. Marszałka Józefa Piłsudskiego,52.1893,20.621
 Stadion im Borussia-Park,51.1746,6.3855
 Stadionul 1 Mai,44.5606,27.3727
+Stadionul 23 August,44.437,26.152
 Stadium Gal,43.3456,-1.7858
 Stage Front Stadium,41.3479,2.0757
 Stamford Bridge,51.4817,-0.1911
 Steaua Stadium,44.4132,26.0403
 Strahov Stadium,50.0803,14.3879
 Sóstói Stadion,47.1737,18.4154
+Tiro del Pichón,40.42,-3.72
 Tivoli,50.7933,6.0972
+Torrero,41.633,-0.89
 Ulrich-Haberland-Stadion,51.0375,7.0002
+Valencia,39.4699,-0.3763
 Vallecas,40.3918,-3.6588
+Varela,35.57,-5.37
 Vasil Levski,42.6876,23.3354
 Veltins-Arena,51.5545,7.0676
+Velódromo,41.39,2.15
 Vicente Calderón,40.4017,-3.7206
 Volksparkstadion,52.9452,12.8156
 Volkswagen Arena,52.4319,10.8039

@@ -30,11 +30,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/historico docs/data/historico.csv docs/data/historico_alineaciones.csv docs/data/escudos.csv docs/data/ligas.csv docs/data/titulos.csv docs/escudos
+          git add data/historico docs/data/historico.csv docs/data/historico_alineaciones.csv docs/data/escudos.csv docs/data/ligas.csv docs/data/titulos.csv docs/data/entrenadores.csv docs/data/estadios.csv docs/data/jugadores.csv docs/escudos
           git diff --cached --quiet && exit 0
           git commit -qm "Histórico actualizado"
           git pull -q --rebase origin main
           git push -q origin main
+      # escudos, nombres duplicados, partidos repetidos...: si algo no cuadra, el workflow falla y GitHub avisa por correo
+      - name: Revisar datos
+        run: python pipeline/revisar.py 2>&1 | tee -a registro.log; exit ${PIPESTATUS[0]}
+        shell: bash
       - name: Guardar el registro si algo falló
         if: failure()
         run: |
