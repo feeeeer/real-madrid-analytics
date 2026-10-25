@@ -886,6 +886,17 @@ function pintarCaraACara(cont, rival, antes, sel, alElegir) {
 }
 let h2hSel = null;
 
+// Nombre en español de los clubes que las fuentes dan en inglés o sin tildes (solo para mostrar: los datos cruzan por el original)
+const NOMBRE_ES = { 'Racing Santander': 'Racing de Santander', 'AEK Athens': 'AEK Atenas', 'Atletico Madrid': 'Atlético de Madrid', 'Athletic Bilbao': 'Athletic Club',
+  'Inter Milan': 'Inter de Milán', 'Bayern Munich': 'Bayern de Múnich', 'Deportivo La Coruna': 'Deportivo de La Coruña', 'Deportivo de A Coruna': 'Deportivo de La Coruña',
+  'Celta Vigo': 'Celta de Vigo', 'Sporting Gijon': 'Sporting de Gijón', 'Espanyol Barcelona': 'RCD Espanyol', 'Deportivo Alaves': 'Deportivo Alavés', 'Alaves': 'Alavés',
+  'Malaga': 'Málaga', 'Cadiz': 'Cádiz', 'Cadiz CF': 'Cádiz CF', 'Leganes': 'Leganés', 'Almeria': 'Almería', 'Napoli': 'SSC Nápoles', 'SSC Napoli': 'SSC Nápoles',
+  'Sporting CP': 'Sporting de Portugal', 'FC Porto': 'FC Oporto', 'Club Brugge': 'Club Brujas', 'Red Star Belgrade': 'Estrella Roja', 'Slavia Prague': 'Slavia de Praga',
+  'Sparta Prague': 'Sparta de Praga', 'Paris Saint-Germain': 'París Saint-Germain', 'Olympiacos Piraeus': 'Olympiacos', 'Ajax Amsterdam': 'Ajax', 'Bodoe/Glimt': 'Bodø/Glimt',
+  'Juventus FC': 'Juventus', 'Benfica Lisbon': 'Benfica', 'Steaua Bucharest': 'Steaua de Bucarest', 'Dinamo Zagreb': 'Dinamo de Zagreb', 'Lokomotiv Moscow': 'Lokomotiv de Moscú' };
+const nombreEs = (n) => NOMBRE_ES[n] || n;
+const ESTADIO_ES = { 'El Sardineros': 'El Sardinero', 'Mestalla Stadium': 'Mestalla' };
+
 // ---------- Próximo partido (ESPN): cuándo, dónde, racha del Madrid y lo último contra ese rival ----------
 function renderProximo() {
   const caja = $('#proximo');
@@ -902,9 +913,9 @@ function renderProximo() {
 
   const info = el('div', { class: 'px-info' });
   info.append(el('p', { class: 'px-eti' }, 'Próximo partido'), el('p', { class: 'px-cuando' }, cuando),
-    el('p', { class: 'px-det' }, `${fecha[0].toUpperCase() + fecha.slice(1)}. ${p.competicion}${p.estadio ? `, ${p.estadio}` : ''}.`));
+    el('p', { class: 'px-det' }, `${fecha[0].toUpperCase() + fecha.slice(1)}. ${p.competicion}${p.estadio ? `, ${ESTADIO_ES[p.estadio] || p.estadio}` : ''}.`));
   const equipos = el('div', { class: 'px-equipos' });
-  const eq = (n) => { const d = el('div', { class: 'px-eq' }); d.append(escudo(n), el('span', {}, n)); return d; };
+  const eq = (n) => { const d = el('div', { class: 'px-eq' }); d.append(escudo(n), el('span', {}, nombreEs(n))); return d; };
   equipos.append(eq(p.local), el('span', { class: 'px-vs' }, 'vs'), eq(p.visitante));
 
   const forma = el('div', { class: 'px-forma' });
@@ -920,9 +931,9 @@ function renderProximo() {
     ir.addEventListener('click', () => { $('#q-rival').value = rival; showTab('historico'); $('#rivales').scrollIntoView({ behavior: 'smooth' }); });
     const pie = el('p', { class: 'rm-sub' }, `Historial: ${b.v} V, ${b.e} E, ${b.d} D en ${b.pj} partidos. `);
     pie.append(ir);
-    forma.append(fila(`Últimos ${Math.min(5, h2h.length)} contra ${rival}`, h2h.slice(0, 5).reverse().map((r) => pildora(r.resultado, textoPartido(r))), pie));
+    forma.append(fila(`Últimos ${Math.min(5, h2h.length)} contra ${nombreEs(rival)}`, h2h.slice(0, 5).reverse().map((r) => pildora(r.resultado, textoPartido(r))), pie));
   }
-  const despues = ps.slice(1, 4).map((x) => `${x.local === RM ? x.visitante : `en ${x.local}`} (${fechaEs(x.fecha.slice(0, 10), false)})`);
+  const despues = ps.slice(1, 4).map((x) => `vs ${nombreEs(x.local === RM ? x.visitante : x.local)} (${fechaEs(x.fecha.slice(0, 10), false)})`);
   caja.replaceChildren(info, equipos, forma, ...(despues.length ? [el('p', { class: 'px-despues' }, `Después: ${despues.join(', ')}.`)] : []));
 }
 
