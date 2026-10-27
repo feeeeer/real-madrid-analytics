@@ -27,8 +27,8 @@ partidos,Manuel Velázquez,402,402,,,301,44,38,301,44,38
 partidos,Lucas Vázquez,402,402,,,277,27,77,277,27,77
 partidos,Juanito Gómez,401,401,,,284,50,22,284,50,22
 partidos,Alfredo Di Stéfano,396,396,,,282,50,58,282,50,58
-partidos,Vinícius Júnior,380,380,,,246,27,83,246,27,83
-partidos,Federico Valverde,377,377,,,248,25,80,248,25,80
+partidos,Vinícius Júnior,386,386,,,250,27,85,250,27,85
+partidos,Federico Valverde,385,385,,,254,25,82,254,25,82
 partidos,Ricardo Gallego,372,372,,,250,44,23,250,44,23
 partidos,Míchel Salgado,371,371,,,251,26,83,251,26,83
 partidos,Ramón Grosso,366,366,,,265,56,30,265,56,30
@@ -37,9 +37,9 @@ partidos,Raphaël Varane,360,360,,,236,24,83,236,24,83
 partidos,Isco Alarcón,353,353,,,246,31,62,246,31,62
 partidos,Miguel Ángel González,346,346,,,247,45,19,247,45,19
 partidos,Iván Helguera,346,346,,,229,27,83,229,27,83
+partidos,Thibaut Courtois,345,345,,,241,8,74,241,8,74
 partidos,Rafael Martín Vázquez,343,343,,,252,38,24,252,38,24
 partidos,Vicente del Bosque,339,339,,,239,54,28,239,54,28
-partidos,Thibaut Courtois,338,338,,,236,8,72,236,8,72
 partidos,José Santamaría,337,337,,,227,58,50,227,58,50
 partidos,Carlos Casemiro,336,336,,,222,24,73,222,24,73
 partidos,Pepe,334,334,,,229,24,71,229,24,71
@@ -62,10 +62,10 @@ partidos,Luís Figo,245,245,,,164,13,60,164,13,60
 partidos,Álvaro Arbeloa,238,238,,,156,33,46,156,33,46
 partidos,Ángel de los Santos,237,237,,,161,31,17,161,31,17
 partidos,Xabi Alonso,236,236,,,158,25,47,158,25,47
+partidos,Eduardo Camavinga,233,233,,,151,16,53,151,16,53
 partidos,Fernando Redondo,228,228,,,165,17,37,165,17,37
 partidos,Marquitos Alonso,227,227,,,158,37,28,158,37,28
 partidos,Zinedine Zidane,227,227,,,155,19,47,155,19,47
-partidos,Eduardo Camavinga,227,227,,,146,16,52,146,16,52
 partidos,Isidro Díaz,223,223,,,140,45,10,140,45,10
 partidos,Rafael Lesmes,221,221,,,163,27,28,163,27,28
 partidos,Fifo,219,219,,,180,34,3,180,34,3
@@ -77,9 +77,9 @@ partidos,Luis Enrique Martínez,213,213,,,157,18,8,157,18,8
 partidos,Ferland Mendy,210,210,,,133,7,56,133,7,56
 partidos,Santiago Solari,209,209,,,131,24,49,131,24,49
 partidos,Luis Molowny,208,208,,,172,32,2,172,32,2
-partidos,Aurélien Tchouaméni,196,196,,,125,11,43,125,11,43
-partidos,Éder Militão,194,194,,,134,11,42,134,11,42
-partidos,Antonio Rüdiger,183,183,,,114,10,42,114,10,42
+partidos,Aurélien Tchouaméni,203,203,,,131,11,44,131,11,44
+partidos,Éder Militão,195,195,,,135,11,42,135,11,42
+partidos,Antonio Rüdiger,188,188,,,117,10,44,117,10,44
 goles,Cristiano Ronaldo,438,450,2009,2018,311,22,105,292,30,101
 goles,Karim Benzema,648,354,2009,2023,238,25,78,439,49,133
 goles,Raúl González,741,323,1994,2010,228,18,66,550,37,132
@@ -92,7 +92,7 @@ goles,Pirri,561,172,1964,1980,123,26,18,417,67,57
 goles,Emilio Butragueño,463,171,1983,1995,123,16,17,341,39,29
 goles,Amancio Amaro,471,155,1962,1976,119,14,21,344,58,52
 goles,Míchel González,561,130,1984,1996,97,9,8,404,53,38
-goles,Vinícius Júnior,380,129,2018,,78,7,34,246,27,83
+goles,Vinícius Júnior,386,129,2018,,78,7,34,250,27,85
 goles,Fernando Hierro,602,128,1989,2003,102,7,8,439,43,77
 goles,Pahiño,143,125,1948,1953,109,16,0,,,
 goles,Gonzalo Higuaín,264,121,2006,2013,107,4,8,190,21,48
@@ -185,7 +185,7 @@ asistencias,Toni Kroos,465,99,,,72,,,306,,
 asistencias,Luka Modrić,597,95,,,64,,,394,,
 asistencias,Luís Figo,245,93,,,59,,,164,,
 asistencias,Guti,542,92,,,66,,,387,,
-asistencias,Vinícius Júnior,380,90,,,46,,,246,,
+asistencias,Vinícius Júnior,386,90,,,46,,,250,,
 asistencias,Roberto Carlos da Silva,527,86,,,70,,,370,,
 asistencias,Mesut Özil,159,81,,,54,,,,,
 asistencias,Ángel Di María,190,76,,,62,,,,,
