@@ -4229,6 +4229,1064 @@ match_id,equipo,jugador,x,y,fin_x,fin_y,tipo,minuto
 1993928,Real Madrid,Ibrahima Konaté,42.6,73.5,68.2,60.6,completo,96
 1993928,Real Madrid,Thibaut Courtois,6.6,36.7,40.3,7.0,completo,97
 1993928,Real Madrid,Trent Alexander-Arnold,54.6,11.8,79.1,3.1,completo,97
+1993934,Barcelona,Raphinha,59.6,39.6,46.8,39.1,completo,0
+1993934,Barcelona,Rodri,61.7,23.3,54.2,7.5,completo,0
+1993934,Barcelona,João Cancelo,46.6,7.4,34.2,29.6,completo,0
+1993934,Barcelona,Gerard Martín,45.5,32.3,80.5,69.0,fallado,0
+1993934,Barcelona,Pau Cubarsí,34.1,67.7,47.9,65.4,completo,0
+1993934,Barcelona,Fermín López,47.9,65.4,43.1,69.8,completo,0
+1993934,Barcelona,Xavi Espart,43.1,69.8,47.5,63.4,completo,0
+1993934,Barcelona,Fermín López,48.2,64.0,44.5,68.2,completo,0
+1993934,Barcelona,Xavi Espart,44.5,68.2,34.6,54.5,completo,0
+1993934,Barcelona,Pau Cubarsí,33.2,54.2,39.8,57.4,completo,0
+1993934,Barcelona,Pedri,38.6,57.1,32.4,51.5,completo,0
+1993934,Barcelona,Pau Cubarsí,34.7,54.2,40.4,66.0,completo,0
+1993934,Barcelona,Pedri,40.8,67.7,66.7,71.3,completo,0
+1993934,Barcelona,Lamine Yamal,66.7,70.2,97.8,42.4,fallado,0
+1993934,Barcelona,Xavi Espart,71.9,74.3,69.4,68.2,completo,0
+1993934,Barcelona,Pedri,67.1,61.0,56.4,55.8,completo,0
+1993934,Barcelona,Rodri,55.8,55.8,42.6,58.7,completo,0
+1993934,Barcelona,Pau Cubarsí,39.4,56.9,27.1,41.5,completo,1
+1993934,Barcelona,Joan García,27.5,42.2,31.2,55.1,completo,1
+1993934,Barcelona,Pau Cubarsí,54.1,58.0,67.7,57.8,completo,1
+1993934,Barcelona,Pedri,67.6,58.8,69.4,72.5,completo,1
+1993934,Barcelona,Xavi Espart,69.6,73.4,79.7,76.0,completo,1
+1993934,Barcelona,Lamine Yamal,76.9,74.9,67.8,71.7,completo,1
+1993934,Barcelona,Pedri,66.2,66.7,54.2,34.2,completo,1
+1993934,Barcelona,Gerard Martín,74.9,20.8,87.2,3.5,completo,1
+1993934,Barcelona,João Cancelo,85.7,5.0,83.5,17.6,completo,1
+1993934,Barcelona,Rodri,82.6,20.2,81.5,29.6,completo,1
+1993934,Barcelona,Pedri,84.0,19.3,78.1,18.6,completo,1
+1993934,Barcelona,Rodri,71.4,17.9,78.7,7.8,completo,1
+1993934,Barcelona,Pedri,79.0,7.6,82.0,3.0,completo,1
+1993934,Barcelona,João Cancelo,78.2,3.2,40.1,12.6,completo,1
+1993934,Barcelona,Gerard Martín,40.1,12.6,48.5,7.1,completo,1
+1993934,Barcelona,Rodri,49.6,10.7,43.9,36.2,completo,1
+1993934,Barcelona,Pau Cubarsí,65.3,52.5,82.7,52.6,completo,1
+1993934,Barcelona,Fermín López,89.2,59.5,98.8,47.0,completo,1
+1993934,Barcelona,Raphinha,96.4,49.4,91.8,51.3,completo,1
+1993934,Barcelona,Fermín López,89.5,50.1,85.3,50.8,completo,1
+1993934,Barcelona,Pedri,85.2,55.6,91.1,56.6,completo,1
+1993934,Barcelona,Lamine Yamal,91.1,56.6,92.8,57.4,fallado,1
+1993934,Real Madrid,Marc Cucurella,24.7,21.8,27.8,14.8,completo,1
+1993934,Real Madrid,Yan Diomande,34.6,6.4,28.8,16.5,completo,2
+1993934,Real Madrid,Aurélien Tchouaméni,28.8,16.5,43.9,40.8,completo,2
+1993934,Real Madrid,Dean Huijsen,38.0,38.3,32.2,56.9,completo,2
+1993934,Real Madrid,Ibrahima Konaté,31.7,56.6,11.6,40.8,completo,2
+1993934,Real Madrid,Andrii Lunin,11.8,40.6,10.2,20.9,completo,2
+1993934,Real Madrid,Dean Huijsen,13.4,19.1,37.1,21.4,fallado,2
+1993934,Barcelona,Lamine Yamal,88.3,49.1,117.6,42.6,fallado,2
+1993934,Real Madrid,Andrii Lunin,13.3,45.3,32.2,73.4,completo,2
+1993934,Real Madrid,Federico Valverde,31.8,77.0,42.1,77.4,completo,3
+1993934,Barcelona,Anthony Gordon,83.0,5.2,87.4,20.7,completo,3
+1993934,Real Madrid,Dean Huijsen,21.0,42.9,45.1,26.9,completo,3
+1993934,Real Madrid,Jude Bellingham,44.5,12.9,52.3,2.7,completo,3
+1993934,Real Madrid,Kylian Mbappé,69.1,45.1,72.5,73.3,completo,3
+1993934,Real Madrid,Federico Valverde,75.6,74.2,79.8,63.6,completo,3
+1993934,Barcelona,Anthony Gordon,33.8,9.4,30.0,9.5,completo,3
+1993934,Barcelona,João Cancelo,31.4,11.6,33.6,21.5,completo,3
+1993934,Barcelona,Rodri,31.6,39.0,32.9,59.3,completo,3
+1993934,Barcelona,Xavi Espart,38.5,60.0,34.6,53.3,completo,3
+1993934,Barcelona,Pau Cubarsí,49.1,55.4,63.6,53.5,completo,3
+1993934,Barcelona,Rodri,63.6,53.5,52.6,56.8,completo,3
+1993934,Barcelona,Pau Cubarsí,51.0,57.3,68.9,75.0,completo,3
+1993934,Barcelona,Lamine Yamal,79.1,72.5,75.8,60.9,completo,3
+1993934,Barcelona,Fermín López,75.8,60.9,65.2,62.4,completo,3
+1993934,Barcelona,Xavi Espart,65.2,62.4,63.8,54.4,completo,3
+1993934,Barcelona,Rodri,59.6,51.8,44.3,41.9,completo,4
+1993934,Barcelona,Pau Cubarsí,53.2,38.3,63.8,32.8,completo,4
+1993934,Barcelona,Pedri,63.8,32.8,50.4,14.2,fallado,4
+1993934,Barcelona,Gerard Martín,5.6,30.6,3.7,37.5,completo,4
+1993934,Barcelona,Joan García,3.7,36.6,9.7,9.0,completo,4
+1993934,Barcelona,Gerard Martín,9.8,8.6,44.3,4.2,completo,4
+1993934,Barcelona,Anthony Gordon,41.4,6.1,36.6,11.7,completo,4
+1993934,Barcelona,Pedri,36.0,13.5,28.2,42.9,completo,4
+1993934,Barcelona,Pau Cubarsí,42.0,54.2,65.2,56.6,completo,5
+1993934,Real Madrid,Marc Cucurella,36.1,18.8,23.8,23.3,completo,5
+1993934,Real Madrid,Dean Huijsen,18.2,21.8,3.8,42.4,completo,5
+1993934,Real Madrid,Andrii Lunin,3.8,42.4,9.2,71.3,completo,5
+1993934,Real Madrid,Ibrahima Konaté,9.2,71.3,22.7,77.2,completo,5
+1993934,Real Madrid,Federico Valverde,22.7,77.2,41.3,77.9,completo,5
+1993934,Real Madrid,Arda Güler,41.5,77.9,61.7,80.0,fallado,5
+1993934,Barcelona,Gerard Martín,47.5,19.8,40.2,42.0,completo,5
+1993934,Barcelona,Pau Cubarsí,67.0,52.0,75.0,46.6,completo,5
+1993934,Barcelona,Raphinha,74.9,48.0,83.6,73.8,completo,5
+1993934,Barcelona,Lamine Yamal,79.2,70.2,94.9,76.3,completo,5
+1993934,Barcelona,Xavi Espart,93.5,76.3,85.4,73.4,completo,6
+1993934,Barcelona,Lamine Yamal,85.4,73.4,108.8,61.7,completo,6
+1993934,Barcelona,Fermín López,108.8,61.7,110.2,46.8,fallado,6
+1993934,Barcelona,Fermín López,96.1,71.9,95.3,76.6,completo,6
+1993934,Barcelona,Xavi Espart,95.3,76.6,92.5,70.7,completo,6
+1993934,Barcelona,Xavi Espart,90.2,65.3,81.5,56.6,completo,6
+1993934,Barcelona,Pedri,81.5,56.6,77.8,62.6,completo,6
+1993934,Barcelona,Rodri,77.9,61.0,84.5,17.2,completo,6
+1993934,Barcelona,João Cancelo,80.2,18.6,78.7,25.0,completo,6
+1993934,Barcelona,Pedri,77.5,24.8,92.2,20.3,completo,6
+1993934,Barcelona,João Cancelo,92.6,20.5,100.2,6.2,clave,6
+1993934,Real Madrid,Andrii Lunin,0.7,41.0,8.6,22.3,completo,6
+1993934,Real Madrid,Dean Huijsen,9.6,21.4,15.7,2.7,completo,6
+1993934,Real Madrid,Marc Cucurella,15.6,2.5,38.6,3.4,completo,6
+1993934,Real Madrid,Yan Diomande,38.6,3.4,33.1,8.0,completo,6
+1993934,Real Madrid,Marc Cucurella,33.2,7.4,38.0,3.0,completo,6
+1993934,Real Madrid,Yan Diomande,42.1,23.0,44.6,36.1,completo,7
+1993934,Real Madrid,Bernardo Silva,47.4,25.2,56.8,12.9,completo,7
+1993934,Real Madrid,Jude Bellingham,56.8,12.9,71.2,2.6,completo,7
+1993934,Real Madrid,Marc Cucurella,69.7,3.0,53.2,7.1,completo,7
+1993934,Barcelona,Lamine Yamal,93.7,57.8,90.7,44.2,completo,7
+1993934,Barcelona,Pedri,92.8,33.5,95.8,27.0,completo,7
+1993934,Barcelona,Raphinha,95.8,27.0,104.8,39.8,fallado,7
+1993934,Barcelona,Raphinha,89.0,32.5,92.6,47.2,fallado,7
+1993934,Barcelona,Lamine Yamal,109.6,58.6,109.9,55.6,fallado,7
+1993934,Real Madrid,Andrii Lunin,15.7,37.0,17.9,65.4,completo,7
+1993934,Real Madrid,Federico Valverde,24.6,56.9,33.4,50.6,completo,7
+1993934,Real Madrid,Aurélien Tchouaméni,33.4,50.6,29.2,44.1,completo,7
+1993934,Real Madrid,Federico Valverde,29.2,44.1,40.8,3.7,completo,7
+1993934,Real Madrid,Marc Cucurella,55.3,5.1,75.1,2.7,completo,7
+1993934,Real Madrid,Yan Diomande,75.1,2.7,64.1,9.3,completo,7
+1993934,Real Madrid,Marc Cucurella,62.0,8.9,70.1,3.0,completo,7
+1993934,Real Madrid,Yan Diomande,70.1,3.0,73.4,18.5,completo,7
+1993934,Real Madrid,Aurélien Tchouaméni,67.4,19.7,50.9,25.7,completo,8
+1993934,Real Madrid,Dean Huijsen,50.9,25.7,64.0,27.0,completo,8
+1993934,Real Madrid,Bernardo Silva,64.0,27.0,66.2,18.7,completo,8
+1993934,Real Madrid,Aurélien Tchouaméni,66.2,18.7,50.6,5.7,completo,8
+1993934,Real Madrid,Marc Cucurella,50.6,5.7,35.6,30.4,completo,8
+1993934,Barcelona,Gerard Martín,50.9,11.8,44.2,33.2,completo,8
+1993934,Barcelona,Pau Cubarsí,44.0,34.2,52.0,18.6,completo,8
+1993934,Barcelona,Pedri,52.3,18.6,63.5,2.5,completo,8
+1993934,Barcelona,João Cancelo,64.1,2.5,75.7,0.8,completo,8
+1993934,Barcelona,Anthony Gordon,75.6,6.8,67.7,16.5,completo,8
+1993934,Barcelona,Pedri,67.1,30.2,69.4,64.8,completo,8
+1993934,Barcelona,Xavi Espart,70.1,68.3,79.7,74.6,completo,8
+1993934,Barcelona,Lamine Yamal,79.7,74.6,75.4,69.1,completo,8
+1993934,Barcelona,Xavi Espart,74.9,67.4,76.6,55.0,completo,8
+1993934,Barcelona,Rodri,76.6,54.7,80.3,53.2,completo,8
+1993934,Barcelona,Fermín López,80.3,53.2,73.4,56.3,completo,8
+1993934,Barcelona,Rodri,72.8,56.8,71.6,59.7,fallado,8
+1993934,Barcelona,Xavi Espart,66.0,64.1,55.2,50.7,completo,9
+1993934,Barcelona,Pau Cubarsí,53.6,46.6,54.4,23.0,completo,9
+1993934,Barcelona,Gerard Martín,68.8,22.0,90.4,47.4,fallado,9
+1993934,Real Madrid,Dean Huijsen,28.4,33.0,40.7,17.7,completo,9
+1993934,Real Madrid,Yan Diomande,40.8,17.7,23.5,31.3,completo,9
+1993934,Real Madrid,Dean Huijsen,25.1,29.0,53.5,10.7,fallado,9
+1993934,Real Madrid,Dean Huijsen,52.1,11.0,37.4,47.7,completo,10
+1993934,Real Madrid,Ibrahima Konaté,37.4,47.7,42.2,71.3,completo,10
+1993934,Real Madrid,Federico Valverde,42.2,71.3,55.7,55.5,completo,10
+1993934,Real Madrid,Kylian Mbappé,55.7,55.5,50.0,76.6,completo,10
+1993934,Real Madrid,Arda Güler,51.1,76.4,91.7,80.0,fallado,10
+1993934,Barcelona,Pedri,24.2,8.5,26.6,3.7,completo,11
+1993934,Barcelona,João Cancelo,26.6,3.5,30.6,8.0,fallado,11
+1993934,Real Madrid,Bernardo Silva,86.3,66.8,82.4,59.8,completo,11
+1993934,Real Madrid,Jude Bellingham,82.4,59.8,70.6,76.8,completo,11
+1993934,Real Madrid,Federico Valverde,70.6,76.8,40.2,51.4,completo,11
+1993934,Real Madrid,Dean Huijsen,40.2,51.4,21.8,41.3,completo,11
+1993934,Real Madrid,Andrii Lunin,21.8,41.3,83.6,47.3,fallado,11
+1993934,Real Madrid,Bernardo Silva,79.9,50.7,86.6,76.2,completo,11
+1993934,Real Madrid,Arda Güler,82.2,76.3,61.9,73.4,completo,11
+1993934,Real Madrid,Federico Valverde,56.2,60.6,40.2,65.2,completo,11
+1993934,Real Madrid,Ibrahima Konaté,40.2,65.2,53.6,77.7,completo,11
+1993934,Real Madrid,Arda Güler,53.5,73.6,53.4,65.4,completo,11
+1993934,Real Madrid,Federico Valverde,85.8,63.0,90.5,76.5,completo,11
+1993934,Barcelona,Pedri,28.9,5.8,35.9,8.2,completo,11
+1993934,Barcelona,Anthony Gordon,31.9,12.6,21.2,15.2,completo,11
+1993934,Barcelona,Gerard Martín,21.2,15.2,24.5,5.1,completo,11
+1993934,Barcelona,João Cancelo,25.9,9.3,27.1,19.0,completo,11
+1993934,Barcelona,Rodri,27.1,19.0,26.5,6.4,completo,11
+1993934,Barcelona,João Cancelo,29.2,9.7,49.3,13.1,completo,11
+1993934,Barcelona,Pedri,47.5,12.6,53.3,20.0,fallado,12
+1993934,Real Madrid,Bernardo Silva,63.2,53.1,70.6,49.9,completo,12
+1993934,Real Madrid,Aurélien Tchouaméni,82.2,37.4,91.6,8.1,completo,12
+1993934,Real Madrid,Marc Cucurella,96.8,9.6,90.2,20.7,completo,12
+1993934,Barcelona,Gerard Martín,5.3,32.1,4.8,36.6,completo,12
+1993934,Barcelona,Joan García,9.8,37.4,49.9,10.5,fallado,12
+1993934,Real Madrid,Arda Güler,77.5,50.3,58.0,35.9,completo,12
+1993934,Real Madrid,Dean Huijsen,59.4,35.8,80.4,20.7,completo,12
+1993934,Real Madrid,Arda Güler,80.4,20.7,87.5,3.8,completo,12
+1993934,Real Madrid,Yan Diomande,88.8,3.7,109.1,15.6,completo,12
+1993934,Real Madrid,Arda Güler,109.0,17.2,108.4,38.6,fallado,13
+1993934,Barcelona,Rodri,39.1,54.4,41.0,68.1,completo,13
+1993934,Barcelona,Xavi Espart,41.2,68.6,62.6,77.5,completo,13
+1993934,Barcelona,Lamine Yamal,35.4,72.2,24.6,60.0,completo,13
+1993934,Barcelona,Pau Cubarsí,31.9,47.3,41.0,44.6,completo,13
+1993934,Barcelona,Pedri,42.2,47.3,88.9,35.2,fallado,13
+1993934,Real Madrid,Andrii Lunin,36.1,44.1,104.8,44.2,fallado,13
+1993934,Barcelona,Joan García,17.6,36.2,28.7,30.1,completo,13
+1993934,Barcelona,Gerard Martín,36.1,28.2,36.5,40.3,completo,14
+1993934,Barcelona,Pau Cubarsí,58.9,53.4,64.3,71.4,completo,14
+1993934,Barcelona,Xavi Espart,64.3,71.4,55.8,58.3,completo,14
+1993934,Barcelona,Pau Cubarsí,56.6,57.8,72.2,55.0,completo,14
+1993934,Barcelona,Fermín López,68.9,55.8,64.2,69.6,completo,14
+1993934,Barcelona,Xavi Espart,64.7,67.7,55.4,59.8,completo,14
+1993934,Barcelona,Pau Cubarsí,65.0,57.8,76.4,60.5,completo,14
+1993934,Barcelona,Lamine Yamal,76.9,72.9,70.6,69.3,completo,14
+1993934,Barcelona,Xavi Espart,68.5,68.3,56.2,52.2,completo,14
+1993934,Barcelona,Pau Cubarsí,58.9,39.7,72.7,15.4,completo,14
+1993934,Barcelona,Gerard Martín,76.8,11.8,85.2,6.6,completo,14
+1993934,Barcelona,João Cancelo,85.6,6.4,96.2,2.0,clave,14
+1993934,Real Madrid,Andrii Lunin,6.5,40.7,9.8,62.1,completo,15
+1993934,Real Madrid,Ibrahima Konaté,9.8,62.1,14.4,71.4,completo,15
+1993934,Real Madrid,Federico Valverde,14.4,71.4,48.0,10.2,completo,15
+1993934,Real Madrid,Marc Cucurella,49.3,11.0,67.7,1.8,completo,15
+1993934,Real Madrid,Yan Diomande,67.7,1.8,72.2,17.3,fallado,15
+1993934,Barcelona,Pedri,45.7,63.5,55.3,72.7,completo,15
+1993934,Barcelona,Lamine Yamal,54.8,70.3,57.1,24.1,completo,15
+1993934,Barcelona,Anthony Gordon,57.1,24.1,45.8,22.0,completo,15
+1993934,Barcelona,João Cancelo,51.4,18.9,69.5,2.7,completo,15
+1993934,Barcelona,Anthony Gordon,70.8,3.5,76.3,18.1,completo,15
+1993934,Barcelona,Raphinha,76.8,8.6,79.7,3.2,completo,15
+1993934,Barcelona,Anthony Gordon,83.4,9.0,79.0,17.0,completo,15
+1993934,Barcelona,Rodri,79.0,17.1,77.9,26.8,completo,15
+1993934,Barcelona,Pedri,81.5,41.8,97.1,57.0,completo,15
+1993934,Real Madrid,Andrii Lunin,3.6,11.2,79.7,2.0,completo,16
+1993934,Real Madrid,Yan Diomande,79.7,2.0,93.5,5.7,fallado,16
+1993934,Barcelona,Rodri,30.2,73.0,5.0,54.6,completo,16
+1993934,Barcelona,Joan García,11.4,42.2,22.3,56.1,completo,16
+1993934,Barcelona,Pau Cubarsí,28.9,59.0,45.7,53.4,completo,16
+1993934,Barcelona,Raphinha,50.0,62.2,52.6,75.0,completo,16
+1993934,Barcelona,Xavi Espart,53.4,75.8,56.2,75.0,completo,16
+1993934,Barcelona,Lamine Yamal,56.2,75.0,41.0,65.5,completo,16
+1993934,Barcelona,Pau Cubarsí,47.0,62.2,65.9,74.1,completo,16
+1993934,Barcelona,Xavi Espart,64.8,74.4,50.6,65.8,completo,17
+1993934,Barcelona,Pau Cubarsí,52.6,65.4,70.9,58.1,completo,17
+1993934,Real Madrid,Aurélien Tchouaméni,42.2,32.5,30.4,42.4,completo,17
+1993934,Real Madrid,Ibrahima Konaté,30.4,42.4,27.4,27.8,completo,17
+1993934,Real Madrid,Dean Huijsen,27.4,27.8,12.5,42.5,completo,17
+1993934,Real Madrid,Andrii Lunin,13.0,43.0,55.7,76.5,completo,17
+1993934,Real Madrid,Arda Güler,55.7,76.5,44.8,75.6,completo,17
+1993934,Real Madrid,Federico Valverde,47.9,66.2,80.4,7.5,completo,17
+1993934,Real Madrid,Yan Diomande,79.4,8.5,107.0,14.6,completo,17
+1993934,Real Madrid,Kylian Mbappé,113.8,23.1,91.1,38.3,completo,17
+1993934,Real Madrid,Aurélien Tchouaméni,89.2,42.2,95.3,61.4,clave,17
+1993934,Barcelona,Xavi Espart,3.6,50.6,17.5,69.1,completo,17
+1993934,Real Madrid,Yan Diomande,119.4,0.4,115.6,18.2,completo,18
+1993934,Real Madrid,Arda Güler,115.6,18.2,111.7,40.2,fallado,18
+1993934,Real Madrid,Arda Güler,119.4,0.4,111.0,37.8,fallado,18
+1993934,Barcelona,Rodri,28.3,75.0,56.3,44.2,fallado,19
+1993934,Real Madrid,Federico Valverde,62.4,39.0,72.7,20.4,fallado,19
+1993934,Barcelona,Rodri,46.2,61.4,67.2,0.0,fallado,19
+1993934,Real Madrid,Federico Valverde,43.2,74.6,32.5,55.7,completo,19
+1993934,Real Madrid,Ibrahima Konaté,32.9,52.3,55.9,4.5,completo,19
+1993934,Real Madrid,Yan Diomande,58.0,6.4,63.7,24.2,fallado,19
+1993934,Barcelona,Rodri,57.4,55.0,62.9,50.6,completo,19
+1993934,Barcelona,Pedri,62.9,50.6,56.6,47.5,completo,19
+1993934,Barcelona,Rodri,56.6,47.5,63.0,46.2,fallado,19
+1993934,Real Madrid,Jude Bellingham,64.4,40.5,81.0,45.1,completo,19
+1993934,Barcelona,Rodri,43.2,31.6,40.8,32.1,fallado,19
+1993934,Real Madrid,Kylian Mbappé,78.7,30.6,85.7,5.4,completo,19
+1993934,Real Madrid,Yan Diomande,92.4,5.4,83.3,14.1,completo,19
+1993934,Real Madrid,Kylian Mbappé,86.0,15.0,77.8,27.2,completo,19
+1993934,Real Madrid,Aurélien Tchouaméni,77.8,27.2,78.1,45.4,completo,19
+1993934,Real Madrid,Jude Bellingham,78.1,45.4,86.5,75.3,completo,19
+1993934,Real Madrid,Arda Güler,86.5,76.1,73.2,73.4,completo,19
+1993934,Real Madrid,Federico Valverde,73.2,73.4,95.5,68.7,completo,20
+1993934,Barcelona,Gerard Martín,18.7,4.2,20.4,4.9,fallado,20
+1993934,Barcelona,Gerard Martín,5.8,26.2,3.4,54.2,completo,20
+1993934,Barcelona,Pau Cubarsí,3.5,55.1,9.1,72.9,completo,20
+1993934,Barcelona,Xavi Espart,13.7,74.8,25.3,63.6,completo,20
+1993934,Barcelona,Fermín López,25.2,66.2,43.6,70.8,completo,20
+1993934,Barcelona,Lamine Yamal,42.7,70.8,32.0,56.6,completo,20
+1993934,Barcelona,Fermín López,46.9,71.9,50.5,75.1,completo,20
+1993934,Real Madrid,Aurélien Tchouaméni,81.1,20.7,75.1,7.8,completo,20
+1993934,Real Madrid,Yan Diomande,70.6,14.9,49.1,14.3,completo,20
+1993934,Real Madrid,Dean Huijsen,47.6,21.6,83.6,71.4,fallado,20
+1993934,Barcelona,João Cancelo,35.6,10.0,47.4,21.0,completo,20
+1993934,Barcelona,Fermín López,65.0,45.0,63.8,37.8,completo,20
+1993934,Barcelona,Rodri,63.8,37.8,75.8,26.7,completo,20
+1993934,Barcelona,Pedri,77.8,27.3,81.4,37.5,completo,20
+1993934,Barcelona,Anthony Gordon,85.1,42.0,90.4,56.9,completo,20
+1993934,Real Madrid,Andrii Lunin,3.6,39.0,82.9,23.0,fallado,22
+1993934,Barcelona,Pau Cubarsí,47.6,58.0,67.4,67.8,fallado,22
+1993934,Real Madrid,Jude Bellingham,55.7,2.6,62.4,0.0,fallado,22
+1993934,Barcelona,Pau Cubarsí,36.8,58.2,39.8,69.3,completo,22
+1993934,Barcelona,Xavi Espart,39.6,70.2,31.8,59.5,completo,22
+1993934,Barcelona,Pau Cubarsí,52.1,59.0,69.1,74.3,completo,22
+1993934,Barcelona,Lamine Yamal,70.3,74.1,73.0,61.8,completo,22
+1993934,Barcelona,Fermín López,73.0,61.8,55.9,66.2,completo,22
+1993934,Barcelona,Xavi Espart,53.0,64.6,42.2,53.8,completo,22
+1993934,Barcelona,Pau Cubarsí,43.8,51.1,52.8,21.8,completo,22
+1993934,Barcelona,Gerard Martín,70.0,17.4,72.4,23.4,completo,22
+1993934,Barcelona,Raphinha,76.6,51.0,91.2,51.0,clave,22
+1993934,Real Madrid,Andrii Lunin,4.0,44.9,9.4,54.3,completo,23
+1993934,Real Madrid,Ibrahima Konaté,9.4,54.3,24.1,69.9,completo,23
+1993934,Real Madrid,Federico Valverde,24.1,69.9,47.4,56.5,completo,23
+1993934,Real Madrid,Kylian Mbappé,47.4,56.5,44.9,73.0,completo,23
+1993934,Real Madrid,Arda Güler,45.7,71.5,79.4,72.7,completo,23
+1993934,Real Madrid,Kylian Mbappé,109.6,61.4,108.2,57.9,fallado,23
+1993934,Barcelona,Pedri,19.6,19.1,50.9,19.8,completo,23
+1993934,Barcelona,Fermín López,65.3,57.3,65.3,59.2,completo,23
+1993934,Barcelona,Lamine Yamal,67.7,57.1,91.1,46.2,completo,23
+1993934,Barcelona,Anthony Gordon,91.1,46.2,88.4,43.0,clave,23
+1993934,Real Madrid,Andrii Lunin,3.4,42.7,24.5,65.1,completo,23
+1993934,Real Madrid,Bernardo Silva,32.3,67.8,51.6,77.5,completo,23
+1993934,Barcelona,João Cancelo,63.8,10.9,54.7,21.2,completo,24
+1993934,Barcelona,Gerard Martín,54.7,21.2,54.4,45.0,completo,24
+1993934,Barcelona,Pau Cubarsí,61.2,49.9,68.6,49.8,completo,24
+1993934,Barcelona,Fermín López,69.1,51.5,67.3,62.8,completo,24
+1993934,Barcelona,Xavi Espart,67.2,61.6,56.8,57.0,completo,24
+1993934,Barcelona,Pau Cubarsí,54.1,57.8,72.2,62.4,completo,24
+1993934,Barcelona,Lamine Yamal,72.2,62.4,66.7,70.7,completo,24
+1993934,Barcelona,Xavi Espart,66.1,70.3,53.5,62.3,completo,24
+1993934,Barcelona,Pau Cubarsí,56.6,44.9,61.9,22.4,completo,24
+1993934,Barcelona,Gerard Martín,70.4,14.6,78.4,15.7,completo,24
+1993934,Barcelona,Raphinha,76.9,16.0,70.4,20.7,completo,24
+1993934,Barcelona,Rodri,70.4,20.7,70.9,13.1,completo,24
+1993934,Barcelona,Gerard Martín,70.8,13.0,76.1,14.5,completo,24
+1993934,Barcelona,Raphinha,76.1,14.5,69.6,12.2,completo,24
+1993934,Barcelona,Gerard Martín,66.6,14.0,64.8,21.0,completo,24
+1993934,Barcelona,Rodri,65.6,22.4,70.1,11.2,completo,24
+1993934,Barcelona,Gerard Martín,71.8,11.6,84.5,35.9,fallado,24
+1993934,Real Madrid,Dean Huijsen,37.2,38.6,44.5,46.1,completo,24
+1993934,Real Madrid,Jude Bellingham,44.5,46.1,55.0,42.2,completo,24
+1993934,Real Madrid,Kylian Mbappé,55.0,42.2,49.9,31.1,completo,24
+1993934,Real Madrid,Jude Bellingham,48.6,28.4,89.8,15.8,completo,24
+1993934,Real Madrid,Yan Diomande,105.4,21.7,92.2,25.7,completo,25
+1993934,Real Madrid,Aurélien Tchouaméni,92.2,25.7,90.2,39.0,completo,25
+1993934,Real Madrid,Kylian Mbappé,89.9,40.1,93.1,60.3,clave,25
+1993934,Real Madrid,Arda Güler,119.4,0.4,115.6,31.6,fallado,25
+1993934,Real Madrid,Yan Diomande,89.4,23.6,33.4,48.6,completo,25
+1993934,Real Madrid,Andrii Lunin,38.9,47.3,89.4,22.1,completo,26
+1993934,Real Madrid,Arda Güler,88.7,22.6,87.7,20.5,fallado,26
+1993934,Real Madrid,Arda Güler,87.7,20.5,82.7,7.0,completo,26
+1993934,Real Madrid,Yan Diomande,89.8,17.2,88.1,28.6,completo,26
+1993934,Real Madrid,Jude Bellingham,88.1,28.6,112.6,54.5,completo,26
+1993934,Barcelona,Joan García,4.4,37.5,13.4,69.6,completo,26
+1993934,Barcelona,Xavi Espart,13.4,69.6,32.6,65.4,completo,26
+1993934,Barcelona,Fermín López,38.8,69.8,42.1,73.4,completo,26
+1993934,Barcelona,Lamine Yamal,83.9,46.3,93.4,29.2,completo,26
+1993934,Barcelona,Raphinha,93.4,29.2,87.4,34.0,completo,26
+1993934,Barcelona,Pedri,87.4,34.0,94.4,23.1,completo,26
+1993934,Barcelona,Anthony Gordon,111.5,20.8,114.2,32.2,fallado,26
+1993934,Real Madrid,Federico Valverde,12.8,60.7,22.0,73.9,completo,26
+1993934,Real Madrid,Arda Güler,22.0,73.9,9.2,65.7,completo,27
+1993934,Real Madrid,Federico Valverde,9.2,65.7,15.0,57.6,completo,27
+1993934,Real Madrid,Bernardo Silva,15.0,57.6,17.9,78.2,completo,27
+1993934,Real Madrid,Arda Güler,17.6,78.2,9.1,66.8,completo,27
+1993934,Real Madrid,Federico Valverde,9.1,66.8,17.2,53.5,completo,27
+1993934,Real Madrid,Aurélien Tchouaméni,17.2,53.5,20.3,54.7,fallado,27
+1993934,Real Madrid,Aurélien Tchouaméni,17.8,55.4,30.6,19.5,completo,27
+1993934,Real Madrid,Marc Cucurella,34.8,16.7,53.6,22.9,completo,27
+1993934,Real Madrid,Jude Bellingham,64.7,21.4,95.9,25.9,fallado,27
+1993934,Real Madrid,Dean Huijsen,43.9,30.1,38.4,54.3,completo,27
+1993934,Real Madrid,Ibrahima Konaté,37.4,57.3,42.7,54.0,completo,27
+1993934,Real Madrid,Bernardo Silva,50.0,55.8,44.8,73.7,completo,27
+1993934,Real Madrid,Federico Valverde,48.6,52.1,27.2,30.4,completo,27
+1993934,Real Madrid,Dean Huijsen,28.6,32.6,11.0,40.3,completo,27
+1993934,Real Madrid,Andrii Lunin,11.0,40.3,38.0,3.3,completo,27
+1993934,Real Madrid,Marc Cucurella,42.5,3.2,27.1,31.1,completo,27
+1993934,Real Madrid,Dean Huijsen,27.1,31.1,26.4,56.0,completo,27
+1993934,Real Madrid,Ibrahima Konaté,28.4,57.7,42.0,75.8,completo,27
+1993934,Real Madrid,Bernardo Silva,49.3,71.5,54.4,73.6,completo,28
+1993934,Real Madrid,Federico Valverde,68.4,74.2,77.9,78.2,completo,28
+1993934,Real Madrid,Arda Güler,76.3,77.5,105.7,66.6,completo,28
+1993934,Real Madrid,Federico Valverde,105.7,66.6,103.2,63.3,fallado,28
+1993934,Barcelona,Joan García,15.0,36.6,34.3,27.5,completo,28
+1993934,Barcelona,Rodri,34.3,27.5,16.8,20.1,completo,28
+1993934,Barcelona,Gerard Martín,16.8,20.1,25.0,12.3,completo,28
+1993934,Barcelona,João Cancelo,31.3,9.7,26.3,18.4,completo,28
+1993934,Barcelona,Gerard Martín,27.8,23.4,38.3,31.5,completo,28
+1993934,Barcelona,Joan García,16.2,40.2,26.4,18.8,completo,30
+1993934,Barcelona,Gerard Martín,25.4,19.1,8.9,33.4,completo,30
+1993934,Barcelona,Joan García,9.5,33.7,25.6,47.4,completo,30
+1993934,Barcelona,Fermín López,25.6,47.4,5.0,39.0,completo,30
+1993934,Barcelona,Joan García,4.7,40.1,4.9,58.5,completo,30
+1993934,Barcelona,Pau Cubarsí,45.8,60.6,52.1,73.7,completo,30
+1993934,Barcelona,Lamine Yamal,64.0,77.2,44.2,75.8,completo,30
+1993934,Barcelona,João Cancelo,47.4,72.6,40.3,54.0,completo,30
+1993934,Barcelona,Pau Cubarsí,41.0,53.7,41.6,43.8,completo,30
+1993934,Barcelona,Rodri,36.8,37.8,42.6,50.6,completo,30
+1993934,Barcelona,Pau Cubarsí,52.8,44.4,57.7,48.4,completo,30
+1993934,Barcelona,Pedri,58.7,53.9,63.6,69.1,completo,30
+1993934,Barcelona,João Cancelo,63.6,71.0,71.3,75.8,completo,30
+1993934,Barcelona,Lamine Yamal,85.7,73.7,74.9,61.0,completo,30
+1993934,Barcelona,Pedri,72.2,61.4,76.1,72.4,completo,30
+1993934,Barcelona,João Cancelo,70.2,70.8,64.7,59.4,completo,30
+1993934,Barcelona,Pedri,72.8,51.5,75.6,42.0,completo,30
+1993934,Barcelona,Rodri,75.1,42.9,70.1,51.1,completo,30
+1993934,Barcelona,Pedri,67.6,54.0,64.9,64.1,completo,31
+1993934,Barcelona,João Cancelo,66.0,65.0,66.0,54.2,completo,31
+1993934,Barcelona,Pedri,74.2,55.4,82.0,66.9,completo,31
+1993934,Barcelona,Fermín López,83.4,69.3,88.4,76.1,completo,31
+1993934,Barcelona,Lamine Yamal,107.9,74.6,92.3,63.8,completo,31
+1993934,Barcelona,Fermín López,90.1,56.8,84.4,44.9,completo,31
+1993934,Barcelona,Rodri,84.4,44.9,83.9,50.4,completo,31
+1993934,Barcelona,Pedri,83.9,50.4,80.0,37.4,fallado,31
+1993934,Real Madrid,Arda Güler,44.6,60.1,36.0,71.7,completo,31
+1993934,Real Madrid,Federico Valverde,36.0,71.7,47.9,74.8,completo,31
+1993934,Real Madrid,Arda Güler,47.9,74.8,47.0,68.5,fallado,31
+1993934,Barcelona,Pedri,74.8,20.1,75.5,17.9,fallado,31
+1993934,Barcelona,Rodri,76.8,18.4,71.8,10.2,completo,31
+1993934,Barcelona,Alejandro Balde,71.2,10.4,55.6,21.9,completo,31
+1993934,Barcelona,Gerard Martín,55.2,23.7,62.0,49.6,completo,31
+1993934,Barcelona,Pau Cubarsí,63.0,52.6,67.0,69.1,completo,31
+1993934,Barcelona,João Cancelo,68.4,69.4,78.2,55.6,completo,31
+1993934,Barcelona,Fermín López,78.2,55.6,84.7,67.9,fallado,31
+1993934,Barcelona,João Cancelo,81.8,67.7,87.1,59.0,clave,32
+1993934,Real Madrid,Andrii Lunin,5.2,36.4,56.0,23.1,fallado,32
+1993934,Real Madrid,Kylian Mbappé,70.0,30.2,80.5,73.4,completo,32
+1993934,Real Madrid,Arda Güler,88.3,71.3,105.2,42.0,clave,32
+1993934,Barcelona,Gerard Martín,6.0,31.5,4.0,37.5,completo,33
+1993934,Barcelona,Joan García,10.4,36.6,74.0,0.0,fallado,33
+1993934,Barcelona,Raphinha,86.3,22.0,110.2,24.9,clave,33
+1993934,Barcelona,João Cancelo,119.4,0.4,116.4,39.4,fallado,34
+1993934,Real Madrid,Andrii Lunin,10.2,42.2,12.2,36.3,completo,34
+1993934,Real Madrid,Dean Huijsen,18.6,33.8,22.8,11.5,completo,34
+1993934,Real Madrid,Marc Cucurella,25.7,11.0,47.3,2.7,completo,34
+1993934,Real Madrid,Arda Güler,47.3,2.7,34.1,10.7,completo,34
+1993934,Real Madrid,Marc Cucurella,33.7,11.9,28.9,24.0,completo,34
+1993934,Real Madrid,Aurélien Tchouaméni,29.2,27.0,24.4,39.0,completo,34
+1993934,Real Madrid,Dean Huijsen,28.9,48.0,49.8,44.6,completo,34
+1993934,Real Madrid,Jude Bellingham,53.5,44.2,32.8,56.9,completo,34
+1993934,Real Madrid,Ibrahima Konaté,32.6,55.4,30.6,39.0,completo,34
+1993934,Real Madrid,Dean Huijsen,37.3,24.5,51.6,12.2,completo,34
+1993934,Barcelona,Fermín López,73.0,53.4,66.4,54.9,completo,34
+1993934,Barcelona,Rodri,75.0,53.3,82.3,37.1,completo,34
+1993934,Barcelona,Pedri,82.8,37.0,91.8,25.1,fallado,34
+1993934,Real Madrid,Ibrahima Konaté,22.1,49.8,27.7,49.6,completo,34
+1993934,Real Madrid,Bernardo Silva,27.2,54.7,42.2,70.9,completo,35
+1993934,Real Madrid,Arda Güler,61.2,74.8,96.6,65.8,fallado,35
+1993934,Real Madrid,Federico Valverde,40.4,72.7,42.8,62.1,completo,35
+1993934,Real Madrid,Aurélien Tchouaméni,43.6,59.0,39.2,62.6,completo,35
+1993934,Real Madrid,Bernardo Silva,38.8,59.5,40.7,68.5,completo,35
+1993934,Real Madrid,Aurélien Tchouaméni,40.4,65.6,39.6,72.9,completo,35
+1993934,Real Madrid,Federico Valverde,39.6,72.9,25.1,64.4,completo,35
+1993934,Real Madrid,Ibrahima Konaté,30.1,66.1,36.0,75.5,completo,35
+1993934,Real Madrid,Federico Valverde,33.7,74.6,10.6,41.7,completo,35
+1993934,Real Madrid,Andrii Lunin,10.6,41.7,13.7,22.3,completo,35
+1993934,Real Madrid,Dean Huijsen,24.7,25.5,28.0,59.1,completo,35
+1993934,Real Madrid,Bernardo Silva,17.6,52.4,18.5,68.2,completo,35
+1993934,Real Madrid,Ibrahima Konaté,27.0,68.1,58.3,67.6,completo,35
+1993934,Real Madrid,Jude Bellingham,70.3,66.9,68.5,51.4,completo,35
+1993934,Real Madrid,Kylian Mbappé,85.3,51.7,87.8,48.2,fallado,35
+1993934,Real Madrid,Aurélien Tchouaméni,78.5,42.0,105.8,5.7,completo,35
+1993934,Real Madrid,Marc Cucurella,105.8,6.2,95.5,13.9,completo,35
+1993934,Real Madrid,Yan Diomande,108.4,13.4,102.5,4.5,completo,35
+1993934,Real Madrid,Marc Cucurella,101.2,6.6,79.4,10.2,completo,36
+1993934,Real Madrid,Dean Huijsen,79.4,4.4,79.3,20.4,completo,36
+1993934,Real Madrid,Aurélien Tchouaméni,78.1,37.4,72.4,48.1,completo,36
+1993934,Real Madrid,Bernardo Silva,72.4,40.2,70.8,64.0,completo,36
+1993934,Real Madrid,Federico Valverde,70.8,64.0,79.6,76.7,completo,36
+1993934,Real Madrid,Arda Güler,77.5,75.0,67.8,56.4,completo,36
+1993934,Real Madrid,Bernardo Silva,67.9,59.6,66.6,75.4,completo,36
+1993934,Real Madrid,Arda Güler,66.6,75.4,81.0,76.7,completo,36
+1993934,Real Madrid,Federico Valverde,74.8,77.0,79.0,75.4,fallado,36
+1993934,Barcelona,Pedri,47.3,29.4,55.1,44.4,fallado,36
+1993934,Barcelona,Pedri,54.4,45.3,63.0,40.1,completo,36
+1993934,Barcelona,Rodri,51.4,33.3,41.5,23.4,completo,36
+1993934,Barcelona,Gerard Martín,43.7,23.4,53.4,15.2,completo,36
+1993934,Barcelona,Rodri,53.4,15.2,46.2,23.9,completo,37
+1993934,Barcelona,Gerard Martín,52.4,25.6,53.4,11.1,completo,37
+1993934,Barcelona,Rodri,50.3,27.5,57.1,47.3,completo,37
+1993934,Barcelona,Raphinha,57.1,47.4,47.9,54.5,completo,37
+1993934,Barcelona,Pau Cubarsí,63.4,55.7,76.0,59.8,completo,37
+1993934,Barcelona,Raphinha,79.2,61.0,78.5,59.4,completo,38
+1993934,Barcelona,João Cancelo,78.5,59.4,75.2,43.7,completo,38
+1993934,Barcelona,Pedri,74.9,45.8,72.0,58.6,completo,38
+1993934,Barcelona,João Cancelo,71.3,57.1,66.4,38.3,completo,38
+1993934,Barcelona,Pedri,66.8,36.1,65.6,24.9,completo,38
+1993934,Barcelona,Gerard Martín,65.6,24.9,63.7,34.7,completo,38
+1993934,Barcelona,Pedri,64.4,34.7,69.2,23.0,completo,38
+1993934,Barcelona,Gerard Martín,74.4,23.2,79.8,28.5,completo,38
+1993934,Barcelona,Rodri,79.8,28.5,76.4,21.5,completo,38
+1993934,Barcelona,Gerard Martín,75.8,20.8,79.3,16.7,completo,38
+1993934,Barcelona,Anthony Gordon,78.7,18.2,74.0,20.1,completo,38
+1993934,Barcelona,Rodri,74.0,19.8,77.4,7.6,completo,38
+1993934,Barcelona,Alejandro Balde,75.7,8.7,73.3,13.8,completo,38
+1993934,Barcelona,Rodri,76.2,17.1,93.0,6.2,completo,38
+1993934,Barcelona,Anthony Gordon,90.7,7.8,85.3,16.2,completo,38
+1993934,Barcelona,Alejandro Balde,86.6,19.8,83.4,21.4,completo,38
+1993934,Barcelona,Rodri,86.2,21.3,93.6,3.5,completo,38
+1993934,Barcelona,Anthony Gordon,93.4,13.5,98.5,7.8,completo,38
+1993934,Barcelona,Alejandro Balde,92.4,14.6,85.8,20.8,completo,38
+1993934,Barcelona,Rodri,85.2,24.8,101.4,68.9,fallado,38
+1993934,Barcelona,João Cancelo,86.5,64.2,96.7,73.4,completo,39
+1993934,Barcelona,Lamine Yamal,93.7,73.8,87.1,61.6,completo,39
+1993934,Barcelona,Pedri,93.0,52.8,99.0,45.8,completo,39
+1993934,Barcelona,Pau Cubarsí,67.6,47.0,75.1,44.6,completo,39
+1993934,Barcelona,Rodri,74.6,44.3,51.1,24.3,completo,39
+1993934,Barcelona,Gerard Martín,62.3,24.4,61.9,33.0,completo,39
+1993934,Barcelona,Rodri,63.0,33.4,67.0,23.6,completo,39
+1993934,Barcelona,Gerard Martín,72.4,23.7,83.4,38.7,completo,39
+1993934,Real Madrid,Yan Diomande,38.4,22.9,40.6,34.2,completo,39
+1993934,Barcelona,Fermín López,85.3,47.4,85.8,33.0,fallado,39
+1993934,Barcelona,Alejandro Balde,75.6,27.5,77.3,23.9,completo,39
+1993934,Barcelona,Pedri,76.9,25.0,71.6,30.6,completo,39
+1993934,Barcelona,Rodri,68.2,31.8,67.2,23.0,completo,39
+1993934,Barcelona,Gerard Martín,78.4,23.1,87.4,33.4,completo,39
+1993934,Barcelona,Raphinha,88.6,33.5,101.9,25.6,fallado,39
+1993934,Real Madrid,Aurélien Tchouaméni,25.3,50.2,53.3,73.4,completo,39
+1993934,Real Madrid,Jude Bellingham,44.4,70.2,40.6,74.4,completo,39
+1993934,Real Madrid,Arda Güler,45.4,74.1,16.1,63.0,completo,40
+1993934,Real Madrid,Federico Valverde,11.6,59.6,3.8,42.2,completo,40
+1993934,Real Madrid,Andrii Lunin,4.3,41.8,10.4,20.4,completo,40
+1993934,Real Madrid,Dean Huijsen,29.0,21.4,43.3,2.6,completo,40
+1993934,Real Madrid,Marc Cucurella,43.3,2.8,45.4,16.2,completo,40
+1993934,Real Madrid,Bernardo Silva,45.6,15.1,49.6,3.4,completo,40
+1993934,Real Madrid,Marc Cucurella,49.9,5.4,64.0,5.9,completo,40
+1993934,Real Madrid,Yan Diomande,61.9,2.5,54.6,2.6,completo,40
+1993934,Real Madrid,Marc Cucurella,54.6,2.6,35.6,22.3,completo,40
+1993934,Real Madrid,Dean Huijsen,36.2,22.4,31.6,49.2,completo,40
+1993934,Real Madrid,Ibrahima Konaté,30.8,46.7,41.6,43.2,completo,40
+1993934,Real Madrid,Aurélien Tchouaméni,41.6,43.2,37.1,73.6,completo,40
+1993934,Real Madrid,Federico Valverde,37.1,73.6,39.6,59.5,completo,40
+1993934,Real Madrid,Aurélien Tchouaméni,40.7,59.5,44.3,35.4,completo,40
+1993934,Real Madrid,Bernardo Silva,46.7,32.7,82.7,4.2,completo,40
+1993934,Real Madrid,Marc Cucurella,82.6,4.2,110.8,16.0,completo,40
+1993934,Real Madrid,Yan Diomande,109.4,20.8,109.2,26.0,fallado,40
+1993934,Barcelona,Raphinha,60.1,39.9,46.9,40.0,completo,42
+1993934,Barcelona,Rodri,66.2,27.9,75.4,23.6,completo,42
+1993934,Barcelona,Pedri,73.7,28.2,68.6,21.4,completo,42
+1993934,Barcelona,Rodri,68.6,21.4,75.6,7.8,completo,42
+1993934,Barcelona,Alejandro Balde,75.6,7.8,85.7,4.2,completo,42
+1993934,Barcelona,Anthony Gordon,90.4,11.4,83.6,16.4,completo,42
+1993934,Barcelona,Rodri,77.9,19.5,65.3,47.5,completo,42
+1993934,Barcelona,Pau Cubarsí,66.5,57.0,70.7,71.9,completo,42
+1993934,Barcelona,João Cancelo,71.6,71.7,76.6,53.0,completo,42
+1993934,Barcelona,Pedri,80.9,53.8,91.4,60.5,completo,42
+1993934,Barcelona,Lamine Yamal,116.9,69.8,111.7,73.1,completo,42
+1993934,Real Madrid,Yan Diomande,1.3,5.4,7.9,13.6,completo,42
+1993934,Real Madrid,Aurélien Tchouaméni,8.3,13.7,67.7,31.0,fallado,42
+1993934,Barcelona,Gerard Martín,58.0,42.4,76.9,26.6,completo,43
+1993934,Barcelona,Anthony Gordon,91.8,23.4,102.1,39.7,completo,43
+1993934,Barcelona,Fermín López,102.1,39.7,103.1,42.2,fallado,43
+1993934,Real Madrid,Andrii Lunin,4.7,35.8,78.1,24.7,fallado,43
+1993934,Barcelona,João Cancelo,43.9,59.9,61.9,34.0,fallado,43
+1993934,Real Madrid,Federico Valverde,54.8,45.5,79.8,56.9,fallado,43
+1993934,Barcelona,Alejandro Balde,35.8,19.0,9.4,26.1,completo,43
+1993934,Barcelona,Joan García,7.1,26.7,14.3,55.7,completo,43
+1993934,Barcelona,Pau Cubarsí,14.8,56.6,33.0,55.8,completo,43
+1993934,Barcelona,Pedri,33.6,56.6,31.8,47.7,completo,44
+1993934,Barcelona,Rodri,35.4,41.4,43.8,4.6,completo,44
+1993934,Barcelona,Alejandro Balde,47.2,8.0,55.9,18.6,completo,44
+1993934,Barcelona,Raphinha,56.5,18.3,69.6,4.2,completo,44
+1993934,Barcelona,Anthony Gordon,74.3,8.6,64.4,21.3,completo,44
+1993934,Barcelona,Rodri,63.4,22.2,46.4,33.7,completo,44
+1993934,Barcelona,Gerard Martín,52.6,39.2,63.2,53.0,completo,44
+1993934,Barcelona,Pau Cubarsí,73.8,56.3,76.0,47.0,completo,44
+1993934,Barcelona,Pedri,76.0,46.8,85.6,34.2,clave,44
+1993934,Real Madrid,Andrii Lunin,10.4,39.9,16.1,27.4,completo,44
+1993934,Real Madrid,Dean Huijsen,18.7,15.4,96.6,16.8,fallado,44
+1993934,Barcelona,Joan García,25.3,61.7,45.2,73.1,fallado,45
+1993934,Barcelona,Pedri,39.6,49.8,67.3,59.0,fallado,45
+1993934,Real Madrid,Marc Cucurella,47.5,16.5,69.8,8.7,completo,45
+1993934,Real Madrid,Yan Diomande,73.3,12.0,64.1,13.1,completo,45
+1993934,Real Madrid,Marc Cucurella,64.2,9.8,55.0,25.3,completo,45
+1993934,Real Madrid,Aurélien Tchouaméni,55.0,25.3,68.9,35.8,completo,45
+1993934,Real Madrid,Jude Bellingham,68.9,35.8,47.2,51.1,completo,45
+1993934,Real Madrid,Ibrahima Konaté,46.6,51.0,66.4,43.9,completo,45
+1993934,Barcelona,Gerard Martín,16.4,27.7,30.4,32.1,completo,45
+1993934,Barcelona,Pedri,30.5,32.1,32.6,19.3,completo,45
+1993934,Barcelona,Gerard Martín,82.8,12.6,82.0,19.3,fallado,46
+1993934,Real Madrid,Aurélien Tchouaméni,40.2,55.9,47.0,60.1,completo,46
+1993934,Real Madrid,Arda Güler,79.6,48.9,93.4,18.7,clave,46
+1993934,Barcelona,Joan García,5.6,40.3,9.7,50.3,completo,46
+1993934,Barcelona,Pau Cubarsí,10.2,50.3,17.0,33.7,completo,46
+1993934,Barcelona,Rodri,30.1,34.7,45.5,53.5,completo,46
+1993934,Barcelona,Lamine Yamal,45.4,54.5,47.8,76.2,completo,46
+1993934,Barcelona,João Cancelo,49.4,76.2,46.8,70.1,completo,46
+1993934,Barcelona,Lamine Yamal,79.8,45.4,81.8,29.1,completo,46
+1993934,Barcelona,Pedri,88.3,44.8,104.9,31.5,completo,47
+1993934,Real Madrid,Federico Valverde,17.4,46.0,29.4,34.9,fallado,47
+1993934,Real Madrid,Kylian Mbappé,60.1,40.0,33.7,37.8,completo,45
+1993934,Real Madrid,Dean Huijsen,33.7,37.8,48.1,53.8,completo,45
+1993934,Real Madrid,Arda Güler,48.1,53.8,55.9,36.4,completo,45
+1993934,Real Madrid,Aurélien Tchouaméni,55.9,36.4,37.6,31.0,completo,45
+1993934,Real Madrid,Dean Huijsen,37.6,31.0,47.6,3.9,completo,45
+1993934,Real Madrid,Marc Cucurella,47.6,3.9,94.7,11.2,fallado,45
+1993934,Real Madrid,Yan Diomande,92.9,3.6,97.1,16.7,fallado,45
+1993934,Barcelona,Pau Cubarsí,21.5,61.4,31.4,59.8,fallado,45
+1993934,Barcelona,Joan García,23.0,53.8,30.4,31.6,completo,46
+1993934,Barcelona,Gerard Martín,32.2,29.9,27.1,50.6,completo,46
+1993934,Barcelona,Pau Cubarsí,30.4,39.3,36.1,22.7,completo,46
+1993934,Barcelona,Gerard Martín,52.3,15.0,67.0,21.7,completo,46
+1993934,Barcelona,Pedri,67.0,21.7,54.6,10.7,completo,46
+1993934,Barcelona,Gerard Martín,55.9,9.7,99.6,11.9,fallado,46
+1993934,Barcelona,Pedri,82.9,3.8,54.4,18.3,completo,46
+1993934,Barcelona,Gerard Martín,54.4,20.5,57.8,41.8,completo,46
+1993934,Barcelona,Pau Cubarsí,69.5,54.9,81.6,75.5,completo,46
+1993934,Barcelona,Lamine Yamal,82.7,75.4,88.6,69.0,completo,46
+1993934,Barcelona,Fermín López,88.6,69.0,84.8,75.3,completo,47
+1993934,Barcelona,Lamine Yamal,86.3,74.6,89.3,69.8,completo,47
+1993934,Barcelona,Fermín López,89.5,68.1,81.4,65.2,completo,47
+1993934,Barcelona,João Cancelo,81.7,65.2,86.0,60.6,completo,47
+1993934,Barcelona,Lamine Yamal,86.9,57.3,83.3,38.7,completo,47
+1993934,Barcelona,Pedri,82.0,36.3,90.1,56.9,completo,47
+1993934,Real Madrid,Yan Diomande,16.6,18.4,32.0,27.2,completo,47
+1993934,Real Madrid,Dean Huijsen,33.5,25.5,34.7,4.9,completo,47
+1993934,Real Madrid,Marc Cucurella,36.7,6.2,20.0,19.1,completo,47
+1993934,Real Madrid,Dean Huijsen,26.6,2.7,83.9,16.6,fallado,47
+1993934,Barcelona,Pau Cubarsí,46.0,61.4,48.1,35.0,completo,47
+1993934,Barcelona,Gerard Martín,56.2,24.8,56.0,35.4,completo,48
+1993934,Barcelona,Rodri,57.5,36.6,67.7,42.5,completo,48
+1993934,Barcelona,Pedri,75.0,57.8,85.4,63.8,completo,48
+1993934,Barcelona,Lamine Yamal,85.4,63.8,81.2,77.4,completo,48
+1993934,Barcelona,João Cancelo,81.5,76.2,71.2,65.0,completo,48
+1993934,Barcelona,Pedri,70.9,64.2,65.4,43.4,completo,48
+1993934,Barcelona,Pau Cubarsí,77.8,28.2,87.0,18.1,completo,48
+1993934,Barcelona,Gerard Martín,87.4,14.2,100.0,4.6,completo,48
+1993934,Barcelona,Anthony Gordon,96.4,21.9,90.8,26.0,completo,48
+1993934,Barcelona,Rodri,88.1,27.9,88.4,49.4,completo,48
+1993934,Barcelona,Pedri,90.1,52.0,98.3,69.6,completo,48
+1993934,Barcelona,Lamine Yamal,117.6,54.4,117.0,44.3,fallado,48
+1993934,Barcelona,Raphinha,119.4,79.6,114.6,41.5,fallado,48
+1993934,Barcelona,Rodri,105.8,35.7,109.8,44.6,fallado,49
+1993934,Barcelona,Alejandro Balde,70.8,57.8,50.2,54.2,completo,49
+1993934,Barcelona,Pau Cubarsí,48.5,52.8,27.6,48.7,completo,49
+1993934,Barcelona,Joan García,28.0,47.8,37.2,44.3,completo,49
+1993934,Barcelona,Rodri,56.8,31.3,76.2,24.4,completo,49
+1993934,Barcelona,Anthony Gordon,76.2,24.4,64.8,25.8,completo,49
+1993934,Barcelona,Rodri,63.7,9.7,70.0,4.7,completo,49
+1993934,Barcelona,Fermín López,86.3,27.3,86.4,40.1,completo,49
+1993934,Barcelona,Pedri,87.0,40.1,93.5,61.2,completo,49
+1993934,Barcelona,Lamine Yamal,94.9,60.6,104.3,46.7,fallado,49
+1993934,Real Madrid,Dean Huijsen,14.8,33.0,24.6,28.8,completo,49
+1993934,Real Madrid,Aurélien Tchouaméni,24.6,28.8,53.0,28.6,completo,49
+1993934,Barcelona,Joan García,5.6,44.6,35.9,37.4,completo,50
+1993934,Barcelona,Pedri,60.1,27.0,89.6,22.5,completo,50
+1993934,Real Madrid,Aurélien Tchouaméni,29.8,42.9,24.8,25.5,completo,50
+1993934,Real Madrid,Marc Cucurella,12.6,12.4,36.1,6.6,completo,50
+1993934,Real Madrid,Aurélien Tchouaméni,32.9,6.2,29.9,15.8,completo,50
+1993934,Real Madrid,Yan Diomande,29.9,15.6,12.1,11.2,completo,50
+1993934,Real Madrid,Dean Huijsen,12.1,11.2,59.5,13.6,fallado,50
+1993934,Barcelona,Pau Cubarsí,66.2,66.5,71.3,58.5,completo,50
+1993934,Barcelona,Pedri,77.2,55.4,87.1,47.0,completo,50
+1993934,Real Madrid,Federico Valverde,18.5,50.3,6.2,43.6,completo,50
+1993934,Real Madrid,Andrii Lunin,6.2,43.6,60.8,60.1,fallado,50
+1993934,Barcelona,Gerard Martín,57.8,20.1,76.2,20.8,fallado,50
+1993934,Real Madrid,Bernardo Silva,51.0,57.0,80.6,65.4,completo,51
+1993934,Real Madrid,Kylian Mbappé,79.8,65.0,77.8,77.3,completo,51
+1993934,Real Madrid,Arda Güler,78.4,62.2,78.1,58.4,fallado,51
+1993934,Barcelona,Rodri,36.5,17.4,11.8,9.3,completo,51
+1993934,Barcelona,Alejandro Balde,8.3,16.2,2.6,37.5,completo,51
+1993934,Barcelona,Joan García,3.5,39.2,10.2,60.5,completo,51
+1993934,Barcelona,Pau Cubarsí,10.3,60.7,41.3,60.7,fallado,51
+1993934,Barcelona,Rodri,36.5,57.5,46.2,52.8,fallado,51
+1993934,Real Madrid,Bernardo Silva,74.6,33.0,90.2,33.7,fallado,51
+1993934,Barcelona,Pau Cubarsí,41.5,52.2,40.0,55.7,completo,51
+1993934,Barcelona,Rodri,36.0,37.1,38.2,27.4,completo,51
+1993934,Barcelona,Alejandro Balde,38.2,27.4,31.4,32.6,completo,51
+1993934,Barcelona,Gerard Martín,31.4,31.8,34.8,35.7,completo,51
+1993934,Barcelona,Rodri,43.9,30.1,55.2,16.9,completo,52
+1993934,Barcelona,Pedri,63.2,10.9,70.3,3.9,completo,52
+1993934,Barcelona,Anthony Gordon,70.3,3.9,63.4,3.9,completo,52
+1993934,Barcelona,Pedri,63.4,3.9,68.6,10.7,completo,52
+1993934,Barcelona,Alejandro Balde,68.6,10.7,71.9,4.5,completo,52
+1993934,Barcelona,Anthony Gordon,89.5,20.7,115.0,23.7,completo,52
+1993934,Barcelona,Raphinha,113.3,21.5,91.9,33.9,completo,52
+1993934,Real Madrid,Andrii Lunin,7.6,33.5,42.2,8.1,completo,52
+1993934,Real Madrid,Jude Bellingham,45.8,13.6,38.2,8.2,completo,52
+1993934,Real Madrid,Marc Cucurella,25.6,10.3,43.4,2.2,completo,53
+1993934,Real Madrid,Yan Diomande,43.4,2.2,38.4,7.6,completo,53
+1993934,Real Madrid,Marc Cucurella,42.2,8.6,56.9,3.1,completo,53
+1993934,Real Madrid,Jude Bellingham,81.4,8.9,99.4,38.2,fallado,53
+1993934,Real Madrid,Arda Güler,119.4,0.4,110.8,37.6,fallado,53
+1993934,Real Madrid,Yan Diomande,73.4,21.9,68.0,38.1,fallado,54
+1993934,Barcelona,Fermín López,49.4,46.7,67.3,67.9,clave,54
+1993934,Real Madrid,Marc Cucurella,15.1,34.9,34.0,32.1,completo,54
+1993934,Real Madrid,Aurélien Tchouaméni,39.1,30.6,47.6,4.9,completo,54
+1993934,Real Madrid,Arda Güler,52.8,5.0,56.3,13.7,completo,54
+1993934,Real Madrid,Jude Bellingham,56.3,13.7,41.9,14.1,completo,54
+1993934,Real Madrid,Aurélien Tchouaméni,43.9,13.4,34.2,4.6,completo,54
+1993934,Real Madrid,Marc Cucurella,34.2,4.6,42.2,2.5,completo,54
+1993934,Real Madrid,Arda Güler,42.2,2.5,33.0,7.0,completo,54
+1993934,Real Madrid,Marc Cucurella,33.0,7.0,38.3,14.4,completo,54
+1993934,Real Madrid,Aurélien Tchouaméni,38.3,14.4,48.5,29.7,completo,54
+1993934,Real Madrid,Jude Bellingham,48.0,30.3,69.2,72.4,completo,54
+1993934,Real Madrid,Federico Valverde,70.7,72.4,71.8,61.6,completo,54
+1993934,Real Madrid,Bernardo Silva,81.7,65.4,85.0,77.3,completo,54
+1993934,Real Madrid,Federico Valverde,84.7,77.3,69.0,61.8,completo,54
+1993934,Real Madrid,Arda Güler,70.9,59.4,81.4,77.2,completo,54
+1993934,Real Madrid,Federico Valverde,74.0,61.6,49.1,56.4,completo,55
+1993934,Real Madrid,Ibrahima Konaté,50.4,55.3,54.7,31.8,completo,55
+1993934,Real Madrid,Dean Huijsen,48.7,29.8,49.9,9.1,completo,55
+1993934,Real Madrid,Marc Cucurella,49.9,9.1,74.3,4.4,completo,55
+1993934,Real Madrid,Yan Diomande,72.7,4.4,49.8,4.5,completo,55
+1993934,Real Madrid,Marc Cucurella,49.8,4.5,40.1,22.6,completo,55
+1993934,Real Madrid,Dean Huijsen,40.1,22.6,47.3,31.6,completo,55
+1993934,Real Madrid,Bernardo Silva,48.2,32.1,75.6,80.0,fallado,55
+1993934,Barcelona,Gerard Martín,33.4,12.4,34.2,42.6,completo,55
+1993934,Barcelona,Pau Cubarsí,34.2,42.6,40.9,57.3,completo,55
+1993934,Barcelona,João Cancelo,41.8,59.4,37.7,48.0,completo,55
+1993934,Barcelona,Pau Cubarsí,43.7,33.3,51.8,18.3,completo,55
+1993934,Barcelona,Gerard Martín,67.1,10.6,74.2,3.8,completo,55
+1993934,Barcelona,Anthony Gordon,77.0,5.0,72.0,18.6,completo,55
+1993934,Barcelona,Rodri,71.8,19.0,49.8,19.4,completo,55
+1993934,Barcelona,Gerard Martín,52.8,22.2,55.8,44.9,completo,55
+1993934,Barcelona,Pau Cubarsí,64.6,46.7,76.6,47.3,completo,56
+1993934,Barcelona,Pedri,79.1,49.4,83.5,57.5,fallado,56
+1993934,Real Madrid,Marc Cucurella,25.1,18.0,29.4,21.9,completo,56
+1993934,Real Madrid,Aurélien Tchouaméni,29.4,21.9,40.2,7.5,completo,56
+1993934,Real Madrid,Yan Diomande,56.4,35.4,82.7,4.2,completo,56
+1993934,Barcelona,Joan García,5.4,37.6,33.4,24.6,completo,57
+1993934,Barcelona,Gerard Martín,34.7,24.4,39.8,39.2,completo,57
+1993934,Barcelona,Pau Cubarsí,54.0,40.3,62.6,25.4,completo,57
+1993934,Barcelona,Rodri,76.8,22.0,79.3,7.5,completo,57
+1993934,Barcelona,Alejandro Balde,81.2,6.8,90.7,4.7,completo,57
+1993934,Barcelona,Anthony Gordon,92.9,5.6,89.3,15.8,completo,57
+1993934,Barcelona,Pedri,86.9,21.8,84.7,45.5,completo,57
+1993934,Barcelona,Pau Cubarsí,90.1,51.0,100.0,69.0,completo,57
+1993934,Barcelona,João Cancelo,109.1,66.0,116.3,42.7,fallado,57
+1993934,Real Madrid,Jude Bellingham,13.1,17.9,17.4,28.4,completo,57
+1993934,Real Madrid,Aurélien Tchouaméni,17.4,28.4,10.3,13.7,completo,58
+1993934,Barcelona,Rodri,82.6,70.2,84.6,75.8,completo,58
+1993934,Barcelona,João Cancelo,84.5,76.0,70.2,71.7,completo,58
+1993934,Barcelona,Pau Cubarsí,69.6,70.1,76.9,68.1,completo,58
+1993934,Barcelona,Rodri,84.6,60.2,90.6,53.0,completo,58
+1993934,Barcelona,Raphinha,91.6,52.6,96.5,56.6,completo,58
+1993934,Barcelona,Fermín López,96.5,56.6,99.7,66.4,completo,58
+1993934,Barcelona,Lamine Yamal,99.7,66.4,109.6,43.9,fallado,58
+1993934,Barcelona,Pau Cubarsí,71.2,70.2,76.3,59.4,completo,58
+1993934,Barcelona,Rodri,79.2,56.9,83.9,40.7,completo,58
+1993934,Barcelona,Pedri,84.2,39.0,79.2,29.4,completo,58
+1993934,Barcelona,Gerard Martín,81.5,22.6,93.5,11.6,fallado,58
+1993934,Real Madrid,Federico Valverde,32.9,70.2,37.7,64.4,completo,58
+1993934,Real Madrid,Arda Güler,37.7,64.4,82.1,58.9,completo,58
+1993934,Real Madrid,Arda Güler,119.4,79.6,112.7,38.5,fallado,59
+1993934,Barcelona,Joan García,17.2,40.8,32.6,42.2,completo,59
+1993934,Barcelona,Pedri,33.0,43.4,43.0,71.9,completo,59
+1993934,Barcelona,João Cancelo,69.4,59.0,68.4,46.6,completo,59
+1993934,Barcelona,Rodri,69.4,42.2,79.8,33.4,completo,60
+1993934,Barcelona,Raphinha,80.4,32.5,71.2,23.0,completo,60
+1993934,Barcelona,Gerard Martín,71.5,20.7,76.3,14.1,completo,60
+1993934,Barcelona,Alejandro Balde,77.6,11.2,83.5,4.6,completo,60
+1993934,Barcelona,Anthony Gordon,112.9,13.3,110.9,47.9,fallado,60
+1993934,Barcelona,Lamine Yamal,119.4,79.6,96.4,60.5,completo,60
+1993934,Barcelona,Pedri,95.0,54.8,108.6,53.4,clave,60
+1993934,Real Madrid,Kylian Mbappé,59.6,40.1,47.6,35.4,completo,61
+1993934,Real Madrid,Aurélien Tchouaméni,47.6,35.4,32.2,14.6,completo,61
+1993934,Real Madrid,Marc Cucurella,32.2,14.6,44.3,5.7,completo,61
+1993934,Real Madrid,Yan Diomande,44.3,5.7,49.2,12.4,completo,61
+1993934,Real Madrid,Aurélien Tchouaméni,64.0,6.4,45.8,46.1,completo,62
+1993934,Real Madrid,Ibrahima Konaté,46.2,47.4,54.1,71.7,completo,62
+1993934,Real Madrid,Denzel Dumfries,54.7,73.4,65.3,77.2,completo,62
+1993934,Real Madrid,Arda Güler,65.6,77.2,90.8,76.6,fallado,62
+1993934,Real Madrid,Yan Diomande,103.1,21.6,96.1,31.1,completo,62
+1993934,Barcelona,Fermín López,33.5,56.6,35.9,52.0,completo,62
+1993934,Barcelona,Lamine Yamal,41.4,52.3,67.0,73.7,completo,62
+1993934,Barcelona,Fermín López,69.6,73.8,105.8,36.6,fallado,62
+1993934,Real Madrid,Andrii Lunin,15.0,40.0,31.9,31.8,completo,62
+1993934,Real Madrid,Aurélien Tchouaméni,41.3,32.1,46.7,43.1,completo,62
+1993934,Real Madrid,Bernardo Silva,46.9,42.2,41.0,31.4,completo,62
+1993934,Real Madrid,Aurélien Tchouaméni,40.7,29.6,43.0,8.5,completo,63
+1993934,Real Madrid,Marc Cucurella,43.0,8.5,58.4,8.6,completo,63
+1993934,Real Madrid,Kylian Mbappé,58.4,8.6,55.7,3.2,completo,63
+1993934,Real Madrid,Yan Diomande,55.7,3.2,63.8,20.2,completo,63
+1993934,Real Madrid,Jude Bellingham,63.8,20.2,69.1,6.6,fallado,63
+1993934,Barcelona,Rodri,47.2,70.7,67.1,70.5,completo,63
+1993934,Barcelona,Lamine Yamal,66.5,69.5,66.4,65.4,fallado,63
+1993934,Real Madrid,Aurélien Tchouaméni,43.3,13.0,34.0,26.9,completo,63
+1993934,Real Madrid,Dean Huijsen,33.6,26.9,11.0,38.8,completo,63
+1993934,Real Madrid,Andrii Lunin,11.0,38.8,20.9,65.2,completo,63
+1993934,Real Madrid,Ibrahima Konaté,16.9,65.1,18.2,77.2,completo,63
+1993934,Real Madrid,Denzel Dumfries,13.2,78.6,34.7,80.0,fallado,63
+1993934,Barcelona,Rodri,74.8,18.4,81.6,14.7,completo,63
+1993934,Barcelona,Pedri,80.6,14.1,71.5,21.9,completo,63
+1993934,Barcelona,Rodri,75.7,20.1,67.2,25.8,completo,63
+1993934,Barcelona,Gerard Martín,68.9,25.8,77.3,34.0,completo,63
+1993934,Barcelona,Pedri,77.3,34.0,68.2,26.5,completo,63
+1993934,Barcelona,Gerard Martín,74.3,28.9,81.4,46.1,completo,63
+1993934,Barcelona,Pedri,88.2,46.8,95.8,75.3,completo,64
+1993934,Barcelona,Lamine Yamal,95.4,74.3,89.0,61.0,completo,64
+1993934,Barcelona,João Cancelo,89.0,61.0,89.6,54.9,completo,64
+1993934,Barcelona,Pedri,89.5,49.9,82.8,47.9,completo,64
+1993934,Barcelona,Rodri,82.7,44.4,86.8,23.4,completo,64
+1993934,Barcelona,Gerard Martín,88.8,21.8,97.2,10.2,completo,64
+1993934,Barcelona,Anthony Gordon,106.6,6.4,105.6,29.2,clave,64
+1993934,Barcelona,João Cancelo,119.4,0.4,110.9,36.7,clave,64
+1993934,Real Madrid,Dean Huijsen,5.8,32.6,5.6,37.6,completo,65
+1993934,Real Madrid,Andrii Lunin,5.2,42.6,9.6,57.9,completo,65
+1993934,Real Madrid,Ibrahima Konaté,6.7,56.5,17.9,80.0,fallado,65
+1993934,Barcelona,Pedri,87.2,22.0,76.8,19.3,completo,65
+1993934,Barcelona,Rodri,74.0,20.8,76.0,29.4,completo,65
+1993934,Barcelona,Pedri,72.8,25.8,71.4,16.4,completo,65
+1993934,Barcelona,Rodri,71.2,16.4,59.0,27.0,completo,65
+1993934,Barcelona,Gerard Martín,67.9,27.9,76.6,33.0,completo,66
+1993934,Barcelona,Raphinha,77.8,27.3,90.2,4.2,completo,66
+1993934,Barcelona,Anthony Gordon,104.2,12.1,101.5,13.1,fallado,66
+1993934,Barcelona,Gerard Martín,57.0,21.9,53.6,44.6,completo,66
+1993934,Barcelona,Pau Cubarsí,53.6,44.6,56.9,59.5,completo,66
+1993934,Real Madrid,Dean Huijsen,25.8,11.8,8.4,28.0,completo,66
+1993934,Real Madrid,Andrii Lunin,5.6,34.0,20.0,64.8,completo,66
+1993934,Real Madrid,Denzel Dumfries,31.8,72.4,12.0,65.8,completo,66
+1993934,Real Madrid,Ibrahima Konaté,12.5,66.6,42.5,66.6,fallado,67
+1993934,Real Madrid,Denzel Dumfries,30.7,71.0,50.5,78.2,fallado,67
+1993934,Barcelona,Alejandro Balde,57.0,8.6,41.4,19.3,completo,67
+1993934,Barcelona,Gerard Martín,46.4,24.4,46.0,39.2,completo,67
+1993934,Barcelona,Pau Cubarsí,46.0,39.2,55.2,36.8,completo,67
+1993934,Barcelona,Fermín López,55.2,36.8,45.6,37.6,completo,67
+1993934,Barcelona,Pau Cubarsí,45.5,37.3,48.2,25.4,completo,67
+1993934,Barcelona,Gerard Martín,50.0,23.9,64.1,14.7,completo,67
+1993934,Barcelona,Pedri,65.3,18.8,53.6,26.3,completo,67
+1993934,Barcelona,Gerard Martín,63.1,23.8,64.3,11.0,completo,67
+1993934,Barcelona,Alejandro Balde,75.1,29.1,78.2,42.9,completo,67
+1993934,Barcelona,Raphinha,78.8,43.8,81.2,47.5,fallado,67
+1993934,Real Madrid,Dean Huijsen,17.2,28.8,47.3,3.5,fallado,67
+1993934,Barcelona,João Cancelo,89.3,73.1,91.9,76.1,completo,67
+1993934,Barcelona,Raphinha,93.6,75.5,105.7,67.1,fallado,67
+1993934,Real Madrid,Marc Cucurella,8.5,11.0,41.4,4.9,completo,67
+1993934,Real Madrid,Yan Diomande,44.0,12.7,45.7,49.1,completo,67
+1993934,Real Madrid,Arda Güler,56.8,46.6,95.2,70.2,completo,68
+1993934,Real Madrid,Denzel Dumfries,94.7,72.7,104.4,50.9,fallado,68
+1993934,Real Madrid,Arda Güler,119.4,79.6,108.8,37.0,fallado,68
+1993934,Barcelona,Lamine Yamal,37.0,73.6,52.1,37.8,fallado,69
+1993934,Real Madrid,Denzel Dumfries,66.0,42.6,82.8,39.2,fallado,69
+1993934,Barcelona,Rodri,38.5,47.0,28.2,46.8,completo,69
+1993934,Barcelona,Pedri,63.8,22.5,68.8,29.1,completo,69
+1993934,Barcelona,Fermín López,68.8,29.1,62.2,34.9,completo,69
+1993934,Barcelona,Rodri,62.2,34.9,69.8,44.4,completo,69
+1993934,Barcelona,Lamine Yamal,80.2,42.5,97.0,34.7,fallado,69
+1993934,Real Madrid,Ibrahima Konaté,21.6,42.4,11.4,41.4,completo,69
+1993934,Barcelona,Anthony Gordon,106.6,14.2,89.3,19.5,completo,69
+1993934,Barcelona,Pedri,87.8,22.5,87.2,32.6,completo,69
+1993934,Barcelona,Rodri,86.8,34.7,120.0,25.5,fallado,69
+1993934,Real Madrid,Dean Huijsen,4.0,31.6,41.2,25.8,fallado,70
+1993934,Real Madrid,Jude Bellingham,47.9,21.1,62.0,7.0,completo,70
+1993934,Real Madrid,Bernardo Silva,64.0,7.0,75.7,1.8,completo,70
+1993934,Real Madrid,Yan Diomande,87.1,20.5,87.7,37.8,completo,70
+1993934,Real Madrid,Kylian Mbappé,89.3,38.3,97.6,61.4,clave,70
+1993934,Barcelona,Joan García,17.9,36.6,29.9,22.2,completo,70
+1993934,Barcelona,Alejandro Balde,41.4,21.9,41.0,36.9,completo,70
+1993934,Barcelona,Rodri,40.7,37.0,37.9,50.1,completo,70
+1993934,Barcelona,Pau Cubarsí,37.2,54.2,43.1,72.6,completo,70
+1993934,Barcelona,João Cancelo,43.1,72.6,33.4,60.6,completo,70
+1993934,Barcelona,Pau Cubarsí,32.4,56.6,32.0,34.4,completo,70
+1993934,Barcelona,Gerard Martín,39.1,23.8,43.9,9.4,completo,71
+1993934,Barcelona,Alejandro Balde,46.4,8.5,55.3,4.9,completo,71
+1993934,Barcelona,Anthony Gordon,54.8,21.0,71.4,6.4,completo,71
+1993934,Barcelona,Pedri,52.8,5.4,39.6,13.0,completo,71
+1993934,Barcelona,Gerard Martín,36.5,23.8,38.9,48.5,completo,71
+1993934,Barcelona,Pau Cubarsí,54.1,56.8,79.1,59.8,completo,71
+1993934,Barcelona,Fermín López,80.8,59.7,92.0,51.5,fallado,71
+1993934,Real Madrid,Aurélien Tchouaméni,33.5,28.8,38.0,43.9,completo,71
+1993934,Real Madrid,Bernardo Silva,42.5,33.8,47.4,24.5,completo,71
+1993934,Real Madrid,Aurélien Tchouaméni,66.0,19.9,76.8,2.8,completo,71
+1993934,Real Madrid,Yan Diomande,86.0,4.9,92.9,17.5,completo,71
+1993934,Real Madrid,Kylian Mbappé,92.9,17.5,80.5,10.0,fallado,71
+1993934,Barcelona,Rodri,46.8,50.7,41.8,25.8,completo,72
+1993934,Barcelona,Gerard Martín,55.7,24.8,66.8,13.3,completo,72
+1993934,Barcelona,Alejandro Balde,67.4,10.0,73.7,4.9,completo,72
+1993934,Barcelona,Anthony Gordon,77.6,3.7,69.1,4.9,completo,72
+1993934,Barcelona,Alejandro Balde,69.5,6.3,67.1,20.2,completo,72
+1993934,Barcelona,Rodri,66.2,21.0,52.6,26.2,completo,72
+1993934,Barcelona,Gerard Martín,52.7,28.2,55.3,49.7,completo,72
+1993934,Barcelona,Pau Cubarsí,62.0,54.2,67.2,71.8,completo,72
+1993934,Barcelona,João Cancelo,67.7,71.9,76.4,75.6,completo,72
+1993934,Barcelona,Lamine Yamal,74.9,75.8,64.1,72.5,completo,72
+1993934,Barcelona,João Cancelo,63.8,71.8,51.4,52.0,completo,72
+1993934,Barcelona,Pau Cubarsí,51.8,50.4,72.4,24.3,completo,72
+1993934,Barcelona,Gerard Martín,73.2,23.0,84.2,10.2,completo,72
+1993934,Barcelona,Anthony Gordon,91.8,20.3,103.2,25.5,completo,72
+1993934,Barcelona,Raphinha,103.2,25.5,95.3,27.7,fallado,72
+1993934,Real Madrid,Denzel Dumfries,29.2,52.9,28.4,41.8,completo,72
+1993934,Real Madrid,Aurélien Tchouaméni,28.7,41.8,33.5,34.2,completo,72
+1993934,Barcelona,Pedri,87.4,40.6,94.9,49.1,clave,73
+1993934,Real Madrid,Dean Huijsen,5.4,32.6,16.0,3.3,completo,73
+1993934,Real Madrid,Marc Cucurella,16.0,3.3,47.9,2.1,fallado,73
+1993934,Barcelona,Pau Cubarsí,49.3,62.6,53.8,56.8,completo,74
+1993934,Barcelona,Frenkie de Jong,47.3,46.2,57.1,17.0,completo,74
+1993934,Barcelona,Gerard Martín,57.8,16.2,76.2,6.6,completo,74
+1993934,Barcelona,Alejandro Balde,80.9,18.2,74.3,11.9,completo,74
+1993934,Barcelona,Frenkie de Jong,74.8,14.7,77.3,26.7,completo,74
+1993934,Barcelona,Pedri,78.4,28.5,78.5,20.7,completo,74
+1993934,Barcelona,Frenkie de Jong,86.2,17.9,96.1,4.7,completo,74
+1993934,Barcelona,Anthony Gordon,104.8,8.8,110.2,24.6,fallado,74
+1993934,Real Madrid,Andrii Lunin,4.4,37.3,11.5,58.3,completo,74
+1993934,Real Madrid,Ibrahima Konaté,33.7,64.2,29.3,74.6,completo,74
+1993934,Real Madrid,Denzel Dumfries,29.3,74.6,36.7,77.5,completo,74
+1993934,Real Madrid,Arda Güler,36.7,77.5,47.2,66.3,completo,74
+1993934,Real Madrid,Bernardo Silva,51.1,51.7,53.3,26.4,completo,75
+1993934,Real Madrid,Aurélien Tchouaméni,53.3,26.4,43.1,12.9,completo,75
+1993934,Real Madrid,Marc Cucurella,43.1,12.9,37.2,29.5,completo,75
+1993934,Real Madrid,Dean Huijsen,37.2,29.5,26.2,54.3,completo,75
+1993934,Real Madrid,Ibrahima Konaté,26.2,54.3,36.2,78.2,completo,75
+1993934,Real Madrid,Denzel Dumfries,39.2,74.9,101.2,55.5,fallado,75
+1993934,Barcelona,Joan García,18.1,23.4,37.6,29.6,completo,75
+1993934,Barcelona,Rodri,53.4,28.6,63.8,35.6,completo,75
+1993934,Barcelona,Frenkie de Jong,68.0,19.1,82.6,4.6,completo,75
+1993934,Barcelona,Anthony Gordon,94.6,7.6,86.5,12.6,completo,75
+1993934,Barcelona,Frenkie de Jong,85.4,15.5,81.4,19.5,completo,75
+1993934,Barcelona,Rodri,79.0,21.4,78.2,36.8,completo,75
+1993934,Barcelona,Pedri,77.4,43.9,80.4,62.4,completo,75
+1993934,Barcelona,João Cancelo,80.5,62.6,85.2,76.6,completo,75
+1993934,Barcelona,Lamine Yamal,85.2,71.5,79.9,59.2,completo,75
+1993934,Barcelona,Pedri,79.9,55.9,78.8,37.4,completo,76
+1993934,Barcelona,Gerard Martín,84.8,27.2,86.9,15.3,completo,76
+1993934,Barcelona,Alejandro Balde,86.4,16.6,83.5,32.3,completo,76
+1993934,Barcelona,Rodri,83.8,34.9,91.0,67.4,completo,76
+1993934,Barcelona,Lamine Yamal,92.3,67.9,104.5,73.0,completo,76
+1993934,Barcelona,João Cancelo,105.0,73.8,93.5,74.3,completo,76
+1993934,Barcelona,Lamine Yamal,90.8,69.8,88.4,55.4,completo,76
+1993934,Barcelona,Pedri,90.4,35.6,90.4,24.1,completo,76
+1993934,Barcelona,Gerard Martín,91.9,20.3,103.8,10.2,completo,76
+1993934,Barcelona,Alejandro Balde,105.0,11.4,96.4,22.6,completo,76
+1993934,Barcelona,Anthony Gordon,94.0,24.3,88.0,23.0,completo,76
+1993934,Barcelona,Rodri,86.8,24.3,87.8,59.0,completo,76
+1993934,Barcelona,João Cancelo,88.3,59.7,98.0,74.6,completo,76
+1993934,Barcelona,Lamine Yamal,102.7,69.4,96.1,59.2,completo,76
+1993934,Barcelona,João Cancelo,96.1,59.0,106.8,57.8,fallado,76
+1993934,Real Madrid,Marc Cucurella,16.1,25.3,37.6,24.7,completo,76
+1993934,Real Madrid,Kylian Mbappé,58.6,24.7,74.6,3.3,completo,76
+1993934,Real Madrid,Yan Diomande,105.1,8.9,105.6,35.0,fallado,76
+1993934,Barcelona,João Cancelo,16.0,60.2,31.2,70.0,completo,77
+1993934,Barcelona,Pedri,48.0,50.6,49.9,34.2,completo,77
+1993934,Barcelona,Frenkie de Jong,74.4,29.2,91.8,12.1,completo,77
+1993934,Barcelona,Anthony Gordon,97.2,24.9,105.5,21.5,completo,77
+1993934,Barcelona,Alejandro Balde,105.5,21.5,106.9,27.9,fallado,77
+1993934,Barcelona,Gerard Martín,65.0,18.6,79.1,15.0,completo,77
+1993934,Barcelona,Anthony Gordon,79.1,15.0,71.5,28.5,completo,77
+1993934,Barcelona,Rodri,72.1,29.4,82.8,39.0,clave,77
+1993934,Real Madrid,Dean Huijsen,4.7,34.5,5.2,41.8,completo,78
+1993934,Real Madrid,Andrii Lunin,10.6,37.0,35.8,75.5,completo,78
+1993934,Real Madrid,Arda Güler,35.2,75.3,73.7,53.5,fallado,78
+1993934,Barcelona,Pau Cubarsí,52.2,19.5,65.4,17.7,completo,78
+1993934,Barcelona,Pedri,65.4,17.7,56.3,10.9,completo,78
+1993934,Barcelona,Gerard Martín,55.6,12.3,58.8,24.4,completo,78
+1993934,Barcelona,Frenkie de Jong,58.8,24.4,72.0,23.1,completo,78
+1993934,Barcelona,Anthony Gordon,63.7,33.2,56.5,43.4,completo,78
+1993934,Barcelona,Rodri,56.0,43.9,57.8,64.0,completo,78
+1993934,Barcelona,João Cancelo,72.0,55.2,82.3,51.5,completo,78
+1993934,Barcelona,Raphinha,82.8,52.2,88.1,57.5,fallado,78
+1993934,Barcelona,Frenkie de Jong,80.9,53.4,83.0,38.6,completo,78
+1993934,Barcelona,João Cancelo,90.6,34.7,98.2,23.6,completo,78
+1993934,Barcelona,Alejandro Balde,98.2,23.6,105.0,42.4,clave,78
+1993934,Barcelona,Raphinha,119.4,79.6,109.8,44.6,fallado,79
+1993934,Real Madrid,Yan Diomande,14.8,28.4,32.2,30.8,completo,79
+1993934,Real Madrid,Dean Huijsen,35.3,28.2,23.5,50.5,completo,80
+1993934,Real Madrid,Ibrahima Konaté,25.0,53.4,31.9,76.6,completo,80
+1993934,Real Madrid,Denzel Dumfries,31.9,76.6,39.1,79.4,completo,80
+1993934,Real Madrid,Arda Güler,39.1,79.4,46.3,77.0,fallado,80
+1993934,Barcelona,Pedri,80.0,5.4,91.1,5.4,completo,80
+1993934,Barcelona,Anthony Gordon,105.1,21.0,97.8,37.6,clave,80
+1993934,Barcelona,Rodri,66.1,65.0,74.6,52.2,completo,81
+1993934,Barcelona,Pedri,75.6,51.3,71.4,57.1,completo,81
+1993934,Barcelona,Rodri,70.0,55.1,73.4,73.1,completo,81
+1993934,Barcelona,João Cancelo,73.6,72.2,80.6,62.8,completo,81
+1993934,Barcelona,Frenkie de Jong,80.6,62.8,70.6,68.3,completo,81
+1993934,Barcelona,João Cancelo,74.9,69.1,82.1,76.1,completo,81
+1993934,Barcelona,Frenkie de Jong,78.8,69.0,76.4,61.4,completo,82
+1993934,Barcelona,Rodri,76.4,61.4,68.4,63.6,completo,82
+1993934,Barcelona,João Cancelo,68.4,63.6,55.6,54.5,completo,82
+1993934,Barcelona,Pau Cubarsí,56.2,45.5,64.3,17.9,completo,82
+1993934,Barcelona,Gerard Martín,63.2,19.4,66.1,36.1,completo,82
+1993934,Barcelona,Rodri,69.6,33.5,74.4,15.4,completo,82
+1993934,Barcelona,Gerard Martín,81.2,11.8,104.8,12.6,completo,82
+1993934,Barcelona,Alejandro Balde,108.6,13.8,101.5,15.0,completo,82
+1993934,Barcelona,Anthony Gordon,101.2,19.3,109.4,26.3,clave,82
+1993934,Barcelona,João Cancelo,119.6,0.6,108.5,48.2,completo,82
+1993934,Barcelona,Frenkie de Jong,108.5,48.2,95.3,37.8,completo,82
+1993934,Barcelona,Anthony Gordon,95.3,37.8,85.2,40.2,completo,83
+1993934,Barcelona,Rodri,85.1,40.2,79.7,53.0,completo,83
+1993934,Barcelona,Raphinha,79.2,52.5,78.6,47.3,completo,83
+1993934,Barcelona,Rodri,78.0,47.2,81.6,55.6,completo,83
+1993934,Barcelona,Raphinha,78.6,52.7,66.7,41.2,completo,83
+1993934,Barcelona,Pau Cubarsí,67.3,39.3,76.0,25.0,completo,83
+1993934,Barcelona,Pedri,79.6,31.4,77.0,41.4,completo,83
+1993934,Barcelona,Rodri,77.3,42.0,78.0,61.9,completo,83
+1993934,Barcelona,Frenkie de Jong,79.0,61.9,93.1,75.1,completo,83
+1993934,Barcelona,Lamine Yamal,104.9,67.7,110.2,59.0,completo,83
+1993934,Barcelona,Frenkie de Jong,110.8,58.5,105.4,59.7,fallado,83
+1993934,Barcelona,Pau Cubarsí,72.0,72.6,76.9,71.9,fallado,83
+1993934,Real Madrid,Jude Bellingham,39.0,23.6,45.2,45.4,completo,83
+1993934,Real Madrid,Aurélien Tchouaméni,63.0,46.1,57.2,71.0,completo,85
+1993934,Real Madrid,Denzel Dumfries,55.3,67.8,37.8,57.8,completo,85
+1993934,Real Madrid,Ibrahima Konaté,30.4,51.8,13.2,37.3,completo,85
+1993934,Real Madrid,Andrii Lunin,13.2,37.3,12.5,18.6,completo,85
+1993934,Real Madrid,Dean Huijsen,12.5,18.6,31.6,3.5,completo,85
+1993934,Real Madrid,Marc Cucurella,39.5,5.0,56.9,2.6,completo,85
+1993934,Real Madrid,Yan Diomande,43.4,22.8,34.4,54.2,completo,85
+1993934,Real Madrid,Ibrahima Konaté,31.8,51.9,40.4,39.7,completo,85
+1993934,Real Madrid,Eduardo Camavinga,40.4,39.7,28.6,36.9,completo,85
+1993934,Real Madrid,Aurélien Tchouaméni,29.3,39.4,30.1,74.1,completo,85
+1993934,Real Madrid,Denzel Dumfries,30.1,74.1,33.0,76.7,fallado,85
+1993934,Barcelona,Rodri,56.5,17.8,69.8,20.7,completo,86
+1993934,Barcelona,Frenkie de Jong,67.6,20.3,31.3,26.3,completo,86
+1993934,Barcelona,Joan García,30.7,26.0,35.9,24.1,completo,86
+1993934,Barcelona,Gerard Martín,36.4,24.2,43.8,26.7,completo,86
+1993934,Barcelona,Rodri,46.0,21.2,46.7,8.0,completo,86
+1993934,Barcelona,Alejandro Balde,46.3,9.8,36.2,26.8,completo,86
+1993934,Barcelona,Gerard Martín,38.3,31.5,41.8,55.4,completo,86
+1993934,Barcelona,Pau Cubarsí,43.0,57.0,48.7,72.2,completo,86
+1993934,Barcelona,João Cancelo,50.5,72.5,38.6,58.2,completo,86
+1993934,Barcelona,Pau Cubarsí,39.4,51.4,45.1,26.7,completo,86
+1993934,Barcelona,Gerard Martín,52.9,22.7,75.7,29.9,completo,86
+1993934,Barcelona,Gabriel Jesus,76.2,29.4,70.1,22.2,fallado,86
+1993934,Real Madrid,Jude Bellingham,52.0,63.0,56.3,61.0,completo,86
+1993934,Real Madrid,Eduardo Camavinga,56.3,61.0,69.8,76.7,completo,86
+1993934,Real Madrid,Arda Güler,73.8,76.8,98.3,56.5,completo,86
+1993934,Real Madrid,Eduardo Camavinga,113.9,53.1,110.3,43.0,clave,86
+1993934,Barcelona,Gabriel Jesus,59.8,40.0,45.5,38.8,completo,89
+1993934,Barcelona,Rodri,69.7,28.5,56.8,46.0,completo,89
+1993934,Barcelona,Pau Cubarsí,57.6,47.0,78.0,73.9,completo,89
+1993934,Barcelona,Lamine Yamal,80.0,74.9,90.7,65.0,fallado,89
+1993934,Real Madrid,Aurélien Tchouaméni,28.3,18.9,41.8,22.1,completo,89
+1993934,Real Madrid,Aurélien Tchouaméni,57.4,8.3,37.2,23.3,completo,89
+1993934,Real Madrid,Dean Huijsen,37.2,23.3,31.8,47.7,completo,89
+1993934,Real Madrid,Ibrahima Konaté,31.8,47.7,11.6,28.2,completo,89
+1993934,Real Madrid,Andrii Lunin,11.2,27.2,69.8,13.1,fallado,89
+1993934,Barcelona,Pau Cubarsí,50.2,66.9,54.1,70.5,completo,89
+1993934,Barcelona,Rodri,52.2,70.2,42.0,44.6,completo,89
+1993934,Barcelona,Gerard Martín,41.6,43.8,39.7,33.3,completo,90
+1993934,Barcelona,Alejandro Balde,39.0,32.3,36.7,43.4,completo,90
+1993934,Barcelona,Gerard Martín,37.2,45.0,45.0,57.6,completo,90
+1993934,Barcelona,Pau Cubarsí,46.3,57.8,54.0,73.7,completo,90
+1993934,Barcelona,João Cancelo,58.3,73.4,52.2,60.6,completo,90
+1993934,Barcelona,Pau Cubarsí,52.2,60.6,55.1,72.0,completo,90
+1993934,Barcelona,João Cancelo,52.7,70.2,41.2,69.5,completo,90
+1993934,Barcelona,Pau Cubarsí,38.4,71.4,29.9,55.7,completo,90
+1993934,Barcelona,Joan García,31.7,54.0,39.1,28.7,completo,90
+1993934,Barcelona,Gerard Martín,46.9,20.1,45.1,27.2,completo,90
+1993934,Barcelona,Pedri,51.6,38.1,55.4,61.2,completo,90
+1993934,Barcelona,João Cancelo,65.6,64.8,55.1,52.5,completo,90
+1993934,Barcelona,Pau Cubarsí,56.4,46.5,63.8,25.1,completo,90
+1993934,Barcelona,Gerard Martín,69.2,22.2,83.2,4.9,completo,90
+1993934,Barcelona,Karim Adeyemi,85.4,5.9,82.7,23.9,completo,90
+1993934,Barcelona,Rodri,82.0,24.8,78.6,40.8,completo,90
+1993934,Barcelona,Pedri,78.1,44.4,89.8,75.3,completo,90
+1993934,Barcelona,Lamine Yamal,93.8,71.9,105.1,50.4,fallado,90
+1993934,Real Madrid,Marc Cucurella,30.1,16.3,34.9,26.5,completo,91
+1993934,Real Madrid,Andrii Lunin,21.7,19.4,91.1,6.7,completo,91
+1993934,Barcelona,João Cancelo,27.6,67.0,31.6,62.2,completo,91
+1993934,Barcelona,Pau Cubarsí,34.6,62.4,50.5,76.2,completo,91
+1993934,Barcelona,Frenkie de Jong,50.8,76.2,55.6,76.8,completo,91
+1993934,Barcelona,Lamine Yamal,55.0,76.2,51.2,59.5,completo,91
+1993934,Barcelona,Pedri,55.1,54.5,56.5,45.6,completo,91
+1993934,Barcelona,Rodri,56.3,45.0,58.6,41.5,fallado,91
+1993934,Barcelona,Gerard Martín,53.0,24.8,55.1,9.7,completo,92
+1993934,Barcelona,Alejandro Balde,56.0,9.5,67.4,4.4,completo,92
+1993934,Barcelona,Karim Adeyemi,69.4,14.3,63.7,21.5,completo,92
+1993934,Barcelona,Rodri,65.8,23.0,98.2,71.0,fallado,92
+1993934,Real Madrid,Marc Cucurella,17.6,8.9,30.8,11.0,completo,92
+1993934,Real Madrid,Yan Diomande,36.7,14.2,33.6,18.2,fallado,92
+1993934,Real Madrid,Dean Huijsen,15.4,21.0,18.7,14.6,completo,92
+1993934,Barcelona,Frenkie de Jong,93.0,65.2,86.6,70.5,completo,92
+1993934,Barcelona,João Cancelo,92.8,69.6,94.6,76.1,completo,92
+1993934,Barcelona,Pedri,93.0,75.2,82.1,57.3,completo,92
+1993934,Barcelona,Rodri,83.8,51.8,94.0,13.8,completo,92
+1993934,Barcelona,Alejandro Balde,97.4,18.1,112.1,19.6,completo,92
+1993934,Barcelona,Karim Adeyemi,115.6,20.0,113.5,80.0,fallado,92
+1993934,Real Madrid,Eduardo Camavinga,30.6,6.3,44.3,6.1,fallado,94
+1993934,Barcelona,Pau Cubarsí,75.7,73.9,85.1,64.8,fallado,94
+1993934,Real Madrid,Aurélien Tchouaméni,34.9,15.2,37.6,9.8,completo,94
+1993934,Real Madrid,Eduardo Camavinga,37.6,9.8,73.9,29.3,fallado,94
+1993934,Barcelona,Gerard Martín,56.5,59.8,69.7,70.6,fallado,94
+1993934,Real Madrid,Dean Huijsen,39.8,4.4,14.3,25.5,completo,94
+1993934,Real Madrid,Andrii Lunin,17.6,28.9,97.0,13.6,fallado,94
+1993934,Barcelona,João Cancelo,21.4,64.7,16.4,55.1,completo,94
+1993934,Barcelona,João Cancelo,19.7,72.4,27.1,72.2,completo,94
+1993934,Barcelona,Frenkie de Jong,27.1,72.2,41.4,66.0,completo,95
+1993934,Barcelona,Gabriel Jesus,38.6,66.0,38.0,75.0,completo,95
+1993934,Barcelona,Frenkie de Jong,37.0,74.6,41.2,73.4,fallado,95
+1993934,Barcelona,João Cancelo,36.5,73.4,46.6,71.9,fallado,95
+1993934,Real Madrid,Carlos Espí,72.4,11.0,82.7,0.0,fallado,95
+1993934,Barcelona,Frenkie de Jong,46.0,73.4,40.8,42.5,completo,95
+1993934,Barcelona,Gerard Martín,41.3,41.0,55.7,35.0,completo,95
+1993934,Barcelona,Rodri,56.6,34.0,68.6,16.2,fallado,95
+1993934,Real Madrid,Trent Alexander-Arnold,53.0,68.7,55.9,69.8,fallado,95
+1993934,Real Madrid,Eduardo Camavinga,46.9,59.8,57.6,47.9,completo,95
+1993934,Barcelona,João Cancelo,65.2,47.8,67.4,46.7,fallado,95
+1993934,Barcelona,João Cancelo,67.9,43.4,76.6,44.3,completo,95
+1993934,Barcelona,Rodri,77.5,46.1,86.5,62.6,completo,95
+1993934,Barcelona,Lamine Yamal,97.1,59.2,106.8,47.3,fallado,95
+1993934,Real Madrid,Jude Bellingham,44.6,46.5,39.8,61.4,completo,95
+1993934,Real Madrid,Trent Alexander-Arnold,43.4,61.5,80.6,76.2,completo,95
 1994150,Atletico,Jonathan David,60.2,40.1,39.2,40.2,completo,0
 1994150,Atletico,Dávid Hancko,39.2,40.3,88.7,80.0,fallado,0
 1994150,Atletico,Marc Pubill,70.1,73.7,80.4,67.2,completo,0

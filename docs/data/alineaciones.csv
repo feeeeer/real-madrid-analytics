@@ -14,7 +14,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1993904,Real Madrid,Marc Cucurella,17,0,Left-Back,,
 1993904,Real Madrid,Carlos Espí,19,0,,,
 1993904,Real Madrid,Brahim Díaz,21,0,Right Winger,,
-1993904,Real Madrid,Yan Diomande,25,0,Right Winger,,
+1993904,Real Madrid,Yan Diomande,25,0,Left Winger,,
 1993904,Real Sociedad,Álex Remiro,1,1,Goalkeeper,0.5,0.06
 1993904,Real Sociedad,Jon Aramburu,2,1,Right-Back,0.8,0.23
 1993904,Real Sociedad,Sergio Gómez,17,1,Left-Back,0.2,0.23
@@ -62,7 +62,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1993911,Real Madrid,Trent Alexander-Arnold,12,0,Right-Back,,
 1993911,Real Madrid,Marc Cucurella,17,0,Left-Back,,
 1993911,Real Madrid,Carlos Espí,19,0,,,
-1993911,Real Madrid,Yan Diomande,25,0,Right Winger,,
+1993911,Real Madrid,Yan Diomande,25,0,Left Winger,,
 1993924,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
 1993924,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back,0.8,0.23
 1993924,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
@@ -76,7 +76,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1993924,Real Madrid,Vinícius Júnior,7,1,Left Winger,0.233,0.86
 1993924,Real Madrid,Arda Güler,15,0,Right Winger,,
 1993924,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
-1993924,Real Madrid,Yan Diomande,25,0,Right Winger,,
+1993924,Real Madrid,Yan Diomande,25,0,Left Winger,,
 1993924,Malaga,Alfonso Herrero,1,1,Goalkeeper,0.5,0.06
 1993924,Malaga,Carlos Puga,3,1,Right-Back,0.8,0.23
 1993924,Malaga,Rafita,31,1,Left-Back,0.2,0.23
@@ -124,7 +124,37 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1993928,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 1993928,Real Madrid,Carlos Espí,19,0,,,
 1993928,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
-1993928,Real Madrid,Yan Diomande,25,0,Right Winger,,
+1993928,Real Madrid,Yan Diomande,25,0,Left Winger,,
+1993934,Barcelona,Joan García,1,1,Goalkeeper,0.5,0.06
+1993934,Barcelona,Xavi Espart,12,1,Right-Back,0.8,0.23
+1993934,Barcelona,João Cancelo,2,1,Left-Back,0.2,0.23
+1993934,Barcelona,Rodri,16,1,Central Midfield,0.767,0.54
+1993934,Barcelona,Pau Cubarsí,5,1,Centre-Back,0.4,0.23
+1993934,Barcelona,Gerard Martín,18,1,Centre-Back,0.6,0.23
+1993934,Barcelona,Fermín López,7,1,Central Midfield,0.233,0.54
+1993934,Barcelona,Pedri,8,1,Central Midfield,0.5,0.54
+1993934,Barcelona,Raphinha,11,1,Centre-Forward,0.5,0.86
+1993934,Barcelona,Lamine Yamal,10,1,Centre-Forward,0.233,0.86
+1993934,Barcelona,Anthony Gordon,17,1,Centre-Forward,0.767,0.86
+1993934,Barcelona,Alejandro Balde,3,0,,,
+1993934,Barcelona,Gabriel Jesus,9,0,,,
+1993934,Barcelona,Karim Adeyemi,14,0,,,
+1993934,Barcelona,Frenkie de Jong,21,0,,,
+1993934,Real Madrid,Andrii Lunin,13,1,Goalkeeper,0.5,0.06
+1993934,Real Madrid,Federico Valverde,8,1,Right-Back,0.8,0.23
+1993934,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
+1993934,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.3,0.39
+1993934,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
+1993934,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
+1993934,Real Madrid,Arda Güler,15,1,Right Winger,0.767,0.86
+1993934,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.39
+1993934,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
+1993934,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.69
+1993934,Real Madrid,Yan Diomande,25,1,Left Winger,0.233,0.86
+1993934,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield,,
+1993934,Real Madrid,Trent Alexander-Arnold,12,0,Right-Back,,
+1993934,Real Madrid,Carlos Espí,19,0,,,
+1993934,Real Madrid,Denzel Dumfries,24,0,Right-Back,,
 1994150,Atletico,Jan Oblak,13,1,Goalkeeper,0.5,0.06
 1994150,Atletico,Marc Pubill,18,1,Right-Back,0.8,0.23
 1994150,Atletico,Alejandro Grimaldo,22,1,Left-Back,0.2,0.23
@@ -155,7 +185,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1994150,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield,,
 1994150,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
 1994150,Real Madrid,Antonio Rüdiger,22,0,Centre-Back,,
-1994150,Real Madrid,Yan Diomande,25,0,Right Winger,,
+1994150,Real Madrid,Yan Diomande,25,0,Left Winger,,
 1994162,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
 1994162,Real Madrid,Denzel Dumfries,24,1,Right-Back,0.8,0.23
 1994162,Real Madrid,Álvaro Carreras,18,1,Left-Back,0.2,0.23
@@ -296,7 +326,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029114,Real Madrid,Aurélien Tchouaméni,14,0,Defensive Midfield,,
 2029114,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 2029114,Real Madrid,Carlos Espí,19,0,,,
-2029114,Real Madrid,Yan Diomande,25,0,Right Winger,,
+2029114,Real Madrid,Yan Diomande,25,0,Left Winger,,
 2029114,Inter,Josep Martínez,1,1,Goalkeeper,0.5,0.06
 2029114,Inter,Andy Diouf,17,1,Central Midfield,0.18,0.54
 2029114,Inter,Carlos Augusto,30,1,Central Midfield,0.82,0.54
@@ -328,7 +358,7 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029124,Real Madrid,Marc Cucurella,17,0,Left-Back,,
 2029124,Real Madrid,Carlos Espí,19,0,,,
 2029124,Real Madrid,Brahim Díaz,21,0,Right Winger,,
-2029124,Real Madrid,Yan Diomande,25,0,Right Winger,,
+2029124,Real Madrid,Yan Diomande,25,0,Left Winger,,
 2029124,RBL,Maarten Vandevoordt,26,1,Goalkeeper,0.5,0.06
 2029124,RBL,Ridle Baku,17,1,Centre-Back,0.4,0.23
 2029124,RBL,David Raum,22,1,Centre-Back,0.6,0.23
@@ -367,9 +397,9 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029142,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.7,0.39
 2029142,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.4,0.23
 2029142,Real Madrid,Antonio Rüdiger,22,1,Centre-Back,0.6,0.23
-2029142,Real Madrid,Yan Diomande,25,1,Right Winger,0.767,0.86
+2029142,Real Madrid,Yan Diomande,25,1,Left Winger,0.5,0.86
 2029142,Real Madrid,Federico Valverde,8,1,Defensive Midfield,0.3,0.39
-2029142,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
+2029142,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.767,0.86
 2029142,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.69
 2029142,Real Madrid,Vinícius Júnior,7,1,Left Winger,0.233,0.86
 2029142,Real Madrid,Endrick,9,0,Right Winger,,
@@ -377,49 +407,3 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029142,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 2029142,Real Madrid,Carlos Espí,19,0,,,
 2029142,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
-401882832,Barcelona,Joan García,1,1,Goalkeeper,0.5,0.06
-401882832,Barcelona,Gerard Martín,18,1,Centre-Back,0.4,0.23
-401882832,Barcelona,Pau Cubarsí,5,1,Centre-Back,0.6,0.23
-401882832,Barcelona,João Cancelo,2,1,Left-Back,0.2,0.23
-401882832,Barcelona,Xavi Espart,12,1,Right-Back,0.8,0.23
-401882832,Barcelona,Rodri,16,1,Central Midfield,0.5,0.55
-401882832,Barcelona,Pedri,8,1,Left Midfield,0.233,0.55
-401882832,Barcelona,Fermín López,7,1,Right Midfield,0.767,0.55
-401882832,Barcelona,Raphinha,11,1,Centre-Forward,0.5,0.86
-401882832,Barcelona,Anthony Gordon,17,1,Left Winger,0.233,0.86
-401882832,Barcelona,Lamine Yamal,10,1,Right Winger,0.767,0.86
-401882832,Barcelona,Wojciech Szczesny,13,0,,,
-401882832,Barcelona,Gavi,6,0,,,
-401882832,Barcelona,Brian Fariñas,4,0,,,
-401882832,Barcelona,Alejandro Balde,3,0,,,
-401882832,Barcelona,Dominik Livakovic,25,0,,,
-401882832,Barcelona,Gabriel Jesus,9,0,,,
-401882832,Barcelona,Álex Campos,41,0,,,
-401882832,Barcelona,Karim Adeyemi,14,0,,,
-401882832,Barcelona,Frenkie de Jong,21,0,,,
-401882832,Barcelona,Orian Goren,32,0,,,
-401882832,Barcelona,Hamza Abdelkarim,29,0,,,
-401882832,Barcelona,Marc Bernal,22,0,,,
-401882832,Real Madrid,Andriy Lunin,13,1,Goalkeeper,0.5,0.06
-401882832,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
-401882832,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
-401882832,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
-401882832,Real Madrid,Federico Valverde,8,1,Right-Back,0.8,0.23
-401882832,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.65
-401882832,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.3,0.44
-401882832,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.44
-401882832,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
-401882832,Real Madrid,Yan Diomande,25,1,Left Winger,0.233,0.65
-401882832,Real Madrid,Arda Güler,15,1,Right Winger,0.767,0.65
-401882832,Real Madrid,Éder Militão,3,0,,,
-401882832,Real Madrid,Álvaro Carreras,18,0,,,
-401882832,Real Madrid,Sergio Mestre,26,0,,,
-401882832,Real Madrid,Denzel Dumfries,24,0,,,
-401882832,Real Madrid,Illia Voloshyn,39,0,,,
-401882832,Real Madrid,Trent Alexander-Arnold,12,0,,,
-401882832,Real Madrid,Thiago Pitarch,27,0,,,
-401882832,Real Madrid,Antonio Rüdiger,22,0,,,
-401882832,Real Madrid,Carlos Espí,19,0,,,
-401882832,Real Madrid,Endrick,9,0,,,
-401882832,Real Madrid,Eduardo Camavinga,6,0,,,
-401882832,Real Madrid,Brahim Díaz,21,0,,,

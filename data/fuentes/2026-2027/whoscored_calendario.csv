@@ -71,80 +71,124 @@ index,league,stage_id,date,home_team,away_team,home_score,away_score
 69,ESP-La Liga,25662,2026-10-09 19:00:00+00:00,Malaga,Espanyol,1.0,1.0
 70,ESP-La Liga,25662,2026-10-10 16:30:00+00:00,Barcelona,Getafe,3.0,0.0
 71,ESP-La Liga,25662,2026-10-10 14:15:00+00:00,Deportivo Alaves,Atletico Madrid,1.0,2.0
-72,ESP-La Liga,25662,2026-10-10 12:00:00+00:00,Rayo Vallecano,Athletic Club,0.0,0.0
-73,ESP-La Liga,25662,2026-10-10 19:00:00+00:00,Real Madrid,Villarreal,1.0,0.0
-74,ESP-La Liga,25662,2026-10-11 12:00:00+00:00,Elche,Celta Vigo,0.0,0.0
-75,ESP-La Liga,25662,2026-10-11 19:00:00+00:00,Racing Santander,Valencia,2.0,2.0
-76,ESP-La Liga,25662,2026-10-11 16:30:00+00:00,Real Betis,Osasuna,5.0,2.0
-77,ESP-La Liga,25662,2026-10-11 14:15:00+00:00,Real Sociedad,Deportivo de A Coruna,3.0,2.0
-78,ESP-La Liga,25662,2026-10-12 19:00:00+00:00,Levante,Sevilla,3.0,3.0
-79,ESP-La Liga,25662,2026-10-16 19:00:00+00:00,Deportivo de A Coruna,Levante,1.0,1.0
-80,ESP-La Liga,25662,2026-10-17 12:00:00+00:00,Espanyol,Atletico Madrid,0.0,1.0
-81,ESP-La Liga,25662,2026-10-17 16:30:00+00:00,Real Betis,Barcelona,2.0,5.0
-82,ESP-La Liga,25662,2026-10-17 19:00:00+00:00,Valencia,Athletic Club,0.0,0.0
-83,ESP-La Liga,25662,2026-10-17 14:15:00+00:00,Villarreal,Elche,0.0,0.0
-84,ESP-La Liga,25662,2026-10-18 14:15:00+00:00,Celta Vigo,Deportivo Alaves,2.0,1.0
-85,ESP-La Liga,25662,2026-10-18 16:30:00+00:00,Malaga,Real Sociedad,2.0,5.0
-86,ESP-La Liga,25662,2026-10-18 12:00:00+00:00,Osasuna,Racing Santander,2.0,0.0
-87,ESP-La Liga,25662,2026-10-18 19:00:00+00:00,Real Madrid,Sevilla,4.0,1.0
-88,ESP-La Liga,25662,2026-10-19 19:00:00+00:00,Getafe,Rayo Vallecano,1.0,1.0
-89,ESP-La Liga,25662,2026-10-21 18:00:00+00:00,Levante,Athletic Club,3.0,1.0
-90,ESP-La Liga,25662,2026-10-23 19:00:00+00:00,Deportivo Alaves,Malaga,1.0,1.0
-91,ESP-La Liga,25662,2026-10-24 19:00:00+00:00,Atletico Madrid,Deportivo de A Coruna,1.0,0.0
-92,ESP-La Liga,25662,2026-10-24 14:15:00+00:00,Racing Santander,Espanyol,2.0,1.0
-93,ESP-La Liga,25662,2026-10-24 12:00:00+00:00,Rayo Vallecano,Elche,0.0,3.0
-94,ESP-La Liga,25662,2026-10-24 16:30:00+00:00,Valencia,Villarreal,1.0,2.0
-95,INT-Champions League,25800,2026-09-08 16:45:00+00:00,AEK Athens,LASK,1,0
-96,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Borussia Dortmund,Villarreal,3,2
-97,INT-Champions League,25800,2026-09-08 16:45:00+00:00,Club Brugge,Aston Villa,2,3
-98,INT-Champions League,25800,2026-09-08 19:00:00+00:00,FC Porto,Manchester City,0,2
-99,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Lille,Real Betis,2,3
-100,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Real Madrid,Inter,2,1
-101,INT-Champions League,25800,2026-09-09 16:45:00+00:00,Barcelona,Feyenoord,5,1
-102,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Liverpool,Atletico Madrid,2,1
-103,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Napoli,Arsenal,0,1
-104,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Paris Saint-Germain,Slovan Bratislava,6,1
-105,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Sporting CP,Galatasaray,3,1
-106,INT-Champions League,25800,2026-09-09 16:45:00+00:00,VfB Stuttgart,Viking,3,1
-107,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Bayern Munich,Bodoe/Glimt,5,0
-108,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Como,RB Leipzig,4,1
-109,INT-Champions League,25800,2026-09-10 16:45:00+00:00,Fenerbahce,Roma,1,1
-110,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Manchester United,Sabah FK,4,0
-111,INT-Champions League,25800,2026-09-10 16:45:00+00:00,PSV Eindhoven,Shakhtar Donetsk,1,1
-112,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Slavia Prague,Lens,2,3
-113,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Arsenal,Lille,3,0
-114,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Atletico Madrid,Manchester United,2,0
-115,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Galatasaray,Barcelona,1,4
-116,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Inter,Club Brugge,3,4
-117,INT-Champions League,25800,2026-10-13 16:45:00+00:00,Lens,Sporting CP,0,2
-118,INT-Champions League,25800,2026-10-13 19:00:00+00:00,RB Leipzig,PSV Eindhoven,1,0
-119,INT-Champions League,25800,2026-10-13 16:45:00+00:00,Sabah FK,Slavia Prague,2,0
-120,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Viking,Bayern Munich,3,3
-121,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Villarreal,Napoli,3,1
-122,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Aston Villa,Fenerbahce,6,0
-123,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Bodoe/Glimt,Borussia Dortmund,1,0
-124,INT-Champions League,25800,2026-10-14 16:45:00+00:00,Feyenoord,Como,3,2
-125,INT-Champions League,25800,2026-10-14 16:45:00+00:00,LASK,Liverpool,3,6
-126,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Manchester City,Paris Saint-Germain,2,4
-127,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Real Betis,FC Porto,3,2
-128,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Roma,Real Madrid,3,4
-129,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Shakhtar Donetsk,AEK Athens,3,1
-130,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Slovan Bratislava,VfB Stuttgart,0,3
-131,INT-Champions League,25800,2026-10-20 19:00:00+00:00,FC Porto,PSV Eindhoven,0,1
-132,INT-Champions League,25800,2026-10-20 16:45:00+00:00,Fenerbahce,Slavia Prague,2,2
-133,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Liverpool,Villarreal,4,3
-134,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Manchester City,AEK Athens,5,1
-135,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Napoli,Bodoe/Glimt,4,3
-136,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Paris Saint-Germain,Barcelona,4,2
-137,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Roma,Slovan Bratislava,4,0
-138,INT-Champions League,25800,2026-10-20 16:45:00+00:00,Sabah FK,Borussia Dortmund,1,2
-139,INT-Champions League,25800,2026-10-20 19:00:00+00:00,VfB Stuttgart,Atletico Madrid,1,1
-140,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Aston Villa,Viking,3,1
-141,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Bayern Munich,Arsenal,2,2
-142,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Club Brugge,Lens,3,0
-143,INT-Champions League,25800,2026-10-21 16:45:00+00:00,Como,Manchester United,4,1
-144,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Inter,Shakhtar Donetsk,1,0
-145,INT-Champions League,25800,2026-10-21 16:45:00+00:00,Lille,Galatasaray,2,4
-146,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Real Betis,Feyenoord,1,0
-147,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Real Madrid,RB Leipzig,4,1
-148,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Sporting CP,LASK,2,3
+72,ESP-La Liga,25662,2026-10-10 19:00:00+00:00,Real Madrid,Villarreal,1.0,0.0
+73,ESP-La Liga,25662,2026-10-11 12:00:00+00:00,Elche,Celta Vigo,0.0,0.0
+74,ESP-La Liga,25662,2026-10-11 19:00:00+00:00,Racing Santander,Valencia,2.0,2.0
+75,ESP-La Liga,25662,2026-10-11 16:30:00+00:00,Real Betis,Osasuna,5.0,2.0
+76,ESP-La Liga,25662,2026-10-11 14:15:00+00:00,Real Sociedad,Deportivo de A Coruna,3.0,2.0
+77,ESP-La Liga,25662,2026-10-12 19:00:00+00:00,Levante,Sevilla,3.0,3.0
+78,ESP-La Liga,25662,2026-10-16 19:00:00+00:00,Deportivo de A Coruna,Levante,1.0,1.0
+79,ESP-La Liga,25662,2026-10-17 12:00:00+00:00,Espanyol,Atletico Madrid,0.0,1.0
+80,ESP-La Liga,25662,2026-10-17 16:30:00+00:00,Real Betis,Barcelona,2.0,5.0
+81,ESP-La Liga,25662,2026-10-17 19:00:00+00:00,Valencia,Athletic Club,0.0,0.0
+82,ESP-La Liga,25662,2026-10-17 14:15:00+00:00,Villarreal,Elche,0.0,0.0
+83,ESP-La Liga,25662,2026-10-18 14:15:00+00:00,Celta Vigo,Deportivo Alaves,2.0,1.0
+84,ESP-La Liga,25662,2026-10-18 16:30:00+00:00,Malaga,Real Sociedad,2.0,5.0
+85,ESP-La Liga,25662,2026-10-18 12:00:00+00:00,Osasuna,Racing Santander,2.0,0.0
+86,ESP-La Liga,25662,2026-10-18 19:00:00+00:00,Real Madrid,Sevilla,4.0,1.0
+87,ESP-La Liga,25662,2026-10-19 19:00:00+00:00,Getafe,Rayo Vallecano,1.0,1.0
+88,ESP-La Liga,25662,2026-10-21 18:00:00+00:00,Levante,Athletic Club,3.0,1.0
+89,ESP-La Liga,25662,2026-10-23 19:00:00+00:00,Deportivo Alaves,Malaga,1.0,1.0
+90,ESP-La Liga,25662,2026-10-24 19:00:00+00:00,Atletico Madrid,Deportivo de A Coruna,1.0,0.0
+91,ESP-La Liga,25662,2026-10-24 14:15:00+00:00,Racing Santander,Espanyol,2.0,1.0
+92,ESP-La Liga,25662,2026-10-24 12:00:00+00:00,Rayo Vallecano,Elche,0.0,3.0
+93,ESP-La Liga,25662,2026-10-24 16:30:00+00:00,Valencia,Villarreal,1.0,2.0
+94,ESP-La Liga,25662,2026-10-25 13:00:00+00:00,Athletic Club,Getafe,4.0,0.0
+95,ESP-La Liga,25662,2026-10-25 20:00:00+00:00,Barcelona,Real Madrid,1.0,2.0
+96,ESP-La Liga,25662,2026-10-25 15:15:00+00:00,Celta Vigo,Real Betis,0.0,0.0
+97,ESP-La Liga,25662,2026-10-25 17:30:00+00:00,Real Sociedad,Levante,2.0,1.0
+98,ESP-La Liga,25662,2026-10-26 20:00:00+00:00,Sevilla,Osasuna,2.0,0.0
+99,INT-Champions League,25800,2026-09-08 16:45:00+00:00,AEK Athens,LASK,1,0
+100,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Borussia Dortmund,Villarreal,3,2
+101,INT-Champions League,25800,2026-09-08 16:45:00+00:00,Club Brugge,Aston Villa,2,3
+102,INT-Champions League,25800,2026-09-08 19:00:00+00:00,FC Porto,Manchester City,0,2
+103,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Lille,Real Betis,2,3
+104,INT-Champions League,25800,2026-09-08 19:00:00+00:00,Real Madrid,Inter,2,1
+105,INT-Champions League,25800,2026-09-09 16:45:00+00:00,Barcelona,Feyenoord,5,1
+106,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Liverpool,Atletico Madrid,2,1
+107,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Napoli,Arsenal,0,1
+108,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Paris Saint-Germain,Slovan Bratislava,6,1
+109,INT-Champions League,25800,2026-09-09 19:00:00+00:00,Sporting CP,Galatasaray,3,1
+110,INT-Champions League,25800,2026-09-09 16:45:00+00:00,VfB Stuttgart,Viking,3,1
+111,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Bayern Munich,Bodoe/Glimt,5,0
+112,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Como,RB Leipzig,4,1
+113,INT-Champions League,25800,2026-09-10 16:45:00+00:00,Fenerbahce,Roma,1,1
+114,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Manchester United,Sabah FK,4,0
+115,INT-Champions League,25800,2026-09-10 16:45:00+00:00,PSV Eindhoven,Shakhtar Donetsk,1,1
+116,INT-Champions League,25800,2026-09-10 19:00:00+00:00,Slavia Prague,Lens,2,3
+117,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Arsenal,Lille,3,0
+118,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Atletico Madrid,Manchester United,2,0
+119,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Galatasaray,Barcelona,1,4
+120,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Inter,Club Brugge,3,4
+121,INT-Champions League,25800,2026-10-13 16:45:00+00:00,Lens,Sporting CP,0,2
+122,INT-Champions League,25800,2026-10-13 19:00:00+00:00,RB Leipzig,PSV Eindhoven,1,0
+123,INT-Champions League,25800,2026-10-13 16:45:00+00:00,Sabah FK,Slavia Prague,2,0
+124,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Viking,Bayern Munich,3,3
+125,INT-Champions League,25800,2026-10-13 19:00:00+00:00,Villarreal,Napoli,3,1
+126,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Aston Villa,Fenerbahce,6,0
+127,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Bodoe/Glimt,Borussia Dortmund,1,0
+128,INT-Champions League,25800,2026-10-14 16:45:00+00:00,Feyenoord,Como,3,2
+129,INT-Champions League,25800,2026-10-14 16:45:00+00:00,LASK,Liverpool,3,6
+130,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Manchester City,Paris Saint-Germain,2,4
+131,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Real Betis,FC Porto,3,2
+132,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Roma,Real Madrid,3,4
+133,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Shakhtar Donetsk,AEK Athens,3,1
+134,INT-Champions League,25800,2026-10-14 19:00:00+00:00,Slovan Bratislava,VfB Stuttgart,0,3
+135,INT-Champions League,25800,2026-10-20 19:00:00+00:00,FC Porto,PSV Eindhoven,0,1
+136,INT-Champions League,25800,2026-10-20 16:45:00+00:00,Fenerbahce,Slavia Prague,2,2
+137,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Liverpool,Villarreal,4,3
+138,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Manchester City,AEK Athens,5,1
+139,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Napoli,Bodoe/Glimt,4,3
+140,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Paris Saint-Germain,Barcelona,4,2
+141,INT-Champions League,25800,2026-10-20 19:00:00+00:00,Roma,Slovan Bratislava,4,0
+142,INT-Champions League,25800,2026-10-20 16:45:00+00:00,Sabah FK,Borussia Dortmund,1,2
+143,INT-Champions League,25800,2026-10-20 19:00:00+00:00,VfB Stuttgart,Atletico Madrid,1,1
+144,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Aston Villa,Viking,3,1
+145,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Bayern Munich,Arsenal,2,2
+146,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Club Brugge,Lens,3,0
+147,INT-Champions League,25800,2026-10-21 16:45:00+00:00,Como,Manchester United,4,1
+148,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Inter,Shakhtar Donetsk,1,0
+149,INT-Champions League,25800,2026-10-21 16:45:00+00:00,Lille,Galatasaray,2,4
+150,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Real Betis,Feyenoord,1,0
+151,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Real Madrid,RB Leipzig,4,1
+152,INT-Champions League,25800,2026-10-21 19:00:00+00:00,Sporting CP,LASK,2,3
+153,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Alcala,Las Palmas,1.0,3.0
+154,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Arosa SC,Pontevedra,2.0,0.0
+155,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Atletico Tordesillas,CD Mirandes,3.0,3.0
+156,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Atletico Paso,Cordoba,3.0,1.0
+157,ESP-Copa del Rey,26079,2026-10-27 17:30:00+00:00,CD Cuarte,Girona,0.0,2.0
+158,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Manacor,Villarreal,0.0,5.0
+159,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,CE Manresa,Sant Andreu,2.0,2.0
+160,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,CF Calamocha,CE Europa,0.0,3.0
+161,ESP-Copa del Rey,26079,2026-10-27 18:45:00+00:00,Castellonense,Almeria,1.0,2.0
+162,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Ciudad Lucena,Rayo Majadahonda,0.0,1.0
+163,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,Don Benito,CD Extremadura,2.0,4.0
+164,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Gimnastica Segoviana,Cultural Leonesa,0.0,1.0
+165,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Recreativo Huelva,Rayo Vallecano,2.0,3.0
+166,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,Sestao,Espanyol,4.0,3.0
+167,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Sporting de Alcazar,Malaga,0.0,3.0
+168,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Tudelano,Real Zaragoza,0.0,4.0
+169,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,UD Llanera,Ponferradina,1.0,1.0
+170,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,UD Pinatar,Elche,1.0,3.0
+171,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,AE Prat,Athletic Club,1.0,6.0
+172,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Antequera,CDA Aguilas FC,2.0,0.0
+173,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Baleares,Eldense,0.0,1.0
+174,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Calatayud,Osasuna,0.0,6.0
+175,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Auriense,Deportivo de A Coruna,0.0,3.0
+176,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Covadonga,Real Valladolid,0.0,1.0
+177,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Laredo,Burgos CF,2.0,4.0
+178,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Varea,FC Andorra,0.0,3.0
+179,ESP-Copa del Rey,26079,2026-10-29 18:30:00+00:00,Cieza,Granada,0.0,3.0
+180,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Conquense,Castellon,0.0,3.0
+181,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Coruxo FC,Zamora,0.0,2.0
+182,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Guijuelo,Sporting Gijon,1.0,3.0
+183,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Numancia,Real Oviedo,3.0,3.0
+184,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Pena Sport,SD Huesca,1.0,5.0
+185,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Poblense,AD Ceuta FC,1.0,2.0
+186,ESP-Copa del Rey,26079,2026-10-29 19:30:00+00:00,RS Gimnastica,UD Ourense,3.0,1.0
+187,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Real Avila,Unionistas de Salamanca,1.0,0.0
+188,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Ribadesella CF,Racing Santander,0.0,2.0
+189,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,San Sebastian de los Reyes,CD Coria,1.0,2.0
+190,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Sporting Hortaleza,Sevilla,0.0,3.0
+191,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,UB Lebrijana,Getafe,2.0,3.0
+192,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Xerez,Cadiz,1.0,3.0

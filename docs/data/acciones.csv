@@ -535,6 +535,159 @@ match_id,equipo,jugador,tipo,x,y,minuto,peligrosa
 1993928,Real Madrid,Kylian Mbappé,perdida,111.2,69.3,96,0
 1993928,Real Betis,Marc Bartra,recuperacion,50.2,40.5,97,0
 1993928,Real Madrid,Jude Bellingham,perdida,68.3,59.8,97,0
+1993934,Real Madrid,Yan Diomande,perdida,49.9,9.8,0,0
+1993934,Barcelona,Lamine Yamal,perdida,79.7,69.5,0,0
+1993934,Real Madrid,Yan Diomande,perdida,47.9,2.6,0,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,24.7,21.8,1,0
+1993934,Barcelona,Xavi Espart,recuperacion,86.9,70.2,2,0
+1993934,Real Madrid,Yan Diomande,recuperacion,34.6,6.4,2,0
+1993934,Barcelona,Lamine Yamal,recuperacion,87.2,52.5,2,0
+1993934,Real Madrid,Yan Diomande,perdida,27.8,14.8,2,1
+1993934,Barcelona,Xavi Espart,perdida,87.8,71.6,2,0
+1993934,Barcelona,Anthony Gordon,recuperacion,83.0,5.2,3,0
+1993934,Real Madrid,Dean Huijsen,recuperacion,17.2,44.9,3,0
+1993934,Barcelona,João Cancelo,recuperacion,30.8,10.0,3,0
+1993934,Real Madrid,Arda Güler,perdida,41.0,76.7,3,0
+1993934,Barcelona,Raphinha,perdida,94.1,19.8,3,0
+1993934,Real Madrid,Arda Güler,recuperacion,77.2,64.6,4,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,37.8,19.1,5,0
+1993934,Barcelona,Fermín López,perdida,68.9,59.4,5,0
+1993934,Real Madrid,Dean Huijsen,recuperacion,10.6,28.6,6,0
+1993934,Barcelona,Fermín López,perdida,90.7,70.4,6,0
+1993934,Barcelona,Lamine Yamal,recuperacion,82.0,73.6,7,0
+1993934,Real Madrid,Bernardo Silva,perdida,46.4,8.6,7,0
+1993934,Real Madrid,Dean Huijsen,recuperacion,28.4,33.0,9,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,67.9,71.0,9,0
+1993934,Real Madrid,Yan Diomande,perdida,47.0,12.0,9,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,82.4,59.8,11,0
+1993934,Barcelona,Pedri,recuperacion,27.4,7.0,11,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,70.7,49.6,12,0
+1993934,Real Madrid,Federico Valverde,recuperacion,70.1,69.5,12,0
+1993934,Real Madrid,Arda Güler,recuperacion,77.5,50.3,12,0
+1993934,Barcelona,Pedri,recuperacion,46.7,60.9,15,0
+1993934,Barcelona,Lamine Yamal,perdida,98.6,58.7,15,0
+1993934,Barcelona,Rodri,recuperacion,30.2,73.0,16,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,42.2,32.5,17,0
+1993934,Barcelona,Xavi Espart,recuperacion,3.6,50.6,17,0
+1993934,Barcelona,Lamine Yamal,perdida,17.6,69.4,17,1
+1993934,Barcelona,Rodri,recuperacion,57.4,55.0,19,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,57.2,35.7,19,0
+1993934,Real Madrid,Kylian Mbappé,perdida,81.1,44.6,19,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,81.1,20.7,20,0
+1993934,Barcelona,Anthony Gordon,recuperacion,47.6,22.0,20,0
+1993934,Real Madrid,Jude Bellingham,perdida,95.4,68.7,20,0
+1993934,Barcelona,Pedri,recuperacion,12.1,27.5,23,0
+1993934,Barcelona,João Cancelo,perdida,59.2,29.3,23,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,44.5,46.1,24,0
+1993934,Real Madrid,Dean Huijsen,perdida,112.6,54.5,26,0
+1993934,Real Madrid,Arda Güler,recuperacion,22.0,73.9,27,0
+1993934,Real Madrid,Kylian Mbappé,recuperacion,40.0,42.6,31,0
+1993934,Real Madrid,Arda Güler,recuperacion,39.4,49.2,31,0
+1993934,Barcelona,Raphinha,recuperacion,86.3,22.0,33,0
+1993934,Real Madrid,Arda Güler,perdida,44.4,69.8,33,0
+1993934,Barcelona,Rodri,recuperacion,67.8,54.7,34,0
+1993934,Real Madrid,Federico Valverde,recuperacion,28.2,54.9,34,0
+1993934,Real Madrid,Yan Diomande,perdida,52.0,20.0,34,0
+1993934,Real Madrid,Bernardo Silva,recuperacion,27.2,54.7,35,0
+1993934,Barcelona,Anthony Gordon,recuperacion,42.2,5.0,36,0
+1993934,Barcelona,Pedri,recuperacion,40.8,6.6,36,0
+1993934,Real Madrid,Bernardo Silva,perdida,85.9,75.8,36,0
+1993934,Real Madrid,Yan Diomande,perdida,64.3,31.4,36,0
+1993934,Real Madrid,Yan Diomande,recuperacion,38.4,22.9,39,0
+1993934,Barcelona,Alejandro Balde,recuperacion,75.6,28.9,39,0
+1993934,Real Madrid,Federico Valverde,recuperacion,18.1,54.4,39,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,25.3,50.2,39,0
+1993934,Barcelona,Fermín López,perdida,99.0,45.8,39,0
+1993934,Barcelona,Fermín López,perdida,86.2,47.2,39,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,8.3,13.7,42,0
+1993934,Barcelona,Gerard Martín,recuperacion,53.9,49.2,42,0
+1993934,Barcelona,Lamine Yamal,perdida,113.6,53.2,42,0
+1993934,Real Madrid,Yan Diomande,perdida,8.6,17.8,42,1
+1993934,Barcelona,Alejandro Balde,recuperacion,44.0,18.6,43,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,74.8,6.9,45,0
+1993934,Barcelona,Pedri,recuperacion,34.6,72.5,45,0
+1993934,Real Madrid,Yan Diomande,recuperacion,69.8,8.7,45,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,20.3,61.8,45,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,88.6,20.2,45,0
+1993934,Barcelona,Pedri,perdida,37.9,76.8,45,1
+1993934,Real Madrid,Arda Güler,recuperacion,52.6,60.3,46,0
+1993934,Real Madrid,Federico Valverde,recuperacion,14.9,49.2,47,0
+1993934,Real Madrid,Yan Diomande,recuperacion,16.6,18.4,47,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,47.3,64.7,47,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,24.6,28.8,49,0
+1993934,Real Madrid,Kylian Mbappé,perdida,42.2,29.3,49,0
+1993934,Real Madrid,Jude Bellingham,perdida,111.6,26.9,49,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,25.0,50.3,50,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,65.8,67.1,50,0
+1993934,Real Madrid,Arda Güler,recuperacion,47.5,54.8,50,0
+1993934,Barcelona,Raphinha,perdida,89.3,41.6,50,0
+1993934,Barcelona,Alejandro Balde,recuperacion,9.0,7.6,51,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,78.7,19.3,51,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,29.8,46.3,51,0
+1993934,Barcelona,Raphinha,recuperacion,68.8,67.9,54,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,15.1,34.9,54,0
+1993934,Real Madrid,Yan Diomande,recuperacion,36.5,22.5,56,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,25.1,18.0,56,0
+1993934,Real Madrid,Jude Bellingham,perdida,105.6,21.0,56,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,13.1,17.9,57,0
+1993934,Real Madrid,Federico Valverde,recuperacion,26.5,68.4,58,0
+1993934,Real Madrid,Federico Valverde,recuperacion,32.9,70.2,58,0
+1993934,Real Madrid,Kylian Mbappé,perdida,86.8,56.3,58,0
+1993934,Barcelona,Fermín López,recuperacion,26.9,45.0,62,0
+1993934,Real Madrid,Jude Bellingham,perdida,96.1,31.1,62,0
+1993934,Barcelona,Lamine Yamal,recuperacion,68.6,67.1,63,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,55.6,24.7,63,0
+1993934,Real Madrid,Arda Güler,recuperacion,14.4,77.3,66,0
+1993934,Real Madrid,Arda Güler,perdida,23.6,78.6,66,1
+1993934,Barcelona,Rodri,recuperacion,77.5,13.4,67,0
+1993934,Barcelona,Alejandro Balde,recuperacion,64.8,5.2,67,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,14.3,12.9,67,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,7.6,12.4,67,0
+1993934,Barcelona,João Cancelo,perdida,73.3,75.1,67,0
+1993934,Real Madrid,Yan Diomande,perdida,41.6,9.8,67,0
+1993934,Barcelona,Alejandro Balde,recuperacion,15.6,29.1,68,0
+1993934,Barcelona,Alejandro Balde,recuperacion,17.9,55.9,68,0
+1993934,Barcelona,Alejandro Balde,perdida,13.0,58.7,68,1
+1993934,Real Madrid,Ibrahima Konaté,recuperacion,23.2,41.7,69,0
+1993934,Barcelona,Anthony Gordon,recuperacion,108.7,10.9,69,0
+1993934,Real Madrid,Ibrahima Konaté,recuperacion,28.0,28.5,71,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,33.5,28.8,71,0
+1993934,Barcelona,Pedri,recuperacion,31.2,72.2,71,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,28.7,41.8,72,0
+1993934,Real Madrid,Yan Diomande,perdida,34.1,35.7,72,1
+1993934,Barcelona,Pedri,recuperacion,87.4,40.6,73,0
+1993934,Barcelona,João Cancelo,recuperacion,72.1,77.9,73,0
+1993934,Real Madrid,Jude Bellingham,perdida,53.8,2.0,74,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,13.2,22.2,76,0
+1993934,Real Madrid,Marc Cucurella,recuperacion,16.1,25.3,76,0
+1993934,Barcelona,João Cancelo,recuperacion,16.0,60.2,77,0
+1993934,Barcelona,Pau Cubarsí,recuperacion,44.6,19.0,78,0
+1993934,Real Madrid,Dean Huijsen,recuperacion,31.9,22.5,78,0
+1993934,Real Madrid,Aurélien Tchouaméni,perdida,31.7,26.2,78,1
+1993934,Barcelona,Anthony Gordon,recuperacion,91.7,6.6,80,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,40.0,23.8,83,0
+1993934,Barcelona,Joan García,recuperacion,31.3,26.3,86,0
+1993934,Real Madrid,Jude Bellingham,recuperacion,52.0,63.0,86,0
+1993934,Real Madrid,Dean Huijsen,recuperacion,29.3,15.0,89,0
+1993934,Real Madrid,Aurélien Tchouaméni,recuperacion,28.3,18.9,89,0
+1993934,Barcelona,Rodri,recuperacion,53.2,71.9,89,0
+1993934,Barcelona,João Cancelo,recuperacion,31.8,70.2,91,0
+1993934,Real Madrid,Kylian Mbappé,perdida,34.9,26.5,91,1
+1993934,Barcelona,Lamine Yamal,perdida,90.0,56.3,91,0
+1993934,Real Madrid,Yan Diomande,recuperacion,31.9,13.7,92,0
+1993934,Barcelona,Pedri,recuperacion,86.4,61.8,92,0
+1993934,Barcelona,Lamine Yamal,recuperacion,94.4,58.6,92,0
+1993934,Real Madrid,Yan Diomande,recuperacion,16.8,11.9,92,0
+1993934,Barcelona,João Cancelo,recuperacion,89.3,71.3,92,0
+1993934,Barcelona,Lamine Yamal,perdida,102.2,56.9,92,0
+1993934,Real Madrid,Yan Diomande,perdida,21.8,12.2,92,1
+1993934,Barcelona,Gabriel Jesus,recuperacion,38.6,66.0,95,0
+1993934,Real Madrid,Eduardo Camavinga,recuperacion,40.3,58.7,95,0
+1993934,Barcelona,João Cancelo,recuperacion,67.9,43.4,95,0
+1993934,Real Madrid,Trent Alexander-Arnold,recuperacion,40.6,60.9,95,0
+1993934,Barcelona,Karim Adeyemi,perdida,70.7,4.4,95,0
+1993934,Real Madrid,Jude Bellingham,perdida,53.9,37.6,95,0
+1993934,Barcelona,Frenkie de Jong,perdida,78.7,39.8,95,0
 1994150,Atletico,Giuliano Simeone,recuperacion,72.7,72.8,0,0
 1994150,Atletico,Cristian Romero,recuperacion,51.8,37.9,1,0
 1994150,Real Madrid,Jude Bellingham,recuperacion,71.6,71.7,2,0

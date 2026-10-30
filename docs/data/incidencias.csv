@@ -72,6 +72,23 @@ match_id,minuto,orden,equipo,tipo,jugador,sale
 1993928,87,94,Real Madrid,cambio,Álvaro Carreras,Marc Cucurella
 1993928,92,99,Real Betis,amarilla,Natan,
 1993928,98,105,Real Madrid,amarilla,Vinícius Júnior,
+1993934,29,29,Barcelona,cambio,Alejandro Balde,Xavi Espart
+1993934,40,40,Real Madrid,gol,Kylian Mbappé,
+1993934,45,48,Real Madrid,amarilla,Aurélien Tchouaméni,
+1993934,60,63,Barcelona,gol,Raphinha,
+1993934,61,64,Real Madrid,cambio,Denzel Dumfries,Federico Valverde
+1993934,73,76,Barcelona,cambio,Frenkie de Jong,Fermín López
+1993934,79,82,Real Madrid,cambio,Eduardo Camavinga,Bernardo Silva
+1993934,83,86,Barcelona,amarilla,Anthony Gordon,
+1993934,84,87,Barcelona,cambio,Karim Adeyemi,Anthony Gordon
+1993934,85,88,Barcelona,cambio,Gabriel Jesus,Raphinha
+1993934,86,89,Real Madrid,gol,Kylian Mbappé,
+1993934,91,94,Real Madrid,amarilla,Dean Huijsen,
+1993934,93,96,Real Madrid,amarilla,Kylian Mbappé,
+1993934,93,96,Real Madrid,cambio,Trent Alexander-Arnold,Arda Güler
+1993934,93,96,Real Madrid,cambio,Carlos Espí,Yan Diomande
+1993934,95,98,Barcelona,amarilla,Karim Adeyemi,
+1993934,95,98,Barcelona,amarilla,Alejandro Balde,
 1994150,5,5,Atletico,amarilla,,
 1994150,34,34,Atletico,amarilla,Marc Pubill,
 1994150,38,38,Atletico,amarilla,Cristian Romero,
@@ -218,20 +235,3 @@ match_id,minuto,orden,equipo,tipo,jugador,sale
 2029142,88,90,Roma,amarilla,Lorenzo Pellegrini,
 2029142,89,91,Real Madrid,gol,Antonio Rüdiger,
 2029142,94,96,Real Madrid,amarilla,Álvaro Carreras,
-401882832,30,30,Barcelona,cambio,Alejandro Balde,Xavi Espart
-401882832,41,41,Real Madrid,gol,Kylian Mbappé,
-401882832,46,46,Real Madrid,amarilla,Aurélien Tchouaméni,
-401882832,61,61,Barcelona,gol,Raphinha,
-401882832,62,62,Real Madrid,cambio,Denzel Dumfries,Federico Valverde
-401882832,74,74,Barcelona,cambio,Frenkie de Jong,Fermín López
-401882832,80,80,Real Madrid,cambio,Eduardo Camavinga,Bernardo Silva
-401882832,84,84,Barcelona,amarilla,Anthony Gordon,
-401882832,85,85,Barcelona,cambio,Karim Adeyemi,Anthony Gordon
-401882832,86,86,Barcelona,cambio,Gabriel Jesus,Raphinha
-401882832,87,87,Real Madrid,gol,Kylian Mbappé,
-401882832,92,92,Real Madrid,amarilla,Dean Huijsen,
-401882832,94,94,Real Madrid,amarilla,Kylian Mbappé,
-401882832,94,94,Real Madrid,cambio,Trent Alexander-Arnold,Arda Güler
-401882832,94,94,Real Madrid,cambio,Carlos Espí,Yan Diomande
-401882832,96,96,Barcelona,amarilla,Karim Adeyemi,
-401882832,96,96,Barcelona,amarilla,Alejandro Balde,
