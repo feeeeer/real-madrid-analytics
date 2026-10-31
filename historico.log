@@ -1,0 +1,34 @@
+/home/runner/work/real-madrid-analytics/real-madrid-analytics/pipeline/historico.py:420: Pandas4Warning: 'int' is not supported as a fill value for str dtype. In a future version, calling fillna with an incompatible value will raise. Explicitly cast to a common dtype before filling.
+  pen = w["penaltis"].str.extract(r"(\d+)-(\d+)").fillna(0).astype(int)
+Wikipedia: 3561 partidos completados, 647 añadidos ({'Copa Eva Duarte': 1, 'Copa Iberoamericana': 2, 'Copa Intercontinental': 7, 'Copa Intercontinental de la FIFA': 1, 'Copa Latina': 4, 'Copa de la Liga': 14, 'Copa de la UEFA': 62, 'Copa del Rey': 508, 'Mundial de Clubes': 4, 'Recopa de Europa': 19, 'Supercopa de España': 22, 'Supercopa de Europa': 3})
+Wikipedia (es): 177 partidos completados, 75 añadidos ({'Copa del Rey': 75})
+Wikipedia: 1 finales añadidas desde su página: [['1940-06-30', 'Copa del Rey']]
+Wikipedia: alineaciones de 64 finales
+Duplicados de Wikipedia quitados: 13
+Sin escudo: ['CD Extremeño', 'CD Logroño', 'Club Bizcaya', 'Club Español de Madrid', 'Club Natación Alicante', 'Eclipse Fútbol Club', 'Excelsior FC', 'Hispania FC', 'Moncloa Football Club', 'Patria Aragón', 'Patria FC', 'Racing de Madrid', 'Sestao Sport Club']
+Escudos guardados en la web: 259 de 259
+Escudos: 349 equipos; con estadio: 4384 de 4446 partidos
+                                  partidos       desde       hasta
+competicion                                                       
+Copa Eva Duarte                          1  1948-06-06  1948-06-06
+Copa Iberoamericana                      2  1994-05-19  1994-05-25
+Copa Intercontinental                    7  1960-07-03  2002-12-03
+Copa Intercontinental de la FIFA         1  2024-12-18  2024-12-18
+Copa Latina                              4  1955-06-22  1957-06-23
+Copa de Europa / Champions             520  1955-09-08  2026-10-21
+Copa de la Liga                         14  1983-06-12  1985-06-15
+Copa de la UEFA                         62  1971-09-15  1994-12-05
+Copa del Rey                           632  1903-04-06  2026-01-14
+LaLiga                                3114  1929-02-10  2026-10-25
+Mundial de Clubes                       20  2000-01-05  2025-07-09
+Recopa de Europa                        19  1971-04-14  1994-03-14
+Supercopa de España                     41  1982-10-13  2026-01-11
+Supercopa de Europa                      9  1998-08-28  2024-08-14
+4446 partidos; alineaciones de 812 partidos; temporada actual (ESPN): 15
+Rivales distintos: 260
+   entrenadores.csv: 66 etapas
+   estadios.csv: 279 de 324 estadios; 4339 de 4384 partidos con estadio localizado
+   jugadores sin emparejar con la tabla de partidos (revisar): ['Iván Zamorano', 'Kylian Mbappé', 'Pahiño', 'Ronaldo Nazário']
+   jugadores.csv: partidos 81, goles 92, asistencias 19
+✗ Equipos sin escudo: ['AD Ceuta FC', 'AE Prat', 'Alcala', 'Antequera', 'Arosa SC', 'Atletico Baleares', 'Atletico Calatayud', 'Atletico Tordesillas', 'Auriense', 'CD Atletico Paso', 'CD Coria', 'CD Covadonga', 'CD Cuarte', 'CD Laredo', 'CD Manacor', 'CD Mirandes', 'CD Varea', 'CDA Aguilas FC', 'CE Manresa', 'CF Calamocha', 'Castellonense', 'Cieza', 'Ciudad Lucena', 'Conquense', 'Coruxo FC', 'Don Benito', 'Eldense', 'FC Andorra', 'Gimnastica Segoviana', 'Guijuelo', 'Pena Sport', 'Poblense', 'RS Gimnastica', 'Rayo Majadahonda', 'Real Avila', 'Ribadesella CF', 'Sant Andreu', 'Sporting Hortaleza', 'Sporting de Alcazar', 'Tudelano', 'UB Lebrijana', 'UD Llanera', 'UD Pinatar', 'Unionistas de Salamanca', 'Zamora']
+Revisión de datos: 1 problemas
