@@ -104,3 +104,4 @@ index,league,season,game,league_id,season_id,game_id,date,home_team_id,away_team
 103,ESP-La Liga,2627,2026-10-31 Rayo Vallecano-Celta Vigo,4,2026,30878,2026-10-31 15:15:00,145,152,Rayo Vallecano,Celta Vigo,CEL,RVL,3,0,1.40405,1.15867,True,True,https://understat.com/match/30878
 104,ESP-La Liga,2627,2026-10-31 Real Betis-Malaga,4,2026,30871,2026-10-31 17:30:00,153,137,Real Betis,Malaga,MAL,BET,2,1,2.1217,1.18248,True,True,https://understat.com/match/30871
 107,ESP-La Liga,2627,2026-11-01 Getafe-Sevilla,4,2026,30875,2026-11-01 13:00:00,142,138,Getafe,Sevilla,SEV,GET,3,1,1.57878,0.738893,True,True,https://understat.com/match/30875
+108,ESP-La Liga,2627,2026-11-01 Racing Santander-Real Madrid,4,2026,30877,2026-11-01 15:15:00,293,150,Racing Santander,Real Madrid,RMA,RAS,0,3,0.688511,3.21594,True,True,https://understat.com/match/30877
