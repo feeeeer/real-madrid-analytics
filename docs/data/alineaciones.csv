@@ -155,6 +155,36 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 1993934,Real Madrid,Trent Alexander-Arnold,12,0,Right-Back,,
 1993934,Real Madrid,Carlos Espí,19,0,,,
 1993934,Real Madrid,Denzel Dumfries,24,0,Right-Back,,
+1993983,Racing Santander,Julen Agirrezabala,13,1,Goalkeeper,0.5,0.06
+1993983,Racing Santander,Álvaro Mantilla,2,1,Right-Back,0.8,0.23
+1993983,Racing Santander,Aarón Martín,3,1,Left-Back,0.2,0.23
+1993983,Racing Santander,Matteo Prati,18,1,Defensive Midfield,0.3,0.39
+1993983,Racing Santander,Pablo Ramón,5,1,Centre-Back,0.4,0.23
+1993983,Racing Santander,Jeanuël Belocian,24,1,Centre-Back,0.6,0.23
+1993983,Racing Santander,Iker Luque,19,1,Right Winger,0.767,0.86
+1993983,Racing Santander,Iván Martín,23,1,Defensive Midfield,0.7,0.39
+1993983,Racing Santander,Yassir Zabiri,21,1,Centre-Forward,0.5,0.86
+1993983,Racing Santander,Sergio Canales,20,1,Attacking Midfield,0.5,0.69
+1993983,Racing Santander,Iñigo Vicente,10,1,Left Winger,0.233,0.86
+1993983,Racing Santander,Íñigo Sainz-Maza,6,0,,,
+1993983,Racing Santander,Giorgi Guliashvili,7,0,,,
+1993983,Racing Santander,André Almeida,8,0,,,
+1993983,Racing Santander,Pablo García,15,0,,,
+1993983,Racing Santander,Pedro Felipe,22,0,,,
+1993983,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
+1993983,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back,0.8,0.23
+1993983,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
+1993983,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.3,0.39
+1993983,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
+1993983,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
+1993983,Real Madrid,Arda Güler,15,1,Right Winger,0.767,0.86
+1993983,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.39
+1993983,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
+1993983,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.69
+1993983,Real Madrid,Yan Diomande,25,1,Left Winger,0.233,0.86
+1993983,Real Madrid,Eduardo Camavinga,6,0,Defensive Midfield,,
+1993983,Real Madrid,Endrick,9,0,Right Winger,,
+1993983,Real Madrid,Brahim Díaz,21,0,Right Winger,,
 1994150,Atletico,Jan Oblak,13,1,Goalkeeper,0.5,0.06
 1994150,Atletico,Marc Pubill,18,1,Right-Back,0.8,0.23
 1994150,Atletico,Alejandro Grimaldo,22,1,Left-Back,0.2,0.23
@@ -407,47 +437,3 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029142,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 2029142,Real Madrid,Carlos Espí,19,0,,,
 2029142,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
-401882819,Racing Santander,Julen Agirrezabala,13,1,Goalkeeper,0.5,0.06
-401882819,Racing Santander,Jeanuël Belocian,24,1,Centre-Back,0.4,0.23
-401882819,Racing Santander,Pablo Ramon,5,1,Centre-Back,0.6,0.23
-401882819,Racing Santander,Aarón Martín,3,1,Left-Back,0.2,0.23
-401882819,Racing Santander,Alvaro Mantilla,2,1,Right-Back,0.8,0.23
-401882819,Racing Santander,Sergio Canales,20,1,Attacking Midfield,0.5,0.65
-401882819,Racing Santander,Matteo Prati,18,1,Defensive Midfield,0.3,0.44
-401882819,Racing Santander,Iván Martín,23,1,Defensive Midfield,0.7,0.44
-401882819,Racing Santander,Yassir Zabiri,21,1,Centre-Forward,0.5,0.86
-401882819,Racing Santander,Iñigo Vicente,10,1,Left Winger,0.233,0.65
-401882819,Racing Santander,Iker Luque,19,1,Right Winger,0.767,0.65
-401882819,Racing Santander,André Almeida,8,0,,,
-401882819,Racing Santander,Facundo González,16,0,,,
-401882819,Racing Santander,Juan Carlos Arana,9,0,,,
-401882819,Racing Santander,Maguette Gueye,14,0,,,
-401882819,Racing Santander,Asier Villalibre,12,0,,,
-401882819,Racing Santander,Manu,4,0,,,
-401882819,Racing Santander,Pablo García,15,0,,,
-401882819,Racing Santander,Pedro Felipe,22,0,,,
-401882819,Racing Santander,Giorgi Guliashvili,7,0,,,
-401882819,Racing Santander,Íñigo Sainz,6,0,,,
-401882819,Racing Santander,Simon Eriksson,1,0,,,
-401882819,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
-401882819,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
-401882819,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
-401882819,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
-401882819,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back,0.8,0.23
-401882819,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.65
-401882819,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.3,0.44
-401882819,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.44
-401882819,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
-401882819,Real Madrid,Yan Diomande,25,1,Left Winger,0.233,0.65
-401882819,Real Madrid,Arda Güler,15,1,Right Winger,0.767,0.65
-401882819,Real Madrid,Endrick,9,0,,,
-401882819,Real Madrid,Álvaro Carreras,18,0,,,
-401882819,Real Madrid,Brahim Díaz,21,0,,,
-401882819,Real Madrid,Éder Militão,3,0,,,
-401882819,Real Madrid,Andrii Lunin,13,0,,,
-401882819,Real Madrid,Eduardo Camavinga,6,0,,,
-401882819,Real Madrid,Antonio Rüdiger,22,0,,,
-401882819,Real Madrid,Thiago Pitarch,27,0,,,
-401882819,Real Madrid,Denzel Dumfries,24,0,,,
-401882819,Real Madrid,Carlos Espí,19,0,,,
-401882819,Real Madrid,Sergio Mestre,26,0,,,
