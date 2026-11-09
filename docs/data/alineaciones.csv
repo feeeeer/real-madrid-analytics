@@ -437,47 +437,80 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029142,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 2029142,Real Madrid,Carlos Espí,19,0,,,
 2029142,Real Madrid,Bernardo Silva,20,0,Defensive Midfield,,
-401915383,AEK Athens,Alberto Brignoli,91,1,Goalkeeper,0.5,0.06
-401915383,AEK Athens,Filipe Relvas,44,1,Centre-Back,0.4,0.23
-401915383,AEK Athens,Harold Moukoudi,2,1,Centre-Back,0.6,0.23
-401915383,AEK Athens,Stavros Pilios,3,1,Left-Back,0.2,0.23
-401915383,AEK Athens,Lazaros Rota,12,1,Right-Back,0.8,0.23
-401915383,AEK Athens,Kaan Kairinen,6,1,Central Midfield,0.4,0.55
-401915383,AEK Athens,Kervin Arriaga,16,1,Central Midfield,0.6,0.55
-401915383,AEK Athens,Lovro Majer,14,1,Left Midfield,0.2,0.55
-401915383,AEK Athens,Aboubakary Koita,11,1,Right Midfield,0.8,0.55
-401915383,AEK Athens,Mijat Gacinovic,8,1,Centre-Forward,0.3,0.86
-401915383,AEK Athens,Luka Jovic,9,1,Centre-Forward,0.7,0.86
-401915383,AEK Athens,Oleksandr Zubkov,10,0,,,
-401915383,AEK Athens,Thomas Strakosha,1,0,,,
-401915383,AEK Athens,Milán Vitális,27,0,,,
-401915383,AEK Athens,Razvan Marin,18,0,,,
-401915383,AEK Athens,Domagoj Vida,21,0,,,
-401915383,AEK Athens,Marios Balamotis,41,0,,,
-401915383,AEK Athens,Zini,90,0,,,
-401915383,AEK Athens,Barnabás Varga,19,0,,,
-401915383,AEK Athens,Petros Mantalos,20,0,,,
-401915383,AEK Athens,Charalampos Lykogiannis,22,0,,,
-401915383,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
-401915383,Real Madrid,Antonio Rüdiger,22,1,Centre-Back,0.4,0.23
-401915383,Real Madrid,Éder Militão,3,1,Centre-Back,0.6,0.23
-401915383,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
-401915383,Real Madrid,Denzel Dumfries,24,1,Right-Back,0.8,0.23
-401915383,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.65
-401915383,Real Madrid,Eduardo Camavinga,6,1,Defensive Midfield,0.3,0.44
-401915383,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.44
-401915383,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
-401915383,Real Madrid,Vinícius Júnior,7,1,Left Winger,0.233,0.65
-401915383,Real Madrid,Yan Diomande,25,1,Right Winger,0.767,0.65
-401915383,Real Madrid,Ibrahima Konaté,16,0,,,
-401915383,Real Madrid,Thiago Pitarch,27,0,,,
-401915383,Real Madrid,Álvaro Carreras,18,0,,,
-401915383,Real Madrid,Carlos Espí,19,0,,,
-401915383,Real Madrid,Sergio Mestre,26,0,,,
-401915383,Real Madrid,Brahim Díaz,21,0,,,
-401915383,Real Madrid,Federico Valverde,8,0,,,
-401915383,Real Madrid,Dean Huijsen,4,0,,,
-401915383,Real Madrid,Trent Alexander-Arnold,12,0,,,
-401915383,Real Madrid,Andrii Lunin,13,0,,,
-401915383,Real Madrid,Sergio Martínez,38,0,,,
-401915383,Real Madrid,Endrick,9,0,,,
+2029226,AEK Athens,Alberto Brignoli,91,1,Goalkeeper,0.5,0.06
+2029226,AEK Athens,Lazaros Rota,12,1,Centre-Back,0.6,0.23
+2029226,AEK Athens,Stavros Pilios,3,1,Centre-Back,0.4,0.23
+2029226,AEK Athens,Kervin Arriaga,16,1,Central Midfield,0.8,0.54
+2029226,AEK Athens,Harold Moukoudi,2,1,Centre-Back,0.2,0.23
+2029226,AEK Athens,Filipe Relvas,44,1,Centre-Back,0.8,0.23
+2029226,AEK Athens,Aboubakary Koïta,11,1,Central Midfield,0.4,0.54
+2029226,AEK Athens,Kaan Kairinen,6,1,Central Midfield,0.2,0.54
+2029226,AEK Athens,Mijat Gacinovic,8,1,Centre-Forward,0.3,0.86
+2029226,AEK Athens,Luka Jovic,9,1,Centre-Forward,0.7,0.86
+2029226,AEK Athens,Lovro Majer,14,1,Central Midfield,0.6,0.54
+2029226,AEK Athens,Oleksandr Zubkov,10,0,,,
+2029226,AEK Athens,Razvan Marin,18,0,,,
+2029226,AEK Athens,Barnabás Varga,19,0,,,
+2029226,AEK Athens,Zine,90,0,,,
+2029226,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
+2029226,Real Madrid,Denzel Dumfries,24,1,Right-Back,0.8,0.23
+2029226,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
+2029226,Real Madrid,Eduardo Camavinga,6,1,Defensive Midfield,0.3,0.39
+2029226,Real Madrid,Éder Militão,3,1,Centre-Back,0.4,0.23
+2029226,Real Madrid,Antonio Rüdiger,22,1,Centre-Back,0.6,0.23
+2029226,Real Madrid,Yan Diomande,25,1,Left Winger,0.5,0.86
+2029226,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.39
+2029226,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.767,0.86
+2029226,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.69
+2029226,Real Madrid,Vinícius Júnior,7,1,Left Winger,0.233,0.86
+2029226,Real Madrid,Federico Valverde,8,0,Defensive Midfield,,
+2029226,Real Madrid,Endrick,9,0,Right Winger,,
+2029226,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
+2029226,Real Madrid,Carlos Espí,19,0,,,
+2029226,Real Madrid,Brahim Díaz,21,0,Right Winger,,
+401882808,Valencia,Stole Dimitrievski,1,1,Goalkeeper,0.5,0.06
+401882808,Valencia,César Tárrega,5,1,Centre-Back,0.5,0.23
+401882808,Valencia,Justin de Haas,12,1,Centre-Back,0.34,0.23
+401882808,Valencia,Pepelu,18,1,Centre-Back,0.66,0.23
+401882808,Valencia,José Gayà,14,1,Left-Back,0.18,0.23
+401882808,Valencia,Pablo Maffeo,24,1,Right-Back,0.82,0.23
+401882808,Valencia,Guido Rodríguez,2,1,Central Midfield,0.5,0.55
+401882808,Valencia,Aaron Mayol,33,1,Central Midfield,0.233,0.55
+401882808,Valencia,Javi Guerra,8,1,Central Midfield,0.767,0.55
+401882808,Valencia,Arnaut Danjuma,7,1,Centre-Forward,0.3,0.86
+401882808,Valencia,Umar Sadiq,6,1,Centre-Forward,0.7,0.86
+401882808,Valencia,Arnau Martínez,22,0,,,
+401882808,Valencia,Copete,3,0,,,
+401882808,Valencia,Mouctar Diakhaby,4,0,,,
+401882808,Valencia,Kayne Van Oevelen,25,0,,,
+401882808,Valencia,Luis Rioja,11,0,,,
+401882808,Valencia,Filip Ugrinic,23,0,,,
+401882808,Valencia,Aimar Blázquez,37,0,,,
+401882808,Valencia,Harvey Elliott,10,0,,,
+401882808,Valencia,Aliou Dieng,15,0,,,
+401882808,Valencia,Jesús Vázquez,21,0,,,
+401882808,Valencia,Hugo Duro,9,0,,,
+401882808,Valencia,Dani Raba,19,0,,,
+401882808,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
+401882808,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
+401882808,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
+401882808,Real Madrid,Marc Cucurella,17,1,Left-Back,0.2,0.23
+401882808,Real Madrid,Federico Valverde,8,1,Right-Back,0.8,0.23
+401882808,Real Madrid,Jude Bellingham,5,1,Attacking Midfield,0.5,0.65
+401882808,Real Madrid,Aurélien Tchouaméni,14,1,Defensive Midfield,0.3,0.44
+401882808,Real Madrid,Bernardo Silva,20,1,Defensive Midfield,0.7,0.44
+401882808,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
+401882808,Real Madrid,Yan Diomande,25,1,Left Winger,0.233,0.65
+401882808,Real Madrid,Arda Güler,15,1,Right Winger,0.767,0.65
+401882808,Real Madrid,Thiago Pitarch,27,0,,,
+401882808,Real Madrid,Éder Militão,3,0,,,
+401882808,Real Madrid,Trent Alexander-Arnold,12,0,,,
+401882808,Real Madrid,Antonio Rüdiger,22,0,,,
+401882808,Real Madrid,Álvaro Carreras,18,0,,,
+401882808,Real Madrid,Denzel Dumfries,24,0,,,
+401882808,Real Madrid,Endrick,9,0,,,
+401882808,Real Madrid,Sergio Mestre,26,0,,,
+401882808,Real Madrid,Eduardo Camavinga,6,0,,,
+401882808,Real Madrid,Carlos Espí,19,0,,,
+401882808,Real Madrid,Andrii Lunin,13,0,,,
+401882808,Real Madrid,Brahim Díaz,21,0,,,

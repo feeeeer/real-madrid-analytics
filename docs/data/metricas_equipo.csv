@@ -27,5 +27,7 @@ clave,match_id,equipo,rival,goles,xg,npxg,xg_contraataque,tiros,tiros_puerta,pos
 1993934|Real Madrid,1993934,Real Madrid,Barcelona,2,1.95,1.95,0.91,10.0,5.0,37.8,400.0,82.5,62.0,24.0,19.2,,,10.0,60.5,22.0,,,1.64,Opta
 1993983|Racing Santander,1993983,Racing Santander,Real Madrid,0,0.69,0.69,0.0,10.0,1.0,46.3,476.0,83.2,43.0,28.0,21.5,,,16.0,58.1,22.0,,,3.22,Opta
 1993983|Real Madrid,1993983,Real Madrid,Racing Santander,3,3.22,2.48,0.42,22.0,7.0,53.7,552.0,87.5,94.0,50.0,22.2,,,14.0,61.3,21.0,,,0.69,Opta
-401915383|AEK Athens,401915383,AEK Athens,Real Madrid,2,,,,9.0,5.0,30.4,274.0,85.0,,,,,,,,,,,,ESPN
-401915383|Real Madrid,401915383,Real Madrid,AEK Athens,3,,,,24.0,8.0,69.6,629.0,92.2,,,,,,,,,,,,ESPN
+2029226|AEK Athens,2029226,AEK Athens,Real Madrid,2,,,,9.0,5.0,30.5,289.0,83.7,64.0,30.0,29.4,,,7.0,58.0,16.0,,,,Opta
+2029226|Real Madrid,2029226,Real Madrid,AEK Athens,3,,,,24.0,8.0,69.5,659.0,89.7,107.0,66.0,8.1,,,13.0,60.0,9.0,,,,Opta
+401882808|Valencia,401882808,Valencia,Real Madrid,0,,,,4.0,2.0,31.7,288.0,78.1,,,,,,,,,,,,ESPN
+401882808|Real Madrid,401882808,Real Madrid,Valencia,3,,,,19.0,11.0,68.3,627.0,90.6,,,,,,,,,,,,ESPN

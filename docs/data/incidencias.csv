@@ -248,20 +248,41 @@ match_id,minuto,orden,equipo,tipo,jugador,sale
 2029142,88,90,Roma,amarilla,Lorenzo Pellegrini,
 2029142,89,91,Real Madrid,gol,Antonio Rüdiger,
 2029142,94,96,Real Madrid,amarilla,Álvaro Carreras,
-401915383,12,12,AEK Athens,gol,Aboubakary Koita,
-401915383,32,32,Real Madrid,gol,Jude Bellingham,
-401915383,34,34,AEK Athens,amarilla,Kervin Arriaga,
-401915383,53,53,AEK Athens,cambio,Zini,Lovro Majer
-401915383,60,60,AEK Athens,cambio,Razvan Marin,Mijat Gacinovic
-401915383,60,60,AEK Athens,cambio,Barnabás Varga,Kaan Kairinen
-401915383,65,65,Real Madrid,amarilla,Marc Cucurella,
-401915383,67,67,Real Madrid,cambio,Federico Valverde,Yan Diomande
-401915383,67,67,Real Madrid,cambio,Endrick,Bernardo Silva
-401915383,75,75,AEK Athens,gol,Stavros Pilios,
-401915383,78,78,Real Madrid,gol,Kylian Mbappé,
-401915383,81,81,Real Madrid,cambio,Brahim Díaz,Marc Cucurella
-401915383,81,81,Real Madrid,cambio,Álvaro Carreras,Vinícius Júnior
-401915383,86,86,Real Madrid,cambio,Carlos Espí,Jude Bellingham
-401915383,88,88,AEK Athens,cambio,Oleksandr Zubkov,Luka Jovic
-401915383,92,92,Real Madrid,gol,Federico Valverde,
-401915383,95,95,AEK Athens,roja,Aboubakary Koita,
+2029226,11,11,AEK Athens,gol,Aboubakary Koïta,
+2029226,31,31,Real Madrid,gol,Jude Bellingham,
+2029226,33,33,AEK Athens,amarilla,Kervin Arriaga,
+2029226,52,54,AEK Athens,cambio,Zine,Lovro Majer
+2029226,59,61,AEK Athens,cambio,Razvan Marin,Mijat Gacinovic
+2029226,59,61,AEK Athens,cambio,Barnabás Varga,Kaan Kairinen
+2029226,64,66,Real Madrid,amarilla,Marc Cucurella,
+2029226,66,68,Real Madrid,cambio,Federico Valverde,Yan Diomande
+2029226,66,68,Real Madrid,cambio,Endrick,Bernardo Silva
+2029226,74,76,AEK Athens,gol,Stavros Pilios,
+2029226,77,79,Real Madrid,gol,Kylian Mbappé,
+2029226,80,82,Real Madrid,cambio,Brahim Díaz,Marc Cucurella
+2029226,80,82,Real Madrid,cambio,Álvaro Carreras,Vinícius Júnior
+2029226,85,87,Real Madrid,cambio,Carlos Espí,Jude Bellingham
+2029226,87,89,AEK Athens,cambio,Oleksandr Zubkov,Luka Jovic
+2029226,91,93,Real Madrid,gol,Federico Valverde,
+2029226,94,96,AEK Athens,roja,Aboubakary Koïta,
+401882808,26,26,Valencia,amarilla,Pablo Maffeo,
+401882808,28,28,Real Madrid,gol,Federico Valverde,
+401882808,36,36,Real Madrid,gol,Arda Güler,
+401882808,45,45,Real Madrid,amarilla,Andrii Lunin,
+401882808,45,45,Valencia,cambio,Luis Rioja,Justin de Haas
+401882808,50,50,Valencia,amarilla,Guido Rodríguez,
+401882808,59,59,Valencia,cambio,Aimar Blázquez,Umar Sadiq
+401882808,63,63,Valencia,cambio,Filip Ugrinic,Guido Rodríguez
+401882808,63,63,Valencia,cambio,Arnau Martínez,Pablo Maffeo
+401882808,75,75,Real Madrid,gol,Kylian Mbappé,
+401882808,79,79,Valencia,roja,José Gayà,
+401882808,80,80,Real Madrid,amarilla,Yan Diomande,
+401882808,80,80,Valencia,amarilla,Luis Rioja,
+401882808,81,81,Valencia,amarilla,Pepelu,
+401882808,81,81,Real Madrid,amarilla,Kylian Mbappé,
+401882808,82,82,Valencia,cambio,Jesús Vázquez,Javi Guerra
+401882808,84,84,Real Madrid,cambio,Brahim Díaz,Yan Diomande
+401882808,84,84,Real Madrid,cambio,Eduardo Camavinga,Arda Güler
+401882808,84,84,Real Madrid,cambio,Endrick,Bernardo Silva
+401882808,91,91,Real Madrid,cambio,Thiago Pitarch,Jude Bellingham
+401882808,91,91,Real Madrid,cambio,Carlos Espí,Kylian Mbappé
