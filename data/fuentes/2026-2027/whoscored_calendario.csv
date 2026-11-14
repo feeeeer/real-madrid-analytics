@@ -190,43 +190,53 @@ index,league,stage_id,date,home_team,away_team,home_score,away_score
 188,INT-Champions League,25800,2026-11-04 20:00:00+00:00,RB Leipzig,Manchester City,2.0,3.0
 189,INT-Champions League,25800,2026-11-04 20:00:00+00:00,Slavia Prague,Arsenal,1.0,2.0
 190,INT-Champions League,25800,2026-11-04 20:00:00+00:00,Viking,Sabah FK,4.0,1.0
-191,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Alcala,Las Palmas,1,3
-192,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Arosa SC,Pontevedra,2,0
-193,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Atletico Tordesillas,CD Mirandes,3,3
-194,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Atletico Paso,Cordoba,3,1
-195,ESP-Copa del Rey,26079,2026-10-27 17:30:00+00:00,CD Cuarte,Girona,0,2
-196,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Manacor,Villarreal,0,5
-197,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,CE Manresa,Sant Andreu,2,2
-198,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,CF Calamocha,CE Europa,0,3
-199,ESP-Copa del Rey,26079,2026-10-27 18:45:00+00:00,Castellonense,Almeria,1,2
-200,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Ciudad Lucena,Rayo Majadahonda,0,1
-201,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,Don Benito,CD Extremadura,2,4
-202,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Gimnastica Segoviana,Cultural Leonesa,0,1
-203,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Recreativo Huelva,Rayo Vallecano,2,3
-204,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,Sestao,Espanyol,4,3
-205,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Sporting de Alcazar,Malaga,0,3
-206,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Tudelano,Real Zaragoza,0,4
-207,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,UD Llanera,Ponferradina,1,1
-208,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,UD Pinatar,Elche,1,3
-209,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,AE Prat,Athletic Club,1,6
-210,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Antequera,CDA Aguilas FC,2,0
-211,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Baleares,Eldense,0,1
-212,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Calatayud,Osasuna,0,6
-213,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Auriense,Deportivo de A Coruna,0,3
-214,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Covadonga,Real Valladolid,0,1
-215,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Laredo,Burgos CF,2,4
-216,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Varea,FC Andorra,0,3
-217,ESP-Copa del Rey,26079,2026-10-29 18:30:00+00:00,Cieza,Granada,0,3
-218,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Conquense,Castellon,0,3
-219,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Coruxo FC,Zamora,0,2
-220,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Guijuelo,Sporting Gijon,1,3
-221,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Numancia,Real Oviedo,3,3
-222,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Pena Sport,SD Huesca,1,5
-223,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Poblense,AD Ceuta FC,1,2
-224,ESP-Copa del Rey,26079,2026-10-29 19:30:00+00:00,RS Gimnastica,UD Ourense,3,1
-225,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Real Avila,Unionistas de Salamanca,1,0
-226,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Ribadesella CF,Racing Santander,0,2
-227,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,San Sebastian de los Reyes,CD Coria,1,2
-228,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Sporting Hortaleza,Sevilla,0,3
-229,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,UB Lebrijana,Getafe,2,3
-230,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Xerez,Cadiz,1,3
+191,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Alcala,Las Palmas,1.0,3.0
+192,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Arosa SC,Pontevedra,2.0,0.0
+193,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Atletico Tordesillas,CD Mirandes,3.0,3.0
+194,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Atletico Paso,Cordoba,3.0,1.0
+195,ESP-Copa del Rey,26079,2026-10-27 17:30:00+00:00,CD Cuarte,Girona,0.0,2.0
+196,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,CD Manacor,Villarreal,0.0,5.0
+197,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,CE Manresa,Sant Andreu,2.0,2.0
+198,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,CF Calamocha,CE Europa,0.0,3.0
+199,ESP-Copa del Rey,26079,2026-10-27 18:45:00+00:00,Castellonense,Almeria,1.0,2.0
+200,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Ciudad Lucena,Rayo Majadahonda,0.0,1.0
+201,ESP-Copa del Rey,26079,2026-10-27 19:30:00+00:00,Don Benito,CD Extremadura,2.0,4.0
+202,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,Gimnastica Segoviana,Cultural Leonesa,0.0,1.0
+203,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Recreativo Huelva,Rayo Vallecano,2.0,3.0
+204,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,Sestao,Espanyol,4.0,3.0
+205,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Sporting de Alcazar,Malaga,0.0,3.0
+206,ESP-Copa del Rey,26079,2026-10-27 20:00:00+00:00,Tudelano,Real Zaragoza,0.0,4.0
+207,ESP-Copa del Rey,26079,2026-10-27 19:00:00+00:00,UD Llanera,Ponferradina,1.0,1.0
+208,ESP-Copa del Rey,26079,2026-10-27 18:00:00+00:00,UD Pinatar,Elche,1.0,3.0
+209,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,AE Prat,Athletic Club,1.0,6.0
+210,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Antequera,CDA Aguilas FC,2.0,0.0
+211,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Baleares,Eldense,0.0,1.0
+212,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Atletico Calatayud,Osasuna,0.0,6.0
+213,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Auriense,Deportivo de A Coruna,0.0,3.0
+214,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Covadonga,Real Valladolid,0.0,1.0
+215,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Laredo,Burgos CF,2.0,4.0
+216,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,CD Varea,FC Andorra,0.0,3.0
+217,ESP-Copa del Rey,26079,2026-10-29 18:30:00+00:00,Cieza,Granada,0.0,3.0
+218,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Conquense,Castellon,0.0,3.0
+219,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Coruxo FC,Zamora,0.0,2.0
+220,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Guijuelo,Sporting Gijon,1.0,3.0
+221,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Numancia,Real Oviedo,3.0,3.0
+222,ESP-Copa del Rey,26079,2026-10-29 17:00:00+00:00,Pena Sport,SD Huesca,1.0,5.0
+223,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,Poblense,AD Ceuta FC,1.0,2.0
+224,ESP-Copa del Rey,26079,2026-10-29 19:30:00+00:00,RS Gimnastica,UD Ourense,3.0,1.0
+225,ESP-Copa del Rey,26079,2026-10-29 19:00:00+00:00,Real Avila,Unionistas de Salamanca,1.0,0.0
+226,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Ribadesella CF,Racing Santander,0.0,2.0
+227,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,San Sebastian de los Reyes,CD Coria,1.0,2.0
+228,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Sporting Hortaleza,Sevilla,0.0,3.0
+229,ESP-Copa del Rey,26079,2026-10-29 18:00:00+00:00,UB Lebrijana,Getafe,2.0,3.0
+230,ESP-Copa del Rey,26079,2026-10-29 20:00:00+00:00,Xerez,Cadiz,1.0,3.0
+231,ESP-Copa del Rey,26079,2026-11-10 18:00:00+00:00,Anaitasuna FT,Deportivo Alaves,1.0,6.0
+232,ESP-Copa del Rey,26079,2026-11-10 19:00:00+00:00,Mijas-Las Lagunas,Real Jaen,1.0,2.0
+233,ESP-Copa del Rey,26079,2026-11-10 18:00:00+00:00,Pamplona,Eibar,0.0,3.0
+234,ESP-Copa del Rey,26079,2026-11-10 19:00:00+00:00,SD Amorebieta,Logrones,1.0,0.0
+235,ESP-Copa del Rey,26079,2026-11-10 20:00:00+00:00,Tavernes de la Valldigna,Valencia,0.0,6.0
+236,ESP-Copa del Rey,26079,2026-11-10 19:00:00+00:00,Trival Valderas,Leganes,0.0,1.0
+237,ESP-Copa del Rey,26079,2026-11-12 18:00:00+00:00,CD Tarancon,Levante,1.0,2.0
+238,ESP-Copa del Rey,26079,2026-11-12 17:30:00+00:00,CS Puertollano,Albacete,0.0,3.0
+239,ESP-Copa del Rey,26079,2026-11-12 18:00:00+00:00,Navalcarnero,Real Betis,2.0,3.0
+240,ESP-Copa del Rey,26079,2026-11-13 20:00:00+00:00,Salamanca CF UDS,Celta Vigo,0.0,5.0
