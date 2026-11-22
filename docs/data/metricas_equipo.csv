@@ -29,5 +29,7 @@ clave,match_id,equipo,rival,goles,xg,npxg,xg_contraataque,tiros,tiros_puerta,pos
 1993983|Real Madrid,1993983,Real Madrid,Racing Santander,3,3.22,2.48,0.42,22.0,7.0,53.7,552.0,87.5,94.0,50.0,22.2,,,14.0,61.3,21.0,,,0.69,Opta
 2029226|AEK Athens,2029226,AEK Athens,Real Madrid,2,,,,9.0,5.0,30.5,289.0,83.7,64.0,30.0,29.4,,,7.0,58.0,16.0,,,,Opta
 2029226|Real Madrid,2029226,Real Madrid,AEK Athens,3,,,,24.0,8.0,69.5,659.0,89.7,107.0,66.0,8.1,,,13.0,60.0,9.0,,,,Opta
+401882798|Real Madrid,401882798,Real Madrid,Celta Vigo,2,,,,24.0,7.0,63.5,612.0,90.4,,,,,,,,,,,,ESPN
+401882798|Celta Vigo,401882798,Celta Vigo,Real Madrid,1,,,,8.0,4.0,36.5,360.0,80.0,,,,,,,,,,,,ESPN
 401882808|Valencia,401882808,Valencia,Real Madrid,0,,,,4.0,2.0,31.7,288.0,78.1,,,,,,,,,,,,ESPN
 401882808|Real Madrid,401882808,Real Madrid,Valencia,3,,,,19.0,11.0,68.3,627.0,90.6,,,,,,,,,,,,ESPN

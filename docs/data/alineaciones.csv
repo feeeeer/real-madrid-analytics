@@ -468,6 +468,52 @@ match_id,equipo,jugador,dorsal,titular,posicion,px,py
 2029226,Real Madrid,Álvaro Carreras,18,0,Left-Back,,
 2029226,Real Madrid,Carlos Espí,19,0,,,
 2029226,Real Madrid,Brahim Díaz,21,0,Right Winger,,
+401882798,Real Madrid,Thibaut Courtois,1,1,Goalkeeper,0.5,0.06
+401882798,Real Madrid,Dean Huijsen,4,1,Centre-Back,0.4,0.23
+401882798,Real Madrid,Ibrahima Konaté,16,1,Centre-Back,0.6,0.23
+401882798,Real Madrid,Eduardo Camavinga,6,1,Defensive Midfield,0.5,0.44
+401882798,Real Madrid,Álvaro Carreras,18,1,Left-Back,0.2,0.23
+401882798,Real Madrid,Trent Alexander-Arnold,12,1,Right-Back,0.8,0.23
+401882798,Real Madrid,Jude Bellingham,5,1,Left Winger,0.4,0.65
+401882798,Real Madrid,Bernardo Silva,20,1,Right Winger,0.6,0.65
+401882798,Real Madrid,Yan Diomande,25,1,Left Winger,0.2,0.65
+401882798,Real Madrid,Arda Güler,15,1,Right Winger,0.8,0.65
+401882798,Real Madrid,Kylian Mbappé,10,1,Centre-Forward,0.5,0.86
+401882798,Real Madrid,Vinícius Júnior,7,0,,,
+401882798,Real Madrid,Antonio Rüdiger,22,0,,,
+401882798,Real Madrid,Federico Valverde,8,0,,,
+401882798,Real Madrid,Endrick,9,0,,,
+401882798,Real Madrid,Aurélien Tchouaméni,14,0,,,
+401882798,Real Madrid,Brahim Díaz,21,0,,,
+401882798,Real Madrid,Thiago Pitarch,27,0,,,
+401882798,Real Madrid,Marc Cucurella,17,0,,,
+401882798,Real Madrid,Éder Militão,3,0,,,
+401882798,Real Madrid,Denzel Dumfries,24,0,,,
+401882798,Real Madrid,Andrii Lunin,13,0,,,
+401882798,Real Madrid,Carlos Espí,19,0,,,
+401882798,Celta Vigo,Andrei Radu,13,1,Goalkeeper,0.5,0.06
+401882798,Celta Vigo,Yoel Lago,18,1,Centre-Back,0.5,0.23
+401882798,Celta Vigo,Marcos Alonso,3,1,Centre-Back,0.233,0.23
+401882798,Celta Vigo,Javi Rodríguez,20,1,Centre-Back,0.767,0.23
+401882798,Celta Vigo,Ilaix Moriba,6,1,Central Midfield,0.4,0.55
+401882798,Celta Vigo,Hugo Burcio,30,1,Central Midfield,0.6,0.55
+401882798,Celta Vigo,Javi Galán,22,1,Left Midfield,0.2,0.55
+401882798,Celta Vigo,Sergio Carreira,5,1,Right Midfield,0.8,0.55
+401882798,Celta Vigo,Pablo Durán,11,1,Centre-Forward,0.5,0.86
+401882798,Celta Vigo,Williot Swedberg,19,1,Left Winger,0.233,0.86
+401882798,Celta Vigo,Hugo Álvarez,23,1,Right Winger,0.767,0.86
+401882798,Celta Vigo,Álvaro Núñez,15,0,,,
+401882798,Celta Vigo,Iago Aspas,10,0,,,
+401882798,Celta Vigo,Javi Rueda,17,0,,,
+401882798,Celta Vigo,Altay Bayindir,1,0,,,
+401882798,Celta Vigo,Sebastián Cáceres,21,0,,,
+401882798,Celta Vigo,Hugo González,16,0,,,
+401882798,Celta Vigo,Andrés Antañón,28,0,,,
+401882798,Celta Vigo,Jones El-Abdellaoui,39,0,,,
+401882798,Celta Vigo,Couhaib Driouech,24,0,,,
+401882798,Celta Vigo,Ferran Jutglà,9,0,,,
+401882798,Celta Vigo,Abdoulaye Faye,4,0,,,
+401882798,Celta Vigo,Aleix Febas,14,0,,,
 401882808,Valencia,Stole Dimitrievski,1,1,Goalkeeper,0.5,0.06
 401882808,Valencia,César Tárrega,5,1,Centre-Back,0.5,0.23
 401882808,Valencia,Justin de Haas,12,1,Centre-Back,0.34,0.23
