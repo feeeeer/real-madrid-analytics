@@ -33,3 +33,5 @@ clave,match_id,equipo,rival,goles,xg,npxg,xg_contraataque,tiros,tiros_puerta,pos
 401882798|Celta Vigo,401882798,Celta Vigo,Real Madrid,1,,,,8.0,4.0,36.5,360.0,80.0,,,,,,,,,,,,ESPN
 401882808|Valencia,401882808,Valencia,Real Madrid,0,,,,4.0,2.0,31.7,288.0,78.1,,,,,,,,,,,,ESPN
 401882808|Real Madrid,401882808,Real Madrid,Valencia,3,,,,19.0,11.0,68.3,627.0,90.6,,,,,,,,,,,,ESPN
+401915298|Real Madrid,401915298,Real Madrid,PSV Eindhoven,5,,,,24.0,9.0,61.5,632.0,90.3,,,,,,,,,,,,ESPN
+401915298|PSV Eindhoven,401915298,PSV Eindhoven,Real Madrid,1,,,,10.0,1.0,38.5,388.0,82.0,,,,,,,,,,,,ESPN
